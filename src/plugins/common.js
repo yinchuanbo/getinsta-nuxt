@@ -206,10 +206,11 @@ let common = {
     document.getElementById(parentID).appendChild(iframe);
   },
   envTest() {
-    return window.location.href.split('.')[0].split('//')[1] === 'test'
-      || window.location.hostname === 'localhost'
-      || window.location.hostname === '192.168.2.17'
-      || window.location.hostname === '192.168.6.244';
+    if (process.client)
+      return window.location.href.split('.')[0].split('//')[1] === 'test'
+        || window.location.hostname === 'localhost'
+        || window.location.hostname === '192.168.2.17'
+        || window.location.hostname === '192.168.6.244';
   },
   numberAbbreviations(num) {
     let numFormatted = 0;
@@ -268,37 +269,37 @@ let common = {
   // 错误提示弹窗文本
   callErrText(type) {
     let obj = {
-      bad_video_url:'Please enter valid Channel/Video URL.',//视频地址错误
-      bad_request:'The request failed. Please try again later.',//无效的请求，如参数不对、参数签名没验证通过等；
-      bad_token:'Login expired. Please log in again.',//token无效；
-      bad_payment:'Failed to create the order, please check your information.',//无效的支付类型；
-      bad_url:'The URL is not valid. Please copy and paste the right URL.',//url错误
-      account_locked:'Your account is disabled.',//账号（邮箱）被冻结，如该账号存在异常操作，服务器将其冻结了；
-      bad_account:'Email address is not valid.',//无效账号（邮箱），该邮箱没注册、邮箱格式无效等；
-      bad_password:"Wrong password. Try again or click 'Forgot Password?' to reset it.",//密码错误；
-      password_format_error:'Password must have 6 or more characters.',//密码格式无效，密码长度不符或包含了不支持的字符，或没有包含必须要求的字符等
-      bad_email:'This email address is not valid.',//邮箱格式错误或则是不支持的邮箱；
-      email_occupied:'An account with these credentials already exists.',//邮箱被占用；
-      exceed_limit:"You've reached the maximum register attempts." //同一个ip超过五次注册新用户 
-    }
+      bad_video_url: 'Please enter valid Channel/Video URL.',//视频地址错误
+      bad_request: 'The request failed. Please try again later.',//无效的请求，如参数不对、参数签名没验证通过等；
+      bad_token: 'Login expired. Please log in again.',//token无效；
+      bad_payment: 'Failed to create the order, please check your information.',//无效的支付类型；
+      bad_url: 'The URL is not valid. Please copy and paste the right URL.',//url错误
+      account_locked: 'Your account is disabled.',//账号（邮箱）被冻结，如该账号存在异常操作，服务器将其冻结了；
+      bad_account: 'Email address is not valid.',//无效账号（邮箱），该邮箱没注册、邮箱格式无效等；
+      bad_password: 'Wrong password. Try again or click \'Forgot Password?\' to reset it.',//密码错误；
+      password_format_error: 'Password must have 6 or more characters.',//密码格式无效，密码长度不符或包含了不支持的字符，或没有包含必须要求的字符等
+      bad_email: 'This email address is not valid.',//邮箱格式错误或则是不支持的邮箱；
+      email_occupied: 'An account with these credentials already exists.',//邮箱被占用；
+      exceed_limit: 'You\'ve reached the maximum register attempts.' //同一个ip超过五次注册新用户
+    };
     return obj[type];
   },
   // 获取产品列表 th-调用对象  url-请求地址  data-请求参数 type-产品类型 callback-回调
-  getProductList(th,url,data,type,callback){
-    th.$axios.$post(url,data).then((res) => {
+  getProductList(th, url, data, type, callback) {
+    th.$axios.$post(url, data).then((res) => {
       let _data = res.data;
       let list = _data.filter((v) => {
         return v.product_type === type;
       });
-      if(typeof(callback) === 'function'){
-        callback(list)
+      if (typeof (callback) === 'function') {
+        callback(list);
       }
     }).catch((err) => {
 
     });
   },
-  MD5(key){
-    return Crypto.MD5(key).toString()
+  MD5(key) {
+    return Crypto.MD5(key).toString();
   }
 };
 Vue.prototype.COMMON = common;

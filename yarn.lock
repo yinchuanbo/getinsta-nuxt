@@ -900,6 +900,14 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@inotom/vue-go-top@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npm.taobao.org/@inotom/vue-go-top/download/@inotom/vue-go-top-1.3.0.tgz#7df1b5912ef97638f81fee0146c817983408f082"
+  integrity sha1-ffG1kS75djj4H+4BRsgXmDQI8II=
+  dependencies:
+    sweet-scroll "4.0.0"
+    throttle-debounce "2.1.0"
+
 "@lokidb/full-text-search@^2.1.0":
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/@lokidb/full-text-search/download/@lokidb/full-text-search-2.1.0.tgz#5f0b36dc0d67ba365f84663a9c0438537c186a76"
@@ -9103,6 +9111,11 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+sweet-scroll@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/sweet-scroll/download/sweet-scroll-4.0.0.tgz#1f546157eb9754bb473780bb89546b1ca1ad9a25"
+  integrity sha1-H1RhV+uXVLtHN4C7iVRrHKGtmiU=
+
 table@^6.0.4:
   version "6.0.7"
   resolved "https://registry.npm.taobao.org/table/download/table-6.0.7.tgz?cache=0&sync_timestamp=1609732678448&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftable%2Fdownload%2Ftable-6.0.7.tgz#e45897ffbcc1bcf9e8a87bf420f2c9e5a7a52a34"
@@ -9191,6 +9204,11 @@ thread-loader@^3.0.1:
     loader-runner "^4.1.0"
     loader-utils "^2.0.0"
     neo-async "^2.6.2"
+
+throttle-debounce@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/throttle-debounce/download/throttle-debounce-2.1.0.tgz?cache=0&sync_timestamp=1604313880785&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fthrottle-debounce%2Fdownload%2Fthrottle-debounce-2.1.0.tgz#257e648f0a56bd9e54fe0f132c4ab8611df4e1d5"
+  integrity sha1-JX5kjwpWvZ5U/g8TLEq4YR304dU=
 
 through2@^2.0.0:
   version "2.0.5"

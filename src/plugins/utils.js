@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 //************************************第三方组件*******************************************
+import GoTop from '@inotom/vue-go-top';
 // import DigitRoll from '@huoyu/vue-digitroll'; // DigitRoll 数值缓动
 // import VueScroll from 'vue-scroll';  //
 // import VueScrollTo from 'vue-scrollto'; // 锚点定位
@@ -10,6 +11,8 @@ import Vue2TouchEvents from 'vue2-touch-events'; // Touch Events
 // import Pagination from 'vue-pagination-2'; // 分页
 // import vueAwesomeCountdown from 'vue-awesome-countdown';
 
+// Vue.use(GoTop);
+Vue.component('GoTop', GoTop);
 // Vue.use(VueScroll);
 // Vue.use(VueScrollTo);
 // Vue.use(VueCookies);
