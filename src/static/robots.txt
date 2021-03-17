@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /event-special-ios-1
+Disallow: /event-special-ios-2
+Disallow: /buy-auto-instagram-followers-1
+
+Sitemap: https://www.easygetinsta.com/sitemap.xml

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75" height="75" viewBox="0 0 75 75">
+  <defs>
+    <filter id="椭圆_1058" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse">
+      <feOffset dy="8" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-color="#7053e1" flood-opacity="0.769"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="下" transform="translate(-1086.266 -868.266)">
+    <g transform="matrix(1, 0, 0, 1, 1086.27, 868.27)" filter="url(#椭圆_1058)">
+      <circle id="椭圆_1058-2" data-name="椭圆 1058" cx="22.5" cy="22.5" r="22.5" transform="translate(15 7)" fill="#fff"/>
+    </g>
+    <path id="路径_22685" data-name="路径 22685" d="M9.617,13.094a.907.907,0,0,1,0-1.283l4.229-4.189L0,7.594,0,5.779l13.854.029L9.593,1.547a.905.905,0,1,1,1.28-1.28l5.767,5.767a.906.906,0,0,1,.265.65.808.808,0,0,1-.245.651L10.9,13.1A.907.907,0,0,1,9.617,13.094Z" transform="translate(1130.683 889.605) rotate(90)" fill="#7c56ff" fill-rule="evenodd"/>
+  </g>
+</svg>

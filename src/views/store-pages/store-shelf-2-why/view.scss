@@ -1,0 +1,168 @@
+.store-shelf-2-why {
+  padding-bottom: 112px;
+  // 情人节
+  &.valentine {
+    background-color: #FFDED8;
+  }
+
+  // 春节
+  &.spring {
+    background-color: #F9F8F2;
+  }
+
+  .wrapper {
+    width: 800px;
+  }
+
+  .store-container {
+    padding-top: 64px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(0, 19, 97, 0.07);
+    border-radius: 12px;
+
+    h2 {
+      font-size: 0;
+
+      span {
+        font: 600 20px/34px Montserrat;
+        color: #2A2A2A;
+        vertical-align: middle;
+      }
+
+      i {
+        margin-left: 10px;
+        display: inline-block;
+        font-size: 22px;
+        color: #FF3A3A;
+        opacity: 0;
+        transform-origin: left center;
+        vertical-align: middle;
+      }
+
+      &.error {
+        i {
+          animation: 0.5s title-error-show 0.5s ease forwards;
+        }
+      }
+
+      @keyframes title-error-show {
+        0% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  .section-text {
+    padding-top: 98px;
+
+    .store-container {
+      padding: 64px 70px 110px;
+
+      h2 {
+        text-align: center;
+
+        span {
+          font: 600 28px/34px Montserrat;
+          color: #2A2A2A;
+        }
+      }
+
+      ul {
+        margin-top: 68px;
+
+        li {
+          margin-top: 30px;
+
+          &:before {
+            margin-right: 24px;
+            content: '';
+            display: inline-block;
+            width: 23px;
+            height: 16px;
+            background: url("~@/assets/images/shelf/icon-shelf-store-check.svg") no-repeat center;
+            background-size: contain;
+            vertical-align: middle;
+          }
+
+          font: 500 19px/30px Montserrat;
+          color: #2A2A2A;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .store-shelf-2-why {
+    padding-bottom: 56px;
+
+    .wrapper {
+      padding: 0 4vw;
+      width: 100%;
+    }
+
+    .store-container {
+      padding-top: 38px;
+      box-shadow: 0 5px 10px rgba(0, 19, 97, 0.07);
+      border-radius: 6px;
+
+      h2 {
+
+        span {
+          font: 600 16px/20px Montserrat;
+        }
+
+        i {
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .section-text {
+      padding-top: 32px;
+
+      .store-container {
+        padding: 32px 28px 42px;
+
+        h2 {
+          span {
+            font: 600 16px/20px Montserrat;
+          }
+        }
+
+        ul {
+          margin-top: 24px;
+
+          li {
+            margin-top: 24px;
+            font: 500 12px/18px Montserrat;
+
+            &:before {
+              margin-right: 12px;
+              width: 16px;
+              height: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    &.valentine {
+      background: radial-gradient(closest-side at 50% 50%, #FFB4B4 0%, #D84646 100%);
+    }
+
+    &.spring {
+      background: #FF9941;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="397" height="397" viewBox="0 0 397 397">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffd6f8"/>
+      <stop offset="1" stop-color="#bbd4ff"/>
+    </linearGradient>
+  </defs>
+  <path id="bg_cricle" d="M198.5,0C308.129,0,397,88.871,397,198.5S308.129,397,198.5,397,0,308.129,0,198.5,88.871,0,198.5,0Z" fill="url(#linear-gradient)"/>
+</svg>

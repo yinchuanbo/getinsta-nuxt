@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="98" viewBox="0 0 110 98">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #005fff;
+      }
+
+      .cls-2 {
+        fill: #ff9429;
+      }
+
+      .cls-3 {
+        fill: #a4c6ff;
+      }
+    </style>
+  </defs>
+  <g id="icon_support" transform="translate(-1076 -7015)">
+    <path id="减去_4" data-name="减去 4" class="cls-1" d="M-312,371a54.649,54.649,0,0,1-21.408-4.322,54.8,54.8,0,0,1-17.482-11.787,54.806,54.806,0,0,1-11.787-17.483A54.65,54.65,0,0,1-367,316h19a35.758,35.758,0,0,0,10.556,25.444A35.756,35.756,0,0,0-312,352a36.041,36.041,0,0,0,36-36h19a54.649,54.649,0,0,1-4.322,21.408,54.806,54.806,0,0,1-11.787,17.483,54.8,54.8,0,0,1-17.482,11.787A54.659,54.659,0,0,1-312,371Z" transform="translate(1443 6742)"/>
+    <circle id="椭圆_21" data-name="椭圆 21" class="cls-2" cx="17" cy="17" r="17" transform="translate(1091 7015)"/>
+    <circle id="椭圆_22" data-name="椭圆 22" class="cls-3" cx="17" cy="17" r="17" transform="translate(1137 7015)"/>
+  </g>
+</svg>

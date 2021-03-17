@@ -1,0 +1,391 @@
+.store-shelf-1-buy {
+  margin-top: -180px;
+
+  .wrapper {
+    width: 800px;
+  }
+
+  .store-container {
+    padding-top: 64px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(0, 19, 97, 0.07);
+    border-radius: 12px;
+
+    h2 {
+      font-size: 0;
+
+      span {
+        font: 600 20px/34px Montserrat;
+        color: #2A2A2A;
+        vertical-align: middle;
+      }
+
+      i {
+        margin-left: 10px;
+        display: inline-block;
+        font-size: 22px;
+        color: #FF3A3A;
+        opacity: 0;
+        transform-origin: left center;
+        vertical-align: middle;
+      }
+
+      &.error {
+        i {
+          animation: 0.5s title-error-show 0.5s ease forwards;
+        }
+      }
+
+      @keyframes title-error-show {
+        0% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  .btn-container {
+    margin-top: 32px;
+    width: 100%;
+    height: 80px;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .unit {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 340px;
+      height: 75px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 12px 12px 0 0;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      font: 600 20px/60px Montserrat;
+      color: #FFFFFF;
+
+      &:last-child {
+        margin-left: 16px;
+
+        &:after {
+          position: absolute;
+          top: -30px;
+          right: -4px;
+          content: "";
+          display: block;
+          width: 45px;
+          height: 64px;
+          background: url("~@/assets/images/shelf/icon_hot.svg") center no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &.on {
+        background: #fff;
+        color: #005FFF;
+
+        &:hover {
+          background: #fff;
+        }
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+    }
+  }
+
+  .tab-content {
+    .store-container {
+      .pkg-container, .extra-container, .post-container {
+        padding: 0 50px;
+      }
+
+      .control-search_ins-container {
+        margin-top: 60px;
+        padding: 50px 50px 40px;
+        background-color: #F7F7FB;
+        border-radius: 6px;
+
+        h2 {
+          font: 600 20px Montserrat;
+          color: #2A2A2A;
+          text-align: center;
+        }
+
+        .control-search_ins {
+          margin-top: 38px;
+        }
+
+        .ins-info-container {
+          margin-top: 38px;
+          text-align: center;
+
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          h3 {
+            margin-top: 6px;
+            font: 500 24px Montserrat;
+            color: #2A2A2A;
+            @include text-ellipsis;
+          }
+
+          p {
+            display: flex;
+            justify-content: space-evenly;
+            font: 500 16px/60px Montserrat;
+            color: #A8A8A8;
+            @include text-ellipsis;
+
+            b {
+              margin-right: 8px;
+              font-size: 24px;
+              color: #2A2A2A;
+            }
+          }
+        }
+      }
+
+      .extra-container {
+        margin-top: 56px;
+        padding-bottom: 64px;
+      }
+
+      .post-container {
+        margin-top: 64px;
+      }
+    }
+  }
+
+  // 新年
+  &.new-year {
+    margin-top: -420px;
+
+    .new-year__santa-claus {
+      display: block;
+    }
+  }
+
+  .new-year__santa-claus {
+    position: fixed;
+    z-index: 10;
+    bottom: 100px;
+    left: 0;
+    right: -99px;
+    margin: auto;
+    transform: translateX(453px) scaleX(1);
+    width: 198px;
+    height: 235px;
+    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/new-year__santa-claus.svg") center no-repeat;
+    transition: all 0.3s;
+    transform-origin: left center;
+
+    &.hide {
+      opacity: 0;
+      transform: translateX(453px) scaleX(0);
+    }
+  }
+
+  // 情人节
+  &.valentine {
+    margin-top: -610px;
+    background-color: #FFDED8;
+
+    .new-year__santa-claus {
+      display: none;
+    }
+  }
+  // 春节
+  &.spring {
+    margin-top: -610px;
+    background-color: #F9F8F2;
+    .tabs{
+      .unit{
+        &:last-child{
+          &:after{
+            background-image: url("~@/assets/images/shelf/icon_hot-spring.svg");
+          }
+        }
+      }
+    }
+
+    .new-year__santa-claus {
+      display: none;
+    }
+  }
+  
+}
+.store-shelf-1-buy.spring{
+  margin-top: -610px;
+  background-color: #F9F8F2;
+}
+@media (max-width: 768px) {
+  .store-shelf-1-buy {
+    margin-top: -110px;
+
+    .wrapper {
+      padding: 0 4vw;
+      width: 100%;
+    }
+
+    .store-container {
+      padding-top: 38px;
+      box-shadow: 0 5px 10px rgba(0, 19, 97, 0.07);
+      border-radius: 6px;
+
+      h2 {
+        span {
+          font: 600 16px/20px Montserrat;
+        }
+
+        i {
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .btn-container {
+      margin-top: 32px;
+      width: 100%;
+      height: 56px;
+
+      &.mk0 {
+        padding: 0 4vw;
+      }
+    }
+
+    .tabs {
+      .unit {
+        width: 40.2vw;
+        height: 44px;
+        border-radius: 6px 6px 0 0;
+
+        font: 600 12px Montserrat;
+        color: #FFFFFF;
+
+        &:last-child {
+          margin-left: 8px;
+
+          &:after {
+            top: -16px;
+            right: -4px;
+            width: 22px;
+            height: 32px;
+          }
+        }
+      }
+    }
+
+    .tab-content {
+      .store-container {
+        .pkg-container, .extra-container, .post-container {
+          padding: 0 4vw;
+        }
+
+        .control-search_ins-container {
+          margin-top: 24px;
+          padding: 32px 4vw;
+
+          h2 {
+            font: 600 16px Montserrat;
+          }
+
+          .control-search_ins {
+            margin-top: 32px;
+
+            label {
+              input {
+                font: 500 12px Montserrat;
+              }
+            }
+          }
+
+          .ins-info-container {
+            margin-top: 32px;
+
+            img {
+              width: 68px;
+              height: 68px;
+            }
+
+            h3 {
+              margin-top: 8px;
+              font: 500 16px Montserrat;
+            }
+
+            p {
+              font: 500 12px/44px Montserrat;
+
+              b {
+                margin-right: 4px;
+                font-size: 18px;
+              }
+            }
+          }
+        }
+
+        .extra-container {
+          margin-top: 34px;
+          padding-bottom: 44px;
+
+          h2 {
+            text-align: center;
+
+            &:before {
+              margin: 0 auto;
+              display: block;
+              width: 42px;
+              height: 42px;
+            }
+
+            span {
+              margin-top: 8px;
+              display: inline-block;
+            }
+          }
+        }
+
+        .post-container {
+          margin-top: 64px;
+        }
+      }
+    }
+
+    &.new-year {
+      margin-top: -86px;
+
+      .new-year__santa-claus {
+        display: none;
+      }
+    }
+
+    &.valentine {
+      margin-top: -762px;
+      background: radial-gradient(closest-side at 50% 50%, #FFB4B4 0%, #D84646 100%);
+    }
+    &.spring {
+      margin-top: -762px;
+      background: #FF9941;
+    }
+  }
+}

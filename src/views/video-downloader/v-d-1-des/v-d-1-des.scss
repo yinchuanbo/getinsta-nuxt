@@ -1,0 +1,121 @@
+.v-d-1-des {
+  background-color: #F8F9FC;
+
+  .view-tree {
+    margin-top: 100px;
+    padding-top: 52px;
+    background: url("~@/assets/images/video-downloader/v-d-1-des/v-d-1-des-node.svg") center top no-repeat;
+
+    .unit {
+      margin: -88px auto 0;
+      padding-right: 399+125px;
+      box-sizing: content-box;
+      width: 399px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s;
+
+      &.on {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      h4 {
+        display: flex;
+        align-items: center;
+        font: 600 20px/36px Montserrat;
+        color: #2A2A2A;
+        text-align: right;
+
+        i {
+          margin-left: 16px;
+          flex-shrink: 0;
+          display: inline-block;
+          width: 36px;
+          height: 36px;
+          background: #7C56FF;
+          box-shadow: 0 6px 5px rgba(0, 0, 0, 0.16);
+          text-align: center;
+          border-radius: 50%;
+
+          font: 600 20px/36px Montserrat;
+          color: #FFFFFF;
+        }
+      }
+
+      img {
+        margin-top: 26px;
+        width: 100%;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:nth-child(even) {
+        padding-right: 0;
+        padding-left: 399+125px;
+
+        h4 {
+          text-align: left;
+
+          i {
+            margin-left: 0;
+            margin-right: 16px;
+          }
+        }
+      }
+
+      &:nth-child(odd) {
+        h4 {
+          flex-direction: row-reverse;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .v-d-1-des {
+    .view-tree {
+      margin-top: 0;
+      padding-top: 52px;
+      background: none;
+
+      .unit {
+        margin: 27px auto 0;
+        padding: 0 12.4vw;
+        box-sizing: border-box;
+        width: 100%;
+
+        h4 {
+          font: 600 14px/20px Montserrat;
+
+          i {
+            margin-left: 0;
+            margin-right: 16px;
+            width: 20px;
+            height: 20px;
+            box-shadow: 0 3px 2px rgba(0, 0, 0, 0.16);
+
+            font: 600 12px/20px Montserrat;
+          }
+        }
+
+        img {
+          margin-top: 12px;
+        }
+
+        &:nth-child(even) {
+          padding: 0 12.4vw;
+        }
+
+        &:nth-child(odd) {
+          h4 {
+            flex-direction: row;
+          }
+        }
+      }
+    }
+  }
+}

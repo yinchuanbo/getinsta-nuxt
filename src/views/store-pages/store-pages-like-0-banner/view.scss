@@ -1,0 +1,25 @@
+.store-shelf-0-banner {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background: transparent linear-gradient(256deg, #111EC5 0%, #AD34D8 57%, #FF9161 100%);
+
+  h1 {
+    padding-top: 100px;
+    text-align: center;
+    font: 700 40px/48px Montserrat;
+    color: #FFFFFF;
+  }
+}
+
+@media (max-width: 768px) {
+  .store-shelf-0-banner {
+    height: 250+44px;
+
+    h1 {
+      padding: 35px;
+      font: 700 27px/35px Montserrat;
+      color: #FFFFFF;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffc400;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="icon_user" transform="translate(-100 -51)">
+    <circle id="椭圆_18" data-name="椭圆 18" class="cls-1" cx="61" cy="61" r="61" transform="translate(100 51)"/>
+    <path id="ic_account_circle_24px" class="cls-2" d="M63.116,20.335A18.335,18.335,0,1,1,44.781,38.67,18.31,18.31,0,0,1,63.116,20.335Zm0,86.785a44.007,44.007,0,0,1-36.67-19.679c.183-12.162,24.447-18.824,36.67-18.824,12.162,0,36.486,6.662,36.67,18.824A44.007,44.007,0,0,1,63.116,107.12Z" transform="translate(97.812 47)"/>
+  </g>
+</svg>

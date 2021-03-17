@@ -1,0 +1,93 @@
+.order-fail {
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 100px; }
+  .order-fail.client {
+    padding-top: 0; }
+    .order-fail.client:before {
+      height: 300px; }
+  .order-fail:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 380px;
+    background-color: #F8F8F8; }
+  .order-fail .wrapper {
+    padding-top: 64px; }
+    .order-fail .wrapper .h1-icon {
+      margin: 0 auto;
+      display: block;
+      width: 62px;
+      height: 62px; }
+    .order-fail .wrapper h1 {
+      margin-top: 15px;
+      font: 600 28px/34px Montserrat;
+      color: #FF3E34;
+      text-align: center; }
+    .order-fail .wrapper h2 {
+      margin-top: 25px;
+      font: 500 18px/24px Montserrat;
+      color: #2A2A2A;
+      text-align: center; }
+    .order-fail .wrapper .btn-container {
+      margin: 120px auto 0;
+      width: 400px;
+      height: 80px; }
+    .order-fail .wrapper .bottom-text .unit {
+      margin-top: 36px; }
+      .order-fail .wrapper .bottom-text .unit:first-child {
+        margin-top: 140px; }
+      .order-fail .wrapper .bottom-text .unit h3 {
+        font: 600 18px/30px Montserrat;
+        color: #2A2A2A; }
+      .order-fail .wrapper .bottom-text .unit p {
+        margin-top: 10px;
+        font: 400 14px/24px Montserrat;
+        color: #A8A8A8; }
+        .order-fail .wrapper .bottom-text .unit p a {
+          text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .order-fail {
+    padding-top: 44px;
+    padding-bottom: 80px; }
+    .order-fail.client {
+      padding-top: 0; }
+      .order-fail.client:before {
+        height: 176px; }
+    .order-fail:before {
+      height: 220px;
+      background-color: #FF4444; }
+    .order-fail .wrapper {
+      padding: 30px 4vw 0; }
+      .order-fail .wrapper .h1-icon {
+        width: 50px;
+        height: 50px; }
+      .order-fail .wrapper h1 {
+        font: 700 22px/28px Montserrat;
+        color: #fff; }
+      .order-fail .wrapper h2 {
+        margin-top: 25px;
+        padding: 30px 4vw;
+        display: inline-block;
+        width: 100%;
+        background: #FFFFFF;
+        box-shadow: 0 5px 10px #00136112;
+        border-radius: 6px;
+        font: 500 16px/24px Montserrat;
+        color: #2A2A2A; }
+      .order-fail .wrapper .btn-container {
+        margin-top: 16px;
+        width: 100%;
+        height: 56px; }
+      .order-fail .wrapper .bottom-text .unit {
+        margin-top: 30px; }
+        .order-fail .wrapper .bottom-text .unit:first-child {
+          margin-top: 56px; }
+        .order-fail .wrapper .bottom-text .unit h3 {
+          font: 600 14px/15px Montserrat; }
+        .order-fail .wrapper .bottom-text .unit p {
+          margin-top: 9px;
+          font: 400 14px/17px Montserrat; } }

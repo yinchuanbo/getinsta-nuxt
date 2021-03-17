@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
+  <g id="icon_person_add" transform="translate(3139.498 -5643.768)">
+    <path id="bg" d="M22.5,0A22.5,22.5,0,1,1,0,22.5,22.5,22.5,0,0,1,22.5,0Z" transform="translate(-3139.498 5643.768)" fill="#66f"/>
+    <path id="icon_person_add-2" data-name="icon_person_add" d="M17.159,13.233a4.617,4.617,0,1,0-4.617-4.617A4.615,4.615,0,0,0,17.159,13.233ZM6.771,10.925V7.463H4.463v3.463H1v2.308H4.463V16.7H6.771V13.233h3.463V10.925Zm10.388,4.617c-3.082,0-9.233,1.547-9.233,4.617v2.308H26.392V20.159C26.392,17.088,20.24,15.542,17.159,15.542Z" transform="translate(-3131.974 5652.833)" fill="#fff"/>
+  </g>
+</svg>

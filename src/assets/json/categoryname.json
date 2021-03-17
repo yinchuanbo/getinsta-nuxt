@@ -1,0 +1,27 @@
+{
+  "category":{
+    "Animal":["lion", "bear","kitten","swallow","sparrow","flamingo",
+      "panda","hedgehog","dolphin","frog","fox","rabbit","pigeon","penguin",
+    "woodpecker","chimpanzee","hippopotamus","crocodile","reindeer","snake"],
+    "Art":["color","abstract","cartoon","design","printing","carve",
+           "design","pen","sketch","sculptor","musician","hue","decorative","graffiti",
+          "animation","draw","marker","print","wax","ruler"],
+    "Business":["brand","coupon","deal","discount","ecomomics","graph","high",
+                "insurance","liability","network","career","credit","company",
+                "director","finance","growth","intern","inflation","management","niche"],
+    "Food":["marmalade","blueberries","friedchips","omelette","mayonnaise","curry","cake","candy",
+            "chocolate","pancakes","enchilada","choppedsalad","soda","sweet","oil","juice",
+             "bread","sweet","coffee","watermelon"],
+     "Fitness":["aerobics","yoga","health","racer","shape","exercise","active","joy","herbs","energy",
+                "training","smooth","strength","vigor","jog","nutrition","goal","optimism","games","function"],
+      "Fashion":["vogue","cut","mode","creative","beauty","lingerie","stylish","jewellery","uniform","classic"],
+      "Photography":["image","snapshot","picture","artwork","light","black","overlap","nakedeye","prototype","graphic",
+                "mug","portait","mosaic","monochrome","pix","beauty","outline","unique","mixed","landscape"],
+      "Movie":["film","footage","producer","cast","critic","outtake","reel","zoom in","synopsis","flashback",
+               "cinema","cartoon","specialeffect","costumer","dubbing","sequel","subtitle","studio","stuntman","extra"],
+      "Sports":["boxing","tennis","climbing","puck","diving","highjump","waterski","intentsport","volleyball","catch",
+      "golf","badminton","cricket","carracing","surfing","dart","golf","hotsport","snowboard","handball"],
+      "Travel":["journey","tour","trek","track","boardwalk","airport","cruise","airplane","abroad","biking",
+               "voyage","trip","run","move","goodsightseeing","farexpedition","drift","trekker","beach","island"]
+  }
+}

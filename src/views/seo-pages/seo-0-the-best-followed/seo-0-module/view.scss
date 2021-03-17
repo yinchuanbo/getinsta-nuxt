@@ -1,0 +1,103 @@
+.seo-0-module {
+  margin-top: 80px;
+  padding-top: 90px;
+  min-height: 496px;
+  background: url("~@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-module/seo-0-module__bg.svg") top center no-repeat;
+
+  h2 {
+    font: 600 40px Montserrat !important;
+    color: #fff !important;
+    text-align: center;
+  }
+
+  h3 {
+    margin-top: 30px !important;
+    font: 500 20px Montserrat !important;
+    color: #fff !important;
+    text-align: center;
+  }
+
+  a {
+    color: #6dc0f1;
+    text-decoration: underline;
+
+    &:hover {
+      color: #aaddfb;
+    }
+  }
+
+  .download {
+    .btn-container {
+      margin: 60px auto 0;
+      width: 450px;
+      height: 100px;
+    }
+
+    .bottom {
+      margin-top: 36px;
+      text-align: center;
+      font-size: 0;
+
+      a {
+        margin: 0 20px;
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        vertical-align: middle;
+
+        &:hover {
+          filter: brightness(120%);
+        }
+
+        &.ios {
+          background-image: url("~@/assets/images/video-downloader/v-d-3-download/v-d-3-download__icon-ios.svg");
+        }
+
+        &.android {
+          background-image: url("~@/assets/images/video-downloader/v-d-3-download/v-d-3-download__icon-android.svg");
+        }
+      }
+
+      i {
+        display: inline-block;
+        width: 1px;
+        height: 14px;
+        background-color: #FFFFFF;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .seo-0-module {
+    margin-top: 15px;
+    padding-top: 30px !important;
+    padding-bottom: 40px !important;
+    min-height: auto !important;
+    background-image: url("~@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-module/seo-0-module__bg-m.svg");
+    background-size: cover;
+
+    h2 {
+      padding: 0 4vw !important;
+      font: 600 22px Montserrat !important;
+    }
+
+    h3 {
+      margin-top: 12px !important;
+      padding: 0 4vw !important;
+      font: 500 12px Montserrat !important;
+    }
+
+    .download {
+      .btn-container {
+        margin: 45px auto 0;
+        width: 211px;
+        height: 56px;
+      }
+    }
+  }
+}

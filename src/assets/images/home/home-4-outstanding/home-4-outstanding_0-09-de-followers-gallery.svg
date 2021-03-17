@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="366" height="366" viewBox="0 0 366 366">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="1" r="0.991" gradientTransform="matrix(0.999, 0.033, -0.033, 0.999, 0.033, -0.016)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffaa01"/>
+      <stop offset="1" stop-color="#ff3b3b"/>
+    </radialGradient>
+    <filter id="路径_104" x="0" y="0" width="366" height="366" filterUnits="userSpaceOnUse">
+      <feOffset dy="30" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+      <feFlood flood-color="#f70" flood-opacity="0.18"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组_4407" data-name="组 4407" transform="translate(2755 -649.553)">
+    <g transform="matrix(1, 0, 0, 1, -2755, 649.55)" filter="url(#路径_104)">
+      <path id="路径_104-2" data-name="路径 104" d="M48.161,0h89.679A48.161,48.161,0,0,1,186,48.161v89.679A48.161,48.161,0,0,1,137.839,186H48.161A48.161,48.161,0,0,1,0,137.839V48.161A48.161,48.161,0,0,1,48.161,0Z" transform="translate(90 60)" fill="url(#radial-gradient)"/>
+    </g>
+    <g id="组_130" data-name="组 130" transform="translate(-2619.849 755.17)">
+      <g id="组_100" data-name="组 100">
+        <path id="路径_55" data-name="路径 55" d="M148.436,115.922c0,14.143,11.949,25.6,26.7,25.6s26.7-11.458,26.7-25.6-11.949-25.6-26.7-25.6S148.436,101.78,148.436,115.922ZM127.3,179.848ZM127.3,179.687ZM127.3,179.646Zm95.678.323Zm0-.061ZM127.3,179.97Zm72.075-33.014-2.192-.02a6.872,6.872,0,0,0-2.613.626,35.706,35.706,0,0,1-3.351,1.616,42.877,42.877,0,0,1-31.97.04c-1.623-.666-3.414-1.656-3.414-1.656a6.121,6.121,0,0,0-2.613-.626l-2.17.02c-8.746,1.112-17.935,8.546-20.569,16.588,0,0-2.8,5.435-3.2,16.1a4.853,4.853,0,0,0,2.635,3.9s14.9,9.172,45.183,9.172c30.305,0,45.184-9.172,45.184-9.172a5.189,5.189,0,0,0,2.634-3.94c-.379-10.627-3.1-15.84-3.1-15.84-2.4-8.081-11.718-15.577-20.443-16.809Zm23.6,32.731Zm0,.141Z" transform="translate(-127.277 -90.324)" fill="#fff"/>
+      </g>
+    </g>
+    <path id="ic" d="M14.842,26.28a3.869,3.869,0,0,1-2.152-1C5.046,18.345,0,13.774,0,8.163A8.084,8.084,0,0,1,8.163,0a8.888,8.888,0,0,1,6.679,3.1A8.888,8.888,0,0,1,21.521,0a8.084,8.084,0,0,1,8.163,8.163c0,5.61-5.046,10.182-12.69,17.128A3.839,3.839,0,0,1,14.842,26.28Z" transform="matrix(0.875, 0.485, -0.485, 0.875, -2527.916, 732.583)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="418.706" height="65.524" viewBox="0 0 418.706 65.524">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d255d9"/>
+      <stop offset="1" stop-color="#882cf3"/>
+    </linearGradient>
+  </defs>
+  <g id="头部" transform="translate(-23 -35.496)">
+    <path id="矩形_922" data-name="矩形 922" d="M18,0H400.706a18,18,0,0,1,18,18V65.524a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V18A18,18,0,0,1,18,0Z" transform="translate(23 35.496)" opacity="0.78" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

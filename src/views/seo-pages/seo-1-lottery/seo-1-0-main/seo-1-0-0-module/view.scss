@@ -1,0 +1,242 @@
+.lottery-unit {
+  //flex-shrink: 0;
+  width: (158/490)*100%;
+  height: (156/490)*100%;
+  background-color: #ECD9BF;
+  border-bottom: 8px solid #ECD9BF;
+  border-radius: 10px;
+  text-align: center;
+
+  .unit-container {
+    padding-top: (10/160)*100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img, .img {
+      display: inline-block;
+      width: 65%;
+      height: 64%;
+      object-fit: contain;
+    }
+
+    h3 {
+      font: 600 17px/20px Montserrat;
+      color: #48072C;
+    }
+
+    p {
+      margin-top: (5/160)*100%;
+      font-size: 0;
+
+      span {
+        font: 600 12px/15px Montserrat;
+        color: #48072C;
+        @include text-ellipsis;
+        vertical-align: middle;
+      }
+
+      i {
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        vertical-align: middle;
+
+        &.like {
+          background-image: url("~@/assets/images/global/icon_likes.svg");
+        }
+
+        &.follower {
+          background-image: url("~@/assets/images/global/icon_followers.svg");
+        }
+      }
+    }
+
+    &.skeleton {
+      span {
+        display: inline-block;
+        background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+        background-size: 200% 100%;
+        animation: shimmer 4s infinite linear;
+        @keyframes shimmer {
+          0% {
+            background-position: 200% 100%;
+          }
+          100% {
+            background-position: -200% 100%;
+          }
+        }
+      }
+
+      .img {
+        span {
+          width: 90%;
+          height: 90%;
+        }
+      }
+
+      h3 {
+        margin-top: 6px;
+
+        span {
+          width: 80%;
+          height: 20px;
+        }
+      }
+
+      p {
+        margin-top: 0;
+
+        span {
+          width: 90%;
+          height: 14px;
+        }
+      }
+    }
+  }
+
+  &.launch {
+    background-color: #970c6b;
+    border-color: #970C6B;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: rgba(151, 12, 107, 0.8);
+      border-color: rgba(151, 12, 107, 0.8);
+
+      .unit-container {
+        background: linear-gradient(38deg, rgba(249, 43, 85, 0.8) 0%, rgba(254, 76, 131, 0.8) 100%);
+      }
+    }
+
+
+    &:active {
+      border-bottom-width: 0;
+
+      .unit-container {
+        padding-top: (14/160)*100%;
+      }
+    }
+
+    &.on {
+      border-bottom-width: 0;
+      background-color: #972D0C;
+      border-color: #972D0C;
+      //cursor: default;
+
+      .unit-container {
+        padding-top: (14/160)*100%;
+        background: linear-gradient(38deg, #F29749 0%, #F5B039 100%);
+      }
+    }
+
+    .unit-container {
+      background: linear-gradient(38deg, #F92B55 0%, #FE4C83 100%);
+
+      h3 {
+        font: 700 77px Montserrat;
+        color: #F4F5F9;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+      }
+
+      p {
+        margin-top: 2px;
+        font: 700 14px Montserrat;
+        color: #F4F5F9;
+      }
+    }
+  }
+
+  &.on {
+    background-color: #E9B42C;
+    border-color: #E9B42C;
+
+    .unit-container {
+      background-color: #FFDB4B;
+      border-color: #FFDB4B;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .lottery-unit {
+    border-width: 4px;
+    border-radius: 5px;
+
+    .unit-container {
+      border-width: 0.5px;
+      border-radius: 5px;
+
+      h3 {
+        font-size: 3.2vw;
+      }
+
+      p {
+        margin-top: 0;
+
+        span {
+          font-size: 2.133vw;
+        }
+
+        i {
+          width: 2.933vw;
+          height: 2.933vw;
+        }
+      }
+
+      &.skeleton {
+        .img {
+          width: 64%;
+          height: 64%;
+        }
+
+        h3 {
+          margin-top: 0;
+
+          span {
+            width: 80%;
+            height: 14px;
+          }
+        }
+
+        p {
+          margin-top: 0;
+
+          span {
+            width: 90%;
+            height: 12px;
+          }
+        }
+      }
+    }
+
+    &.launch {
+      .unit-container {
+        h3 {
+          font-size: 13.866vw;
+        }
+
+        p {
+          font-size: 2.667vw;
+        }
+      }
+    }
+
+    &.on {
+      background-color: #E9B42C;
+      border-color: #E9B42C;
+
+      .unit-container {
+        background-color: #FFDB4B;
+        border-color: #FFDB4B;
+      }
+    }
+  }
+}

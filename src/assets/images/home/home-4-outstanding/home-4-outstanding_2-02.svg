@@ -1,0 +1,6 @@
+<svg id="img_chat" xmlns="http://www.w3.org/2000/svg" width="184.075" height="65.275" viewBox="0 0 184.075 65.275">
+  <path id="bg" d="M20.279,52.189A26.011,26.011,0,0,1,0,26.821V26A26,26,0,0,1,26,0H158.075a26,26,0,0,1,26,26v.821a26,26,0,0,1-26,26H34.935c-2.4,5.521-7.985,12.377-20.9,12.454C19.541,60.555,19.361,56.476,20.279,52.189Z" transform="translate(0 0)" fill="#efaf40" opacity="0.79"/>
+  <rect id="line" width="112" height="3" transform="translate(30.574 14.302)" fill="#fff" opacity="0.6"/>
+  <rect id="line-2" data-name="line" width="67" height="4" transform="translate(30.574 24.302)" fill="#fff" opacity="0.6"/>
+  <rect id="line-3" data-name="line" width="79" height="3" transform="translate(30.574 36.302)" fill="#fff" opacity="0.6"/>
+</svg>

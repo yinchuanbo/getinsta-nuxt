@@ -1,0 +1,401 @@
+button, .button {
+  position: relative;
+  z-index: 2;
+  //padding: 0 1%;
+  display: inline-block;
+  min-width: 240px;
+  height: 80px;
+  font-size: 0;
+  background-color: #000;
+  //border: 2px solid #A8A8A8;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s;
+
+  .icon {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 40px;
+    vertical-align: middle;
+    overflow: hidden;
+
+    i, b {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      transition: all 0.3s;
+    }
+
+    i {
+      width: 100%;
+      height: 100%;
+    }
+
+    b {
+      width: 100%;
+      height: 88%;
+      opacity: 0;
+      transform: translateY(-20px);
+      background-image: url("~@/assets/images/global/button/icon__btn-download_dl_white.svg");
+    }
+  }
+
+  .text {
+    margin-left: 10%;
+    display: inline-block;
+    min-width: 126px;
+    max-width: 150px;
+    vertical-align: middle;
+    text-align: left;
+    color: #fff;
+    transition: all 0.3s;
+
+    p {
+      @include text-ellipsis;
+      font: 500 24px Montserrat;
+
+      &.single {
+        display: none;
+      }
+
+      &:first-child {
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &.ios {
+    .icon {
+      i {
+        background-image: url("~@/assets/images/global/button/icon__btn-download_logo_apple_white.svg");
+      }
+    }
+  }
+
+  &.android {
+    .icon {
+      //margin-left: 6%;
+
+      i {
+        background-image: url("~@/assets/images/global/button/icon__android_google-play.svg");
+      }
+    }
+
+    .text {
+      margin-left: 6%;
+    }
+  }
+
+  &.windows {
+    .icon {
+      i {
+        background-image: url("~@/assets/images/global/button/icon__btn-download_logo_windows_white.svg");
+      }
+    }
+  }
+
+  &.footer {
+    min-width: 150px;
+    height: 38px;
+    background-color: transparent;
+    border: 1px solid #A8A8A8 !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &.ios {
+      .icon {
+        margin-left: 6px;
+      }
+    }
+
+
+    //&:hover, &:active {
+    //  background-color: #DDD;
+    //  border-color: #DDD;
+    //}
+
+    .icon {
+      // margin-left: -4% !important;
+      width: 20px;
+      height: 22px;
+
+      b {
+        transform: translateY(-10px);
+        background-image: url("~@/assets/images/global/button/icon__btn-download_dl_black.svg");
+      }
+    }
+
+    .text {
+      min-width: 105px;
+      max-width: 123px;
+      color: #2A2A2A;
+
+      p {
+        display: inline-block;
+        &:first-child {
+          font-size: 8px;
+          line-height: 12px;
+        }
+        &:last-child {
+          margin-top: -2px;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 15px;
+        }
+      }
+    }
+
+    &.ios {
+      .icon {
+        i {
+          background-image: url("~@/assets/images/global/button/icon__btn-download_logo_apple_black.svg");
+        }
+      }
+    }
+
+    &.android {
+      .icon {
+        margin-left: 4% !important;
+
+        i {
+          background-image: url("~@/assets/images/global/button/icon__android_google-play_grey.svg") !important;
+        }
+      }
+
+      .text {
+        margin-left: 8% !important;
+      }
+    }
+
+    &.windows {
+      .icon {
+        i {
+          background-image: url("~@/assets/images/global/button/icon__btn-download_logo_windows_black.svg");
+        }
+      }
+    }
+
+    &:hover, &:active {
+      background-color: transparent;
+
+      i {
+        transform: translateY(10px);
+      }
+
+      b {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &.header {
+    padding: 0 10px;
+    min-width: 175px;
+    height: 52px;
+
+    .icon {
+      width: 25px;
+      height: 30px;
+
+      b {
+        transform: translateY(-10px);
+      }
+    }
+
+    .text {
+      margin-left: 22px;
+      min-width: 86px;
+
+      p {
+        display: none;
+
+        &.single {
+          display: inline-block;
+          font: 600 16px Montserrat;
+        }
+      }
+    }
+
+    &:hover, &:active {
+      //background-color: #FFA850;
+      //border-color: #FFA850;
+
+      i {
+        transform: translateY(10px);
+      }
+
+      b {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &.transparent {
+    background-color: transparent;
+    border-color: #fff;
+
+    .text {
+      color: #fff;
+    }
+
+    &:hover, &:active {
+      background-color: #DBDBDB;
+      border-color: #DBDBDB;
+
+      .text {
+        color: #2A2A2A;
+      }
+
+      i {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      b {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &:hover, &:active {
+    background-color: #2A2A2A;
+    //border-color: #DBDBDB;
+
+    i {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    b {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // theme
+  &.theme-apk {
+    background-color: #fff;
+    border: 2px solid #A8A8A8;
+
+    .icon {
+      b {
+        background-image: url("~@/assets/images/global/button/icon__btn-download_dl_black.svg");
+      }
+    }
+
+    .text {
+      color: #2A2A2A;
+
+      p {
+        font-weight: 700;
+
+        &:first-child {
+          font-weight: 600;
+        }
+      }
+    }
+
+    &:hover, &:active {
+      background-color: #DBDBDB;
+      border-color: #DBDBDB;
+
+      i {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      b {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &.android {
+      .icon {
+        i {
+          background-image: url("~@/assets/images/global/button/icon__btn-download_logo_android_black.svg");
+        }
+      }
+
+      .text {
+        margin-left: 10%;
+      }
+    }
+
+    &.footer {
+      background-color: transparent;
+      &.android {
+        .icon {
+          margin-left: -4% !important;
+
+          i {
+            background-image: url("~@/assets/images/global/button/icon__btn-download_logo_android_black.svg") !important;
+          }
+        }
+
+        .text {
+          margin-left: 10% !important;
+
+          p:first-child {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  button, .button {
+    //padding: 0 20px;
+    min-width: (422px/2);
+    height: (112px/2);
+    border-radius: 8px;
+
+    .icon {
+      width: 24px;
+      height: 28px;
+
+      b {
+        width: 20px;
+        height: 28px;
+      }
+    }
+
+    .text {
+      margin-left: 14px;
+      min-width: 120px;
+
+      p {
+        @include text-ellipsis;
+      }
+
+      p:first-child {
+        font-size: 10px;
+      }
+
+      p:last-child {
+        margin-top: -3px;
+        font-size: 22px;
+        //line-height: 22px;
+      }
+    }
+
+    // theme
+    &.theme-apk {
+      border-width: 1px;
+      border-color: #2A2A2A;
+    }
+  }
+}

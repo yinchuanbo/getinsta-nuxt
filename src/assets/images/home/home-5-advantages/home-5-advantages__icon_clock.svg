@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108.872" height="109.96" viewBox="0 0 108.872 109.96">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffc400;
+      }
+
+      .cls-2 {
+        fill: #ff4646;
+      }
+    </style>
+  </defs>
+  <g id="icon_clock" transform="translate(-6.128 -56)">
+    <path id="ic_access_alarms_24px" class="cls-1" d="M110.872,23.03,85.831,1.8,78.754,9.965l25.04,21.23ZM34.117,10.51,27.04,2.344,2,23.03,9.077,31.2,34.117,10.51Zm22.319,3.266a48.992,48.992,0,1,0,48.992,48.992A48.788,48.788,0,0,0,56.436,13.776Zm0,87.1A38.105,38.105,0,1,1,94.541,62.768,37.871,37.871,0,0,1,56.436,100.873Z" transform="translate(4.128 54.2)"/>
+    <path id="ic_access_alarms_24px-2" data-name="ic_access_alarms_24px" class="cls-2" d="M59.158,35.55H50.992V68.212L76.577,84l4.355-6.532L59.158,64.4Z" transform="translate(4.128 54.2)"/>
+  </g>
+</svg>

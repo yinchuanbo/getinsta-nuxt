@@ -1,0 +1,39 @@
+@font-face {
+  font-family: DINPro;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local('DINPro Bold'), local('DINPro-Bold'),
+  url("~@/assets/fonts/DINPro-Bold.woff2") format('woff2'),
+  url("~@/assets/fonts/DINPro-Bold.otf") format('otf');
+}
+
+@font-face {
+  font-family: DINPro;
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: local('DINPro Black'), local('DINPro-Black'),
+  url("~@/assets/fonts/DINPro-Black.woff2") format('woff2'),
+  url("~@/assets/fonts/DINPro-Black.otf") format('otf');
+}
+
+@font-face {
+  font-family: Futura;
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: local('Futura Md BT Medium'),
+  url("~@/assets/fonts/Futura-Md-BT-Medium.woff2") format('woff2'),
+  url("~@/assets/fonts/Futura-Md-BT-Medium.ttf") format('ttf');
+}
+
+@font-face {
+  font-family: Futura;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local('Futura Md BT Bold'),
+  url("~@/assets/fonts/Futura-Md-BT-Bold.woff2") format('woff2'),
+  url("~@/assets/fonts/Futura-Md-BT-Bold.ttf") format('ttf');
+}

@@ -1,0 +1,24 @@
+import Vue from 'vue';
+
+//************************************第三方组件*******************************************
+// import DigitRoll from '@huoyu/vue-digitroll'; // DigitRoll 数值缓动
+// import VueScroll from 'vue-scroll';  //
+// import VueScrollTo from 'vue-scrollto'; // 锚点定位
+// import VueCookies from 'vue-cookies'; //Cookie
+import { Vue2Storage } from 'vue2-storage'; //WEB Storage
+import Vue2TouchEvents from 'vue2-touch-events'; // Touch Events
+// import Pagination from 'vue-pagination-2'; // 分页
+// import vueAwesomeCountdown from 'vue-awesome-countdown';
+
+// Vue.use(VueScroll);
+// Vue.use(VueScrollTo);
+// Vue.use(VueCookies);
+Vue.use(Vue2Storage, {
+  prefix: 'GetInsta_',
+  driver: 'local',
+  // ttl: 60 * 60 * 24 * 1000 // 24 hours
+  ttl: 0
+});
+Vue.use(Vue2TouchEvents, { swipeTolerance: 30 });
+// Vue.component('pagination', Pagination);
+// Vue.use(vueAwesomeCountdown, 'vac'); // Component name, `countdown` and `vac` by default

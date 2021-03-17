@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75" height="75" viewBox="0 0 75 75">
+  <defs>
+    <filter id="bg" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="img_like_big" transform="translate(2803.498 -5606.768)">
+    <g transform="matrix(1, 0, 0, 1, -2803.5, 5606.77)" filter="url(#bg)">
+      <circle id="bg-2" data-name="bg" cx="28.5" cy="28.5" r="28.5" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <path id="like" d="M17.217,29.944a3.967,3.967,0,0,1-2.206-1.029C7.174,21.808,2,17.122,2,11.369A8.288,8.288,0,0,1,10.369,3a9.113,9.113,0,0,1,6.848,3.18A9.113,9.113,0,0,1,24.065,3a8.288,8.288,0,0,1,8.369,8.369c0,5.752-5.174,10.439-13.011,17.561A3.935,3.935,0,0,1,17.217,29.944Z" transform="translate(-2782.176 5627.326)" fill="#ff4141"/>
+  </g>
+</svg>

@@ -1,0 +1,137 @@
+.v-d-5-faq {
+  padding-bottom: 150px;
+
+  .wrapper {
+    .title {
+      padding: 20px 32px;
+      width: 100%;
+      background-color: #825EFE;
+      border-radius: 20px 20px 0 0;
+      text-align: center;
+
+      font: 600 22px Montserrat;
+      color: #FFFFFF;
+    }
+
+    .list {
+      .unit {
+        margin-top: 20px;
+
+        &:first-child {
+          margin-top: 24px;
+        }
+
+        .list-title {
+          position: relative;
+          padding: 20px 94px 20px 32px;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          background-color: #F5F5F5;
+          cursor: pointer;
+
+          font: 600 20px Montserrat;
+          color: #2A2A2A;
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            display: block;
+            width: 14px;
+            height: 8px;
+            background: url("~@/assets/images/global/icon-arrow-grey.svg") center/contain no-repeat;
+            transition: all 0.3s;
+          }
+        }
+
+        .list-content {
+          box-sizing: border-box;
+          padding: 0 32px;
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.3s;
+
+          font: 500 18px/37px Montserrat;
+          color: #6B6B6B;
+        }
+
+        &.on {
+          .list-title {
+            &:after {
+              transform: rotate(-180deg);
+            }
+          }
+
+          .list-content {
+            padding: 28px 32px;
+            max-height: 200px;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .v-d-5-faq {
+    padding-bottom: 70px;
+
+    .wrapper {
+      padding: 0 4vw;
+
+      .title {
+        padding: 14px;
+        background-color: #825EFE;
+        border-radius: 10px 10px 0 0;
+
+        font: 600 16px Montserrat;
+      }
+
+      .list {
+        .unit {
+          margin-top: 18px;
+
+          &:first-child {
+            margin-top: 12px;
+          }
+
+          .list-title {
+            position: relative;
+            padding: 10px 4vw;
+            min-height: 55px;
+
+            font: 600 12px/17px Montserrat;
+
+            &:after {
+              display: none;
+            }
+          }
+
+          .list-content {
+            padding: 0 4vw;
+
+            font: 500 11px/14px Montserrat;
+            color: #6B6B6B;
+          }
+
+          &.on {
+            .list-title {
+              &:after {
+                transform: rotate(-180deg);
+              }
+            }
+
+            .list-content {
+              padding: 13px 4vw 0;
+              max-height: 100px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

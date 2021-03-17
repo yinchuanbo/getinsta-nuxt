@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="452" height="452" viewBox="0 0 452 452">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffd6f8"/>
+      <stop offset="1" stop-color="#bbd4ff"/>
+    </linearGradient>
+    <filter id="circle" x="72" y="72" width="308" height="308" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feFlood flood-color="#320053" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="bg_circle" transform="translate(132 -4446)">
+    <g id="circle-2" data-name="circle" transform="translate(-132 4446)" fill="#fff" stroke="#dbd1e6" stroke-width="2" opacity="0.22">
+      <circle cx="226" cy="226" r="226" stroke="none"/>
+      <circle cx="226" cy="226" r="225" fill="none"/>
+    </g>
+    <circle id="circle-3" data-name="circle" cx="157" cy="157" r="157" transform="translate(-63 4515)" fill="url(#linear-gradient)"/>
+    <g transform="matrix(1, 0, 0, 1, -132, 4446)" filter="url(#circle)">
+      <circle id="circle-4" data-name="circle" cx="94" cy="94" r="94" transform="translate(132 132)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

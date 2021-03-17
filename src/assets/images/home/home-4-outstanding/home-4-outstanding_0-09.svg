@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="351.817" height="401.137" viewBox="0 0 351.817 401.137">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.674" x2="1.048" y2="0.203" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffb16d"/>
+      <stop offset="0.523" stop-color="#a733ff"/>
+      <stop offset="1" stop-color="#1423f9"/>
+    </linearGradient>
+    <filter id="safe" x="0" y="0" width="351.817" height="401.137" filterUnits="userSpaceOnUse">
+      <feOffset dy="30" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+      <feFlood flood-color="#5400ff" flood-opacity="0.188"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="safe-2" x="87.563" y="74.748" width="176.692" height="211.308" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur-2"/>
+      <feFlood flood-color="#b40000" flood-opacity="0.361"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="img_safe" transform="matrix(1, 0.017, -0.017, 1, 117.318, 72.787)">
+    <g transform="matrix(1, -0.02, 0.02, 1, -118.57, -70.73)" filter="url(#safe)">
+      <path id="safe-3" data-name="safe" d="M80.908,0,0,36.756V103.35c0,13.631,4.22,27.692,12.54,41.8C19.025,156.14,28.021,167.2,39.277,178.02c18.982,18.25,41.631,31.8,41.631,31.8s22.65-13.549,41.632-31.8c11.257-10.821,20.252-21.881,26.738-32.875,8.32-14.1,12.539-28.165,12.539-41.8V36.756Z" transform="translate(95 65.49)" stroke="#fff" stroke-width="10" fill="url(#linear-gradient)"/>
+    </g>
+    <g transform="matrix(1, -0.02, 0.02, 1, -118.57, -70.73)" filter="url(#safe-2)">
+      <path id="safe-4" data-name="safe" d="M58.345,0,0,26.506V74.529c0,9.83,3.043,19.97,9.043,30.141a113.5,113.5,0,0,0,19.281,23.706,190.756,190.756,0,0,0,30.022,22.932,190.773,190.773,0,0,0,30.022-22.931A113.531,113.531,0,0,0,107.65,104.67c6-10.171,9.042-20.311,9.042-30.141V26.506Z" transform="translate(117.56 94.75)" fill="rgba(255,255,255,0.35)"/>
+    </g>
+    <path id="crrect" d="M158.818,191.287l-27.206,27.206a5.439,5.439,0,0,1-7.694,0l-16.324-16.324a5.441,5.441,0,0,1,7.694-7.694l12.477,12.477,23.359-23.359a5.441,5.441,0,0,1,7.694,7.694Zm0,0" transform="translate(-68.802 -108.355)" fill="#fff"/>
+  </g>
+</svg>

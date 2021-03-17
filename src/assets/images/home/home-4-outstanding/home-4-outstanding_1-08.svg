@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="406" height="410" viewBox="0 0 406 410">
+  <g id="img_dots" transform="translate(148 -4446)">
+    <g id="circle" transform="translate(-148 4672)" fill="none" stroke="#66f" stroke-width="8">
+      <circle cx="16" cy="16" r="16" stroke="none"/>
+      <circle cx="16" cy="16" r="12" fill="none"/>
+    </g>
+    <g id="circle-2" data-name="circle" transform="translate(60 4478)" fill="none" stroke="#ff826e" stroke-width="4">
+      <circle cx="8" cy="8" r="8" stroke="none"/>
+      <circle cx="8" cy="8" r="6" fill="none"/>
+    </g>
+    <circle id="circle-3" data-name="circle" cx="7" cy="7" r="7" transform="translate(123 4842)" fill="#ffb92d"/>
+    <circle id="circle-4" data-name="circle" cx="8" cy="8" r="8" transform="translate(242 4446)" fill="#2d6cff"/>
+  </g>
+</svg>

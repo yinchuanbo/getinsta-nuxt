@@ -1,0 +1,156 @@
+.login-register {
+  padding: 150px 0 80px;
+  text-align: center;
+
+  .login-register__title {
+    color: #2A2A2A;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+
+    h1 {
+      margin-top: 25px;
+      font: 600 28px/34px Montserrat;
+    }
+
+    p {
+      font: 400 16px/60px Montserrat;
+    }
+  }
+
+  .login-register__form {
+    margin-top: 50px;
+
+    label {
+      position: relative;
+      margin: 24px auto 0;
+      display: block;
+      width: 420px;
+      height: 60px;
+
+      input {
+        padding-left: 66px;
+      }
+
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 24px;
+        z-index: 1;
+        display: block;
+        width: 20px;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        content: "";
+        //transition: all 0.3s;
+      }
+
+      &.username:after {
+        background-image: url("~@/assets/images/global/login-register/login-register__icon_user.svg");
+      }
+
+      &.email:after {
+        background-image: url("~@/assets/images/global/login-register/login-register__icon_email.svg");
+      }
+
+      &.password:after {
+        background-image: url("~@/assets/images/global/login-register/login-register__icon_password.svg");
+      }
+
+      &.msg {
+        height: auto;
+        font: 500 14px/18px Montserrat;
+        color: #FF4444;
+      }
+
+      a {
+        font: 400 16px Montserrat;
+        letter-spacing: 0;
+        color: #2A2A2A;
+        text-decoration: underline;
+        transition: all 0.1s;
+
+        &:hover {
+          color: #005fff;
+        }
+      }
+
+      &.links {
+        margin-top: 50px;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &.links-row {
+        margin-top: 50px;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .login-register {
+    padding: (150px/2) 0;
+
+    .login-register__title {
+
+      img {
+        width: (100px/2);
+        height: (100px/2);
+      }
+
+      h1 {
+        margin-top: 6px;
+        font: 600 20px Montserrat;
+      }
+
+      p {
+        margin-top: 10px;
+        padding: 0 12vw;
+        font: 400 12px Montserrat;
+      }
+    }
+
+    .login-register__form {
+      margin-top: 25px;
+
+      label {
+        margin: 12px auto 0;
+        width: 80vw;
+        height: 50px;
+
+        input {
+          padding-left: 33px;
+        }
+
+        &:after {
+          left: 12px;
+          width: 12px;
+          height: 100%;
+        }
+
+        &.msg {
+          font: 500 13px/18px Montserrat;
+        }
+
+        a {
+          font: 400 13px Montserrat;
+        }
+
+        &.links {
+          margin-top: 25px;
+        }
+
+        &.links-row {
+          margin-top: 25px;
+        }
+      }
+    }
+  }
+}

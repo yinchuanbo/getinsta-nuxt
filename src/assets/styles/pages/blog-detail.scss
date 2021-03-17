@@ -1,0 +1,960 @@
+.blog-detail__content {
+  padding-top: 40px;
+  color: #2A2A2A;
+
+  p {
+    margin: 16px 0;
+    font: 400 16px/1.75 Montserrat;
+
+    a {
+      color: #005fff;
+      text-decoration: underline;
+      transition: all 0.1s;
+
+      &:hover {
+        color: #2128BD;
+      }
+    }
+  }
+
+  h2 {
+    margin: 36px 0 16px;
+    font: 600 24px Montserrat;
+  }
+
+  h3 {
+    margin: 28px 0 12px;
+    font: 600 18px Montserrat;
+  }
+
+  strong, b {
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  em {
+    font-style: italic !important;
+    font-weight: 400 !important;
+
+    strong {
+      font-style: italic !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  ul, ol {
+    margin: 16px 0;
+    padding-left: 26px;
+    font: 400 16px/1.75 Montserrat;
+
+    li {
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  ul {
+    li {
+      list-style: outside disc;
+    }
+  }
+
+  ol {
+    li {
+      list-style-type: inherit;
+      list-style-position: outside;
+    }
+  }
+
+  .tips {
+    position: relative;
+    margin: 50px 0;
+    padding: 20px 30px;
+    width: 100%;
+    background: #FBF8F1;
+    border-radius: 12px;
+
+    font: 400 16px/20px Montserrat;
+    color: #AC7300;
+
+    &:before {
+      position: absolute;
+      top: -28px;
+      left: 18px;
+      display: block;
+      width: 74px;
+      height: 28px;
+      background-image: url("~@/assets/images/blog/blog__icon_tips.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: "";
+    }
+  }
+
+  .download {
+    margin: 42px 0;
+    padding: 30px 34px 34px;
+    background: #FFFFFF;
+    box-shadow: 0 3px 6px #00000014;
+    border: 1px solid #CECECE;
+    border-radius: 12px;
+    color: #2A2A2A;
+
+    .download__left {
+      display: inline-block;
+      vertical-align: top;
+      width: 480px;
+
+      h3 {
+        font: 600 20px/24px Montserrat;
+      }
+
+      ul {
+        margin-top: 24px;
+
+        li {
+          font: 400 12px/18px Montserrat;
+          list-style: inside url("~@/assets/images/global/icon_ul_star.svg");
+        }
+      }
+    }
+
+    .download__right {
+      margin-left: 40px;
+      display: inline-block;
+      vertical-align: top;
+      width: 210px;
+      text-align: center;
+
+      p.star {
+        margin-top: 0;
+
+        i {
+          margin: 0 3px;
+          display: inline-block;
+          width: 17px;
+          height: 16px;
+          background-image: url("~@/assets/images/global/icon_star.svg");
+          background-size: contain;
+          vertical-align: top;
+        }
+      }
+
+      .btn-container {
+        margin-top: 22px;
+        width: 100%;
+        height: 60px;
+
+        a {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      p.note {
+        margin-top: 16px;
+        font: 400 12px Montserrat;
+      }
+    }
+
+    button.btn-green {
+      padding: 0 10%;
+      width: 100%;
+      height: 100%;
+      background-color: #00BE52;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 12px 24px #00000029;
+
+      color: #ffffff;
+
+      span {
+        font-weight: 600;
+        font-size: 16px;
+        word-break: break-word;
+      }
+
+      &:hover {
+        background-color: #00e257;
+      }
+    }
+
+    button {
+      p {
+        margin: 0;
+      }
+    }
+
+    .btn-apps {
+      width: 100%;
+      min-width: auto;
+      height: 100%;
+      min-height: auto;
+      border-radius: 64px;
+
+      .btn-apps__links {
+        &:first-child {
+          .btn-download-green {
+            padding-left: 20%;
+          }
+        }
+
+        &:last-child {
+          .btn-download-green {
+            padding-right: 20%;
+          }
+        }
+      }
+    }
+  }
+
+  .index {
+    margin: 40px 0;
+    padding: 22px 40px;
+    background: #F1F4FB;
+    border-radius: 12px;
+
+    ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      font-size: 0;
+
+      li {
+        position: relative;
+        margin-top: 24px;
+        padding-left: 12px;
+        list-style: none;
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        font: 600 16px/20px Montserrat;
+        color: #2A2A2A;
+        cursor: pointer;
+        transition: all 0.1s;
+
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: '';
+          display: inline-block;
+          width: 5px;
+          height: 20px;
+          background: url("~@/assets/images/global/punctuation__bullet.svg") no-repeat center;
+          background-size: contain;
+        }
+
+        &:hover {
+          color: #005fff;
+        }
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+
+    &.double {
+      padding: 26px 30px;
+
+      ul {
+        li {
+          margin-top: 16px;
+          display: inline-block;
+          width: 50%;
+          font-size: 14px;
+
+          &:first-child {
+            margin-top: 16px;
+          }
+
+          &:nth-child(1), &:nth-child(2) {
+            margin-top: 0;
+          }
+
+          &:nth-child(odd) {
+            padding-right: 20px;
+          }
+
+          &:nth-child(even) {
+            padding-left: 20px;
+
+            &:before {
+              left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  table {
+    margin: 40px 0;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #E5E5E5;
+    text-align: center;
+    background-color: #F9F9F9;
+    font: 400 14px Montserrat;
+
+    tr {
+      th, td {
+        padding: 0 10px;
+        border: 1px solid #E5E5E5;
+        height: 48px;
+        vertical-align: middle;
+
+        &:first-child {
+          text-align: left;
+          background-color: #fff;
+        }
+
+        b {
+          font-weight: 800;
+          font-style: italic;
+        }
+
+        i {
+          display: inline-block;
+          background-size: contain;
+
+          &.check {
+            width: 19px;
+            height: 13px;
+            background-image: url("~@/assets/images/global/icon_table_mark_check.svg");
+          }
+
+          &.cross {
+            width: 15px;
+            height: 15px;
+            background-image: url("~@/assets/images/global/icon_table_mark_cross.svg");
+          }
+        }
+      }
+
+      th {
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      &:first-child {
+        th, td {
+          font-weight: 600;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  * {
+    max-width: 100%;
+    transition: all 0.3s;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  img {
+    margin: 0 auto;
+    display: block;
+  }
+
+  // btn公共
+  .btn-container {
+    font-size: 0;
+
+    a {
+      display: inline-block;
+      vertical-align: middle;
+
+      &.btn-buy {
+        margin-left: 24px;
+      }
+    }
+  }
+
+  &.windows {
+    .btn-windows {
+      display: inline-block;
+    }
+
+    .btn-android {
+      display: none;
+    }
+
+    .btn-ios {
+      display: none;
+    }
+  }
+
+  &.android {
+    .btn-windows {
+      display: none;
+    }
+
+    .btn-android {
+      display: inline-block;
+    }
+
+    .btn-ios {
+      display: none;
+    }
+  }
+
+  &.ios {
+    .btn-windows {
+      display: none;
+    }
+
+    .btn-android {
+      display: none;
+    }
+
+    .btn-ios {
+      display: inline-block;
+    }
+  }
+
+  // button-download-green
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &.btn-download-green {
+      padding: 0 22px 0 24px;
+      min-width: 240px;
+      height: 64px;
+      background: #00BE52;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #14D567;
+
+        .icon {
+          i, q {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+
+          b, g {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      }
+
+      &.icon-windows {
+        .icon {
+          i, q {
+            background-image: url("~@/assets/images/global/button/icon__btn-download_logo_windows_white.svg");
+          }
+        }
+      }
+
+      &.icon-android {
+        .icon {
+          i, q {
+            background-image: url("~@/assets/images/global/button/icon__btn-download_logo_android_white.svg");
+          }
+        }
+      }
+
+      &.icon-ios {
+        .icon {
+          i, q {
+            background-image: url("~@/assets/images/global/button/icon__btn-download_logo_apple_white.svg");
+          }
+        }
+      }
+
+      &.icon-windows, &.icon-android, &.icon-ios {
+        .icon {
+          display: block;
+        }
+      }
+
+      .icon {
+        position: relative;
+        margin-right: 8%;
+        width: 30px;
+        height: 30px;
+        display: none;
+
+        i, b, q, g {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          transition: all 0.3s;
+        }
+
+        b, g {
+          opacity: 0;
+          transform: translateY(-20px);
+          background-image: url("~@/assets/images/global/button/icon__btn-download_dl_white.svg");
+        }
+      }
+
+      .text {
+        font: 600 18px Montserrat;
+        color: #FFFFFF;
+      }
+    }
+
+    &.buy {
+      padding: 0 10%;
+      min-width: 132px;
+      height: 64px;
+      background-color: transparent;
+      border: 2px solid #FFFFFF;
+      border-radius: 5px;
+      opacity: 1;
+
+      font: 600 16px Montserrat;
+      color: #FFFFFF;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: #FF9C39;
+        border-color: #FF9C39;
+      }
+
+      span {
+        transition: all 0.1s;
+      }
+    }
+  }
+
+  .download-type-1 {
+    padding: 52px 20px 40px 300px;
+    width: 800px;
+    //height: 328px;
+    background: url("~@/assets/images/blog/blog__download-type-1_bg.png") no-repeat center;
+    background-size: cover;
+    border-radius: 12px;
+    overflow: hidden;
+
+    h2 {
+      font: 600 19px/24px Montserrat;
+      color: #FFFFFF;
+    }
+
+    ul {
+      margin: 18px 0 30px;
+      padding-left: 0;
+      font-size: 0;
+
+      li {
+        position: relative;
+        margin-top: 14px;
+        padding-left: 20px;
+        font: 500 12px/14px Montserrat;
+        color: #FFFFFF;
+        list-style: none;
+
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: "";
+          display: inline-block;
+          width: 10px;
+          height: 100%;
+          background: url("~@/assets/images/global/icon_ul_star_white.svg") no-repeat center;
+          background-size: contain;
+        }
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+
+    .btn-apps {
+      width: 240px;
+      height: 64px;
+      border-radius: 5px;
+    }
+  }
+
+  .download-type-2 {
+    hr {
+      display: none;
+      margin: 30px auto 50px;
+      border-top: 1px solid #E8E8E8;
+      width: 100%;
+    }
+
+    .btn-container {
+      text-align: center;
+
+      button {
+        &.buy {
+          width: 240px;
+          border-color: #A8A8A8;
+          color: #2A2A2A;
+
+          &:hover {
+            border-color: #FF9C39;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    p.note {
+      margin: 22px 0 0;
+      text-align: center;
+      font: 500 20px Montserrat;
+      color: #A8A8A8;
+    }
+
+    .btn-apps {
+      width: 240px;
+      height: 64px;
+      border-radius: 5px;
+    }
+  }
+
+  // button样式 - 小语种
+  .btn-apps {
+    position: relative;
+    display: inline-block;
+    min-width: 240px;
+    height: 64px;
+    font-size: 0;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+    vertical-align: middle;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      display: block;
+      width: 1px;
+      height: 33.333%;
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-apps__links {
+      display: inline-block;
+      width: 50% !important;
+      height: 100% !important;
+
+      .btn-download-green {
+        padding: 0 10%;
+        min-width: auto;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        box-shadow: none;
+
+        .icon {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.lang-arabic {
+  .blog-detail__content .index ul {
+    direction: rtl;
+
+    li {
+      padding-left: 0;
+      padding-right: 12px;
+
+      &:before {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-detail__content {
+    padding-top: 25px;
+
+    p {
+      margin: 14px 0;
+      font: 400 14px/1.75 Montserrat;
+    }
+
+    h2 {
+      margin-top: 30px;
+      margin-bottom: 14px;
+      font: 600 18px Montserrat;
+    }
+
+    h3 {
+      margin: 14px 0 6px;
+      font: 600 15px Montserrat;
+    }
+
+    ul {
+      margin: 14px 0;
+      padding-left: 26px;
+      font: 400 14px/1.75 Montserrat;
+    }
+
+    .tips {
+      margin: 25px 0;
+      padding: 3vw 4vw;
+      font: 400 14px/17px Montserrat;
+
+      &:before {
+        position: absolute;
+        top: -(48px/2);
+        left: 10px;
+        width: (127px/2);
+        height: (48px/2);
+      }
+    }
+
+    .download {
+      margin: 21px 0;
+      padding: 4vw;
+
+      .download__left {
+        width: 100%;
+
+        h3 {
+          font: 600 16px/20px Montserrat;
+        }
+      }
+
+      .download__right {
+        margin: 30px auto 0;
+        display: block;
+        width: 70vw;
+      }
+    }
+
+    .index {
+      margin: 30px 0;
+      padding: 3vw 6vw 3vw;
+
+      ul {
+        li {
+          margin-top: 12px;
+          font: 600 14px/18px Montserrat;
+
+          &:before {
+            height: 18px;
+          }
+        }
+      }
+
+      &.double {
+        padding: 3vw 6vw 3vw;
+
+        ul {
+          li {
+            display: inline-block;
+            width: 100%;
+            //vertical-align: top;
+            font-size: 14px;
+
+            &:first-child {
+              margin-top: 0;
+            }
+
+            &:nth-child(1) {
+              margin-top: 0;
+            }
+
+            &:nth-child(2) {
+              margin-top: 12px;
+            }
+
+            &:nth-child(odd) {
+              padding-right: 0;
+            }
+
+            &:nth-child(even) {
+              padding-left: 12px;
+
+              &:before {
+                left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    table {
+      margin: 20px 0;
+      font: 400 8px Montserrat;
+
+      tr {
+        th, td {
+          padding: 0 10px;
+          height: 48px;
+          font-size: 7px;
+
+          i {
+
+            &.check {
+              width: (19px/2);
+              height: (13px/2);
+            }
+
+            &.cross {
+              width: (15px/2);
+              height: (15px/2);
+            }
+          }
+        }
+
+        &:first-child {
+          th, td {
+            font-weight: 600;
+            font-size: 8px;
+          }
+        }
+      }
+    }
+
+    .btn-container {
+      text-align: center;
+
+      a {
+        &.btn-buy {
+          margin-left: 0;
+          margin-top: 16px;
+          width: 64vw;
+        }
+      }
+    }
+
+    button {
+      margin: 0 auto;
+
+      &.btn-download-green {
+        padding: 0;
+        //width: 64vw;
+        width: 211px;
+        min-width: 0;
+        height: 56px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+        //border-radius: 56px;
+        border-radius: 6px;
+
+        .icon {
+          position: relative;
+          width: 10.4%;
+          height: 44px;
+        }
+
+        .text {
+          font: 600 14px Montserrat;
+        }
+      }
+
+      &.buy {
+        width: 211px;
+        height: 56px;
+        border: 2px solid #2A2A2A;
+        border-radius: 8px;
+        opacity: 1;
+
+        font: 600 16px Montserrat;
+        color: #2A2A2A;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .download-type-1 {
+      padding: 0 0 30px;
+      width: 100%;
+      background: #F2F2F2;
+      border-radius: 6px;
+
+      h2 {
+        position: relative;
+        padding: 24px 21px 21px 21+50+18px;
+        display: inline-block;
+        width: 100%;
+        font: 600 16px/20px Montserrat;
+        background-image: linear-gradient(to right, #FF81E2, #2C85FF);
+
+        &:before {
+          position: absolute;
+          top: 20px;
+          left: 21px;
+          content: "";
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          background: url("~@/assets/images/global/logo.svg") no-repeat center;
+          background-size: contain;
+          vertical-align: middle;
+        }
+      }
+
+      ul {
+        margin: 12px 4vw 32px;
+
+        li {
+          margin-top: 14px;
+          font: 500 12px/14px Montserrat;
+          color: #2a2a2a;
+
+          &:before {
+            width: 14px;
+            height: 14px;
+            background-image: url("~@/assets/images/global/icon_ul_star.svg");
+          }
+        }
+      }
+    }
+
+    .download-type-2 {
+      hr {
+        margin: 15px auto 25px;
+      }
+
+      .btn-container {
+        button {
+          &.buy {
+            width: 211px;
+          }
+        }
+      }
+
+      p.note {
+        margin: 16px 0 0;
+        font: 500 12px Montserrat;
+      }
+    }
+  }
+}

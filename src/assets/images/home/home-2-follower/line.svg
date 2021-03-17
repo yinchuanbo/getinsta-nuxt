@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="156" height="52" viewBox="0 0 156 52">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="156" height="52" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="line" clip-path="url(#clip-path)">
+    <g transform="translate(-1475 -172)">
+      <rect id="矩形_1061" data-name="矩形 1061" width="156" height="3" transform="translate(1475 172)" fill="#fff"/>
+    </g>
+    <g transform="translate(-1475 -150)">
+      <rect id="矩形_1061-2" data-name="矩形 1061" width="156" height="3" transform="translate(1475 172)" fill="#fff"/>
+    </g>
+    <g transform="translate(-1475 -128)">
+      <rect id="矩形_1061-3" data-name="矩形 1061" width="156" height="3" transform="translate(1475 172)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

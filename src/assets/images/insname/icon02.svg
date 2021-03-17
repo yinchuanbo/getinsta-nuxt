@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="71" height="68" viewBox="0 0 71 68">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff8173"/>
+      <stop offset="1" stop-color="#d530e1"/>
+    </linearGradient>
+    <filter id="矩形_1005" x="0" y="0" width="71" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="icon01" transform="translate(-574.5 -173.648)">
+    <g transform="matrix(1, 0, 0, 1, 574.5, 173.65)" filter="url(#矩形_1005)">
+      <rect id="矩形_1005-2" data-name="矩形 1005" width="52" height="49" rx="8" transform="translate(9.5 6.5)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="组_3924" data-name="组 3924" transform="translate(577 -196.852)">
+      <path id="路径_22758" data-name="路径 22758" d="M16.952,564.042a1.121,1.121,0,0,0-1.356.8A19.009,19.009,0,0,0,34,588.573a19.2,19.2,0,0,0,14.547-6.862v1.221a1.113,1.113,0,0,0,2.227,0V578.48a1.113,1.113,0,0,0-1.113-1.113H45.207a1.11,1.11,0,1,0,0,2.219h2.212a16.748,16.748,0,0,1-30.192-10.012,16.76,16.76,0,0,1,.526-4.176A1.114,1.114,0,0,0,16.952,564.042Z" transform="translate(0 -167.573)" fill="#fff"/>
+      <path id="路径_22759" data-name="路径 22759" d="M61.773,383a19.2,19.2,0,0,0-14.547,6.862v-1.221a1.113,1.113,0,0,0-2.227,0v4.453a1.113,1.113,0,0,0,1.113,1.113h4.453a1.113,1.113,0,0,0,0-2.227H48.355a16.762,16.762,0,0,1,29.666,14.2,1.114,1.114,0,0,0,2.157.555A19.009,19.009,0,0,0,61.773,383Z" transform="translate(-27.773)" fill="#fff"/>
+    </g>
+    <path id="路径_22760" data-name="路径 22760" d="M687.073,243.618a95.005,95.005,0,0,1,21.694-19.041c.284.651.569,1.3.852,1.945a92.471,92.471,0,0,0-20.138,28.261c-4.875-4.923-9.68-9.924-14.48-14.926,1.194-1.005,2.444-1.95,3.611-2.982,2.855,2.2,5.632,4.507,8.46,6.742Zm0,0" transform="translate(-77.121 -37.207)" fill="#ffd86d"/>
+  </g>
+</svg>

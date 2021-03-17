@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #448aff;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="icon_download" transform="translate(-459.812 -2875)">
+    <path id="ic_account_circle_24px" class="cls-1" d="M63,2a61,61,0,1,0,61,61A61.022,61.022,0,0,0,63,2Z" transform="translate(457.812 2873)"/>
+    <path id="ic_file_download_24px" class="cls-2" d="M58.721,25.941H43.372V3H20.349V25.941H5L31.861,52.706ZM5,60.353V68H58.721V60.353Z" transform="translate(489.88 2901)"/>
+  </g>
+</svg>

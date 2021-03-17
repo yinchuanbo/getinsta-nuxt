@@ -1,0 +1,397 @@
+.v-d-0-banner {
+  position: relative;
+  padding-bottom: 20px;
+  min-height: 916px;
+  background: url("~@/assets/images/video-downloader/v-d-0-banner/v-d-0-banner__bg.jpg") no-repeat top center;
+  background-size: cover;
+
+  .wrapper {
+    width: 982px;
+    padding-top: 155px;
+
+    h1 {
+      font: 700 40px Montserrat;
+      color: #FFFFFF;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 18px;
+      text-align: center;
+      font: 500 18px Montserrat;
+      color: #FFFFFF;
+    }
+
+    .steps {
+      margin-top: 60px;
+      text-align: center;
+
+      .img {
+        display: inline-block;
+        width: 740px;
+        height: 71px;
+        background: url("~@/assets/images/video-downloader/v-d-0-banner/v-d-0-banner__steps.svg") center/contain no-repeat;
+      }
+
+      .texts {
+        margin: 16px auto 0;
+        display: flex;
+        justify-content: space-between;
+        width: 896px;
+
+        p {
+          display: inline-block;
+          width: 25%;
+          font: 600 14px Montserrat;
+          color: #FFFFFF;
+          text-align: center;
+        }
+      }
+    }
+
+    .downloader {
+      margin-top: 72px;
+      text-align: center;
+
+      .field {
+        width: 100%;
+        height: 96px;
+        font-size: 0;
+
+        input {
+          width: 686px;
+          height: 100%;
+          vertical-align: middle;
+          border-radius: 8px 0 0 8px;
+          border-width: 1px;
+          font: 500 18px Montserrat;
+        }
+
+        label.video-downloader-label {
+          position: relative;
+          display: inline-block;
+          width: 296px;
+          height: 100%;
+          vertical-align: middle;
+          background-color: #005FFF;
+          text-align: center;
+          border-radius: 0 8px 8px 0;
+          cursor: pointer;
+          transition: all 0.3s;
+
+          span, &:before, &:after {
+            transition: all 0.3s;
+          }
+
+          span {
+            display: inline-block;
+            font: 600 20px Montserrat;
+            color: #FFFFFF;
+            vertical-align: middle;
+          }
+
+          &:before {
+            content: "";
+            margin-right: 14px;
+            display: inline-block;
+            width: 42px;
+            height: 100%;
+            background: url("~@/assets/images/video-downloader/v-d-0-banner/v-d-0-banner__icon-download.svg") center/contain no-repeat;
+            vertical-align: middle;
+          }
+
+          &:hover {
+            background-color: #2070F6;
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 100%;
+            height: 80%;
+            background: url("~@/assets/images/global/loading-puff-white.svg") center/contain no-repeat;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s;
+          }
+
+          &.loading {
+            span, &:before {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+
+            &:after {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+
+      .note {
+        margin-top: 70px;
+        display: inline-block;
+        font: 500 14px Montserrat;
+        color: #FFFFFF;
+        text-decoration: underline;
+      }
+
+      .result {
+        margin-top: 2px;
+        padding: 7px;
+        width: 100%;
+        background: #FFFFFF;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16);
+        border-radius: 8px;
+        font-size: 0;
+        @include clear-fix;
+
+        .result-container {
+          float: left;
+          padding: 40px 44px 40px 40px;
+          width: 678px;
+          font-size: 0;
+
+          span {
+            display: inline-block;
+            text-align: left;
+            @include text-ellipsis;
+
+            &.column-0 {
+              width: 60%
+            }
+
+            &.column-1 {
+              width: 22%
+            }
+
+            &.column-2 {
+              width: 18%
+            }
+          }
+
+          .title, .list {
+            display: inline-block;
+            width: 100%;
+          }
+
+          .title {
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(112, 112, 112, 0.15);
+
+            span {
+              font: 600 16px Montserrat;
+              color: #2A2A2A;
+            }
+          }
+
+          .list {
+            .row {
+              margin-top: 26px;
+
+              span {
+                font: 400 16px Montserrat;
+                color: #2A2A2A;
+
+                a {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+
+        .download-btn-container {
+          float: left;
+          padding: 46px 30px 25px;
+          width: 290px;
+          background: linear-gradient(50deg, #FFB16D 0%, #FF437C 49%, #A733FF 100%);
+          border-radius: 10px;
+
+          p {
+            font: 600 16px/21px Montserrat;
+            color: #F8F9FC;
+          }
+
+          .btn {
+            margin-top: 24px;
+            width: 100%;
+            height: 54px;
+          }
+        }
+      }
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -19px;
+    left: 50%;
+    margin-left: -19px;
+    width: 38px;
+    height: 38px;
+    background: #fff url('~@/assets/images/video-downloader/v-d-0-banner/v-d-0-banner__icon-arrow.svg') center no-repeat;
+    background-size: 18px 11px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .v-d-0-banner {
+    padding-bottom: 60px;
+    min-height: auto;
+
+    .wrapper {
+      width: 100%;
+      padding-top: (125px/2);
+
+      h1 {
+        padding: 0 4vw;
+        font-size: 26px;
+      }
+
+      h2 {
+        margin-top: 21px;
+        padding: 0 4vw;
+        font-size: 12px;
+      }
+
+      .steps {
+        margin-top: 30px;
+        padding: 0 2vw;
+
+        .img {
+          width: 100%;
+          height: 13.33vw;
+          background-image: url("~@/assets/images/video-downloader/v-d-0-banner/v-d-0-banner__steps-m.svg");
+        }
+
+        .texts {
+          margin: 8px auto 0;
+          width: 100%;
+
+          p {
+            font: 600 9px Montserrat;
+          }
+        }
+      }
+
+      .downloader {
+        margin-top: 60px;
+        padding: 0 4vw;
+
+        .field {
+          padding: 0 2vw;
+          width: 100%;
+          height: auto;
+          font-size: 0;
+
+          input {
+            width: 100%;
+            height: 60px;
+            border-radius: 30px;
+            border-width: 1px;
+            font: 500 14px Montserrat;
+            line-height: normal;
+            text-align: center;
+          }
+
+          label.video-downloader-label {
+            margin-top: 17px;
+            width: 100%;
+            height: 60px;
+            border-radius: 30px;
+
+            span {
+              font: 600 14px Montserrat;
+            }
+
+            &:before {
+              margin-right: 8px;
+              width: 28px;
+            }
+          }
+        }
+
+        .note {
+          margin-top: 50px;
+          font: 500 12px Montserrat;
+        }
+
+        .result {
+          margin-top: 20px;
+          padding: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+          border-radius: 4px;
+
+          .result-container {
+            padding: 26px 18px;
+            width: 100%;
+
+            span {
+              &.column-0 {
+                width: 40%
+              }
+
+              &.column-1 {
+                width: 30%
+              }
+
+              &.column-2 {
+                width: 30%;
+                text-align: right;
+              }
+            }
+
+            .title, .list {
+              width: 100%;
+            }
+
+            .title {
+              span {
+                font: 600 12px Montserrat;
+              }
+            }
+
+            .list {
+              .row {
+                margin-top: 20px;
+
+                span {
+                  font: 400 12px Montserrat;
+                }
+              }
+            }
+          }
+
+          .download-btn-container {
+            width: 100%;
+            border-radius: 5px;
+
+            p {
+              font: 600 16px Montserrat;
+            }
+
+            .btn {
+              margin-top: 24px;
+              width: 100%;
+              height: 54px;
+            }
+          }
+        }
+      }
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+}
