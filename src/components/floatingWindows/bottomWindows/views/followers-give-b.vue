@@ -6,12 +6,12 @@
       <span class="mb">Followers Giveaway! </span>
       <img
         class="pc"
-        src="~~/src/assetssets/images/seo-pages/seo-7/bottom_i.svg"
+        src="~@/assets/images/seo-pages/seo-7/bottom_i.svg"
         alt=""
       />
       <img
         class="mb"
-        src="~~/src/assetssets/images/seo-pages/seo-7/bottom_i_m.svg"
+        src="~@/assets/images/seo-pages/seo-7/bottom_i_m.svg"
         alt=""
       />
       <i class="hide pc" @click.stop="is = false"></i>

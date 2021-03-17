@@ -61,9 +61,9 @@
 </template>
 
 <script>
-import ButtonPurple from '@/components/button/button-purple';
-import ButtonYellow from '@/components/button/button-yellow';
-import ButtonYellowDownloadCoin from '@/components/button/button-yellow-download-coin';
+import ButtonPurple from '~/components/button/button-purple';
+import ButtonYellow from '~/components/button/button-yellow';
+import ButtonYellowDownloadCoin from '~/components/button/button-yellow-download-coin';
 // import ButtonDownloadAndroid from '@/components/button/button-download-android';
 // import ButtonDownloadIos from '@/components/button/button-download-ios';
 // import ButtonYellowDownload from '@/components/button/button-yellow-download';

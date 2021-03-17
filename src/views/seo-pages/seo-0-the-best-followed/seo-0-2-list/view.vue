@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import defaultAvatar from '~/src/assets/images/global/icon_avatar_default.svg';
+import defaultAvatar from '@/assets/images/global/icon_avatar_default.svg';
 import api from '~/src/api/api.other';
 
 export default {

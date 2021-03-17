@@ -1,13 +1,6 @@
 import Vue from 'vue';
 
-import {
-  ValidationObserver,
-  ValidationProvider,
-  configure,
-  setInteractionMode,
-  extend
-} from 'vee-validate';
-
+import { ValidationObserver, ValidationProvider, configure, setInteractionMode, extend } from 'vee-validate';
 import {
   required,
   email,
@@ -65,10 +58,6 @@ extend('confirmed', {
 extend('full_name', value => {
   return /(^\s+)|(\s+$)|\s+/g.test(value);
 });
-extend('is_pureness_number', value => {
-  return isNaN(value)
-});
-
 extend('email_provider', {
   validate: (value, providerListArray) => {
     let emailDomain = '';
@@ -99,4 +88,3 @@ extend('digits_lite', {
 
 Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('ValidationProvider', ValidationProvider);
-

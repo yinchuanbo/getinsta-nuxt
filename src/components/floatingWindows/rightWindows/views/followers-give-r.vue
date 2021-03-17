@@ -5,12 +5,12 @@
     <i class="mb min_i" @click.stop="is = false"></i>
     <img
       class="pc"
-      src="~~/src/assetssets/images/seo-pages/seo-7/right_pc.svg"
+      src="~@/assets/images/seo-pages/seo-7/right_pc.svg"
       alt=""
     />
     <img
       class="mb"
-      src="~~/src/assetssets/images/seo-pages/seo-7/right_m.svg"
+      src="~@/assets/images/seo-pages/seo-7/right_m.svg"
       alt=""
     />
     <!--</router-link>-->

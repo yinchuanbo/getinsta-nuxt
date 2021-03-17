@@ -55,11 +55,11 @@
 </template>
 
 <script>
-import ButtonPurple from '@/components/button/button-purple';
-import ButtonYellow from '@/components/button/button-yellow';
-import ButtonYellowDownloadCoin from '@/components/button/button-yellow-download-coin';
-import ButtonRedGradient from '@/components/button/button-red-gradient';
-import seo1LotteryBtn from '@/components/button/seo-1-lottery-btn';
+import ButtonPurple from '~/components/button/button-purple';
+import ButtonYellow from '~/components/button/button-yellow';
+import ButtonYellowDownloadCoin from '~/components/button/button-yellow-download-coin';
+import ButtonRedGradient from '~/components/button/button-red-gradient';
+import seo1LotteryBtn from '~/components/button/seo-1-lottery-btn';
 
 export default {
   name: 'ModelBoxAlert',

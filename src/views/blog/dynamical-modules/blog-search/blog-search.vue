@@ -37,9 +37,9 @@
         <h3>Scan the QR code below to download app to get free followers</h3>
         <div class="qrqdbg" :class="{scanbgdow:andicon==='aple'}"></div>
         <div class="detailScan">
-          <img class="img01" :class="{onimg01:andicon==='andr'}" src="../../assets/images/global/adricon.svg" alt="android" @click="choiceandDow('andr')">
+          <img class="img01" :class="{onimg01:andicon==='andr'}" src="../../../../assets/images/global/adricon.svg" alt="android" @click="choiceandDow('andr')">
           <span></span>
-          <img class="img02" :class="{onimg02:andicon==='aple'}" src="../../assets/images/global/button/icon__btn-download_logo_apple_white.svg"
+          <img class="img02" :class="{onimg02:andicon==='aple'}" src="../../../../assets/images/global/button/icon__btn-download_logo_apple_white.svg"
                alt="apple" @click="choiceandDow('aple')"
           >
         </div>
@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import apiInsServer from '@/api/api.ins.server';
-import ButtonPurple from '@/components/button/button-purple';
+import apiInsServer from '~/api/api.ins.server';
+import ButtonPurple from '~/components/button/button-purple';
 export default {
   name:'BlogSearch',
   components: {
@@ -274,7 +274,7 @@ export default {
       input{
         font-size: 16px;
         padding-left: 18%;
-        background:url("~@/assets/images/global/icon_search_username.svg") no-repeat 31px 21px;
+        background:url("@/assets/images/global/icon_search_username.svg") no-repeat 31px 21px;
         background-size: 24px 26px;
       }
     }
@@ -283,7 +283,7 @@ export default {
     }
     input:hover{
       border-color:#FCDC4E !important;
-      background: url("~@/assets/images/global/blog_hover_user.svg") no-repeat 31px 21px;
+      background: url("@/assets/images/global/blog_hover_user.svg") no-repeat 31px 21px;
       background-size: 24px 26px;
     }
   }
@@ -325,10 +325,10 @@ export default {
           width: 150px;
           height: 150px;
           margin: auto;
-          background: url("~@/assets/images/global/qrcode__download_android.svg") no-repeat center;
+          background: url("@/assets/images/global/qrcode__download_android.svg") no-repeat center;
        }
        .scanbgdow.scanbgdow{
-          background: url("~@/assets/images/global/qrcode__download_ios.svg") no-repeat center;
+          background: url("@/assets/images/global/qrcode__download_ios.svg") no-repeat center;
        }
        .detailScan{
          margin-top:28px;

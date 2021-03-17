@@ -18,6 +18,7 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
+    "@nuxt/content": "^1.14.0",
     "@nuxt/types": "~2.15.0",
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/eslint-config": "^5.0.0",
@@ -32,11 +33,12 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.5.0",
     "nuxt": "^2.14.12",
-    "nuxt-validate": "^1.0.1",
     "redirect-ssl": "^2.0.0",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
+    "vee-validate": "^3.4.5",
     "vue": "^2.6.12",
+    "vue-click-outside": "^1.1.0",
     "vue-simple-addthis-share": "^0.1.4",
     "vue2-storage": "^5.0.0",
     "vue2-touch-events": "^2.3.2"

@@ -41,11 +41,12 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '@/plugins/common.js' },
-    { src: '@/plugins/eventBus.js', mode: 'client' },
     { src: '@/plugins/utils.js' },
-    { src: '@/plugins/utils-axios.js' },
-    { src: '@/plugins/utils-veeValidate.js', mode: 'client' }
+    { src: '@/plugins/common.js' },
+    { src: '@/plugins/axios.js' },
+    { src: '@/plugins/model-box.js', mode: 'client' },
+    { src: '@/plugins/vee-validate.js', mode: 'client' },
+    { src: '@/plugins/click-outside.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import ButtonOrange from '@/components/button/button-orange';
+import ButtonOrange from '~/components/button/button-orange';
 
 export default {
   name: 'ModelBoxSpecialAward',
@@ -100,4 +100,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss" src="../../../assets/styles/fonts-additional.scss"></style>
+<style scoped lang="scss" src="../../../../assets/styles/fonts-additional.scss"></style>

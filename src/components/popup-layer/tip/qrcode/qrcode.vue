@@ -5,14 +5,14 @@
     :class="{ 'enter': enter }"
     :style="{ top: `${y+20}px`, left: `${x+10}px` }"
   >
-    <img class="loading" src="../../../assets/images/global/loading-puff-black.svg" alt="Loading icon">
+    <img class="loading" src="../../../../assets/images/global/loading-puff-black.svg" alt="Loading icon">
     <img :src="qrCodeDisplay" alt="QR Code">
   </div>
 </template>
 
 <script>
-import qrCodeIos from '@/assets/images/global/qrcode__download_ios.svg';
-import qrCodeAndroid from '@/assets/images/global/qrcode__download_android.svg';
+import qrCodeIos from '~/assets/images/global/qrcode__download_ios.svg';
+import qrCodeAndroid from '~/assets/images/global/qrcode__download_android.svg';
 
 export default {
   name: 'TipQrCode',

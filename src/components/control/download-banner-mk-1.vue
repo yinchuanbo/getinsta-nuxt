@@ -1,7 +1,7 @@
 <template>
   <div class="download-banner-mk-1">
     <div class="wrapper">
-      <img v-if="pageandroid" class="coins" src="~~/src/assetssets/images/global/seo-1-lottery-btn-coins-icon.svg" alt="">
+      <img v-if="pageandroid" class="coins" src="~@/assets/images/global/seo-1-lottery-btn-coins-icon.svg" alt="">
       <h2>{{ h2Text }}</h2>
       <ul>
         <li v-for="(unit, i) in ul" :key="i"><span>{{ unit }}</span></li>

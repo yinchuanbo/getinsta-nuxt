@@ -6609,13 +6609,6 @@ num2fraction@^1.2.2:
   resolved "https://registry.npm.taobao.org/num2fraction/download/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
-nuxt-validate@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npm.taobao.org/nuxt-validate/download/nuxt-validate-1.0.1.tgz#a493aa0dadad7b7f6b156aba8d609f8e01a6ae98"
-  integrity sha1-pJOqDa2te39rFWq6jWCfjgGmrpg=
-  dependencies:
-    vee-validate "^2.1.2"
-
 nuxt@^2.14.12:
   version "2.15.3"
   resolved "https://registry.npm.taobao.org/nuxt/download/nuxt-2.15.3.tgz?cache=0&sync_timestamp=1615379643797&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnuxt%2Fdownload%2Fnuxt-2.15.3.tgz#6262707de8a824df0718fc88653c74a916aa5122"
@@ -9681,10 +9674,10 @@ vary@^1.1.2, vary@~1.1.2:
   resolved "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vee-validate@^2.1.2:
-  version "2.2.15"
-  resolved "https://registry.npm.taobao.org/vee-validate/download/vee-validate-2.2.15.tgz#dc6c925d21e57288d3308fe5a39a0941036c575a"
-  integrity sha1-3GySXSHlcojTMI/lo5oJQQNsV1o=
+vee-validate@^3.4.5:
+  version "3.4.5"
+  resolved "https://registry.npm.taobao.org/vee-validate/download/vee-validate-3.4.5.tgz#96a456c309f7bdb2cce62c3b554f96d893e9f6ae"
+  integrity sha1-lqRWwwn3vbLM5iw7VU+W2JPp9q4=
 
 vendors@^1.0.0:
   version "1.0.4"
@@ -9723,6 +9716,11 @@ vue-analytics@^5.22.1:
   version "5.22.1"
   resolved "https://registry.npm.taobao.org/vue-analytics/download/vue-analytics-5.22.1.tgz#9d6b32da56daee1b9dfb23a267b50349a03f710f"
   integrity sha1-nWsy2lba7hud+yOiZ7UDSaA/cQ8=
+
+vue-click-outside@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/vue-click-outside/download/vue-click-outside-1.1.0.tgz#48b7680b518923e701643cccb3e165854aad99eb"
+  integrity sha1-SLdoC1GJI+cBZDzMs+FlhUqtmes=
 
 vue-client-only@^2.0.0:
   version "2.0.0"

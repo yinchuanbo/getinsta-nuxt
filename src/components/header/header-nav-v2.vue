@@ -299,7 +299,7 @@ import ClickOutside from 'vue-click-outside';
 // import ButtonPurple from '@/components/button/button-purple';
 // import ButtonYellowDownload from '@/components/button/button-yellow-download';
 import ButtonWhite from '@/components/button/button-white';
-import defaultAvatar from '~/src/assets/images/global/icon_avatar_default.svg';
+import defaultAvatar from '@/assets/images/global/icon_avatar_default.svg';
 import ButtonWhiteBlue from '@/components/button/button-white-blue';
 import ButtonDownloadWindowsYellow from '@/components/button/button-download-windows-yellow';
 

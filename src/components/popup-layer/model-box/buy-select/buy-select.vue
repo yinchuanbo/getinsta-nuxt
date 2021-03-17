@@ -102,7 +102,7 @@
 
 <script>
 // import apiInsServer from "@/api/api.ins.server";
-import ButtonYellowIcon from "@/components/button/button-yellow-icon";
+import ButtonYellowIcon from "~/components/button/button-yellow-icon";
 
 export default {
   name: "BuySelect",
@@ -284,7 +284,7 @@ export default {
       display: inline-block;
       width: 20px;
       height: 20px;
-      background: url("~@/assets/images/user-center/user-center__icon_giftbox.svg")
+      background: url("@/assets/images/user-center/user-center__icon_giftbox.svg")
         no-repeat center;
       background-size: contain;
       vertical-align: middle;
@@ -341,7 +341,7 @@ export default {
     width: 1343px;
     height: 355px;
     content: "";
-    background: url("~@/assets/images/home/home-2-follower/follower-bg.svg")
+    background: url("@/assets/images/home/home-2-follower/follower-bg.svg")
       no-repeat top right;
     background-size: contain;
   }
@@ -361,7 +361,7 @@ export default {
     height: 102px;
     top: 207px;
     left: -125px;
-    background-image: url("~@/assets/images/home/home-2-follower/circle1.svg");
+    background-image: url("@/assets/images/home/home-2-follower/circle1.svg");
   }
 
   .round02 {
@@ -371,7 +371,7 @@ export default {
     height: 39px;
     top: 187px;
     left: 330px;
-    background-image: url("~@/assets/images/home/home-2-follower/circle2.svg");
+    background-image: url("@/assets/images/home/home-2-follower/circle2.svg");
   }
 
   .round03 {
@@ -381,7 +381,7 @@ export default {
     height: 30px;
     top: 38px;
     left: 606px;
-    background-image: url("~@/assets/images/home/home-2-follower/circle3.svg");
+    background-image: url("@/assets/images/home/home-2-follower/circle3.svg");
   }
 
   .round04 {
@@ -391,7 +391,7 @@ export default {
     height: 172px;
     top: 41px;
     right: -184px;
-    background-image: url("~@/assets/images/home/home-2-follower/circle4.svg");
+    background-image: url("@/assets/images/home/home-2-follower/circle4.svg");
   }
 
   .line {
@@ -401,7 +401,7 @@ export default {
     height: 52px;
     top: 127px;
     right: -70px;
-    background-image: url("~@/assets/images/home/home-2-follower/line.svg");
+    background-image: url("@/assets/images/home/home-2-follower/line.svg");
   }
 
   .content {
@@ -486,7 +486,7 @@ export default {
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            background-image: url("~@/assets/images/home/home-2-follower/icon_feature_ok.svg");
+            background-image: url("@/assets/images/home/home-2-follower/icon_feature_ok.svg");
           }
         }
       }

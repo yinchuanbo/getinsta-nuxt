@@ -51,9 +51,9 @@
 </template>
 
 <script>
-import apiAccount from '@/api/api.account';
-import apiInsServer from '@/api/api.ins.server';
-import ButtonPurple from '@/components/button/button-purple';
+import apiAccount from '~/api/api.account';
+import apiInsServer from '~/api/api.ins.server';
+import ButtonPurple from '~/components/button/button-purple';
 import BuySelect from '@/components/model-box/buy-select/buy-select.vue';
 export default {
  name:'Blogbuy',
