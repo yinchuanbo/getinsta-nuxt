@@ -34,14 +34,14 @@
 </template>
 
 <script>
-import iconCoinSmile from '~/src/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-smile.svg';
-import iconCoinLevel0 from '~/src/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-0.png';
-import iconCoinLevel1 from '~/src/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-1.png';
-import iconCoinLevel2 from '~/src/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-2.png';
-import iconCoinLevel3 from '~/src/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-3.png';
-import iconCoinLevel4 from '~/src/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-4.png';
-import iconCoinLevel5 from '~/src/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-5.png';
-import iconCoinLevel6 from '~/src/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-6.png';
+import iconCoinSmile from '@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-smile.svg';
+import iconCoinLevel0 from '@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-0.png';
+import iconCoinLevel1 from '@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-1.png';
+import iconCoinLevel2 from '@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-2.png';
+import iconCoinLevel3 from '@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-3.png';
+import iconCoinLevel4 from '@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-4.png';
+import iconCoinLevel5 from '@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-5.png';
+import iconCoinLevel6 from '@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__icon-coin-level-6.png';
 
 export default {
   name: 'Seo100Module',

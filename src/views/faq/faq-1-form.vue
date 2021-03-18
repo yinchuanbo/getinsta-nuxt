@@ -113,7 +113,7 @@
 
 <script>
 import ButtonPurple from '@/components/button/button-purple';
-import api from '~/src/api/api.other';
+import api from '@/api/api.other';
 
 export default {
   name: 'Faq1Form',

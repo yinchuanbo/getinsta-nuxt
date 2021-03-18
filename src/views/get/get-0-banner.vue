@@ -48,19 +48,19 @@
 
 <script>
 import ButtonWave from '@/components/button/button-wave';
-import img00 from '~/src/assets/images/get/get-0-banner/get-0-banner__bg_circle-0.svg';
-import img01 from '~/src/assets/images/get/get-0-banner/get-0-banner__bg_circle-1.svg';
-import img02 from '~/src/assets/images/get/get-0-banner/get-0-banner__bg_circle-2.svg';
-import img03 from '~/src/assets/images/get/get-0-banner/get-0-banner__circle.svg';
-import img04 from '~/src/assets/images/get/get-0-banner/get-0-banner__heart-red.svg';
-import img05 from '~/src/assets/images/get/get-0-banner/get-0-banner__heart-white.svg';
-import img06 from '~/src/assets/images/get/get-0-banner/get-0-banner__heart-white-hollow.svg';
-import img07 from '~/src/assets/images/get/get-0-banner/get-0-banner__person-0.png';
-import img08 from '~/src/assets/images/get/get-0-banner/get-0-banner__person-1.png';
-import img09 from '~/src/assets/images/get/get-0-banner/get-0-banner__person-2.png';
-import img10 from '~/src/assets/images/get/get-0-banner/get-0-banner__person-3.png';
-import img11 from '~/src/assets/images/get/get-0-banner/get-0-banner__phone.svg';
-import img12 from '~/src/assets/images/get/get-0-banner/get-0-banner__phone-tip.svg';
+import img00 from '@/assets/images/get/get-0-banner/get-0-banner__bg_circle-0.svg';
+import img01 from '@/assets/images/get/get-0-banner/get-0-banner__bg_circle-1.svg';
+import img02 from '@/assets/images/get/get-0-banner/get-0-banner__bg_circle-2.svg';
+import img03 from '@/assets/images/get/get-0-banner/get-0-banner__circle.svg';
+import img04 from '@/assets/images/get/get-0-banner/get-0-banner__heart-red.svg';
+import img05 from '@/assets/images/get/get-0-banner/get-0-banner__heart-white.svg';
+import img06 from '@/assets/images/get/get-0-banner/get-0-banner__heart-white-hollow.svg';
+import img07 from '@/assets/images/get/get-0-banner/get-0-banner__person-0.png';
+import img08 from '@/assets/images/get/get-0-banner/get-0-banner__person-1.png';
+import img09 from '@/assets/images/get/get-0-banner/get-0-banner__person-2.png';
+import img10 from '@/assets/images/get/get-0-banner/get-0-banner__person-3.png';
+import img11 from '@/assets/images/get/get-0-banner/get-0-banner__phone.svg';
+import img12 from '@/assets/images/get/get-0-banner/get-0-banner__phone-tip.svg';
 import ButtonBuyNow from '@/components/button/button-buy-now';
 // import ButtonDownloadIos from '@/components/button/button-download-ios';
 // import ButtonDownloadAndroid from '@/components/button/button-download-android';

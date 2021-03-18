@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ 'v2-font': $store.state.v2 }">
     <!--header-->
     <header-container v-if="!headerHide && !$store.state.v2" />
     <header-container-v2 v-if="$store.state.v2" />
@@ -293,11 +293,13 @@ export default {
     this.platformDetective();
 
     // Google翻译
-    this.loadGoogleTranslate();
+    if (process.client && !this.COMMON.envTest())
+      this.loadGoogleTranslate();
 
     // addThis Load handle
     setTimeout(() => {
-      this.addThisLoad = true;
+      if (process.client && !this.COMMON.envTest())
+        this.addThisLoad = true;
     }, 5000);
 
     // 全局Tip弹窗允许
@@ -637,7 +639,6 @@ export default {
     },
 
     // 首页广告参数
-    // Btn测试开启判断
     adQueryInit() {
       let c = this.$constant.app.campaign.iosEnGetInstaCt;
 

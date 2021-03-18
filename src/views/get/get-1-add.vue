@@ -144,9 +144,9 @@
 </template>
 
 <script>
-import api from '~/src/api/api.account.js';
-import apiIns from '~/src/api/api.ins';
-import apiInsServer from '~/src/api/api.ins.server';
+import api from '@/api/api.account.js';
+import apiIns from '@/api/api.ins';
+import apiInsServer from '@/api/api.ins.server';
 
 import ButtonPurple from '@/components/button/button-purple';
 

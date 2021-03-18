@@ -10,9 +10,9 @@
 </template>
 
 <script>
-// import FooterLink from '@/views/global/footer/footer-link';
+// import FooterLink from '@/components/footer/footer-link';
 import FooterLinkPt from '@/components/footer/footer-link-pt';
-// import FooterCopyright from '@/views/global/footer/footer-copyright';
+// import FooterCopyright from '@/components/footer/footer-copyright';
 import FooterLite from '@/components/footer/footer-lite';
 import FooterCopyrightV2 from '@/components/footer/footer-copyright-v2';
 import FooterLinkV2 from '@/components/footer/footer-link-v2';

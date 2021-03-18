@@ -89,10 +89,12 @@ export default {
     }
   }, // Delete URL Query
   getDomain() {
+    if (process.server) return '';
     const parts = location.hostname.split('.');
     return parts.slice(-2).join('.');
   }, // Domain
   getSubDomain() {
+    if (process.server) return '';
     const h = location.href.split('.')[0];
     return h.split('//')[1];
   }, // Subdomain, secondary domain
@@ -228,13 +230,13 @@ export default {
     document.getElementById(parentID).appendChild(iframe);
   },
   envTest() {
-    return window.location.href.split('.')[0].split('//')[1] === 'test'
-      || window.location.hostname === 'localhost'
-      || window.location.hostname === '192.168.1.41'
-      || window.location.hostname === '192.168.3.101'
-      || window.location.hostname === '192.168.1.42'
-      || window.location.hostname === '192.168.2.184'
-      || window.location.hostname === '192.168.3.214';
+    if (process.client)
+      return window.location.href.split('.')[0].split('//')[1] === 'test'
+        || window.location.hostname === 'localhost'
+        || window.location.hostname === '192.168.1.41'
+        || window.location.hostname === '192.168.1.42';
+    else
+      return false;
   },
   numberAbbreviations(num) {
     let numFormatted = 0;

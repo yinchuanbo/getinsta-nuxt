@@ -11,9 +11,9 @@
 </template>
 
 <script>
-// import FooterLink from '@/views/global/footer/footer-link';
+// import FooterLink from '@/components/footer/footer-link';
 import FooterLinkPt from '@/components/footer/footer-link-pt';
-// import FooterCopyright from '@/views/global/footer/footer-copyright';
+// import FooterCopyright from '@/components/footer/footer-copyright';
 import FooterLite from '@/components/footer/footer-lite';
 import FooterCopyrightNewV2 from '@/components/footer/footer-copyright-new-v2';
 import FooterCopyrightV2 from '@/components/footer/footer-copyright-v2';

@@ -418,7 +418,7 @@
 <script>
 // import instagramEmbed from 'vue-instagram-embed';
 // import Seo00Banner from '@/views/seo-pages/seo-0-the-best-followed/seo-0-0-banner/view';
-import Seo0Module from '~/src/views/seo-pages/seo-0-the-best-followed/seo-0-module/view';
+import Seo0Module from '@/views/seo-pages/seo-0-the-best-followed/seo-0-module/view';
 
 export default {
   name: 'Seo04Top20',

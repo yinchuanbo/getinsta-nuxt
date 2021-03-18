@@ -98,7 +98,7 @@
 
 <script>
 import defaultAvatar from '@/assets/images/global/icon_avatar_default.svg';
-import api from '~/src/api/api.other';
+import api from '@/api/api.other';
 
 export default {
   name: 'Seo02List',

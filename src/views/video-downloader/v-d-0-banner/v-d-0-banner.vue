@@ -86,9 +86,9 @@
 </template>
 
 <script>
-import api from '~/src/api/api.other.js';
+import api from '@/api/api.other.js';
 import ButtonPurple from '@/components/button/button-purple';
-import apiAccount from '~/src/api/api.account';
+import apiAccount from '@/api/api.account';
 
 export default {
   name: 'VD0Banner',

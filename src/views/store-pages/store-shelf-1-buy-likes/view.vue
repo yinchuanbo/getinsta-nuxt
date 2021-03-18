@@ -426,11 +426,11 @@
 </template>
 
 <script>
-import apiAccount from '~/src/api/api.account';
-import apiIns from '~/src/api/api.ins';
-import apiInsServer from '~/src/api/api.ins.server';
-import apiPayment from '~/src/api/api.payment';
-import apiTask from '~/src/api/api.task';
+import apiAccount from '@/api/api.account';
+import apiIns from '@/api/api.ins';
+import apiInsServer from '@/api/api.ins.server';
+import apiPayment from '@/api/api.payment';
+import apiTask from '@/api/api.task';
 
 import ButtonPurple from '@/components/button/button-purple';
 import ButtonYellowIcon from '@/components/button/button-yellow-icon';
