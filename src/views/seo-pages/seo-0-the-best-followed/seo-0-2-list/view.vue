@@ -144,7 +144,7 @@ export default {
           page: 1
         };
 
-        this.axios.post(
+        this.$axios.post(
           api.getMostFollowed,
           this.COMMON.paramSign(param)
         ).then((response) => {

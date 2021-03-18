@@ -34,7 +34,7 @@ export default {
   },
   mounted() {
     this.headerShape.homePath = this.$route.path === '/';
-    this.timer = setTimeout(this.headerFooterMotion, 500);
+    this.headerFooterMotion();
     window.addEventListener('scroll', this.COMMON.throttle(this.handleScroll, 60, 100));
   },
   destroyed() {

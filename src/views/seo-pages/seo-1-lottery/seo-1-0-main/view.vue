@@ -10,17 +10,17 @@
           :speed="60" :auto-start="false"
           @finish="lotteryCountDownEnd"
         >
-          <template v-slot:before>
+          <template #before>
             <b>Loading...</b>
           </template>
-          <template v-slot:process="{ timeObj }">
+          <template #process="{ timeObj }">
             <b>{{ timeObj.d }}</b><span>D</span>
             <b>{{ timeObj.h }}</b><span>H</span>
             <b>{{ timeObj.m }}</b><span>M</span>
             <b>{{ timeObj.s }}</b><span>S</span>
             <b class="tri">{{ timeObj.ms }}</b><span>ms</span>
           </template>
-          <template v-slot:finish>
+          <template #finish>
             <b>Sorry!&emsp;The Lucky Draw has ended.</b>
           </template>
         </countdown>
@@ -462,7 +462,7 @@ export default {
     requestLotteryList() {
       let param = { 'luckdraw_id': this.luckyDrawID };
 
-      this.axios.post(
+      this.$axios.post(
         apiOther.getRewards,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -531,7 +531,7 @@ export default {
 
       param.luckdraw_id = this.luckyDrawID;
 
-      this.axios.post(
+      this.$axios.post(
         apiOther.luckDrawInit,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -628,7 +628,7 @@ export default {
       if (this.COMMON.getURLQuery('key') !== null)
         param = { key: this.COMMON.getURLQuery('key') };
 
-      this.axios.post(
+      this.$axios.post(
         apiOther.clearRecord,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -672,7 +672,7 @@ export default {
 
       param.luckdraw_id = this.luckyDrawID;
 
-      this.axios.post(
+      this.$axios.post(
         apiOther.luckDrawConfirm,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -795,7 +795,7 @@ export default {
     requestWinningUser() {
       let param = { 'luckdraw_id': this.luckyDrawID };
 
-      this.axios.post(
+      this.$axios.post(
         apiOther.getRewardUser,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -865,7 +865,7 @@ export default {
       }
 
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$axios.post(
         api.login,
         this.COMMON.paramSign(
           {
@@ -947,7 +947,7 @@ export default {
       }
 
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$axios.post(
         api.register,
         this.COMMON.paramSign(
           {
@@ -997,7 +997,7 @@ export default {
       });
     },
     requestEmailLimitList() {
-      this.axios.get(
+      this.$axios.get(
         apiSelf.emailLimitList
       ).then((response) => {
         this.emailProvider = response.data['site'];
@@ -1084,7 +1084,7 @@ export default {
       }
     },
     searchInsByServer(insAccount) {
-      this.axios.post(
+      this.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign(
           {

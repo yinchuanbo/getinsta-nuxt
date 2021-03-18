@@ -335,8 +335,8 @@ export default {
   data() {
     return {
       anchor: 'tab',
-      windowWidth: document.body.clientWidth,
-      windowHeight: document.body.clientHeight,
+      windowWidth: process.client ? document.body.clientWidth : 0,
+      windowHeight: process.client ? document.body.clientHeight : 0,
       sideBarStatus: false,
       headerBtnPath: '/login',
       headerBtnText: 'Log In',

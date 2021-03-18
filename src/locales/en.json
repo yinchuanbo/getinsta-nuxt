@@ -1,0 +1,911 @@
+{
+  "global": {
+    "header": {
+      "menu": {
+        "home": "Home",
+        "store": "Store",
+        "buyFollowers": "Buy Instagram Followers",
+        "buyLikes": "Buy Instagram Likes",
+        "get": "Get Followers & Likes",
+        "faq": "FAQs",
+        "blog": "Blog"
+      },
+      "button": {
+        "login": "Log In",
+        "logout": "Log Out",
+        "signUp": "Sign Up",
+        "buyNow": "Buy Now",
+        "BackHome": "Back Home",
+        "cart": "Cart"
+      },
+      "title": {
+        "Checkout": "Checkout",
+        "Payment": "Payment",
+        "OrderComplete": "Order Complete"
+      }
+    },
+    "footer": {
+      "about": {
+        "about": "About",
+        "termsOfUse": "Terms of Use",
+        "privacyPolicy": "Privacy Policy"
+      },
+      "services": {
+        "services": "Services",
+        "getFollowers": "Get Followers",
+        "getLikes": "Get Likes"
+      },
+      "resource": {
+        "resource": "Resource",
+        "login": "Login",
+        "faq": "FAQs",
+        "blog": "Blog"
+      },
+      "freeTools": {
+        "instagramVideoDownloader": "Instagram Video Downloader",
+        "instagramRankingTool": "Instagram Ranking Tool"
+      },
+      "GetInstaDownload": {
+        "GetInstaDownload": "App Download"
+      }
+    },
+    "button": {
+      "ButtonDownloadAndroid": {
+        "line-0": "GET IT ON",
+        "line-1": "Google Play",
+        "line-0-apk": "Download for",
+        "line-1-apk": "Android"
+      },
+      "ButtonDownloadIos": {
+        "line-0": "Download on the",
+        "line-1": "App Store"
+      },
+      "downloadAppNow": "Download App Now",
+      "LogIn": "Log In",
+      "continue": "Continue"
+    },
+    "downloadCTA": {
+      "text0": "Download",
+      "text1": "to Get Free Followers & Likes Instantly",
+      "btn": "Download App"
+    },
+    "modelBox": {
+      "title": {
+        "oops": "Oops",
+        "success": "Success",
+        "wait": "Wait",
+        "caution": "Caution"
+      },
+      "btn": {
+        "close": "Close"
+      },
+      "msg": {
+        "loginExpired": "Login expired, redirecting to login page."
+      }
+    },
+    "currency": "USD",
+    "currencySymbol": "$",
+    "loading": {
+      "processing": "Processing"
+    },
+    "safe": "100% safe & clean",
+    "instagramConcept": {
+      "posts": "Posts",
+      "followers": "Followers",
+      "followersLowercase": "followers",
+      "following": "Following",
+      "likes": "Likes",
+      "likesLowercase": "likes"
+    }
+  },
+  "download": {
+    "text": "Redirecting to home page after 5 seconds."
+  },
+  "home": {
+    "meta": {
+      "title": "GetInsta: Get Real Instagram Followers & Likes [100% FREE]",
+      "description": "GetInsta helps get totally FREE Instagram followers & likes from real active users. Download GetInsta app to grow followers and likes without payment."
+    },
+    "home-0": {
+      "title": "Get Free Instagram <br/> Followers & Likes",
+      "subtitle0": "Easily get ",
+      "subtitle1": "100% FREE",
+      "subtitle2": " and high-quality Instagram followers and likes. No password. No survey. No risk. 100% real and safe.",
+      "subtitle2-0": " and high-quality Instagram followers and likes.",
+      "subtitle2-1": " No password. No survey. No risk. 100% real and safe.",
+      "btn": {
+        "FreeGetItNow": "Free Get It Now",
+        "BuyNow": "Buy Now",
+        "DownloadAPPNow": "Download APP Now"
+      }
+    },
+    "home-1": {
+      "title": "How to Get Free Instagram Followers & Likes",
+      "subtitle0": "We provide unlimited free Instagram followers and free Instagram likes. It’s totally free for you. Getting free Instagram followers & likes with",
+      "subtitle1": "is as simple as ABC.",
+      "step-1": {
+        "title": "Step 1",
+        "text-register": "Sign Up and Log In",
+        "text-download": "Download App"
+      },
+      "step-2": {
+        "title": "Step 2",
+        "text": "Get Free Followers & Likes"
+      },
+      "btn": {
+        "GetFreeFollowers&LikesNow": "Get Free Followers & Likes Now",
+        "BuyNow": "Buy Now",
+        "DownloadForIphone": "Download For iPhone",
+        "DownloadForAndroid": "Download For Android"
+      }
+    },
+    "home-2": {
+      "title": "How Do We Make \"FREE\" Possible",
+      "subtitle0": "Real-person gathering here to follow and like each other. Everyone can get coins by following others or liking their posts. With the coins, you can get unlimited free Instagram followers and likes for your own Instagram accounts and posts. Sounds good? Download ",
+      "subtitle1": " to get unlimited free followers and likes. It’s easy and 100% safe!",
+      "safe": "100% safe & clean"
+    },
+    "home-3": {
+      "step-0": {
+        "title": "Create Account",
+        "text0": "Sign up",
+        "text1": "Log in",
+        "btn": "Sign Up Now"
+      },
+      "step-1": {
+        "title": "Download ",
+        "title-1": "",
+        "text0": "Log into ",
+        "text1": " Earn more coins",
+        "btnWindows": "Download",
+        "btnApp": "Download APP",
+        "safe": "100% safe & clean"
+      },
+      "step-2": {
+        "title": "Get Followers & Likes",
+        "text0": "Get followers ",
+        "text1": " Get likes",
+        "text-ios": "",
+        "btn": "Get Followers <br> & Likes Now"
+      }
+    },
+    "home-4": {
+      "title": "What Makes Us Outstanding",
+      "unit-0": {
+        "title": "Safety & Privacy",
+        "text0": "Safety & Privacy are important. ",
+        "text1": " is developed by our professional and experienced team, 100% safe and clean. No virus. No leak. No risk. We value and protect your privacy. You can get organically growth of real Instagram followers and likes in our best security system."
+      },
+      "unit-1": {
+        "title": "High Quality - Real & Organic",
+        "text0": "Not Fake",
+        "text1": " Our users are exactly real Instagram users, not fake Instagram bot users generated by anything. The followers and likes you get are from only active & real Instagram accounts.",
+        "text2": "No Risk",
+        "text3": " When followers increasing, likes will be increased at the same time. All followers and likes will be sent in a reasonable time, organically and naturally. No risk of being banned or punished."
+      },
+      "unit-2": {
+        "title": "Unlimited Free",
+        "text0": "You don’t need to spend money to get followers & likes. It’s 100% FREE. What you need is the coin. When you log into ",
+        "text1": ", you’ll get hundreds of coins instantly that you can use to buy followers & likes. You can earn more coins by doing easy coin tasks on",
+        "text2": "."
+      }
+    },
+    "home-5": {
+      "title": "More Advantages",
+      "unit-0": {
+        "title": "Instant Delivery",
+        "text": "All your Insta followers and likes will be delivered in a reasonable time. Real followers will follow you in an instant when they see your follower or like request. You’ll see the changes within minutes."
+      },
+      "unit-1": {
+        "title": "24/7 Support",
+        "text": "Our specialized support is always available. In case you have any questions about our products or meet any difficulties when working with the system, please do not hesitate to contact us at all times."
+      },
+      "unit-2": {
+        "title": "Experienced Team",
+        "text": "Our team is an experienced and professional team in the sector for years. We know the rules of the industry and we act accordingly. We offer instant solutions to help you get followers and likes."
+      }
+    },
+    "home-6": {
+      "title": "Customer Feedback & Reviews",
+      "unit-0": {
+        "text": "Hello, I am Happy Yadav, Blogger and YouTuber. As you know that having BIG numbers on Social Media is a subject of luck sometime and the key to treasure. Thanks with their system that helps in increasing our social presence. Mine most beloved feature is Active & Real Followers with coins system. Hats off to you."
+      },
+      "unit-1": {
+        "text": "I’m a college student. Instagram and Twitter are the most often-used apps for me. My story is a bit wired. I was popular on twitter, but not the same as on Ins. Thanks for finding easygetinsta.com while surfing on the internet. I got the <a href='https://www.easygetinsta.com/blog/instagram-followers-apk-37'>insta followers apk</a> on my Samsung and gained lots of followers and likes easily."
+      },
+      "unit-2": {
+        "text": "It worked. Awesome! I don't need to spend money to get Instagram followers or likes that I want. But, it needs coins. Fortunately, when I first sign up and log in on the app, it gives me hundreds of coins instantly. I have used the coins to get likes successfully."
+      },
+      "unit-3": {
+        "text": "Wonderful and great app. I have received so many free Instagram followers and likes. I’ve also used some other online tools, but I prefer GetInsta app because it is totally free and easy to use. My followers are growing continually. I’ll use it to get more free Ig followers."
+      }
+    },
+    "home-7": {
+      "title": {
+        "text0": "Download ",
+        "text1": " to Get Free Followers & Likes Instantly!"
+      },
+      "subtitle": {
+        "text0": "Download ",
+        "text1": " and earn more coins to free get Instagram followers and likes now."
+      },
+      "safe": "100% safe & clean"
+    },
+    "home-5-de": {
+      "title": "",
+      "unit-0": {
+        "title": "",
+        "text": ""
+      },
+      "unit-1": {
+        "title": "",
+        "text": ""
+      },
+      "unit-2": {
+        "title": "",
+        "text": ""
+      }
+    },
+    "home-8": {
+      "title": "",
+      "text": ""
+    }
+  },
+  "store": {
+    "meta": {
+      "title-0": "GetInsta: Buy Instagram Followers [Real, Safe, Instant]",
+      "title-1": "Buy Instagram auto likes [Real, Safe, Instant] - GetInsta",
+      "description-0": "Buy real Instagram followers from GetInsta for as little as $3.95. Instant delivery, real followers, and 24/7 customer support. Boost your Instagram now.",
+      "description-1": "Buy Instagram daily likes from GetInsta at a low cost. Instant delivery, real likes, and 24/7 customer support. Boost your Instagram now."
+    },
+    "banner": {
+      "title": "Buy Instagram Followers and Likes",
+      "titleFollowers": "Buy Instagram Followers",
+      "titleLikesDaily":"Buy Instagram Likes",
+      "titleLikes": "Buy Instagram Likes",
+      "titleSubGoTo": "Go to buy followers"
+    },
+    "buy": {
+      "tabs": {
+        "tab-0": "Buy Followers",
+        "tab-1": "Buy Likes",
+        "tab-followers-0": "Instant Followers",
+        "tab-followers-1": "Daily Followers"
+      },
+      "title": {
+        "text": "Select the Offer",
+        "error": "Please select an offer"
+      },
+      "product": {
+        "dailyOffer": {
+          "Day": "Day",
+          "Daily": "Daily",
+          "period": "-Day Subscription"
+        },
+        "error": {
+          "requestingOfferListFailed": "Requesting Offer List failed, please try later."
+        }
+      },
+      "search": {
+        "title": "Enter Instagram Account",
+        "inputPlaceHolder": "Your Instagram username",
+        "searchinputBlogholder": "Your Username",
+        "additional": {
+          "text0": "Additional",
+          "text1": "free likes to your latest post"
+        },
+        "post": {
+          "title": {
+            "text": "Select the Post",
+            "error": "Please select a post"
+          },
+          "loadMore": {
+            "text": "Load More",
+            "loading": "Loading..."
+          }
+        }
+      },
+      "buyNow": "Buy Now",
+      "error": {
+        "noInsID": {
+          "title": "Wait",
+          "text": "Please enter username."
+        },
+        "noPost": {
+          "text": "This Instagram account has no posts yet."
+        },
+        "errorInsID": {
+          "text": "There is no such Instagram ID <br> or Request Instagram Data failed,<br> please try again later."
+        },
+        "errorRequest": {
+          "text": "Request Instagram Data failed, please try again later."
+        }
+      }
+    },
+    "why": {
+      "title": "Why Choosing GetInsta?",
+      "unit-0": "High-quality followers and likes from real person",
+      "unit-1": "Instant delivery guaranteed",
+      "unit-2": "24/7 customer support"
+    },
+    "why02": {
+      "title": "Why Choosing GetInsta?",
+      "unit-0": "100% real followers and likes who will continuously interactive with you. ",
+      "unit-1": "Instant delivery in few hours.",
+      "unit-2": "7/24 support"
+    }
+  },
+  "checkout": {
+    "meta": {
+      "title-0": "Checkout – Online Payment",
+      "title-1": "Checkout - Your Online Payment Solution"
+    },
+    "form": {
+      "title": "Complete Your Purchase",
+      "CreditCard": "Credit Card",
+      "CardNumber": "Card Number",
+      "ExpiryDate": "Expiry Date",
+      "FirstName": "First Name",
+      "LastName": "Last Name",
+      "StreetAddress": "Street Address",
+      "ZipCode": "Zip Code",
+      "City": "City",
+      "State": "State/Province",
+      "Country": "Country",
+      "Phone": "Phone",
+      "Email": "Email"
+    },
+    "cart": {
+      "title": "Items in Cart",
+      "subtotal": "Subtotal",
+      "delete": "Delete"
+    },
+    "BuyNow": "Buy Now",
+    "note": {
+      "text0": "By placing this order, you agree to the",
+      "link0": "Terms & Conditions",
+      "text1": "of",
+      "text2": ", and acknowledge that you have read the information regarding the",
+      "link1": "Privacy Policy",
+      "text3": "and understood your",
+      "link2": "Right of Refund",
+      "text4": "as a consumer."
+    },
+    "error": {
+      "cartEmpty": {
+        "text": "Your cart is empty."
+      },
+      "cartEmptyLong": {
+        "text": "Your cart is empty,<br>please add something to your cart."
+      },
+      "needSelectLocalPayment": "Please select one Local Payment."
+    }
+  },
+  "orderDetail": {
+    "meta": {
+      "title-0": "Order Confirmation - Thanks for Your Order",
+      "title-1": "Order Confirmation - Thank You"
+    },
+    "title": "Thank You For Your Order",
+    "subtitle": "Your order is complete. Please check the order details in your email later.",
+    "form": {
+      "YourOrder": "Your Order",
+      "ViewProgress": "View Progress",
+      "OrderNumber": "Order Number",
+      "TotalPrice": "Total Price",
+      "BillingInformation": "Billing Information",
+      "Phone": "Phone",
+      "Email": "Email",
+      "PaymentMethod": "Payment Method"
+    },
+    "note": {
+      "InstantDelivery": {
+        "title": "Instant Delivery",
+        "text": "Your order has been processed by GetInsta authorized vendor. GetInsta authorized vendor will send you emails containing the order details and invoice. Your order will be processed instantly."
+      },
+      "24/7Support": {
+        "title": "24/7 Support",
+        "text0": "Click ",
+        "link": "here",
+        "text1": " to contact GetInsta Support for account registration, working system, troubleshooting, payment issues and other product related technical support."
+      }
+    }
+  },
+  "orderFail": {
+    "meta": {
+      "title-0": " - Payment",
+      "title-1": " Payment - Failed"
+    },
+    "title": "Payment Failed",
+    "subtitle": "Sorry, your payment could not be processed! Please try again, or use a different payment method.",
+    "TryAgain": "Try Again",
+    "actionSheet": {
+      "getInsUp": {
+        "title": "Getinsup",
+        "body": "Buy high quality followers and likes from the app without failure",
+        "btn": "Buy from App Store",
+        "btnGooglePlay": "Buy from Google Play"
+      }
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "GetInsta Blog - Instagram Tips and Growth Tricks",
+      "description": "You can find solutions for kinds of Instagram problems and blog posts regarding Instagram growth, Instagram using tricks and some useful tutorials."
+    },
+    "title": "Real Instagram Followers and Likes",
+    "subtitle": "The best place to get free Instagram followers and likes. You will notice the difference!",
+    "search": {
+      "placeHolder": "Search"
+    },
+    "hotArticles": "Hot Articles",
+    "breadCrumbs": {
+      "latestArticles": "Latest Articles"
+    },
+    "error": {
+      "listEmpty": "There is no article on this category."
+    }
+  },
+  "blogDetail": {
+    "subtitle": "Your ultimate tool to get free Instagram followers & likes. 100% real.\n\n",
+    "updated": "Updated",
+    "by": "by",
+    "RelatedReadings": "Related Readings for Reference"
+  },
+  "faq": {
+    "meta": {
+      "title": "GetInsta Support Center - FAQs",
+      "description": "GetInsta support is available here to offer help. Find FAQs about GetInsta and send any general question, bug report or suggestion to GetInsta."
+    },
+    "title": "Have Any Questions?",
+    "faqList": {
+      "textList": [
+        {
+          "title": "1. Why I received the message \"This Instagram account has been verified on another GetInsta account (xxx). Please remove it there and then verify on this account after 24 hours.\"?",
+          "text": "Please kindly note that an Instagram account can only be verified on one GetInsta account at one time to do tasks to earn free coins. <br><br> You need to log into the GetInsta account of the prompt message (xxx) > tap the profile photo on the top left corner > find the Instagram username that you want to remove (xxx) > tap “Remove” > on the popup window, tap \"OK\" <br><br> To ensure the security of your Instagram account, your account will be removed in 24 hours. Please wait patiently. After it is completely removed, you can verify it on the GetInsta account you want and do tasks to earn coins."
+        },
+        {
+          "title": "2. How to add Instagram accounts to GetInsta?",
+          "text": "Each GetInsta account can add 5 Instagram accounts at most. Log in GetInsta > tap the profile photo on the top left corner > tap “Add Account” on the bottom of the unfolded interface > enter the Instagram username."
+        },
+        {
+          "title": "3. How to remove an Instagram account from the GetInsta account?",
+          "text": "Log in your GetInsta account > tap the profile photo on the top left corner > find the Instagram account that you want to remove > tap “Remove” > on the popup window, tap “OK”  <br><br>  If this Instagram account has not been verified on the GetInsta account, it will be removed directly; if it has been verified, to ensure the security of the Instagram account, it will be removed in 24 hours. Please wait patiently."
+        },
+        {
+          "title": "4. Why I received the message \"Too many like/follow attempts. Please try again later.\"?",
+          "text": "It means you were doing too many tasks to earn coins during a short period of time, or the tasks you published were liked or followed by others during a short period of time. Please wait for a while and try again later. Otherwise, your Instagram account will probably be disabled by Instagram. <br><br> And the time when it goes back to normal so that you can continue to do tasks to get coins depends on Instagram. So please wait patiently. Besides, you may try it like this: <br><br> <b>Android</b>: First please log in the Instagram app on your mobile phone with the account you mentioned. If there's any popup message, just follow the instructions. Then come back to use the GetInsta app again. Remember to log out GetInsta first and then log in again. You’d better operate the two steps with the same IP (e.g. Don’t use wifi for a while and then switch to the cellular data of your mobile phone or VPN). <br><br> <b>Windows</b>: First log in the official Instagram website on your PC with the Instagram account which you used to do tasks. Then come back to use the GetInsta app again. Remember to log out GetInsta first and then log in again. You’d better operate the two steps with the same IP (e.g. Don’t use wifi for a while and then switch to VPN)."
+        },
+        {
+          "title": "5. I published the task, but I haven’t got all likes or followers. Why?",
+          "text": "Generally, you’ll see the changes within 24 hours. The specific time of completing one task depends on the task size. Bigger plan, more time. And to make it increase organically, the delivery may take several days or more. You can check the progress in Task List. <br><br> If no changes occurred beyond 24 hours, you can send us the Instagram username of the task and we’ll help follow it up."
+        },
+        {
+          "title": "6. What should I do when I received the message “Your Instagram account has been blocked or disabled.”?",
+          "text": "Please log in the official Instagram app and operate according to the relevant instructions. Then please wait patiently until your Instagram account back to normal."
+        },
+        {
+          "title": "7. Why I received the email of Verification Code ?",
+          "text": "You received the verification code email because you were trying to verify or change the email bound with your GetInsta account. The code will expire in 15 minutes after you receive it. Just enter the verification code on GetInsta app where you click to send the verification code and complete the verification. <br><br> If you didn't send such a request, please ignore this message."
+        },
+        {
+          "title": "8. What is the Energy of each Instagram account?",
+          "text": "Energy will be consumed for doing like/follow tasks and it’ll be restored automatically. The time besides the profile photo of the Instagram account will show how long you should wait until it restores the next energy and all energy. During this period, you can switch to another Instagram account to do tasks to get coins."
+        },
+        {
+          "title": "9. What if I forgot the password of my GetInsta account?",
+          "text": "Open GetInsta > tap \"Forgot password?\" on the login interface > enter the email address you used to register the account. You will receive an email and please follow the onscreen prompts to reset your password."
+        },
+        {
+          "title": "10. Why I share the app but didn’t get the rewarded coins?",
+          "text": "Please note that after you share the app to another person, he/she need to download GetInsta via the link you sent and sign up a GetInsta account. Thus you can get the rewarded coins."
+        },
+        {
+          "title": "11. How it works?",
+          "text": "It is a free and safe platform gathering massive real-person to follow and like each other. Everyone gets coins by following others or liking others’ posts in this system. Then, use the coins to get unlimited free Instagram followers or likes."
+        },
+        {
+          "title": "12. Is it legal to buy Instagram followers or likes?",
+          "text": "It’s legal, for sure. Buying followers or likes for any kind of social media is legal. It is just a digital marketing strategy. When others follow you or like your post, it is totally legal and safe."
+        },
+        {
+          "title": "13. Are followers and likes real?",
+          "text": "We promise 100% real. We do not use fake accounts like some websites. Only real followers can access to this system to earn coins and publish follower or like task. All of our Instagram followers and likes are completely real."
+        },
+        {
+          "title": "14. Do I need to provide my password?",
+          "text": "Not needed. We do not ask your password because processing your order does not need it, your username is enough.  <br><br> <b>Note:</b> When you want to earn more free coins, you need to log into one of your Instagram accounts with your password. Your information will be completely encrypted and only you know it."
+        },
+        {
+          "title": "15. Is GetInsta safe?",
+          "text": "Absolutely YES. GetInsta is designed by an experienced and professional team that has years of developing software experience. We guarantee 100% safe and clean. <br><br> <b>Note:</b> Please be rest-assured to proceed with the downloading and installing of GetInsta if you see any prompts. GetInsta is 100% Safe and Clean. Your phone may show you a warning message when you try to download it from our site. There is no risk for your device and no damage to any of your data. Please just tap on \"SETTINGS\" to enable the installations from other sources on your Android device."
+        }
+      ],
+      "download": {
+        "title": "16. Where can I download GetInsta?",
+        "text": "You can download GetInsta by clicking the buttons below."
+      },
+      "buy": {
+        "title": "17. Can I get followers & likes without doing coin tasks?",
+        "text": "You can download GetInsta by clicking the buttons below."
+      }
+    },
+    "faqForm": {
+      "title-0": "Most issues can be resolved quickly via",
+      "title-1": ". If you still need further help, send us your request anytime.",
+      "yourEmail": "Your email",
+      "yourEmailTip": "Please provide a valid email address to get reply from us.",
+      "yourName": "Your name",
+      "insUsername": "Your Instagram username",
+      "requestType": {
+        "title": "Request Type",
+        "select": [
+          "Instagram account verify issue",
+          "No progress for published tasks",
+          "Too many attempts",
+          "Order issue",
+          "Suggestions",
+          "I love it",
+          "Others"
+        ],
+        "specialSelect": "Order issue"
+      },
+      "operatingSystem": {
+        "title": "Operating System",
+        "radio": [
+          {
+            "title": "Android",
+            "value": "android"
+          },
+          {
+            "title": "iOS",
+            "value": "ios"
+          },
+          {
+            "title": "PC",
+            "value": "pc"
+          }
+        ]
+      },
+      "textarea": "Please describe your suggestion or the issue you encountered in detail so that we can improve our product accordingly or better assist you. Any relevant screenshot would be highly appreciated.",
+      "textarea-1": "To better assist you, please provide us with the order number, invoice and details of the order. Any relevant screenshot would be highly appreciated.",
+      "send": "Send",
+      "sendSuccess": {
+        "body": "We will reply as soon as possible."
+      },
+      "sendFail": {
+        "repeatedRequest": "We have received your previous feedback and we will reply to you as soon as possible. Please wait patiently."
+      }
+    }
+  },
+  "protocol": {
+    "lastUpdated": "Last Updated:",
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "lastUpdatedDate": "March 13, 2020",
+      "content": {
+        "p0": "GetInsta (\"GetInsta\" \"we,\" \"us\" or \"our\") helps Instagram users get real and free Instagram followers and likes easily and instantly.",
+        "p1": "This GetInsta Online Privacy Statement applies to information collected by GetInsta through majority of its websites and services, as well as its offline product support services (collectively, the \"Service\"). This policy does not apply to those sites, services and products that do not display or link to this statement, or that have their own privacy statements.",
+        "p2": "Please read GetInsta Online Privacy Statement below carefully to know about the particular information we may collect. If you have any questions about this Policy, please feel free to ",
+        "p3": "contact us",
+        "p4": ".",
+        "p5": "1. What Information We Collect",
+        "p6": "For providing our services, we may use the following Information related to you:",
+        "p7": "Your Instagram account(s) information;",
+        "p8": "Usage activity about how you interact with us such as what content you viewed and which areas of our app you visited;",
+        "p9": "Device information;",
+        "p10": "Error log which is automatically generated when an unexpected error occurs or an application crash; We do not collect your personal identifiable information when you using our product, such as name, phone number, physical address.",
+        "p11": "Placing Orders. When you purchase services from our site/app, the billing is handled by a third-party service provider. Thus, the handling of your personal information will be governed by any privacy policy or terms of service published by the service provider. The service provider may request billing information such as your name, email address, payment information including credit card number, expiration date, security code, name of your issuing bank, etc. The purpose of this information is to fulfill orders and provide customer service, and the like. The third-party service provider may transmit some of your personal information to us, but not including payment information. We may use the information we receive to verify your purchase, to contact you about the status of your order, or for other offers you may be interested, if applicable.",
+        "p12": "Contact us and technical support service. We may collect or ask you to provide necessary information when sign up the app, when you reach us by email, or by requesting online support. This information may include, without limitation, your name, your email address, your physical address, what features you use in our app, how you use our app, your computer or device information such as hardware and system version, etc. In general, we collect no more information than is required in order to investigate the issue you encounter.",
+        "p13": "This information is collected to help us to provide services and support, and to help us solve the technology problems you are experiencing. By sending the related information to us, you agree to share them with GetInsta. If you do not want to share the information with GetInsta, you can just uncheck the related option or close the related window. We will use any such information only when providing individual support or assistance, and will not retain such information any longer than necessary for this purpose. We promise that we will never publish or share any of your personally identifiable information outside GetInsta, nor allow anyone else to use it to contact you for marketing purposes without your consent.",
+        "p14": "2. Use and Sharing of Information",
+        "p15": "In addition to some of the specific uses of information we describe in this Privacy Policy, we may use information as follows:",
+        "p16": "PERSONAL INFORMATION. We do not disclose the personally identifiable information to any third parties other than those that we use to facilitate the functioning of the site such as a hosting company and email program for mailings and third-party SDKs for the purposes of data statistics and analysis;",
+        "p17": "ANONYMOUS INFORMATION. We use anonymous information to analyze our Site traffic. In addition, we may use anonymous IP addresses to help diagnose problems with our server, to administer our site, or to display the content according to your preferences. Traffic and transaction information may also be shared with business partners and advertisers on an aggregate and anonymous basis;",
+        "p18": "USE OF COOKIES. Promotions or advertisements displayed on our site may contain cookies. We do not have access to or control over information collected by outside advertisers on our site;",
+        "p19": "USE OF THIRD-PARTY SDKs. For the purposes of data statistics and analysis, we may integrate with a third-party SDK, such as the [TalkingData] SDK, or other similar application. And we need to share the purpose, method and the scope of your relevant personal information, as shown specifically in [",
+        "p20": "The Compliance and Security Guideline of the TalkingData SDK",
+        "p21": "]. For the sake of your information security, we have signed a strict data security and non-disclosure agreement with the third-party SDK service providers. These companies will comply with our data privacy and security requirements strictly. To help you have a better understanding of the type and use of the collected data, the personal information protection methods of [TalkingData], you can log on to",
+        "p22": "for more information regarding [TalkingData] privacy policy. Meanwhile, we understand and respect your choice, if you don’t want to participate in [TalkingData] big data calculation, or receive targeted advertising based on user portraits, you can also exercise your opt-out rights through",
+        "p23": ". You understand and agree that TalkingData has the right to de-identify and aggregate the collected data, and build the database to provide the data services. If the purpose, manner, and scope of the personal information collected and used by [TalkingData] SDK changes, we will notify and remind you to read the changes in an appropriate means.",
+        "p24": "DISCLOSURE OF PERSONAL INFORMATION. We may disclose any information we have for you if required to do so by law or in the good-faith belief that such action is necessary to (1) conform to the edicts of the law or comply with legal process served on us, (2) protect and defend our rights or property or the users of the Site, or (3) act under exigent circumstances to protect the safety of the public or users of the Site;",
+        "p25": "Finally, we never use or share the personally identifiable information provided to us online in ways unrelated to the ones described above without also providing you an opportunity to opt-out or otherwise prohibit such unrelated uses.",
+        "p26": "3. Tracking and Ads",
+        "p27": "We reserve the right to partner with a third-party ad network to either display advertising on our App or to manage our advertising on other sites. Our ad network partner would use technologies to collect non-personally identifiable information about your activities on this and other Apps to provide you targeted advertising based upon your interests",
+        "p28": "4. Other Websites and Services",
+        "p29": "The security of your personal information is important to us. We follow generally accepted industry standards to protect the personal information submitted to us, both during transmission and once we receive it. No method of transmission over the Internet, or method of electronic storage, is 100% secure. Therefore, we cannot guarantee its absolute security.",
+        "p30": "5. Contact Us",
+        "p31": "If you have any questions about this Privacy Policy or the Service, please ",
+        "p32": "contact us",
+        "p33": ".",
+        "p34": "6. Changes to Our Privacy Policy",
+        "p35": "We will occasionally update this privacy statement to reflect changes in our services and customer feedback. When we post changes to this Statement, we will revise the \"Last Updated\" date at the top of this statement. So please review it periodically. We may provide you additional forms of notice of modifications or updates as appropriate under the circumstances. If you continue to use GetInsta products or services after notice of the change has been given, you will be deemed to have accepted such changes."
+      }
+    },
+    "termsOfService": {
+      "title": "End User License Agreement",
+      "lastUpdatedDate": "February 14, 2020",
+      "content": {
+        "p0": "This End User License Agreement (the \"Agreement\") sets forth the legally binding terms and conditions which are applicable to your use of any of the Applications (\"App\", \"Software\" or \"Services\") from OrangeView Ltd. d/b/a GetInsta (\"GetInsta\").",
+        "p1": "Accepting the Agreement",
+        "p2": "Please read the terms of this End User License Agreement carefully before continuing with the download and installation of the Software.",
+        "p3": "By downloading, installing, starting or in any way using this Software (including all content, materials and information therein) for Android, Windows PC, or any other platform, as applicable (the \"Software\"), you agree to be bound by the terms of this Agreement. If you do not agree to the Agreement, then do not use the Software.",
+        "p4": "You agree that installation or any use of the Software signifies that you have read, understood, and agree to be bound by the Agreement and the Terms and Conditions for Use of the Services.",
+        "p5": "Basic Rules",
+        "p6": "1. You can use the Software only for personal purposes (you may not use them for commercial purposes). You must not use the Software for any illegal or unauthorized purpose. You agree to comply with all laws, rules and regulations (for example, federal, state, local and provincial) applicable to your use of the Software and your Content (defined below), including but not limited to, copyright laws. You are solely responsible for your conduct and any data, text, files, information, usernames, images, graphics, photos, profiles, audio and video clips, sounds, musical works, works of authorship, applications, links and other content or materials (collectively, \"Content\") that you submit, post, or display on or via the Software.",
+        "p7": "2. You must not interfere or disrupt the service or servers or networks connected to the Software, including by transmitting any worms, viruses, spyware, malware or any other code of a destructive or disruptive nature, or access GetInsta's private API by any means other than in compliance with rules we set on API access.",
+        "p8": "3. You must not spam or submit any unwanted email or comments to any users of the Software, or use web URLs in your username without prior written consent from GetInsta.",
+        "p9": "4. You are not allowed to resell or charge others for use of or access to the Software, or duplicate, reproduce, transfer, give access to, copy or distribute any part of the Software in any medium without GetInsta's prior written authorization.",
+        "p10": "5. Violation of the Agreement may, in GetInsta's sole discretion, result in a ban of GetInsta usage. You understand and agree that GetInsta cannot and will not be responsible for the Content stylize on the Software and you use the Software at your own risk. If you violate the letter or spirit of these Terms of Use, or otherwise create risk or possible legal exposure for GetInsta, we can stop providing all or part of the Services to you.",
+        "p11": "General Terms",
+        "p12": "1. We only provide the services as stated. In other words, we do not guarantee that your new followers will interact with your account unless stated explicitly.",
+        "p13": "2. We do not work with accounts that endorse illegal activities or pornography. We reserve the right to deny our services to customers if their account falls into either category.",
+        "p14": "3. We cannot guarantee that every new follower will follow your account indefinitely.",
+        "p15": "4. To fulfill all services we require information such as usernames for your social media accounts, emails, names and links.",
+        "p16": "5. You understand and agree that you shall only use the Software as described herein. And you also understand that there is a possibility that your social media account may be disabled or blocked due to their laws.",
+        "p17": "Advertising",
+        "p18": "Some of the GetInsta Services are supported by advertising revenue and may display advertisements and promotions. You agree that GetInsta may place advertising and promotions on, about, or in conjunction with your Content. The manner, mode, and extent of such advertising and promotions are subject to change without notice to you. You acknowledge that we may not always identify paid services, sponsored content, or commercial communications as such.",
+        "p19": "Privacy",
+        "p20": "GetInsta may collect and use information concerning your use of GetInsta Apps as set forth in its",
+        "p21": "Privacy Policy",
+        "p22": ".",
+        "p23": "We will not rent, reveal or sell all your information to third parties outside GetInsta (or the group of companies of which GetInsta is a part) and its controlled subsidiaries and affiliates without your consent.",
+        "p24": "Disclaimer of Warranties",
+        "p25": "THE SERVICE, INCLUDING, WITHOUT LIMITATION, GETINSTA CONTENT, IS PROVIDED ON AN \"AS IS\", \"AS AVAILABLE\" AND \"WITH ALL FAULTS\" BASIS. TO THE FULLEST EXTENT PERMISSIBLE BY LAW, NEITHER GETINSTA NOR ITS PARENT COMPANY NOR ANY OF THEIR EMPLOYEES, MANAGERS, OFFICERS OR AGENTS (COLLECTIVELY, THE GETINSTA PARTIES\") MAKE ANY REPRESENTATIONS OR WARRANTIES OR ENDORSEMENTS OF ANY KIND WHATSOEVER, EXPRESS OR IMPLIED, AS TO: (A) THE SERVICE; (B) THE GETINSTA CONTENT; (C) USER CONTENT; OR (D) SECURITY ASSOCIATED WITH THE TRANSMISSION OF INFORMATION TO GETINSTA OR VIA THE SERVICE. IN ADDITION, THE GETINSTA PARTIES HEREBY DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, TITLE, CUSTOM, TRADE, QUIET ENJOYMENT, SYSTEM INTEGRATION AND FREEDOM FROM COMPUTER VIRUS.",
+        "p26": "THE GETINSTA PARTIES DO NOT REPRESENT OR WARRANT THAT THE SERVICE WILL BE ERROR-FREE OR UNINTERRUPTED; THAT DEFECTS WILL BE CORRECTED; OR THAT THE SERVICE OR THE SERVER THAT MAKES THE SERVICE AVAILABLE IS FREE FROM ANY HARMFUL COMPONENTS, INCLUDING, WITHOUT LIMITATION, VIRUSES. THE GETINSTA PARTIES DO NOT MAKE ANY REPRESENTATIONS OR WARRANTIES THAT THE INFORMATION (INCLUDING ANY INSTRUCTIONS) ON THE SERVICE IS ACCURATE, COMPLETE, OR USEFUL. YOU ACKNOWLEDGE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE GETINSTA PARTIES DO NOT WARRANT THAT YOUR USE OF THE SERVICE IS LAWFUL IN ANY PARTICULAR JURISDICTION, AND THE GETINSTA PARTIES SPECIFICALLY DISCLAIM SUCH WARRANTIES. SOME JURISDICTIONS LIMIT OR DO NOT ALLOW THE DISCLAIMER OF IMPLIED OR OTHER WARRANTIES SO THE ABOVE DISCLAIMER MAY NOT APPLY TO YOU TO THE EXTENT SUCH JURISDICTION'S LAW IS APPLICABLE TO YOU AND THESE TERMS OF USE.",
+        "p27": "BY ACCESSING OR USING THE SERVICE YOU REPRESENT AND WARRANT THAT YOUR ACTIVITIES ARE LAWFUL IN EVERY JURISDICTION WHERE YOU ACCESS OR USE THE SERVICE.",
+        "p28": "THE GETINSTA PARTIES DO NOT ENDORSE CONTENT AND SPECIFICALLY DISCLAIM ANY RESPONSIBILITY OR LIABILITY TO ANY PERSON OR ENTITY FOR ANY LOSS, DAMAGE (WHETHER ACTUAL, CONSEQUENTIAL, PUNITIVE OR OTHERWISE), INJURY, CLAIM, LIABILITY OR OTHER CAUSE OF ANY KIND OR CHARACTER BASED UPON OR RESULTING FROM ANY CONTENT.",
+        "p29": "Links to Third Party websites",
+        "p30": "Certain links contained in the Software and the official website that refer to other websites of third parties are not in control of GetInsta. We do not make any representations or warranties of any kind, express or implied, as to the operation included in other websites. The names of actual companies and products in this website may be the trademarks of their respective owners.",
+        "p31": "Limitation of Liability",
+        "p32": "YOU EXPRESSLY UNDERSTAND AND AGREE THAT GETINSTA SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, OR DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES (EVEN IF GETINSTA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES). IN NO EVENT WILL GETINSTA'S TOTAL LIABILITY TO YOU EXCEED THE AMOUNT OF ACTUAL PRICE PAID BY YOU TO GETINSTA FOR THE SOFTWARE. THESE LIMITATIONS AND EXCLUSIONS WILL APPLY NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.",
+        "p33": "Governing Law",
+        "p34": "If the Software is downloaded by or on behalf of the United States of America, its agencies and/or instrumentalities (\"U.S. Government\"), it is provided with Restricted Rights. Use, duplication, or disclosure of the Product by the U.S. Government is subject to restrictions as set forth in the Rights in Technical Data and Computer Software clause of DFARS and any other related applicable U.S. statutes or regulations.",
+        "p35": "Modification or Termination",
+        "p36": "The terms of this Agreement may be updated at any time by GETINSTA, with or without prior notice, including but not limited to changing the functionality or appearance of the Software, or changing the license scope, other terms of the Agreement, or GetInsta Services. If there are changes to the Agreement, GetInsta will publish the modified content on its website (https://www.easygetinsta.com/terms). Once the revised version of the Agreement is published on the web, it is immediately effective and replaces the original. If you do not agree with the Agreement or any subsequent amendments, you may choose terminating your use of the Software or Services; if you choose to continue using the Software or Services, it is assumed that you fully accepted the terms and its amendments.",
+        "p37": "Reporting Violations",
+        "p38": "If you become aware of any misuse of the GetInsta services or any violation of the Terms, Privacy Policy, or Additional Terms, please",
+        "p39": "contact us",
+        "p40": "to report such misuse and/or violation.",
+        "p41": "Contact Us",
+        "p42": "Should you have any questions concerning this notice, or if you desire to contact us for any reason, please",
+        "p43": "contact us",
+        "p44": "."
+      }
+    }
+  },
+  "account": {
+    "form": {
+      "emailAddress": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm your password",
+      "username": "Username"
+    },
+    "link": {
+      "ForgotPassword": "Forgot Password?",
+      "SignUp": "Sign Up",
+      "LogIn": "Log In"
+    },
+    "errorText": {
+      "badAccount": "Couldn't find your account.",
+      "badPassword": "Wrong password. <br> Try again or click 'Forgot Password?' to reset it.",
+      "accountLocked": "This account has been locked.",
+      "failed": "Operating failed, please try again later",
+      "accountOccupied": "An account with these credentials already exists.",
+      "badAccountRegister": "Account error, please try another email.",
+      "resetKeyError": "Key Error! <br> Please check the password reset email.",
+      "badKey": "Sorry. Reset failed. Please go to the Forgot Password page to request another reset."
+    },
+    "successText": {
+      "registerSuccess": "Account registered successfully! <br> Download app to get started.",
+      "forgotSuccess": "Please check your inbox.",
+      "resetSuccess": "Password set successfully!"
+    },
+    "login": {
+      "meta": {
+        "title": " - Login to Get Followers and Likes Now"
+      },
+      "title": "My Account",
+      "subTitle": "Log in to manage your coins and get more followers & likes."
+    },
+    "register": {
+      "meta": {
+        "title": " - Sign Up to Get Followers and Likes Instantly"
+      },
+      "title": "Sign Up",
+      "subTitle": "Your free followers & likes are on the way. Just sign up to get it instantly.",
+      "btnSignUpNow": "Sign Up Now",
+      "link": {
+        "agree": "By signing up, you agree to our",
+        "PrivacyPolicy": "Privacy Policy",
+        "alreadyHave": "Already have an account?",
+        "LogIn": "Log In"
+      }
+    },
+    "forgot": {
+      "meta": {
+        "title": " – Reset Your Password"
+      },
+      "title": "Forgot Password?",
+      "subTitle": "Please enter your email address to reset your password.",
+      "btnSendEmail": "Send Email"
+    },
+    "reset": {
+      "meta": {
+        "title": " - Login to Get Followers and Likes Now"
+      },
+      "subTitle": "Please enter and confirm your new password below.",
+      "btnResetPassword": "Reset Password",
+      "btnLoginAccount": "Login Account"
+    }
+  },
+  "userCenter": {
+    "meta": {
+      "title-0": " - User Management",
+      "title-1": " - Follower Task Publish",
+      "title-2": " - Like Task Publish",
+      "description-0": "Buy real Instagram followers from GetInsta for as little as $3.95. Instant delivery, real followers, and 24/7 customer support. Boost your Instagram now.",
+      "description-1": "Buy massive Instagram likes from real active IG followers at GetInsta online store with the least price of $2.59. Gain real likes instantly.",
+      "description-2": "Buy massive Instagram likes from real active IG followers at GetInsta online store with the least price of $2.59. Gain real likes instantly."
+    },
+    "dialog": {
+      "PreparingInstagramData": "Preparing Instagram data...",
+      "EnterUsername": "Please enter your Instagram username",
+      "Add": "Add",
+      "DeleteAccount": "Delete This Account?"
+    },
+    "error": {
+      "OfferListEmpty": "Offer list empty.",
+      "noInsAccount": "No Instagram accounts added yet.",
+      "badInsAccount": "This Instagram account has been bound with another GetInsta account or yours.",
+      "accountHasBeenDeleted": "This Instagram account has been deleted, please refresh this page.",
+      "addAccountFirst": "Please add an Instagram account FIRST."
+    },
+    "msg": {
+      "accountAddedSuccess": "Instagram account has been added.",
+      "conFirmRemoveAccount": "Are you sure to remove this Instagram account? The account will be removed in 24 hours to ensure its security.",
+      "accountRemoved0": "The account will be removed in",
+      "accountRemoved1": "hours, please wait patiently."
+    },
+    "accountZone": {
+      "btnChangeAccount": "Change Account",
+      "btnAdd": "add",
+      "noAccountTitle": "Add Instagram ID"
+    },
+    "tabs": {
+      "profile": {
+        "tabTitle": "Profile",
+        "briefZone": {
+          "hi": "Hi",
+          "text": "Feel free to get your Instagram followers & likes now!",
+          "btn": "Get Followers & Likes Now"
+        },
+        "accountZone": {
+          "title": "Your Instagram ID",
+          "tip": "At most 5 accounts",
+          "unbindBtn": "Unbind this Instagram ID"
+        },
+        "myTaskZone": {
+          "title": "My Task",
+          "taskListText": "Task",
+          "taskListEmptyText": "You have no tasks yet. Go to publish a task now."
+        }
+      }
+    }
+  },
+  "get": {
+    "meta": {
+      "title": "Get Instagram Followers/Likes Instantly: FREE, Safe, Fast",
+      "description": "How to grow free Instagram followers and gain free Instagram likes fast & free? GetInsta app helps get real followers and likes for free instantly."
+    },
+    "banner": {
+      "title": "Get Real & Free Instagram Followers & Likes",
+      "btn0": "Get Free Followers"
+    },
+    "add": {
+      "title": "Add Instagram Account",
+      "subTitle": "Enter your Instagram username to get free Instagram followers & likes. No password needed.",
+      "search": {
+        "placeholder": "Your Instagram username",
+        "searchBtn": "Next",
+        "tabs": {
+          "tab-0": "50 Free Followers",
+          "tab-1": "50 Free Likes"
+        },
+        "error": {
+          "noUsername": "Please enter username."
+        }
+      },
+      "bottomBtn": "Free Get Now"
+    },
+    "why": {
+      "title": "Why Should You Get Followers & Likes",
+      "list": {
+        "data0": {
+          "title": "Why would you get Instagram followers or likes?",
+          "text": "Over 500 million individuals use Instagram daily, and the numbers are continuously growing! Growing Instagram followers and gaining free Instagram likes are matters for Instagram promotion. GetInsta app helps get the real followers and likes that totally free of charge."
+        },
+        "data1": {
+          "title": "How about the quality of the followers & likes?",
+          "text0": "All the Instagram followers you get from our community are 100% real and active. No fake. No bot. This",
+          "text1": "best Instagram likes app",
+          "text2": "also sends you quality likes. You can trust us in this regard since the real & quality Instagram followers & likes differentiates us from others."
+        },
+        "data2": {
+          "title": "What about my privacy?",
+          "text": "We value and protect your privacy. We do not ask, nor do we need, any of your personal data. No password. No pre-survey. Information like your username you give at the time of signing up will never be shared."
+        },
+        "data3": {
+          "title": "Why choose GetInsta?",
+          "text": "GetInsta provides the utmost secure working system to help you get high-quality Instagram followers and likes, ensuring real users and bring you organic growth. More than anything, it's totally free and unlimited free."
+        },
+        "data4": {
+          "title": "How long does it take?",
+          "text0": "You’ll start to",
+          "text1": "get free Instagram followers likes instantly",
+          "text2": "after publishing a task, and all of them will be delivered in a reasonable time. You can check progress from the task list in the user center. The specific time of each order is depending. Bigger plan, more time."
+        },
+        "data5": {
+          "title": "Will my account be banned?",
+          "text": "Absolutely won't! We dedicated to providing you the organic promotion of Instagram in the utmost safest way that does not break any rules of Instagram. So, don’t worry, your account won’t be banned by Instagram."
+        }
+      }
+    },
+    "how": {
+      "title": "Get Real & Free Instagram Followers and Likes Now",
+      "subTitle": "Click to get free Instagram followers and likes instantly.",
+      "btn": "Get Free Followers & Likes Now"
+    }
+  },
+  "welcome": {
+    "meta": {
+      "title": " – Download App"
+    },
+    "title": {
+      "text0": "Download GetInsta to",
+      "text1": "Free Get Real Followers & Likes",
+      "text2": "Immediately"
+    },
+    "tips": {
+      "list0": {
+        "title": "How to Get Free Followers & Likes with GetInsta?",
+        "content0": {
+          "text0": "Step 1",
+          "text1": "Download and log into GetInsta, you'll get",
+          "text2": "free followers",
+          "text3": "instantly."
+        },
+        "content1": {
+          "text0": "Step 2",
+          "text1": "Earn coins by liking or following others."
+        },
+        "content2": {
+          "text0": "Step 3",
+          "text1": "Use the coins to get unlimited free followers and likes."
+        }
+      },
+      "list1": {
+        "title": "What is the Coin in GetInsta",
+        "content0": {
+          "text0": "Coin is the virtual currency to buy Instagram followers or likes in GetInsta. It is easy to free get coins in the following three ways:"
+        },
+        "content1": {
+          "text0": "Option 1",
+          "text1": "Download and log into GetInsta, you’ll get hundreds of coins immediately."
+        },
+        "content2": {
+          "text0": "Option 2",
+          "text1": "Get more coins by liking and following other Instagramers."
+        },
+        "content3": {
+          "text0": "Option 3",
+          "text1": "Share and invite friends to sign up in GetInsta."
+        }
+      }
+    },
+    "download": {
+      "title": "Download GetInsta to Free Get Followers/Likes Instantly!",
+      "subTitle": "Download GetInsta and earn more coins to free get 100% real Instagram followers and likes now."
+    }
+  }
+}

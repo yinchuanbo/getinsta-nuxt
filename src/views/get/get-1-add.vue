@@ -211,7 +211,7 @@ export default {
       if (this.searchInsLoading) return;
 
       this.searchInsLoading = true;
-      this.axios.post(
+      this.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
@@ -280,7 +280,7 @@ export default {
       if (this.searchInsLoading) return;
 
       this.searchInsLoading = true;
-      this.axios.get(
+      this.$axios.get(
         `https://www.instagram.com/${this.searchInsInput}/`
       ).then((response) => {
         this.searchInsLoading = false;
@@ -343,7 +343,7 @@ export default {
       }
       if (!this.searchInsLoading) {
         this.searchInsLoading = true;
-        this.axios.post(
+        this.$axios.post(
           api.getInsInfo,
           this.COMMON.paramSign(
             {
@@ -432,7 +432,7 @@ export default {
     postListNextRequest(param) {
       if (!this.postListLoading) {
         this.postListLoading = true;
-        this.axios.post(
+        this.$axios.post(
           api.getInsPost,
           this.COMMON.paramSign(param)
         ).then((response) => {
@@ -469,7 +469,7 @@ export default {
 
         const paramTrans = JSON.stringify(param);
 
-        this.axios.get(
+        this.$axios.get(
           `${apiIns.insPostList}${paramTrans}`
         ).then((response) => {
           this.postListLoading = false;

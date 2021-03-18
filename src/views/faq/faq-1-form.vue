@@ -205,7 +205,7 @@ export default {
       // console.log('image[2]', formData.getAll('image[2]'));
 
       this.ajaxRequesting = true;
-      let instance = this.axios.create({
+      let instance = this.$axios.create({
         withCredentials: true
       });
       instance.post(

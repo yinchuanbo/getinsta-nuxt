@@ -589,7 +589,7 @@ export default {
 
       this.productPkgListLoading = true;
 
-      this.axios.post(
+      this.$axios.post(
         `${apiAccount.appConfig}?origin=web`,
         this.COMMON.paramSign({
           client_lan: this.$i18n.locale,
@@ -691,7 +691,7 @@ export default {
       if (this.searchInsLoading) return;
 
       this.searchInsLoading = true;
-      this.axios.post(
+      this.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
@@ -753,7 +753,7 @@ export default {
       }
       if (!this.searchInsLoading) {
         this.searchInsLoading = true;
-        this.axios.post(
+        this.$axios.post(
           apiAccount.getInsInfo,
           this.COMMON.paramSign(
             {
@@ -834,7 +834,7 @@ export default {
      postListNextRequest(param) {
       if (!this.postListLoading) {
         this.postListLoading = true;
-        this.axios.post(
+        this.$axios.post(
           api.getInsPost,
           this.COMMON.paramSign(param)
         ).then((response) => {
@@ -871,7 +871,7 @@ export default {
 
         const paramTrans = JSON.stringify(param);
 
-        this.axios.get(
+        this.$axios.get(
           `${apiIns.insPostList}${paramTrans}`
         ).then((response) => {
           this.postListLoading = false;
@@ -1104,7 +1104,7 @@ export default {
       // 1 跳转 Stripe
       // 2 跳转 HotAntPay
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$axios.post(
         apiPayment.getCheckoutMethod,
         this.COMMON.paramSign({
           client_lan: this.$i18n.locale
@@ -1191,7 +1191,7 @@ export default {
       // if (!this.ajaxRequesting) {
       //   this.ajaxRequesting = true;
       //   console.log(param);
-      this.axios.post(
+      this.$axios.post(
         apiTask.shopifyPay,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -1264,7 +1264,7 @@ export default {
       if (c !== null) paramCheckout.ads = { c: c };
       if (k !== null) paramCheckout.ads = { k: k };
 
-      this.axios.post(
+      this.$axios.post(
         apiTask.checkoutAndroid,
         this.COMMON.paramSign(paramCheckout)
       ).then((response) => {

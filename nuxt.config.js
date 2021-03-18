@@ -22,14 +22,14 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    { src: './assets/styles/reset.scss', lang: 'scss' },
-    { src: './assets/styles/fonts.scss', lang: 'scss' },
-    { src: './assets/styles/global.scss', lang: 'scss' }
+    { src: '@/assets/styles/reset.scss', lang: 'scss' },
+    { src: '@/assets/styles/fonts.scss', lang: 'scss' },
+    { src: '@/assets/styles/global.scss', lang: 'scss' }
   ],
 
   styleResources: {
     scss: [
-      './assets/styles/mixin.scss'
+      '@/assets/styles/mixin.scss'
     ]
   },
 
@@ -46,7 +46,8 @@ export default {
     { src: '@/plugins/utils.js', mode: 'client' },
     { src: '@/plugins/model-box.js', mode: 'client' },
     { src: '@/plugins/vee-validate.js', mode: 'client' },
-    { src: '@/plugins/click-outside.js', mode: 'client' }
+    { src: '@/plugins/click-outside.js', mode: 'client' },
+    { src: '@/plugins/constant.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -60,14 +61,30 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
     '@nuxt/content',
     '@nuxtjs/style-resources',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-analytics',
+    'nuxt-i18n',
+    '@nuxtjs/pwa', // https://go.nuxtjs.dev/pwa
+    // @nuxtjs/axios组件是nuxt-18n中lazy功能的基础，需要放在nuxt-i18n后面
+    '@nuxtjs/axios' // https://go.nuxtjs.dev/axios
   ],
+
+  i18n: {
+    langDir: '@/locales/', // 必要，locales中的file路径生效依赖此字段
+    lazy: true, // 必要，locales中的file路径生效依赖此字段
+    locales: [
+      { code: 'en', iso: 'en', file: 'en.json', dir: 'ltr' }
+    ],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en'
+    }
+  },
+
+  googleAnalytics: {
+    id: 'UA-154640458-1'
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -89,15 +106,13 @@ export default {
   axios: {
     proxy: true,
     prefix: process.env.NODE_ENV === 'production' ? '' : '/dev',
-    credentials: true // 表示跨域请求时是否需要使用凭证
+    credentials: false // 表示跨域请求时是否需要使用凭证
   },
 
   // Proxy Config
   proxy: {
     '/dev': {
       target: 'https://test.easygetinsta.com',
-      // changeOrigin: true,
-      // ws: true,
       pathRewrite: {
         '^/dev': '',
         changeOrigin: true

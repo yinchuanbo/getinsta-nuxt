@@ -105,7 +105,7 @@ export default {
     getPkgList() {
       if (this.productPkgListLoading) return;
       this.productPkgListLoading = true;
-      this.axios.post(
+      this.$axios.post(
         `${apiAccount.appConfig}?origin=web`,
         this.COMMON.paramSign({
           client_lan: this.$i18n.locale,
@@ -192,7 +192,7 @@ export default {
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
-      this.axios.post(
+      this.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {

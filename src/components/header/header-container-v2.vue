@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted() {
-    this.timer = setTimeout(this.headerFooterMotion, 500);
+    this.headerFooterMotion()
     window.addEventListener('scroll', this.COMMON.throttle(this.handleScroll, 60, 100));
   },
   destroyed() {

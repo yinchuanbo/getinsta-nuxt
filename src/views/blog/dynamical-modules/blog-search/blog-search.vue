@@ -150,7 +150,7 @@ export default {
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
-      this.axios.post(
+      this.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
