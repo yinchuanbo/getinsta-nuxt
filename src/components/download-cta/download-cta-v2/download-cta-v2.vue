@@ -45,7 +45,7 @@ export default {
       gaBottomBtnDownloadLabel: '',
       gaBottomBtnDownloadLabelV2: '',
       text: '',
-      path: this.$route.path
+      path: this.$nuxt.$route.path
     };
   },
   computed: {
@@ -64,14 +64,14 @@ export default {
   },
   methods: {
     gaDownload() {
-      // console.log(this.$route.path);
-      this.gaBottomBtnDownloadLabelInit(this.$route.path);
+      // console.log(this.$nuxt.$route.path);
+      this.gaBottomBtnDownloadLabelInit(this.$nuxt.$route.path);
       this.gaBottomBtnDownloadLabelV2Init();
 
 
       let single = '';
-      if (this.$route.path === '/event-user-generated-contest') single = '-ugc';
-      if (this.$route.path === '/instagram-name-generator') single = '-iug';
+      if (this.$nuxt.$route.path === '/event-user-generated-contest') single = '-ugc';
+      if (this.$nuxt.$route.path === '/instagram-name-generator') single = '-iug';
 
       this.$ga.event(
         'insdl',
@@ -85,10 +85,10 @@ export default {
       // );
 
       let ct = this.$store.state.enIosLinkCt;
-      if (this.$route.path === '/event-user-generated-contest') ct += '-ugc';
+      if (this.$nuxt.$route.path === '/event-user-generated-contest') ct += '-ugc';
 
       let gp3d = this.$store.state.enAdrLinkGpReferrer;
-      if (this.$route.path === '/event-user-generated-contest') gp3d += '-ugc';
+      if (this.$nuxt.$route.path === '/event-user-generated-contest') gp3d += '-ugc';
 
       if (this.$store.state.isiOS)
         location.href
@@ -174,7 +174,7 @@ export default {
     },
 
     jumpTo(path) {
-      if (this.$route.path !== path) this.$router.push(path);
+      if (this.$nuxt.$route.path !== path) this.$nuxt.$router.push(path);
 
       // GA
       let gaPageLabel = '';

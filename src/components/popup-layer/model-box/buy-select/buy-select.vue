@@ -16,8 +16,8 @@
             <span v-if="!followers.dailyQuantity">{{ followers.purchase_quantity }} Followers</span>
             <span v-if="followers.dailyQuantity">{{ followers.dailyQuantity }} Daily Followers</span>
             &nbsp;<span>${{
-                (followers.price_decimal / followers.cycle_type).toFixed(2)
-              }}</span>
+              (followers.price_decimal / followers.cycle_type).toFixed(2)
+            }}</span>
           </h1>
           <h2 v-if="followers.dailyQuantity">
             {{ followers.cycle_type }}-Day Subscription
@@ -60,29 +60,29 @@
             <p style="display:none">
               <span>
                 <b>{{ myinsuser.post.post_count | numberAbbreviations }}</b>
-                {{ $t("global.instagramConcept.posts") }}
+                {{ $t('global.instagramConcept.posts') }}
               </span>
               <span>
                 <b>{{ myinsuser.followed_by | numberAbbreviations }}</b>
-                {{ $t("global.instagramConcept.followers") }}
+                {{ $t('global.instagramConcept.followers') }}
               </span>
               <span>
                 <b>{{ myinsuser.follow | numberAbbreviations }}</b>
-                {{ $t("global.instagramConcept.following") }}
+                {{ $t('global.instagramConcept.following') }}
               </span>
             </p>
             <p class="compact-p">
               <span>
                 <b>{{ myinsuser.post.post_count | numberAbbreviations }}</b>
-                <i>{{ $t("global.instagramConcept.posts") }}</i>
+                <i>{{ $t('global.instagramConcept.posts') }}</i>
               </span>
               <span>
                 <b>{{ myinsuser.follow | numberAbbreviations }}</b>
-                <i>{{ $t("global.instagramConcept.following") }}</i>
+                <i>{{ $t('global.instagramConcept.following') }}</i>
               </span>
               <span>
                 <b>{{ myinsuser.followed_by | numberAbbreviations }}</b>
-                <i>{{ $t("global.instagramConcept.followers") }}</i>
+                <i>{{ $t('global.instagramConcept.followers') }}</i>
               </span>
             </p>
           </div>
@@ -102,35 +102,35 @@
 
 <script>
 // import apiInsServer from "@/api/api.ins.server";
-import ButtonYellowIcon from "~/components/button/button-yellow-icon";
+import ButtonYellowIcon from '~/components/button/button-yellow-icon';
 
 export default {
-  name: "BuySelect",
+  name: 'BuySelect',
   components: {
     ButtonYellowIcon
   },
   filters: {
     numToFixed(num) {
-      if (typeof num === "number") return num.toFixed(2);
+      if (typeof num === 'number') return num.toFixed(2);
       else return parseFloat(num).toFixed(2);
     },
     numberAbbreviations(num) {
       let numFormatted = 0;
 
       if (Math.pow(10, 12) <= num && num < Math.pow(10, 15)) {
-        numFormatted = (num / Math.pow(10, 12)).toFixed(1) + "T";
+        numFormatted = (num / Math.pow(10, 12)).toFixed(1) + 'T';
         return numFormatted;
       }
       if (Math.pow(10, 9) <= num && num < Math.pow(10, 12)) {
-        numFormatted = (num / Math.pow(10, 9)).toFixed(1) + "B";
+        numFormatted = (num / Math.pow(10, 9)).toFixed(1) + 'B';
         return numFormatted;
       }
       if (Math.pow(10, 6) <= num && num < Math.pow(10, 9)) {
-        numFormatted = (num / Math.pow(10, 6)).toFixed(1) + "M";
+        numFormatted = (num / Math.pow(10, 6)).toFixed(1) + 'M';
         return numFormatted;
       }
       if (Math.pow(10, 3) <= num && num < Math.pow(10, 6)) {
-        numFormatted = (num / Math.pow(10, 3)).toFixed(1) + "K";
+        numFormatted = (num / Math.pow(10, 3)).toFixed(1) + 'K';
         return numFormatted;
       }
       if (num < Math.pow(10, 3)) {
@@ -171,25 +171,25 @@ export default {
   data() {
     return {
       searchInsLoading: false,
-      searchInsInput: "",
+      searchInsInput: '',
       tipsmsg:
-        "L’identifiant Instagram n’existe pas ou la demande de données Instagram échouée. Réessayez plus tard.",
+        'L’identifiant Instagram n’existe pas ou la demande de données Instagram échouée. Réessayez plus tard.',
       tipsShow: false,
-      modelBoxBuyBtnText: "Buy Now",
+      modelBoxBuyBtnText: 'Buy Now',
       productPkgListDailyVM: []
     };
   },
   methods: {
     modelBoxPrevStep() {
-      this.modelBoxBuyBtnText = "Buy Now";
+      this.modelBoxBuyBtnText = 'Buy Now';
       this.insUser = {};
-      if (this.searchInsInput === "") {
+      if (this.searchInsInput === '') {
         this.tipsShow = false;
       }
     },
     modelBoxClose() {
       this.tipsShow = false;
-      this.$emit("closebox", false);
+      this.$emit('closebox', false);
     },
     btnActionSearchAndBuy() {
       if (!this.myinsuser.ins_id) {
@@ -200,11 +200,11 @@ export default {
     },
     addToCart() {
       if (this.isrouter) {
-        this.$ga.event("insbuy", "buy", `daily-buy-f`);
+        this.$ga.event('insbuy', 'buy', `daily-buy-f`);
       } else {
         this.$ga.event(
-          "insbuy",
-          "buy",
+          'insbuy',
+          'buy',
           `dailyfbuy-${this.followers.newmsg.blogID}`
         );
       }
@@ -219,7 +219,7 @@ export default {
       param.purchase_quantity = this.followers.purchase_quantity;
       param.price_decimal = this.followers.price_decimal;
 
-      param.gives = this.followers["gives"];
+      param.gives = this.followers['gives'];
       param.follow_pic_url = this.myinsuser.profile_pic_url;
       param.post_count = this.myinsuser.post.post_count;
       param.follower_count = this.myinsuser.followed_by;
@@ -236,7 +236,7 @@ export default {
       // adStore.k = this.$route.query.k || "";
       // this.$storage.set("adStore", adStore);
 
-      // console.log(this.$route.path);
+      // console.log(this.$nuxt.$route.path);
 
       // console.log(1, param);
       // this.initGeoIPWhiteList(param);
@@ -244,21 +244,21 @@ export default {
     },
     transportCartUnitData(param) {
       // console.log(111, this);
-      this.$storage.set("cartUnit", param);
+      this.$storage.set('cartUnit', param);
 
       const query = this.COMMON.envTest()
         ? {
-            env_test: "1"
-          }
+          env_test: '1'
+        }
         : {};
       if (this.followers.newmsg) {
-        this.followers.newmsg.$router.push({
-          path: "/checkout",
+        this.$nuxt.$router.push({
+          path: '/checkout',
           query: query
         });
       } else {
-        this.$router.push({
-          path: "/checkout",
+        this.$nuxt.$router.push({
+          path: '/checkout',
           query: query
         });
       }
@@ -284,8 +284,7 @@ export default {
       display: inline-block;
       width: 20px;
       height: 20px;
-      background: url("@/assets/images/user-center/user-center__icon_giftbox.svg")
-        no-repeat center;
+      background: url("~@/assets/images/user-center/user-center__icon_giftbox.svg") no-repeat center;
       background-size: contain;
       vertical-align: middle;
     }
@@ -330,8 +329,7 @@ export default {
 .home-followers {
   position: relative;
   text-align: center;
-  background: linear-gradient(180deg, #eeeeff 0%, #ffffff 100%) top center
-    no-repeat;
+  background: linear-gradient(180deg, #eeeeff 0%, #ffffff 100%) top center no-repeat;
   background-size: 100% 40%;
 
   &:before {
@@ -341,8 +339,7 @@ export default {
     width: 1343px;
     height: 355px;
     content: "";
-    background: url("@/assets/images/home/home-2-follower/follower-bg.svg")
-      no-repeat top right;
+    background: url("@/assets/images/home/home-2-follower/follower-bg.svg") no-repeat top right;
     background-size: contain;
   }
 

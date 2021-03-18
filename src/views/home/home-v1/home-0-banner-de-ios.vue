@@ -154,8 +154,8 @@ export default {
       this.textBegin = true;
     }, 100);
 
-    this.pageSeoBuy = this.$route.path === '/event-followers' || this.$route.path === '/event-likes';
-    this.pageSeoIOS = this.$route.path === '/event-ios';
+    this.pageSeoBuy = this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes';
+    this.pageSeoIOS = this.$nuxt.$route.path === '/event-ios';
 
     this.buyNowBtnHide = (this.COMMON.getURLQuery('source') === 'google' && this.COMMON.isiOS()) || this.pageSeoIOS;
     this.appDwnBtnHide = this.pageSeoBuy || (this.$i18n.locale === 'de' && this.COMMON.isAndroid());
@@ -174,7 +174,7 @@ export default {
       }
     },
     ga0() {
-      if (this.$route.path === '/event-ios') {
+      if (this.$nuxt.$route.path === '/event-ios') {
         this.$ga.event('inslogin', 'login', 'hplogin1-ad');
         window.location.href = this.$constant.app.download.ios1;
       }
@@ -185,20 +185,20 @@ export default {
       if (this.COMMON.getURLQuery('utm_source') === 'IOT-PC') {
         query = { utm_source: 'IOT-PC' };
       }
-      this.$router.push({ path: '/login', query: query });
+      this.$nuxt.$router.push({ path: '/login', query: query });
     },
     ga00() {
       this.$scrollTo('#home-2-free', { offset: -1 * this.COMMON.headerHeight() });
       this.$ga.event('insdl', 'download', 'hpbanner-fr');
     },
     ga01() {
-      if (this.$route.path === '/event-followers' || this.$route.path === '/event-likes') {
+      if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
         this.$ga.event('insbuy', 'buy', `hpbuy1-ad`);
         this.$scrollTo(`#store-shelf-1-buy`, { offset: 0 });
       } else {
         if (this.$i18n.locale === 'en') {
           this.$ga.event('insbuy', 'buy', `hpbuy1`);
-          this.$router.push({ path: '/buy-instagram-followers' });
+          this.$nuxt.$router.push({ path: '/buy-instagram-followers' });
         } else {
           let client = '';
           let clientLong = 'PC';
@@ -212,7 +212,7 @@ export default {
           }
 
           this.$ga.event('insbuy', 'buy', `hpbanner${client}-${this.$i18n.locale}`);
-          this.$router.push({
+          this.$nuxt.$router.push({
             path: '/buy-instagram-followers',
             query: {
               utm_source: clientLong,
@@ -231,7 +231,7 @@ export default {
     },
     downloadApp() {
       if (this.COMMON.isiOS()) {
-        if (this.$route.path === '/event-ios') {
+        if (this.$nuxt.$route.path === '/event-ios') {
           this.$ga.event('insdl', 'download', 'hpiosdlm1-ad');
           window.location.href = this.$constant.app.download.ios1;
         } else {

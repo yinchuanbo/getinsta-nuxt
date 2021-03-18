@@ -6,17 +6,16 @@ import error from '@/views/error-page/404';
 
 export default {
   components: { error },
-  props: ['error'],
-  async asyncData({ req }) {
-    if (process.server) {
-      return {
-        hostName: req.headers.host
-      };
-    } else {
-      return {
-        hostName: location.hostname
-      };
+  props: {
+    error: {
+      type: Object,
+      default: null
     }
+  },
+  async asyncData({ req }) {
+    return {
+      hostname: process.server ? req.headers.host : location.hostname
+    };
   },
   head() {
     return {
@@ -25,14 +24,14 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'Page not found - iTop VPN 404 Page'
+          content: 'Page not found - GetInsta 404 Page'
         }
       ],
       link: [
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://${this.hostName}${this.$nuxt.$route.path}`
+          href: `https://${this.hostname}${this.$nuxt.$route.path}`
         }
       ]
     };

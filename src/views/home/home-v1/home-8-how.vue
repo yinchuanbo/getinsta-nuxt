@@ -32,7 +32,7 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.handle);
 
-    this.pageIOS = this.$route.path === '/event-ios';
+    this.pageIOS = this.$nuxt.$route.path === '/event-ios';
   },
   destroyed() {
     window.removeEventListener('scroll', this.handle);
@@ -47,7 +47,7 @@ export default {
     },
     faqJump() {
       this.$ga.event('buttonclick', 'click', 'hpiosfaq-de');
-      this.$router.push({
+      this.$nuxt.$router.push({
         path: '/faqs',
         query: {
           utm_source: 'IOS',

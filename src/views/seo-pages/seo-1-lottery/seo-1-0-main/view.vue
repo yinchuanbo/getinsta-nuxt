@@ -302,8 +302,8 @@ export default {
       //this.modelBoxLoginRegisterOpen(false);
     }, 1000);
 
-    this.pageAndroid = this.$route.path === '/event-lucky-draw-1';
-    if (this.$route.path === '/lucky-draw-test') this.pageTestLabel = '-test';
+    this.pageAndroid = this.$nuxt.$route.path === '/event-lucky-draw-1';
+    if (this.$nuxt.$route.path === '/lucky-draw-test') this.pageTestLabel = '-test';
 
     this.title = this.pageAndroid
       ? 'Take the Chance to Win COINS <br> Once per Day'
@@ -331,7 +331,7 @@ export default {
       }
       if (!this.lotteryProcessing
         && this.lotteryRepeatTipNum === 0) {
-        if (this.$route.path === '/event-lucky-draw-1') {
+        if (this.$nuxt.$route.path === '/event-lucky-draw-1') {
           this.lotteryResultNotWin();
         } else {
           this.$alert(
@@ -349,7 +349,7 @@ export default {
       }
       if (!this.lotteryProcessing
         && this.lotteryRepeatTipNum > 0) {
-        if (this.$route.path === '/event-lucky-draw-1') {
+        if (this.$nuxt.$route.path === '/event-lucky-draw-1') {
           this.lotteryResultWin(this.lotteryRepeatTipNum);
         } else {
           this.$alert(
@@ -539,7 +539,7 @@ export default {
         if (response.data.status === 'ok') {
           this.lotteryLand(response.data.order_id);
 
-          if (this.$route.path === '/event-lucky-draw-1') {
+          if (this.$nuxt.$route.path === '/event-lucky-draw-1') {
             this.$ga.event('insluckydraw', 'draw', 'go-android');
           } else {
             this.$ga.event('insluckydraw', 'draw', `go${this.pageTestLabel}`);
@@ -555,7 +555,7 @@ export default {
           } else if (response.data.error.type === 'bad_user') {
             this.lotteryRepeatTipNum = response.data['reward'].reward_count;
             if (response.data['reward'].reward_count === 0) {
-              if (this.$route.path === '/event-lucky-draw-1') {
+              if (this.$nuxt.$route.path === '/event-lucky-draw-1') {
                 this.lotteryResultNotWin();
               } else {
                 this.$alert(
@@ -570,7 +570,7 @@ export default {
                 }).catch();
               }
             } else {
-              if (this.$route.path === '/event-lucky-draw-1') {
+              if (this.$nuxt.$route.path === '/event-lucky-draw-1') {
                 this.lotteryResultWin(response.data['reward'].reward_count);
               } else {
                 this.$alert(
@@ -739,7 +739,7 @@ export default {
       this.lotteryRepeatTipNum = rewardLotteryObj.reward_count;
 
       if (rewardLotteryObj.reward_count === 0) {
-        if (this.$route.path === '/event-lucky-draw-1') {
+        if (this.$nuxt.$route.path === '/event-lucky-draw-1') {
           this.lotteryResultNotWin();
         } else {
           this.$alert(
@@ -755,7 +755,7 @@ export default {
         }
       } else {
         // 首次中奖
-        if (this.$route.path === '/event-lucky-draw-1') {
+        if (this.$nuxt.$route.path === '/event-lucky-draw-1') {
           this.lotteryResultWin(rewardLotteryObj.reward_count, true);
         } else {
           const bodyText
@@ -1182,11 +1182,11 @@ export default {
       query.url_cart = '2';
 
       this.$storage.remove('cartList');
-      this.$router.push({ path: '/checkout', query: query });
+      this.$nuxt.$router.push({ path: '/checkout', query: query });
     },
 
     getUrlKey() {
-      if (this.COMMON.getURLQuery('key') !== null || this.$route.path === '/event-lucky-draw-1') {
+      if (this.COMMON.getURLQuery('key') !== null || this.$nuxt.$route.path === '/event-lucky-draw-1') {
         this.$store.commit('loginChange', true);
         this.luckyDrawID = 2;
       }

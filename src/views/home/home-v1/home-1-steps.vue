@@ -172,10 +172,10 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.handle);
 
-    this.pageIOS = this.$route.path === '/event-ios';
+    this.pageIOS = this.$nuxt.$route.path === '/event-ios';
     this.buyNowBtnHide
       = (this.COMMON.getURLQuery('source') === 'google' && this.COMMON.isiOS())
-      || this.$route.path === '/event-ios'
+      || this.$nuxt.$route.path === '/event-ios'
       || (this.COMMON.getURLQuery('s') === 'tiktok' && this.COMMON.isiOS())
       || (this.COMMON.getURLQuery('source') === 'google' && this.COMMON.isAndroid());
   },
@@ -200,7 +200,7 @@ export default {
     ga01() {
       if (this.$i18n.locale === 'en') {
         this.$ga.event('insbuy', 'buy', 'hpbuy2');
-        this.$router.push({
+        this.$nuxt.$router.push({
           path: '/buy-instagram-followers'
         });
       } else {
@@ -212,7 +212,7 @@ export default {
         }
 
         this.$ga.event('insbuy', 'buy', `hp${client}1-${this.$i18n.locale}`);
-        this.$router.push({
+        this.$nuxt.$router.push({
           path: '/buy-instagram-followers',
           query: {
             utm_source: clientLong,
@@ -230,7 +230,7 @@ export default {
     },
     downloadApp() {
       if (this.COMMON.isiOS()) {
-        if (this.$route.path === '/event-ios') {
+        if (this.$nuxt.$route.path === '/event-ios') {
           this.$ga.event('insdl', 'download', 'hpiosdlm2-ad');
           window.location.href = this.$constant.app.download.ios1;
         } else {
@@ -308,7 +308,7 @@ export default {
         'buy',
         `hp${this.$store.state.platform}dl${this.$store.state.gaColor}2`
       );
-      this.$router.push({ path: '/buy-instagram-followers' });
+      this.$nuxt.$router.push({ path: '/buy-instagram-followers' });
     },
     gaBtnGateBuy() {
       this.$store.state.btnTestGate ? this.gaBuyTest() : this.ga01();

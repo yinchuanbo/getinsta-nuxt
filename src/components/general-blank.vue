@@ -1,5 +1,8 @@
 <template>
-  <div class="general-blank" :style="{ height: `${$store.state.v2Ad ? adHeight+64 : 64}px` }"></div>
+  <div
+    class="general-blank"
+    :style="{ height: `${$store.state.v2Ad ? adHeight+64 : 64}px` }"
+  ></div>
 </template>
 
 <script>
@@ -11,6 +14,9 @@ export default {
       default: 0,
       require: false
     }
+  },
+  data() {
+    return {};
   }
 };
 </script>

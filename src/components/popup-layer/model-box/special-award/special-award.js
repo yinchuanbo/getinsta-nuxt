@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { createVueObj, deleteVueObj } from '../model-box';
 // createVueObj  全局生成组件函数
 // deleteVueObj  全局删除由createVueObj生成的组件
-import vueVM from './special-award.vue';
+import vueVM from './view-special-award.vue';
 
 function modelBoxSpecialAward(type, number) {
   return new Promise((resolve, reject) => {

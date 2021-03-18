@@ -74,7 +74,6 @@ import AddThis from 'vue-simple-addthis-share';
 import BackToTop from '@/components/go-top/gp-top';
 
 export default {
-  name: 'APP',
   components: {
     HeaderContainer,
     HeaderContainerV2,
@@ -120,6 +119,84 @@ export default {
   },
   watch: {
     $route(to, from) {
+      this.watchedMethods(to, from);
+    },
+    '$i18n.locale'(val) {
+      document.documentElement.setAttribute('lang', val);
+
+      // if (val === 'en') {
+      //   this.$store.commit('productName', 'GetInsta');
+      // } else {
+      //   this.$store.commit('productName', 'Getinshot');
+      // }
+
+      this.productNameLogoInit();
+    }
+  },
+  mounted() {
+    console.log(
+      '%cGetInsta%cWeb APP',
+      'padding: 4px 18px;' +
+      'background: linear-gradient(45deg, #FFCF61, #AD34D8, #111EC5);' +
+      'border-radius: 10px;' +
+      'font-size: 28px; font-weight: 800; color: #fff;' +
+      '',
+      'margin-left: 16px;' +
+      'font-size: 14px; font-weight: 600;'
+    );
+
+    this.watchedMethods(this.$nuxt.$route);
+
+    // iOS触摸事件
+    this.COMMON.iosTouchHack();
+
+    // 平台识别
+    this.platformDetective();
+
+    // Google翻译
+    if (process.client && !this.COMMON.envTest())
+      this.loadGoogleTranslate();
+
+    // addThis Load handle
+    setTimeout(() => {
+      if (process.client && !this.COMMON.envTest())
+        this.addThisLoad = true;
+    }, 5000);
+
+    // 全局Tip弹窗允许
+    this.tipDisplayAllowed();
+
+    // 产品名称计算及马甲更换
+    this.productNameLogoChange();
+
+    // Test Only
+    // if (this.$storage.has('minorLangLocaleTest') && this.COMMON.envTest()) {
+    //   const userAgentLocale = this.COMMON.userAgentLocale();
+    //   this.$i18n.locale = userAgentLocale === 'fr' || userAgentLocale === 'de' ? userAgentLocale : 'en';
+    // }
+
+    // 首页广告参数
+    this.adQueryInit();
+
+    // 全局配置
+    this.securityLevel10Config();
+
+    // 窗口尺寸更改触发点
+    window.onresize = () => {
+      this.userAgentInit();
+      this.productNameLogoChange();
+      // V2
+      if (location.hostname === 'localhost')
+        this.v2SwitchGate(this.$nuxt.$route.path);
+    };
+
+    // 下载按钮分流（测试）
+    this.homeDownloadBtnTest();
+
+    this.setDefaultLocalStorageVueX();
+  },
+  methods: {
+    watchedMethods(to = { path: '/', name: 'home' }, from = { path: '/', name: 'home' }) {
       // V2开关
       this.v2SwitchGate(to.path);
 
@@ -262,79 +339,7 @@ export default {
         = downloadCtaSeasonShowPathArray.indexOf(to.path) > -1
         || to.name === 'blog-detail';
     },
-    '$i18n.locale'(val) {
-      document.documentElement.setAttribute('lang', val);
 
-      // if (val === 'en') {
-      //   this.$store.commit('productName', 'GetInsta');
-      // } else {
-      //   this.$store.commit('productName', 'Getinshot');
-      // }
-
-      this.productNameLogoInit();
-    }
-  },
-  mounted() {
-    console.log(
-      '%cGetInsta%cWeb APP',
-      'padding: 4px 18px;' +
-      'background: linear-gradient(45deg, #FFCF61, #AD34D8, #111EC5);' +
-      'border-radius: 10px;' +
-      'font-size: 28px; font-weight: 800; color: #fff;' +
-      '',
-      'margin-left: 16px;' +
-      'font-size: 14px; font-weight: 600;'
-    );
-
-    // iOS触摸事件
-    this.COMMON.iosTouchHack();
-
-    // 平台识别
-    this.platformDetective();
-
-    // Google翻译
-    if (process.client && !this.COMMON.envTest())
-      this.loadGoogleTranslate();
-
-    // addThis Load handle
-    setTimeout(() => {
-      if (process.client && !this.COMMON.envTest())
-        this.addThisLoad = true;
-    }, 5000);
-
-    // 全局Tip弹窗允许
-    this.tipDisplayAllowed();
-
-    // 产品名称计算及马甲更换
-    this.productNameLogoChange();
-
-    // Test Only
-    // if (this.$storage.has('minorLangLocaleTest') && this.COMMON.envTest()) {
-    //   const userAgentLocale = this.COMMON.userAgentLocale();
-    //   this.$i18n.locale = userAgentLocale === 'fr' || userAgentLocale === 'de' ? userAgentLocale : 'en';
-    // }
-
-    // 首页广告参数
-    this.adQueryInit();
-
-    // 全局配置
-    this.securityLevel10Config();
-
-    // 窗口尺寸更改触发点
-    window.onresize = () => {
-      this.userAgentInit();
-      this.productNameLogoChange();
-      // V2
-      if (location.hostname === 'localhost')
-        this.v2SwitchGate(this.$route.path);
-    };
-
-    // 下载按钮分流（测试）
-    this.homeDownloadBtnTest();
-
-    this.setDefaultLocalStorageVueX();
-  },
-  methods: {
     addThisHideEvent(addThisHide) {
       if (addThisHide) {
         document.getElementsByTagName('body')[0].classList.add('addthis-hide');
@@ -948,7 +953,7 @@ export default {
         && this.COMMON.getURLQuery('source') === 'tiktok'
         && this.COMMON.getURLQuery('campaign') === 'tk'
       )
-        this.$router.push({
+        this.$nuxt.$router.push({
           path: '/event-user-generated-contest',
           query: {
             source: 'tiktok',
@@ -1026,7 +1031,7 @@ export default {
       // PC Beacon
       const openOrNot = path === '/';
       // V2 Switch Beacon
-      this.$store.commit('v2', false);
+      this.$store.commit('v2', openOrNot);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
         this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);

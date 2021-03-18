@@ -92,7 +92,7 @@
             title="User Center"
           >
             <router-link
-              :to="`/user${this.$constant.paymentChannel}`"
+              :to="`/user${$nuxt.$constant.paymentChannel}`"
               class="avatar-container"
             >
               <div class="avatar">
@@ -134,7 +134,7 @@
           <!--<i class="coin-icon"></i>-->
         </div>
         <div v-if="routeWelcome">
-          <router-link :to="`/user${this.$constant.paymentChannel}`" class="avatar-container" title="User Center">
+          <router-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container" title="User Center">
             <div class="avatar">
               <img :src="$store.state.userAvatar" alt="avatar">
             </div>
@@ -164,7 +164,7 @@
         <span>{{ paymentTitle }}</span>
       </div>
       <div v-if="!routerIOT" class="header-nav__logged_user">
-        <div v-if="$route.path!=='/checkout'"
+        <div v-if="$nuxt.$route.path!=='/checkout'"
              class="btn-container"
              :class="{
                'white-0': paymentHeaderBtnText === $t('global.header.button.BackHome'),
@@ -177,8 +177,8 @@
       </div>
       <div v-if="!routerIOT" class="header-nav__btn">
         <i :class="{
-             'back': this.$route.path === '/checkout' || this.$route.path === '/order-fail',
-             'home': this.$route.path === '/order-detail'|| this.$route.path === '/thank-you'
+             'back': $nuxt.$route.path === '/checkout' || $nuxt.$route.path === '/order-fail',
+             'home': $nuxt.$route.path === '/order-detail'|| $nuxt.$route.path === '/thank-you'
            }"
            @click="goBack"
         ></i>
@@ -200,7 +200,7 @@
         <div class="header-nav__logged_content_container">
           <div v-if="loginStatus" class="avatar mobile">
             <router-link
-              :to="`/user${this.$constant.paymentChannel}`"
+              :to="`/user${$nuxt.$constant.paymentChannel}`"
               @click.native="menuOff"
             >
               <img :src="$store.state.userAvatar" alt="avatar">
@@ -358,7 +358,7 @@ export default {
       return this.$store.state.loginStatus;
     },
     paymentTitle() {
-      let path = this.$route.path;
+      let path = $nuxt.$route.path;
       let text = '';
       if (path === '/checkout') {
         text = this.$t('global.header.title.Checkout');
@@ -374,7 +374,7 @@ export default {
       return text;
     },
     paymentHeaderBtnText() {
-      let path = this.$route.path;
+      let path = $nuxt.$route.path;
       let text = '';
       if (path === '/order-detail') {
         // text = 'OK';
@@ -415,7 +415,7 @@ export default {
 
       if (to.path === '/login' || to.path === '/register') {
         if (this.$store.state.loginStatus) {
-          this.$router.push({ path: `/user${this.$constant.paymentChannel}` });
+          this.$nuxt.$router.push({ path: `/user${$nuxt.$constant.paymentChannel}` });
         }
       }
 
@@ -430,11 +430,11 @@ export default {
       this.loginBtnShow = to.path !== '/event-dl';
 
       //gaHeaderBtnDownloadLabel
-      if (to.path === `/user${this.$constant.paymentChannel}`) {
+      if (to.path === `/user${$nuxt.$constant.paymentChannel}`) {
         this.gaHeaderBtnDownloadLabel = '';
-      } else if (to.path === `/user-get-followers${this.$constant.paymentChannel}`) {
+      } else if (to.path === `/user-get-followers${$nuxt.$constant.paymentChannel}`) {
         this.gaHeaderBtnDownloadLabel = '-f';
-      } else if (to.path === `/user-get-likes${this.$constant.paymentChannel}`) {
+      } else if (to.path === `/user-get-likes${$nuxt.$constant.paymentChannel}`) {
         this.gaHeaderBtnDownloadLabel = '-l';
       }
 
@@ -488,11 +488,11 @@ export default {
       this.documentElementSet();
     },
     goBack() {
-      let path = this.$route.path;
+      let path = $nuxt.$route.path;
       if (path === '/checkout' || path === '/order-fail') {
-        this.$router.go(-1);
+        $nuxt.$router.go(-1);
       } else {
-        this.$router.push({ path: '/' });
+        this.$nuxt.$router.push({ path: '/' });
       }
     },
     logout() {
@@ -500,7 +500,7 @@ export default {
       this.documentElementSet();
       this.renderHeaderAvatar(defaultAvatar);
       this.$store.commit('loginChange', false);
-      this.$router.replace({ path: '/login' });
+      $nuxt.$router.replace({ path: '/login' });
 
       this.menuOff();
     },
@@ -516,7 +516,7 @@ export default {
     },
     gaHeaderBtn() {
       // header BTN GA 设置
-      const to = this.$route;
+      const to = $nuxt.$route;
       if (to.path === '/') {
         this.gaHeaderBtnLabel = 'hp';
       } else if (to.path === '/get-instagram-followers-likes') {
@@ -565,7 +565,7 @@ export default {
         query = { utm_source: 'IOT-PC' };
       }
 
-      this.$router.push({ path: this.headerBtnPath, query: query });
+      this.$nuxt.$router.push({ path: this.headerBtnPath, query: query });
     },
     downloadHeaderPC() {
       this.$ga.event('insdl', 'download', `usermanagewindl${this.gaHeaderBtnDownloadLabel}`);
@@ -577,37 +577,37 @@ export default {
     },
     routeToUserCenter() {
       if (this.routeWelcome) {
-        this.$router.push({ path: `/user${this.$constant.paymentChannel}` });
+        this.$nuxt.$router.push({ path: `/user${$nuxt.$constant.paymentChannel}` });
       }
     },
     paymentHeaderBtnJump() {
       let langDash = this.$i18n.locale !== 'en' ? '-' : '';
-      if (this.$route.path === '/order-detail') {
-        // this.$router.push({ path: '/user' });
+      if ($nuxt.$route.path === '/order-detail') {
+        // this.$nuxt.$router.push({ path: '/user' });
         this.$ga.event('buttonclick', 'click', `tkpageback${langDash}${this.$i18n.locale}`);
-        this.$router.push({ path: '/' });
-      } else if (this.$route.path === '/order-fail') {
+        this.$nuxt.$router.push({ path: '/' });
+      } else if ($nuxt.$route.path === '/order-fail') {
         this.$ga.event('buttonclick', 'click', `failpageback${langDash}${this.$i18n.locale}`);
-        this.$router.push({ path: '/' });
+        this.$nuxt.$router.push({ path: '/' });
       } else {
-        this.$router.push({ path: '/' });
+        this.$nuxt.$router.push({ path: '/' });
       }
     },
     routerPush(path) {
-      if (path === this.$route.path) {
+      if (path === $nuxt.$route.path) {
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
       } else {
-        this.$router.push({ path: path });
+        this.$nuxt.$router.push({ path: path });
       }
       return false;
     },
 
     goPageStore() {
       this.$ga.event('insbuy', 'buy', `hphunter-${this.$i18n.locale}`);
-      this.$router.push(
+      this.$nuxt.$router.push(
         {
           path: '/buy-instagram-followers',
           query: {
@@ -634,11 +634,11 @@ export default {
     // suto-buy-分流
     getAutoBuy() {
       if (this.COMMON.randomAbTest()) {
-        if (this.$route.path !== '/buy-auto-instagram-followers')
-          this.$router.push('/buy-auto-instagram-followers');
+        if ($nuxt.$route.path !== '/buy-auto-instagram-followers')
+          this.$nuxt.$router.push('/buy-auto-instagram-followers');
       } else {
-        if (this.$route.path !== '/buy-auto-instagram-followers-1')
-          this.$router.push('/buy-auto-instagram-followers-1');
+        if ($nuxt.$route.path !== '/buy-auto-instagram-followers-1')
+          this.$nuxt.$router.push('/buy-auto-instagram-followers-1');
       }
     }
   }

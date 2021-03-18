@@ -29,7 +29,7 @@ export default {
   methods: {
     gaAndRouter() {
       this.$ga.event('bannerclick', 'click', 'spring-pc');
-      this.$router.push('/buy-instagram-followers');
+      this.$nuxt.$router.push('/buy-instagram-followers');
     },
     topDownload() {
       this.$ga.event('bannerclick', 'click', `spring-${this.$store.state.platform}`);

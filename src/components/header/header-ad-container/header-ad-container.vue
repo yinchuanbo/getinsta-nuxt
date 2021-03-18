@@ -31,7 +31,7 @@ export default {
     },
     handle() {
       this.$ga.event('bannerclick', 'click', 'springnew-pc');
-      this.$router.push('/buy-instagram-followers');
+      this.$nuxt.$router.push('/buy-instagram-followers');
     }
   }
 };

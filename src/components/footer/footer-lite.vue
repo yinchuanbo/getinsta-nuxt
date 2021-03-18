@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     backHome() {
-      if (!this.urlCart && !this.hostNameSpike) this.$router.push({ path: '/' });
+      if (!this.urlCart && !this.hostNameSpike) this.$nuxt.$router.push({ path: '/' });
     },
     envDetective() {
       this.hostNameSpike = window.location.hostname === this.$constant.url.spike;

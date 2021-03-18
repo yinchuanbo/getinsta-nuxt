@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { createVueObj, deleteVueObj } from '../model-box';
 // createVueObj  全局生成组件函数
 // deleteVueObj  全局删除由createVueObj生成的组件
-import vueVM from './action-sheet.vue';
+import vueVM from './view-action-sheet.vue';
 
 function modelBoxActionSheet(mask, bg, icon, title, body, button, btnText, appAnalytics) {
   return new Promise((resolve, reject) => {

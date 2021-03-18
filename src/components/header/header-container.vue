@@ -33,7 +33,7 @@ export default {
     }
   },
   mounted() {
-    this.headerShape.homePath = this.$route.path === '/';
+    this.headerShape.homePath = this.$nuxt.$route.path === '/';
     this.headerFooterMotion();
     window.addEventListener('scroll', this.COMMON.throttle(this.handleScroll, 60, 100));
   },

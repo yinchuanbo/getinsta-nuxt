@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import img0 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_real_human.svg';
-import img1 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_rocket.svg';
-import img2 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_support.svg';
-import img3 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_app-download.svg';
+import img0 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_real_human.svg';
+import img1 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_rocket.svg';
+import img2 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_support.svg';
+import img3 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_app-download.svg';
 
 export default {
   name: 'Home5DeAdvantages',

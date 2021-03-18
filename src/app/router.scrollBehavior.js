@@ -3,10 +3,7 @@ export default function (to, from, savedPosition) {
     return savedPosition;
   } else {
     if (!to.query.anchor) {
-      return {
-        x: 0,
-        y: 0
-      };
+      return { x: 0, y: 0 };
     }
   }
 }

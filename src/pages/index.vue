@@ -9,24 +9,59 @@ export default {
   components: { instance },
   async asyncData({ req }) {
     return {
-      hostName: process.server ? req.headers.host : location.hostname
+      hostname: process.server ? req.headers.host : location.hostname
     };
   },
   head() {
     return {
-      title: ` YouberUp: Get Real YouTube Subscribers & Quality Views`,
+      title: this.$t('home.meta.title'),
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'YouberUp helps get more real YouTube subscribers and quality YouTube views from real YouTube users. See subscribes, views up fast and free.'
+          content: this.$t('home.meta.description')
         }
       ],
       link: [
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://${this.hostName}${this.$nuxt.$route.path}`
+          href: `https://${this.hostname}${this.$nuxt.$route.path}`
+        },
+        {
+          rel: 'alternate',
+          hreflang: 'en',
+          href: `https://${this.hostname}${this.$nuxt.$route.path}`
+        },
+        {
+          rel: 'alternate',
+          hreflang: 'fr',
+          href: `https://fr.easygetinsta.com${this.$nuxt.$route.path}`
+        },
+        {
+          rel: 'alternate',
+          hreflang: 'de',
+          href: `https://de.easygetinsta.com${this.$nuxt.$route.path}`
+        },
+        {
+          rel: 'alternate',
+          hreflang: 'es',
+          href: `https://es.easygetinsta.com${this.$nuxt.$route.path}`
+        },
+        {
+          rel: 'alternate',
+          hreflang: 'ar',
+          href: `https://ar.easygetinsta.com${this.$nuxt.$route.path}`
+        },
+        {
+          rel: 'alternate',
+          hreflang: 'it',
+          href: `https://it.easygetinsta.com${this.$nuxt.$route.path}`
+        },
+        {
+          rel: 'alternate',
+          hreflang: 'pt',
+          href: `https://pt.easygetinsta.com${this.$nuxt.$route.path}`
         }
       ]
     };

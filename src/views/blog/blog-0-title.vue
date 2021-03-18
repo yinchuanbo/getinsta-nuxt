@@ -137,7 +137,7 @@ export default {
         };
 
       this.$ga.event('insbuy', 'buy', `bloghp${gaPlatform}buy${multiLang}`);
-      this.$router.push({ path: '/buy-instagram-followers', query: query });
+      this.$nuxt.$router.push({ path: '/buy-instagram-followers', query: query });
     }
   }
 };

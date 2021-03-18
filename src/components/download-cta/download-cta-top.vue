@@ -30,10 +30,10 @@ export default {
     download() {
       let gaParam, url;
       let ct = "en-seo-head";
-      if (this.$route.path === "/event-user-generated-contest") ct += "-ugc";
+      if (this.$nuxt.$route.path === "/event-user-generated-contest") ct += "-ugc";
 
       let gp3d = "en-seo-head";
-      if (this.$route.path === "/event-user-generated-contest") gp3d += "-ugc";
+      if (this.$nuxt.$route.path === "/event-user-generated-contest") gp3d += "-ugc";
 
       if (this.$store.state.isiOS) {
         gaParam = "as";
@@ -53,7 +53,7 @@ export default {
       }
 
       let single = "";
-      if (this.$route.path === "/event-user-generated-contest") single = "-ugc";
+      if (this.$nuxt.$route.path === "/event-user-generated-contest") single = "-ugc";
 
       this.$ga.event("insbuy", "buy", `buyfrom${gaParam}-mheadbanner${single}`);
       location.href = url;

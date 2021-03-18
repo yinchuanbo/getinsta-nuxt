@@ -116,7 +116,7 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.handle);
 
-    this.pageIOS = this.$route.path === '/event-ios';
+    this.pageIOS = this.$nuxt.$route.path === '/event-ios';
   },
   destroyed() {
     window.removeEventListener('scroll', this.handle);
@@ -131,7 +131,7 @@ export default {
     },
     downloadIOS() {
       if (this.$i18n.locale === 'en') {
-        if (this.$route.path === '/event-ios') {
+        if (this.$nuxt.$route.path === '/event-ios') {
           this.$ga.event('insdl', 'download', 'hpiosdl2-ad');
           window.location.href = this.$constant.app.download.ios1;
         } else {
@@ -187,8 +187,7 @@ export default {
         // Beacon:MinorAppDownload
         location.href = this.$store.state.minorLangAdrLink;
       } else {
-        // window.location.href = this.$store.state.enAdrLink;
-        window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a`;
+        window.location.href = this.$store.state.enAdrLink;
       }
     },
     downloadWindows() {
@@ -197,7 +196,7 @@ export default {
     },
     gaBuyNow() {
       this.$ga.event('insbuy', 'buy', `hp4-${this.$i18n.locale}`);
-      this.$router.push({
+      this.$nuxt.$router.push({
         path: '/buy-instagram-followers',
         query: {
           utm_source: 'PC',

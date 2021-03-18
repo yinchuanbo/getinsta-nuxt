@@ -35,7 +35,7 @@ export default {
 
   // top loading bar
   loading: {
-    color: '#f55',
+    color: '#b33ba3',
     height: '2px'
   },
 

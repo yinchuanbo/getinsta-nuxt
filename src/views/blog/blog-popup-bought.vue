@@ -36,7 +36,7 @@ export default {
     },
     jump() {
       this.$ga.event('bannerlick', 'click', 'mblog');
-      this.$router.push({
+      this.$nuxt.$router.push({
         path: '/buy-instagram-followers',
         query: {
           'from': 'mblogbanner',

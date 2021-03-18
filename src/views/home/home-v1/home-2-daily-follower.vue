@@ -357,7 +357,7 @@ export default {
     gaLeftBtn() {
       if (!this.COMMON.isMobile()) {
         this.$ga.event('inslogin', 'login', 'hplogin-freefollowers');
-        this.$router.push('/login');
+        this.$nuxt.$router.push('/login');
       }
       if (this.COMMON.isiOS()) {
         this.$ga.event('insdl', 'download', 'hpiosdl-freefollowers');
@@ -636,7 +636,7 @@ export default {
       adStore.k = this.$route.query.k || '';
       this.$storage.set('adStore', adStore);
 
-      // console.log(this.$route.path);
+      // console.log(this.$nuxt.$route.path);
 
       // console.log(1, param);
       // this.initGeoIPWhiteList(param);
@@ -648,13 +648,13 @@ export default {
       // this.$store.commit('cartUnit', param);
 
       const query = this.COMMON.envTest() ? { env_test: '1' } : {};
-      this.$router.push({ path: '/checkout', query: query });
+      this.$nuxt.$router.push({ path: '/checkout', query: query });
     },
 
     gaDownloadAPPTest() {
       if (!this.COMMON.isMobile()) {
         this.$ga.event('inslogin', 'login', 'hplogin-freefollowers');
-        this.$router.push('/login');
+        this.$nuxt.$router.push('/login');
         return;
       }
 

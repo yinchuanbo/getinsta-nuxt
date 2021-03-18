@@ -158,7 +158,7 @@ export default {
   },
   mounted() {
     // setTimeout(() => {
-    //   this.$router.push({ path: '/' });
+    //   this.$nuxt.$router.push({ path: '/' });
     // }, 10000);
   },
   methods: {}

@@ -35,7 +35,7 @@ export default {
         this.COMMON.getURLQuery('url_cart') === null
         || this.COMMON.getURLQuery('url_cart') === '0'
       )
-        this.$router.push({ path: '/' });
+        this.$nuxt.$router.push({ path: '/' });
     }
   }
 };

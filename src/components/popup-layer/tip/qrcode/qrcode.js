@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { createVueObj, deleteVueObj } from '../tip';
-import vueVM from './qrcode.vue';
+import vueVM from './view-qrcode.vue';
 
 function tipQrCode(qrCode, ...args) {
   // qrCode === false --> 清除所有 qrCode DOM

@@ -1,7 +1,6 @@
 <template>
   <div class="footer-copyright">
     <div class="wrapper">
-      
       <!-- <div class="copyright pc">
         <img
           :src="$store.state.productLogo"
@@ -18,12 +17,16 @@
         <div class="text">
           <p>Copyright © {{ currentYear }} {{ domain }}</p>
         </div>
-        <router-link to="/privacy">{{
-          $t("global.footer.about.privacyPolicy")
-        }}</router-link>
-        <router-link to="/terms">{{
-          $t("global.footer.about.termsOfUse")
-        }}</router-link>
+        <router-link to="/privacy">
+          {{
+            $t("global.footer.about.privacyPolicy")
+          }}
+        </router-link>
+        <router-link to="/terms">
+          {{
+            $t("global.footer.about.termsOfUse")
+          }}
+        </router-link>
         <!-- <div v-show="!payPage" id="wrapper-translate">
           <div id="google_translate_element"></div>
         </div> -->
@@ -42,10 +45,6 @@
         <div v-show="!payPage && $i18n.locale === 'en'" id="wrapper-translate1">
           <div id="google_translate_element"></div>
         </div>
-
-
-
-
       </div>
     </div>
   </div>
@@ -76,13 +75,13 @@ export default {
   mounted() {},
   methods: {
     routerPush(path) {
-      if (path === this.$route.path) {
+      if (path === this.$nuxt.$route.path) {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
         });
       } else {
-        this.$router.push({ path: path });
+        this.$nuxt.$router.push({ path: path });
       }
       return false;
     },
@@ -163,7 +162,7 @@ export default {
       // #wrapper-translate {
       //   float: right;
       // }
-      
+
     }
 
     #google_translate_element {

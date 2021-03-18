@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import { createVueObj, deleteVueObj } from '../loading';
-import vueVM from './loading.vue';
+import { createVueObj, deleteVueObj } from '../index';
+import vueVM from './view-loading.vue';
 
 function Loading(open) {
   return new Promise((resolve, reject) => {

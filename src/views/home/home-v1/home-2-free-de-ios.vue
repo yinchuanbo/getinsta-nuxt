@@ -26,7 +26,7 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handle);
-    this.pageIOS = this.$route.path === '/event-ios';
+    this.pageIOS = this.$nuxt.$route.path === '/event-ios';
   },
   destroyed() {
     window.removeEventListener('scroll', this.handle);
@@ -41,7 +41,7 @@ export default {
     },
     downloadIOS() {
       if (this.$i18n.locale === 'en') {
-        if (this.$route.path === '/event-ios') {
+        if (this.$nuxt.$route.path === '/event-ios') {
           this.$ga.event('insdl', 'download', 'hpiosdl1-ad');
           window.location.href = this.$constant.app.download.ios1;
         } else {
@@ -92,7 +92,7 @@ export default {
         clientLong = 'android';
       }
       this.$ga.event('insbuy', 'buy', `hp2-${this.$i18n.locale}`);
-      this.$router.push({
+      this.$nuxt.$router.push({
         path: '/buy-instagram-followers',
         query: {
           utm_source: clientLong,

@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import img0 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_real_human-getinshot.svg';
-import img1 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_rocket.svg';
-import img2 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_support-getinshot.svg';
-import img3 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_app-download.svg';
-import img30 from '../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_app-download_followers-gallery.svg';
+import img0 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_real_human-getinshot.svg';
+import img1 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_rocket.svg';
+import img2 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_support-getinshot.svg';
+import img3 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_app-download.svg';
+import img30 from '../../../assets/images/home/home-5-de-advantages/home-5-de-advantages__icon_app-download_followers-gallery.svg';
 
 export default {
   name: 'Home5DeAdvantagesGetinshot',

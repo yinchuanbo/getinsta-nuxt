@@ -33,9 +33,9 @@ export default {
     jump() {
       this.$ga.event('bannerclick', 'click', 'fgiveawayblog');
       // this.COMMON.randomAbTest()
-      //   ? this.$router.push({ path: '/thanksgiving-giveaway' })
-      //   : this.$router.push({ path: '/followers-giveaway' });
-      this.$router.push({ path: '/lucky-draw' });
+      //   ? this.$nuxt.$router.push({ path: '/thanksgiving-giveaway' })
+      //   : this.$nuxt.$router.push({ path: '/followers-giveaway' });
+      this.$nuxt.$router.push({ path: '/lucky-draw' });
     }
   }
 };

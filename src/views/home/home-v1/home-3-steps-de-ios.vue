@@ -3,7 +3,7 @@
     <div class="wrapper">
       <!--      step-2-->
       <div class="unit step-2">
-        <img src="../../assets/images/home/home-3-steps/home-3-steps__icon_add-user.svg" alt="icon">
+        <img src="../../../assets/images/home/home-3-steps/home-3-steps__icon_add-user.svg" alt="icon">
         <!--        step-2 title-->
         <h3>{{ $store.state.productName }} herunterladen um qualitativ hochwertige Follower und Likes zu bekommen</h3>
         <!--        step-2 text-->
@@ -56,7 +56,7 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.handle);
 
-    this.pageIOS = this.$route.path === '/event-ios';
+    this.pageIOS = this.$nuxt.$route.path === '/event-ios';
   },
   destroyed() {
     window.removeEventListener('scroll', this.handle);
@@ -92,7 +92,7 @@ export default {
         this.$ga.event('insbuy', 'buy', `hp3-${this.$i18n.locale}`);
         utmParam = 'PC';
       }
-      this.$router.push({
+      this.$nuxt.$router.push({
         path: '/buy-instagram-followers',
         query: {
           utm_source: utmParam,
@@ -136,7 +136,7 @@ export default {
       }
     },
     ga2iOS() {
-      if (this.$route.path === '/event-ios') {
+      if (this.$nuxt.$route.path === '/event-ios') {
         this.$ga.event('insdl', 'download', 'hpiosdls1-ad');
         window.location.href = this.$constant.app.download.ios1;
       } else {

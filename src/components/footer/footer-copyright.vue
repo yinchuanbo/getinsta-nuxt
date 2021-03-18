@@ -44,13 +44,13 @@ export default {
   },
   methods: {
     routerPush(path) {
-      if (path === this.$route.path) {
+      if (path === this.$nuxt.$route.path) {
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
       } else {
-        this.$router.push({ path: path });
+        this.$nuxt.$router.push({ path: path });
       }
       return false;
     }

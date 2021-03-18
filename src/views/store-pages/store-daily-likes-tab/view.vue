@@ -480,7 +480,7 @@ export default {
     },
 
     initTabIndex() {
-      const path = this.$route.path;
+      const path = this.$nuxt.$route.path;
       if (path === '/buy-instagram-likes') {
         this.tabsIndex = false;
         this.emittedData.meta.title = this.$t('store.meta.title-1');
@@ -514,7 +514,7 @@ export default {
     },
     tabSwitch(i) {
       this.tabsIndex = i;
-      let originalPath = this.$route.path;
+      let originalPath = this.$nuxt.$route.path;
       let destPath = '';
       if (i === false) {
         if (originalPath === '/event-followers') {
@@ -960,11 +960,11 @@ export default {
         ).then(() => {
           if (this.$i18n.locale !== 'en') {
             let gaPage = '', gaPlatform = '';
-            if (this.$route.path === '/') {//home
+            if (this.$nuxt.$route.path === '/') {//home
               gaPage = 'hp';
             } else if (
-              this.$route.path === '/buy-instagram-followers'
-              || this.$route.path === '/buy-instagram-likes'
+              this.$nuxt.$route.path === '/buy-instagram-followers'
+              || this.$nuxt.$route.path === '/buy-instagram-likes'
             ) {//store
               gaPage = 'store';
             }
@@ -1095,7 +1095,7 @@ export default {
       this.$storage.set('cartUnit', param);
 
       const query = this.COMMON.envTest() ? { env_test: '1' } : {};
-      this.$router.push({ path: '/checkout', query: query });
+      this.$nuxt.$router.push({ path: '/checkout', query: query });
     },
     // 获取白名单（功能已变更为获取该地区支持的支付方式）
     initGeoIPWhiteList(param) {
@@ -1295,7 +1295,7 @@ export default {
     gaSearchBtn() {
       let param = !this.tabsIndex ? 'f' : 'l';
       let paramEvent0 = '';
-      if (this.$route.path === '/event-followers' || this.$route.path === '/event-likes') {
+      if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
         paramEvent0 = '-ad';
       }
       if (this.tabsIndex) paramEvent0 = '-daily';
@@ -1309,11 +1309,11 @@ export default {
       let gaMultiLang = this.$i18n.locale !== 'en' ? `-${this.$i18n.locale}` : '';
 
       let pageParam = '';
-      if (this.$route.path === '/') {
+      if (this.$nuxt.$route.path === '/') {
         pageParam = 'hp';
       } else if (
-        this.$route.path === '/buy-instagram-followers'
-        || this.$route.path === '/buy-instagram-likes'
+        this.$nuxt.$route.path === '/buy-instagram-followers'
+        || this.$nuxt.$route.path === '/buy-instagram-likes'
       ) {
         pageParam = 'store';
       }
@@ -1329,7 +1329,7 @@ export default {
 
       // let param = 'f';
       // let paramEvent0 = '';
-      // if (this.$route.path === '/event-followers' || this.$route.path === '/event-likes') {
+      // if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
       //   paramEvent0 = '-ad';
       // }
       // if (this.tabsIndex) paramEvent0 = '-daily';
@@ -1343,17 +1343,17 @@ export default {
       // let gaMultiLang = this.$i18n.locale !== 'en' ? `-${this.$i18n.locale}` : '';
 
       // let pageParam = '';
-      // if (this.$route.path === '/') {
+      // if (this.$nuxt.$route.path === '/') {
       //   pageParam = 'hp';
       // } else if (
-      //   this.$route.path === '/buy-instagram-followers'
-      //   || this.$route.path === '/buy-instagram-likes'
+      //   this.$nuxt.$route.path === '/buy-instagram-followers'
+      //   || this.$nuxt.$route.path === '/buy-instagram-likes'
       // ) {
       //   pageParam = 'store';
       // }
 
 
-      // if (this.$route.path === '/event-get') {
+      // if (this.$nuxt.$route.path === '/event-get') {
       //   this.$ga.event('insbuy', 'buy', 'paidlp-3');
       // } else {
       //   this.$ga.event(

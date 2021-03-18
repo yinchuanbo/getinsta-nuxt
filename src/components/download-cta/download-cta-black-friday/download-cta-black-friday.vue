@@ -33,7 +33,7 @@ export default {
           + `&ct=en-seo-bfbanner`
           + `&mt=8`;
       } else {
-        this.$router.push('/buy-instagram-followers');
+        this.$nuxt.$router.push('/buy-instagram-followers');
         this.$ga.event('insbuy', 'buy', `buy-mbfbanner-adr`);
       }
     }

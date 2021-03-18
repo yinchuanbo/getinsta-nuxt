@@ -7,34 +7,40 @@
             <h3>
               <span>{{ $t("global.footer.services.services") }}</span>
             </h3>
-            <router-link to="/buy-instagram-followers"
-              >Get Instagram Followers</router-link
-            >
-            <router-link to="/buy-auto-instagram-followers"
-              >Get Auto Instagram Followers</router-link
-            >
-            <router-link to="/buy-instagram-likes"
-              >Get Instagram Likes</router-link
-            >
-            <router-link to="/affiliate-solutions"
-              >Affiliate Program</router-link
-            >
+            <router-link to="/buy-instagram-followers">
+              Get Instagram Followers
+            </router-link>
+            <router-link to="/buy-auto-instagram-followers">
+              Get Auto Instagram Followers
+            </router-link>
+            <router-link to="/buy-instagram-likes">
+              Get Instagram Likes
+            </router-link>
+            <router-link to="/affiliate-solutions">
+              Affiliate Program
+            </router-link>
           </div>
           <div class="footer-text__links_column">
             <h3>
               <span>{{ $t("global.footer.resource.resource") }}</span>
             </h3>
-            <router-link v-if="$i18n.locale === 'en'" to="/login">{{
-              $t("global.footer.resource.login")
-            }}</router-link>
+            <router-link v-if="$i18n.locale === 'en'" to="/login">
+              {{
+                $t("global.footer.resource.login")
+              }}
+            </router-link>
 
-            <router-link to="/faqs">{{
-              $t("global.footer.resource.faq")
-            }}</router-link>
+            <router-link to="/faqs">
+              {{
+                $t("global.footer.resource.faq")
+              }}
+            </router-link>
 
-            <router-link to="/blog">{{
-              $t("global.footer.resource.blog")
-            }}</router-link>
+            <router-link to="/blog">
+              {{
+                $t("global.footer.resource.blog")
+              }}
+            </router-link>
           </div>
 
           <div
@@ -83,32 +89,38 @@
             <h3>
               <span>{{ $t("global.footer.services.services") }}</span>
             </h3>
-            <router-link to="/buy-instagram-followers"
-              >Get Instagram Followers</router-link
-            >
-            <router-link to="/buy-auto-instagram-followers"
-              >Get Auto Instagram Followers</router-link
-            >
-            <router-link to="/buy-instagram-likes"
-              >Get Instagram Likes</router-link
-            >
-            <router-link to="/affiliate-solutions"
-              >Affiliate Program</router-link
-            >
+            <router-link to="/buy-instagram-followers">
+              Get Instagram Followers
+            </router-link>
+            <router-link to="/buy-auto-instagram-followers">
+              Get Auto Instagram Followers
+            </router-link>
+            <router-link to="/buy-instagram-likes">
+              Get Instagram Likes
+            </router-link>
+            <router-link to="/affiliate-solutions">
+              Affiliate Program
+            </router-link>
           </div>
           <div class="footer-text__links_column">
             <h3>
               <span>{{ $t("global.footer.resource.resource") }}</span>
             </h3>
-            <router-link v-if="$i18n.locale === 'en'" to="/login">{{
-              $t("global.footer.resource.login")
-            }}</router-link>
-            <router-link to="/faqs">{{
-              $t("global.footer.resource.faq")
-            }}</router-link>
-            <router-link to="/blog">{{
-              $t("global.footer.resource.blog")
-            }}</router-link>
+            <router-link v-if="$i18n.locale === 'en'" to="/login">
+              {{
+                $t("global.footer.resource.login")
+              }}
+            </router-link>
+            <router-link to="/faqs">
+              {{
+                $t("global.footer.resource.faq")
+              }}
+            </router-link>
+            <router-link to="/blog">
+              {{
+                $t("global.footer.resource.blog")
+              }}
+            </router-link>
           </div>
           <!--        <div class="footer-text__links_column pc download">-->
           <!--          <h3><span>{{ $t('global.footer.GetInstaDownload.GetInstaDownload') }}</span></h3>-->
@@ -224,13 +236,13 @@ export default {
       }
     },
     routerPush(path) {
-      if (path === this.$route.path) {
+      if (path === this.$nuxt.$route.path) {
         window.scrollTo({
           top: 0,
           behavior: "smooth",
         });
       } else {
-        this.$router.push({ path: path });
+        this.$nuxt.$router.push({ path: path });
       }
       return false;
     },
