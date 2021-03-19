@@ -17,7 +17,7 @@
               id="nav-menu-00" class="header-nav__menu_links"
               @click="routerPush('/')"
             >{{ $t('global.header.menu.home') }}</a>
-            <a
+            <div
               v-if="!storeMenuHide" id="nav-menu-01"
               class="header-nav__menu_links drop-menu"
             >
@@ -32,7 +32,7 @@
                 <router-link :to="{path:'/buy-instagram-daily-likes',query:{anchor}}">Buy Auto Instagram Likes</router-link>
                 <router-link to="/buy-instagram-likes">Buy Instagram Likes</router-link>
               </div>
-            </a>
+            </div>
             <a
               id="nav-menu-02" class="header-nav__menu_links"
               @click="routerPush('/get-instagram-followers-likes')"
@@ -310,8 +310,8 @@ export default {
   },
   components: {
     ButtonDownloadWindowsYellow,
-    ButtonWhiteBlue,
-    ButtonWhite
+    ButtonWhite,
+    ButtonWhiteBlue
     // ButtonYellowDownload,
     // ButtonPurple
   },
@@ -671,7 +671,7 @@ export default {
     }
 
     .header-nav__menu {
-      a.header-nav__menu_links {
+      .header-nav__menu_links {
         color: #fff;
 
         &.drop-menu {
@@ -754,145 +754,142 @@ export default {
       height: 100%;
     }
 
-    a {
+    .header-nav__menu_links {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      position: relative;
+      //display: inline-block;
+      //max-width: 138px;
+      height: 100%;
+      padding: 0 20px;
+      font: 600 16px/80px BalooChettan;
+      color: #000000;
+      transition: all 0.3s;
+      //@include text-ellipsis;
 
-      &.header-nav__menu_links {
-        position: relative;
-        //display: inline-block;
-        //max-width: 138px;
-        height: 100%;
-        padding: 0 20px;
-        font: 600 16px/80px BalooChettan;
-        color: #000000;
-        transition: all 0.3s;
-        //@include text-ellipsis;
+      &:hover {
+        background-color: #F1F4F6;
+      }
 
+      &.drop-menu {
         &:hover {
-          background-color: #F1F4F6;
-        }
-
-        &.drop-menu {
-          &:hover {
-            &:after {
-              transform: scaleX(0);
-            }
-
-            i {
-              &:before {
-                transform: rotate(-45deg);
-              }
-
-              &:after {
-                transform: rotate(45deg);
-              }
-            }
-
-            .drop-menu-container {
-              opacity: 1;
-              transform: translateY(0) scaleY(1);
-            }
-          }
-
-          span {
-            font: 600 16px BalooChettan;
-            color: #000000;
-            transition: all 0.3s;
+          &:after {
+            transform: scaleX(0);
           }
 
           i {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            margin: auto;
-            transform: translateY(18px);
-
-            display: block;
-            width: 7px;
-            height: 4px;
-            vertical-align: middle;
-
-            &:before, &:after {
-              position: absolute;
-              top: 0;
-              content: "";
-              width: 6px;
-              height: 2px;
-              background-color: #000000;
-              transition: all 0.3s;
-            }
-
             &:before {
-              left: 0;
-              transform: rotate(45deg);
+              transform: rotate(-45deg);
             }
 
             &:after {
-              left: 4px;
-              transform: rotate(-45deg);
+              transform: rotate(45deg);
             }
+          }
+
+          .drop-menu-container {
+            opacity: 1;
+            transform: translateY(0) scaleY(1);
           }
         }
 
-        .drop-menu-container {
-          position: absolute;
-          top: 80px;
-          left: -100%;
-          padding: 20px 0;
-          background-color: #fff;
-          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-          border: 1px solid #E3E3E3;
-          border-radius: 14px;
-          cursor: default;
+        span {
+          font: 600 16px BalooChettan;
+          color: #000000;
+          transition: all 0.3s;
+        }
 
-          opacity: 0;
-          transform: translateY(-18px) scaleY(0);
-          transform-origin: top center;
-          transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+        i {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          transform: translateY(18px);
+
+          display: block;
+          width: 7px;
+          height: 4px;
+          vertical-align: middle;
 
           &:before, &:after {
-            content: "";
             position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
+            top: 0;
+            content: "";
+            width: 6px;
+            height: 2px;
+            background-color: #000000;
+            transition: all 0.3s;
           }
 
           &:before {
-            top: -14px;
-            display: block;
-            width: 27px;
-            height: 14px;
-            background: url("~@/assets/images/global/header/drop-menu__arrow.svg") center no-repeat;
-            background-size: contain;
-            filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.16));
+            left: 0;
+            transform: rotate(45deg);
           }
 
           &:after {
-            top: -30px;
-            width: 40%;
-            height: 30px;
+            left: 4px;
+            transform: rotate(-45deg);
           }
+        }
+      }
 
-          a {
-            margin: 0;
-            padding: 0 24px;
-            display: block;
-            font: 600 16px Montserrat;
-            color: #2A2A2A;
-            line-height: 48px;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: all 0.3s;
+      .drop-menu-container {
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        padding: 20px 0;
+        background-color: #fff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        border: 1px solid #E3E3E3;
+        border-radius: 14px;
+        cursor: default;
 
-            &:hover {
-              background-color: #E8E8E8;
-            }
+        opacity: 0;
+        transform: translateY(-18px) scaleY(0);
+        transform-origin: top center;
+        transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+
+        &:before, &:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+
+        &:before {
+          top: -14px;
+          display: block;
+          width: 27px;
+          height: 14px;
+          background: url("~@/assets/images/global/header/drop-menu__arrow.svg") center no-repeat;
+          background-size: contain;
+          filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.16));
+        }
+
+        &:after {
+          top: -30px;
+          width: 40%;
+          height: 30px;
+        }
+
+        a {
+          margin: 0;
+          padding: 0 24px;
+          display: block;
+          font: 600 16px Montserrat;
+          color: #2A2A2A;
+          line-height: 48px;
+          white-space: nowrap;
+          cursor: pointer;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: #E8E8E8;
           }
         }
       }

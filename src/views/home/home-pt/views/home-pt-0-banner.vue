@@ -29,7 +29,7 @@
           <p><i></i>100% seguro e limpo</p>
         </div>
         <div class="qr-code">
-          <img src="../../../assets/images/global/qr-code__download.svg" alt="QR Code">
+          <img src="../../../../assets/images/global/qr-code__download.svg" alt="QR Code">
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
           seus posts. Com as moedas, você pode obter seguidores reais grátis e curtidas para a sua própria conta e posts do Instagram. Soa bem? Baixe GetInsta para obter moedas
           grátis. É fácil e 100% seguro!
         </p>
-        <img class="step-3" src="../../../assets/images/home-pt/home-pt-0-banner/home-pt-0-banner__phone.png" alt="QR Code">
+        <img class="step-3" src="../../../../assets/images/home-pt/home-pt-0-banner/home-pt-0-banner__phone.png" alt="QR Code">
       </div>
     </div>
   </div>

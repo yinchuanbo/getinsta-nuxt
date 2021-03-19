@@ -14,7 +14,7 @@
 
       <p class="home-2-free__p step-3">Leia o Código QR para Obter o App no Android</p>
 
-      <img class="home-2-free__img step-4" src="../../../assets/images/global/qr-code__download.svg" alt="QR Code">
+      <img class="home-2-free__img step-4" src="../../../../assets/images/global/qr-code__download.svg" alt="QR Code">
 
       <p class="home-2-free__p step-5">100% seguro e limpo</p>
     </div>

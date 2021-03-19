@@ -2,7 +2,7 @@
   <error />
 </template>
 <script>
-import error from '@/views/error-page/404';
+import error from '@/views/error/404';
 
 export default {
   components: { error },

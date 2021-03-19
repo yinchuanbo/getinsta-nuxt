@@ -50,10 +50,10 @@
 </template>
 
 <script>
-import avatar0 from '../../../assets/images/home/home-6-reviews/reviewer-avatar-0.png';
-import avatar1 from '../../../assets/images/home/home-6-reviews/reviewer-avatar-1.png';
-import avatar2 from '../../../assets/images/home/home-6-reviews/reviewer-avatar-2.png';
-import avatar3 from '../../../assets/images/home/home-6-reviews/reviewer-avatar-3.png';
+import avatar0 from '../../../../assets/images/home/home-6-reviews/reviewer-avatar-0.png';
+import avatar1 from '../../../../assets/images/home/home-6-reviews/reviewer-avatar-1.png';
+import avatar2 from '../../../../assets/images/home/home-6-reviews/reviewer-avatar-2.png';
+import avatar3 from '../../../../assets/images/home/home-6-reviews/reviewer-avatar-3.png';
 
 export default {
   name: 'HomePt4Reviews',

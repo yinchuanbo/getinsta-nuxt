@@ -23,15 +23,15 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-  
-  } 
+
+  }
   // 黑五
   .black-friday-img {
     display: none;
     margin: 0 auto;
     width: 184px;
     height: 188px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/img_blackfriday.svg") center top no-repeat;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/img_blackfriday.svg") center top no-repeat;
     background-size: contain;
   }
 
@@ -49,7 +49,7 @@
   // 新年
   &.new-year {
     height: 800px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/new-year__bg.svg") center top no-repeat;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/new-year__bg.svg") center top no-repeat;
 
     .new-year__top-img {
       display: block;
@@ -71,7 +71,7 @@
     margin: 36px auto 0;
     width: 436px;
     height: 189px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/new-year__top.svg") center no-repeat;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/new-year__top.svg") center no-repeat;
     background-size: contain;
   }
 
@@ -85,7 +85,7 @@
     display: none;
     width: 1865px;
     height: 787px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/marry-christmas__snow.svg") center;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/marry-christmas__snow.svg") center;
     background-size: 100% 200%;
     animation: floating-snow 26s linear infinite;
     @keyframes floating-snow {
@@ -103,7 +103,7 @@
     margin: 36px auto 0;
     width: 436px;
     height: 189px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/new-year__top.svg") center no-repeat;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/new-year__top.svg") center no-repeat;
     background-size: contain;
   }
 
@@ -117,7 +117,7 @@
     display: none;
     width: 1865px;
     height: 787px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/marry-christmas__snow.svg") center;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/marry-christmas__snow.svg") center;
     background-size: 100% 200%;
     animation: floating-snow 26s linear infinite;
     @keyframes floating-snow {
@@ -133,7 +133,7 @@
   // 情人节
   &.valentine {
     height: 963px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/valentine__bg.png") center top no-repeat;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/valentine__bg.png") center top no-repeat;
 
     h1 {
       margin-top: -15px;
@@ -147,13 +147,13 @@
     margin: 20px auto 0;
     width: 780px;
     height: 139px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/valentine__top-img.png") center no-repeat;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/valentine__top-img.png") center no-repeat;
     background-size: contain;
   }
   // 春季
   &.spring {
     height: 963px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/spring__bg.svg") center top no-repeat;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/spring__bg.svg") center top no-repeat;
 
     h1 {
       //margin-top: -15px;
@@ -167,7 +167,7 @@
     margin: 20px auto 0;
     width: 490px;
     height: 126px;
-    background: url("~@/views/store-pages/store-shelf-0-banner-followers/img/spring__top-img.svg") center no-repeat;
+    background: url("~@/views/store/store-shelf-0-banner-followers/img/spring__top-img.svg") center no-repeat;
     background-size: contain;
   }
 }
@@ -226,7 +226,7 @@
       }
     }
     &.spring {
-      background: #FF9941 url("~@/views/store-pages/store-daily-likes-banner/img/spring__bg-m.svg") top center no-repeat;
+      background: #FF9941 url("~@/views/store/store-daily-likes-banner/img/spring__bg-m.svg") top center no-repeat;
       background-size: contain;
 
       h1 {

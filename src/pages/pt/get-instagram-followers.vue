@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import instance from '@/views/home-pt/get-instagram-followers';
+import instance from '@/views/home/home-pt/get-instagram-followers';
 
 export default {
   components: { instance },

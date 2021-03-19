@@ -5,7 +5,7 @@
 
       <div class="unit-container">
         <div class="unit step-1">
-          <img src="../../../assets/images/home/home-5-advantages/home-5-advantages__icon_clock.svg" alt="icon">
+          <img src="../../../../assets/images/home/home-5-advantages/home-5-advantages__icon_clock.svg" alt="icon">
           <h3>Entrega Instântanea</h3>
           <p>
             Todas as tarefas serão finalizadas num tempo aceitável e você verá mudanças em 24 horas. Entrega instântanea é crucial, porém se rápido de mais pode trazer riscos,
@@ -14,7 +14,7 @@
         </div>
 
         <div class="unit step-2" style="padding-top: 12px">
-          <img src="../../../assets/images/home/home-5-advantages/home-5-advantages__icon_support.svg" alt="icon">
+          <img src="../../../../assets/images/home/home-5-advantages/home-5-advantages__icon_support.svg" alt="icon">
           <h3>Suporte 24/7</h3>
           <p>
             Nosso suporte estará sempre disponível. Caso você tenha quaisquer dúvidas sobre nossos produtos ou encontre dificuldades ao utilizar o sistema, por favor não hesite em
@@ -23,7 +23,7 @@
         </div>
 
         <div class="unit step-3">
-          <img src="../../../assets/images/home/home-5-advantages/home-5-advantages__icon_team.svg" alt="icon">
+          <img src="../../../../assets/images/home/home-5-advantages/home-5-advantages__icon_team.svg" alt="icon">
           <h3>Time Experiente</h3>
           <p>
             Nosso time profissional é experiente no setor de redes sociais há 10 anos. Nós entendemos as regras da indústria e agimos de acordo. Nós oferecemos soluções para te

@@ -115,7 +115,7 @@
 </template>
 
 <script>
-import api from '../../api/api.blog';
+import api from '../../../../api/api.blog';
 import ListEmpty from '@/components/list/list-empty';
 
 export default {
@@ -145,9 +145,9 @@ export default {
         chunk: 7
       },
       articleHotList: [],
-      ajaxRequesting: false,
-      ajaxRequestingTab: false,
-      ajaxRequestingHot: false
+      ajaxRequesting: true,
+      ajaxRequestingTab: true,
+      ajaxRequestingHot: true
     };
   },
   mounted() {
@@ -167,96 +167,96 @@ export default {
       }
     },
     getTabList() {
-      if (!this.ajaxRequesting) {
-        this.ajaxRequestingTab = true;
-        this.ajaxRequesting = true;
-        this.$axios.post(
-          api.getBlogCategory,
-          this.COMMON.paramSign({
-            client_lan: this.$i18n.locale
-          })
-        ).then((response) => {
-          this.ajaxRequesting = false;
-          this.ajaxRequestingTab = false;
-          // console.log(response.data);
-          if (response.data.status === 'ok') {
-            this.tabList = [...this.tabList, ...response.data['sorts']];
+      // if (!this.ajaxRequesting) {
+      this.ajaxRequestingTab = true;
+      this.ajaxRequesting = true;
+      this.$axios.post(
+        api.getBlogCategory,
+        this.COMMON.paramSign({
+          client_lan: this.$i18n.locale
+        })
+      ).then((response) => {
+        this.ajaxRequesting = false;
+        this.ajaxRequestingTab = false;
+        // console.log(response.data);
+        if (response.data.status === 'ok') {
+          this.tabList = [...this.tabList, ...response.data['sorts']];
 
-            if (this.tabList.length > 0) {
-              if (this.tabListIndex > this.tabList.length - 1) {
-                this.getArticleList(this.tabList[this.tabList.length - 1].id, this.tabList[this.tabList.length - 1].title);
-              } else if (this.tabListIndex === -1 || this.tabListIndex === 0) {
-                this.getArticleList('', this.breadcrumb);
-              } else {
-                this.getArticleList(this.tabList[this.tabListIndex].id, this.tabList[this.tabListIndex].title);
-              }
-            }
-
-            this.$storage.set('blogPrevSort', {
-              index: -1,
-              id: '',
-              breadcrumb: this.breadcrumb
-            });
-          } else {
-            if (response.data.type === 'updating') {
-              this.$alert(
-                '', 'info', '',
-                'For a better experience, our server is being upgraded, please visit us later.',
-                '', ''
-              );
+          if (this.tabList.length > 0) {
+            if (this.tabListIndex > this.tabList.length - 1) {
+              this.getArticleList(this.tabList[this.tabList.length - 1].id, this.tabList[this.tabList.length - 1].title);
+            } else if (this.tabListIndex === -1 || this.tabListIndex === 0) {
+              this.getArticleList('', this.breadcrumb);
+            } else {
+              this.getArticleList(this.tabList[this.tabListIndex].id, this.tabList[this.tabListIndex].title);
             }
           }
-        }).catch(() => {
-          console.log('......................catch error');
-          this.ajaxRequesting = false;
-          this.ajaxRequesting = false;
-        });
-      }
+
+          this.$storage.set('blogPrevSort', {
+            index: -1,
+            id: '',
+            breadcrumb: this.breadcrumb
+          });
+        } else {
+          if (response.data.type === 'updating') {
+            this.$alert(
+              '', 'info', '',
+              'For a better experience, our server is being upgraded, please visit us later.',
+              '', ''
+            );
+          }
+        }
+      }).catch(() => {
+        console.log('......................catch error');
+        this.ajaxRequesting = false;
+        this.ajaxRequesting = false;
+      });
+      // }
     },
     getArticleList(CategoryID, breadcrumb) {
-      if (!this.ajaxRequesting) {
-        this.ajaxRequesting = true;
-        this.breadcrumb = breadcrumb;
-        this.$axios.post(
-          api.getBlogList,
-          this.COMMON.paramSign({
-            page: this.articleListCurrent,
-            page_size: this.articleListPageSize,
-            sort: CategoryID,
-            keywords: this.keywords,
-            client_lan: this.$i18n.locale
-          })
-        ).then((response) => {
-          // console.log(response.data);
-          if (response.data.status === 'ok') {
-            this.articleList = response.data['articles'];
-            this.articleListTotal = response.data['page_info']['total_count'];
-          }
-          this.ajaxRequesting = false;
-        }).catch((error) => {
-          console.log('getArticleList error:', error);
-          this.ajaxRequesting = false;
-        });
-      }
+      // if (!this.ajaxRequesting) {
+      this.ajaxRequesting = true;
+      this.breadcrumb = breadcrumb;
+      this.$axios.post(
+        api.getBlogList,
+        this.COMMON.paramSign({
+          page: this.articleListCurrent,
+          page_size: this.articleListPageSize,
+          sort: CategoryID,
+          keywords: this.keywords,
+          client_lan: this.$i18n.locale
+        })
+      ).then((response) => {
+        // console.log(response.data);
+        if (response.data.status === 'ok') {
+          this.articleList = response.data['articles'];
+          this.articleListTotal = response.data['page_info']['total_count'];
+        }
+        this.ajaxRequesting = false;
+      }).catch((error) => {
+        console.log('getArticleList error:', error);
+        this.ajaxRequesting = false;
+      });
+      // }
     },
     getHotArticleList() {
-      if (!this.ajaxRequestingHot) {
-        this.ajaxRequestingHot = true;
-        this.$axios.post(
-          api.getHotBlogList,
-          this.COMMON.paramSign({
-            client_lan: this.$i18n.locale
-          })
-        ).then((response) => {
-          if (response.data.status === 'ok') {
-            this.articleHotList = response.data['articles'];
-          }
-          this.ajaxRequestingHot = false;
-        }).catch(() => {
-          console.log('......................catch error');
-          this.ajaxRequestingHot = false;
-        });
-      }
+      // if (!this.ajaxRequestingHot) {
+      this.ajaxRequestingHot = true;
+      this.$axios.post(
+        api.getHotBlogList,
+        this.COMMON.paramSign({
+          client_lan: this.$i18n.locale
+        })
+      ).then((response) => {
+        if (response.data.status === 'ok') {
+          this.articleHotList = response.data['articles'];
+        }
+        this.ajaxRequestingHot = false;
+      }).catch(() => {
+        console.log('......................catch error');
+        this.ajaxRequestingHot = false;
+      });
+      // }
     },
     tabToList(tabUnit, i) {
       if (this.tabListIndex !== i) {

@@ -179,7 +179,7 @@ import apiInsServer from '@/api/api.ins.server';
 
 import HeaderModuleMk0 from '@/components/header/header-module-mk-0';
 import ButtonPurple from '@/components/button/button-purple';
-import Seo100Module from '@/views/seo-pages/seo-1-lottery/seo-1-0-main/seo-1-0-0-module/view';
+import Seo100Module from '@/views/campaign/seo-1-lottery/seo-1-0-main/seo-1-0-0-module/view';
 import ButtonYellowDownload from '@/components/button/button-yellow-download';
 import DownloadIconSet from '@/components/control/download-icon-set';
 // import ButtonDownloadAndroid from '@/components/button/button-download-android';
