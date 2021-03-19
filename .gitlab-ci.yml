@@ -1,0 +1,20 @@
+
+Deploy to Testing:
+  stage: deploy
+  when: manual
+  only:
+    refs:
+      - master
+  script:
+    - /usr/local/bin/eb-deploy.sh "Ins Follower" www-easygetinsta-com2-test liSsLweGBAmc487bBDoJvwiEmrMd44fG
+
+
+
+Deploy to Production:
+  stage: deploy
+  when: manual
+  only:
+    refs:
+      - master
+  script:
+    - /usr/local/bin/eb-deploy.sh "Ins Follower" www-easygetinsta-com2 liSsLweGBAmc487bBDoJvwiEmrMd44fG
