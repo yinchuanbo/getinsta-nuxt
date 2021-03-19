@@ -15,9 +15,6 @@ export default {
     Blog1Content,
     Blog0Title
   },
-  data() {
-    return {};
-  },
   metaInfo() {
     return {
       title: this.$t('blog.meta.title'),

@@ -99,4 +99,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="../../assets/styles/pages/protocol.scss"></style>
+<style lang="scss" scoped src="./protocol.scss"></style>

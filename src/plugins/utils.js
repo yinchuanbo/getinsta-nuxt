@@ -8,7 +8,7 @@ import VueScrollTo from 'vue-scrollto'; // 锚点定位
 // import VueCookies from 'vue-cookies'; //Cookie
 import { Vue2Storage } from 'vue2-storage'; //WEB Storage
 import Vue2TouchEvents from 'vue2-touch-events'; // Touch Events
-// import Pagination from 'vue-pagination-2'; // 分页
+import Pagination from 'vue-pagination-2'; // 分页
 // import vueAwesomeCountdown from 'vue-awesome-countdown';
 
 // Vue.use(GoTop);
@@ -23,5 +23,5 @@ Vue.use(Vue2Storage, {
   ttl: 0
 });
 Vue.use(Vue2TouchEvents, { swipeTolerance: 30 });
-// Vue.component('pagination', Pagination);
+Vue.component('Pagination', Pagination);
 // Vue.use(vueAwesomeCountdown, 'vac'); // Component name, `countdown` and `vac` by default
