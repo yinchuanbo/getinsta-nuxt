@@ -59,7 +59,7 @@
             </a>
             <a
               id="nav-menu-04" class="header-nav__menu_links"
-              @click="routerPush('/blog')"
+              @click="routerPush('/blogs')"
             >{{ $t('global.header.menu.blog') }}</a>
             <a
               v-if="$i18n.locale === 'en'"
@@ -282,7 +282,7 @@
           </router-link>
 
           <router-link
-            to="/blog"
+            to="/blogs"
             class="header-nav__logged_content_link" @click.native="menuOff"
           >
             {{ $t('global.header.menu.blog') }}
@@ -563,8 +563,8 @@ export default {
         this.gaHeaderBtnLabel = 'faq';
       } else if (to.path === '/feedback') {
         this.gaHeaderBtnLabel = 'feedback';
-      } else if (to.path === '/blog') {
-        this.gaHeaderBtnLabel = 'blog';
+      } else if (to.path === '/blogs') {
+        this.gaHeaderBtnLabel = 'blogs';
       } else if (to.name === 'blog-detail') {
         this.gaHeaderBtnLabel = `blog-${this.$store.state.blogID}`;
       } else if (to.path === '/register') {

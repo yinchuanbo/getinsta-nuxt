@@ -36,7 +36,7 @@ export const state = () => ({
   v2: true, // V2开关
   v2Ad: false, // V2广告开关
   v2AdHeightPc: 50, // V2广告PC高度
-  v2AdHeightMobile: 0 // V2广告Mobile高度
+  v2AdHeightMobile: 50 // V2广告Mobile高度
 });
 
 export const mutations = {
