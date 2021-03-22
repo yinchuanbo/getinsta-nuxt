@@ -3,47 +3,65 @@
 </template>
 
 <script>
-import instance from '@/views/blog/blog-detail/blog-detail-example';
+import instance from '@/views/blog/blog-detail/blog-detail';
 import blogApi from '@/api/api.blog';
+import Crypto from 'crypto-js';
 
 export default {
   components: { instance },
   async asyncData(ctx) {
-    const idArray = ctx.route.params.id.split('-');
+    // article ID
+    const paramID = ctx.route.params.id;
+    const idArray = paramID.split('-');
     const articleID = idArray.pop();
+    if (typeof articleID !== 'string') return;
     console.log('articleID', articleID);
 
-    // request
-    const res = await ctx.app.$axios.get(
-      blogApi.getBlogDetail,
-      {
-        params: { id: articleID }
-      }
-    );
-
-    console.log('res', res);
-
-    // data return
-    return {
+    // return data
+    let returnData = {
       hostname: process.server ? ctx.req.headers.host : location.hostname,
-      reqObj: res
+      reqObj: {}
     };
 
-    // await ctx.app.$axios.get(blogApi.getBlogDetail, {
-    //   params: { id: articleID }
-    // }).then((res) => {
-    //   if (idArray.join('-') !== res.data.data['seo_url']) {
-    //     ctx.error({ statusCode: 404 });
-    //     return;
-    //   }
-    //   ctx.store.commit('setArticleObj', res.data.data);
-    //   return {
-    //     hostname: process.server ? ctx.req.headers.host : location.hostname,
-    //     articleObj: res.data.data
-    //   };
-    // }).catch((err) => {
-    //   ctx.error({ statusCode: err.statusCode });
-    // });
+    let apiParams = {
+      article_id: articleID,
+      client_lan: 'en',
+      page_url: paramID
+    };
+
+    const paramStr = JSON.stringify(apiParams);
+    let msg = paramStr;
+    let key = 'd4c66a7888fb21c173407d697bc67d92afac1b15ec02d7aaa3cc6a04c2c7b2cf';
+    let hash = Crypto['HmacSHA256'](msg, key).toString();
+    const paramSigned = {
+      'signed_body': hash + '.' + paramStr,
+      'sign_version': 1
+    };
+
+    // request
+    try {
+      console.log('res', res);
+      let res = await ctx.app.$axios.post(
+        blogApi.getBlogDetail,
+        paramSigned
+      );
+      console.log('res', res);
+
+      if (res['data'].status === 'ok') {
+        returnData.reqObj = res;
+      } else {
+        if (res['data']['redirect_url']) {
+          ctx.redirect(302, res['data']['redirect_url']);
+        } else {
+          ctx.error({ statusCode: 404 });
+        }
+      }
+    } catch (err) {
+      console.log('blog detail error:', err);
+      ctx.error({ statusCode: 500 });
+    }
+
+    return returnData;
   },
   head() {
     return {

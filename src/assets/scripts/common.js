@@ -122,7 +122,7 @@ export default {
     const paramStr = JSON.stringify(paramObj);
     let msg = paramStr;
     let key = 'd4c66a7888fb21c173407d697bc67d92afac1b15ec02d7aaa3cc6a04c2c7b2cf';
-    let hash = Crypto.HmacSHA256(msg, key).toString();
+    let hash = Crypto['HmacSHA256'](msg, key).toString();
     return {
       'signed_body': hash + '.' + paramStr,
       'sign_version': 1

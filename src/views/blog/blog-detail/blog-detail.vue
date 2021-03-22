@@ -85,7 +85,7 @@
       </div>
       <div class="right">
         <div class="mix-container">
-          <img src="../../assets/images/global/logo.svg" alt="LOGO">
+          <img src="@/assets/images/global/logo.svg" alt="LOGO">
           <h2>GetInsta</h2>
           <p><span>{{ $t('blogDetail.subtitle') }}</span></p>
           <div class="btn pc">
@@ -166,26 +166,23 @@
 </template>
 
 <script>
-import i18n from '@/i18n';
 import Vue from 'vue';
 import $ from 'jquery';
-// import ButtonGreen from '@/views/global/button/button-green';
-// import ButtonYellowDownload from '@/views/global/button/button-yellow-download';
+// import ButtonGreen from '@/components/button/button-green';
+// import ButtonYellowDownload from '@/components/button/button-yellow-download';
 import api from '@/api/api.blog';
 import apiInsServer from '@/api/api.ins.server';
-// import ButtonDownloadWindowsYellow from '@/views/global/button/button-download-windows-yellow';
-import ButtonDownloadAndroid from '@/views/global/button/button-download-android';
-import ButtonPurple from '@/views/global/button/button-purple';
-import ButtonDownloadIos from '@/views/global/button/button-download-ios';
-import BlogPopupBought from '@/views/blog/blog-popup-bought';
-import ButtonDownloadWindows from '@/views/global/button/button-download-windows';
-import blogsearch from '@/components/blog-search/blog-search.vue';
-import blogbuy from '@/components/blog-buy/blog-buy.vue';
+// import ButtonDownloadWindowsYellow from '@/components/button/button-download-windows-yellow';
+import ButtonDownloadAndroid from '@/components/button/button-download-android';
+import ButtonPurple from '@/components/button/button-purple';
+import ButtonDownloadIos from '@/components/button/button-download-ios';
+import BlogPopupBought from '@/views/blog/dynamical-modules/blog-popup-bought/blog-popup-bought.vue';
+import ButtonDownloadWindows from '@/components/button/button-download-windows';
+import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
+import blogBuy from '@/views/blog/dynamical-modules/blog-buy/blog-buy.vue';
 
-blogsearch.i18n = i18n;
-blogbuy.i18n = i18n;
-const MyBlog = Vue.extend(blogsearch);
-const MyBlogBuy = Vue.extend(blogbuy);
+const MyBlog = Vue.extend(blogSearch);
+const MyBlogBuy = Vue.extend(blogBuy);
 export default {
   name: 'BlogDetail',
   components: {
@@ -271,15 +268,19 @@ export default {
   watch: {
     $route() {
       this.$scrollTo('#header-blank');
-      this.getBlogDetail(this.$route.params.id.split('-').pop(), false);
+      // this.getBlogDetail(this.$route.params.id.split('-').pop(), false);
       this.$store.commit('blogID', this.blogID);
     }
   },
   destroyed() {
     clearInterval(this.jQRenderTimer);
   },
+  created() {
+    // nuxt
+    this.getBlogDetailByProps(this.reqObj);
+  },
   mounted() {
-    this.getBlogDetail(this.blogID, true);
+    // this.getBlogDetail(this.blogID, true);
     // this.setPageBeacon();
     this.$store.commit('blogID', this.blogID);
     // this.popUpBought();
@@ -299,6 +300,44 @@ export default {
 
       // if (this.needGoToTask) this.goToTask();
     },
+
+    // nuxt props
+    getBlogDetailByProps(response) {
+      this.ajaxRequesting = false;
+
+      this.blogDetailObj = response.data['article'];
+      this.langArabic = this.COMMON.langCheckIsArabic(response.data['article']['seo_title']);
+
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.renderByJQ();
+          this.renderDetector();
+
+          let checkStr = [...document.querySelectorAll('.blogBanner')];
+          if (checkStr.length) {
+            for (let i = 0; i < checkStr.length; i++) {
+              let searchcomponent = new MyBlog({ propsData: { ax: this.blogID } }).$mount();
+              checkStr[i].parentNode.replaceChild(searchcomponent.$el, checkStr[i]);
+            }
+          }
+
+          let checBuy = [...document.querySelectorAll('.blogBuy')];
+          if (checBuy.length) {
+            for (let j = 0; j < checBuy.length; j++) {
+              let buymodal = new MyBlogBuy({ propsData: { sendthis: this } }).$mount();
+              checBuy[j].parentNode.replaceChild(buymodal.$el, checBuy[j]);
+            }
+          }
+        }, 500);
+      });
+
+      this.getHotArticleList();
+      this.blogSortObj = response.data['sort'] || {};
+      this.blogSortObj.breadcrumb = response.data['sort'].title || '';
+      this.$storage.set('blogPrevSort', this.blogSortObj);
+      this.ajaxRequesting = false;
+    },
+
     getBlogDetail(ID, firstQuest) {
       if (firstQuest) this.ajaxRequesting = false;
 
@@ -314,7 +353,7 @@ export default {
 
       if (!this.ajaxRequesting) {
         this.ajaxRequesting = true;
-        this.axios.post(
+        this.$axios.post(
           api.getBlogDetail,
           this.COMMON.paramSign(param)
         ).then((response) => {
@@ -380,7 +419,7 @@ export default {
     getHotArticleList() {
       if (!this.ajaxRequestingHot) {
         this.ajaxRequestingHot = true;
-        this.axios.post(
+        this.$axios.post(
           api.getHotBlogList,
           this.COMMON.paramSign({
             client_lan: this.$i18n.locale
@@ -536,7 +575,7 @@ export default {
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
-      this.axios.post(
+      this.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {

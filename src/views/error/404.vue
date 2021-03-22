@@ -1,7 +1,7 @@
 <template>
   <div class="index-loading">
     <div class="wrapper">
-      <div class="svg">
+      <div v-if="errorCode === 404" class="svg">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
           <title>404</title>
           <g id="Layer_12 yellow-back-fig" data-name="Layer 12">
@@ -132,7 +132,8 @@
           </g>
         </svg>
       </div>
-      <p>Page not found</p>
+      <p v-if="errorCode === 404">Page not found</p>
+      <p v-if="errorCode !== 404">Server Internal Error ({{ errorCode }})</p>
       <div class="btn-container">
         <router-link to="/">
           <button-purple text="Back Home" :font-size="'size-20'" />
@@ -148,13 +149,15 @@ import ButtonPurple from '@/components/button/button-purple';
 export default {
   name: 'NotFound',
   components: { ButtonPurple },
+  props: {
+    errorCode: {
+      type: Number,
+      require: false,
+      default: 404
+    }
+  },
   data() {
     return {};
-  },
-  metaInfo() {
-    return {
-      title: 'Sorry, page not found'
-    };
   },
   mounted() {
     // setTimeout(() => {

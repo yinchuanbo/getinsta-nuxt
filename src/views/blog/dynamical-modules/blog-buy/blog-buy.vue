@@ -54,7 +54,7 @@
 import apiAccount from '~/api/api.account';
 import apiInsServer from '~/api/api.ins.server';
 import ButtonPurple from '~/components/button/button-purple';
-import BuySelect from '@/components/model-box/buy-select/buy-select.vue';
+import BuySelect from '@/components/popup-layer/model-box/buy-select/buy-select.vue';
 export default {
  name:'Blogbuy',
  components: {
@@ -108,7 +108,7 @@ export default {
       this.$axios.post(
         `${apiAccount.appConfig}?origin=web`,
         this.COMMON.paramSign({
-          client_lan: this.$i18n.locale,
+          client_lan: 'en',
           cycle_product_enable: true
         })
       ).then((response) => {
