@@ -304,7 +304,7 @@ export default {
         = to.path === '/';
 
       // Multi-lang 跳转
-      this.multiLangEnvInit(to);
+      // this.multiLangEnvInit(to);
       // // Multi-lang 下载链接初始化
       // this.multiLangAppDwnInit(to);
 
