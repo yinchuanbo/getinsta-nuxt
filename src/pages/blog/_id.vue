@@ -64,14 +64,12 @@ export default {
   },
   head() {
     return {
-      // title: this.reqObj['seo_title'],
-      title: 1,
+      title: this.reqObj['seo_title'] || '',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          // content: this.reqObj['remark']
-          content: 2
+          content: this.reqObj['remark'] || ''
         }
       ],
       link: [
