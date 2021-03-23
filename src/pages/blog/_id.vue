@@ -18,7 +18,7 @@ export default {
     console.log('articleID', articleID);
 
     // return data
-    let returnData = {
+    let DATA = {
       hostname: process.server ? ctx.req.headers.host : location.hostname,
       reqObj: {}
     };
@@ -47,7 +47,7 @@ export default {
       console.log('res', res);
 
       if (res['data'].status === 'ok') {
-        returnData.reqObj = res;
+        DATA.reqObj = res;
       } else {
         if (res['data']['redirect_url']) {
           ctx.redirect(302, res['data']['redirect_url']);
@@ -60,7 +60,7 @@ export default {
       ctx.error({ statusCode: 500 });
     }
 
-    return returnData;
+    return DATA;
   },
   head() {
     return {
