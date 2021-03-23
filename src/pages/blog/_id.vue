@@ -40,7 +40,6 @@ export default {
 
     // request
     try {
-      console.log('res', res);
       let res = await ctx.app.$axios.post(
         blogApi.getBlogDetail,
         paramSigned
