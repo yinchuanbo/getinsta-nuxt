@@ -105,10 +105,11 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: true,
-    prefix: process.env.NODE_ENV === 'production'
-      ? '/prod/api'
-      : '/dev/test/api',
-    credentials: false // 表示跨域请求时是否需要使用凭证
+    baseURL: process.env.NODE_ENV === 'production'
+      ? 'https://www.easygetinsta.com'
+      : 'https://test.easygetinsta.com/test/api',
+    prefix: process.env.NODE_ENV === 'production' ? '/prod/api' : '/dev/test/api',
+    credentials: true // 表示跨域请求时是否需要使用凭证
   },
 
   // Proxy Config

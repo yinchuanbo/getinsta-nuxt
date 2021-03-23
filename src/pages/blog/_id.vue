@@ -8,17 +8,17 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instance },
-  async asyncData(ctx) {
+  async asyncData({ route, req, app, redirect, error, isDev }) {
     // article ID
-    const paramID = ctx.route.params.id;
+    const paramID = route.params.id;
     const idArray = paramID.split('-');
     const articleID = idArray.pop();
     if (typeof articleID !== 'string') return;
-    console.log('articleID', articleID);
+    // if (isDev) console.log('articleID', articleID);
 
     // return data
     let DATA = {
-      hostname: process.server ? ctx.req.headers.host : location.hostname,
+      hostname: process.server ? req.headers.host : location.hostname,
       reqObj: {}
     };
 
@@ -31,24 +31,24 @@ export default {
 
     // request
     try {
-      let res = await ctx.app.$axios.get(
+      let res = await app.$axios.$get(
         blogApi.getBlogDetailV2,
         { params: apiParams }
       );
-      console.log('res', res);
+      // if (isDev) console.log('res:', res);
 
-      if (res['data'].status === 'ok') {
+      if (res['status'] === 'ok') {
         DATA.reqObj = res;
       } else {
-        if (res['data']['redirect_url']) {
-          ctx.redirect(302, res['data']['redirect_url']);
+        if (res['redirect_url']) {
+          redirect(302, res['redirect_url']);
         } else {
-          ctx.error({ statusCode: 404 });
+          error({ statusCode: 404 });
         }
       }
     } catch (err) {
       console.log('blog detail error:', err);
-      ctx.error({ statusCode: 500 });
+      error({ statusCode: 500 });
     }
 
     return DATA;

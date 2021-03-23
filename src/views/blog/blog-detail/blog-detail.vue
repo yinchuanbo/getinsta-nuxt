@@ -12,18 +12,18 @@
               <span>&gt;</span>
               <a @click="backToBlogList">{{ blogSortObj.breadcrumb || '' }}</a>
               <span>&gt;</span>
-              <b>{{ blogDetailObj['page_title'] }}</b>
+              <b>{{ blogDetailObj['page_title'] || '' }}</b>
             </div>
             <div class="meta-info">
-              <h1>{{ blogDetailObj['page_title'] }}</h1>
-              <p class="intro">{{ blogDetailObj['remark'] }}</p>
+              <h1>{{ blogDetailObj['page_title'] || '' }}</h1>
+              <p class="intro">{{ blogDetailObj['remark'] || '' }}</p>
               <hr>
               <p class="info">
                 {{ $t('blogDetail.updated') }}
-                {{ blogDetailObj['update_time'] }}
+                {{ blogDetailObj['update_time'] || '' }}
                 |
                 {{ $t('blogDetail.by') }}
-                {{ blogDetailObj.author }}
+                {{ blogDetailObj.author || '' }}
               </p>
             </div>
             <div
@@ -33,7 +33,7 @@
                 'android': $store.state.isAndroid,
                 'windows': $store.state.isWindows
               }"
-              v-html="blogDetailObj.content"
+              v-html="blogDetailObj.content || ''"
             ></div>
             <div v-if="relatedArticleList.length !== 0" class="related-list">
               <h2>{{ $t('blogDetail.RelatedReadings') }}</h2>
@@ -160,8 +160,6 @@
         </div>
       </div>
     </transition>
-
-    <blog-popup-bought v-if="blogPopupBoughtShow" />
   </div>
 </template>
 
@@ -176,7 +174,6 @@ import apiInsServer from '@/api/api.ins.server';
 import ButtonDownloadAndroid from '@/components/button/button-download-android';
 import ButtonPurple from '@/components/button/button-purple';
 import ButtonDownloadIos from '@/components/button/button-download-ios';
-import BlogPopupBought from '@/views/blog/dynamical-modules/blog-popup-bought/blog-popup-bought.vue';
 import ButtonDownloadWindows from '@/components/button/button-download-windows';
 import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
 import blogBuy from '@/views/blog/dynamical-modules/blog-buy/blog-buy.vue';
@@ -187,7 +184,6 @@ export default {
   name: 'BlogDetail',
   components: {
     ButtonDownloadWindows,
-    BlogPopupBought,
     ButtonDownloadIos,
     ButtonDownloadAndroid,
     // ButtonDownloadWindowsYellow,
@@ -239,7 +235,7 @@ export default {
       blogSortObj: {},
       searchInsLoading: false,
       ajaxRequesting: true,
-      ajaxRequestingHot: false,
+      ajaxRequestingHot: true,
       dialogFail: false,
       dialogFailMsg: '',
       jQRenderTimer: false,
@@ -255,8 +251,6 @@ export default {
         ct: `${this.$i18n.locale}campaign`,
         mt: 8
       },
-
-      blogPopupBoughtShow: false,
       langArabic: false
     };
   },
@@ -281,9 +275,8 @@ export default {
   },
   mounted() {
     // this.getBlogDetail(this.blogID, true);
-    // this.setPageBeacon();
+    // this.getBlogDetailByProps(this.reqObj);
     this.$store.commit('blogID', this.blogID);
-    // this.popUpBought();
   },
   methods: {
     closeDialog() {
@@ -302,42 +295,42 @@ export default {
     },
 
     // nuxt props
-    getBlogDetailByProps(response) {
-      this.ajaxRequesting = false;
+    getBlogDetailByProps(data) {
+      this.blogDetailObj = data['article'];
+      this.langArabic = this.COMMON.langCheckIsArabic(data['article']['seo_title']);
 
-      this.blogDetailObj = response.data['article'];
-      this.langArabic = this.COMMON.langCheckIsArabic(response.data['article']['seo_title']);
+      if (process.client) {
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.renderByJQ();
+            this.renderDetector();
 
-      this.$nextTick(() => {
-        setTimeout(() => {
-          this.renderByJQ();
-          this.renderDetector();
-
-          let checkStr = [...document.querySelectorAll('.blogBanner')];
-          if (checkStr.length) {
-            for (let i = 0; i < checkStr.length; i++) {
-              let searchcomponent = new MyBlog({ propsData: { ax: this.blogID } }).$mount();
-              checkStr[i].parentNode.replaceChild(searchcomponent.$el, checkStr[i]);
+            let checkStr = [...document.querySelectorAll('.blogBanner')];
+            if (checkStr.length) {
+              for (let i = 0; i < checkStr.length; i++) {
+                let searchcomponent = new MyBlog({ propsData: { ax: this.blogID } }).$mount();
+                checkStr[i].parentNode.replaceChild(searchcomponent.$el, checkStr[i]);
+              }
             }
-          }
 
-          let checBuy = [...document.querySelectorAll('.blogBuy')];
-          if (checBuy.length) {
-            for (let j = 0; j < checBuy.length; j++) {
-              let buymodal = new MyBlogBuy({ propsData: { sendthis: this } }).$mount();
-              checBuy[j].parentNode.replaceChild(buymodal.$el, checBuy[j]);
+            let checBuy = [...document.querySelectorAll('.blogBuy')];
+            if (checBuy.length) {
+              for (let j = 0; j < checBuy.length; j++) {
+                let buymodal = new MyBlogBuy({ propsData: { sendthis: this } }).$mount();
+                checBuy[j].parentNode.replaceChild(buymodal.$el, checBuy[j]);
+              }
             }
-          }
-        }, 500);
-      });
+          }, 500);
+        });
+        this.getHotArticleList();
+        this.blogSortObj = data['sort'] || {};
+        this.blogSortObj.breadcrumb = data['sort'].title || '';
+        this.$storage.set('blogPrevSort', this.blogSortObj);
+      }
 
-      this.getHotArticleList();
-      this.blogSortObj = response.data['sort'] || {};
-      this.blogSortObj.breadcrumb = response.data['sort'].title || '';
-      this.$storage.set('blogPrevSort', this.blogSortObj);
       this.ajaxRequesting = false;
     },
-
+    // old CSR
     getBlogDetail(ID, firstQuest) {
       if (firstQuest) this.ajaxRequesting = false;
 
@@ -399,7 +392,7 @@ export default {
                 location.href = `${window.location.origin}/error404`;
               } else if (response.data.error && response.data.error.type === 'bad_lan') {
                 console.log('error404 Jump: bad_url');
-                this.seoMultiBlogJump(this.blogID);
+                location.href = `${window.location.origin}/error404`;
               } else {
                 console.log('error404 Jump: Others');
                 location.href = `${window.location.origin}/error404`;
@@ -417,27 +410,21 @@ export default {
       }
     },
     getHotArticleList() {
-      if (!this.ajaxRequestingHot) {
-        this.ajaxRequestingHot = true;
-        this.$axios.post(
-          api.getHotBlogList,
-          this.COMMON.paramSign({
-            client_lan: this.$i18n.locale
-          })
-        ).then((response) => {
-          if (response.data.status === 'ok') {
-            this.articleHotList = response.data['articles'];
-          }
-          this.ajaxRequestingHot = false;
-        }).catch(() => {
-          console.log('......................catch error');
-          this.ajaxRequestingHot = false;
-        });
-      }
-    },
-    seoMultiBlogJump(blogID) {
-      console.log('error404 Jump: bad_url & No match.');
-      location.href = `${window.location.origin}/error404`;
+      this.ajaxRequestingHot = true;
+      this.$axios.post(
+        api.getHotBlogList,
+        this.COMMON.paramSign({
+          client_lan: 'en'
+        })
+      ).then((response) => {
+        if (response.data.status === 'ok') {
+          this.articleHotList = response.data['articles'];
+        }
+        this.ajaxRequestingHot = false;
+      }).catch(() => {
+        console.log('Catch error: getHotArticleList()');
+        this.ajaxRequestingHot = false;
+      });
     },
 
     renderByJQ() {
@@ -491,7 +478,9 @@ export default {
       }, 1000);
     },
     backToBlogList() {
-      this.$storage.set('blogDetailVisited', true);
+      if (process.client) {
+        this.$storage.set('blogDetailVisited', true);
+      }
       this.$router.push({ path: '/blogs' });
     },
 
@@ -545,123 +534,7 @@ export default {
       let multiLang = '';
       if (this.$i18n.locale !== 'en') multiLang = `-${this.$i18n.locale}`;
       return multiLang;
-    },
-
-    popUpBought() {
-      setTimeout(() => {
-        if (this.$i18n.locale === 'en') {
-          this.blogPopupBoughtShow = true;
-        }
-      }, 8000);
-    },
-    searchUsername() {
-      this.searchInsByServerV2();
-      this.$ga.event(
-        'buttonclick',
-        'click',
-        'b4-addname-ID'
-      );
-    },
-    searchInsByServerV2() {
-      if (this.searchInsInput === '') {
-        this.$alert(
-          '', 'warn',
-          this.$t('store.buy.error.noInsID.title'),
-          this.$t('store.buy.error.noInsID.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
-        );
-        return;
-      }
-      if (this.searchInsLoading) return;
-      this.searchInsLoading = true;
-      this.$axios.post(
-        apiInsServer.getAccountByUsername,
-        this.COMMON.paramSign({ ins_account: this.searchInsInput })
-      ).then((response) => {
-        this.searchInsLoading = false;
-        this.searchStatus = true;
-
-        if (response.data.status !== 'ok') {
-          this.$alert(
-            '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorInsID.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
-          );
-          return;
-        }
-
-        const _sharedDataUser = response.data.content['graphql']['user'];
-        const _sharedDataUserPosts = _sharedDataUser['edge_owner_to_timeline_media'];
-
-        this.insUser.ins_id = _sharedDataUser.id;
-        this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
-        this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
-        this.insUser.follow = _sharedDataUser['edge_follow']['count'];
-        this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
-
-        this.postList = this.insUser.post.post_list;
-        this.postListInfo.post_count = this.insUser.post.post_count;
-        this.postListInfo.end_cursor = this.insUser.post.end_cursor;
-        this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
-
-        // this.$nextTick(() => {
-        //   this.anchorBottomBtn();
-        // });
-      }).catch((error) => {
-        this.closeDialog();
-        this.searchInsLoading = false;
-        this.$alert(
-          '', 'error',
-          this.$t('global.modelBox.title.oops'),
-          this.$t('store.buy.error.errorRequest.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
-        );
-        console.error('Catch Error: searchIns: ', error);
-      });
-    },
-    insPostTransform(_sharedDataUserPosts) {
-      let post = {};
-      post.post_count = _sharedDataUserPosts.count;
-      post.end_cursor = _sharedDataUserPosts['page_info']['end_cursor'];
-
-      const insPostList = _sharedDataUserPosts['edges'];
-      let postList = [];
-
-      for (let i = 0; i < insPostList.length; i++) {
-        let postObj = {};
-        let insPostObj = insPostList[i]['node'];
-
-        postObj.like_id = insPostObj.id;
-        postObj.short_code = insPostObj['shortcode'];
-        postObj.like_pic_url = insPostObj['thumbnail_src'];
-        postObj.like_count = insPostObj['edge_liked_by']['count'];
-
-        postList.push(postObj);
-      }
-
-      post.post_list = postList;
-
-      return post;
-    },
-    choiceandDow(msg) {
-      if (msg) {
-        this.andicon = msg;
-      }
-    },
-    clickadr() {
-      this.$ga.event('insdl', 'download', `blogappdl-b4-${this.blogID}`);
-      window.location.href = 'https://www.easygetinsta.com/downloadcenter';
-    },
-    clickapple() {
-      this.$ga.event('insdl', 'download', `blogiosdl-b4-${this.blogID}`);
-      window.location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=blog-b4&mt=8';
     }
-
   }
 };
 </script>
