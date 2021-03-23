@@ -106,7 +106,7 @@ export default {
   axios: {
     proxy: true,
     baseURL: process.env.NODE_ENV === 'production'
-      ? 'https://www.easygetinsta.com'
+      ? 'https://www.easygetinsta.com/api'
       : 'https://test.easygetinsta.com/test/api',
     prefix: process.env.NODE_ENV === 'production' ? '/prod/api' : '/dev/test/api',
     credentials: true // 表示跨域请求时是否需要使用凭证
