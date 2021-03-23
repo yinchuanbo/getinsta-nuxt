@@ -106,7 +106,7 @@ export default {
   axios: {
     proxy: true,
     prefix: process.env.NODE_ENV === 'production'
-      ? 'https://www.easygetinsta.com/api'
+      ? '/prod/api'
       : '/dev/test/api',
     credentials: false // 表示跨域请求时是否需要使用凭证
   },
@@ -117,6 +117,13 @@ export default {
       target: 'https://test.easygetinsta.com',
       pathRewrite: {
         '^/dev': '',
+        changeOrigin: true
+      }
+    },
+    '/prod': {
+      target: 'https://www.easygetinsta.com',
+      pathRewrite: {
+        '^/prod': '',
         changeOrigin: true
       }
     }
