@@ -5,7 +5,6 @@
 <script>
 import instance from '@/views/blog/blog-detail/blog-detail';
 import blogApi from '@/api/api.blog';
-import Crypto from 'crypto-js';
 
 export default {
   components: { instance },
@@ -26,23 +25,15 @@ export default {
     let apiParams = {
       article_id: articleID,
       client_lan: 'en',
-      page_url: paramID
-    };
-
-    const paramStr = JSON.stringify(apiParams);
-    let msg = paramStr;
-    let key = 'd4c66a7888fb21c173407d697bc67d92afac1b15ec02d7aaa3cc6a04c2c7b2cf';
-    let hash = Crypto['HmacSHA256'](msg, key).toString();
-    const paramSigned = {
-      'signed_body': hash + '.' + paramStr,
-      'sign_version': 1
+      page_url: paramID,
+      accept_lan: 'en'
     };
 
     // request
     try {
-      let res = await ctx.app.$axios.post(
-        blogApi.getBlogDetail,
-        paramSigned
+      let res = await ctx.app.$axios.get(
+        blogApi.getBlogDetailV2,
+        { params: apiParams }
       );
       console.log('res', res);
 
