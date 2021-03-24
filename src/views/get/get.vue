@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Get0Banner from '@/views/get/views/get-0-banner';
-import Get1Add from '@/views/get/views/get-1-add';
-import Get2Why from '@/views/get/views/get-2-why';
-import Get3Now from '@/views/get/views/get-3-now';
+import Get0Banner from '@/views/get/views/get-0-banner/get-0-banner';
+import Get1Add from '@/views/get/views/get-1-add/get-1-add';
+import Get2Why from '@/views/get/views/get-2-why/get-2-why';
+import Get3Now from '@/views/get/views/get-3-now/get-3-now';
 
 export default {
   name: 'Get',

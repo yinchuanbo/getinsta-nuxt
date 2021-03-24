@@ -308,7 +308,7 @@ export default {
       display: block;
       width: 141px;
       height: 108px;
-      background-image: url("~@/assets/images/faq/faq-1-form/faq-1-form__icon_feedback.svg");
+      background-image: url("~@/views/faq/views/faq-1-form/img/faq-1-form__icon_feedback.svg");
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;

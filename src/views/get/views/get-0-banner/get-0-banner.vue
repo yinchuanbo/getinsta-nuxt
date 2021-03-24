@@ -48,19 +48,19 @@
 
 <script>
 import ButtonWave from '@/components/button/button-wave';
-import img00 from '@/assets/images/get/get-0-banner/get-0-banner__bg_circle-0.svg';
-import img01 from '@/assets/images/get/get-0-banner/get-0-banner__bg_circle-1.svg';
-import img02 from '@/assets/images/get/get-0-banner/get-0-banner__bg_circle-2.svg';
-import img03 from '@/assets/images/get/get-0-banner/get-0-banner__circle.svg';
-import img04 from '@/assets/images/get/get-0-banner/get-0-banner__heart-red.svg';
-import img05 from '@/assets/images/get/get-0-banner/get-0-banner__heart-white.svg';
-import img06 from '@/assets/images/get/get-0-banner/get-0-banner__heart-white-hollow.svg';
-import img07 from '@/assets/images/get/get-0-banner/get-0-banner__person-0.png';
-import img08 from '@/assets/images/get/get-0-banner/get-0-banner__person-1.png';
-import img09 from '@/assets/images/get/get-0-banner/get-0-banner__person-2.png';
-import img10 from '@/assets/images/get/get-0-banner/get-0-banner__person-3.png';
-import img11 from '@/assets/images/get/get-0-banner/get-0-banner__phone.svg';
-import img12 from '@/assets/images/get/get-0-banner/get-0-banner__phone-tip.svg';
+import img00 from '@/views/get/views/get-0-banner/img/get-0-banner__bg_circle-0.svg';
+import img01 from '@/views/get/views/get-0-banner/img/get-0-banner__bg_circle-1.svg';
+import img02 from '@/views/get/views/get-0-banner/img/get-0-banner__bg_circle-2.svg';
+import img03 from '@/views/get/views/get-0-banner/img/get-0-banner__circle.svg';
+import img04 from '@/views/get/views/get-0-banner/img/get-0-banner__heart-red.svg';
+import img05 from '@/views/get/views/get-0-banner/img/get-0-banner__heart-white.svg';
+import img06 from '@/views/get/views/get-0-banner/img/get-0-banner__heart-white-hollow.svg';
+import img07 from '@/views/get/views/get-0-banner/img/get-0-banner__person-0.png';
+import img08 from '@/views/get/views/get-0-banner/img/get-0-banner__person-1.png';
+import img09 from '@/views/get/views/get-0-banner/img/get-0-banner__person-2.png';
+import img10 from '@/views/get/views/get-0-banner/img/get-0-banner__person-3.png';
+import img11 from '@/views/get/views/get-0-banner/img/get-0-banner__phone.svg';
+import img12 from '@/views/get/views/get-0-banner/img/get-0-banner__phone-tip.svg';
 import ButtonBuyNow from '@/components/button/button-buy-now';
 // import ButtonDownloadIos from '@/components/button/button-download-ios';
 // import ButtonDownloadAndroid from '@/components/button/button-download-android';
@@ -204,7 +204,7 @@ export default {
         left: 31.92%;
         width: (442/1210)*100%;
         height: (442/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__bg_circle-0.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__bg_circle-0.svg");
         transform: scale(0);
       }
 
@@ -213,7 +213,7 @@ export default {
         left: 12.1%;
         width: 76.2%;
         height: 125.4%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__bg_circle-1.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__bg_circle-1.svg");
         transform: scale(0);
       }
 
@@ -222,7 +222,7 @@ export default {
         left: 5.1%;
         width: 90%;
         height: 170%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__bg_circle-2.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__bg_circle-2.svg");
         transform: scale(0);
       }
 
@@ -231,7 +231,7 @@ export default {
         left: 35.6%;
         width: (351/1210)*100%;
         height: (441/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__phone.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__phone.svg");
         transition-delay: 0.5s;
         transform: translateY(100%);
       }
@@ -241,7 +241,7 @@ export default {
         left: 51.6%;
         width: (230/1210)*100%;
         height: (115/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__phone-tip.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__phone-tip.svg");
         transition-delay: 1.1+0.5s;
         transition-duration: 0.4s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -253,7 +253,7 @@ export default {
         left: 17.4%;
         width: (151/1210)*100%;
         height: (151/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__person-0.png");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__person-0.png");
         transition-delay: 2.4+0.4s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);
@@ -264,7 +264,7 @@ export default {
         left: 71.4%;
         width: (141/1210)*100%;
         height: (141/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__person-1.png");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__person-1.png");
         transition-delay: 2.4+0.4*2s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);
@@ -275,7 +275,7 @@ export default {
         left: 73%;
         width: (121/1210)*100%;
         height: (121/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__person-2.png");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__person-2.png");
         transition-delay: 2.4+0.4*4s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);
@@ -286,7 +286,7 @@ export default {
         left: 26%;
         width: (121/1210)*100%;
         height: (121/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__person-3.png");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__person-3.png");
         transition-delay: 2.4+0.4*3s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);
@@ -297,7 +297,7 @@ export default {
         left: 31.8%;
         width: (32/1210)*100%;
         height: (28/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__heart-white.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__heart-white.svg");
         transition-delay: 2.4s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);
@@ -308,7 +308,7 @@ export default {
         left: 27.8%;
         width: (17.5/1210)*100%;
         height: (15.5/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__heart-white.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__heart-white.svg");
         transition-delay: 2.4+0.4*3s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);
@@ -319,7 +319,7 @@ export default {
         left: 64.8%;
         width: (30/1210)*100%;
         height: (27/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__heart-white-hollow.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__heart-white-hollow.svg");
         transition-delay: 2.4+0.4*3s+0.2s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);
@@ -330,7 +330,7 @@ export default {
         left: 75%;
         width: (39/1210)*100%;
         height: (39/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__circle.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__circle.svg");
         transition-delay: 2.4+0.4*2s+0.3s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);
@@ -341,7 +341,7 @@ export default {
         left: 24.2%;
         width: (18/1210)*100%;
         height: (18/500)*100%;
-        background-image: url("~@/assets/images/get/get-0-banner/get-0-banner__circle.svg");
+        background-image: url("~@/views/get/views/get-0-banner/img/get-0-banner__circle.svg");
         transition-delay: 2.4+0.4*4s;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform: scale(0);

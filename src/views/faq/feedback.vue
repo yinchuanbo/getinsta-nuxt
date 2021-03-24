@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Faq1Form from '@/views/faq/views/faq-1-form';
+import Faq1Form from '@/views/faq/views/faq-1-form/faq-1-form';
 
 export default {
   name: 'Feedback',

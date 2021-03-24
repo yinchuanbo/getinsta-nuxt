@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Faq0List from '@/views/faq/views/faq-0-list';
-import Faq1Form from '@/views/faq/views/faq-1-form';
+import Faq0List from '@/views/faq/views/faq-0-list/faq-0-list';
+import Faq1Form from '@/views/faq/views/faq-1-form/faq-1-form';
 
 export default {
   name: 'Faq',
