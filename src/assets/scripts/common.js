@@ -46,7 +46,7 @@ export default {
     });
   }, // Load third party JS
   userAgentLocale() {
-    const browserLang = navigator.language.toLowerCase();
+    const browserLang = process.client ? navigator.language.toLowerCase() : '';
     let locale = browserLang;
 
     const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];

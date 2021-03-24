@@ -5,7 +5,7 @@
     <header-container-v2 v-if="$store.state.v2" />
 
     <!--general-blank-->
-    <general-blank v-if="$store.state.v2" :ad-height="$store.state.v2AdHeightMobile" />
+    <general-blank v-if="$store.state.v2 && $store.state.isMobile && isGeneralBlank" :ad-height="$store.state.v2AdHeightMobile" />
 
     <!--router-view-->
     <transition name="fade" mode="out-in">
@@ -28,8 +28,9 @@
     <download-cta-spring v-if="downloadCtaSeasonShow && !$store.state.v2" />
 
     <!--giveaway gate-->
-    <right-windows v-if="isRightWindows" :type="windowType"></right-windows>
-    <bottom-windows v-if="false" :type="windowType"></bottom-windows>
+    <floating-layer-right v-if="isRightWindows" :type="windowType" />
+    <floating-layer-bottom v-if="false" :type="windowType" />
+    <floating-layer-alert v-if="isAlertWindow" :type="windowType" />
 
     <!--addThis-->
     <add-this v-if="addThisLoad" public-id="ra-5def5b1abb78a6a2" />
@@ -62,8 +63,8 @@ import DownloadCta from '@/components/download-cta/download-cta';
 import DownloadCtaV2 from '@/components/download-cta/download-cta-v2/download-cta-v2';
 import DownloadCtaSpring from '@/components/download-cta/download-cta-spring/download-cta-spring';
 
-import rightWindows from '@/components/floatingWindows/rightWindows/rightWindows';
-import bottomWindows from '@/components/floatingWindows/bottomWindows/bottomWindows';
+import floatingLayerRight from '@/components/floating-layer/floating-layer-right/floating-layer-right';
+import floatingLayerBottom from '@/components/floating-layer/floating-layer-bottom/floating-layer-bottom';
 // import CtaDownload from '@/components/download-cta/download-cta-top';
 // import DownloadCtaBlackFriday from '@/components/download-cta/download-cta-black-friday/download-cta-black-friday';
 // import DownloadCtaChristmas from '@/components/download-cta/download-cta-christmas/download-cta-christmas';
@@ -90,8 +91,8 @@ export default {
     // DownloadCtaValentine,
     // DownloadCtaChristmas,
     // DownloadCtaBlackFriday,
-    bottomWindows,
-    rightWindows,
+    floatingLayerRight,
+    floatingLayerBottom,
 
     AddThis,
 
@@ -105,16 +106,19 @@ export default {
       headerHide: false,
       footerHide: false,
       addThisLoad: false,
+      isBottomWindows: false,
       isRightWindows: false,
+      isAlertWindow: false,
       favIconURL: '',
       envTest: this.COMMON.envTest() || false,
       envIsEasy: true,
-      isBottomWindows: false,
       windowType: 'giveaway',
       ctaDownloadShow: false,
       ctaDownloadBlackFridayShow: false,
       downloadCtaSeasonShow: false,
-      showMinorLang: false
+      showMinorLang: false,
+      isEasterSale: true,
+      isGeneralBlank: true
     };
   },
   watch: {
@@ -314,17 +318,34 @@ export default {
 
       this.downloadCtaTextChange(to);
 
+      // path 定义
+      let homePath = to.path === '/';
+      let blogPath = to.path === '/blog' || to.name === 'blog-detail' || to.path === '/blog/';
+      let easterSalePath = to.path === '/eastersale';
+      let checkout = to.path === '/checkout' || to.path === '/checkout-2';
+      let storePath = to.path === '/buy-instagram-followers' || to.path === '/buy-auto-instagram-followers' || to.path === '/buy-instagram-daily-likes' || to.path === '/buy-instagram-likes' || to.path === '/buy-instagram-daily-followers' || to.path === '/buy-auto-instagram-followers-1';
+      let Path169 = to.path === '/blog/download-private-instagram-videos-169';
+      let getFlPath = to.path === '/get-instagram-followers-likes';
+      let freeToolsPath = to.path === '/instagram-name-generator' || to.path === '/the-most-followed-instagram' || to.path === '/instagram-video-downloader';
+      let loginUserPath = to.path === '/login' || to.path === '/user' || to.path === '/user-get-followers' || to.path === '/user-get-likes';
+      let usePath = to.path === '/user' || to.path === '/user-get-followers' || to.path === '/user-get-likes';
+
       // DownloadCTA 显示规则
       // giveaway
-      if (to.path === '/blog/download-private-instagram-videos-169' && this.COMMON.getURLQuery('source') === 'google')
+      if (Path169 && this.COMMON.getURLQuery('source') === 'google') {
         this.isRightWindows = false;
-      else
-        this.isRightWindows = to.path === '/blog' || to.name === 'blog-detail' || to.path === '/blog/';
-      this.isBottomWindows = to.path === '/' && !this.COMMON.isMobile();
+      } else {
+        this.isRightWindows = blogPath;
+      }
+      this.isBottomWindows = homePath && !this.COMMON.isMobile();
+      this.isAlertWindow = !(blogPath || easterSalePath || checkout || storePath);
+
       // auto buy
       const storeAutoUrlStr = 'buy-auto-instagram-followers';
       this.ifShowCta = location.href.indexOf(storeAutoUrlStr) === -1;
       // 情人节
+      // 需要显示的 url
+      const downloadCtaSeasonShowPathArrayPC = ['/blog'];
       const downloadCtaSeasonShowPathArray = [
         '/',
         '/get-instagram-followers-likes',
@@ -335,9 +356,27 @@ export default {
         '/user',
         '/blog'
       ];
-      this.downloadCtaSeasonShow
-        = downloadCtaSeasonShowPathArray.indexOf(to.path) > -1
-        || to.name === 'blog-detail';
+
+      if (!this.COMMON.isMobile()) {
+        this.downloadCtaSeasonShow = downloadCtaSeasonShowPathArrayPC.indexOf(to.path) > -1 || to.name === 'blog-detail';
+      } else {
+        this.downloadCtaSeasonShow = downloadCtaSeasonShowPathArray.indexOf(to.path) > -1 || to.name === 'blog-detail';
+        if (homePath || getFlPath || blogPath) {
+          this.$store.commit('v2AdHeightMobile', 50);
+        } else {
+          this.$store.commit('v2AdHeightMobile', 0);
+        }
+      }
+
+      if (easterSalePath) {
+        this.$store.commit('footerSelect', true);
+        this.isEasterSale = false;
+      } else {
+        this.$store.commit('footerSelect', false);
+        this.isEasterSale = !(checkout || storePath || usePath);
+      }
+
+      this.isGeneralBlank = !(storePath || blogPath || getFlPath || freeToolsPath || loginUserPath || easterSalePath || checkout);
     },
 
     addThisHideEvent(addThisHide) {
@@ -1019,7 +1058,8 @@ export default {
     },
     v2Switch(path) {
       this.platformDetective();
-      const openOrNot = path === '/' && this.COMMON.randomAbTest();
+      // const openOrNot = path === '/' && this.COMMON.randomAbTest();
+      const openOrNot = true;
       this.$store.commit('v2', openOrNot);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
@@ -1031,7 +1071,7 @@ export default {
       // PC Beacon
       const openOrNot = path === '/';
       // V2 Switch Beacon
-      this.$store.commit('v2', openOrNot);
+      this.$store.commit('v2', true);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
         this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);

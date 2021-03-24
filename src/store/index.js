@@ -35,8 +35,11 @@ export const state = () => ({
   // V2
   v2: true, // V2开关
   v2Ad: false, // V2广告开关
-  v2AdHeightPc: 50, // V2广告PC高度
-  v2AdHeightMobile: 50 // V2广告Mobile高度
+  v2AdHeightPc: 0, // V2广告PC高度
+  v2AdHeightMobile: 0, // V2广告Mobile高度
+
+  footerSelect: false,
+  showAlert: false
 });
 
 export const mutations = {
@@ -156,5 +159,11 @@ export const mutations = {
   },
   v2AdHeightMobile: (state, status) => {
     state.v2AdHeightMobile = status;
+  },
+  showAlert: (state, value) => {
+    state.showAlert = value;
+  },
+  footerSelect: (state, status) => {
+    state.footerSelect = status;
   }
 };

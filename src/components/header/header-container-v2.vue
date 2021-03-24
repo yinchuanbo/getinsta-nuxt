@@ -1,6 +1,9 @@
 <template>
   <header class="fixed" :class="{ 'active': headerActive }">
-    <header-ad-container v-if="$store.state.v2Ad" :ad-height="$store.state.v2AdHeightPc" />
+    <header-ad-container
+      v-if="$store.state.v2Ad"
+      :ad-height="$store.state.isMobile ? $store.state.v2AdHeightMobile: $store.state.v2AdHeightPc"
+    />
     <header-nav-v2
       :home-path="headerShape.homePath"
       :home-scroll="headerShape.homeScroll"

@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss" src="../../floatingWindows_pub.scss"></style>
+<style scoped lang="scss" src="../../floating-layer.scss"></style>
 <style lang="scss" scoped>
 .fixed_bottom {
   position: fixed;

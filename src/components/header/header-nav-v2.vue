@@ -1,24 +1,28 @@
 <template>
-  <div v-if="!routerClient" id="header" class="header-nav__navigator"
-       :style="{ height: `64+${adHeight}px` }"
-  >
-    <div v-if="!routeUserCenter&&!routerPayment" class="header-nav__wrapper">
+  <div v-if="!routerClient" id="header" class="header-nav__navigator" :style="{ height: `64+${adHeight}px` }">
+    <div v-if="!routeUserCenter && !routerPayment" class="header-nav__wrapper">
       <div class="wrapper">
         <div class="header-nav__logo">
           <a id="nav-home" @click="routerPush('/')">
             <i v-if="$store.state.productName === 'GetInsta'"></i>
-            <img v-if="$store.state.productName !== 'GetInsta'" :src="$store.state.productLogo" alt="logo">
+            <img
+              v-if="$store.state.productName !== 'GetInsta'"
+              :src="$store.state.productLogo"
+              alt="logo"
+            />
             <span>{{ $store.state.productName }}</span>
           </a>
         </div>
         <div v-if="!ptPage" class="header-nav__menu">
           <div class="pc">
             <a
-              id="nav-menu-00" class="header-nav__menu_links"
+              id="nav-menu-00"
+              class="header-nav__menu_links"
               @click="routerPush('/')"
             >{{ $t('global.header.menu.home') }}</a>
-            <div
-              v-if="!storeMenuHide" id="nav-menu-01"
+            <a
+              v-if="!storeMenuHide"
+              id="nav-menu-01"
               class="header-nav__menu_links drop-menu"
             >
               <span>{{ $t('global.header.menu.store') }}</span>
@@ -29,16 +33,23 @@
                 <!-- 分流 -->
                 <!-- <a @click="getAutoBuy">Buy Auto Instagram Followers</a> -->
                 <nuxt-link to="/buy-auto-instagram-followers">Buy Auto Instagram Followers</nuxt-link>
-                <nuxt-link :to="{path:'/buy-instagram-daily-likes',query:{anchor}}">Buy Auto Instagram Likes</nuxt-link>
+                <nuxt-link
+                  :to="{
+                    path: '/buy-instagram-daily-likes',
+                    query: { anchor },
+                  }"
+                >Buy Auto Instagram Likes
+                </nuxt-link>
                 <nuxt-link to="/buy-instagram-likes">Buy Instagram Likes</nuxt-link>
               </div>
-            </div>
+            </a>
             <a
-              id="nav-menu-02" class="header-nav__menu_links"
+              id="nav-menu-02"
+              class="header-nav__menu_links"
               @click="routerPush('/get-instagram-followers-likes')"
             >{{ $t('global.header.menu.get') }}</a>
             <!--Free Tools-->
-            <a class="header-nav__menu_links drop-menu">
+            <div class="header-nav__menu_links drop-menu">
               <span>Free Tools</span>
               <i></i>
 
@@ -47,10 +58,11 @@
                 <nuxt-link to="/the-most-followed-instagram">Instagram Ranking Tool</nuxt-link>
                 <nuxt-link to="/instagram-name-generator">Instagram Name Generator</nuxt-link>
               </div>
-            </a>
+            </div>
             <a
-              id="nav-menu-04" class="header-nav__menu_links"
-              @click="routerPush('/blogs')"
+              id="nav-menu-04"
+              class="header-nav__menu_links"
+              @click="routerPush('/blog')"
             >{{ $t('global.header.menu.blog') }}</a>
             <a
               v-if="$i18n.locale === 'en'"
@@ -60,13 +72,14 @@
           </div>
           <nuxt-link
             v-if="$store.state.cartLength > 0"
-            to="/checkout" class="cart"
+            to="/checkout"
+            class="cart"
             :title="$t('global.header.button.cart')"
           >
             <i class="cart"></i>
           </nuxt-link>
           <a
-            v-if="$i18n.locale === 'en' && !loginStatus && loginBtnShow"
+            v-if="!loginStatus && loginBtnShow"
             id="nav-menu-05"
             class="header-nav__btn-container"
             href="javascript:"
@@ -86,24 +99,28 @@
             <!--            />-->
             <i class="avatar-login-btn"></i>
           </a>
-          <div
-            v-if="$i18n.locale === 'en' && loginStatus"
-            class="header-nav_menu_user"
-            title="User Center"
-          >
+          <div v-if="loginStatus" class="header-nav_menu_user" title="User Center">
             <nuxt-link
               :to="`/user${$nuxt.$constant.paymentChannel}`"
               class="avatar-container"
             >
               <div class="avatar">
-                <img :src="$store.state.userAvatar" alt="avatar">
+                <img :src="$store.state.userAvatar" alt="avatar" />
               </div>
             </nuxt-link>
           </div>
         </div>
         <div v-if="ptPage" class="header-nav__menu">
-          <a class="header-nav__btn-container pt pc" href="javascript:" @click="gaPtBtn">
-            <button-white-blue text="Baixar para PC" :white="false" :font-size="'header-small'" />
+          <a
+            class="header-nav__btn-container pt pc"
+            href="javascript:"
+            @click="gaPtBtn"
+          >
+            <button-white-blue
+              text="Baixar para PC"
+              :white="false"
+              :font-size="'header-small'"
+            />
           </a>
         </div>
         <div class="header-nav__btn mobile">
@@ -112,7 +129,7 @@
       </div>
     </div>
 
-    <div v-if="routeUserCenter&&!routerPayment" class="header-nav__wrapper header-nav__logged">
+    <div v-if="routeUserCenter && !routerPayment" class="header-nav__wrapper header-nav__logged">
       <div class="header-nav__logged_logo">
         <nuxt-link to="/">GetInsta</nuxt-link>
       </div>
@@ -134,9 +151,13 @@
           <!--<i class="coin-icon"></i>-->
         </div>
         <div v-if="routeWelcome">
-          <nuxt-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container" title="User Center">
+          <nuxt-link
+            :to="`/user${$nuxt.$constant.paymentChannel}`"
+            class="avatar-container"
+            title="User Center"
+          >
             <div class="avatar">
-              <img :src="$store.state.userAvatar" alt="avatar">
+              <img :src="$store.state.userAvatar" alt="avatar" />
             </div>
           </nuxt-link>
         </div>
@@ -151,7 +172,7 @@
           <i class="cart"></i>
         </nuxt-link>
         <div class="avatar" @click="routeToUserCenter">
-          <img :src="$store.state.userAvatar" alt="">
+          <img :src="$store.state.userAvatar" alt="" />
         </div>
       </div>
       <div class="header-nav__btn">
@@ -164,38 +185,54 @@
         <span>{{ paymentTitle }}</span>
       </div>
       <div v-if="!routerIOT" class="header-nav__logged_user">
-        <div v-if="$nuxt.$route.path!=='/checkout'"
-             class="btn-container"
-             :class="{
-               'white-0': paymentHeaderBtnText === $t('global.header.button.BackHome'),
-               'white-1': paymentHeaderBtnText === 'OK'
-             }"
-             @click="paymentHeaderBtnJump"
+        <div
+          v-if="$route.path !== '/checkout'"
+          class="btn-container"
+          :class="{
+            'white-0':
+              paymentHeaderBtnText === $t('global.header.button.BackHome'),
+            'white-1': paymentHeaderBtnText === 'OK',
+          }"
+          @click="paymentHeaderBtnJump"
         >
-          <button-white :text="paymentHeaderBtnText" :white="false" :font-size="'header-small'" />
+          <button-white
+            :text="paymentHeaderBtnText"
+            :white="false"
+            :font-size="'header-small'"
+          />
         </div>
       </div>
       <div v-if="!routerIOT" class="header-nav__btn">
-        <i :class="{
-             'back': $nuxt.$route.path === '/checkout' || $nuxt.$route.path === '/order-fail',
-             'home': $nuxt.$route.path === '/order-detail'|| $nuxt.$route.path === '/thank-you'
-           }"
-           @click="goBack"
+        <i
+          :class="{
+            back:
+              $nuxt.$route.path === '/checkout' ||
+              $nuxt.$route.path === '/order-fail',
+            home:
+              $nuxt.$route.path === '/order-detail' ||
+              $nuxt.$route.path === '/thank-you',
+          }"
+          @click="goBack"
         ></i>
       </div>
     </div>
 
     <!--header-sidebar-mask-->
     <transition name="fade-skeleton">
-      <div v-if="sideBarStatus"
-           class="header-nav__logged_content_mask"
-           :style="{ width: `${windowWidth}px`, height: `${windowHeight}px` }"
-           @click="switchMenu"
+      <div
+        v-if="sideBarStatus"
+        class="header-nav__logged_content_mask"
+        :style="{ width: `${windowWidth}px`, height: `${windowHeight}px` }"
+        @click="switchMenu"
       ></div>
     </transition>
     <!--header-sidebar-->
     <transition name="header-slide">
-      <div v-if="sideBarStatus" class="header-nav__logged_content" :style="{ height: `${windowHeight}px` }">
+      <div
+        v-if="sideBarStatus"
+        class="header-nav__logged_content"
+        :style="{ height: `${windowHeight}px` }"
+      >
         <i class="close" @click="switchMenu"></i>
         <div class="header-nav__logged_content_container">
           <div v-if="loginStatus" class="avatar mobile">
@@ -203,33 +240,38 @@
               :to="`/user${$nuxt.$constant.paymentChannel}`"
               @click.native="menuOff"
             >
-              <img :src="$store.state.userAvatar" alt="avatar">
+              <img :src="$store.state.userAvatar" alt="avatar" />
             </nuxt-link>
           </div>
           <!--Home-->
           <nuxt-link
             to="/"
-            class="header-nav__logged_content_link" @click.native="menuOff"
+            class="header-nav__logged_content_link"
+            @click.native="menuOff"
           >
             {{ $t('global.header.menu.home') }}
           </nuxt-link>
           <!--Buy Followers-->
           <nuxt-link
-            v-if="!storeMenuHide" to="/buy-instagram-followers"
-            class="header-nav__logged_content_link" @click.native="menuOff"
+            v-if="!storeMenuHide"
+            to="/buy-instagram-followers"
+            class="header-nav__logged_content_link"
+            @click.native="menuOff"
           >
             {{ $t('global.header.menu.buyFollowers') }}
           </nuxt-link>
           <!--Buy Auto Followers-->
           <nuxt-link
             to="/buy-auto-instagram-followers"
-            class="header-nav__logged_content_link" @click.native="menuOff"
+            class="header-nav__logged_content_link"
+            @click.native="menuOff"
           >
             Buy Auto Instagram Followers
           </nuxt-link>
           <!--Buy Likes-->
           <nuxt-link
-            v-if="!storeMenuHide" to="/buy-instagram-likes"
+            v-if="!storeMenuHide"
+            to="/buy-instagram-likes"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
@@ -237,7 +279,8 @@
           </nuxt-link>
           <!--Buy Auto Likes-->
           <nuxt-link
-            v-if="!storeMenuHide" :to="{path:'/buy-instagram-daily-likes',query:{anchor}}"
+            v-if="!storeMenuHide"
+            :to="{ path: '/buy-instagram-daily-likes', query: { anchor } }"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
@@ -245,15 +288,17 @@
           </nuxt-link>
           <!--Blog-->
           <nuxt-link
-            to="/blogs"
-            class="header-nav__logged_content_link" @click.native="menuOff"
+            to="/blog"
+            class="header-nav__logged_content_link"
+            @click.native="menuOff"
           >
             {{ $t('global.header.menu.blog') }}
           </nuxt-link>
           <!--Get-->
           <nuxt-link
             to="/get-instagram-followers-likes"
-            class="header-nav__logged_content_link" @click.native="menuOff"
+            class="header-nav__logged_content_link"
+            @click.native="menuOff"
           >
             {{ $t('global.header.menu.get') }}
           </nuxt-link>
@@ -264,7 +309,8 @@
             <i></i>
             <div class="drop-menu-container">
               <!--Instagram Video Downloader-->
-              <nuxt-link to="/instagram-video-downloader" @click.native="menuOff">Instagram Video Downloader</nuxt-link>
+              <nuxt-link to="/instagram-video-downloader" @click.native="menuOff">Instagram Video Downloader
+              </nuxt-link>
               <!--Instagram Ranking Tool-->
               <nuxt-link to="/the-most-followed-instagram" @click.native="menuOff">Instagram Ranking Tool</nuxt-link>
               <!--Instagram Name Generator-->
@@ -273,18 +319,11 @@
           </a>
 
           <!--logout (bottom login link-->
-          <a v-if="loginStatus"
-             class="header-nav__logged_content_link"
-             @click="logout"
-          >
+          <a v-if="loginStatus" class="header-nav__logged_content_link" @click="logout">
             {{ $t('global.header.button.logout') }}
           </a>
           <!--login (bottom login link-->
-          <nuxt-link v-if="!loginStatus"
-                     class="header-nav__logged_content_link"
-                     to="/login"
-                     @click.native="menuOff"
-          >
+          <nuxt-link v-if="!loginStatus" class="header-nav__logged_content_link" to="/login" @click.native="menuOff">
             {{ $t('global.header.button.login') }}
           </nuxt-link>
         </div>
@@ -310,8 +349,8 @@ export default {
   },
   components: {
     ButtonDownloadWindowsYellow,
-    ButtonWhite,
-    ButtonWhiteBlue
+    ButtonWhiteBlue,
+    ButtonWhite
     // ButtonYellowDownload,
     // ButtonPurple
   },
@@ -358,7 +397,7 @@ export default {
       return this.$store.state.loginStatus;
     },
     paymentTitle() {
-      let path = $nuxt.$route.path;
+      let path = this.$nuxt.$route.path;
       let text = '';
       if (path === '/checkout') {
         text = this.$t('global.header.title.Checkout');
@@ -374,7 +413,7 @@ export default {
       return text;
     },
     paymentHeaderBtnText() {
-      let path = $nuxt.$route.path;
+      let path = this.$nuxt.$route.path;
       let text = '';
       if (path === '/order-detail') {
         // text = 'OK';
@@ -389,33 +428,34 @@ export default {
   },
   watch: {
     $route(to) {
-      this.routeUserCenter = to.path === '/user'
-        || to.path === '/user-get-followers'
-        || to.path === '/user-get-likes'
-        || to.path === '/user-asknet'
-        || to.path === '/user-get-followers-asknet'
-        || to.path === '/user-get-likes-asknet'
-        || to.path === '/welcome';
+      this.routeUserCenter =
+        to.path === '/user' ||
+        to.path === '/user-get-followers' ||
+        to.path === '/user-get-likes' ||
+        to.path === '/user-asknet' ||
+        to.path === '/user-get-followers-asknet' ||
+        to.path === '/user-get-likes-asknet' ||
+        to.path === '/welcome';
       this.ptPage = to.path === '/pt/get-instagram-followers';
 
       this.routeWelcome = to.path === '/welcome';
 
-      this.routerPayment
-        = to.path === '/checkout'
-        || to.path === '/order-detail'
-        || to.path === '/thank-you'
-        || to.path === '/order-fail'
-        || to.path === '/order-fail-2';
+      this.routerPayment =
+        to.path === '/checkout' ||
+        to.path === '/order-detail' ||
+        to.path === '/thank-you' ||
+        to.path === '/order-fail' ||
+        to.path === '/order-fail-2';
 
       this.routerIOT = window.location.hostname === 'www.iotransfer.net';
-      this.routerClient
-        = this.COMMON.getURLQuery('url_cart') !== null
-        && this.COMMON.getURLQuery('url_cart') !== '0'
-        && this.COMMON.isMobile();
+      this.routerClient =
+        this.COMMON.getURLQuery('url_cart') !== null &&
+        this.COMMON.getURLQuery('url_cart') !== '0' &&
+        this.COMMON.isMobile();
 
       if (to.path === '/login' || to.path === '/register') {
         if (this.$store.state.loginStatus) {
-          this.$nuxt.$router.push({ path: `/user${$nuxt.$constant.paymentChannel}` });
+          this.$nuxt.$router.push({ path: `/user${this.$constant.paymentChannel}` });
         }
       }
 
@@ -430,23 +470,22 @@ export default {
       this.loginBtnShow = to.path !== '/event-dl';
 
       //gaHeaderBtnDownloadLabel
-      if (to.path === `/user${$nuxt.$constant.paymentChannel}`) {
+      if (to.path === `/user${this.$constant.paymentChannel}`) {
         this.gaHeaderBtnDownloadLabel = '';
-      } else if (to.path === `/user-get-followers${$nuxt.$constant.paymentChannel}`) {
+      } else if (
+        to.path === `/user-get-followers${this.$constant.paymentChannel}`
+      ) {
         this.gaHeaderBtnDownloadLabel = '-f';
-      } else if (to.path === `/user-get-likes${$nuxt.$constant.paymentChannel}`) {
+      } else if (
+        to.path === `/user-get-likes${this.$constant.paymentChannel}`
+      ) {
         this.gaHeaderBtnDownloadLabel = '-l';
       }
 
-      this.storeMenuHide
-        = (
-          this.COMMON.getURLQuery('source') === 'google'
-          && this.COMMON.isiOS()
-        )
-        || (
-          this.COMMON.getURLQuery('s') === 'tiktok'
-          && this.COMMON.isiOS()
-        );
+      this.storeMenuHide =
+        (this.COMMON.getURLQuery('source') === 'google' &&
+          this.COMMON.isiOS()) ||
+        (this.COMMON.getURLQuery('s') === 'tiktok' && this.COMMON.isiOS());
     }
   },
   mounted() {
@@ -488,9 +527,9 @@ export default {
       this.documentElementSet();
     },
     goBack() {
-      let path = $nuxt.$route.path;
+      let path = this.$nuxt.$route.path;
       if (path === '/checkout' || path === '/order-fail') {
-        $nuxt.$router.go(-1);
+        this.$nuxt.$router.go(-1);
       } else {
         this.$nuxt.$router.push({ path: '/' });
       }
@@ -500,7 +539,7 @@ export default {
       this.documentElementSet();
       this.renderHeaderAvatar(defaultAvatar);
       this.$store.commit('loginChange', false);
-      $nuxt.$router.replace({ path: '/login' });
+      this.$nuxt.$router.replace({ path: '/login' });
 
       this.menuOff();
     },
@@ -516,7 +555,7 @@ export default {
     },
     gaHeaderBtn() {
       // header BTN GA 设置
-      const to = $nuxt.$route;
+      const to = this.$nuxt.$route;
       if (to.path === '/') {
         this.gaHeaderBtnLabel = 'hp';
       } else if (to.path === '/get-instagram-followers-likes') {
@@ -552,8 +591,12 @@ export default {
 
       // console.log(this.headerBtnPath);
       if (this.headerBtnPath === '/login') {
+        if (to.path === '/') {
+          this.$ga.event('inslogin', 'login', 'login-hpnew');
+        } else {
+          this.$ga.event('inslogin', 'login', `login-${this.gaHeaderBtnLabel}`);
+        }
         // this.$nextTick(function () {
-        this.$ga.event('inslogin', 'login', `login-${this.gaHeaderBtnLabel}`);
         // });
       } else {
         this.$ga.event('insrg', 'register', 'lisignup');
@@ -568,7 +611,11 @@ export default {
       this.$nuxt.$router.push({ path: this.headerBtnPath, query: query });
     },
     downloadHeaderPC() {
-      this.$ga.event('insdl', 'download', `usermanagewindl${this.gaHeaderBtnDownloadLabel}`);
+      this.$ga.event(
+        'insdl',
+        'download',
+        `usermanagewindl${this.gaHeaderBtnDownloadLabel}`
+      );
       window.location.href = 'https://www.easygetinsta.com/downloadpc';
     },
     gaPtBtn() {
@@ -577,24 +624,32 @@ export default {
     },
     routeToUserCenter() {
       if (this.routeWelcome) {
-        this.$nuxt.$router.push({ path: `/user${$nuxt.$constant.paymentChannel}` });
+        this.$nuxt.$router.push({ path: `/user${this.$constant.paymentChannel}` });
       }
     },
     paymentHeaderBtnJump() {
       let langDash = this.$i18n.locale !== 'en' ? '-' : '';
-      if ($nuxt.$route.path === '/order-detail') {
+      if (this.$nuxt.$route.path === '/order-detail') {
         // this.$nuxt.$router.push({ path: '/user' });
-        this.$ga.event('buttonclick', 'click', `tkpageback${langDash}${this.$i18n.locale}`);
+        this.$ga.event(
+          'buttonclick',
+          'click',
+          `tkpageback${langDash}${this.$i18n.locale}`
+        );
         this.$nuxt.$router.push({ path: '/' });
-      } else if ($nuxt.$route.path === '/order-fail') {
-        this.$ga.event('buttonclick', 'click', `failpageback${langDash}${this.$i18n.locale}`);
+      } else if (this.$nuxt.$route.path === '/order-fail') {
+        this.$ga.event(
+          'buttonclick',
+          'click',
+          `failpageback${langDash}${this.$i18n.locale}`
+        );
         this.$nuxt.$router.push({ path: '/' });
       } else {
         this.$nuxt.$router.push({ path: '/' });
       }
     },
     routerPush(path) {
-      if (path === $nuxt.$route.path) {
+      if (path === this.$nuxt.$route.path) {
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
@@ -607,17 +662,17 @@ export default {
 
     goPageStore() {
       this.$ga.event('insbuy', 'buy', `hphunter-${this.$i18n.locale}`);
-      this.$nuxt.$router.push(
-        {
-          path: '/buy-instagram-followers',
-          query: {
-            'utm_source': 'PC',
-            'utm_medium': 'homepagehunter'
-          }
-        });
+      this.$nuxt.$router.push({
+        path: '/buy-instagram-followers',
+        query: {
+          utm_source: 'PC',
+          utm_medium: 'homepagehunter'
+        }
+      });
     },
     gaDownloadDe() {
-      let platform = '', link = '';
+      let platform = '',
+        link = '';
       if (this.COMMON.isAndroid()) {
         platform = 'adr';
         link = this.$store.state.minorLangAdrLink;
@@ -634,10 +689,10 @@ export default {
     // suto-buy-分流
     getAutoBuy() {
       if (this.COMMON.randomAbTest()) {
-        if ($nuxt.$route.path !== '/buy-auto-instagram-followers')
+        if (this.$nuxt.$route.path !== '/buy-auto-instagram-followers')
           this.$nuxt.$router.push('/buy-auto-instagram-followers');
       } else {
-        if ($nuxt.$route.path !== '/buy-auto-instagram-followers-1')
+        if (this.$nuxt.$route.path !== '/buy-auto-instagram-followers-1')
           this.$nuxt.$router.push('/buy-auto-instagram-followers-1');
       }
     }
@@ -680,7 +735,8 @@ export default {
           }
 
           i {
-            &:before, &:after {
+            &:before,
+            &:after {
               background-color: #fff;
             }
           }
@@ -710,7 +766,8 @@ export default {
       height: 100%;
     }
 
-    i, img {
+    i,
+    img {
       margin-right: 16px;
       display: inline-block;
       width: 32px;
@@ -759,6 +816,7 @@ export default {
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
       position: relative;
       //display: inline-block;
       //max-width: 138px;
@@ -770,7 +828,7 @@ export default {
       //@include text-ellipsis;
 
       &:hover {
-        background-color: #F1F4F6;
+        background-color: #f1f4f6;
       }
 
       &.drop-menu {
@@ -815,7 +873,8 @@ export default {
           height: 4px;
           vertical-align: middle;
 
-          &:before, &:after {
+          &:before,
+          &:after {
             position: absolute;
             top: 0;
             content: "";
@@ -844,7 +903,7 @@ export default {
         padding: 20px 0;
         background-color: #fff;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-        border: 1px solid #E3E3E3;
+        border: 1px solid #e3e3e3;
         border-radius: 14px;
         cursor: default;
 
@@ -853,7 +912,8 @@ export default {
         transform-origin: top center;
         transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 
-        &:before, &:after {
+        &:before,
+        &:after {
           content: "";
           position: absolute;
           left: 0;
@@ -882,17 +942,18 @@ export default {
           padding: 0 24px;
           display: block;
           font: 600 16px Montserrat;
-          color: #2A2A2A;
+          color: #2a2a2a;
           line-height: 48px;
           white-space: nowrap;
           cursor: pointer;
           transition: all 0.3s;
 
           &:hover {
-            background-color: #E8E8E8;
+            background-color: #e8e8e8;
           }
         }
       }
+
     }
 
     .header-nav__btn-container {
@@ -992,9 +1053,10 @@ export default {
       height: 100%;
       text-align: center;
 
-      a, span {
+      a,
+      span {
         font: 900 italic 28px/80px Montserrat;
-        color: #005FFF;
+        color: #005fff;
       }
     }
 
@@ -1024,12 +1086,12 @@ export default {
         font: 600 16px/19px Montserrat;
 
         &.username {
-          color: #2A2A2A;
+          color: #2a2a2a;
         }
 
         &.coins {
           font: 600 16px/19px Montserrat;
-          color: #FF6F00;
+          color: #ff6f00;
           /*cursor: pointer;*/
         }
       }
@@ -1102,7 +1164,7 @@ export default {
     z-index: 200;
     width: 300px;
     background-color: #fff;
-    box-shadow: 3px 0 10px #0000001A;
+    box-shadow: 3px 0 10px #0000001a;
 
     i.close {
       display: block;
@@ -1119,15 +1181,60 @@ export default {
       display: block;
       width: 100%;
       height: 60px;
+      overflow: hidden;
       background-color: transparent;
       font: 500 16px/60px BalooChettan;
-      color: #2A2A2A;
+      color: #2a2a2a;
       text-align: left;
       transition: all 0.3s;
 
+      .drop-menu-container {
+        display: none;
+      }
+
+      &.drop-menu {
+        clear: both;
+
+        i {
+          float: right;
+          margin-top: 20px;
+          margin-right: 8px;
+          content: "";
+          display: inline-block;
+          width: 13px;
+          height: 8px;
+          vertical-align: middle;
+          background: url("~@/assets/images/global/icon-arrow-grey.svg") center no-repeat;
+          transform: rotateX(0);
+          transition: all 0.3s;
+          pointer-events: none;
+
+          &.on {
+            transform: rotateX(180deg);
+          }
+        }
+
+        .drop-menu-container {
+          display: block;
+
+          a {
+            padding-left: 16px;
+            display: block;
+            width: 100%;
+            font: normal normal 500 14px/50px BalooChettan;
+            color: #000;
+          }
+        }
+      }
+
       &:hover {
-        background-color: #005FFF;
-        color: #fff;
+        background-color: transparent;
+        color: #000000;
+      }
+
+      &.on,
+      &:active {
+        background-color: #f1f4f6;
       }
     }
 
@@ -1252,7 +1359,8 @@ export default {
       width: 100%;
       text-align: left;
 
-      i, img {
+      i,
+      img {
         display: none;
       }
 
@@ -1261,7 +1369,7 @@ export default {
         line-height: 64px;
         font-size: 20px;
         font-style: normal;
-        font-family: 'BalooChettan', sans-serif;
+        font-family: "BalooChettan", sans-serif;
       }
     }
 
@@ -1346,7 +1454,8 @@ export default {
 
     .header-nav__logged {
       .header-nav__logged_logo {
-        a, span {
+        a,
+        span {
           font-size: 16px;
           line-height: 44px;
         }
@@ -1465,8 +1574,9 @@ export default {
           color: #000000;
         }
 
-        &.on, &:active {
-          background-color: #F1F4F6;
+        &.on,
+        &:active {
+          background-color: #f1f4f6;
         }
       }
 

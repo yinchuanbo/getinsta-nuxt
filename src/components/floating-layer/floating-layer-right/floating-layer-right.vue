@@ -1,10 +1,11 @@
 <template>
-  <windowGiveaway v-if="type === 'giveaway'"></windowGiveaway>
+  <window-giveaway v-if="type === 'giveaway'"></window-giveaway>
 </template>
 <script>
-import windowGiveaway from './views/followers-give-b';
+import windowGiveaway from './views/followers-give-r';
 
 export default {
+  name: 'FloatingLayerRight',
   components: { windowGiveaway },
   props: {
     type: {
