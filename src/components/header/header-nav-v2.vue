@@ -958,7 +958,7 @@ export default {
 
     .header-nav__btn-container {
       width: 100px;
-      height: 40px;
+      //height: 40px;
 
       &.pt {
         width: 162px;
