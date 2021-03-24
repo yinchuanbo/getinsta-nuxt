@@ -113,7 +113,7 @@
                       </label>
                     </ValidationObserver>
                     <label class="links">
-                      <router-link to="/forgot">Forgot Password?</router-link>
+                      <nuxt-link to="/forgot">Forgot Password?</nuxt-link>
                       <a href="javascript:" @click="modelBoxLoginRegisterSwitch = false">Sign Up</a>
                     </label>
                   </div>
@@ -154,7 +154,7 @@
                     </ValidationObserver>
                     <label class="links-row">
                       By signing up, you agree to our
-                      <router-link to="/privacy">Privacy Policy</router-link>
+                      <nuxt-link to="/privacy">Privacy Policy</nuxt-link>
                     </label>
                     <label class="links-row">
                       <a href="javascript:" @click="modelBoxLoginRegisterSwitch = true">Already have an account? Log In</a>

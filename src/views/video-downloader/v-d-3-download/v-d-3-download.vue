@@ -4,7 +4,7 @@
       <h2>GetInsta - Get Free Instagram Followers & Likes</h2>
       <h3>
         With GetInsta Instagram Follower app, you can easily
-        <router-link to="/get-instagram-followers-likes">get free Instagram followers and likes</router-link>
+        <nuxt-link to="/get-instagram-followers-likes">get free Instagram followers and likes</nuxt-link>
         from 100% real person, without spending a penny. No password. No survey. No risk.
       </h3>
       <div class="download">

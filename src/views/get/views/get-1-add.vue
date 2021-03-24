@@ -83,12 +83,12 @@
                 </transition>
               </div>
               <div class="btn-container__bottom" @click="ga1">
-                <router-link to="/login">
+                <nuxt-link to="/login">
                   <button-purple
                     :text="$t('get.add.bottomBtn')"
                     :font-size="'size-20'" :square="true"
                   />
-                </router-link>
+                </nuxt-link>
               </div>
             </div>
           </transition>

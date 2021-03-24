@@ -6,7 +6,7 @@
         Like all the other social media platforms, Instagram has its own leaders in the number of followers.
         Have you ever wondered <b>who has the most followers on Instagram</b>?
         Whether you are looking for Instagrammer with the most followers to follow or hoping to get some inspiration for
-        <router-link to="/">getting more followers</router-link>
+        <nuxt-link to="/">getting more followers</nuxt-link>
         , this daily updated list is all you need for the <b>most followed persons on Instagram</b>.
       </p>
       <div class="navigation">

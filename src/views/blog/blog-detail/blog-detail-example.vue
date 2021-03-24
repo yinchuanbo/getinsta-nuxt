@@ -4,11 +4,11 @@
     <div class="wrapper">
       <div class="left">
         <div class="breadcrumb">
-          <router-link to="/">Home</router-link>
+          <nuxt-link to="/">Home</nuxt-link>
           <span>&gt;</span>
-          <router-link to="/blogs">Blog</router-link>
+          <nuxt-link to="/blogs">Blog</nuxt-link>
           <span>&gt;</span>
-          <router-link to="/blogs"><b>{{ blogDetailObj.blogTitle }}</b></router-link>
+          <nuxt-link to="/blogs"><b>{{ blogDetailObj.blogTitle }}</b></nuxt-link>
         </div>
         <div class="meta-info">
           <h1>{{ blogDetailObj.blogTitle }}</h1>
@@ -527,11 +527,11 @@
         <div class="hot-list">
           <h2>Hot Articles</h2>
           <div class="links">
-            <router-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</router-link>
-            <router-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</router-link>
-            <router-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</router-link>
-            <router-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</router-link>
-            <router-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</router-link>
+            <nuxt-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</nuxt-link>
+            <nuxt-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</nuxt-link>
+            <nuxt-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</nuxt-link>
+            <nuxt-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</nuxt-link>
+            <nuxt-link to="/blog-detail">How to Advertise on Instagram? [Step by Step Guide] – 2019</nuxt-link>
           </div>
         </div>
       </div>

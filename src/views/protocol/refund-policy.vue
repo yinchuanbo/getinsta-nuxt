@@ -21,7 +21,7 @@
         <p>
           <b>1. Non-delivery service</b><br>
           After the purchase, our system automatically processes your order instantly. You’ll see an increase of your followers or likes within 24 hours. In some cases, the process may take a little longer. Please wait for additional several hours. If there is no increase of likes or followers within 48 hours after the purchase, you can apply for a refund for the corresponding service you purchased. Claims for Non-delivery service must be submitted to our
-          <router-link to="/faqs">Support Center</router-link>
+          <nuxt-link to="/faqs">Support Center</nuxt-link>
           in writing after 48 hours since placing the order.
         </p>
         <p>
@@ -35,7 +35,7 @@
         </p>
         <p>
           If encountering any problem, you can contact us for assistance via
-          <router-link to="/faqs">Support Center</router-link>
+          <nuxt-link to="/faqs">Support Center</nuxt-link>
           . Our Customer Service Department will get back to you within 24-48 hours (usually less than 24 hours) with a review of your concern, and a solution.
         </p>
 

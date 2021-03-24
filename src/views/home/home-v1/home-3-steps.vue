@@ -7,9 +7,9 @@
         <h3>{{ $t('home.home-3.step-0.title') }}</h3>
         <p>{{ $t('home.home-3.step-0.text0') }}<br>{{ $t('home.home-3.step-0.text1') }}</p>
         <div v-if="!pageIOS" class="btn-container" @click="ga0">
-          <router-link to="/login">
+          <nuxt-link to="/login">
             <button-purple :text="$t('home.home-3.step-0.btn')" :font-size="'size-20'" />
-          </router-link>
+          </nuxt-link>
         </div>
       </div>
       <!--      step-1-->
@@ -79,9 +79,9 @@
         <p v-if="$store.state.showIosDe" v-html="$t('home.home-3.step-2.text-ios')"></p>
         <!--        step-2 btn-->
         <div v-if="!pageIOS && $i18n.locale === 'en'" class="btn-container" @click="ga2">
-          <router-link v-if="$i18n.locale === 'en'" to="/login">
+          <nuxt-link v-if="$i18n.locale === 'en'" to="/login">
             <button-purple :text="$t('home.home-3.step-2.btn')" :font-size="'size-20'" />
-          </router-link>
+          </nuxt-link>
         </div>
         <div v-if="!pageIOS && $i18n.locale !== 'en'" class="btn-container">
           <a

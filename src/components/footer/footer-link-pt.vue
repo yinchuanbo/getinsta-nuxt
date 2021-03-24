@@ -3,36 +3,36 @@
     <div class="footer-text__links">
       <div class="wrapper">
         <div class="footer-text__links_column logo">
-          <router-link to="/">
+          <nuxt-link to="/">
             <i></i>
             <h2>GetInsta</h2>
-          </router-link>
+          </nuxt-link>
           <p>Copyright © {{ currentYear }} <br> easygetinsta.com</p>
         </div>
         <div class="footer-text__links_column">
           <h3><span>Sobre</span></h3>
           <br>
-          <router-link to="/terms">Termos de Serviço</router-link>
+          <nuxt-link to="/terms">Termos de Serviço</nuxt-link>
           <br>
-          <router-link to="/privacy">Política de Privacidade</router-link>
+          <nuxt-link to="/privacy">Política de Privacidade</nuxt-link>
         </div>
         <div class="footer-text__links_column">
           <h3><span>Serviços</span></h3>
           <br>
-          <router-link to="/get-instagram-followers-likes">Ganhar Seguidores</router-link>
+          <nuxt-link to="/get-instagram-followers-likes">Ganhar Seguidores</nuxt-link>
           <br>
-          <router-link to="/get-instagram-followers-likes">Ganhar Curtidas</router-link>
+          <nuxt-link to="/get-instagram-followers-likes">Ganhar Curtidas</nuxt-link>
         </div>
         <div class="footer-text__links_column">
           <h3><span>Recursos</span></h3>
           <br>
-          <router-link to="/login">Login</router-link>
+          <nuxt-link to="/login">Login</nuxt-link>
           <br>
-          <router-link to="/faqs">Perguntas Frequentes</router-link>
+          <nuxt-link to="/faqs">Perguntas Frequentes</nuxt-link>
           <br>
           <a download href="https://www.easygetinsta.com/downloadcenter" @click="ga">Download do App</a>
           <br>
-          <router-link to="/blog">Blog</router-link>
+          <nuxt-link to="/blog">Blog</nuxt-link>
         </div>
       </div>
     </div>

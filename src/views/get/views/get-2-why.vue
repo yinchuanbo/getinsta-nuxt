@@ -12,7 +12,7 @@
         <h3>{{ $t('get.why.list.data1.title') }}</h3>
         <p>
           {{ $t('get.why.list.data1.text0') }}
-          <router-link to="/blog/best-app-to-get-instagram-likes-18">{{ $t('get.why.list.data1.text1') }}</router-link>
+          <nuxt-link to="/blog/best-app-to-get-instagram-likes-18">{{ $t('get.why.list.data1.text1') }}</nuxt-link>
           {{ $t('get.why.list.data1.text2') }}
         </p>
       </div>
@@ -29,7 +29,7 @@
         <h3>{{ $t('get.why.list.data4.title') }}</h3>
         <p>
           {{ $t('get.why.list.data4.text0') }}
-          <router-link to="/blog/instagram-followers-instantly-free-10">{{ $t('get.why.list.data4.text1') }}</router-link>
+          <nuxt-link to="/blog/instagram-followers-instantly-free-10">{{ $t('get.why.list.data4.text1') }}</nuxt-link>
           {{ $t('get.why.list.data4.text2') }}
         </p>
       </div>

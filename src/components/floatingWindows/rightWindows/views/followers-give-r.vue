@@ -1,6 +1,6 @@
 <template>
   <div v-show="is" class="right_i" :class="{'ac':ac}" @click="jump">
-    <!--<router-link v-show="is" to="/followers-giveaway" class="right_i" :class="{'ac':ac}">-->
+    <!--<nuxt-link v-show="is" to="/followers-giveaway" class="right_i" :class="{'ac':ac}">-->
     <i class="hide pc" @click.stop="is = false"></i>
     <i class="mb min_i" @click.stop="is = false"></i>
     <img
@@ -13,7 +13,7 @@
       src="~@/assets/images/seo-pages/seo-7/right_m.svg"
       alt=""
     />
-    <!--</router-link>-->
+    <!--</nuxt-link>-->
   </div>
 </template>
 <script>

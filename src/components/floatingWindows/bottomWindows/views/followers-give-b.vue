@@ -1,6 +1,6 @@
 <template>
   <div v-show="is" class="fixed_bottom" @click="jump">
-    <!--<router-link v-show="is" to="/followers-giveaway" class="fixed_bottom">-->
+    <!--<nuxt-link v-show="is" to="/followers-giveaway" class="fixed_bottom">-->
     <div class="box">
       <span class="pc">Time-limited Followers Giveaway is Available!</span>
       <span class="mb">Followers Giveaway! </span>
@@ -17,7 +17,7 @@
       <i class="hide pc" @click.stop="is = false"></i>
       <i class="mb min_i" @click.stop="is = false"></i>
     </div>
-    <!--</router-link>-->
+    <!--</nuxt-link>-->
   </div>
 </template>
 <script>

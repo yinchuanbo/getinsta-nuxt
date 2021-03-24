@@ -51,19 +51,19 @@
         <div v-if="articleHotList.length !== 0" class="hot-list pc">
           <h2>{{ $t('blog.hotArticles') }}</h2>
           <div class="links">
-            <router-link
+            <nuxt-link
               v-for="(unit, i) in articleHotList" :key="i"
               :to="`/blog/${unit['urlalias']}`"
               :title="unit.title || 'Unknown Link'"
             >
               <span>{{ unit.title || 'Unknown Link' }}</span>
-            </router-link>
+            </nuxt-link>
           </div>
         </div>
       </div>
       <div class="right">
         <div class="breadcrumb">
-          <router-link to="/">{{ $t('global.header.menu.home') }}</router-link>
+          <nuxt-link to="/">{{ $t('global.header.menu.home') }}</nuxt-link>
           <span>&gt;</span>
           <a href="javascript:" @click="returnAllList">{{ $t('global.header.menu.blog') }}</a>
           <span>&gt;</span>
@@ -73,10 +73,10 @@
           <transition name="fade-skeleton" mode="out-in">
             <div v-if="!ajaxRequesting" key="s0">
               <div v-for="(unit,i) in articleList" :key="i" class="unit">
-                <router-link :to="`/blog/${unit['urlalias']}`">
+                <nuxt-link :to="`/blog/${unit['urlalias']}`">
                   <h3>{{ unit.title }}</h3>
                   <p>{{ unit['remark'] }}</p>
-                </router-link>
+                </nuxt-link>
               </div>
 
               <pagination
@@ -100,13 +100,13 @@
         <div v-if="articleHotList.length !== 0" class="hot-list mobile">
           <h2>{{ $t('blog.hotArticles') }}</h2>
           <div class="links">
-            <router-link
+            <nuxt-link
               v-for="(unit, i) in articleHotList" :key="i"
               :to="`/blog/${unit['urlalias']}`"
               :title="unit.title || 'Unknown Link'"
             >
               <span>{{ unit.title || 'Unknown Link' }}</span>
-            </router-link>
+            </nuxt-link>
           </div>
         </div>
       </div>

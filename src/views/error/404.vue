@@ -135,9 +135,9 @@
       <p v-if="errorCode === 404">Page not found</p>
       <p v-if="errorCode !== 404">Server Internal Error ({{ errorCode }})</p>
       <div class="btn-container">
-        <router-link to="/">
+        <nuxt-link to="/">
           <button-purple text="Back Home" :font-size="'size-20'" />
-        </router-link>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -169,11 +169,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .wrapper {
   padding: 100px 0;
 }

@@ -34,7 +34,7 @@
         <h2>{{ $t('protocol.termsOfService.content.p19') }}</h2>
         <p>
           {{ $t('protocol.termsOfService.content.p20') }}
-          <router-link to="/privacy">{{ $t('protocol.termsOfService.content.p21') }}</router-link>
+          <nuxt-link to="/privacy">{{ $t('protocol.termsOfService.content.p21') }}</nuxt-link>
           {{ $t('protocol.termsOfService.content.p22') }}
         </p>
         <p>{{ $t('protocol.termsOfService.content.p23') }}</p>

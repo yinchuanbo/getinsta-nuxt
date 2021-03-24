@@ -25,12 +25,12 @@
               <i></i>
 
               <div class="drop-menu-container" style="left: -90px">
-                <router-link to="/buy-instagram-followers">Buy Instagram Followers</router-link>
+                <nuxt-link to="/buy-instagram-followers">Buy Instagram Followers</nuxt-link>
                 <!-- 分流 -->
                 <!-- <a @click="getAutoBuy">Buy Auto Instagram Followers</a> -->
-                <router-link to="/buy-auto-instagram-followers">Buy Auto Instagram Followers</router-link>
-                <router-link :to="{path:'/buy-instagram-daily-likes',query:{anchor}}">Buy Auto Instagram Likes</router-link>
-                <router-link to="/buy-instagram-likes">Buy Instagram Likes</router-link>
+                <nuxt-link to="/buy-auto-instagram-followers">Buy Auto Instagram Followers</nuxt-link>
+                <nuxt-link :to="{path:'/buy-instagram-daily-likes',query:{anchor}}">Buy Auto Instagram Likes</nuxt-link>
+                <nuxt-link to="/buy-instagram-likes">Buy Instagram Likes</nuxt-link>
               </div>
             </div>
             <a
@@ -43,9 +43,9 @@
               <i></i>
 
               <div class="drop-menu-container" style="left: -70px">
-                <router-link to="/instagram-video-downloader">Instagram Video Downloader</router-link>
-                <router-link to="/the-most-followed-instagram">Instagram Ranking Tool</router-link>
-                <router-link to="/instagram-name-generator">Instagram Name Generator</router-link>
+                <nuxt-link to="/instagram-video-downloader">Instagram Video Downloader</nuxt-link>
+                <nuxt-link to="/the-most-followed-instagram">Instagram Ranking Tool</nuxt-link>
+                <nuxt-link to="/instagram-name-generator">Instagram Name Generator</nuxt-link>
               </div>
             </a>
             <a
@@ -58,13 +58,13 @@
               @click="routerPush('/affiliate-solutions')"
             >Affiliates</a>
           </div>
-          <router-link
+          <nuxt-link
             v-if="$store.state.cartLength > 0"
             to="/checkout" class="cart"
             :title="$t('global.header.button.cart')"
           >
             <i class="cart"></i>
-          </router-link>
+          </nuxt-link>
           <a
             v-if="$i18n.locale === 'en' && !loginStatus && loginBtnShow"
             id="nav-menu-05"
@@ -91,14 +91,14 @@
             class="header-nav_menu_user"
             title="User Center"
           >
-            <router-link
+            <nuxt-link
               :to="`/user${$nuxt.$constant.paymentChannel}`"
               class="avatar-container"
             >
               <div class="avatar">
                 <img :src="$store.state.userAvatar" alt="avatar">
               </div>
-            </router-link>
+            </nuxt-link>
           </div>
         </div>
         <div v-if="ptPage" class="header-nav__menu">
@@ -114,42 +114,42 @@
 
     <div v-if="routeUserCenter&&!routerPayment" class="header-nav__wrapper header-nav__logged">
       <div class="header-nav__logged_logo">
-        <router-link to="/">GetInsta</router-link>
+        <nuxt-link to="/">GetInsta</nuxt-link>
       </div>
       <div class="header-nav__logged_user pc">
         <div v-if="!routeWelcome" class="header-nav__logged_user_container">
           <i class="download" @click="downloadHeaderPC">
             <button-download-windows-yellow :size="'header'" />
           </i>
-          <router-link
+          <nuxt-link
             v-if="$store.state.cartLength > 0"
             to="/checkout"
             class="cart"
             :title="$t('global.header.button.cart')"
           >
             <i class="cart"></i>
-          </router-link>
+          </nuxt-link>
           <span class="username">{{ $store.state.userName }}</span>
           <!--<span class="coins">{{ $store.state.userCoins }}</span>-->
           <!--<i class="coin-icon"></i>-->
         </div>
         <div v-if="routeWelcome">
-          <router-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container" title="User Center">
+          <nuxt-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container" title="User Center">
             <div class="avatar">
               <img :src="$store.state.userAvatar" alt="avatar">
             </div>
-          </router-link>
+          </nuxt-link>
         </div>
       </div>
       <div class="header-nav__logged_user mobile">
-        <router-link
+        <nuxt-link
           v-if="$store.state.cartLength > 0"
           to="/checkout"
           class="cart"
           :title="$t('global.header.button.cart')"
         >
           <i class="cart"></i>
-        </router-link>
+        </nuxt-link>
         <div class="avatar" @click="routeToUserCenter">
           <img :src="$store.state.userAvatar" alt="">
         </div>
@@ -199,64 +199,64 @@
         <i class="close" @click="switchMenu"></i>
         <div class="header-nav__logged_content_container">
           <div v-if="loginStatus" class="avatar mobile">
-            <router-link
+            <nuxt-link
               :to="`/user${$nuxt.$constant.paymentChannel}`"
               @click.native="menuOff"
             >
               <img :src="$store.state.userAvatar" alt="avatar">
-            </router-link>
+            </nuxt-link>
           </div>
           <!--Home-->
-          <router-link
+          <nuxt-link
             to="/"
             class="header-nav__logged_content_link" @click.native="menuOff"
           >
             {{ $t('global.header.menu.home') }}
-          </router-link>
+          </nuxt-link>
           <!--Buy Followers-->
-          <router-link
+          <nuxt-link
             v-if="!storeMenuHide" to="/buy-instagram-followers"
             class="header-nav__logged_content_link" @click.native="menuOff"
           >
             {{ $t('global.header.menu.buyFollowers') }}
-          </router-link>
+          </nuxt-link>
           <!--Buy Auto Followers-->
-          <router-link
+          <nuxt-link
             to="/buy-auto-instagram-followers"
             class="header-nav__logged_content_link" @click.native="menuOff"
           >
             Buy Auto Instagram Followers
-          </router-link>
+          </nuxt-link>
           <!--Buy Likes-->
-          <router-link
+          <nuxt-link
             v-if="!storeMenuHide" to="/buy-instagram-likes"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
             {{ $t('global.header.menu.buyLikes') }}
-          </router-link>
+          </nuxt-link>
           <!--Buy Auto Likes-->
-          <router-link
+          <nuxt-link
             v-if="!storeMenuHide" :to="{path:'/buy-instagram-daily-likes',query:{anchor}}"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
             Buy Auto Instagram Likes
-          </router-link>
+          </nuxt-link>
           <!--Blog-->
-          <router-link
+          <nuxt-link
             to="/blogs"
             class="header-nav__logged_content_link" @click.native="menuOff"
           >
             {{ $t('global.header.menu.blog') }}
-          </router-link>
+          </nuxt-link>
           <!--Get-->
-          <router-link
+          <nuxt-link
             to="/get-instagram-followers-likes"
             class="header-nav__logged_content_link" @click.native="menuOff"
           >
             {{ $t('global.header.menu.get') }}
-          </router-link>
+          </nuxt-link>
 
           <!--Free Tools (Drop Menu)-->
           <a class="header-nav__logged_content_link drop-menu" @click="dropMenuSwitch">
@@ -264,11 +264,11 @@
             <i></i>
             <div class="drop-menu-container">
               <!--Instagram Video Downloader-->
-              <router-link to="/instagram-video-downloader" @click.native="menuOff">Instagram Video Downloader</router-link>
+              <nuxt-link to="/instagram-video-downloader" @click.native="menuOff">Instagram Video Downloader</nuxt-link>
               <!--Instagram Ranking Tool-->
-              <router-link to="/the-most-followed-instagram" @click.native="menuOff">Instagram Ranking Tool</router-link>
+              <nuxt-link to="/the-most-followed-instagram" @click.native="menuOff">Instagram Ranking Tool</nuxt-link>
               <!--Instagram Name Generator-->
-              <router-link to="/instagram-name-generator" @click.native="menuOff">Instagram Name Generator</router-link>
+              <nuxt-link to="/instagram-name-generator" @click.native="menuOff">Instagram Name Generator</nuxt-link>
             </div>
           </a>
 
@@ -280,13 +280,13 @@
             {{ $t('global.header.button.logout') }}
           </a>
           <!--login (bottom login link-->
-          <router-link v-if="!loginStatus"
-                       class="header-nav__logged_content_link"
-                       to="/login"
-                       @click.native="menuOff"
+          <nuxt-link v-if="!loginStatus"
+                     class="header-nav__logged_content_link"
+                     to="/login"
+                     @click.native="menuOff"
           >
             {{ $t('global.header.button.login') }}
-          </router-link>
+          </nuxt-link>
         </div>
       </div>
     </transition>

@@ -1,6 +1,7 @@
 <template>
   <error :error-code="error.statusCode" />
 </template>
+
 <script>
 import error from '@/views/error/404';
 

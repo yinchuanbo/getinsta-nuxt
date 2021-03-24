@@ -176,7 +176,7 @@
 
       <div class="annotation">
         <span>Want to be an Instagram celebrity? Check </span>
-        <router-link to="/blog/instagram-followers-instantly-free-10">Get Instagram Followers Instantly Free - Without Human Verification & Password</router-link>
+        <nuxt-link to="/blog/instagram-followers-instantly-free-10">Get Instagram Followers Instantly Free - Without Human Verification & Password</nuxt-link>
       </div>
 
       <div class="unit-ins">
@@ -217,7 +217,7 @@
 
       <div class="annotation">
         <span>Also read: </span>
-        <router-link to="/blog/best-app-to-get-instagram-likes-18">7 Best Apps to Get Instagram Likes and Followers for Free in 2020: Real, Quick & Safe</router-link>
+        <nuxt-link to="/blog/best-app-to-get-instagram-likes-18">7 Best Apps to Get Instagram Likes and Followers for Free in 2020: Real, Quick & Safe</nuxt-link>
       </div>
 
       <div class="unit-ins">

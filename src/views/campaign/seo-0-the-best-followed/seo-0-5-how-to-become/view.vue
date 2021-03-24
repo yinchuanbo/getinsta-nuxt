@@ -11,7 +11,7 @@
         Surely, fame helps build up a following,
         but essentially it is the quality content consistently that keeps Instagrammers coming back for more.
         Whoever you are, you can learn from these <b>persons with most Instagram followers</b>
-        to <router-link to="/blog/how-to-gain-free-instagram-followers-3">gain free Instagram followers</router-link> for your own.
+        to <nuxt-link to="/blog/how-to-gain-free-instagram-followers-3">gain free Instagram followers</nuxt-link> for your own.
       </p>
       <div class="content">
         <div class="unit">
@@ -31,7 +31,7 @@
               users who are looking for posts related to the hashtag can find your posts,
               so popular hashtags can make your posts discoverable for more users.
               You can always find trending hashtags on Instagram or you can also
-              <router-link to="/blog/copy-paste-instagram-hashtags-25">copy and paste Instagram hashtags</router-link> from your competitors’ most popular posts,
+              <nuxt-link to="/blog/copy-paste-instagram-hashtags-25">copy and paste Instagram hashtags</nuxt-link> from your competitors’ most popular posts,
               but don’t overuse them. Only choose the relevant hashtags that make sense in your post.
             </p>
           </div>
@@ -57,7 +57,7 @@
               Instagram itself provides some basic photos editing features,
               but you are most welcome to go advanced. Even though Instagram started with images,
               videos are more popular than ever and video posts are better for
-              <router-link to="/blog/increase-engagement-on-instagram-16">increasing engagement</router-link>.
+              <nuxt-link to="/blog/increase-engagement-on-instagram-16">increasing engagement</nuxt-link>.
               You can post videos, host live videos, and publish video stories. Even if you are working very hard,
               it is not likely to get famous in one day, so it is essential to be constant on publishing content of high quality.
             </p>

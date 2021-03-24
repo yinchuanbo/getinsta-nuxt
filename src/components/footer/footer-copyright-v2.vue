@@ -12,8 +12,8 @@
       <!--        </div>-->
       <!--      </div>-->
       <div class="links">
-        <router-link to="/privacy">{{ $t('global.footer.about.privacyPolicy') }}</router-link>
-        <router-link to="/terms">{{ $t('global.footer.about.termsOfUse') }}</router-link>
+        <nuxt-link to="/privacy">{{ $t('global.footer.about.privacyPolicy') }}</nuxt-link>
+        <nuxt-link to="/terms">{{ $t('global.footer.about.termsOfUse') }}</nuxt-link>
         <div v-show="!payPage" id="wrapper-translate">
           <div id="google_translate_element"></div>
         </div>

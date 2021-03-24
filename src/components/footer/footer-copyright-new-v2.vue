@@ -17,16 +17,16 @@
         <div class="text">
           <p>Copyright © {{ currentYear }} {{ domain }}</p>
         </div>
-        <router-link to="/privacy">
+        <nuxt-link to="/privacy">
           {{
             $t("global.footer.about.privacyPolicy")
           }}
-        </router-link>
-        <router-link to="/terms">
+        </nuxt-link>
+        <nuxt-link to="/terms">
           {{
             $t("global.footer.about.termsOfUse")
           }}
-        </router-link>
+        </nuxt-link>
         <!-- <div v-show="!payPage" id="wrapper-translate">
           <div id="google_translate_element"></div>
         </div> -->

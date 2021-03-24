@@ -7,40 +7,40 @@
             <h3>
               <span>{{ $t("global.footer.services.services") }}</span>
             </h3>
-            <router-link to="/buy-instagram-followers">
+            <nuxt-link to="/buy-instagram-followers">
               Get Instagram Followers
-            </router-link>
-            <router-link to="/buy-auto-instagram-followers">
+            </nuxt-link>
+            <nuxt-link to="/buy-auto-instagram-followers">
               Get Auto Instagram Followers
-            </router-link>
-            <router-link to="/buy-instagram-likes">
+            </nuxt-link>
+            <nuxt-link to="/buy-instagram-likes">
               Get Instagram Likes
-            </router-link>
-            <router-link to="/affiliate-solutions">
+            </nuxt-link>
+            <nuxt-link to="/affiliate-solutions">
               Affiliate Program
-            </router-link>
+            </nuxt-link>
           </div>
           <div class="footer-text__links_column">
             <h3>
               <span>{{ $t("global.footer.resource.resource") }}</span>
             </h3>
-            <router-link v-if="$i18n.locale === 'en'" to="/login">
+            <nuxt-link v-if="$i18n.locale === 'en'" to="/login">
               {{
                 $t("global.footer.resource.login")
               }}
-            </router-link>
+            </nuxt-link>
 
-            <router-link to="/faqs">
+            <nuxt-link to="/faqs">
               {{
                 $t("global.footer.resource.faq")
               }}
-            </router-link>
+            </nuxt-link>
 
-            <router-link to="/blog">
+            <nuxt-link to="/blog">
               {{
                 $t("global.footer.resource.blog")
               }}
-            </router-link>
+            </nuxt-link>
           </div>
 
           <div
@@ -81,46 +81,46 @@
           </div>
           <!--        <div class="footer-text__links_column first">-->
           <!--          <h3><span>{{ $t('global.footer.about.about') }}</span></h3>-->
-          <!--          <router-link to="/terms">{{ $t('global.footer.about.termsOfUse') }}</router-link>-->
-          <!--          <router-link to="/privacy">{{ $t('global.footer.about.privacyPolicy') }}</router-link>-->
-          <!--          <router-link to="/affiliate-solutions">Affiliate Program</router-link>-->
+          <!--          <nuxt-link to="/terms">{{ $t('global.footer.about.termsOfUse') }}</nuxt-link>-->
+          <!--          <nuxt-link to="/privacy">{{ $t('global.footer.about.privacyPolicy') }}</nuxt-link>-->
+          <!--          <nuxt-link to="/affiliate-solutions">Affiliate Program</nuxt-link>-->
           <!--        </div>-->
           <div class="footer-text__links_column">
             <h3>
               <span>{{ $t("global.footer.services.services") }}</span>
             </h3>
-            <router-link to="/buy-instagram-followers">
+            <nuxt-link to="/buy-instagram-followers">
               Get Instagram Followers
-            </router-link>
-            <router-link to="/buy-auto-instagram-followers">
+            </nuxt-link>
+            <nuxt-link to="/buy-auto-instagram-followers">
               Get Auto Instagram Followers
-            </router-link>
-            <router-link to="/buy-instagram-likes">
+            </nuxt-link>
+            <nuxt-link to="/buy-instagram-likes">
               Get Instagram Likes
-            </router-link>
-            <router-link to="/affiliate-solutions">
+            </nuxt-link>
+            <nuxt-link to="/affiliate-solutions">
               Affiliate Program
-            </router-link>
+            </nuxt-link>
           </div>
           <div class="footer-text__links_column">
             <h3>
               <span>{{ $t("global.footer.resource.resource") }}</span>
             </h3>
-            <router-link v-if="$i18n.locale === 'en'" to="/login">
+            <nuxt-link v-if="$i18n.locale === 'en'" to="/login">
               {{
                 $t("global.footer.resource.login")
               }}
-            </router-link>
-            <router-link to="/faqs">
+            </nuxt-link>
+            <nuxt-link to="/faqs">
               {{
                 $t("global.footer.resource.faq")
               }}
-            </router-link>
-            <router-link to="/blog">
+            </nuxt-link>
+            <nuxt-link to="/blog">
               {{
                 $t("global.footer.resource.blog")
               }}
-            </router-link>
+            </nuxt-link>
           </div>
           <!--        <div class="footer-text__links_column pc download">-->
           <!--          <h3><span>{{ $t('global.footer.GetInstaDownload.GetInstaDownload') }}</span></h3>-->

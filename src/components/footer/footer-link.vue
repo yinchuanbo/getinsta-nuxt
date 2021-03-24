@@ -3,29 +3,29 @@
     <div class="footer-text__links">
       <div class="wrapper">
         <div class="footer-text__links_column logo mobile">
-          <router-link to="/">
+          <nuxt-link to="/">
             <img :src="$store.state.productLogo" alt="logo">
             <h2>{{ $store.state.productName }}</h2>
-          </router-link>
+          </nuxt-link>
           <p>Copyright © {{ currentYear }} <br> {{ COMMON.getDomain() }}</p>
           <div id="footer-translate-blank"></div>
         </div>
         <div v-if="!giveaway" class="footer-text__links_column first" :class="{ 'narrow': $i18n.locale === 'en' }">
           <h3><span>{{ $t('global.footer.about.about') }}</span></h3>
-          <router-link to="/terms">{{ $t('global.footer.about.termsOfUse') }}</router-link>
-          <router-link to="/privacy">{{ $t('global.footer.about.privacyPolicy') }}</router-link>
-          <router-link v-if="$i18n.locale === 'en'" to="/affiliate-solutions">Affiliate Program</router-link>
+          <nuxt-link to="/terms">{{ $t('global.footer.about.termsOfUse') }}</nuxt-link>
+          <nuxt-link to="/privacy">{{ $t('global.footer.about.privacyPolicy') }}</nuxt-link>
+          <nuxt-link v-if="$i18n.locale === 'en'" to="/affiliate-solutions">Affiliate Program</nuxt-link>
         </div>
         <div v-if="$i18n.locale === 'en' && !giveaway" class="footer-text__links_column narrow">
           <h3><span>{{ $t('global.footer.services.services') }}</span></h3>
-          <router-link to="/get-instagram-followers-likes">{{ $t('global.footer.services.getFollowers') }}</router-link>
-          <router-link to="/get-instagram-followers-likes">{{ $t('global.footer.services.getLikes') }}</router-link>
+          <nuxt-link to="/get-instagram-followers-likes">{{ $t('global.footer.services.getFollowers') }}</nuxt-link>
+          <nuxt-link to="/get-instagram-followers-likes">{{ $t('global.footer.services.getLikes') }}</nuxt-link>
         </div>
         <div v-if="!giveaway" class="footer-text__links_column narrow">
           <h3><span>{{ $t('global.footer.resource.resource') }}</span></h3>
-          <router-link v-if="$i18n.locale === 'en'" to="/login">{{ $t('global.footer.resource.login') }}</router-link>
-          <router-link to="/faqs">{{ $t('global.footer.resource.faq') }}</router-link>
-          <router-link to="/blog">{{ $t('global.footer.resource.blog') }}</router-link>
+          <nuxt-link v-if="$i18n.locale === 'en'" to="/login">{{ $t('global.footer.resource.login') }}</nuxt-link>
+          <nuxt-link to="/faqs">{{ $t('global.footer.resource.faq') }}</nuxt-link>
+          <nuxt-link to="/blog">{{ $t('global.footer.resource.blog') }}</nuxt-link>
         </div>
         <!--<div v-if="$i18n.locale === 'en'" class="footer-text__links_column">-->
         <!--  <h3><span>Free Tools</span></h3>-->

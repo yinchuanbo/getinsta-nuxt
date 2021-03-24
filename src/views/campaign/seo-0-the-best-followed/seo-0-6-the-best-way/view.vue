@@ -5,11 +5,11 @@
       <h3>
         It takes a lot of effort to build up a large following from zero.
         Thankfully, there is a way to get ahead with
-        <router-link to="/">GetInsta</router-link>
+        <nuxt-link to="/">GetInsta</nuxt-link>
         , a free app for
-        <router-link to="/blog/free-instagram-followers-no-password-31">growing Instagram followers and likes without password</router-link>
+        <nuxt-link to="/blog/free-instagram-followers-no-password-31">growing Instagram followers and likes without password</nuxt-link>
         . It is not like any other
-        <router-link to="/blog/instagram-followers-app-28">Instagram follower apps</router-link>
+        <nuxt-link to="/blog/instagram-followers-app-28">Instagram follower apps</nuxt-link>
         , because all the followers are real people.
         You can refer to the steps below to see how to grow followers or likes with GetInsta apk.
       </h3>

@@ -6,9 +6,9 @@
         <transition name="fade-skeleton" mode="out-in">
           <div v-if="!ajaxRequesting" key="Box1">
             <div class="breadcrumb">
-              <router-link to="/">{{ $t('global.header.menu.home') }}</router-link>
+              <nuxt-link to="/">{{ $t('global.header.menu.home') }}</nuxt-link>
               <span>&gt;</span>
-              <router-link to="/blogs">{{ $t('global.header.menu.blog') }}</router-link>
+              <nuxt-link to="/blogs">{{ $t('global.header.menu.blog') }}</nuxt-link>
               <span>&gt;</span>
               <a @click="backToBlogList">{{ blogSortObj.breadcrumb || '' }}</a>
               <span>&gt;</span>
@@ -37,12 +37,12 @@
             ></div>
             <div v-if="relatedArticleList.length !== 0" class="related-list">
               <h2>{{ $t('blogDetail.RelatedReadings') }}</h2>
-              <router-link
+              <nuxt-link
                 v-for="(unit, i) in relatedArticleList" :key="i"
                 :to="`/blogs/${unit.alia}`"
               >
                 {{ unit.title }}
-              </router-link>
+              </nuxt-link>
             </div>
           </div>
           <div v-if="ajaxRequesting" key="Box2" class="skeleton-blog-detail">
@@ -118,13 +118,13 @@
           <div v-if="articleHotList.length !== 0" key="Box1" class="hot-list">
             <h2>{{ $t('blog.hotArticles') }}</h2>
             <div class="links">
-              <router-link
+              <nuxt-link
                 v-for="(unit, i) in articleHotList" :key="i"
-                :to="`/blogs/${unit['urlalias']}`"
+                :to="`/blog/${unit['urlalias']}`"
                 :title="unit.title || 'Unknown Link'"
               >
                 <span>{{ unit.title || 'Unknown Link' }}</span>
-              </router-link>
+              </nuxt-link>
             </div>
           </div>
 
@@ -539,6 +539,7 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped src="./blog-detail.scss"></style>
 <style lang="scss" scoped>
 .blog-detail {
   padding-bottom: 100px;

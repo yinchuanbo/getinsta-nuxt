@@ -30,12 +30,12 @@
         </div>
 
         <transition name="fade-tabs" mode="out-in">
-          <router-link v-if="!onResult"
-                       to="/"
-                       class="note"
+          <nuxt-link v-if="!onResult"
+                     to="/"
+                     class="note"
           >
             Want 5000+ free Instagram followers?
-          </router-link>
+          </nuxt-link>
           <div v-if="onResult" class="result">
             <div class="result-container">
               <div class="title">

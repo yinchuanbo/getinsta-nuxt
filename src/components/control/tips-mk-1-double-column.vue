@@ -5,7 +5,7 @@
       <div class="tips">
         <ul>
           <li v-for="(unit, i) in tipList" :key="i">
-            <router-link :to="unit.link">{{ unit.text }}</router-link>
+            <nuxt-link :to="unit.link">{{ unit.text }}</nuxt-link>
           </li>
         </ul>
       </div>

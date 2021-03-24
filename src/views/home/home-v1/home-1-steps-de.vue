@@ -32,9 +32,9 @@
 
       <!--btn GetFreeFollowers&LikesNow PC-->
       <div v-if="!pageIOS && $i18n.locale === 'en'" class="home-1-steps__btn-container pc step-5" @click="ga0">
-        <router-link to="/login">
+        <nuxt-link to="/login">
           <button-purple :text="$t('home.home-1.btn.GetFreeFollowers&LikesNow')" />
-        </router-link>
+        </nuxt-link>
       </div>
 
       <!--btn GetFreeFollowers&LikesNow PC-->
