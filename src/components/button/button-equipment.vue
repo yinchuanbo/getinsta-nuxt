@@ -8,7 +8,7 @@
       <div class="state state-android" @mouseover="changeState(false)">
         <img
           :class="{ android_active: isIos }"
-          src="~@/assets/images/blog/icon__btn-download_logo_android_white.svg"
+          src="~@/views/blog/blog-detail/img/icon__btn-download_logo_android_white.svg"
           alt="android"
         />
       </div>
@@ -16,7 +16,7 @@
       <div class="state state-ios" @mouseover="changeState(true)">
         <img
           :class="{ ios_active: !isIos }"
-          src="~@/assets/images/blog/icon__btn-download_logo_apple_white.svg"
+          src="~@/views/blog/blog-detail/img/icon__btn-download_logo_apple_white.svg"
           alt="android"
         />
       </div>

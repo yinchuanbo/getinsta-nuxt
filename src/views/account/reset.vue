@@ -136,7 +136,7 @@ export default {
     },
     submitForm() {
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$nuxt.$axios.post(
         api.reset,
         this.COMMON.paramSign(
           {

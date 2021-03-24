@@ -5,7 +5,7 @@
       <div class="des-container">
         <div ref="mark0" :class="{ 'on': animateBegin0 }" class="unit">
           <div class="img">
-            <img src="@/assets/images/video-downloader/v-d-2-des/v-d-2-des-img-0.svg" alt="">
+            <img src="@/views/tools/video-downloader/v-d-2-des/img/v-d-2-des-img-0.svg" alt="">
           </div>
           <div class="text">
             <h3>Free Instagram Video Downloader</h3>
@@ -15,7 +15,7 @@
 
         <div ref="mark1" :class="{ 'on': animateBegin1 }" class="unit">
           <div class="img">
-            <img src="@/assets/images/video-downloader/v-d-2-des/v-d-2-des-img-1.svg" alt="">
+            <img src="@/views/tools/video-downloader/v-d-2-des/img/v-d-2-des-img-1.svg" alt="">
           </div>
           <div class="text">
             <h3>Bulk Download Instagram Videos</h3>
@@ -25,7 +25,7 @@
 
         <div ref="mark2" :class="{ 'on': animateBegin2 }" class="unit">
           <div class="img">
-            <img src="@/assets/images/video-downloader/v-d-2-des/v-d-2-des-img-2.svg" alt="">
+            <img src="@/views/tools/video-downloader/v-d-2-des/img/v-d-2-des-img-2.svg" alt="">
           </div>
           <div class="text">
             <h3>HD Instagram Video Downloader</h3>
@@ -68,4 +68,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="../.."></style>
+<style lang="scss" scoped src="../../.."></style>

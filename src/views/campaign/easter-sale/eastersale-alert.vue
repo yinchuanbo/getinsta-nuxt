@@ -189,7 +189,7 @@
         }
 
         this.showLoading = true;
-        this.axios.post(
+        this.$nuxt.$axios.post(
           apiInsServer.getAccountByUsername,
           this.COMMON.paramSign({
             ins_account: this.username

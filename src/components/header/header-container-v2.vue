@@ -11,7 +11,6 @@
   </header>
 </template>
 
-
 <script>
 import headerNavV2 from '@/components/header/header-nav-v2';
 import HeaderAdContainer from '@/components/header/header-ad-container/header-ad-container';
@@ -57,7 +56,6 @@ export default {
   }
 };
 </script>
-
 
 <style lang="scss">
 header {

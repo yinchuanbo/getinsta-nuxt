@@ -81,7 +81,7 @@ export default {
       display: block;
       width: 48px;
       height: 48px;
-      background: url("~@/assets/images/blog/blog-popup-bought__icon-close.svg") center no-repeat;
+      background: url("~@/views/blog/blog-detail/img/blog-popup-bought__icon-close.svg") center no-repeat;
       background-size: contain;
     }
 
@@ -112,7 +112,7 @@ export default {
         right: 80px;
         width: 80px;
         height: 80px;
-        background: url("~@/assets/images/blog/blog-popup-bought__icon-arrow.svg") center no-repeat;
+        background: url("~@/views/blog/blog-detail/img/blog-popup-bought__icon-arrow.svg") center no-repeat;
         background-size: contain;
       }
     }

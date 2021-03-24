@@ -126,7 +126,7 @@ export default {
       }
 
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$nuxt.$axios.post(
         api.login,
         this.COMMON.paramSign(
           {

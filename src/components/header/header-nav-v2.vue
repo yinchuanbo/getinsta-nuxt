@@ -5,26 +5,16 @@
         <div class="header-nav__logo">
           <a id="nav-home" @click="routerPush('/')">
             <i v-if="$store.state.productName === 'GetInsta'"></i>
-            <img
-              v-if="$store.state.productName !== 'GetInsta'"
-              :src="$store.state.productLogo"
-              alt="logo"
-            />
+            <img v-if="$store.state.productName !== 'GetInsta'" :src="$store.state.productLogo" alt="logo" />
             <span>{{ $store.state.productName }}</span>
           </a>
         </div>
         <div v-if="!ptPage" class="header-nav__menu">
           <div class="pc">
-            <a
-              id="nav-menu-00"
-              class="header-nav__menu_links"
-              @click="routerPush('/')"
+            <a id="nav-menu-00" class="header-nav__menu_links"
+               @click="routerPush('/')"
             >{{ $t('global.header.menu.home') }}</a>
-            <a
-              v-if="!storeMenuHide"
-              id="nav-menu-01"
-              class="header-nav__menu_links drop-menu"
-            >
+            <div v-if="!storeMenuHide" id="nav-menu-01" class="header-nav__menu_links drop-menu">
               <span>{{ $t('global.header.menu.store') }}</span>
               <i></i>
 
@@ -38,15 +28,14 @@
                     path: '/buy-instagram-daily-likes',
                     query: { anchor },
                   }"
-                >Buy Auto Instagram Likes
+                >
+                  Buy Auto Instagram Likes
                 </nuxt-link>
                 <nuxt-link to="/buy-instagram-likes">Buy Instagram Likes</nuxt-link>
               </div>
-            </a>
-            <a
-              id="nav-menu-02"
-              class="header-nav__menu_links"
-              @click="routerPush('/get-instagram-followers-likes')"
+            </div>
+            <a id="nav-menu-02" class="header-nav__menu_links"
+               @click="routerPush('/get-instagram-followers-likes')"
             >{{ $t('global.header.menu.get') }}</a>
             <!--Free Tools-->
             <div class="header-nav__menu_links drop-menu">
@@ -59,51 +48,26 @@
                 <nuxt-link to="/instagram-name-generator">Instagram Name Generator</nuxt-link>
               </div>
             </div>
-            <a
-              id="nav-menu-04"
-              class="header-nav__menu_links"
-              @click="routerPush('/blogs')"
+            <a id="nav-menu-04" class="header-nav__menu_links"
+               @click="routerPush('/blogs')"
             >{{ $t('global.header.menu.blog') }}</a>
-            <a
-              v-if="$i18n.locale === 'en'"
-              class="header-nav__menu_links"
-              @click="routerPush('/affiliate-solutions')"
+            <a v-if="$i18n.locale === 'en'" class="header-nav__menu_links"
+               @click="routerPush('/affiliate-solutions')"
             >Affiliates</a>
           </div>
-          <nuxt-link
-            v-if="$store.state.cartLength > 0"
-            to="/checkout"
-            class="cart"
-            :title="$t('global.header.button.cart')"
+          <nuxt-link v-if="$store.state.cartLength > 0" to="/checkout" class="cart"
+                     :title="$t('global.header.button.cart')"
           >
             <i class="cart"></i>
           </nuxt-link>
-          <a
-            v-if="!loginStatus && loginBtnShow"
-            id="nav-menu-05"
-            class="header-nav__btn-container"
-            href="javascript:"
-            @click="gaHeaderBtn"
+          <a v-if="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
+             href="javascript:"
+             @click="gaHeaderBtn"
           >
-            <!--            <ButtonPurple-->
-            <!--              class="pc"-->
-            <!--              :text="headerBtnText"-->
-            <!--              :font-size="'header-small'"-->
-            <!--              :shadow="false"-->
-            <!--            />-->
-            <!--            <button-white-->
-            <!--              class="mobile"-->
-            <!--              :text="headerBtnText"-->
-            <!--              :font-size="'header-small'"-->
-            <!--              :white="homePath && homeScroll && !loginStatus"-->
-            <!--            />-->
             <i class="avatar-login-btn"></i>
           </a>
           <div v-if="loginStatus" class="header-nav_menu_user" title="User Center">
-            <nuxt-link
-              :to="`/user${$nuxt.$constant.paymentChannel}`"
-              class="avatar-container"
-            >
+            <nuxt-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container">
               <div class="avatar">
                 <img :src="$store.state.userAvatar" alt="avatar" />
               </div>
@@ -111,16 +75,8 @@
           </div>
         </div>
         <div v-if="ptPage" class="header-nav__menu">
-          <a
-            class="header-nav__btn-container pt pc"
-            href="javascript:"
-            @click="gaPtBtn"
-          >
-            <button-white-blue
-              text="Baixar para PC"
-              :white="false"
-              :font-size="'header-small'"
-            />
+          <a class="header-nav__btn-container pt pc" href="javascript:" @click="gaPtBtn">
+            <button-white-blue text="Baixar para PC" :white="false" :font-size="'header-small'" />
           </a>
         </div>
         <div class="header-nav__btn mobile">
@@ -163,11 +119,8 @@
         </div>
       </div>
       <div class="header-nav__logged_user mobile">
-        <nuxt-link
-          v-if="$store.state.cartLength > 0"
-          to="/checkout"
-          class="cart"
-          :title="$t('global.header.button.cart')"
+        <nuxt-link v-if="$store.state.cartLength > 0" to="/checkout" class="cart"
+                   :title="$t('global.header.button.cart')"
         >
           <i class="cart"></i>
         </nuxt-link>
@@ -185,21 +138,15 @@
         <span>{{ paymentTitle }}</span>
       </div>
       <div v-if="!routerIOT" class="header-nav__logged_user">
-        <div
-          v-if="$route.path !== '/checkout'"
-          class="btn-container"
-          :class="{
-            'white-0':
-              paymentHeaderBtnText === $t('global.header.button.BackHome'),
-            'white-1': paymentHeaderBtnText === 'OK',
-          }"
-          @click="paymentHeaderBtnJump"
+        <div v-if="$route.path !== '/checkout'" class="btn-container"
+             :class="{
+               'white-0':
+                 paymentHeaderBtnText === $t('global.header.button.BackHome'),
+               'white-1': paymentHeaderBtnText === 'OK',
+             }"
+             @click="paymentHeaderBtnJump"
         >
-          <button-white
-            :text="paymentHeaderBtnText"
-            :white="false"
-            :font-size="'header-small'"
-          />
+          <button-white :text="paymentHeaderBtnText" :white="false" :font-size="'header-small'" />
         </div>
       </div>
       <div v-if="!routerIOT" class="header-nav__btn">
@@ -219,19 +166,15 @@
 
     <!--header-sidebar-mask-->
     <transition name="fade-skeleton">
-      <div
-        v-if="sideBarStatus"
-        class="header-nav__logged_content_mask"
-        :style="{ width: `${windowWidth}px`, height: `${windowHeight}px` }"
-        @click="switchMenu"
+      <div v-if="sideBarStatus" class="header-nav__logged_content_mask"
+           :style="{ width: `${windowWidth}px`, height: `${windowHeight}px` }"
+           @click="switchMenu"
       ></div>
     </transition>
     <!--header-sidebar-->
     <transition name="header-slide">
-      <div
-        v-if="sideBarStatus"
-        class="header-nav__logged_content"
-        :style="{ height: `${windowHeight}px` }"
+      <div v-if="sideBarStatus" class="header-nav__logged_content"
+           :style="{ height: `${windowHeight}px` }"
       >
         <i class="close" @click="switchMenu"></i>
         <div class="header-nav__logged_content_container">

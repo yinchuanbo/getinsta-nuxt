@@ -284,7 +284,7 @@ export default {
       display: inline-block;
       width: 20px;
       height: 20px;
-      background: url("~@/assets/images/user-center/user-center__icon_giftbox.svg") no-repeat center;
+      background: url("~@/views/user-center/img/user-center__icon_giftbox.svg") no-repeat center;
       background-size: contain;
       vertical-align: middle;
     }

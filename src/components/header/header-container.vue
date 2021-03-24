@@ -7,7 +7,6 @@
   </header>
 </template>
 
-
 <script>
 import headerNav from '@/components/header/header-nav';
 
@@ -52,7 +51,6 @@ export default {
   }
 };
 </script>
-
 
 <style lang="scss">
 header {

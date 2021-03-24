@@ -8,9 +8,9 @@
           <button-yellow-download text="Download GetInsta" :icon="platform" :theme="'blue'" />
         </div>
         <div class="bottom pc">
-          <a class="ios" :href="this.$constant.app.download.ios" title="Download from App Store" @click="gaIOS"></a>
+          <a class="ios" :href="$nuxt.$constant.app.download.ios" title="Download from App Store" @click="gaIOS"></a>
           <i></i>
-          <a class="android" download :href="this.$constant.app.download.android" title="Download for Android" @click="gaAndroid"></a>
+          <a class="android" download :href="$nuxt.$constant.app.download.android" title="Download for Android" @click="gaAndroid"></a>
         </div>
       </div>
     </div>
@@ -144,11 +144,11 @@ export default {
         }
 
         &.ios {
-          background-image: url("~@/assets/images/video-downloader/v-d-3-download/v-d-3-download__icon-ios.svg");
+          background-image: url("~@/views/tools/video-downloader/v-d-3-download/img/v-d-3-download__icon-ios.svg");
         }
 
         &.android {
-          background-image: url("~@/assets/images/video-downloader/v-d-3-download/v-d-3-download__icon-android.svg");
+          background-image: url("~@/views/tools/video-downloader/v-d-3-download/img/v-d-3-download__icon-android.svg");
         }
       }
 

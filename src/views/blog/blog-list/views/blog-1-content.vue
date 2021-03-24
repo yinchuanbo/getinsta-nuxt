@@ -624,7 +624,7 @@ export default {
             display: block;
             width: (29px/2);
             height: (15px/2);
-            background: url("~@/assets/images/blog/blog__icon_triangle.svg") no-repeat center;
+            background: url("~@/views/blog/blog-detail/img/blog__icon_triangle.svg") no-repeat center;
             background-size: contain;
             transition: all 0.3s;
           }

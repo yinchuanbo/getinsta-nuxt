@@ -179,7 +179,7 @@ export default {
 
       console.log('affID', this.$route.params.id);
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$nuxt.$axios.post(
         api.register,
         this.COMMON.paramSign(
           {
@@ -231,7 +231,7 @@ export default {
       }
 
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$nuxt.$axios.post(
         api.login,
         this.COMMON.paramSign(
           {
