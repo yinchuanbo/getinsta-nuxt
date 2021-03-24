@@ -1,12 +1,12 @@
 <template>
   <div class="eastersale-banner">
     <div class="eastersale-banner_top_left">
-      <img src="./images/top_left_flowers.svg" alt="">
+      <img src="images/top_left_flowers.svg" alt="">
     </div>
     <div class="eastersale-banner_center">
       <h3>HAPPY</h3>
       <div class="eastersale-easter">
-        <img src="./images/easter.svg" />
+        <img src="images/easter.svg" />
       </div>
       <div class="eastersale-tags">
         <div class="eastersale-tags-sale">SALE</div>
@@ -34,10 +34,10 @@
       </div>
     </div>
     <div class="eastersale-banner_bottom">
-      <img src="./images/bottom_grass.png" alt="">
+      <img src="images/bottom_grass.png" alt="">
     </div>
     <div class="eastersale-banner_top_right">
-      <img src="./images/top_right_flowers.svg" alt="">
+      <img src="images/top_right_flowers.svg" alt="">
     </div>
   </div>
 </template>
@@ -121,7 +121,7 @@
       top: 60px;
       left: 50%;
       transform: translateX(-50%);
-      background: url("./images/top_center.svg") no-repeat;
+      background: url("images/top_center.svg") no-repeat;
       background-position: center center;
       z-index: 3;
 

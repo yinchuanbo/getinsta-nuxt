@@ -349,7 +349,7 @@
           right: 8px;
           width: 32px;
           height: 32px;
-          background: url("./images/close.svg") no-repeat;
+          background: url("images/close.svg") no-repeat;
           background-size: 100% 100%;
           cursor: pointer;
         }
@@ -361,7 +361,7 @@
           opacity: 1;
           margin-top: 18px;
           margin-left: 54px;
-          background: url("./images/flowers_top.svg") no-repeat;
+          background: url("images/flowers_top.svg") no-repeat;
           background-size: 100% 100%;
           text-align: center;
           font: normal normal 600 18px/52px BalooChettan;

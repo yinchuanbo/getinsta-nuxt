@@ -36,7 +36,7 @@
               }}
             </nuxt-link>
 
-            <nuxt-link to="/blog">
+            <nuxt-link to="/blogs">
               {{
                 $t("global.footer.resource.blog")
               }}
@@ -116,7 +116,7 @@
                 $t("global.footer.resource.faq")
               }}
             </nuxt-link>
-            <nuxt-link to="/blog">
+            <nuxt-link to="/blogs">
               {{
                 $t("global.footer.resource.blog")
               }}

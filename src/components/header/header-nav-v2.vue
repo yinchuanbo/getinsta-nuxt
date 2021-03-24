@@ -62,7 +62,7 @@
             <a
               id="nav-menu-04"
               class="header-nav__menu_links"
-              @click="routerPush('/blog')"
+              @click="routerPush('/blogs')"
             >{{ $t('global.header.menu.blog') }}</a>
             <a
               v-if="$i18n.locale === 'en'"
@@ -288,7 +288,7 @@
           </nuxt-link>
           <!--Blog-->
           <nuxt-link
-            to="/blog"
+            to="/blogs"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >

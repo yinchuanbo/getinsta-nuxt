@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import EastersaleBannerMTags from '../m/eastersale-banner-m-tags.vue'
+import EastersaleBannerMTags from './eastersale-banner-m-tags.vue'
 export default {
   components: {
     EastersaleBannerMTags
