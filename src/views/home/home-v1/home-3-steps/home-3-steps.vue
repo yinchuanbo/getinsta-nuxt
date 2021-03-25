@@ -3,7 +3,7 @@
     <div class="wrapper">
       <!--      step-0-->
       <div v-if="$i18n.locale === 'en'" class="unit step-0">
-        <img src="../../../assets/images/home/home-3-steps/home-3-steps__icon_user.svg" alt="icon">
+        <img src="img/home-3-steps__icon_user.svg" alt="icon">
         <h3>{{ $t('home.home-3.step-0.title') }}</h3>
         <p>{{ $t('home.home-3.step-0.text0') }}<br>{{ $t('home.home-3.step-0.text1') }}</p>
         <div v-if="!pageIOS" class="btn-container" @click="ga0">
@@ -14,7 +14,7 @@
       </div>
       <!--      step-1-->
       <div v-if="!minorLangHide" class="unit center step-1">
-        <img src="../../../assets/images/home/home-3-steps/home-3-steps__icon_download.svg" alt="icon">
+        <img src="img/home-3-steps__icon_download.svg" alt="icon">
         <h3>{{ $t('home.home-3.step-1.title') }}{{ $store.state.productName }}{{ $t('home.home-3.step-1.title-1') }}</h3>
         <p>{{ $t('home.home-3.step-1.text0') }}{{ $store.state.productName }}<br>{{ $t('home.home-3.step-1.text1') }}</p>
         <div class="btn-container">
@@ -52,14 +52,14 @@
              @mouseenter="tipQrCode('android', $event)"
              @mouseleave="tipQrCode(false)"
           >
-            <img src="../../../assets/images/home/home-3-steps/home-3-steps__icon-android.svg" alt="icon">
+            <img src="img/home-3-steps__icon-android.svg" alt="icon">
           </a>
           <a v-if="!$store.state.hideIosMinorLang" class="ios" href="javascript:"
              @click="ga3Ios"
              @mouseenter="tipQrCode('ios', $event)"
              @mouseleave="tipQrCode(false)"
           >
-            <img src="../../../assets/images/home/home-3-steps/home-3-steps__icon-apple.svg" alt="icon">
+            <img src="img/home-3-steps__icon-apple.svg" alt="icon">
           </a>
         </div>
         <!--safe text-->
@@ -70,7 +70,7 @@
       </div>
       <!--      step-2-->
       <div class="unit step-2">
-        <img src="../../../assets/images/home/home-3-steps/home-3-steps__icon_add-user.svg" alt="icon">
+        <img src="img/home-3-steps__icon_add-user.svg" alt="icon">
         <!--        step-2 title-->
         <h3 v-if="!$store.state.showIosDe">{{ $t('home.home-3.step-2.title') }}</h3>
         <h3 v-if="$store.state.showIosDe">{{ $t('home.home-3.step-2.title-ios') }}</h3>
@@ -297,7 +297,7 @@ export default {
   padding-top: 130px;
   padding-bottom: 30px;
   width: 100%;
-  background: #fff url("~@/assets/images/home/home-3-steps/home-3-steps__bg.svg") no-repeat top center;
+  background: #fff url("~@/views/home/home-v1/home-3-steps/img/home-3-steps__bg.svg") no-repeat top center;
   background-size: 100% 591px;
 
   &:before {
@@ -309,7 +309,7 @@ export default {
     display: block;
     width: 1092px;
     height: 517px;
-    background: url("~@/assets/images/home/home-3-steps/home-3-steps__bg_dots.svg") no-repeat center;
+    background: url("~@/views/home/home-v1/home-3-steps/img/home-3-steps__bg_dots.svg") no-repeat center;
     background-size: contain;
     content: "";
   }

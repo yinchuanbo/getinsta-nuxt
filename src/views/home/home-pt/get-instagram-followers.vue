@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import HomePt0Banner from '@/views/home/home-pt/views/home-pt-0-banner';
+import HomePt0Banner from '@/views/home/home-pt/views/home-pt-0-banner/home-pt-0-banner';
 import HomePt1Outstanding from '@/views/home/home-pt/views/home-pt-1-outstanding';
 import HomePt2Download from '@/views/home/home-pt/views/home-pt-2-download';
 import HomePt3Advantages from '@/views/home/home-pt/views/home-pt-3-advantages';

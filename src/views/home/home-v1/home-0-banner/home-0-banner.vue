@@ -1,11 +1,10 @@
 <template>
-  <div
-    class="home-0-banner"
-    :class="{
-      'on': animateBegin,
-      'text-on': textBegin,
-      'no-header': pageSeoBuy || pageSeoIOS
-    }"
+  <div class="home-0-banner"
+       :class="{
+         'on': animateBegin,
+         'text-on': textBegin,
+         'no-header': pageSeoBuy || pageSeoIOS
+       }"
   >
     <div v-if="!pageSeoBuy" class="header-blank"></div>
 
@@ -25,29 +24,137 @@
       <div class="home-0-banner__text">
         <!--h1 & h2-->
         <div v-if="pageName === '' && !(pageSeoBuy || pageSeoIOS)">
-          <h1>Instagram Follower & Likes kostenlos bekommen</h1>
+          <h1
+            v-if="$i18n.locale !== 'de'"
+            :class="{ 'minor-lang': $i18n.locale !== 'en' }"
+            v-html="$t('home.home-0.title')"
+          ></h1>
+          <h1
+            v-if="$i18n.locale === 'de' && !$store.state.isiOS"
+            :class="{ 'minor-lang': $i18n.locale !== 'en' }"
+            v-html="$t('home.home-0.title')"
+          ></h1>
+          <h1
+            v-if="$i18n.locale === 'de' && $store.state.isiOS"
+            :class="{ 'minor-lang': $i18n.locale !== 'en' }"
+            v-html="$t('home.home-0.title-ios')"
+          ></h1>
 
-          <h2>
-            Sie können <b>100% kostenlose und qualitativ hochwertige</b> Instagram Follower und Likes bekommen,
-            indem Sie die App herunterladen. Kein Passwort. Keine Umfrage. Kein Risiko. 100% echt und sicher.
+          <h2
+            v-if="!($i18n.locale === 'de' && $store.state.isiOS)"
+          >
+            {{ $t('home.home-0.subtitle0') }}
+            <b>{{ $t('home.home-0.subtitle1') }}</b>
+            {{ $t('home.home-0.subtitle2') }}
+          </h2>
+
+          <h2
+            v-if="$i18n.locale === 'de' && $store.state.isiOS"
+          >
+            {{ $t('home.home-0.subtitle0-ios') }}
+            <b>{{ $t('home.home-0.subtitle1') }}</b>
+            {{ $t('home.home-0.subtitle2-ios') }}
           </h2>
         </div>
-
+        <!--h1 & h2-->
+        <div v-if="pageName === '' && (pageSeoBuy || pageSeoIOS)">
+          <h1>Get Real Instagram <br> Followers & Likes</h1>
+          <h2>Easily get <b>10,000+ real</b> Instagram followers and likes from active users in minutes. No password. No survey. No risk. 100% real & safe.</h2>
+        </div>
+        <!--h1 & h2-->
+        <div v-if="pageName === 'event-dl'">
+          <h1>Get Instagram Followers and Likes with Guarantee</h1>
+          <h2>
+            Trusted by millions of customers, GetInsta promises you
+            <b>100% REAL, ORGANIC and INSTANT</b>
+            Instagram followers and likes. Download APP Now to get more followers and likes.
+          </h2>
+        </div>
+        <!--FreeGetItNow PC-->
+        <div
+          v-if="pageName === '' && !freeGetItNowHide"
+          id="home-0-0"
+          class="home-0-banner__text_btn pc"
+          :class="{ 'minor-lang': $i18n.locale !== 'en' }"
+          @click="gaBtnFreeGetItNow"
+        >
+          <button-wave :text="$t('home.home-0.btn.FreeGetItNow')" />
+        </div>
+        <!--DownloadAPPNow PC-->
+        <div
+          v-if="pageName === 'event-dl'"
+          class="home-0-banner__text_btn pc"
+          @click="gaDownloadAPPNow"
+        >
+          <button-wave :text="$t('home.home-0.btn.DownloadAPPNow')" />
+        </div>
         <!--DownloadAPPNow Mobile-->
-        <div class="mobile">
-          <div v-if="!appDwnBtnHide" class="home-0-banner__text_btn" @click="gaDownloadAPPNow">
-            <button-wave :text="$t('home.home-0.btn.DownloadAPPNow')" />
+        <!--        <div v-if="!$store.state.btnTestGate && !appDwnBtnHide && $store.state.isAndroid" class="home-0-banner__text_btn" @click="gaDownloadAPPNow">-->
+        <!--          <button-download-android />-->
+        <!--        </div>-->
+        <!--        <div v-if="!$store.state.btnTestGate && !appDwnBtnHide && $store.state.isiOS" class="home-0-banner__text_btn" @click="gaDownloadAPPNow">-->
+        <!--          <button-download-ios />-->
+        <!--        </div>-->
+        <div v-if="!$store.state.btnTestGate && !appDwnBtnHide && $store.state.isMobile" class="home-0-banner__text_btn long" @click="gaDownloadAPPNow">
+          <button-icon-ins text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" theme="cyan" />
+        </div>
+        <div v-if="$store.state.btnTestGate && $store.state.downloadBtnTestA"
+             class="mobile" @click="gaDownloadAPPTest"
+        >
+          <div v-if="!appDwnBtnHide && $store.state.isAndroid" class="home-0-banner__text_btn">
+            <button-download-android />
+          </div>
+          <div v-if="!appDwnBtnHide && $store.state.isiOS" class="home-0-banner__text_btn">
+            <button-download-ios />
           </div>
         </div>
-
-        <!--BuyNow Mobile-->
+        <div v-if="$store.state.btnTestGate && $store.state.downloadBtnTestB"
+             class="mobile" @click="gaDownloadAPPTest"
+        >
+          <div class="home-0-banner__text_btn long">
+            <button-icon-ins text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" />
+          </div>
+        </div>
+        <div v-if="$store.state.btnTestGate && $store.state.downloadBtnTestC"
+             class="mobile" @click="gaDownloadAPPTest"
+        >
+          <div class="home-0-banner__text_btn long">
+            <button-icon-ins text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" theme="cyan" />
+          </div>
+        </div>
+        <!--DownloadAPPNow Mobile (pageSeoBuy)-->
+        <div v-if="pageSeoBuy" class="home-0-banner__text_btn mobile" @click="downloadAppPageSeoBuy">
+          <!--          <button-wave :text="$t('home.home-0.btn.DownloadAPPNow')" />-->
+          <button-buy-now :text="$t('home.home-0.btn.BuyNow')" :white="true" :font-size="'size-20'" />
+        </div>
+        <!--BuyNow PC-->
         <div
-          v-if="!buyNowBtnHide && !minorLangHide"
-          class="home-0-banner__text_btn mobile"
-          :class="{ 'second': !appDwnBtnHide || pageSeoBuy }"
+          v-if="pageName === '' && !buyNowBtnHide"
+          id="home-0-1"
+          class="home-0-banner__text_btn pc"
+          :class="{ 'second': !freeGetItNowHide, 'minor-lang': $i18n.locale !== 'en' }"
           @click="ga01"
         >
           <button-buy-now :text="$t('home.home-0.btn.BuyNow')" :white="true" :font-size="'size-20'" />
+        </div>
+        <!--BuyNow Mobile-->
+        <!--        <div-->
+        <!--          v-if="!buyNowBtnHide && !minorLangHide"-->
+        <!--          class="home-0-banner__text_btn mobile"-->
+        <!--          :class="{-->
+        <!--            'second': !appDwnBtnHide || pageSeoBuy,-->
+        <!--            'long': $store.state.downloadBtnTestB || $store.state.downloadBtnTestC-->
+        <!--          }"-->
+        <!--          @click="ga01"-->
+        <!--        >-->
+        <div v-if="!buyNowBtnHide && !minorLangHide"
+             class="home-0-banner__text_btn mobile long"
+             :class="{
+               'second': !appDwnBtnHide || pageSeoBuy,
+             }"
+             @click="gaBtnGateBuy"
+        >
+          <button-buy-now square :text="$t('home.home-0.btn.BuyNow')" :white="true" :font-size="'size-20'" />
         </div>
       </div>
     </div>
@@ -61,19 +168,27 @@
 
 <script>
 import ButtonWave from '@/components/button/button-wave';
-import img0 from '@/assets/images/home/home-0-banner/home_banner_phone.png';
-import img1 from '@/assets/images/home/home-0-banner/home_banner_phone_1000.svg';
-import img2 from '@/assets/images/home/home-0-banner/home_banner_phone_5000followers.svg';
-import img3 from '@/assets/images/home/home-0-banner/home_banner_phone_10000followers.svg';
-import img4 from '@/assets/images/home/home-0-banner/home_banner_phone_fish.svg';
-import img5 from '@/assets/images/home/home-0-banner/home_banner_phone_like.svg';
-import img6 from '@/assets/images/home/home-0-banner/home_banner_phone_shadow.svg';
-import img7 from '@/assets/images/home/home-0-banner/home_banner_bg_wave.svg';
+import img0 from '@/views/home/home-v1/home-0-banner/img/home_banner_phone.png';
+import img1 from '@/views/home/home-v1/home-0-banner/img/home_banner_phone_1000.svg';
+import img2 from '@/views/home/home-v1/home-0-banner/img/home_banner_phone_5000followers.svg';
+import img3 from '@/views/home/home-v1/home-0-banner/img/home_banner_phone_10000followers.svg';
+import img4 from '@/views/home/home-v1/home-0-banner/img/home_banner_phone_fish.svg';
+import img5 from '@/views/home/home-v1/home-0-banner/img/home_banner_phone_like.svg';
+import img6 from '@/views/home/home-v1/home-0-banner/img/home_banner_phone_shadow.svg';
+import img7 from '@/views/home/home-v1/home-0-banner/img/home_banner_bg_wave.svg';
 import ButtonBuyNow from '@/components/button/button-buy-now';
+import ButtonDownloadAndroid from '@/components/button/button-download-android';
+import ButtonDownloadIos from '@/components/button/button-download-ios';
+import ButtonIconIns from '@/components/button/button-icon-ins';
+// import ButtonThemeGradient from '@/components/button/button-theme-gradient';
 
 export default {
-  name: 'Home0BannerDeIos',
+  name: 'Home0Banner',
   components: {
+    ButtonIconIns,
+    // ButtonThemeGradient,
+    ButtonDownloadIos,
+    ButtonDownloadAndroid,
     ButtonBuyNow,
     ButtonWave
   },
@@ -157,7 +272,12 @@ export default {
     this.pageSeoBuy = this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes';
     this.pageSeoIOS = this.$nuxt.$route.path === '/event-ios';
 
-    this.buyNowBtnHide = (this.COMMON.getURLQuery('source') === 'google' && this.COMMON.isiOS()) || this.pageSeoIOS;
+    this.buyNowBtnHide
+      = (this.COMMON.getURLQuery('source') === 'google' && this.COMMON.isiOS())
+      || this.pageSeoIOS
+      || (this.COMMON.getURLQuery('s') === 'tiktok' && this.COMMON.isiOS())
+      || (this.COMMON.getURLQuery('source') === 'google' && this.COMMON.isAndroid())
+    ;
     this.appDwnBtnHide = this.pageSeoBuy || (this.$i18n.locale === 'de' && this.COMMON.isAndroid());
     this.freeGetItNowHide = this.pageSeoBuy || this.$i18n.locale === 'de';
     this.pageSeoBuyShow = !this.pageSeoBuy;
@@ -223,11 +343,11 @@ export default {
       }
     },
     gaDownloadAPPNow() {
-      if (this.$i18n.locale === 'en') {
-        this.downloadApp();
-      } else {
-        this.downloadAppMinorLang();
-      }
+      // if (this.$i18n.locale === 'en') {
+      this.downloadApp();
+      // } else {
+      //   this.downloadAppMinorLang();
+      // }
     },
     downloadApp() {
       if (this.COMMON.isiOS()) {
@@ -236,20 +356,24 @@ export default {
           window.location.href = this.$constant.app.download.ios1;
         } else {
           this.$ga.event('insdl', 'download', 'hpiosdlm1');
+
+          this.$store.commit('enIosLinkCt', this.$store.state.adQueryCampaignHome);
           window.location.href
-            = this.$constant.app.download.ios
-            + `?pt=121014724&ct=${this.$store.state.adQueryCampaignHome}&mt=8`;
+            = `${this.$store.state.enIosLink}`
+            + `?pt=${this.$store.state.enIosLinkPt}`
+            + `&ct=${this.$store.state.enIosLinkCt}`
+            + `&mt=8`;
         }
       } else {
         this.$ga.event('insdl', 'download', 'hpappdlm1');
-        if (this.$i18n.locale === 'fr' || this.$i18n.locale === 'de') {
-          // window.location.href = `${this.$constant.app.download.android}?lang=${this.$i18n.locale}`;
+        // if (this.$i18n.locale === 'fr' || this.$i18n.locale === 'de') {
+        // window.location.href = `${this.$constant.app.download.android}?lang=${this.$i18n.locale}`;
 
-          // Beacon:MinorAppDownload
-          location.href = this.$store.state.minorLangAdrLink;
-        } else {
-          window.location.href = this.$constant.app.download.android;
-        }
+        // Beacon:MinorAppDownload
+        //   location.href = this.$store.state.minorLangAdrLink;
+        // } else {
+        window.location.href = this.$store.state.enAdrLink;
+        // }
       }
     },
     downloadAppMinorLang() {
@@ -264,7 +388,7 @@ export default {
       } else {
         this.$ga.event('insdl', 'download', `hpadr1-${this.$i18n.locale}`);
         if (this.$i18n.locale === 'fr' || this.$i18n.locale === 'de') {
-          location.href = `${this.$constant.app.download.android}?lang=${this.$i18n.locale}`;
+          // location.href = `${this.$constant.app.download.android}?lang=${this.$i18n.locale}`;
 
           // Beacon:MinorAppDownload
           location.href = this.$store.state.minorLangAdrLink;
@@ -289,6 +413,49 @@ export default {
       } else {
 
       }
+    },
+
+    gaDownloadAPPTest() {
+      let url = '';
+
+      if (this.COMMON.isiOS()) {
+        if (this.$store.state.downloadBtnTestA)
+          url = this.$constant.app.download.downloadBtnTestAIos;
+        if (this.$store.state.downloadBtnTestB)
+          url = this.$constant.app.download.downloadBtnTestBIos;
+        if (this.$store.state.downloadBtnTestC)
+          url = this.$constant.app.download.downloadBtnTestCIos;
+      }
+
+      if (this.COMMON.isAndroid()) {
+        if (this.$store.state.downloadBtnTestA)
+          url = this.$constant.app.download.downloadBtnTestAAdr;
+        if (this.$store.state.downloadBtnTestB)
+          url = this.$constant.app.download.downloadBtnTestBAdr;
+        if (this.$store.state.downloadBtnTestC)
+          url = this.$constant.app.download.downloadBtnTestCAdr;
+      }
+
+      this.$ga.event(
+        'insdl',
+        'download',
+        `hp${this.$store.state.platform}dl${this.$store.state.gaColor}1`
+      );
+      location.href = url;
+    },
+    gaBuyTest() {
+      this.$ga.event(
+        'insbuy',
+        'buy',
+        `hp${this.$store.state.platform}dl${this.$store.state.gaColor}1`
+      );
+      this.$nuxt.$router.push({ path: '/buy-instagram-followers' });
+    },
+    // gaBtnGateDownload() {
+    //   this.$store.state.btnTestGate ? this.gaDownloadAPPTest() : this.gaDownloadAPPNow();
+    // },
+    gaBtnGateBuy() {
+      this.$store.state.btnTestGate ? this.gaBuyTest() : this.ga01();
     }
   }
 };
@@ -310,7 +477,7 @@ export default {
     left: 0;
     width: 1547px;
     height: 597px;
-    background: url("~@/assets/images/home/home-0-banner/home_banner_bg_wave.svg") no-repeat;
+    background: url("~@/views/home/home-v1/home-0-banner/img/home_banner_bg_wave.svg") no-repeat;
     background-size: contain;
     content: "";
     opacity: 0;
@@ -400,7 +567,7 @@ export default {
       top: 14px;
       width: 133/750*100%;
       height: 158/488*100%;
-      background-image: url("~@/assets/images/home/home-0-banner/home_banner_phone_fish.svg");
+      background-image: url("~@/views/home/home-v1/home-0-banner/img/home_banner_phone_fish.svg");
       background-repeat: no-repeat;
       background-size: contain;
       content: "";
@@ -427,7 +594,7 @@ export default {
       left: 9%;
       width: 611/750*100%;
       height: 368/488*100%;
-      background-image: url("~@/assets/images/home/home-0-banner/home_banner_phone.png");
+      background-image: url("~@/views/home/home-v1/home-0-banner/img/home_banner_phone.png");
     }
 
     .phone-shadow {
@@ -435,7 +602,7 @@ export default {
       left: 9%;
       width: 611/750*100%;
       height: 367/488*100%;
-      background-image: url("~@/assets/images/home/home-0-banner/home_banner_phone_shadow.svg");
+      background-image: url("~@/views/home/home-v1/home-0-banner/img/home_banner_phone_shadow.svg");
     }
 
     .followers {
@@ -443,7 +610,7 @@ export default {
       left: 29.8%;
       width: 34%;
       height: 20.6%;
-      background-image: url("~@/assets/images/home/home-0-banner/home_banner_phone_5000followers.svg");
+      background-image: url("~@/views/home/home-v1/home-0-banner/img/home_banner_phone_5000followers.svg");
     }
 
     .like-num {
@@ -451,7 +618,7 @@ export default {
       left: 17.8%;
       width: 167/750*100%;
       height: 97/488*100%;
-      background-image: url("~@/assets/images/home/home-0-banner/home_banner_phone_1000.svg");
+      background-image: url("~@/views/home/home-v1/home-0-banner/img/home_banner_phone_1000.svg");
     }
 
     .like-btn {
@@ -459,7 +626,7 @@ export default {
       left: 38.5%;
       width: 90/750*100%;
       height: 52/488*100%;
-      background-image: url("~@/assets/images/home/home-0-banner/home_banner_phone_like.svg");
+      background-image: url("~@/views/home/home-v1/home-0-banner/img/home_banner_phone_like.svg");
     }
 
     .views {
@@ -467,7 +634,7 @@ export default {
       left: 61.8%;
       width: 190/750*100%;
       height: 110/488*100%;
-      background-image: url("~@/assets/images/home/home-0-banner/home_banner_phone_10000followers.svg");
+      background-image: url("~@/views/home/home-v1/home-0-banner/img/home_banner_phone_10000followers.svg");
     }
   }
 
@@ -589,6 +756,14 @@ export default {
         margin: 50px auto 0;
         width: (422px/2);
         height: (112px/2);
+
+        &.long {
+          width: (500px/2);
+
+          &.second {
+            width: (500px/2);
+          }
+        }
 
         &.second {
           margin-left: 0;

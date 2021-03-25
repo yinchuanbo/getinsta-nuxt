@@ -50,10 +50,10 @@
 </template>
 
 <script>
-import avatar0 from '../../../assets/images/home/home-6-reviews/reviewer-avatar-0.png';
-import avatar1 from '../../../assets/images/home/home-6-reviews/reviewer-avatar-1.png';
-import avatar2 from '../../../assets/images/home/home-6-reviews/reviewer-avatar-2.png';
-import avatar3 from '../../../assets/images/home/home-6-reviews/reviewer-avatar-3.png';
+import avatar0 from './img/reviewer-avatar-0.png';
+import avatar1 from './img/reviewer-avatar-1.png';
+import avatar2 from './img/reviewer-avatar-2.png';
+import avatar3 from './img/reviewer-avatar-3.png';
 
 export default {
   name: 'Home6Reviews',
@@ -356,7 +356,7 @@ export default {
           display: block;
           width: 36px;
           height: 58px;
-          background: url("~@/assets/images/home/home-6-reviews/icon_navigate_next.svg") no-repeat center;
+          background: url("~@/views/home/home-v1/home-6-reviews/img/icon_navigate_next.svg") no-repeat center;
           background-size: contain;
         }
 

@@ -180,7 +180,7 @@ export default {
             left: (80px/560px)*100%;
             width: 70.893%;
             height: 70.893%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-00.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-00.svg");
 
             transition-delay: 0s;
             opacity: 0;
@@ -192,7 +192,7 @@ export default {
             left: (140px/560px)*100%;
             width: (52px/560px)*100%;
             height: (118px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-01.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-01.svg");
 
             transition-delay: 0.2s;
             transform: scaleY(0);
@@ -204,7 +204,7 @@ export default {
             left: (216px/560px)*100%;
             width: (52px/560px)*100%;
             height: (199px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-02.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-02.svg");
 
             transition-delay: 0.4s;
             transform: scaleY(0);
@@ -216,7 +216,7 @@ export default {
             left: (294px/560px)*100%;
             width: (52px/560px)*100%;
             height: (212px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-03.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-03.svg");
 
             transition-delay: 0.6s;
             transform: scaleY(0);
@@ -228,7 +228,7 @@ export default {
             left: (374px/560px)*100%;
             width: (52px/560px)*100%;
             height: (254px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-04.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-04.svg");
 
             transition-delay: 0.8s;
             transform: scaleY(0);
@@ -240,7 +240,7 @@ export default {
             left: (18px/560px)*100%;
             width: (450px/560px)*100%;
             height: (468px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-05.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-05.svg");
 
             transition-delay: 1s;
             opacity: 0;
@@ -253,7 +253,7 @@ export default {
             left: (266px/560px)*100%;
             width: (68px/560px)*100%;
             height: (68px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-06.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-06.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.8s;
@@ -266,7 +266,7 @@ export default {
             left: (28px/560px)*100%;
             width: (113px/560px)*100%;
             height: (113px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-07.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-07.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 2.0s;
@@ -279,7 +279,7 @@ export default {
             left: (180px/560px)*100%;
             width: (68px/560px)*100%;
             height: (68px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-08.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-08.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 2.2s;
@@ -292,7 +292,7 @@ export default {
             left: (195px/560px)*100%;
             width: (352px/560px)*100%;
             height: (401px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-09.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-09.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 2.4s;
@@ -305,7 +305,7 @@ export default {
             left: (95px/560px)*100%;
             width: (429px/560px)*100%;
             height: (388px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_0-10.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_0-10.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 3s;
@@ -318,7 +318,7 @@ export default {
             left: (242px/560px)*100%;
             width: (75px/560px)*100%;
             height: (75px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-00.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-00.svg");
 
             transition-delay: 0s;
             opacity: 0;
@@ -330,7 +330,7 @@ export default {
             left: (54px/560px)*100%;
             width: (452px/560px)*100%;
             height: (452px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-01.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-01.svg");
 
             transition-delay: 0.2s;
             opacity: 0;
@@ -342,7 +342,7 @@ export default {
             left: (230px/560px)*100%;
             width: (170px/560px)*100%;
             height: (170px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-02.png");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-02.png");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 0.8s;
@@ -354,7 +354,7 @@ export default {
             left: (282px/560px)*100%;
             width: (204px/560px)*100%;
             height: (204px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-03.png");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-03.png");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.0s;
@@ -366,7 +366,7 @@ export default {
             left: (55px/560px)*100%;
             width: (178px/560px)*100%;
             height: (178px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-04.png");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-04.png");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.2s;
@@ -378,7 +378,7 @@ export default {
             left: (14px/560px)*100%;
             width: (196px/560px)*100%;
             height: (196px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-05.png");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-05.png");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.4s;
@@ -390,7 +390,7 @@ export default {
             left: (152px/560px)*100%;
             width: (142px/560px)*100%;
             height: (142px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-06.png");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-06.png");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.6s;
@@ -402,7 +402,7 @@ export default {
             left: (406px/560px)*100%;
             width: (156px/560px)*100%;
             height: (156px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-07.png");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-07.png");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.8s;
@@ -414,7 +414,7 @@ export default {
             left: (38px/560px)*100%;
             width: (406px/560px)*100%;
             height: (410px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_1-08.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_1-08.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 2.4s;
@@ -427,7 +427,7 @@ export default {
             left: (100px/560px)*100%;
             width: (352px/560px)*100%;
             height: (352px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-00.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-00.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 0s;
@@ -440,7 +440,7 @@ export default {
             left: (26px/560px)*100%;
             width: (378px/560px)*100%;
             height: (337px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-01.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-01.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 0s;
@@ -453,7 +453,7 @@ export default {
             left: (26px/560px)*100%;
             width: (378px/560px)*100%;
             height: (337px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-01.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-01.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 0.6s;
@@ -467,7 +467,7 @@ export default {
             left: (378px/560px)*100%;
             width: (184px/560px)*100%;
             height: (65px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-02.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-02.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.2s;
@@ -480,7 +480,7 @@ export default {
             left: (114px/560px)*100%;
             width: (331px/560px)*100%;
             height: (98px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-03.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-03.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.4s;
@@ -493,7 +493,7 @@ export default {
             left: (64px/560px)*100%;
             width: (45px/560px)*100%;
             height: (45px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-04.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-04.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 1.8s;
@@ -506,7 +506,7 @@ export default {
             left: (402px/560px)*100%;
             width: (75px/560px)*100%;
             height: (75px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-05.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-05.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 2.0s;
@@ -519,7 +519,7 @@ export default {
             left: (426px/560px)*100%;
             width: (38px/560px)*100%;
             height: (38px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-05.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-05.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 2.2s;
@@ -532,7 +532,7 @@ export default {
             left: (102px/560px)*100%;
             width: (322px/560px)*100%;
             height: (314px/560px)*100%;
-            background-image: url("~@/assets/images/home/home-4-outstanding/home-4-outstanding_2-06.svg");
+            background-image: url("~@/views/home/home-v1/home-4-outstanding/img/home-4-outstanding_2-06.svg");
 
             transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transition-delay: 2.4s;

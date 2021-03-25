@@ -54,9 +54,9 @@
 </template>
 
 <script>
-import img0 from "@/assets/images/home/home-5-advantages/home-5-advantages__icon_clock.svg";
-import img1 from "@/assets/images/home/home-5-advantages/home-5-advantages__icon_support.svg";
-import img2 from "@/assets/images/home/home-5-advantages/home-5-advantages__icon_team.svg";
+import img0 from "@/views/home/home-v1/home-5-advantages/img/home-5-advantages__icon_clock.svg";
+import img1 from "@/views/home/home-v1/home-5-advantages/img/home-5-advantages__icon_support.svg";
+import img2 from "@/views/home/home-v1/home-5-advantages/img/home-5-advantages__icon_team.svg";
 import ButtonIconIns from "@/components/button/button-icon-ins";
 
 export default {

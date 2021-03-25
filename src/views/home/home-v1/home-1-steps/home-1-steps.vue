@@ -350,15 +350,15 @@ export default {
         background-size: contain;
 
         &.step-1 {
-          background-image: url("~@/assets/images/home/home-1-steps/home-1-steps__step-1.svg");
+          background-image: url("~@/views/home/home-v1/home-1-steps/img/home-1-steps__step-1.svg");
 
           &.download {
-            background-image: url("~@/assets/images/home/home-1-steps/home-1-steps__step-1_mobile.svg");
+            background-image: url("~@/views/home/home-v1/home-1-steps/img/home-1-steps__step-1_mobile.svg");
           }
         }
 
         &.step-2 {
-          background-image: url("~@/assets/images/home/home-1-steps/home-1-steps__step-2.svg");
+          background-image: url("~@/views/home/home-v1/home-1-steps/img/home-1-steps__step-2.svg");
         }
       }
 
@@ -393,7 +393,7 @@ export default {
       display: inline-block;
       width: 85px;
       height: 85px;
-      background-image: url("~@/assets/images/home/home-1-steps/home-1-steps__arrow.svg");
+      background-image: url("~@/views/home/home-v1/home-1-steps/img/home-1-steps__arrow.svg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -461,7 +461,7 @@ export default {
 
           &.step-1 {
             background-size: 50%;
-            background-image: url("~@/assets/images/home/home-1-steps/home-1-steps__step-1_mobile.svg");
+            background-image: url("~@/views/home/home-v1/home-1-steps/img/home-1-steps__step-1_mobile.svg");
           }
 
           &.step-2 {

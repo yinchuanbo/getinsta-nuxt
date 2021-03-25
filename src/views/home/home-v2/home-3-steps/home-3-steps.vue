@@ -297,7 +297,7 @@ export default {
   padding-top: 130px;
   padding-bottom: 30px;
   width: 100%;
-  background: #fff url("~@/assets/images/home/home-3-steps/home-3-steps__bg.svg") no-repeat top center;
+  background: #fff url("~@/views/home/home-v1/home-3-steps/img/home-3-steps__bg.svg") no-repeat top center;
   background-size: 100% 591px;
 
   &:before {
@@ -309,7 +309,7 @@ export default {
     display: block;
     width: 1092px;
     height: 517px;
-    background: url("~@/assets/images/home/home-3-steps/home-3-steps__bg_dots.svg") no-repeat center;
+    background: url("~@/views/home/home-v1/home-3-steps/img/home-3-steps__bg_dots.svg") no-repeat center;
     background-size: contain;
     content: "";
   }

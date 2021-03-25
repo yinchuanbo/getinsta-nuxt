@@ -25,14 +25,14 @@
 </template>
 
 <script>
-import Home0Banner from '@/views/home/home-v1/home-0-banner';
-import Home1Steps from '@/views/home/home-v1/home-1-steps';
-import Home2Free from '@/views/home/home-v1/home-2-free';
-import Home3Steps from '@/views/home/home-v1/home-3-steps';
-import Home4Outstanding from '@/views/home/home-v1/home-4-outstanding';
-import Home5Advantages from '@/views/home/home-v1/home-5-advantages';
-import Home6Reviews from '@/views/home/home-v1/home-6-reviews';
-import Home7Download from '@/views/home/home-v1/home-7-download';
+import Home0Banner from '@/views/home/home-v1/home-0-banner/home-0-banner';
+import Home1Steps from '@/views/home/home-v1/home-1-steps/home-1-steps';
+import Home2Free from '@/views/home/home-v1/home-2-free/home-2-free';
+import Home3Steps from '@/views/home/home-v1/home-3-steps/home-3-steps';
+import Home4Outstanding from '@/views/home/home-v1/home-4-outstanding/home-4-outstanding';
+import Home5Advantages from '@/views/home/home-v1/home-5-advantages/home-5-advantages';
+import Home6Reviews from '@/views/home/home-v1/home-6-reviews/home-6-reviews';
+import Home7Download from '@/views/home/home-v1/home-7-download/home-7-download';
 // import Home5DeAdvantages from '@/views/home/home-5-de-advantages';
 // import Home8How from '@/views/home/home-8-how';
 // import StoreShelf1Buy from '@/views/store-pages/store-shelf-1-buy-followers/view';
@@ -45,7 +45,7 @@ import Home7Download from '@/views/home/home-v1/home-7-download';
 // import Home3StepsDeIos from '@/views/home/home-3-steps-de-ios';
 // import Home4OutstandingDeIos from '@/views/home/home-4-outstanding-de-ios';
 // import Home9VideoDeIos from '@/views/home/home-9-video-de-ios';
-import Home2DailyFollower from '@/views/home/home-v1/home-2-daily-follower';
+import Home2DailyFollower from '@/views/home/home-v1/home-2-daily-follower/home-2-daily-follower';
 import Home0BannerV2 from '@/views/home/home-v2/home-0-banner/home-0-banner';
 import Home1StepsV2 from '@/views/home/home-v2/home-1-steps/home-1-steps';
 import Home2DailyFollowerV2 from '@/views/home/home-v2/home-2-daily-follower/home-2-daily-follower';

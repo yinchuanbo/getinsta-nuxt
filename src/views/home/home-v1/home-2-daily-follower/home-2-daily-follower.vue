@@ -730,7 +730,7 @@ export default {
     width: 1343px;
     height: 355px;
     content: "";
-    background: url("~@/assets/images/home/home-2-follower/follower-bg.svg") no-repeat top right;
+    background: url("~@/views/home/home-v1/home-2-daily-follower/img/follower-bg.svg") no-repeat top right;
     background-size: contain;
   }
 
@@ -749,7 +749,7 @@ export default {
     height: 102px;
     top: 207px;
     left: -125px;
-    background-image: url("~@/assets/images/home/home-2-follower/circle1.svg");
+    background-image: url("~@/views/home/home-v1/home-2-daily-follower/img/circle1.svg");
   }
 
   .round02 {
@@ -759,7 +759,7 @@ export default {
     height: 39px;
     top: 187px;
     left: 330px;
-    background-image: url("~@/assets/images/home/home-2-follower/circle2.svg");
+    background-image: url("~@/views/home/home-v1/home-2-daily-follower/img/circle2.svg");
   }
 
   .round03 {
@@ -769,7 +769,7 @@ export default {
     height: 30px;
     top: 38px;
     left: 606px;
-    background-image: url("~@/assets/images/home/home-2-follower/circle3.svg");
+    background-image: url("~@/views/home/home-v1/home-2-daily-follower/img/circle3.svg");
   }
 
   .round04 {
@@ -779,7 +779,7 @@ export default {
     height: 172px;
     top: 41px;
     right: -184px;
-    background-image: url("~@/assets/images/home/home-2-follower/circle4.svg");
+    background-image: url("~@/views/home/home-v1/home-2-daily-follower/img/circle4.svg");
   }
 
   .line {
@@ -789,7 +789,7 @@ export default {
     height: 52px;
     top: 127px;
     right: -70px;
-    background-image: url("~@/assets/images/home/home-2-follower/line.svg");
+    background-image: url("~@/views/home/home-v1/home-2-daily-follower/img/line.svg");
   }
 
   .content {
@@ -873,7 +873,7 @@ export default {
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            background-image: url("~@/assets/images/home/home-2-follower/icon_feature_ok.svg");
+            background-image: url("~@/views/home/home-v1/home-2-daily-follower/img/icon_feature_ok.svg");
           }
         }
       }

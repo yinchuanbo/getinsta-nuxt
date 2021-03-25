@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import error from '@/views/error/404';
+import error from '@/views/error/error';
 
 export default {
   components: { error },

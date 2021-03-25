@@ -740,7 +740,7 @@ export default {
     height: 52px;
     top: 127px;
     right: -70px;
-    background-image: url("~@/assets/images/home/home-2-follower/line.svg");
+    background-image: url("~@/views/home/home-v1/home-2-daily-follower/img/line.svg");
   }
 
   .content {
