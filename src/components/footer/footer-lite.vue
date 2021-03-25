@@ -116,29 +116,29 @@ export default {
 
         &.PayPal {
           width: 96px;
-          background-image: url("~@/assets/images/global/payment/payment__icon_PayPal.svg");
+          background-image: url("~@/assets/images/global/payment-icon/payment__icon_PayPal.svg");
         }
 
         &.VISA {
           width: 62px;
-          background-image: url("~@/assets/images/global/payment/payment__icon_VISA.svg");
+          background-image: url("~@/assets/images/global/payment-icon/payment__icon_VISA.svg");
         }
 
         &.AmericanExpress {
           width: 68px;
-          background-image: url("~@/assets/images/global/payment/payment__icon_AmericanExpress.svg");
+          background-image: url("~@/assets/images/global/payment-icon/payment__icon_AmericanExpress.svg");
         }
 
         &.ApplePay {
-          background-image: url("~@/assets/images/global/payment/payment__icon_ApplePay.svg");
+          background-image: url("~@/assets/images/global/payment-icon/payment__icon_ApplePay.svg");
         }
 
         &.GooglePay {
-          background-image: url("~@/assets/images/global/payment/payment__icon_GooglePay.svg");
+          background-image: url("~@/assets/images/global/payment-icon/payment__icon_GooglePay.svg");
         }
 
         &.MasterCard {
-          background-image: url("~@/assets/images/global/payment/payment__icon_MasterCard.svg");
+          background-image: url("~@/assets/images/global/payment-icon/payment__icon_MasterCard.svg");
         }
       }
     }

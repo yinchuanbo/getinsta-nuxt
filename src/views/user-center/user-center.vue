@@ -1026,7 +1026,7 @@ export default {
     searchInsByInsServer() {
       if (!this.searchInsLoading && this.searchInsInput !== '') {
         this.searchInsLoading = true;
-        this.axios.get(
+        this.$nuxt.$axios.get(
           `${apiIns.ins}${this.searchInsInput}`
         ).then((response) => {
           this.ajaxRequesting = false;
@@ -1589,7 +1589,7 @@ export default {
       this.ajaxRequesting = true;
       this.globalLoadingMask = true;
 
-      this.axios.get(
+      this.$nuxt.$axios.get(
         `${apiIns.ins}${insUsername}/`
       ).then((response) => {
         this.ajaxRequesting = false;
@@ -2071,7 +2071,7 @@ export default {
 
         const paramTrans = JSON.stringify(param);
 
-        this.axios.get(
+        this.$nuxt.$axios.get(
           `${apiIns.insPostList}${paramTrans}`
         ).then((response) => {
           this.postListLoading = false;

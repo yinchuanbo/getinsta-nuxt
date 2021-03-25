@@ -54,7 +54,7 @@
 import apiAccount from '~/api/api.account';
 import apiInsServer from '~/api/api.ins.server';
 import ButtonPurple from '~/components/button/button-purple';
-import BuySelect from '@/components/popup-layer/model-box/buy-select/buy-select.vue';
+import BuySelect from '@/components/popup-layer/buy-select/buy-select.vue';
 export default {
  name:'Blogbuy',
  components: {

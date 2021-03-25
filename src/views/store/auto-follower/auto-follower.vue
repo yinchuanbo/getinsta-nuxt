@@ -282,12 +282,12 @@
 <script>
 import WhyBuy from "./views/whybuy";
 import WhichOne from "./views/whichone";
-import ButtonPurple from "@/views/global/button/button-purple";
+import ButtonPurple from "@/components/button/button-purple";
 import AutoStep from "./views/autostep";
 import PaymentMobile from "./views/paymentmobile";
 import BotPayment from "./views/botpayment";
 import BotPaymentwo from "./views/botpaymentwo";
-import ButtonYellowIcon from "@/views/global/button/button-yellow-icon";
+import ButtonYellowIcon from "@/components/button/button-yellow-icon";
 import BuySelect from "@/components/model-box/buy-select/buy-select.vue";
 import DigitRoll from "@/assets/scripts/digitRoll.js";
 import apiAccount from "@/api/api.account";
@@ -639,7 +639,7 @@ export default {
   methods: {
     getAutoList() {
       this.buyflag = true;
-      this.axios
+      this.$nuxt.$axios
         .post(
           `${apiAccount.appConfig}?origin=web`,
           this.COMMON.paramSign({
@@ -854,7 +854,7 @@ export default {
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
-      this.axios
+      this.$nuxt.$axios
         .post(
           // apiAccount.getInsInfo,
           apiInsServer.getAccountByUsername,
@@ -947,7 +947,7 @@ export default {
     getuser() {
       //  if (this.searchInsLoading) return;
       this.searchInsLoading = false;
-      this.axios
+      this.$nuxt.$axios
         .post(
           // apiAccount.getInsInfo,
            apiInsServer.getAccountByUsername,

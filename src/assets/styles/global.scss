@@ -1254,21 +1254,22 @@ input[type="number"].no-spin-btn {
 
 .button-hover-2 {
   &:hover {
-    background-color: #FF9C39!important;
-    border-color: #FF9C39!important;
+    background-color: #FF9C39 !important;
+    border-color: #FF9C39 !important;
+
     span {
-      color: #fff!important;
+      color: #fff !important;
     }
+
     &:before {
-      background-image: url("~@/assets/images/global/button/icon__btn-download_logo_ins_white.svg")!important;
+      background-image: url("~@/assets/images/global/button/icon__btn-download_logo_ins_white.svg") !important;
     }
   }
 }
 
 .font-16 {
-    font-size: 16px!important;
+  font-size: 16px !important;
 }
-
 
 
 // Post List
@@ -2155,6 +2156,7 @@ input[type="number"].no-spin-btn {
   margin-top: 60px;
   padding: 50px 50px 40px;
   background-color: #F7F7FB;
+  font-size: 0;
 
   h2 {
     font: 600 20px Montserrat;

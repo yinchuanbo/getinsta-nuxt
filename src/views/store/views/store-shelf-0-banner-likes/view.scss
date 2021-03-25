@@ -23,31 +23,10 @@
     cursor: pointer;
   }
 
-  // 黑五
-  .black-friday-img {
-    display: none;
-    margin: 0 auto;
-    width: 184px;
-    height: 188px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/img_blackfriday.svg") center top no-repeat;
-    background-size: contain;
-  }
-
-  &.black-friday {
-    .black-friday-img {
-      display: block;
-    }
-
-    h1 {
-      margin-top: -30px;
-      padding-top: 0;
-    }
-  }
-
   // 新年
   &.new-year {
     height: 800px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/new-year__bg.svg") center top no-repeat;
+    background: url("./img/new-year__bg.svg") center top no-repeat;
 
     .new-year__top-img {
       display: block;
@@ -69,7 +48,7 @@
     margin: 36px auto 0;
     width: 436px;
     height: 189px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/new-year__top.svg") center no-repeat;
+    background: url("./img/new-year__top.svg") center no-repeat;
     background-size: contain;
   }
 
@@ -83,39 +62,7 @@
     display: none;
     width: 1865px;
     height: 787px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/marry-christmas__snow.svg") center;
-    background-size: 100% 200%;
-    animation: floating-snow 26s linear infinite;
-    @keyframes floating-snow {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 0 -200%;
-      }
-    }
-  }
-
-  .new-year__top-img {
-    display: none;
-    margin: 36px auto 0;
-    width: 436px;
-    height: 189px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/new-year__top.svg") center no-repeat;
-    background-size: contain;
-  }
-
-  .new-year__snow {
-    position: absolute;
-    //z-index: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    display: none;
-    width: 1865px;
-    height: 787px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/marry-christmas__snow.svg") center;
+    background: url("./img/marry-christmas__snow.svg") center;
     background-size: 100% 200%;
     animation: floating-snow 26s linear infinite;
     @keyframes floating-snow {
@@ -131,7 +78,7 @@
   // 情人节
   &.valentine {
     height: 963px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/valentine__bg.png") center top no-repeat;
+    background: url("./img/valentine__bg.png") center top no-repeat;
 
     h1 {
       margin-top: -15px;
@@ -145,14 +92,14 @@
     margin: 20px auto 0;
     width: 780px;
     height: 139px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/valentine__top-img.png") center no-repeat;
+    background: url("./img/valentine__top-img.png") center no-repeat;
     background-size: contain;
   }
 
   // 春季
   &.spring {
     height: 963px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/spring__bg.svg") center top no-repeat;
+    background: url("./img/spring__bg.svg") center top no-repeat;
 
     h1 {
       //margin-top: -15px;
@@ -166,7 +113,7 @@
     margin: 20px auto 0;
     width: 490px;
     height: 126px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/spring__top-img.svg") center no-repeat;
+    background: url("./img/spring__top-img.svg") center no-repeat;
     background-size: contain;
   }
 }
@@ -177,24 +124,18 @@
     background-size: contain !important;
 
     h1 {
-      padding: 35px;
-      font: 700 20px/35px Montserrat;
+      padding: 35px 4vw 0;
+      font: 700 27px/35px Montserrat;
       color: #FFFFFF;
     }
 
-    .black-friday-img {
-      width: (184px/2);
-      height: (188px/2);
-    }
-
-    &.black-friday {
-      h1 {
-        margin-top: -10px;
-      }
+    h2 {
+      margin-top: 8px;
+      font: 500 12px Montserrat;
     }
 
     &.new-year {
-      height: 285px;
+      height: 280px;
     }
 
     .new-year__top-img {
@@ -223,7 +164,7 @@
     }
 
     &.spring {
-      background: #FF9941 url("~@/views/store/store-shelf-0-banner-followers/img/spring__bg-m.svg") top center no-repeat;
+      background: #FF9941 url("./img/spring__bg-m.svg") top center no-repeat;
 
       h1 {
         font-size: 22px;

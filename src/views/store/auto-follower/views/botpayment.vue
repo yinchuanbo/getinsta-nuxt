@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import ButtonPurple from "@/views/global/button/button-purple";
+import ButtonPurple from "@/components/button/button-purple";
 import apiAccount from "@/api/api.account";
 
 export default {

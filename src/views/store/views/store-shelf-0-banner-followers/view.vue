@@ -17,4 +17,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss" src="view.scss"></style>
+<style scoped lang="scss" src="./view.scss"></style>

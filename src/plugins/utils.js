@@ -5,7 +5,7 @@ import GoTop from '@inotom/vue-go-top';
 // import DigitRoll from '@huoyu/vue-digitroll'; // DigitRoll 数值缓动
 // import VueScroll from 'vue-scroll';  //
 import VueScrollTo from 'vue-scrollto'; // 锚点定位
-// import VueCookies from 'vue-cookies'; //Cookie
+import VueCookies from 'vue-cookies'; //Cookie
 import { Vue2Storage } from 'vue2-storage'; //WEB Storage
 import Vue2TouchEvents from 'vue2-touch-events'; // Touch Events
 import Pagination from 'vue-pagination-2'; // 分页
@@ -15,7 +15,7 @@ import Pagination from 'vue-pagination-2'; // 分页
 Vue.component('GoTop', GoTop);
 // Vue.use(VueScroll);
 Vue.use(VueScrollTo);
-// Vue.use(VueCookies);
+Vue.use(VueCookies);
 Vue.use(Vue2Storage, {
   prefix: 'GetInsta_',
   driver: 'local',

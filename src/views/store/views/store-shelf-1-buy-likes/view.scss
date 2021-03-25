@@ -1,5 +1,5 @@
 .store-shelf-1-buy {
-  margin-top: -180px;
+  margin-top: -120px;
 
   .wrapper {
     width: 800px;
@@ -64,7 +64,6 @@
     align-items: center;
 
     .unit {
-      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -73,6 +72,7 @@
       background: rgba(255, 255, 255, 0.3);
       border-radius: 12px 12px 0 0;
       cursor: pointer;
+      overflow: hidden;
       transition: all 0.3s;
 
       font: 600 20px/60px Montserrat;
@@ -80,18 +80,6 @@
 
       &:last-child {
         margin-left: 16px;
-
-        &:after {
-          position: absolute;
-          top: -30px;
-          right: -4px;
-          content: "";
-          display: block;
-          width: 45px;
-          height: 64px;
-          background: url("~@/assets/images/payment/icon_hot.svg") center no-repeat;
-          background-size: contain;
-        }
       }
 
       &.on {
@@ -119,7 +107,6 @@
         margin-top: 60px;
         padding: 50px 50px 40px;
         background-color: #F7F7FB;
-        border-radius: 6px;
 
         h2 {
           font: 600 20px Montserrat;
@@ -178,7 +165,7 @@
 
   // 新年
   &.new-year {
-    margin-top: -420px;
+    margin-top: -400px;
 
     .new-year__santa-claus {
       display: block;
@@ -195,7 +182,7 @@
     transform: translateX(453px) scaleX(1);
     width: 198px;
     height: 235px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/new-year__santa-claus.svg") center no-repeat;
+    background: url("../public-img/new-year__santa-claus.svg") center no-repeat;
     transition: all 0.3s;
     transform-origin: left center;
 
@@ -214,6 +201,7 @@
       display: none;
     }
   }
+
   // 春节
   &.spring {
     margin-top: -610px;
@@ -232,12 +220,8 @@
       display: none;
     }
   }
+}
 
-}
-.store-shelf-1-buy.spring{
-  margin-top: -610px;
-  background-color: #F9F8F2;
-}
 @media (max-width: 768px) {
   .store-shelf-1-buy {
     margin-top: -110px;
@@ -285,13 +269,6 @@
 
         &:last-child {
           margin-left: 8px;
-
-          &:after {
-            top: -16px;
-            right: -4px;
-            width: 22px;
-            height: 32px;
-          }
         }
       }
     }
@@ -383,6 +360,7 @@
       margin-top: -762px;
       background: radial-gradient(closest-side at 50% 50%, #FFB4B4 0%, #D84646 100%);
     }
+
     &.spring {
       margin-top: -762px;
       background: #FF9941;

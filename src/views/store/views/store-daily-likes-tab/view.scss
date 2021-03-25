@@ -195,7 +195,7 @@
     transform: translateX(453px) scaleX(1);
     width: 198px;
     height: 235px;
-    background: url("~@/views/store/store-shelf-0-banner-followers/img/new-year__santa-claus.svg") center no-repeat;
+    background: url("../public-img/new-year__santa-claus.svg") center no-repeat;
     transition: all 0.3s;
     transform-origin: left center;
 
@@ -207,17 +207,16 @@
 
   // 情人节
   &.valentine {
-    margin-top: -664px;
+    margin-top: -610px;
     background-color: #FFDED8;
 
     .new-year__santa-claus {
       display: none;
     }
   }
-
   // 春节
   &.spring {
-    margin-top: -664px;
+    margin-top: -610px;
     background-color: #F9F8F2;
     .tabs{
       .unit{
@@ -233,8 +232,12 @@
       display: none;
     }
   }
-}
 
+}
+.store-shelf-1-buy.spring{
+  margin-top: -610px;
+  background-color: #F9F8F2;
+}
 @media (max-width: 768px) {
   .store-shelf-1-buy {
     margin-top: -110px;
@@ -377,12 +380,11 @@
     }
 
     &.valentine {
-      margin-top: -794px;
+      margin-top: -762px;
       background: radial-gradient(closest-side at 50% 50%, #FFB4B4 0%, #D84646 100%);
     }
-
     &.spring {
-      margin-top: -790px;
+      margin-top: -762px;
       background: #FF9941;
     }
   }
