@@ -194,19 +194,19 @@ export default {
     return (arg1 * m + arg2 * m) / m;
   },
   isMobile() {
-    const u = navigator.userAgent;
+    const u = process.client ? navigator.userAgent : '';
     return !!u.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
   },
   isiOS() {
-    const u = navigator.userAgent;
+    const u = process.client ? navigator.userAgent : '';
     return !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
   },
   isAndroid() {
-    const u = navigator.userAgent;
+    const u = process.client ? navigator.userAgent : '';
     return u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
   },
   isWindows() {
-    const u = navigator.userAgent;
+    const u = process.client ? navigator.userAgent : '';
     return /Windows|Win32|Win64|WOW64/i.test(u);
   },
   includeStripe(URL, callback) {
