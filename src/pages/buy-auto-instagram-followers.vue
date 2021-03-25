@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import instance from '@/views/store/store-instant-and-daily/store-followers.vue';
+import instance from '@/views/store/store-auto-follower/store-auto-follower.vue';
 
 export default {
   components: { instance },
