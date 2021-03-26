@@ -32,6 +32,7 @@ import EastersaleBannerM from './m/eastersale-banner-m';
 import EastersaleCardsM from './m/eastersale-cards-m';
 import EastersaleTipsM from './m/eastersale-tips-m';
 import EastersaleReviewM from './m/eastersale-review-m';
+
 export default {
   components: {
     EastersaleBanner,
@@ -47,7 +48,7 @@ export default {
   },
   data() {
     return {
-      screenWidth: document.body.clientWidth,
+      screenWidth: process.client ? document.body.clientWidth : 0,
       endTime: '2021-04-10 00:00:00',
       products: [
         {
@@ -56,7 +57,7 @@ export default {
           amount: '22.99',
           // product_id: 1403, //dev
           product_id: 1601, //pro
-          original_price_decimal: 30,
+          original_price_decimal: 30
         },
         {
           pro_num: 1000,
@@ -64,58 +65,58 @@ export default {
           amount: '29.99',
           // product_id: 1404, // dev
           product_id: 1602, // pro
-          original_price_decimal: 39.99,
+          original_price_decimal: 39.99
         }
       ]
-    }
+    };
   },
   computed: {
     v2AdHeightPc() {
       var num;
-      if(this.$store.state.v2 && this.$store.state.v2AdHeightPc) {
+      if (this.$store.state.v2 && this.$store.state.v2AdHeightPc) {
         num = this.$store.state.v2AdHeightPc + 80 - 64;
-      } else if(this.$store.state.v2 && !this.$store.state.v2AdHeightPc) {
+      } else if (this.$store.state.v2 && !this.$store.state.v2AdHeightPc) {
         num = 16;
-      } else if(!this.$store.state.v2) {
+      } else if (!this.$store.state.v2) {
         num = 80;
       }
       return num;
     },
     v2AdHeightMobile() {
       var num;
-      if(this.$store.state.v2 && this.$store.state.v2AdHeightMobile) {
+      if (this.$store.state.v2 && this.$store.state.v2AdHeightMobile) {
         num = this.$store.state.v2AdHeightMobile;
-      } else if(this.$store.state.v2 && !this.$store.state.v2AdHeightMobile) {
+      } else if (this.$store.state.v2 && !this.$store.state.v2AdHeightMobile) {
         num = 0;
-      } else if(!this.$store.state.v2) {
+      } else if (!this.$store.state.v2) {
         num = 44;
       }
       return num;
     }
   },
   watch: {
-      screenWidth(val) {
-          this.screenWidth = val;
-      }
+    screenWidth(val) {
+      this.screenWidth = val;
+    }
   },
   mounted() {
-      const that = this
-      window.onresize= () => {
-          return (() => {
-              window.screenWidth = document.body.clientWidth;
-              that.screenWidth = window.screenWidth;
-          })();
-      }
+    const that = this;
+    window.onresize = () => {
+      return (() => {
+        window.screenWidth = document.body.clientWidth;
+        that.screenWidth = window.screenWidth;
+      })();
+    };
   },
   metaInfo() {
     return {
       title: 'Special Easter Sale 2021-GetInsta',
       meta: [
         {
-          name: "description",
-          content: "Buy 1000 Instagram Followers and Get 1000 for Free. GetInsta Easter Sale 2021."
+          name: 'description',
+          content: 'Buy 1000 Instagram Followers and Get 1000 for Free. GetInsta Easter Sale 2021.'
         }
-      ],
+      ]
     };
   },
   destroyed() {
@@ -131,11 +132,13 @@ export default {
   position: relative;
   padding-top: 80px;
 }
+
 @media (min-width: 769px) {
   .eastersale-container {
     min-width: 1210px;
   }
 }
+
 @media (max-width: 768px) {
   .eastersale-container {
     overflow: hidden;

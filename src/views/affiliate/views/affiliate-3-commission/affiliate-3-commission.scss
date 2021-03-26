@@ -1,0 +1,245 @@
+.affiliate-3-commission {
+  padding-top: 180px;
+  padding-bottom: 190px;
+
+  figure {
+    display: flex;
+    justify-content: space-between;
+
+    figcaption {
+      width: 413px;
+
+      h2 {
+        font: 600 50px/60px Montserrat;
+        color: #2A2A2A;
+      }
+
+      p {
+        margin-top: 20px;
+        font: 500 14px/30px Montserrat;
+        color: #2A2A2A;
+      }
+
+      img {
+        margin-top: 18px;
+        width: 413px;
+        height: 413px;
+        object-fit: contain;
+      }
+    }
+
+    .figure-container {
+      position: relative;
+      width: 700px;
+      height: 650px;
+      background-color: #fff;
+      box-shadow: 0 10px 30px rgba(124, 86, 255, 0.15);
+      border-radius: 80px 14px;
+
+      h2 {
+        padding: 50px;
+        font: 600 32px/39px Montserrat;
+        color: rgba(124, 86, 255, 0.5);
+        text-align: center;
+      }
+
+      .lines, .columns {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 18.57% 7.143% 11.429%;
+        width: 100%;
+        height: 100%;
+      }
+
+      .lines {
+        i {
+          margin-top: 59px;
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: rgba(124, 86, 255, 0.2);
+        }
+      }
+
+      .columns {
+        display: flex;
+        justify-content: space-between;
+
+        .unit {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: center;
+          width: 20%;
+          font-size: 0;
+          text-align: center;
+
+          b {
+            font: 600 26px/32px Montserrat;
+            color: #7C56FF;
+            opacity: 0;
+            transition: all 0.6s;
+          }
+
+          i {
+            margin: 0 auto;
+            display: block;
+            width: 41.667%;
+            height: 0;
+            background-color: #7C56FF;
+            border-radius: 25px;
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.65, 0, 0.35, 1);
+          }
+
+          p {
+            margin-top: 40px;
+            padding: 0 12%;
+            width: 100%;
+            font: 600 12px/20px Montserrat;
+            color: #2A2A2A;
+            opacity: 0;
+            transition: all 0.6s;
+          }
+
+          @for $i from 1 to 6 {
+            &:nth-child(#{$i}) {
+              b {
+                transition-delay: $i*0.5s+0.5s+0.6s;
+              }
+
+              i {
+                transition-delay: $i*0.5s;
+              }
+
+              p {
+                transition-delay: $i*0.5s;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.on {
+    figure {
+      .figure-container {
+        .columns {
+          .unit {
+            b, p {
+              opacity: 1;
+            }
+
+            @for $i from 1 to 6 {
+              &:nth-child(#{$i}) {
+                i {
+                  height: $i*60px;
+                  opacity: $i*0.1*2;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .affiliate-3-commission {
+    padding-top: 100px;
+    padding-bottom: 65px;
+
+    figure {
+      display: block;
+      padding: 0 4vw;
+
+      figcaption {
+        width: 100%;
+        text-align: center;
+
+        h2 {
+          margin-top: 35px;
+          font: 600 25px/30px Montserrat;
+        }
+
+        p {
+          margin-top: 35px;
+          font: 500 12px/18px Montserrat;
+        }
+
+        img {
+          margin-top: 0;
+          width: 55vw;
+          height: 55vw;
+        }
+      }
+
+      .figure-container {
+        position: relative;
+        margin-top: 35px;
+        width: 100%;
+        height: 87vw;
+        box-shadow: 0 5px 15px rgba(124, 86, 255, 0.15);
+        border-radius: 40px 7px;
+
+        h2 {
+          padding: 7.73vw 4vw;
+          font: 600 16px/20px Montserrat;
+        }
+        .lines, .columns {
+          padding: 18.57% 7.143% 13%;
+        }
+
+        .lines {
+          i {
+            margin-top: 7.867vw;
+            height: 0.5px;
+          }
+        }
+
+        .columns {
+          .unit {
+            b {
+              font: 600 13px/16px Montserrat;
+            }
+
+            i {
+              border-radius: 12.5px;
+            }
+
+            p {
+              margin-top: 5.333vw;
+              font: 600 6px/10px Montserrat;
+            }
+          }
+        }
+      }
+    }
+
+    &.on {
+      figure {
+        .figure-container {
+          .columns {
+            .unit {
+              b, p {
+                opacity: 1;
+              }
+
+              @for $i from 1 to 6 {
+                &:nth-child(#{$i}) {
+                  i {
+                    height: $i*29.5px;
+                    opacity: $i*0.1*2;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,183 @@
+.affiliate-1-monetize {
+  padding-top: 100px;
+  padding-bottom: 160px;
+
+  .title {
+    text-align: center;
+
+    h2 {
+      font: 600 42px/52px Montserrat;
+      color: #2A2A2A;
+    }
+
+    p {
+      margin-top: 50px;
+      font: 500 16px/30px Montserrat;
+      color: #2A2A2A;
+    }
+  }
+
+  .feature {
+    margin-top: 30px;
+    margin-left: -30px;
+    width: 1210+60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .unit {
+      margin: 30px;
+      padding: 28px;
+      width: 360px;
+      height: 400px;
+      background-color: #FFFFFF;
+      border: 1px solid;
+      border-radius: 20px;
+      font-size: 0;
+      text-align: center;
+
+      &.type-0 {
+        box-shadow: 0 5px 15px #7C56FF26;
+        border-color: #7C56FF26;
+
+        h2 {
+          color: #7C56FF;
+        }
+      }
+
+      &.type-1 {
+        box-shadow: 0 5px 15px #7C56FF26;
+        border-color: #FF8A5626;
+
+        h2 {
+          color: #FF5924;
+        }
+      }
+
+      &.type-2 {
+        box-shadow: 0 5px 15px #7C56FF26;
+        border-color: #5694FF26;
+
+        h2 {
+          color: #005FFF;
+        }
+      }
+
+      &.type-3 {
+        box-shadow: 0 5px 15px #7C56FF26;
+        border-color: #F956FF26;
+
+        h2 {
+          color: #FF2E78;
+        }
+      }
+
+      &.type-4 {
+        box-shadow: 0 5px 15px #7C56FF26;
+        border-color: #56FF6D26;
+
+        h2 {
+          color: #39D64E;
+        }
+      }
+
+      img {
+        margin-top: 25px;
+        width: 114px;
+        height: 114px;
+        object-fit: contain;
+      }
+
+      h2 {
+        margin-top: 32px;
+        font: 600 20px/24px Montserrat;
+      }
+
+      p {
+        margin-top: 20px;
+        font: 500 14px/28px Montserrat;
+        color: #2A2A2A;
+      }
+
+      a {
+        font: 500 12px/28px Montserrat;
+        color: #7C56FF;
+        text-decoration: underline;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  .btn {
+    margin: 70px auto 0;
+    width: 420px;
+    height: 76px;
+  }
+}
+
+@media (max-width: 768px) {
+  .affiliate-1-monetize {
+    padding-bottom: 100px;
+
+    .wrapper {
+      padding: 0 4.8vw;
+    }
+
+    .title {
+      h2 {
+        font: 600 22px/27px Montserrat;
+      }
+
+      p {
+        margin-top: 25px;
+        font: 500 12px/18px Montserrat;
+      }
+    }
+
+    .feature {
+      margin-top: 0;
+      margin-left: 0;
+      width: 100%;
+      display: block;
+
+      .unit {
+        margin: 27px 0 0 0;
+        padding: 6vw;
+        width: 100%;
+        height: 600/750*100vw;
+        border: 0.5px solid;
+        border-radius: 10px;
+
+        img {
+          margin-top: 25px;
+          width: 100px;
+          height: 100px;
+        }
+
+        h2 {
+          margin-top: 10px;
+          font: 600 22px/27px Montserrat;
+        }
+
+        p {
+          margin-top: 7px;
+          font: 500 12px/18px Montserrat;
+          color: #2A2A2A;
+        }
+
+        a {
+          font: 500 9px/18px Montserrat;
+        }
+      }
+    }
+
+    .btn {
+      margin: 27px auto 0;
+      width: 100%;
+      height: 66px;
+    }
+  }
+}
