@@ -1,8 +1,10 @@
+process.env.DEBUG = 'nuxt:*';
 import redirectSSL from 'redirect-ssl';
 
 export default {
   srcDir: 'src/',
   ssr: true,
+  debug: process.env.NODE_ENV !== 'production',
 
   /*
   ** Headers of the page
