@@ -19,6 +19,7 @@ Deploy to Testing:
       - master
   script:
 #    - mv package-prod-test.json package.json
+    - rm node-linux.tar.xz
     - /usr/local/bin/eb-deploy.sh "Ins Follower" www-easygetinsta-com2-test liSsLweGBAmc487bBDoJvwiEmrMd44fG
 
 
@@ -30,4 +31,5 @@ Deploy to Production:
     refs:
       - master
   script:
+    - rm node-linux.tar.xz
     - /usr/local/bin/eb-deploy.sh "Ins Follower" www-easygetinsta-com2 liSsLweGBAmc487bBDoJvwiEmrMd44fG
