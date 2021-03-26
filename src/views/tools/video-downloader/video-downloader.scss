@@ -1,0 +1,59 @@
+.video-downloader {
+  .public-des {
+    padding: 120px 0 150px;
+
+    h2 {
+      font: 600 44px/54px Montserrat;
+      color: #2A2A2A;
+      text-align: center;
+    }
+
+    p.h3 {
+      font: 600 44px/54px Montserrat;
+      color: #2A2A2A;
+      text-align: center;
+    }
+
+    h3 {
+      font: 600 30px/44px Montserrat;
+      color: #2A2A2A;
+    }
+
+    p {
+      font: 500 20px/36px Montserrat;
+      color: #2A2A2A;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .video-downloader {
+    .public-des {
+      padding: 50px 0;
+
+      h2 {
+        padding: 0 6vw;
+        font: 600 22px/27px Montserrat;
+      }
+
+      p.h3 {
+        padding: 0 6vw;
+        font: 600 44px/54px Montserrat;
+        color: #2A2A2A;
+        text-align: center;
+      }
+
+      h3 {
+        padding: 0 6vw;
+        font: 600 16px/22px Montserrat;
+        text-align: center;
+      }
+
+      p {
+        padding: 0 6vw;
+        font: 500 12px/18px Montserrat;
+        text-align: center;
+      }
+    }
+  }
+}

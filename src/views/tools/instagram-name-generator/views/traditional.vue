@@ -5,35 +5,35 @@
         <h2><span>Traditional Ways</span> to Promote Your Instagram Account</h2>
         <ul>
           <li>
-            <img src="../insname/pic01.svg" alt="" class="aboutIcon">
+            <img src="../img/pic01.svg" alt="" class="aboutIcon">
             <div>
               <h3>Fill in the Profile</h3>
               <p>The profile on Instagram shows your info, including name, website, interests. A blank profile is taken as a fake account. Users choose to follow you or not according to your profile to a large extent. So the first step to promote your account and be successful on Instagram is to fill in the profile.</p>
             </div>
           </li>
           <li>
-            <img src="../insname/pic02.svg" alt="" class="aboutIcon">
+            <img src="../img/pic02.svg" alt="" class="aboutIcon">
             <div>
               <h3>Keep Posting</h3>
               <p>Millions of users post content on Instagram. That’s one of the most useful ways to gain new followers. To get more users to follow you, keeping posts is necessary. It gives others a sign that you’re trying to express something useful. You can gain some thoughts from the article <a href="https://www.easygetinsta.com/blog/first-instagram-post-ideas-127">first Instagram post ideas.</a></p>
             </div>
           </li>
           <li>
-            <img src="../insname/pic03.svg" alt="" class="aboutIcon">
+            <img src="../img/pic03.svg" alt="" class="aboutIcon">
             <div>
               <h3>Publish Attractive & High-Quality Content</h3>
               <p>On Instagram, what you post matters a lot. Logging into Instagram app, you could find that it contains almost all kinds of content in the form of image or video. To promote your Instagram account, publishing attractive and high-quality content is an essential method. You can gain more concentration and followers as well.</p>
             </div>
           </li>
           <li>
-            <img src="../insname/pic04.svg" alt="" class="aboutIcon">
+            <img src="../img/pic04.svg" alt="" class="aboutIcon">
             <div>
               <h3>Make Use of Hashtags</h3>
               <p>No one would doubt that hashtags are one of the most useful methods to improve visibility on Instagram. To promote your account, you need to make others know your account. How to reach more people? Make use of hashtags. If you have no idea, you could <a href="https://www.easygetinsta.com/blog/copy-paste-instagram-hashtags-25">copy and paste hashtags</a> that are related to your content.</p>
             </div>
           </li>
           <li>
-            <img src="../insname/pic05.svg" alt="" class="aboutIcon">
+            <img src="../img/pic05.svg" alt="" class="aboutIcon">
             <div>
               <h3>Utilize Instagram Reels</h3>
               <p>As a new feature published in the last year, Instagram Reels is well-received. It invites users to create and view videos, which can be edited with audio, effects, and other creative tools. Besides, it can be share to Feed and Explore. Use these functions and get more <a href="https://www.easygetinsta.com/blog/instagram-reels-views-509">Instagram reels views</a>. You can get more users to pay attention to your account by the way.</p>

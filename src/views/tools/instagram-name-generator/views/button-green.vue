@@ -19,9 +19,9 @@
       <span class="spantext">Download GetInsta</span>
     </button>
     <div class="iosorand">
-      <img src="../insname/path4.svg" alt="" @click="dowEvent('ios')">
+      <img src="../img/path4.svg" alt="" @click="dowEvent('ios')">
       <span>|</span>
-      <img src="../insname/icon_android_logo_white.svg" alt="" @click="dowEvent('adr')">
+      <img src="../img/icon_android_logo_white.svg" alt="" @click="dowEvent('adr')">
     </div>
   </div>
 </template>

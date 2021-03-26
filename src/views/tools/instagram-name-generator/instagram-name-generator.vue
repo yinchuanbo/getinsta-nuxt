@@ -211,16 +211,17 @@
 </template>
 
 <script>
-import ButtonPurple from "@/components/button/button-purple";
-import InstaCenter from "./views/instacenter";
-import InstaDownload from "./views/instadownload";
-import Promote from "./views/promote";
-import Traditional from "./views/traditional";
-import InstArticle from "./views/instarticle";
-import InstaFollowers from "./views/instafollowers";
+import ButtonPurple from '@/components/button/button-purple';
+import InstaCenter from './views/instacenter';
+import InstaDownload from './views/instadownload';
+import Promote from './views/promote';
+import Traditional from './views/traditional';
+import InstArticle from './views/instarticle';
+import InstaFollowers from './views/instafollowers';
 import categrey from '@/assets/json/categoryname.json';
+
 export default {
-  name: "InstagramName",
+  name: 'InstagramName',
   components: {
     ButtonPurple,
     InstaCenter,
@@ -232,11 +233,11 @@ export default {
   },
   data() {
     return {
-      numone:1,
-      numtwo:2,
-      numthree:3,
+      numone: 1,
+      numtwo: 2,
+      numthree: 3,
       value2: 20,
-      searchInsInput: "",
+      searchInsInput: '',
       sizefont: true,
       searchInsLoading: false,
       showloading: false,
@@ -245,25 +246,25 @@ export default {
       showyes: false,
       showfaild: false,
       // 随机分类词
-      sjcategory:'',
+      sjcategory: '',
       // 随机数字
-      sjnum:'',
-      minnum:0,
+      sjnum: '',
+      minnum: 0,
       // 句号
-      pointstr:'',
+      pointstr: '',
       // 下划线
-      underlineStr:'',
+      underlineStr: '',
       // 关键字放最后
       endStr: false,
-      seleced:'Animal',
+      seleced: 'Animal',
       checkList: [],
-      copyinfo: "copy it",
+      copyinfo: 'copy it',
       categrey,
       nameList: []
     };
   },
-  metaInfo(){
-    return{
+  metaInfo() {
+    return {
       title: 'Instagram Username Generator - Check Availability Instantly',
       meta: [
         {
@@ -271,24 +272,24 @@ export default {
           content: 'The Instagram username generator could generate various random Instagram usernames. Try it now to create a satisfying username on Instagram.'
         }
       ]
-    }
+    };
   },
-  watch:{
-    searchInsInput (newv,oldv){
-      this.minnum = newv.length
+  watch: {
+    searchInsInput(newv, oldv) {
+      this.minnum = newv.length;
     },
     checkList: {
       handler(newName, oldName) {
-    },
-    deep: true,
-    immediate: true
+      },
+      deep: true,
+      immediate: true
     }
   },
-  mounted(){
+  mounted() {
   },
   methods: {
-    dowMobileurl(){
-       let url = '';
+    dowMobileurl() {
+      let url = '';
       if (this.COMMON.isiOS()) {
         url = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-iug&mt=8';
       }
@@ -302,7 +303,7 @@ export default {
       this.$ga.event(
         'insdl',
         'download',
-         `${this.$store.state.platform}dl-iug`
+        `${this.$store.state.platform}dl-iug`
       );
       location.href = url;
     },
@@ -311,7 +312,7 @@ export default {
       this.showyes = false;
       this.showfaild = false;
       this.showloading = true;
-       this.axios.get(
+      this.axios.get(
         `https://www.instagram.com/${v.text}/`
       ).then((response) => {
         // console.log('re',response)
@@ -330,11 +331,11 @@ export default {
         //   this.showyes = false;
         //   this.showfaild = true;
         // }
-        if(response.status === 200){//不可用
+        if (response.status === 200) {//不可用
           this.showloading = false;
           this.showyes = false;
           this.showfaild = true;
-        }else{//可用
+        } else {//可用
           this.showloading = false;
           this.showyes = true;
         }
@@ -353,158 +354,165 @@ export default {
       // }, 2000);
     },
     getText(v) {
-      let oInput = document.createElement("input");
+      let oInput = document.createElement('input');
       oInput.value = v.text;
       document.body.appendChild(oInput);
       oInput.select();
-      document.execCommand("Copy");
-      this.$alert("", "success", "opps", "copied.", "normal", "Close");
+      document.execCommand('Copy');
+      this.$alert('', 'success', 'opps', 'copied.', 'normal', 'Close');
       oInput.remove();
     },
-     isChineseChar(str){
+    isChineseChar(str) {
       let reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
       return reg.test(str);
     },
     searchName() {
       this.$ga.event('buttonclick', 'click', 'iug-generate');
-      if(this.searchInsInput===''|| this.isChineseChar(this.searchInsInput)){
+      if (this.searchInsInput === '' || this.isChineseChar(this.searchInsInput)) {
         this.$alert('', 'error', 'Oops',
-            'Please enter the Keywords, Cannot be Chinese',
-            '', 'Close');
+          'Please enter the Keywords, Cannot be Chinese',
+          '', 'Close');
         return;
-    }else{
-      this.searchInsInput=this.searchInsInput.replace(/\s/g,"");
-    }
-      // 选中的分类随机
-      let choiceFlarr ;
-      if(Object.keys(this.categrey.category).includes(this.seleced)){
-         choiceFlarr = this.categrey.category[this.seleced]
+      } else {
+        this.searchInsInput = this.searchInsInput.replace(/\s/g, '');
       }
-      choiceFlarr.sort(function() {
-            return (0.5-Math.random());
-        });
+      // 选中的分类随机
+      let choiceFlarr;
+      if (Object.keys(this.categrey.category).includes(this.seleced)) {
+        choiceFlarr = this.categrey.category[this.seleced];
+      }
+      choiceFlarr.sort(function () {
+        return (0.5 - Math.random());
+      });
       this.sjcategory = this.sjfn(choiceFlarr);
       // 随机数字
-      if(this.checkList.includes('number')){
+      if (this.checkList.includes('number')) {
         this.sjnum = this.sjfn(this.RndNum(10));
-      }else{
-        this.sjnum = ''
+      } else {
+        this.sjnum = '';
       }
       // 句号
-      if(this.checkList.includes('period')){
+      if (this.checkList.includes('period')) {
         this.pointstr = '.';
-      }else{
+      } else {
         this.pointstr = '';
       }
       // console.log("this.checkList",this.checkList)
       // 下划线
-      if(this.checkList.includes('underscore')){
+      if (this.checkList.includes('underscore')) {
         this.underlineStr = '_';
-      }else{
+      } else {
         this.underlineStr = '';
       }
       // 关键字是否放最后
-      if(this.checkList.includes('put word at the end')){
+      if (this.checkList.includes('put word at the end')) {
         this.endStr = true;
-      }else{
+      } else {
         this.endStr = false;
       }
       // 拼接数组
       let resultarr = [];
-      for(let j =0;j<30;j++){
+      for (let j = 0; j < 30; j++) {
         let finaArr;
-        if(this.checkList.includes('number')){
-           finaArr = [this.searchInsInput,this.sjfn(choiceFlarr),this.pointstr,this.sjfn(this.RndNum(10)),this.underlineStr];
-        }else{
-          finaArr = [this.searchInsInput,this.sjfn(choiceFlarr),this.pointstr,this.underlineStr];
+        if (this.checkList.includes('number')) {
+          finaArr = [this.searchInsInput, this.sjfn(choiceFlarr), this.pointstr, this.sjfn(this.RndNum(10)), this.underlineStr];
+        } else {
+          finaArr = [this.searchInsInput, this.sjfn(choiceFlarr), this.pointstr, this.underlineStr];
         }
         resultarr.push(this.getstr(finaArr));
       }
-      for(let v=0;v<resultarr.length;v++){
-        if(this.endStr){
-          if(!this.validationEnd(resultarr[v],this.searchInsInput)){
-             resultarr[v] = resultarr[v].replace(this.searchInsInput,"").trim()+this.searchInsInput
+      for (let v = 0; v < resultarr.length; v++) {
+        if (this.endStr) {
+          if (!this.validationEnd(resultarr[v], this.searchInsInput)) {
+            resultarr[v] = resultarr[v].replace(this.searchInsInput, '').trim() + this.searchInsInput;
           }
         }
-        if(resultarr[v].length>this.value2){
+        if (resultarr[v].length > this.value2) {
           // 如果关键字放最后，倒着截取
-          if(this.endStr){
-             resultarr[v] = resultarr[v].slice(resultarr[v].length-this.value2);
-          }else{
+          if (this.endStr) {
+            resultarr[v] = resultarr[v].slice(resultarr[v].length - this.value2);
+          } else {
             // console.log("没有关键字放最后")
-             resultarr[v] = resultarr[v].substring(0,this.value2)
+            resultarr[v] = resultarr[v].substring(0, this.value2);
           }
         }
         // 如果句号开头，去掉句号
-        if(resultarr[v].indexOf(".") === 0){
-          resultarr[v] = resultarr[v].replace(".","").trim();
+        if (resultarr[v].indexOf('.') === 0) {
+          resultarr[v] = resultarr[v].replace('.', '').trim();
         }
       }
       // resultarr = new Set(resultarr);
       //  console.log("没有关键字放最后arr",new Set(resultarr))
       let funarr = Array.from(new Set(resultarr));
       let nameArr = [];
-      for(let r =0;r<funarr.length;r++){
+      for (let r = 0; r < funarr.length; r++) {
         let postObj = {};
-         postObj.id = r+'/';
-         postObj.text = funarr[r];
-         nameArr.push(postObj)
+        postObj.id = r + '/';
+        postObj.text = funarr[r];
+        nameArr.push(postObj);
       }
-         this.nameList = nameArr;
+      this.nameList = nameArr;
     },
     //str：字符串    appoint：指定字符
-    validationEnd (str, appoint) {
-      str=str.toLowerCase();  //不区分大小写：全部转为小写后进行判断
-      var start = str.length-appoint.length;  //相差长度=字符串长度-特定字符长度
-      var char= str.substr(start,appoint.length);//将相差长度作为开始下标，特定字符长度为截取长度
-      if(char== appoint){ //两者相同，则代表验证通过
-          return true;
+    validationEnd(str, appoint) {
+      str = str.toLowerCase();  //不区分大小写：全部转为小写后进行判断
+      var start = str.length - appoint.length;  //相差长度=字符串长度-特定字符长度
+      var char = str.substr(start, appoint.length);//将相差长度作为开始下标，特定字符长度为截取长度
+      if (char == appoint) { //两者相同，则代表验证通过
+        return true;
       }
       return false;
     },
-    sjfn(items){
+    sjfn(items) {
       return items[Math.random() * items.length | 0];
     },
-    RndNum(n){ // 生成0-9的随机数字组成的数组
-        let rnd=[];
-        for(let i=0;i<n;i++)
-            rnd[i] = Math.floor(Math.random()*10);
-        return rnd;
+    RndNum(n) { // 生成0-9的随机数字组成的数组
+      let rnd = [];
+      for (let i = 0; i < n; i++)
+        rnd[i] = Math.floor(Math.random() * 10);
+      return rnd;
     },
     // 随机取出拼接的数组
-    getstr(v){
-        let newstr = '';
-        v.sort(function() {
-            return (0.5-Math.random());
-        });
-        for(let i =0;i<v.length;i++){
-            newstr+=v[i];
-        }
-        return newstr
+    getstr(v) {
+      let newstr = '';
+      v.sort(function () {
+        return (0.5 - Math.random());
+      });
+      for (let i = 0; i < v.length; i++) {
+        newstr += v[i];
+      }
+      return newstr;
     }
   }
 };
 </script>
+
+<style lang="scss" scoped src="./instagram-name-generator.scss"></style>
 <style lang="scss">
-.el-slider__button-wrapper{
-  z-index:9;
+.el-slider__button-wrapper {
+  z-index: 9;
 }
+
 .el-tooltip__popper.is-dark {
   display: block;
   background: #7c56ff;
+
   span {
     font-size: 14px;
     font-weight: 500;
   }
 }
+
 .el-tooltip__popper[x-placement^="top"] .popper__arrow:after {
   border-top-color: #7c56ff;
 }
+
 @media (max-width: 768px) {
   .el-tooltip__popper.is-dark {
     display: none;
     background: #7c56ff;
     top: 312px !important;
+
     span {
       font-size: 12px;
       font-weight: 500;
@@ -512,4 +520,3 @@ export default {
   }
 }
 </style>
-<style lang="scss" src="./insname.scss" scoped></style>

@@ -8,7 +8,7 @@
         Instagram username ideas.
       </p>
       <div class="special-dt">
-        <img src="../insname/pic-right.svg" alt="" />
+        <img src="../img/pic-right.svg" alt="" />
       </div>
       <dl>
         <dt>1. Use Meaningful Words</dt>
@@ -59,7 +59,7 @@ export default {};
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent url("../insname/bg.svg") 0% 0% no-repeat padding-box;
+    background: transparent url("../img/bg.svg") 0% 0% no-repeat padding-box;
     filter: blur(8px);
     z-index: -1;
 
@@ -131,7 +131,7 @@ export default {};
       left: 0;
       width: 100%;
       height: 100%;
-      background: transparent url("../insname/mobile-bg.svg") 0% 0% no-repeat padding-box;
+      background: transparent url("../img/mobile-bg.svg") 0% 0% no-repeat padding-box;
       filter: blur(8px);
       z-index: -1;
       background-size: cover;

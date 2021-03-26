@@ -1,7 +1,7 @@
 <template>
   <div class="instadownload">
     <div class="flex-instadown">
-      <div><img src="../insname/pic.svg" alt="" /></div>
+      <div><img src="../img/pic.svg" alt="" /></div>
       <div v-if="usenum===1" class="flex-art">
         <h1>
           Get Free Followers after Getting a Cool Name!

@@ -58,7 +58,7 @@ export default {
 <style scoped lang="scss">
 .insta-follower {
   width: 100%;
-  background: url('../insname/bg-1.svg') no-repeat;
+  background: url('../img/bg-1.svg') no-repeat;
   background-size: cover;
   padding: 69px 0 53px 0;
   text-align: center;
@@ -87,7 +87,7 @@ export default {
   .insta-follower {
     width: 100%;
     padding: 45px 15px 100px 15px;
-    background: url('../insname/like_mobile.svg') no-repeat;
+    background: url('../img/like_mobile.svg') no-repeat;
     background-size: cover;
 
     h1 {

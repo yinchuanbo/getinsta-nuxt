@@ -1,35 +1,34 @@
 <template>
-  <div class="v-d-2-des public-des">
+  <div class="v-d-4-des public-des">
     <div class="wrapper">
-      <h2>Benefits You'll Get with Instagram Video Downloader</h2>
       <div class="des-container">
         <div ref="mark0" :class="{ 'on': animateBegin0 }" class="unit">
           <div class="img">
-            <img src="@/views/tools/video-downloader/v-d-2-des/img/v-d-2-des-img-0.svg" alt="">
+            <img src="./img/v-d-4-des-img-0.svg" alt="">
           </div>
           <div class="text">
-            <h3>Free Instagram Video Downloader</h3>
-            <p>This is a totally free online Instagram Video Downloader for iPhone, Android, PC and Mac. It helps users easily download massive Instagram videos within only 4 simple steps.</p>
+            <h3>Download Instagram Videos to MP4</h3>
+            <p>GetInsta Free Video Downloader supports downloading videos in MP4 format automatically, so you can enjoy videos on any devices and players. </p>
           </div>
         </div>
 
         <div ref="mark1" :class="{ 'on': animateBegin1 }" class="unit">
           <div class="img">
-            <img src="@/views/tools/video-downloader/v-d-2-des/img/v-d-2-des-img-1.svg" alt="">
+            <img src="./img/v-d-4-des-img-1.svg" alt="">
           </div>
           <div class="text">
-            <h3>Bulk Download Instagram Videos</h3>
-            <p>You can not only download videos from Instagram for free, but also bulk-download multiple videos from any user at the same time. No time limits. No number limits.</p>
+            <h3>Reliable Instagram Video Manager</h3>
+            <p>This free online video downloader does not require any information from you. No app downloading & installing. No registration. 100% safe and clean.</p>
           </div>
         </div>
 
         <div ref="mark2" :class="{ 'on': animateBegin2 }" class="unit">
           <div class="img">
-            <img src="@/views/tools/video-downloader/v-d-2-des/img/v-d-2-des-img-2.svg" alt="">
+            <img src="./img/v-d-4-des-img-2.svg" alt="">
           </div>
           <div class="text">
-            <h3>HD Instagram Video Downloader</h3>
-            <p>GetInsta Video Downloader helps save all videos in original quality. Download beloved videos from any user on Instagram without any quality loss. </p>
+            <h3>Download Videos from Any User</h3>
+            <p>With GetInsta free Instagram video downloader, you can download any Instagram video from any user. Your favorite idols, celebrities, famous brand accounts, etc.</p>
           </div>
         </div>
       </div>
@@ -39,7 +38,7 @@
 
 <script>
 export default {
-  name: 'VD2Des',
+  name: 'VD4Des',
   components: {},
   data() {
     return {
@@ -48,6 +47,7 @@ export default {
       animateBegin2: false
     };
   },
+  computed: {},
   mounted() {
     window.addEventListener('scroll', this.handle);
   },
@@ -68,4 +68,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="../../.."></style>
+<style lang="scss" scoped src="../v-d-2-des/v-d-2-des.scss"></style>
+<style lang="scss" scoped>
+.des-container {
+  margin-top: 0;
+}
+</style>

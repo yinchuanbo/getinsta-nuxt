@@ -53,4 +53,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="../..s"></style>
+<style lang="scss" scoped src="./v-d-6-tips.scss"></style>

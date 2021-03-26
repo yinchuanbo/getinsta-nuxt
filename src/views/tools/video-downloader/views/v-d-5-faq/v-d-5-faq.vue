@@ -65,4 +65,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="../../.."></style>
+<style lang="scss" scoped src="./v-d-5-faq.scss"></style>

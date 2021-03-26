@@ -188,4 +188,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="../..css"></style>
+<style lang="scss" scoped src="./v-d-0-banner.scss"></style>

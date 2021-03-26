@@ -11,33 +11,33 @@
         <div v-if="ispc" class="steps">
           <ul class="step-num">
             <li>
-              <div class="imgcontainer"><img src="../insname/1.svg" alt=""></div>
+              <div class="imgcontainer"><img src="../img/1.svg" alt=""></div>
               <div class="dash"></div>
             </li>
             <li>
-              <div class="imgcontainer img01"><img src="../insname/2.svg" alt=""></div>
+              <div class="imgcontainer img01"><img src="../img/2.svg" alt=""></div>
               <div class="dash"></div>
             </li>
             <li>
-              <div class="imgcontainer img02"><img src="../insname/3.svg" alt=""></div>
+              <div class="imgcontainer img02"><img src="../img/3.svg" alt=""></div>
               <div class="dash"></div>
             </li>
             <li>
-              <div class="imgcontainer"><img src="../insname/4.svg" alt=""></div>
+              <div class="imgcontainer"><img src="../img/4.svg" alt=""></div>
             </li>
           </ul>
           <ul class="step-text">
             <li>
               <span>Download GetInsta App on Play Store or App Store</span>
-              <img src="../insname/rightintr.svg" alt="">
+              <img src="../img/rightintr.svg" alt="">
             </li>
             <li>
               <span>Sign up with your email and log into GetInsta</span>
-              <img src="../insname/rightintr.svg" alt="">
+              <img src="../img/rightintr.svg" alt="">
             </li>
             <li>
               <span>Add your username and get some coins as a gift</span>
-              <img class="lastimgright" src="../insname/rightintr.svg" alt="">
+              <img class="lastimgright" src="../img/rightintr.svg" alt="">
             </li>
             <li>
               <span>Use coins to publish a task to get free followers and likes NOW</span>
@@ -45,7 +45,7 @@
           </ul>
           <ul class="getInstaList">
             <li class="someDown">
-              <a href="/"><img src="../insname/logo.png" alt=""></a>
+              <a href="/"><img src="../img/logo.png" alt=""></a>
               <p class="des">GetInsta</p>
               <p class="destext">Get Free Instagram Followers & Likes</p>
               <div class="btn-container">
@@ -60,29 +60,29 @@
                    @mouseenter="tipQrCode('android', $event)"
                    @mouseleave="tipQrCode(false)"
                 >
-                  <img src="../insname/icon_android_logo.svg" alt="icon">
+                  <img src="../img/icon_android_logo.svg" alt="icon">
                 </a>
                 <a v-if="!$store.state.hideIosMinorLang" class="ios" href="javascript:"
                    @click="ga3Ios"
                    @mouseenter="tipQrCode('ios', $event)"
                    @mouseleave="tipQrCode(false)"
                 >
-                  <img src="../insname/icon_ios_logo.svg" alt="icon">
+                  <img src="../img/icon_ios_logo.svg" alt="icon">
                 </a>
               </div>
             </li>
-            <li><img src="../insname/a1.png" alt=""></li>
-            <li><img src="../insname/a2.png" alt=""></li>
-            <li><img src="../insname/a3.png" alt=""></li>
+            <li><img src="../img/a1.png" alt=""></li>
+            <li><img src="../img/a2.png" alt=""></li>
+            <li><img src="../img/a3.png" alt=""></li>
           </ul>
         </div>
         <div v-if="!ispc" class="stepMobile">
           <div class="left">
             <div class="step-one">
-              <div class="imgcontainer"><img src="../insname/1.svg" alt=""></div>
+              <div class="imgcontainer"><img src="../img/1.svg" alt=""></div>
               <p>Download GetInsta App on Play Store or App Store</p>
               <div class="twoSome">
-                <a href="/"><img src="../insname/logo.png" alt=""></a>
+                <a href="/"><img src="../img/logo.png" alt=""></a>
                 <p class="des">GetInsta</p>
                 <p class="destext">Get Free Instagram Followers & Likes</p>
                 <div class="btn-container">
@@ -90,28 +90,28 @@
                     <img src="@/assets/images/global/button/btn__download_original-googleplay.svg" alt="" class="andr">
                   </div>
                   <div v-if="isios" @click="gaDownloadAPPTest">
-                    <img src="../insname/btn.svg" alt="" class="btnios">
+                    <img src="../img/btn.svg" alt="" class="btnios">
                   </div>
                 </div>
               </div>
             </div>
             <div class="step-three">
-              <div class="imgcontainer"><img src="../insname/3.svg" alt=""></div>
+              <div class="imgcontainer"><img src="../img/3.svg" alt=""></div>
               <p>Add your username and get some coins as a gift</p>
-              <div class="a2"><img src="../insname/a2.png" alt=""></div>
+              <div class="a2"><img src="../img/a2.png" alt=""></div>
             </div>
           </div>
           <div class="center"></div>
           <div class="right">
             <div class="step-two">
-              <div class="imgcontainer"><img src="../insname/2.svg" alt=""></div>
+              <div class="imgcontainer"><img src="../img/2.svg" alt=""></div>
               <p>Sign up with your email and log into GetInsta</p>
-              <div class="a1"><img src="../insname/a1.png" alt=""></div>
+              <div class="a1"><img src="../img/a1.png" alt=""></div>
             </div>
             <div class="step-three">
-              <div class="imgcontainer"><img src="../insname/4.svg" alt=""></div>
+              <div class="imgcontainer"><img src="../img/4.svg" alt=""></div>
               <p>Use coins to publish a task to get free followers and likes NOW</p>
-              <div class="a3"><img src="../insname/a3.png" alt=""></div>
+              <div class="a3"><img src="../img/a3.png" alt=""></div>
             </div>
           </div>
         </div>
@@ -836,7 +836,7 @@ a {
         width: 9px;
         height: 850px;
         margin: 0 10px;
-        background: url("../insname/line.svg") no-repeat center;
+        background: url("../img/line.svg") no-repeat center;
         background-size: contain;
       }
 

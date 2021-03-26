@@ -87,4 +87,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="../...scss"></style>
+<style lang="scss" scoped src="./v-d-3-download.scss"></style>

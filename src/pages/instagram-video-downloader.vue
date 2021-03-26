@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import instance from '@/views/tools/instagram-name-generator/instagram-name-generator';
+import instance from '@/views/tools/video-downloader/video-downloader';
 
 export default {
   components: { instance },
