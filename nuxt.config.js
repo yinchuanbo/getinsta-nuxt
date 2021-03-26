@@ -107,10 +107,12 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: true,
-    baseURL: process.env.NODE_ENV === 'production'
+    baseURL: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
       ? 'https://www.easygetinsta.com/api'
       : 'https://test.easygetinsta.com/test/api',
-    prefix: process.env.NODE_ENV === 'production' ? '/prod/api' : '/dev/test/api',
+    prefix: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
+      ? '/api'
+      : '/dev/test/api',
     credentials: true // 表示跨域请求时是否需要使用凭证
   },
 
@@ -123,13 +125,13 @@ export default {
         changeOrigin: true
       }
     },
-    '/prod': {
-      target: 'https://www.easygetinsta.com',
-      pathRewrite: {
-        '^/prod': '',
-        changeOrigin: true
-      }
-    }
+    // '/prod': {
+    //   target: 'https://www.easygetinsta.com',
+    //   pathRewrite: {
+    //     '^/prod': '',
+    //     changeOrigin: true
+    //   }
+    // }
   },
 
   serverMiddleware: [
