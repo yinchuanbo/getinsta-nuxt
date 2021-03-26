@@ -6,7 +6,7 @@ Build Test:
       - master
   script:
     - tar -Jxf node-linux.tar.xz
-    - export PATH=$PATH:./node-v14.16.0-linux-x64/bin
+    - export PATH=$PATH:$(pwd)/node-v14.16.0-linux-x64/bin
     - npm install --production
     - npm build
 
