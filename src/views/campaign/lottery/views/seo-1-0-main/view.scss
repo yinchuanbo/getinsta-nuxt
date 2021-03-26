@@ -1,0 +1,220 @@
+.seo-1-0-main {
+  padding: 116px 0 80px;
+  width: 100%;
+  text-align: center;
+  font-size: 0;
+  background: linear-gradient(242deg, #111EC5 0%, #AD34D8 57%, #FF9161 100%);
+
+  .wrapper {
+    width: 640px;
+
+    h1 {
+      font: 600 26px/34px Montserrat;
+      color: #FFFFFF;
+    }
+
+    .countdown-container, .countdown-container-blank {
+      margin-top: 20px;
+      padding: 6px 24px;
+      display: inline-block;
+      border: 1px solid #F7A80B;
+      border-radius: 17px;
+
+      span, b {
+        vertical-align: baseline;
+      }
+
+      span {
+        font: 500 13px Montserrat;
+        color: #F4F5F9;
+      }
+
+      b {
+        min-width: 30px;
+        display: inline-block;
+        font-family: Roboto Mono, Consolas, monospace;
+        font-weight: 600;
+        font-size: 17px;
+        color: #FECB48;
+        text-align: right;
+
+        &:first-child {
+          min-width: 0;
+        }
+
+        &.tri {
+          min-width: 40px;
+        }
+      }
+    }
+
+    .countdown-container-blank {
+      height: 34px;
+      border: none;
+      background: none;
+    }
+
+    .lottery-container {
+      margin: 46px auto 0;
+      padding: 120px 30px 35px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-flow: wrap;
+
+      width: 550px;
+      height: 654px;
+      background: url("@/assets/images/seo-pages/seo-1-lottery/seo-1-0-main__frame.svg") center/contain no-repeat;
+    }
+
+    .winning-news {
+      margin-top: 12px;
+      height: 18px;
+      @include text-ellipsis;
+
+      p.note-0 {
+        font: 500 14px/18px Montserrat;
+        color: #F4F5F9;
+
+        span {
+          display: inline-block;
+          max-width: 40%;
+          font: 500 14px/18px Montserrat;
+          color: #F4F5F9;
+          vertical-align: middle;
+          text-align: right;
+          @include text-ellipsis;
+        }
+      }
+    }
+
+    .rules-container {
+      margin: 44px auto 0;
+      padding: 36px 56px;
+      width: 548px;
+      background: #FFFFFF;
+      border-radius: 21px;
+
+      h2 {
+        font: 700 18px/22px Montserrat;
+        color: #2A2A2A;
+      }
+
+      ol {
+        margin-top: 36px;
+
+        li {
+          margin-top: 14px;
+          list-style: decimal inside;
+          font: 500 14px/18px Montserrat;
+          color: #2A2A2A;
+          text-align: left;
+
+          b {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .btn {
+        margin-top: 40px;
+
+        .btn-big, .btn-small {
+          margin: 0 auto;
+        }
+
+        .btn-big {
+          width: 384px;
+          height: 78px;
+        }
+
+        .btn-small {
+          margin-top: 30px;
+        }
+      }
+
+      p.note-1 {
+        margin-top: 28px;
+        font: 500 13px/16px Montserrat;
+        color: #2A2A2A;
+
+        b {
+          font-weight: 700;
+        }
+
+        &:before {
+          margin-right: 8px;
+          content: "";
+          display: inline-block;
+          width: 18px;
+          height: 13px;
+          background: url("~@/assets/images/global/icon-users.svg") center/contain no-repeat;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .seo-1-0-main {
+    .wrapper {
+      padding: 0 2vw;
+      width: 100%;
+
+      h1 {
+        padding: 0 4vw;
+        font: 600 20px Montserrat;
+      }
+
+      .lottery-container {
+        padding: 21.1vw 5.3vw 6.1vw;
+        width: 100%;
+        height: 114vw;
+      }
+
+      p.note-0 {
+        font: 500 10px/13px Montserrat;
+      }
+
+      .rules-container {
+        margin: 44px auto 0;
+        padding: 32px 3vw 22px;
+        width: 100%;
+        background: #FFFFFF;
+        border-radius: 21px;
+
+        h2 {
+          font: 700 16px/19px Montserrat;
+        }
+
+        ol {
+          margin-top: 34px;
+
+          li {
+            margin-top: 8px;
+            font: 500 11px/14px Montserrat;
+          }
+        }
+
+        .btn {
+          margin-top: 40px;
+
+          .btn-big, .btn-small {
+            margin: 0 auto;
+          }
+
+          .btn-big {
+            width: 78vw;
+            height: 64px;
+          }
+
+          .btn-small {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}

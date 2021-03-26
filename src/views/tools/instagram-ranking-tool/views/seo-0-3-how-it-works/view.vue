@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import icon0 from '@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-3-how-it-works/seo-0-3-how-it-works__icon-00.svg';
-import icon1 from '@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-3-how-it-works/seo-0-3-how-it-works__icon-01.svg';
-import icon2 from '@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-3-how-it-works/seo-0-3-how-it-works__icon-02.svg';
+import icon0 from '@/views/tools/instagram-ranking-tool/img/seo-0-3-how-it-works/seo-0-3-how-it-works__icon-00.svg';
+import icon1 from '@/views/tools/instagram-ranking-tool/img/seo-0-3-how-it-works/seo-0-3-how-it-works__icon-01.svg';
+import icon2 from '@/views/tools/instagram-ranking-tool/img/seo-0-3-how-it-works/seo-0-3-how-it-works__icon-02.svg';
 
 export default {
   name: 'Seo03HowItWorks',

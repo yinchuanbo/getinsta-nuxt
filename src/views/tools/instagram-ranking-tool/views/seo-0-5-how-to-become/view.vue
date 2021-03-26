@@ -15,7 +15,7 @@
       </p>
       <div class="content">
         <div class="unit">
-          <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-5-how-to-become/seo-0-5-how-to-become-0.png" alt="">
+          <img src="@/views/tools/instagram-ranking-tool/img/seo-0-5-how-to-become/seo-0-5-how-to-become-0.png" alt="">
           <div class="text">
             <h3>Personalize Your Instagram Profile</h3>
             <p>First of all, you should create an Instagram profile and optimize it for attracting eyes. You can change your Instagram username for SEO purposes. For example, Dwayne Johnson is well remembered as the rock, so his username is @therock.In the Bio field, you should include your contact information including email, phone number, address, etc. Another point to mention what you can offer for your audience. For example, you may share amazing products or promotions, give training courses, speak at an event, etc.</p>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="unit">
-          <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-5-how-to-become/seo-0-5-how-to-become-1.png" alt="">
+          <img src="@/views/tools/instagram-ranking-tool/img/seo-0-5-how-to-become/seo-0-5-how-to-become-1.png" alt="">
           <div class="text">
             <h3>Use Popular Hashtags</h3>
             <p>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="unit">
-          <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-5-how-to-become/seo-0-5-how-to-become-2.png" alt="">
+          <img src="@/views/tools/instagram-ranking-tool/img/seo-0-5-how-to-become/seo-0-5-how-to-become-2.png" alt="">
           <div class="text">
             <h3>Write Deep Caption</h3>
             <p>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="unit">
-          <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-5-how-to-become/seo-0-5-how-to-become-3.png" alt="">
+          <img src="@/views/tools/instagram-ranking-tool/img/seo-0-5-how-to-become/seo-0-5-how-to-become-3.png" alt="">
           <div class="text">
             <h3>Publish Amazing Content Consistently</h3>
             <p>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="unit">
-          <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-5-how-to-become/seo-0-5-how-to-become-4.png" alt="">
+          <img src="@/views/tools/instagram-ranking-tool/img/seo-0-5-how-to-become/seo-0-5-how-to-become-4.png" alt="">
           <div class="text">
             <h3>Communicate with Your Audience</h3>
             <p>

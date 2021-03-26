@@ -2,7 +2,7 @@
   <div class="seo-0-7-download">
     <div class="wrapper">
       <div class="img">
-        <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-7-download/img_feature_real.svg" alt="">
+        <img src="@/views/tools/instagram-ranking-tool/img/seo-0-7-download/img_feature_real.svg" alt="">
       </div>
       <div class="text">
         <h2>GetInsta – Promote Your Instagram Account Instantly</h2>

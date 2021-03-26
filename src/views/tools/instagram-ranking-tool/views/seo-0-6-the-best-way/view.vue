@@ -17,7 +17,7 @@
         <div class="unit">
           <h4><i>1</i>Download and Install GetInsta on Android, Windows, or iOS device</h4>
           <div class="img">
-            <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-6-the-best-way/seo-0-6-the-best-way-00.png" alt="">
+            <img src="@/views/tools/instagram-ranking-tool/img/seo-0-6-the-best-way/seo-0-6-the-best-way-00.png" alt="">
             <div class="btn mobile" @click="gaBigBtn">
               <button-yellow-download text="Download GetInsta" :icon="platform" :theme="'blue'" />
             </div>
@@ -25,15 +25,15 @@
         </div>
         <div class="unit">
           <h4><i>2</i>Sign up with your email and be rewarded with some coins</h4>
-          <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-6-the-best-way/seo-0-6-the-best-way-01.png" alt="">
+          <img src="@/views/tools/instagram-ranking-tool/img/seo-0-6-the-best-way/seo-0-6-the-best-way-01.png" alt="">
         </div>
         <div class="unit">
           <h4><i>3</i>Add your Instagram username (no need for password)</h4>
-          <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-6-the-best-way/seo-0-6-the-best-way-02.png" alt="">
+          <img src="@/views/tools/instagram-ranking-tool/img/seo-0-6-the-best-way/seo-0-6-the-best-way-02.png" alt="">
         </div>
         <div class="unit">
           <h4><i>4</i>Publish Get Followers or Get Likes task</h4>
-          <img src="@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-6-the-best-way/seo-0-6-the-best-way-03.png" alt="">
+          <img src="@/views/tools/instagram-ranking-tool/img/seo-0-6-the-best-way/seo-0-6-the-best-way-03.png" alt="">
         </div>
       </div>
 
