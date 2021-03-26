@@ -55,44 +55,45 @@ import apiAccount from '~/api/api.account';
 import apiInsServer from '~/api/api.ins.server';
 import ButtonPurple from '~/components/button/button-purple';
 import BuySelect from '@/components/popup-layer/buy-select/buy-select.vue';
+
 export default {
- name:'Blogbuy',
- components: {
+  name: 'Blogbuy',
+  components: {
     ButtonPurple,
     BuySelect
   },
-  props:{
-     sendthis:{
-      type:Object,
-      default:null
+  props: {
+    sendThis: {
+      type: Object,
+      default: null
     }
   },
- data(){
-   return{
-   searchInsInput: '',
-   searchInsLoading: false,
-   productPkgListLoading: false,
-   buybtnColor: true,
-   tabsIndex: false,
-   buyPopshow: false,
-   entermask: false,
-   enterbox: false,
-   follerList: null,
-   productPkgListDailyVM: [],
-   productPkgListDaysVM: [],
-   productPkgListDays: [],
-    productPkgListDaily: [],
-    pkgListWithUnit: [],
-    insUser: {},
-    postListInfo: {
+  data() {
+    return {
+      searchInsInput: '',
+      searchInsLoading: false,
+      productPkgListLoading: false,
+      buybtnColor: true,
+      tabsIndex: false,
+      buyPopshow: false,
+      entermask: false,
+      enterbox: false,
+      follerList: null,
+      productPkgListDailyVM: [],
+      productPkgListDaysVM: [],
+      productPkgListDays: [],
+      productPkgListDaily: [],
+      pkgListWithUnit: [],
+      insUser: {},
+      postListInfo: {
         post_count: 0,
         end_cursor: '',
         has_next_page: false,
         page_size: 12
       }
-   }
- },
- watch: {
+    };
+  },
+  watch: {
     productPkgListDaysVM(val) {
       this.productPkgListDaily = this.pkgListWithUnit.filter(item => item.cycle_type === val);
       this.productPkgListDailyVM = this.productPkgListDaily[0];
@@ -105,7 +106,7 @@ export default {
     getPkgList() {
       if (this.productPkgListLoading) return;
       this.productPkgListLoading = true;
-      this.$axios.post(
+      this.sendThis.$nuxt.$axios.$post(
         `${apiAccount.appConfig}?origin=web`,
         this.COMMON.paramSign({
           client_lan: 'en',
@@ -148,7 +149,7 @@ export default {
 
       this.renderPkgListWithUnit(pkgList);
     },
-     // 生成周期循环offer独立数组
+    // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
       pkgList.map(item => {
         if (item['cycle_type'] > 1) {
@@ -171,17 +172,18 @@ export default {
       this.productPkgListDays = [...new Set(this.pkgListWithUnit.map(item => item.cycle_type))];
       this.productPkgListDaysVM = this.productPkgListDays[0];
     },
-     searchUsername: function () {this.$ga.event
+    searchUsername: function () {
+      this.$ga.event;
       this.$ga.event(
         'buttonclick',
         'click',
-        `dailyf-${this.sendthis.blogID}`
+        `dailyf-${this.sendThis.blogID}`
       );
       this.searchInsByServerV2();
     },
-    searchInsByServerV2 () {
+    searchInsByServerV2() {
       if (this.searchInsInput === '') {
-         this.$alert(
+        this.$alert(
           '', 'warn',
           this.$t('store.buy.error.noInsID.title'),
           this.$t('store.buy.error.noInsID.text'),
@@ -192,7 +194,7 @@ export default {
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
-      this.$axios.post(
+      this.$nuxt.$axios.$post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
@@ -226,18 +228,18 @@ export default {
         this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
 
         // 传给子组件
-        if(this.insUser.ins_id){
+        if (this.insUser.ins_id) {
           this.buyPopshow = true;
-            setTimeout(() => {
-                this.enterbox = true;
-            }, 10);
-            setTimeout(() => {
-                this.entermask = true;
-            }, 310);
-            this.productPkgListDailyVM.newmsg = this.sendthis
-            if(this.productPkgListDailyVM)this.follerList = this.productPkgListDailyVM;
-            // console.log("blog-buy-this",this)
-            // console.log("recivethis",this.follerList)
+          setTimeout(() => {
+            this.enterbox = true;
+          }, 10);
+          setTimeout(() => {
+            this.entermask = true;
+          }, 310);
+          this.productPkgListDailyVM.newmsg = this.sendThis;
+          if (this.productPkgListDailyVM) this.follerList = this.productPkgListDailyVM;
+          // console.log("blog-buy-this",this)
+          // console.log("recivethis",this.follerList)
         }
 
 
@@ -253,7 +255,7 @@ export default {
         console.error('Catch Error: searchIns: ', error);
       });
     },
-     insPostTransform(_sharedDataUserPosts) {
+    insPostTransform(_sharedDataUserPosts) {
       let post = {};
       post.post_count = _sharedDataUserPosts.count;
       post.end_cursor = _sharedDataUserPosts['page_info']['end_cursor'];
@@ -278,199 +280,226 @@ export default {
       return post;
     },
     closeBuyPop() {
-            this.enterbox = false;
-            setTimeout(() => {
-                this.entermask = false
-            }, 300);
-            setTimeout(() => {
-                this.buyPopshow = false;
+      this.enterbox = false;
+      setTimeout(() => {
+        this.entermask = false;
+      }, 300);
+      setTimeout(() => {
+        this.buyPopshow = false;
 
-            }, 600);
-            this.searchInsInput = '';
-        },
+      }, 600);
+      this.searchInsInput = '';
+    }
 
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.BlogBuy{
+.BlogBuy {
   width: 800px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   border-radius: 12px;
   text-align: center;
-  color:#fff;
-  .title-content{
-    flex:0 0 108px;
-    height:108px;
+  color: #fff;
+
+  .title-content {
+    flex: 0 0 108px;
+    height: 108px;
     background: transparent linear-gradient(90deg, #FFA087 0%, #8E56FF 100%) 0% 0% no-repeat padding-box;
     border-radius: 12px 12px 0px 0px;
-    border:none;
-    padding-top:24px;
-    h2{
+    border: none;
+    padding-top: 24px;
+
+    h2 {
       font: 600 28px/34px Montserrat;
     }
-    p{
-      font:500 14px/18px Montserrat;
-      padding-top:0px;
+
+    p {
+      font: 500 14px/18px Montserrat;
+      padding-top: 0px;
     }
   }
-  .buy-content{
-    flex:1;
+
+  .buy-content {
+    flex: 1;
     border: 1px solid #DFDFDF;
     border-radius: 0px 0px 12px 12px;
-    border-top:none;
-    padding:64px 0px 64px 0px;
-    .blogbuySelect{
+    border-top: none;
+    padding: 64px 0px 64px 0px;
+
+    .blogbuySelect {
       width: 280px;
       height: 60px;
       border: 2px solid #E7E7E7;
       border-radius: 6px;
-      background:#FFF;
-      margin-bottom:24px;
+      background: #FFF;
+      margin-bottom: 24px;
     }
-    .blogbuySelect.Selectone{
-      margin-right:32px;
+
+    .blogbuySelect.Selectone {
+      margin-right: 32px;
     }
-    .skeletonbox{
 
-    .skeleton {
-       margin-bottom:24px;
-            width:35%;
-            height: 60px;
-            display: inline-block;
-            cursor: default;
-            span.s {
-              display: inline-block;
-              width: 100%;
-              height: 60px;
-            }
+    .skeletonbox {
 
-            span.num {
-              width: 34%;
-            }
+      .skeleton {
+        margin-bottom: 24px;
+        width: 35%;
+        height: 60px;
+        display: inline-block;
+        cursor: default;
 
-            span.likes {
-              width: 26%;
-            }
+        span.s {
+          display: inline-block;
+          width: 100%;
+          height: 60px;
+        }
 
-            span.coins {
-              width: 20%;
-            }
+        span.num {
+          width: 34%;
+        }
 
-            &:hover {
-              box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
-            }
+        span.likes {
+          width: 26%;
+        }
+
+        span.coins {
+          width: 20%;
+        }
+
+        &:hover {
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+        }
       }
-    .skeleton:first-child{
-      margin-right:30px;
+
+      .skeleton:first-child {
+        margin-right: 30px;
+      }
     }
-    }
-    .control-search_ins{
+
+    .control-search_ins {
       margin-top: 0px;
       width: 74%;
       height: 64px;
       background: #FFFFFF 0% 0% no-repeat padding-box;
       border-radius: 6px;
-      label{
+
+      label {
         width: 67%;
         border: 2px solid #E0E1E6;
         border-right: none;
         border-radius: 6px 0px 0px 6px;
-        input{
-          width:100%;
-          padding-left:16px;
-          background:#fff;
+
+        input {
+          width: 100%;
+          padding-left: 16px;
+          background: #fff;
           outline: none;
-          border:none !important;
-          padding-right:0;
+          border: none !important;
+          padding-right: 0;
           font: 500 14px/60px Montserrat;
         }
       }
     }
-    .search_btn{
-      width:33%;
+
+    .search_btn {
+      width: 33%;
       border-radius: 0 6px 6px 0;
     }
 
   }
 }
-@media (max-width: 768px){
-  .BlogBuy{
-    width:100%;
-    .title-content{
-     flex:0 0 90px;
-     height: 90px;
-     h2{
-       font: 600 16px/20px Montserrat;
-     }
-     p{
-       font: 500 12px/15px Montserrat;
-     }
+
+@media (max-width: 768px) {
+  .BlogBuy {
+    width: 100%;
+
+    .title-content {
+      flex: 0 0 90px;
+      height: 90px;
+
+      h2 {
+        font: 600 16px/20px Montserrat;
+      }
+
+      p {
+        font: 500 12px/15px Montserrat;
+      }
     }
-    .buy-content{
+
+    .buy-content {
       padding: 44px 0px 56px 0px;
-      display:flex;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      .blogbuySelect{
+
+      .blogbuySelect {
         height: 44px;
       }
-      .blogbuySelect.Selectone{
+
+      .blogbuySelect.Selectone {
         margin-right: 0;
-        margin-bottom:12px;
+        margin-bottom: 12px;
       }
-        .skeletonbox{
-          width:100%;
-          .skeleton {
-              margin:auto;
-              width:74%;
-              height: 44px;
-              cursor: default;
-              display: block;
-              text-align: center;
-              span.s {
-                display: inline-block;
-                width: 100%;
-                height: 44px;
-              }
 
-              span.num {
-                width: 34%;
-              }
+      .skeletonbox {
+        width: 100%;
 
-              span.likes {
-                width: 26%;
-              }
+        .skeleton {
+          margin: auto;
+          width: 74%;
+          height: 44px;
+          cursor: default;
+          display: block;
+          text-align: center;
 
-              span.coins {
-                width: 20%;
-              }
+          span.s {
+            display: inline-block;
+            width: 100%;
+            height: 44px;
+          }
 
-              &:hover {
-                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
-              }
+          span.num {
+            width: 34%;
+          }
+
+          span.likes {
+            width: 26%;
+          }
+
+          span.coins {
+            width: 20%;
+          }
+
+          &:hover {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+          }
         }
-          .skeleton:first-child{
-            margin:auto;
-            margin-bottom:12px;
-          }
-          .skeleton:last-child{
-            margin-bottom:24px;
-          }
-      }
-      .control-search_ins{
-         width:280px;
-         height: 44px;
-         label{
 
-           input{
-             padding-left:8px;
-             font: 500 12px/44px Montserrat;
-           }
-         }
+        .skeleton:first-child {
+          margin: auto;
+          margin-bottom: 12px;
+        }
+
+        .skeleton:last-child {
+          margin-bottom: 24px;
+        }
+      }
+
+      .control-search_ins {
+        width: 280px;
+        height: 44px;
+
+        label {
+
+          input {
+            padding-left: 8px;
+            font: 500 12px/44px Montserrat;
+          }
+        }
       }
     }
   }

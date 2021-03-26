@@ -316,7 +316,7 @@ export default {
             let checBuy = [...document.querySelectorAll('.blogBuy')];
             if (checBuy.length) {
               for (let j = 0; j < checBuy.length; j++) {
-                let buymodal = new MyBlogBuy({ propsData: { sendthis: this } }).$mount();
+                let buymodal = new MyBlogBuy({ propsData: { sendThis: this } }).$mount();
                 checBuy[j].parentNode.replaceChild(buymodal.$el, checBuy[j]);
               }
             }
@@ -346,7 +346,7 @@ export default {
 
       if (!this.ajaxRequesting) {
         this.ajaxRequesting = true;
-        this.$axios.post(
+        this.$nuxt.$axios(
           api.getBlogDetail,
           this.COMMON.paramSign(param)
         ).then((response) => {
@@ -370,7 +370,7 @@ export default {
                 let checBuy = [...document.querySelectorAll('.blogBuy')];
                 if (checBuy.length) {
                   for (let j = 0; j < checBuy.length; j++) {
-                    let buymodal = new MyBlogBuy({ propsData: { sendthis: this } }).$mount();
+                    let buymodal = new MyBlogBuy({ propsData: { sendThis: this } }).$mount();
                     checBuy[j].parentNode.replaceChild(buymodal.$el, checBuy[j]);
                   }
                 }
@@ -411,7 +411,7 @@ export default {
     },
     getHotArticleList() {
       this.ajaxRequestingHot = true;
-      this.$axios.post(
+      this.$nuxt.$axios(
         api.getHotBlogList,
         this.COMMON.paramSign({
           client_lan: 'en'
