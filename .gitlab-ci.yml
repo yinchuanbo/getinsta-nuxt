@@ -1,4 +1,4 @@
-Deploy to BuildTest:
+Build Test:
   stage: deploy
   when: manual
   only:
