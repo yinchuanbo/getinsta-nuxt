@@ -50,7 +50,8 @@ let instance = new dyVueObj({
   el: process.client ? document.createElement('div') : null
 });
 
-document.body.appendChild(instance.$el);
+if (process.client)
+  document.body.appendChild(instance.$el);
 
 export function createVueObj(vueClass, attr, event) {
   let vueObj = Vue.extend(vueClass);
