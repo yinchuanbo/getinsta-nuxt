@@ -18,8 +18,8 @@ Deploy to Testing:
     refs:
       - master
   script:
-    - mv package-prod-test.json package.json
     - rm node-linux.tar.xz
+    - mv package-prod-test.json package.json
     - /usr/local/bin/eb-deploy.sh "Ins Follower" www-easygetinsta-com2-test liSsLweGBAmc487bBDoJvwiEmrMd44fG
 
 
