@@ -769,6 +769,7 @@ export default {
       color: #000000;
       transition: all 0.3s;
       //@include text-ellipsis;
+      cursor: pointer;
 
       &:hover {
         background-color: #f1f4f6;

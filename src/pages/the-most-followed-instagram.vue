@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import instance from '@/views/tools/instagram-video-downloader/video-downloader';
+import instance from '@/views/tools/instagram-ranking-tool/instagram-ranking-tool.vue';
 
 export default {
   components: { instance },
@@ -14,12 +14,12 @@ export default {
   },
   head() {
     return {
-      title: 'Instagram Username Generator - Check Availability Instantly',
+      title: 'Daily Update: Top 20 Most Followed Instagram Accounts 2021',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'The Instagram username generator could generate various random Instagram usernames. Try it now to create a satisfying username on Instagram.'
+          content: 'Who has the most followers on Instagram? View the real-time top 20 most followed IG accounts and download the GetInsta apk to be the next influencer.'
         }
       ],
       link: [

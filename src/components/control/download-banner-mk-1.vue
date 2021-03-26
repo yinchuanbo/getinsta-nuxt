@@ -235,11 +235,11 @@ export default {
         }
 
         &.ios {
-          background-image: url("~@/views/tools/video-downloader/views/v-d-3-download/img/v-d-3-download__icon-ios.svg");
+          background-image: url("~@/views/tools/instagram-video-downloader/views/v-d-3-download/img/v-d-3-download__icon-ios.svg");
         }
 
         &.android {
-          background-image: url("~@/views/tools/video-downloader/views/v-d-3-download/img/v-d-3-download__icon-android.svg");
+          background-image: url("~@/views/tools/instagram-video-downloader/views/v-d-3-download/img/v-d-3-download__icon-android.svg");
         }
       }
 

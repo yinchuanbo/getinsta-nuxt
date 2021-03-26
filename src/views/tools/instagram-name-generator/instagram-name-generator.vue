@@ -312,7 +312,7 @@ export default {
       this.showyes = false;
       this.showfaild = false;
       this.showloading = true;
-      this.axios.get(
+      this.$nuxt.$axios.get(
         `https://www.instagram.com/${v.text}/`
       ).then((response) => {
         // console.log('re',response)

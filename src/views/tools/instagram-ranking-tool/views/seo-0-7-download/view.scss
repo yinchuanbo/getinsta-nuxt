@@ -1,6 +1,7 @@
 .seo-0-7-download {
   height: 495px;
   background: linear-gradient(257deg, #111EC5 0%, #2020C7 15%, #AD34D8 73%, #FF9161 100%);
+  font-size: 0;
 
   .wrapper {
     height: 100%;
@@ -81,11 +82,11 @@
             }
 
             &.ios {
-              background-image: url("~@/views/tools/instagram-video-downloader/views/v-d-3-download/img/v-d-3-download__icon-ios.svg");
+              background-image: url("../../../instagram-video-downloader/views/v-d-3-download/img/v-d-3-download__icon-ios.svg");
             }
 
             &.android {
-              background-image: url("~@/views/tools/instagram-video-downloader/views/v-d-3-download/img/v-d-3-download__icon-android.svg");
+              background-image: url("../../../instagram-video-downloader/views/v-d-3-download/img/v-d-3-download__icon-android.svg");
             }
           }
 

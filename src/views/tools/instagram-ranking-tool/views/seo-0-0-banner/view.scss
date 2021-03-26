@@ -1,0 +1,50 @@
+.seo-0-0-banner {
+  min-height: 560px;
+  background: url("~@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-0-banner/seo-0-0-banner__bg.jpg") top center no-repeat;
+
+  h1, h2 {
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  h1 {
+    padding-top: 110px;
+    font: 700 48px Montserrat;
+  }
+
+  h2 {
+    margin-top: 26px;
+    font: 500 20px/32px Montserrat;
+  }
+
+  i {
+    margin: 82px auto 0;
+    display: block;
+    width: 58px;
+    height: 58px;
+    background: url("~@/assets/images/seo-pages/seo-0-the-best-followed/seo-0-0-banner/seo-0-0-banner__arrow-circle.svg") center/cover no-repeat;
+  }
+}
+
+@media (max-width: 768px) {
+  .seo-0-0-banner {
+    min-height: 360px;
+    padding: 50px 4vw 60px;
+
+    h1 {
+      padding-top: 58px;
+      font: 700 26px Montserrat;
+    }
+
+    h2 {
+      margin-top: 20px;
+      font: 500 13px/18px Montserrat;
+    }
+
+    i {
+      margin: 56px auto 0;
+      width: 42px;
+      height: 42px;
+    }
+  }
+}
