@@ -39,6 +39,8 @@ export default {
 
       if (res['status'] === 'ok') {
         DATA.reqObj = res;
+        app.title = DATA.reqObj['seo_title'];
+        console.log('app', app);
       } else {
         if (res['redirect_url']) {
           redirect(302, res['redirect_url']);
@@ -55,12 +57,12 @@ export default {
   },
   head() {
     return {
-      title: this.reqObj['seo_title'] || '',
+      title: this.reqObj['article']['seo_title'] || '',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.reqObj['remark'] || ''
+          content: this.reqObj['article']['remark'] || ''
         }
       ],
       link: [

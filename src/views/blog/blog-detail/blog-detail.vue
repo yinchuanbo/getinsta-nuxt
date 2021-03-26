@@ -539,7 +539,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="./blog-detail.scss"></style>
+<style lang="scss" src="./blog-detail.scss"></style>
 <style lang="scss" scoped>
 .blog-detail {
   padding-bottom: 100px;
