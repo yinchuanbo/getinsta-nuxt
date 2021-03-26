@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { createVueObj, deleteVueObj } from '../index';
 import vueVM from './view-loading.vue';
 
-function Loading(open) {
+function LoadingLayer(open) {
   return new Promise((resolve, reject) => {
     let dyVueObj = createVueObj(
       vueVM,
@@ -17,7 +17,7 @@ function Loading(open) {
 }
 
 function registryLoading() {
-  Vue.prototype.$loading = Loading;
+  Vue.prototype.$loading = LoadingLayer;
 }
 
 export default registryLoading;

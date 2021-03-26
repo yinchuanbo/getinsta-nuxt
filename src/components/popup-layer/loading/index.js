@@ -45,13 +45,12 @@ let dyVueObj = Vue.extend({
   }
 });
 
+// nuxt warn
 let instance = new dyVueObj({
-  el: document.createElement('div')
+  el: process.client ? document.createElement('div') : null
 });
 
-// nuxt warn
-if (process.client)
-  document.body.appendChild(instance.$el);
+document.body.appendChild(instance.$el);
 
 export function createVueObj(vueClass, attr, event) {
   let vueObj = Vue.extend(vueClass);
