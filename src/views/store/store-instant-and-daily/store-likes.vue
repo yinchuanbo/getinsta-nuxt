@@ -16,18 +16,18 @@
 </template>
 
 <script>
-import StoreDailyLikesWhy from "@/views/store/store-instant-and-daily/views/store-daily-likes-why/view";
-import StoreDailyLikesTab from "@/views/store/store-instant-and-daily/views/store-daily-likes-tab/view";
-import StoreDailyLikesBanner from "@/views/store/store-instant-and-daily/views/store-daily-likes-banner/view";
+import StoreDailyLikesWhy from '@/views/store/store-instant-and-daily/views/store-daily-likes-why/view';
+import StoreDailyLikesTab from '@/views/store/store-instant-and-daily/views/store-daily-likes-tab/view';
+import StoreDailyLikesBanner from '@/views/store/store-instant-and-daily/views/store-daily-likes-banner/view';
 // s2
-import StoreDailyLikesBannerS2 from "@/views/store/store-instant-and-daily/views/store-daily-likes-banner/s2/view";
-import StoreDailyLikesTabS2 from "@/views/store/store-instant-and-daily/views/store-daily-likes-tab/s2/view";
-import StoreLikesWhy from "@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/why.vue";
-import StoreLikesStep from "@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/step.vue";
-import StoreLikesFaqs from "@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/faqs.vue";
+import StoreDailyLikesBannerS2 from '@/views/store/store-instant-and-daily/views/store-daily-likes-banner/s2/view';
+import StoreDailyLikesTabS2 from '@/views/store/store-instant-and-daily/views/store-daily-likes-tab/s2/view';
+import StoreLikesWhy from '@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/why.vue';
+import StoreLikesStep from '@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/step.vue';
+import StoreLikesFaqs from '@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/faqs.vue';
 
 export default {
-  name: "StoreShelf",
+  name: 'StoreShelf',
   components: {
     StoreDailyLikesBanner,
     StoreDailyLikesTab,
@@ -37,22 +37,22 @@ export default {
     StoreDailyLikesTabS2,
     StoreLikesWhy,
     StoreLikesStep,
-    StoreLikesFaqs,
+    StoreLikesFaqs
   },
   data() {
     return {
       meta: {
-        title: "GetInsta - Store - Buy Followers",
+        title: 'GetInsta - Store - Buy Followers',
         description:
-          "Buy Instagram followers from the best and trusted supplier. Get real followers for your Instagram account, reach more people and grow Your account!",
-      },
+          'Buy Instagram followers from the best and trusted supplier. Get real followers for your Instagram account, reach more people and grow Your account!'
+      }
     };
   },
   watch: {
     $route(to, from) {
       let path = to.path;
       this.getGa(path);
-    },
+    }
   },
   mounted() {
     let path = this.$route.path;
@@ -61,28 +61,28 @@ export default {
   methods: {
     parentHandle(data) {
       let query = this.$route.query;
-      query.anchor = "tab";
-      if (data.route.path !== this.$route.path && data.route.path !== "") {
+      // query.anchor = 'tab';
+      if (data.route.path !== this.$route.path && data.route.path !== '') {
         this.$router.push({ path: data.route.path, query: query });
       }
       this.meta.title = data.meta.title;
       this.meta.description = data.meta.description;
     },
     getGa(path) {
-      if (path === "/buy-instagram-likes") {
+      if (path === '/buy-instagram-likes') {
         if (this.$store.state.s2) {
-          this.$ga.event("insimp", "impression", "instantl-new");
+          this.$ga.event('insimp', 'impression', 'instantl-new');
         } else {
-          this.$ga.event("insimp", "impression", "instantl-old");
+          this.$ga.event('insimp', 'impression', 'instantl-old');
         }
-      } else if (path === "/buy-instagram-daily-likes") {
+      } else if (path === '/buy-instagram-daily-likes') {
         if (this.$store.state.s2) {
-          this.$ga.event("insimp", "impression", "dailyl-new");
+          this.$ga.event('insimp', 'impression', 'dailyl-new');
         } else {
-          this.$ga.event("insimp", "impression", "dailyl-old");
+          this.$ga.event('insimp', 'impression', 'dailyl-old');
         }
       }
-    },
-  },
+    }
+  }
 };
 </script>

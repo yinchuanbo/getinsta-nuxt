@@ -6,6 +6,7 @@ export default {
     });
   }, // iOS device touch event hack
   googleTransInit() {
+    if (process.server) return;
     window.googleTranslateElementInit = function googleTranslateElementInit() {
       new google.translate.TranslateElement(
         {
@@ -63,17 +64,18 @@ export default {
   }, // User Agent Language Env (返回受支持的语种或EN)
   getURLQuery(name) { // 废弃，不支持欧元等特殊符号
     let reg = `(^|&)${name}=([^&]*)(&|$)`;
-    let r = window.location.search.substr(1).match(reg);
+    let r = process.client ? window.location.search.substr(1).match(reg) : '';
     if (r != null) return unescape(r[2]);
     return null;
   }, // Get URL Query
   getURLQueryWithDecodeURI(name) {
     let reg = `(^|&)${name}=([^&]*)(&|$)`;
-    let r = decodeURIComponent(window.location.search).substr(1).match(reg);
+    let r = process.client ? decodeURIComponent(window.location.search).substr(1).match(reg) : '';
     if (r != null) return unescape(r[2]);
     return null;
   }, // Get URL Query
   deleteURLQuery(name) {
+    if (process.server) return;
     let local = window.location;
     let baseUrl = local.origin + local.pathname + '?';
     let query = local.search.substr(1);
@@ -131,7 +133,7 @@ export default {
   checkSupportLocalStorage(type) {
     let storage;
     try {
-      storage = window[type];
+      storage = process.client ? window[type] : '';
       let x = '__storage_test__';
       storage.setItem(x, x);
       storage.removeItem(x);

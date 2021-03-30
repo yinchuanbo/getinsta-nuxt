@@ -23,12 +23,7 @@
                 <!-- 分流 -->
                 <!-- <a @click="getAutoBuy">Buy Auto Instagram Followers</a> -->
                 <nuxt-link to="/buy-auto-instagram-followers">Buy Auto Instagram Followers</nuxt-link>
-                <nuxt-link
-                  :to="{
-                    path: '/buy-instagram-daily-likes',
-                    query: { anchor },
-                  }"
-                >
+                <nuxt-link to="/buy-instagram-daily-likes">
                   Buy Auto Instagram Likes
                 </nuxt-link>
                 <nuxt-link to="/buy-instagram-likes">Buy Instagram Likes</nuxt-link>
@@ -55,18 +50,18 @@
                @click="routerPush('/affiliate-solutions')"
             >Affiliates</a>
           </div>
-          <nuxt-link v-if="$store.state.cartLength > 0" to="/checkout" class="cart"
+          <nuxt-link v-show="$store.state.cartLength > 0" to="/checkout" class="cart"
                      :title="$t('global.header.button.cart')"
           >
             <i class="cart"></i>
           </nuxt-link>
-          <a v-if="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
+          <a v-show="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
              href="javascript:"
              @click="gaHeaderBtn"
           >
             <i class="avatar-login-btn"></i>
           </a>
-          <div v-if="loginStatus" class="header-nav_menu_user" title="User Center">
+          <div v-show="loginStatus" class="header-nav_menu_user" title="User Center">
             <nuxt-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container">
               <div class="avatar">
                 <img :src="$store.state.userAvatar" alt="avatar" />
@@ -223,7 +218,7 @@
           <!--Buy Auto Likes-->
           <nuxt-link
             v-if="!storeMenuHide"
-            :to="{ path: '/buy-instagram-daily-likes', query: { anchor } }"
+            to="/buy-instagram-daily-likes"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
@@ -316,7 +311,6 @@ export default {
   },
   data() {
     return {
-      anchor: 'tab',
       windowWidth: process.client ? document.body.clientWidth : 0,
       windowHeight: process.client ? document.body.clientHeight : 0,
       sideBarStatus: false,

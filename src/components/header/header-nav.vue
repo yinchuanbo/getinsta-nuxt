@@ -29,7 +29,7 @@
                 <!-- 分流 -->
                 <!-- <a @click="getAutoBuy">Buy Auto Instagram Followers</a> -->
                 <nuxt-link to="/buy-auto-instagram-followers">Buy Auto Instagram Followers</nuxt-link>
-                <nuxt-link :to="{path:'/buy-instagram-daily-likes',query:{anchor}}">Buy Auto Instagram Likes</nuxt-link>
+                <nuxt-link to="/buy-instagram-daily-likes">Buy Auto Instagram Likes</nuxt-link>
                 <nuxt-link to="/buy-instagram-likes">Buy Instagram Likes</nuxt-link>
               </div>
             </a>
@@ -267,7 +267,7 @@
             Buy Auto Instagram Followers
           </nuxt-link>
           <nuxt-link
-            v-if="!storeMenuHide" :to="{path:'/buy-instagram-daily-likes',query:{anchor}}"
+            v-if="!storeMenuHide" to="/buy-instagr/buy-instagram-followersam-daily-likes"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
@@ -389,7 +389,6 @@ export default {
   },
   data() {
     return {
-      anchor: 'tab',
       windowWidth: document.body.clientWidth,
       windowHeight: document.body.clientHeight,
       sideBarStatus: false,

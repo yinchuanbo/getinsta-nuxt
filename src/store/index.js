@@ -47,6 +47,7 @@ export const mutations = {
   loginChange: (state, login) => {
     state.loginStatus = login;
     // Vue.$storage.set('loginStatus', login);
+    if (process.server) return;
     localStorage.setItem('GetInsta_loginStatus', JSON.stringify({ ttl: 0, value: login }));
   },
   userName: (state, name) => {
@@ -105,6 +106,7 @@ export const mutations = {
   },
   enAdrType: (state, status) => {
     state.enAdrType = status;
+    if (process.server) return;
     localStorage.setItem('GetInsta_enAdrType', JSON.stringify({ ttl: 0, value: status }));
   },
   enAdrLink: (state, status) => {
