@@ -1061,6 +1061,7 @@ export default {
       // const openOrNot = path === '/' && this.COMMON.randomAbTest();
       const openOrNot = true;
       this.$store.commit('v2', openOrNot);
+      this.$store.commit('s2', openOrNot);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
         this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
@@ -1072,6 +1073,7 @@ export default {
       const openOrNot = path === '/';
       // V2 Switch Beacon
       this.$store.commit('v2', true);
+      this.$store.commit('s2', true);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
         this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
