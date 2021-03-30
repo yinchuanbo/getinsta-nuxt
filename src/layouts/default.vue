@@ -866,11 +866,11 @@ export default {
 
 
       // 特殊渠道判断 *********************************************************
-      if (this.COMMON.getURLQuery('source') === 'tiktok') {
-        this.$store.commit('enAdrType', 1);
-        // this.$store.commit('enAdrType', 0);
-        this.$store.commit('enAdrLinkGpReferrer', 'tiktok');
-      }
+      // if (this.COMMON.getURLQuery('source') === 'tiktok') {
+      //   this.$store.commit('enAdrType', 1);
+      //   // this.$store.commit('enAdrType', 0);
+      //   this.$store.commit('enAdrLinkGpReferrer', 'tiktok');
+      // }
       if (this.COMMON.getURLQuery('source') === 'sharechat') {
         this.$store.commit('enAdrType', 0);
         this.$store.commit('enAdrLink', this.$constant.app.download.androidShareChat);
