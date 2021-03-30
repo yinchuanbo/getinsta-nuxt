@@ -998,6 +998,7 @@ export default {
       });
     },
     requestEmailLimitList() {
+      if (this.COMMON.envTest()) return;
       this.$nuxt.$axios.get(
         apiSelf.emailLimitList
       ).then((response) => {

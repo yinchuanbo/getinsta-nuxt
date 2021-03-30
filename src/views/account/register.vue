@@ -267,7 +267,7 @@ export default {
             //   this.$router.push({ path: '/lucky-draw-test' });
             // else
             //   this.$router.push({ path: '/lucky-draw' });
-            this.$router.push({ path: '/user' })
+            this.$router.push({ path: '/user' });
 
 
             // this.$router.push({ path: '/followers-giveaway' });
@@ -307,6 +307,7 @@ export default {
       }
     },
     requestEmailLimitList() {
+      if (this.COMMON.envTest()) return;
       this.$nuxt.$axios.get(
         apiSelf.emailLimitList
       ).then((response) => {
