@@ -1,13 +1,17 @@
 <template>
-  <div class="login-register">
-    <div v-if="!pageIos" class="header-blank"></div>
+  <div class="login-register reset-top">
+    <div class="header-blank"></div>
     <div class="login-register__title">
       <!--<img v-if="!pageIos" src="../../assets/images/global/logo.svg" alt="Logo">-->
       <!--<img v-if="pageIos" src="../../assets/images/global/logo_getinshot.svg" alt="Logo">-->
       <img :src="$store.state.productLogo" alt="Logo">
-      <h1>{{ productName }}</h1>
+      <!-- <h1>{{ productName }}</h1> -->
+      <h1>Reset Password</h1>
       <p>{{ $t('account.reset.subTitle') }}</p>
     </div>
+    <transition>
+      <div class="login-register_error" v-if="dialogFailMsg" v-html="dialogFailMsg"></div>
+    </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
         <ValidationProvider v-slot="{ classes }" vid="password" name="Password" rules="required|min:4|max:18">
@@ -17,6 +21,7 @@
               :placeholder="$t('account.form.password')"
             >
           </label>
+          <p class="error-msg" v-if="errors['password']">{{ errors['password'][0] }}</p>
         </ValidationProvider>
         <ValidationProvider v-slot="{ classes }" name="Confirmed password" rules="confirmed:password">
           <label class="password" :class="classes">
@@ -25,13 +30,18 @@
               :placeholder="$t('account.form.confirmPassword')"
             >
           </label>
+          <p class="error-msg" v-if="errors['Confirmed password']">{{ errors['Confirmed password'][0] }}</p>
         </ValidationProvider>
-        <label class="msg">
+        <!-- <label class="msg">
           <i v-for="(unit, i) in errors" v-show="unit[0]" :key="i">{{ unit[0] }}<br></i>
-        </label>
+        </label> -->
         <label class="btn" @click="formSubmit(invalid, validate)">
-          <button-purple
+          <!-- <button-purple
             :text="$t('account.reset.btnResetPassword')"
+            :font-size="'size-16'" :square="true" :border-radius="6" :loading="ajaxRequesting"
+          /> -->
+          <button-purple
+            text="Update Password"
             :font-size="'size-16'" :square="true" :border-radius="6" :loading="ajaxRequesting"
           />
         </label>
@@ -127,7 +137,7 @@ export default {
       validate();
       if (this.form.field.key === null) {
         this.dialogFailMsg = this.$t('account.errorText.resetKeyError');
-        this.dialogFail = true;
+        // this.dialogFail = true;
         return;
       }
       if (!invalid && !this.ajaxRequesting) {

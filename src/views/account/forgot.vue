@@ -1,11 +1,15 @@
 <template>
-  <div class="login-register">
+  <div class="login-register fgTop">
     <div class="header-blank"></div>
     <div class="login-register__title">
       <img src="../../assets/images/global/logo.svg" alt="Logo">
       <h1>{{ $t('account.forgot.title') }}</h1>
       <p>{{ $t('account.forgot.subTitle') }}</p>
     </div>
+    <transition>
+      <div class="login-register_error" v-if="dialogFailMsg" v-html="dialogFailMsg"></div>
+      <div class="login-register_ok" v-if="editok">We have e-mailed your password reset link!</div>
+    </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
         <ValidationProvider v-slot="{ classes }" name="Email address" rules="required|email">
@@ -15,10 +19,11 @@
               :placeholder="$t('account.form.emailAddress')"
             >
           </label>
+          <p class="error-msg" v-if="errors['Email address']">{{ errors['Email address'][0] }}</p>
         </ValidationProvider>
-        <label class="msg">
+        <!-- <label class="msg">
           <i v-for="(unit, i) in errors" v-show="unit[0]" :key="i">{{ unit[0] }}<br></i>
-        </label>
+        </label> -->
         <label class="btn" @click="formSubmit(invalid, validate)">
           <button-purple
             :text="$t('global.modelBox.title.success')"
@@ -89,7 +94,8 @@ export default {
       dialogSuccess: false,
       dialogFail: false,
       dialogFailMsg: '',
-      ajaxRequesting: false
+      ajaxRequesting: false,
+      editok: false
     };
   },
   methods: {
@@ -114,13 +120,14 @@ export default {
         )
       ).then((response) => {
         if (response.data.status === 'ok') {
-          this.dialogSuccess = true;
+          // this.dialogSuccess = true;
+          this.editok = "true"
         } else {
           this.dialogFailMsg = '<samp>'
             + '<b>Error Status:</b> ' + error.status
             + '<br>' + '<b>Error Message:</b> ' + error.statusText
             + '</samp>';
-          this.dialogFail = true;
+          // this.dialogFail = true;
         }
         this.ajaxRequesting = false;
       }).catch((error) => {

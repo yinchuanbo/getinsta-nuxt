@@ -1,37 +1,89 @@
+input {
+  border-width: 1px;
+  font: normal normal 400 14px/21px BalooChettan;
+}
+label.invalid input {
+  border-width: 2px;
+}
 .login-register {
-  padding: 150px 0 80px;
+  padding: 112px 0 80px;
   text-align: center;
+  background-color: #F1F3F5;
 
   .login-register__title {
     color: #2A2A2A;
 
     img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
     }
 
     h1 {
-      margin-top: 25px;
-      font: 600 28px/34px Montserrat;
+      margin-top: 32px;
+      font: normal normal 600 32px/40px BalooChettan;
+      color: #000000;
     }
 
     p {
-      font: 400 16px/60px Montserrat;
+      font: normal normal 500 14px/21px BalooChettan;
+      color: #000000;
     }
+  }
+  .login-register_error {
+    width: 327px;
+    background: rgba(237, 44, 91, 0.08);
+    border-radius: 8px;
+    // opacity: 0.08;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ED2C5B!important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 16px;
+    margin-top: 16px;
+    font-weight: 500;
+  }
+  .login-register_ok {
+    width: 327px;
+    background: rgba(24, 201, 129, 0.08);
+    border-radius: 8px;
+    // opacity: 0.08;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 14px;
+    line-height: 21px;
+    color: #18C981!important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 16px;
+    margin-top: 16px;
+    font-weight: 500;
   }
 
   .login-register__form {
-    margin-top: 50px;
+    // margin-top: 50px;
 
     label {
       position: relative;
-      margin: 24px auto 0;
+      margin: 10px auto 0;
       display: block;
-      width: 420px;
-      height: 60px;
-
+      width: 327px;
+      height: 56px;
       input {
         padding-left: 66px;
+      }
+
+      &.invalid  {
+        input {
+          border-color: #ED2C5B;
+        }
+      }
+      &.btn {
+        margin-top: 24px;
       }
 
       &:after {
@@ -59,6 +111,28 @@
 
       &.password:after {
         background-image: url("~@/assets/images/global/login-register/login-register__icon_password.svg");
+      }
+
+      &.password {
+        .showPassword {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 13px;
+          width: 40px;
+          height: 40px;
+          z-index: 5;
+          background: url("~@/assets/images/global/login-register/pwd_hide.svg") no-repeat;
+          background-size: 16px 11px;
+          background-position: center;
+          cursor: pointer;
+          &.flagfalse {
+            background: url("~@/assets/images/global/login-register/pwd_show.svg") no-repeat;
+            background-size: 16px 16px;
+            background-position: center;
+          }
+        }
       }
 
       &.msg {
@@ -91,66 +165,28 @@
         height: auto;
       }
     }
+    .error-msg {
+      font: normal normal 500 14px/14px BalooChettan!important;
+      color: #ED2C5B;
+      text-align: left;
+      width: 327px;
+      margin: 0 auto;
+      margin-top: 3px;
+    }
   }
 }
 
 @media (max-width: 768px) {
   .login-register {
-    padding: (150px/2) 0;
-
-    .login-register__title {
-
-      img {
-        width: (100px/2);
-        height: (100px/2);
-      }
-
-      h1 {
-        margin-top: 6px;
-        font: 600 20px Montserrat;
-      }
-
-      p {
-        margin-top: 10px;
-        padding: 0 12vw;
-        font: 400 12px Montserrat;
-      }
+    padding-top: 56px!important;
+  }
+  .login-register__title {
+    p {
+      padding: 0 40px;
+      box-sizing: border-box;
     }
-
-    .login-register__form {
-      margin-top: 25px;
-
-      label {
-        margin: 12px auto 0;
-        width: 80vw;
-        height: 50px;
-
-        input {
-          padding-left: 33px;
-        }
-
-        &:after {
-          left: 12px;
-          width: 12px;
-          height: 100%;
-        }
-
-        &.msg {
-          font: 500 13px/18px Montserrat;
-        }
-
-        a {
-          font: 400 13px Montserrat;
-        }
-
-        &.links {
-          margin-top: 25px;
-        }
-
-        &.links-row {
-          margin-top: 25px;
-        }
-      }
-    }
+  }
+  .fgTop {
+    padding-top: 0!important;
   }
 }
