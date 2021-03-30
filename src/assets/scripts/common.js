@@ -60,7 +60,7 @@ export default {
     if (browserLang.indexOf('pt') > -1) locale = 'pt';
 
     return supportedLocale.indexOf(locale) > -1 ? locale : 'en';
-  }, // User Agent Language Env
+  }, // User Agent Language Env (返回受支持的语种或EN)
   getURLQuery(name) { // 废弃，不支持欧元等特殊符号
     let reg = `(^|&)${name}=([^&]*)(&|$)`;
     let r = window.location.search.substr(1).match(reg);
@@ -232,6 +232,7 @@ export default {
   envTest() {
     if (process.client)
       return window.location.href.split('.')[0].split('//')[1] === 'test'
+        || window.location.hostname === 'www2test'
         || window.location.hostname === 'localhost'
         || window.location.hostname === '192.168.1.41'
         || window.location.hostname === '192.168.1.42';
