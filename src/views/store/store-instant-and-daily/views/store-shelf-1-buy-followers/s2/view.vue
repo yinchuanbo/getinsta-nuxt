@@ -537,7 +537,7 @@ import apiTask from '@/api/api.task';
 
 import ButtonPurple from '@/components/button/button-purple';
 import ButtonYellowIcon from '@/components/button/button-yellow-icon';
-// import ListEmpty from '@/views/global/list/list-empty';
+// import ListEmpty from '@/components/list/list-empty';
 
 export default {
   name: 'StoreShelf1BuyFollowers',

@@ -1,93 +1,88 @@
 <template>
-  <div class="store-shelf">
-    <store-daily-likes-banner />
-    <store-daily-likes-tab @emitToParent="parentHandle" />
-    <store-daily-likes-why />
+  <div>
+    <div v-if="!$store.state.s2" class="store-shelf">
+      <StoreDailyLikesBanner />
+      <StoreDailyLikesTab @emitToParent="parentHandle" />
+      <StoreDailyLikesWhy />
+    </div>
+    <div v-if="$store.state.s2" class="store-shelf">
+      <StoreDailyLikesBannerS2 />
+      <StoreDailyLikesTabS2 @emitToParent="parentHandle" />
+      <StoreLikesWhy />
+      <StoreLikesStep />
+      <StoreLikesFaqs />
+    </div>
   </div>
 </template>
 
 <script>
-import StoreDailyLikesWhy from '@/views/store/store-instant-and-daily/views/store-daily-likes-why/view';
-import StoreDailyLikesTab from '@/views/store/store-instant-and-daily/views/store-daily-likes-tab/view';
-import StoreDailyLikesBanner from '@/views/store/store-instant-and-daily/views/store-daily-likes-banner/view';
+import StoreDailyLikesWhy from "@/views/store/store-instant-and-daily/views/store-daily-likes-why/view";
+import StoreDailyLikesTab from "@/views/store/store-instant-and-daily/views/store-daily-likes-tab/view";
+import StoreDailyLikesBanner from "@/views/store/store-instant-and-daily/views/store-daily-likes-banner/view";
+// s2
+import StoreDailyLikesBannerS2 from "@/views/store/store-instant-and-daily/views/store-daily-likes-banner/s2/view";
+import StoreDailyLikesTabS2 from "@/views/store/store-instant-and-daily/views/store-daily-likes-tab/s2/view";
+import StoreLikesWhy from "@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/why.vue";
+import StoreLikesStep from "@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/step.vue";
+import StoreLikesFaqs from "@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/faqs.vue";
 
 export default {
-  name: 'StoreShelf',
+  name: "StoreShelf",
   components: {
     StoreDailyLikesBanner,
     StoreDailyLikesTab,
-    StoreDailyLikesWhy
-  },
-  metaInfo() {
-    return {
-      title: 'Buy Instagram auto likes [Real, Safe, Instant] - GetInsta',
-      meta: [
-        {
-          name: 'description',
-          content: 'Buy Instagram daily likes from GetInsta at a low cost. Instant delivery, real likes, and 24/7 customer support. Boost your Instagram now.'
-        }
-      ],
-      link: [
-        {
-          rel: 'canonical',
-          href: `${window.location.origin}${this.$route.path}`
-        },
-        {
-          rel: 'alternate',
-          hreflang: 'en',
-          href: `https://www.easygetinsta.com${this.$route.path}`
-        },
-        {
-          rel: 'alternate',
-          hreflang: 'fr',
-          href: `https://fr.easygetinsta.com${this.$route.path}`
-        },
-        {
-          rel: 'alternate',
-          hreflang: 'de',
-          href: `https://de.easygetinsta.com${this.$route.path}`
-        },
-        {
-          rel: 'alternate',
-          hreflang: 'es',
-          href: `https://es.easygetinsta.com${this.$route.path}`
-        },
-        {
-          rel: 'alternate',
-          hreflang: 'ar',
-          href: `https://ar.easygetinsta.com${this.$route.path}`
-        },
-        {
-          rel: 'alternate',
-          hreflang: 'it',
-          href: `https://it.easygetinsta.com${this.$route.path}`
-        },
-        {
-          rel: 'alternate',
-          hreflang: 'pt',
-          href: `https://pt.easygetinsta.com${this.$route.path}`
-        }
-      ]
-    };
+    StoreDailyLikesWhy,
+    // s2
+    StoreDailyLikesBannerS2,
+    StoreDailyLikesTabS2,
+    StoreLikesWhy,
+    StoreLikesStep,
+    StoreLikesFaqs,
   },
   data() {
     return {
       meta: {
-        title: 'GetInsta - Store - Buy Followers',
-        description: 'Buy Instagram followers from the best and trusted supplier. Get real followers for your Instagram account, reach more people and grow Your account!'
-      }
+        title: "GetInsta - Store - Buy Followers",
+        description:
+          "Buy Instagram followers from the best and trusted supplier. Get real followers for your Instagram account, reach more people and grow Your account!",
+      },
     };
+  },
+  watch: {
+    $route(to, from) {
+      let path = to.path;
+      this.getGa(path);
+    },
+  },
+  mounted() {
+    let path = this.$route.path;
+    this.getGa(path);
   },
   methods: {
     parentHandle(data) {
       let query = this.$route.query;
-      query.anchor = 'tab';
-      if (data.route.path !== this.$route.path && data.route.path !== '') {
+      query.anchor = "tab";
+      if (data.route.path !== this.$route.path && data.route.path !== "") {
         this.$router.push({ path: data.route.path, query: query });
       }
       this.meta.title = data.meta.title;
       this.meta.description = data.meta.description;
-    }
-  }
+    },
+    getGa(path) {
+      if (path === "/buy-instagram-likes") {
+        if (this.$store.state.s2) {
+          this.$ga.event("insimp", "impression", "instantl-new");
+        } else {
+          this.$ga.event("insimp", "impression", "instantl-old");
+        }
+      } else if (path === "/buy-instagram-daily-likes") {
+        if (this.$store.state.s2) {
+          this.$ga.event("insimp", "impression", "dailyl-new");
+        } else {
+          this.$ga.event("insimp", "impression", "dailyl-old");
+        }
+      }
+    },
+  },
 };
 </script>
