@@ -38,7 +38,7 @@
         <div class="add-ins">
           <h2>{{ $t('userCenter.accountZone.noAccountTitle') }}</h2>
           <div class="add-ins__add-btn" @click="openInsSearchDialog">
-            <img src="img/user-center__btn_add.svg" alt="add btn">
+            <img src="./img/user-center__btn_add.svg" alt="add btn">
           </div>
         </div>
       </div>
@@ -2569,6 +2569,7 @@ export default {
     height: 300px;
     background-color: #F8F8F8;
     transition: all 0.3s;
+    font-size: 0;
 
     .wrapper {
       padding: 0 24px;
