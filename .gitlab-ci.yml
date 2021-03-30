@@ -1,9 +1,6 @@
 Build Test:
   stage: deploy
   when: manual
-  only:
-    refs:
-      - master
   script:
     - tar -Jxf node-linux.tar.xz
     - export PATH=$PATH:$(pwd)/node-v14.16.0-linux-x64/bin
@@ -17,6 +14,7 @@ Deploy to Testing:
   only:
     refs:
       - master
+      - master-test
   script:
     - rm node-linux.tar.xz
     - mv package-prod-test.json package.json
@@ -30,6 +28,7 @@ Deploy to Production:
   only:
     refs:
       - master
+      - master-test
   script:
     - rm node-linux.tar.xz
     - /usr/local/bin/eb-deploy.sh "Ins Follower" www-easygetinsta-com2 liSsLweGBAmc487bBDoJvwiEmrMd44fG
