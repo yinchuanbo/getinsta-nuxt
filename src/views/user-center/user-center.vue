@@ -56,7 +56,7 @@
               <p :title="unit.ins_account || 'Unknown'">{{ unit.ins_account || 'Unknown' }}</p>
             </div>
             <div v-if="accountList.length !== 5" class="unit unit__add" @click="openInsSearchDialog">
-              <img class="add-icon" src="img/user-center__btn_add.svg" alt="add icon">
+              <img class="add-icon" src="./img/user-center__btn_add.svg" alt="add icon">
               <p>{{ $t('userCenter.accountZone.btnAdd') }}</p>
             </div>
           </div>
@@ -110,7 +110,7 @@
                     ></i>
                   </div>
                   <div v-if="accountList.length !== 5" class="unit unit__add" @click="openInsSearchDialog">
-                    <img src="img/user-center__btn_add.svg" alt="">
+                    <img src="./img/user-center__btn_add.svg" alt="">
                     <p>{{ $t('userCenter.accountZone.btnAdd') }}</p>
                   </div>
                 </div>
