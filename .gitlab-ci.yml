@@ -13,7 +13,6 @@ Deploy to Testing:
   when: manual
   only:
     refs:
-      - master
       - master-test
   script:
     - rm node-linux.tar.xz
@@ -28,7 +27,6 @@ Deploy to Production:
   only:
     refs:
       - master
-      - master-test
   script:
     - rm node-linux.tar.xz
     - /usr/local/bin/eb-deploy.sh "Ins Follower" www-easygetinsta-com2 liSsLweGBAmc487bBDoJvwiEmrMd44fG
