@@ -49,12 +49,15 @@ export default {
   supportedLocale() {
     return ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
   }, // 目前项目支持的语言
+  isSupportedLocale(locale) {
+    return this.supportedLocale().indexOf(locale) > -1;
+  }, // 是否在目前项目支持的语言列表中
   userAgentLocale() {
-    const browserLang = process.client ? navigator.language.toLowerCase() : '';
+    const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
     let locale = '';
     const supportedLocale = this.supportedLocale();
     for (let i = 0; i < supportedLocale.length; i++) {
-      if (supportedLocale[i].indexOf(browserLang) > -1) {
+      if (supportedLocale[i] === browserLang) {
         locale = supportedLocale[i];
         break;
       } else {
@@ -234,7 +237,6 @@ export default {
   },
   envTest() {
     if (process.client) {
-      console.log('this.getSubDomain()', this.getSubDomain());
       return this.getSubDomain() === 'test'
         || this.getSubDomain() === 'www2test'
         || window.location.hostname === 'localhost'

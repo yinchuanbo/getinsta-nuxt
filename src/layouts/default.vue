@@ -428,7 +428,7 @@ export default {
       // else
       //   this.$i18n.locale = userAgentLocale;
 
-      if (subDomain !== 'en') {
+      if (subDomain !== 'en' && this.COMMON.isSupportedLocale(subDomain) && !this.COMMON.envTest()) {
         this.$i18n.locale = subDomain;
       } else {
         this.$i18n.locale = userAgentLocale;
