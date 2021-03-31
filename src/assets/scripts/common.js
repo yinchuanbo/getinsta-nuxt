@@ -1,4 +1,5 @@
 import Crypto from 'crypto-js';
+import el from 'element-ui/src/locale/lang/el';
 
 export default {
   iosTouchHack() {
@@ -46,22 +47,23 @@ export default {
       document.getElementsByTagName('body')[0].appendChild(script);
     });
   }, // Load third party JS
+  supportedLocale() {
+    return ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+  }, // 目前项目支持的语言
   userAgentLocale() {
     const browserLang = process.client ? navigator.language.toLowerCase() : '';
-    let locale = browserLang;
-
-    const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
-
-    if (browserLang.indexOf('en') > -1) locale = 'en';
-    if (browserLang.indexOf('fr') > -1) locale = 'fr';
-    if (browserLang.indexOf('de') > -1) locale = 'de';
-    if (browserLang.indexOf('es') > -1) locale = 'es';
-    if (browserLang.indexOf('ar') > -1) locale = 'ar';
-    if (browserLang.indexOf('it') > -1) locale = 'it';
-    if (browserLang.indexOf('pt') > -1) locale = 'pt';
-
-    return supportedLocale.indexOf(locale) > -1 ? locale : 'en';
-  }, // User Agent Language Env (返回受支持的语种或EN)
+    let locale = '';
+    const supportedLocale = this.supportedLocale();
+    for (let i = 0; i < supportedLocale.length; i++) {
+      if (supportedLocale[i].indexOf(browserLang) > -1) {
+        locale = supportedLocale[i];
+        break;
+      } else {
+        locale = 'en';
+      }
+    }
+    return locale;
+  }, // User Agent Language Env (根据'浏览器语言环境'和'supportedLocale'输出最终的语言判定)
   getURLQuery(name) { // 废弃，不支持欧元等特殊符号
     let reg = `(^|&)${name}=([^&]*)(&|$)`;
     let r = process.client ? window.location.search.substr(1).match(reg) : '';
@@ -232,13 +234,14 @@ export default {
     document.getElementById(parentID).appendChild(iframe);
   },
   envTest() {
-    if (process.client)
-      return window.location.href.split('.')[0].split('//')[1] === 'test'
-        || window.location.hostname === 'www2test'
+    if (process.client) {
+      console.log('this.getSubDomain()', this.getSubDomain());
+      return this.getSubDomain() === 'test'
+        || this.getSubDomain() === 'www2test'
         || window.location.hostname === 'localhost'
         || window.location.hostname === '192.168.1.41'
         || window.location.hostname === '192.168.1.42';
-    else
+    } else
       return false;
   },
   numberAbbreviations(num) {

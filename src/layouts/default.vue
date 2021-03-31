@@ -423,10 +423,16 @@ export default {
       // this.$storage.set('minorLangLocaleTest', this.$i18n.locale);
 
       // *************** i18n Locale 初始化 ******************
-      if (subDomain !== 'en' && subDomain !== 'www' && !this.COMMON.envTest())
+      // if (subDomain !== 'en' && subDomain !== 'www' && !this.COMMON.envTest())
+      //   this.$i18n.locale = subDomain;
+      // else
+      //   this.$i18n.locale = userAgentLocale;
+
+      if (subDomain !== 'en') {
         this.$i18n.locale = subDomain;
-      else
+      } else {
         this.$i18n.locale = userAgentLocale;
+      }
 
 
       if (this.$i18n.locale !== 'en') {
