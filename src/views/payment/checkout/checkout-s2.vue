@@ -1744,7 +1744,7 @@ export default {
 
       // Online GeoIP (区域信息来自GeoIP接口)
       this.formLoading = true;
-      this.axios
+      this.$nuxt.$axios
         .post(
           // apiPayment.getCheckoutMethod
           apiV2.getCheckoutMethodV2,
@@ -2118,7 +2118,7 @@ export default {
         }
       }
 
-      this.axios
+      this.$nuxt.$axios
         .post(API, this.COMMON.paramSign(params))
         .then((response) => {
           if (response.data.status === 'ok') {
@@ -2374,7 +2374,7 @@ export default {
         }
       }
 
-      this.axios
+      this.$nuxt.$axios
         .post(api, this.COMMON.paramSign(param))
         .then((response) => {
           if (response.data.status === 'ok') {
@@ -2617,7 +2617,7 @@ export default {
       }
 
       this.cartLoading = true;
-      this.axios
+      this.$nuxt.$axios
         .post(
           API,
           this.COMMON.paramSign({
@@ -2779,7 +2779,7 @@ export default {
         api = apiOther.webCashEnable;
       }
 
-      this.axios
+      this.$nuxt.$axios
         .post(api)
         .then((response) => {
           if (response.data.status === 'ok') {

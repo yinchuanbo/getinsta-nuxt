@@ -46,7 +46,7 @@
             <a id="nav-menu-04" class="header-nav__menu_links"
                @click="routerPush('/blogs')"
             >{{ $t('global.header.menu.blog') }}</a>
-            <a v-if="$i18n.locale === 'en'" class="header-nav__menu_links"
+            <a class="header-nav__menu_links"
                @click="routerPush('/affiliate-solutions')"
             >Affiliates</a>
           </div>
@@ -128,36 +128,124 @@
       </div>
     </div>
 
-    <div v-if="routerPayment" class="header-nav__wrapper header-nav__logged">
+
+    <!--    s2-->
+    <div v-if="routerPayment && $store.state.s2 && checkPath" class="header-nav__wrapper header-nav__logged s2 pc">
+      <div class="header-nav__logged_logo">
+        <div class="header-nav__logged_logo_payment">
+          <img src="./img/title-icon-1.svg" width="18" height="21" alt="" />
+          Payment Security Guarantee
+        </div>
+        <div class="header-nav__logged_logo_brand">
+          <router-link to="/">GetInsta</router-link>
+        </div>
+        <div class="header-nav__logged_logo_protect">
+          <img src="./img/title-icon-2.svg" width="21" height="24" alt="" />
+          Drop Protection
+        </div>
+      </div>
+      <div v-if="!routerIOT" class="header-nav__logged_user">
+        <div
+          v-if="$route.path !== '/checkout'"
+          class="btn-container"
+          :class="{
+            'white-0':
+              paymentHeaderBtnText === $t('global.header.button.BackHome'),
+            'white-1': paymentHeaderBtnText === 'OK',
+          }"
+          @click="paymentHeaderBtnJump"
+        >
+          <button-white
+            :text="paymentHeaderBtnText"
+            :white="false"
+            :font-size="'header-small'"
+          />
+        </div>
+      </div>
+    </div>
+    <div v-if="routerPayment && $store.state.s2 && checkPath" class="header-nav__wrapper header-nav__logged s2 mobile">
+      <div class="header-nav__logged_logo">
+        <!-- <span>{{ paymentTitle }}</span> -->
+        <div class="header-nav__logged_logo_brand">
+          <router-link to="/">GetInsta</router-link>
+        </div>
+        <div class="header-nav__logged_logo_img-text">
+          <div class="header-nav__logged_logo_img"></div>
+          <div class="header-nav__logged_logo_text">
+            <p>Secure Payment</p>
+            <p>Drop Protection</p>
+          </div>
+        </div>
+      </div>
+      <div v-if="!routerIOT" class="header-nav__logged_user">
+        <div
+          v-if="$route.path !== '/checkout'"
+          class="btn-container"
+          :class="{
+            'white-0':
+              paymentHeaderBtnText === $t('global.header.button.BackHome'),
+            'white-1': paymentHeaderBtnText === 'OK',
+          }"
+          @click="paymentHeaderBtnJump"
+        >
+          <button-white
+            :text="paymentHeaderBtnText"
+            :white="false"
+            :font-size="'header-small'"
+          />
+        </div>
+      </div>
+      <!-- <div v-if="!routerIOT" class="header-nav__btn">
+        <i
+          :class="{
+            back:
+              this.$route.path === '/checkout' ||
+              this.$route.path === '/order-fail',
+            home:
+              this.$route.path === '/order-detail' ||
+              this.$route.path === '/thank-you',
+          }"
+          @click="goBack"
+        ></i>
+      </div> -->
+    </div>
+    <div v-if="routerPayment && (!checkPath || !$store.state.s2)" class="header-nav__wrapper header-nav__logged">
       <div class="header-nav__logged_logo">
         <span>{{ paymentTitle }}</span>
       </div>
       <div v-if="!routerIOT" class="header-nav__logged_user">
-        <div v-if="$route.path !== '/checkout'" class="btn-container"
-             :class="{
-               'white-0':
-                 paymentHeaderBtnText === $t('global.header.button.BackHome'),
-               'white-1': paymentHeaderBtnText === 'OK',
-             }"
-             @click="paymentHeaderBtnJump"
+        <div
+          v-if="$route.path !== '/checkout'"
+          class="btn-container"
+          :class="{
+            'white-0':
+              paymentHeaderBtnText === $t('global.header.button.BackHome'),
+            'white-1': paymentHeaderBtnText === 'OK',
+          }"
+          @click="paymentHeaderBtnJump"
         >
-          <button-white :text="paymentHeaderBtnText" :white="false" :font-size="'header-small'" />
+          <button-white
+            :text="paymentHeaderBtnText"
+            :white="false"
+            :font-size="'header-small'"
+          />
         </div>
       </div>
       <div v-if="!routerIOT" class="header-nav__btn">
         <i
           :class="{
             back:
-              $nuxt.$route.path === '/checkout' ||
-              $nuxt.$route.path === '/order-fail',
+              this.$route.path === '/checkout' ||
+              this.$route.path === '/order-fail',
             home:
-              $nuxt.$route.path === '/order-detail' ||
-              $nuxt.$route.path === '/thank-you',
+              this.$route.path === '/order-detail' ||
+              this.$route.path === '/thank-you',
           }"
           @click="goBack"
         ></i>
       </div>
     </div>
+
 
     <!--header-sidebar-mask-->
     <transition name="fade-skeleton">
@@ -326,7 +414,9 @@ export default {
       routerPayment: false,
       routerClient: false,
       storeMenuHide: false,
-      routerIOT: false
+      routerIOT: false,
+
+      checkPath: false
     };
   },
   computed: {
@@ -377,6 +467,8 @@ export default {
   },
   watch: {
     $route(to) {
+      this.checkPath = to.path === '/checkout';
+
       this.routeUserCenter =
         to.path === '/user' ||
         to.path === '/user-get-followers' ||
@@ -775,7 +867,6 @@ export default {
       color: #000000;
       transition: all 0.3s;
       //@include text-ellipsis;
-      cursor: pointer;
 
       &:hover {
         background-color: #f1f4f6;
@@ -903,12 +994,11 @@ export default {
           }
         }
       }
-
     }
 
     .header-nav__btn-container {
       width: 100px;
-      //height: 40px;
+      height: 40px;
 
       &.pt {
         width: 162px;
@@ -1282,6 +1372,50 @@ export default {
   }
 }
 
+@media (min-width: 769px) {
+  .s2.pc {
+    .header-nav__logged_logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 972px;
+      margin: 0 auto;
+
+      .header-nav__logged_logo_payment {
+        font: normal normal 400 16px/30px BalooChettan;
+        color: #3E3E3E;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+          margin-right: 10px
+        }
+      }
+
+      .header-nav__logged_logo_protect {
+        font: normal normal 400 16px/30px BalooChettan;
+        color: #3E3E3E;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+          margin-right: 10px
+        }
+      }
+
+      .header-nav__logged_logo_brand {
+        a {
+          font: normal normal bold 28px/41px BalooChettan;
+          color: #000000;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .header-nav__navigator {
     height: 64px;
@@ -1449,6 +1583,49 @@ export default {
         a.cart {
           margin-left: 0;
           margin-right: 16px;
+        }
+      }
+
+
+    }
+
+    .s2 {
+      .header-nav__logged_logo {
+        display: flex !important;
+        justify-content: space-between !important;
+        padding: 0 24px;
+        box-sizing: border-box;
+
+        .header-nav__logged_logo_brand {
+          a {
+            font: normal normal 600 20px/64px BalooChettan;
+            letter-spacing: 0px;
+            color: #000000;
+          }
+        }
+
+        .header-nav__logged_logo_img-text {
+          display: flex !important;
+          justify-content: space-between !important;
+          align-items: center;
+
+          .header-nav__logged_logo_img {
+            width: 31px;
+            height: 31px;
+            // border: 1px solid #707070;
+            border-radius: 100%;
+            margin-right: 5px;
+            background: url("./img/logo.svg") no-repeat;
+            background-size: cover;
+
+          }
+
+          .header-nav__logged_logo_text {
+            p {
+              font: normal normal 500 12px/16px BalooChettan !important;
+              color: #000000;
+            }
+          }
         }
       }
     }

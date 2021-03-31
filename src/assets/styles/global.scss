@@ -1422,7 +1422,7 @@ input[type="number"].no-spin-btn {
           top: -5px;
           width: 40px;
           height: 59px;
-          background-image: url("~@/assets/images/global/package/package__free.svg");
+          background-image: url("~@/assets/images/package/package__free.svg");
         }
 
         span {
@@ -1438,7 +1438,7 @@ input[type="number"].no-spin-btn {
           top: -5px;
           width: 40px;
           height: 59px;
-          background-image: url("~@/assets/images/global/package/package__free_valentine.svg");
+          background-image: url("~@/assets/images/package/package__free_valentine.svg");
         }
 
         span {
@@ -1455,7 +1455,7 @@ input[type="number"].no-spin-btn {
           top: -5px;
           width: 57px;
           height: 55px;
-          background-image: url("~@/assets/images/global/package/package__free_spring.svg");
+          background-image: url("~@/assets/images/package/package__free_spring.svg");
         }
 
         span {
@@ -1467,7 +1467,7 @@ input[type="number"].no-spin-btn {
       &:after {
         width: 52px;
         height: 52px;
-        background-image: url("~@/assets/images/global/package/checked__spring.svg");
+        background-image: url("~@/assets/images/package/checked__spring.svg");
       }
     }
 
@@ -1547,7 +1547,7 @@ input[type="number"].no-spin-btn {
             display: block;
             width: 134px;
             height: 87px;
-            background-image: url("~@/assets/images/global/package/hot-tag_best-seller_valentine.svg");
+            background-image: url("~@/assets/images/package/hot-tag_best-seller_valentine.svg");
           }
         }
 
@@ -1570,7 +1570,7 @@ input[type="number"].no-spin-btn {
             display: block;
             width: 127px;
             height: 87px;
-            background-image: url("~@/assets/images/global/package/hot-tag_best-seller_spring.svg");
+            background-image: url("~@/assets/images/package/hot-tag_best-seller_spring.svg");
           }
         }
 
@@ -1604,24 +1604,24 @@ input[type="number"].no-spin-btn {
     &:after {
       width: 36px;
       height: 36px;
-      background-image: url("~@/assets/images/global/package/checked.svg");
+      background-image: url("~@/assets/images/package/checked.svg");
     }
 
     &:before {
       width: 70px;
       height: 70px;
-      background-image: url("~@/assets/images/global/package/user-center__icon_hot.svg");
+      background-image: url("~@/assets/images/package/user-center__icon_hot.svg");
     }
 
     &:lang(fr) {
       &:before {
-        background-image: url("~@/assets/images/global/package/user-center__icon_hot-fr.svg");
+        background-image: url("~@/assets/images/package/user-center__icon_hot-fr.svg");
       }
     }
 
     &:lang(de) {
       &:before {
-        background-image: url("~@/assets/images/global/package/user-center__icon_hot-de.svg");
+        background-image: url("~@/assets/images/package/user-center__icon_hot-de.svg");
       }
     }
 
@@ -1636,7 +1636,7 @@ input[type="number"].no-spin-btn {
       i.num-i {
         width: 41px;
         height: 32px;
-        background-image: url("~@/assets/images/global/package/package__add_person.svg");
+        background-image: url("~@/assets/images/package/package__add_person.svg");
       }
     }
 
@@ -1644,7 +1644,7 @@ input[type="number"].no-spin-btn {
       i.num-i {
         width: 32px;
         height: 32px;
-        background-image: url("~@/assets/images/global/package/package__favorite.svg");
+        background-image: url("~@/assets/images/package/package__favorite.svg");
       }
     }
 
@@ -1672,7 +1672,7 @@ input[type="number"].no-spin-btn {
       i.cross {
         width: 13px;
         height: 13px;
-        background: url("~@/assets/images/global/package/package__x.svg") no-repeat center;
+        background: url("~@/assets/images/package/package__x.svg") no-repeat center;
         background-size: contain;
       }
 
@@ -1684,7 +1684,7 @@ input[type="number"].no-spin-btn {
         display: none;
         width: 138px;
         height: 45px;
-        background: url("~@/assets/images/global/package/hot-tag__best-seller.svg") no-repeat center;
+        background: url("~@/assets/images/package/hot-tag__best-seller.svg") no-repeat center;
         background-size: contain;
       }
     }
@@ -1692,7 +1692,7 @@ input[type="number"].no-spin-btn {
     .discount {
       width: 60px;
       height: 70px;
-      background: url("~@/assets/images/global/package/hot-tag.svg") no-repeat center;
+      background: url("~@/assets/images/package/hot-tag.svg") no-repeat center;
       background-size: contain;
       position: absolute;
       right: -1px;
@@ -1743,7 +1743,7 @@ input[type="number"].no-spin-btn {
         display: inline-block;
         width: 66px;
         height: 66px;
-        background: url("~@/assets/images/global/package/package__free.svg") no-repeat center;
+        background: url("~@/assets/images/package/package__free.svg") no-repeat center;
         background-size: contain;
         vertical-align: middle;
       }
@@ -1839,19 +1839,19 @@ input[type="number"].no-spin-btn {
 
     &.daily {
       &:before {
-        background-image: url("~@/assets/images/global/package/package__add_person.svg");
+        background-image: url("~@/assets/images/package/package__add_person.svg");
       }
     }
 
     &.likeDaily {
       &:before {
-        background-image: url("~@/assets/images/global/package/package__favorite.svg");
+        background-image: url("~@/assets/images/package/package__favorite.svg");
       }
     }
 
     &.days {
       &:before {
-        background-image: url("~@/assets/images/global/package/package__clock.svg");
+        background-image: url("~@/assets/images/package/package__clock.svg");
       }
     }
   }
@@ -1910,7 +1910,7 @@ input[type="number"].no-spin-btn {
       &.selected {
         .package-main {
           &:after {
-            background-image: url("~@/assets/images/global/package/package__checked.svg");
+            background-image: url("~@/assets/images/package/package__checked.svg");
           }
         }
       }
@@ -1994,14 +1994,14 @@ input[type="number"].no-spin-btn {
           width: 72px;
           height: 72px;
           opacity: 0;
-          background-image: url("~@/assets/images/global/package/package__hot.svg");
+          background-image: url("~@/assets/images/package/package__hot.svg");
         }
 
         &:after {
           right: 0;
           width: 40px;
           height: 40px;
-          background-image: url("~@/assets/images/global/package/package__check-unckecked.svg");
+          background-image: url("~@/assets/images/package/package__check-unckecked.svg");
           transition-delay: 0.3s;
         }
       }

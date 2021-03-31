@@ -3,16 +3,8 @@
     <!--<nuxt-link v-show="is" to="/followers-giveaway" class="right_i" :class="{'ac':ac}">-->
     <i class="hide pc" @click.stop="is = false"></i>
     <i class="mb min_i" @click.stop="is = false"></i>
-    <img
-      class="pc"
-      src="@/assets/images/seo-pages/seo-7/right_pc.svg"
-      alt=""
-    />
-    <img
-      class="mb"
-      src="@/assets/images/seo-pages/seo-7/right_m.svg"
-      alt=""
-    />
+    <img class="pc" src="../../img/right_pc.svg" alt="" />
+    <img class="mb" src="../../img/right_m.svg" alt="" />
     <!--</nuxt-link>-->
   </div>
 </template>

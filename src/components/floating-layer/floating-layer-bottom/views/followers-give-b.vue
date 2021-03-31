@@ -6,12 +6,12 @@
       <span class="mb">Followers Giveaway! </span>
       <img
         class="pc"
-        src="@/assets/images/seo-pages/seo-7/bottom_i.svg"
+        src="../../img/bottom_i.svg"
         alt=""
       />
       <img
         class="mb"
-        src="@/assets/images/seo-pages/seo-7/bottom_i_m.svg"
+        src="../../img/bottom_i_m.svg"
         alt=""
       />
       <i class="hide pc" @click.stop="is = false"></i>
@@ -46,7 +46,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url("@/assets/images/seo-pages/seo-8/bg-1.svg") no-repeat center;
+  background: url("../../img/bg-1.svg") no-repeat center;
   background-size: cover;
   height: 93px;
   z-index: 99;
@@ -84,7 +84,7 @@ export default {
     bottom: env(safe-area-inset-bottom);
     bottom: calc(56px + env(safe-area-inset-bottom));
     height: 47px;
-    background: url("@/assets/images/seo-pages/seo-8/bg-1_m.svg");
+    background: url("../../img/bg-1_m.svg");
     background-size: contain;
 
     .box {
