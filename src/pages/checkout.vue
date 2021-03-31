@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import instance from '@/views/payment/checkout.vue';
+import instance from '@/views/payment/checkout/checkout-container.vue';
 
 export default {
   components: { instance },
@@ -14,9 +14,9 @@ export default {
     };
 
     if (route.path === '/checkout-2') {
-      data.meta.title = `${store.state.productName}${app.i18n.t('checkout.meta.title-1')}`;
+      data.meta.title = `${store.state.productName} ${app.i18n.t('checkout.meta.title-1')}`;
     } else {
-      data.meta.title = `${store.state.productName}${app.i18n.t('checkout.meta.title-0')}`;
+      data.meta.title = `${store.state.productName} ${app.i18n.t('checkout.meta.title-0')}`;
     }
 
     return data;

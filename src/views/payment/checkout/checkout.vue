@@ -416,7 +416,7 @@
                 </ValidationProvider>
               </div>
               <div v-show="formLoading" class="checkout__main_form loading">
-                <img src="../../assets/images/global/loading-puff-black.svg" alt="loading">
+                <img src="../../../assets/images/global/loading-puff-black.svg" alt="loading">
               </div>
             </div>
           </div>
@@ -437,7 +437,7 @@
                              alt="Task avatar"
                         />
                         <img v-if="unit['is_coin'] === 1"
-                             src="../../assets/images/global/icon_coins.svg"
+                             src="../../../assets/images/global/icon_coins.svg"
                              alt="Coin icon"
                         />
 
