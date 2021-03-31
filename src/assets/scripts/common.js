@@ -52,6 +52,9 @@ export default {
   isSupportedLocale(locale) {
     return this.supportedLocale().indexOf(locale) > -1;
   }, // 是否在目前项目支持的语言列表中
+  isSupportedMinorLocale(locale) {
+    return this.supportedLocale().indexOf(locale) > -1 && locale !== 'en';
+  }, // 是否在目前项目支持的语言列表中
   userAgentLocale() {
     const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
     let locale = '';
