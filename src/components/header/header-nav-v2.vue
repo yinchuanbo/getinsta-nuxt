@@ -199,11 +199,11 @@
         <i
           :class="{
             back:
-              this.$route.path === '/checkout' ||
-              this.$route.path === '/order-fail',
+              $nuxt.$route.path === '/checkout' ||
+              $nuxt.$route.path === '/order-fail',
             home:
-              this.$route.path === '/order-detail' ||
-              this.$route.path === '/thank-you',
+              $nuxt.$route.path === '/order-detail' ||
+              $nuxt.$route.path === '/thank-you',
           }"
           @click="goBack"
         ></i>
@@ -235,11 +235,11 @@
         <i
           :class="{
             back:
-              this.$route.path === '/checkout' ||
-              this.$route.path === '/order-fail',
+              $nuxt.$route.path === '/checkout' ||
+              $nuxt.$route.path === '/order-fail',
             home:
-              this.$route.path === '/order-detail' ||
-              this.$route.path === '/thank-you',
+              $nuxt.$route.path === '/order-detail' ||
+              $nuxt.$route.path === '/thank-you',
           }"
           @click="goBack"
         ></i>

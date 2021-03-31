@@ -5,7 +5,7 @@
     style="background: #fff"
   >
     <div class="wrapper" :class="{ processing: loading }">
-      <ValidationObserver v-slot="{ invalid, validate, reset, errors }">
+      <ValidationObserver v-slot="{ invalid, validate, reset }">
         <div class="checkout__main">
           <!-- <h1 class="mobile">{{ $t('checkout.form.title') }}</h1> -->
           <!--Purchase Form-->
@@ -824,7 +824,7 @@
                 <!-- 购买按钮 -->
                 <div
                   class="checkout__main_wrapper_btn-container"
-                  @click="purchaseGate(invalid, validate, errors)"
+                  @click="purchaseGate(invalid, validate)"
                 >
                   <button-yellow-icon
                     :text="$t('checkout.BuyNow')"
@@ -1416,7 +1416,7 @@ export default {
   computed: {
     cartTotalPrice() {
       let total = 0;
-      if(!this.cartList) return;
+      if (!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
         let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
         total = this.COMMON.accAdd(
@@ -1457,7 +1457,7 @@ export default {
     },
     llen() {
       let len = 0;
-      if(!this.cartList) return;
+      if (!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
         let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
         if (this.cartList[i].product_type === 1) {
@@ -1598,13 +1598,13 @@ export default {
       }
     },
     reduceClick(product_id, product_num, like_id) {
-      if (product_num == 1) return;
+      if (product_num === 1) return;
       let cartList = this.$storage.get('cartList');
-      if(!cartList) return;
+      if (!cartList) return;
       for (let i = 0; i < cartList.length; i++) {
         if (
-          cartList[i].product_id == product_id &&
-          cartList[i].like_id == like_id
+          cartList[i].product_id === product_id &&
+          cartList[i].like_id === like_id
         ) {
           cartList[i].product_num--;
         }
@@ -1950,7 +1950,7 @@ export default {
     },
 
     // ⭐PurchaseGate 支付入口⭐
-    purchaseGate(invalid, validate, errors) {
+    purchaseGate(invalid, validate) {
       if (this.payBumperEngine()) {
         return;
       }
@@ -2011,7 +2011,7 @@ export default {
       // VeeValidate
       validate();
       console.log(`VeeValidate.invalid:`, invalid);
-      console.log(`VeeValidate.errors:`, errors);
+      // console.log(`VeeValidate.errors:`, errors);
       if (invalid) {
         setTimeout(() => {
           this.$scrollTo('.invalid', {
