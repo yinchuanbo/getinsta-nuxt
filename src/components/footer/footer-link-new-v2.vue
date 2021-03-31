@@ -43,11 +43,7 @@
             </nuxt-link>
           </div>
 
-          <div
-            v-if="!giveaway"
-            class="footer-text__links_column pc"
-            :class="{ download: $i18n.locale === 'en' }"
-          >
+          <div v-if="!giveaway" class="footer-text__links_column download pc">
             <h3>
               <span>{{
                 $t("global.footer.GetInstaDownload.GetInstaDownload")
@@ -57,10 +53,10 @@
             <button-download-windows :size="'footer'" />
           </div> -->
             <div @click="downloadAndroid">
-              <button-download-android :size="'footer'" />
+              <button-download-android :size="'footer'" style="width: 150px;" />
             </div>
             <div v-if="!$store.state.hideIosMinorLang" @click="downloadIOS">
-              <button-download-ios :size="'footer'" />
+              <button-download-ios :size="'footer'" style="width: 150px;" />
             </div>
           </div>
         </div>
@@ -251,8 +247,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
 .footer-text {
   padding: 100px 0;
   background-color: #ffffff;
