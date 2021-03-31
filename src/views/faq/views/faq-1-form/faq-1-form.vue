@@ -325,6 +325,8 @@ export default {
       margin-top: 26px;
 
       &.double {
+        font-size: 0;
+
         label {
           width: 372px;
         }

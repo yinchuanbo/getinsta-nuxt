@@ -467,6 +467,17 @@ export default {
   },
   watch: {
     $route(to) {
+      this.watchedMethods(to);
+    }
+  },
+  created() {
+    this.watchedMethods(this.$nuxt.$route);
+  },
+  mounted() {
+    this.getLoginStatusFromStorage();
+  },
+  methods: {
+    watchedMethods(to = { path: '/', name: 'home' }) {
       this.checkPath = to.path === '/checkout';
 
       this.routeUserCenter =
@@ -488,7 +499,7 @@ export default {
         to.path === '/order-fail' ||
         to.path === '/order-fail-2';
 
-      this.routerIOT = window.location.hostname === 'www.iotransfer.net';
+      this.routerIOT = process.client ? window.location.hostname === 'www.iotransfer.net' : false;
       this.routerClient =
         this.COMMON.getURLQuery('url_cart') !== null &&
         this.COMMON.getURLQuery('url_cart') !== '0' &&
@@ -527,12 +538,7 @@ export default {
         (this.COMMON.getURLQuery('source') === 'google' &&
           this.COMMON.isiOS()) ||
         (this.COMMON.getURLQuery('s') === 'tiktok' && this.COMMON.isiOS());
-    }
-  },
-  mounted() {
-    this.getLoginStatusFromStorage();
-  },
-  methods: {
+    },
     // v2
     dropMenuSwitch(el) {
       let target = el.target;
@@ -997,6 +1003,9 @@ export default {
     }
 
     .header-nav__btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100px;
       height: 40px;
 
