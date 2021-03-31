@@ -102,8 +102,8 @@
                                 {{ unit.purchase_quantity }}
                                 {{
                                   unit.task_type === 2
-                                    ? displayVarFollowers
-                                    : displayVarLikes
+                                    ? displayletFollowers
+                                    : displayletLikes
                                 }}
                                 <!-- | {{ $i18n.locale === 'en' ? $t('global.currencySymbol') : '' }}
                               {{ unit.price_decimal | numToFixed }}
@@ -1438,9 +1438,9 @@ export default {
       return total;
     },
     flen() {
-      var len = 0;
+      let len = 0;
       for (let i = 0; i < this.cartList.length; i++) {
-        var product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
+        let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
         if (this.cartList[i].product_type === 2) {
           if (this.cartList[i].cycle_type === 1) {
             len +=
@@ -1455,9 +1455,9 @@ export default {
       return len;
     },
     llen() {
-      var len = 0;
+      let len = 0;
       for (let i = 0; i < this.cartList.length; i++) {
-        var product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
+        let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
         if (this.cartList[i].product_type === 1) {
           if (this.cartList[i].cycle_type === 1) {
             len +=
@@ -1471,7 +1471,7 @@ export default {
       }
       return len;
     },
-    displayVarLikes() {
+    displayletLikes() {
       let display = '';
       if (this.hostIsIOT) {
         display = 'Pieces';
@@ -1480,7 +1480,7 @@ export default {
       }
       return display;
     },
-    displayVarFollowers() {
+    displayletFollowers() {
       let display = '';
       if (this.hostIsIOT) {
         display = 'Pro Pieces';
@@ -1500,8 +1500,8 @@ export default {
     },
     cartList: {
       handler: function (array) {
-        this.$store.commit('cartLength', array.length);
-        this.$storage.set('cartLength', array.length);
+        this.$store.commit('cartLength', array ? array.length : 0);
+        this.$storage.set('cartLength', array ? array.length : 0);
         this.transCartList();
         console.log(this.cartListMultiple);
       },
@@ -1560,16 +1560,16 @@ export default {
       this.dialogFail = false;
     },
     transCartList() {
-      var arr = [];
-      var cartList = this.$storage.get('cartList');
-      if (cartList.length !== 0) {
-        for (var i = 0; i < cartList.length; i++) {
-          var product_num = cartList[i].product_num;
+      let arr = [];
+      let cartList = this.$storage.get('cartList');
+      if (cartList && cartList.length) {
+        for (let i = 0; i < cartList.length; i++) {
+          let product_num = cartList[i].product_num;
           if (!product_num) {
             arr.push(cartList[i]);
           } else {
             if (product_num !== 1) {
-              for (var j = 0; j < product_num; j++) {
+              for (let j = 0; j < product_num; j++) {
                 delete cartList[i].product_num;
                 arr.push(cartList[i]);
               }
@@ -1597,7 +1597,7 @@ export default {
     },
     reduceClick(product_id, product_num, like_id) {
       if (product_num == 1) return;
-      var cartList = this.$storage.get('cartList');
+      let cartList = this.$storage.get('cartList');
       for (let i = 0; i < cartList.length; i++) {
         if (
           cartList[i].product_id == product_id &&
@@ -1611,7 +1611,7 @@ export default {
     },
     addClick(product_id, product_num, like_id) {
       if (product_num >= 5) return;
-      var cartList = this.$storage.get('cartList');
+      let cartList = this.$storage.get('cartList');
       for (let i = 0; i < cartList.length; i++) {
         if (
           cartList[i].product_id == product_id &&
