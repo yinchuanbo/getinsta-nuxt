@@ -19,7 +19,7 @@
               <!--Cart List-->
               <transition name="fade-skeleton" mode="out-in">
                 <div v-if="!cartLoading" key="Box1">
-                  <div v-if="cartList.length !== 0" class="checkout__main_cart">
+                  <div v-if="cartList && cartList.length !== 0" class="checkout__main_cart">
                     <div class="checkout__main_cart-list">
                       <div v-for="(unit, i) in cartList" :key="i" class="unit">
                         <!--icon-->
@@ -244,7 +244,7 @@
                       <b>{{ cartTotalPrice | numToFixed }} {{ $t('global.currency') }}</b> -->
                     </div>
                   </div>
-                  <div v-if="cartList.length === 0" class="checkout__main_cart">
+                  <div v-if="cartList && cartList.length === 0" class="checkout__main_cart">
                     <list-empty :msg="$t('checkout.error.cartEmpty.text')" />
                   </div>
                 </div>
@@ -1416,6 +1416,7 @@ export default {
   computed: {
     cartTotalPrice() {
       let total = 0;
+      if(!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
         let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
         total = this.COMMON.accAdd(
@@ -1427,7 +1428,6 @@ export default {
     },
     cartOriginalPrice() {
       let total = 0;
-      // console.log("this.cartList",this.cartList)
       if (!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
         total = this.COMMON.accAdd(
@@ -1439,6 +1439,7 @@ export default {
     },
     flen() {
       let len = 0;
+      if (!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
         let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
         if (this.cartList[i].product_type === 2) {
@@ -1456,6 +1457,7 @@ export default {
     },
     llen() {
       let len = 0;
+      if(!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
         let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
         if (this.cartList[i].product_type === 1) {
@@ -1598,6 +1600,7 @@ export default {
     reduceClick(product_id, product_num, like_id) {
       if (product_num == 1) return;
       let cartList = this.$storage.get('cartList');
+      if(!cartList) return;
       for (let i = 0; i < cartList.length; i++) {
         if (
           cartList[i].product_id == product_id &&
@@ -1610,8 +1613,8 @@ export default {
       this.cartList = cartList;
     },
     addClick(product_id, product_num, like_id) {
-      if (product_num >= 5) return;
       let cartList = this.$storage.get('cartList');
+      if (product_num >= 5 && !cartList) return;
       for (let i = 0; i < cartList.length; i++) {
         if (
           cartList[i].product_id == product_id &&
@@ -1650,7 +1653,7 @@ export default {
     cartUnitDelete(i) {
       this.cartList.splice(i, 1);
       this.$storage.set('cartList', this.cartList);
-      if (this.cartList.length === 0) {
+      if (this.cartList && this.cartList.length === 0) {
         this.$storage.remove('cartList');
       }
     },
@@ -1978,7 +1981,7 @@ export default {
       //   return;
       // }
 
-      if (this.cartList.length === 0) {
+      if (this.cartList && this.cartList.length === 0) {
         this.$alert(
           '',
           'error',
