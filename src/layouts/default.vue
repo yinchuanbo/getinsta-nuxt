@@ -137,6 +137,9 @@ export default {
       this.productNameLogoInit();
     }
   },
+  created() {
+    this.watchedMethods(this.$nuxt.$route);
+  },
   mounted() {
     console.log(
       '%cGetInsta%cWeb APP',
@@ -148,8 +151,6 @@ export default {
       'margin-left: 16px;' +
       'font-size: 14px; font-weight: 600;'
     );
-
-    this.watchedMethods(this.$nuxt.$route);
 
     // iOS触摸事件
     this.COMMON.iosTouchHack();
