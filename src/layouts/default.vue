@@ -138,7 +138,7 @@ export default {
     }
   },
   created() {
-    this.watchedMethods(this.$nuxt.$route);
+    this.multiLangEnvInit(this.$nuxt.$route);
   },
   mounted() {
     console.log(
