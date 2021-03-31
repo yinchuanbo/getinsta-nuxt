@@ -120,7 +120,7 @@ export default {
 
       if (!this.ajaxRequesting) {
         this.ajaxRequesting = true;
-        this.$axios.post(
+        this.$nuxt.$axios.post(
           api.videoDownload,
           this.COMMON.paramSign({
             search_url: this.videoURL

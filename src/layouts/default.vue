@@ -671,7 +671,7 @@ export default {
         return;
       }
 
-      this.$axios.get(
+      this.$nuxt.$axios.get(
         apiAdr.getCountry
       ).then((res) => {
         let countryCode = '';
@@ -943,7 +943,7 @@ export default {
         if (this.$storage.has('accessCountry'))
           params.country = this.$storage.get('accessCountry');
 
-        this.$axios.get(apiV2.getWebConfig, {
+        this.$nuxt.$axios.get(apiV2.getWebConfig, {
           params: params
         }).then((res) => {
           resolve(res);

@@ -432,7 +432,7 @@ export default {
           && (productPkg['promote_sale_type'] === undefined
             || productPkg['promote_sale_type'] === 0
             || productPkg['promote_sale_type'] === 1
-            || productPkg['promote_sale_type'] === 3)
+            || productPkg['promote_sale_type'] === 3);
 
       });
     },
@@ -453,10 +453,10 @@ export default {
       this.productPkgListDailyVM = this.productPkgListDaily[0];
     },
     $route(to, from) {
-      if(to.path === '/buy-instagram-likes'){
-        this.tabsIndex = false
-      }else if(to.path === '/buy-instagram-daily-likes'){
-        this.tabsIndex = true
+      if (to.path === '/buy-instagram-likes') {
+        this.tabsIndex = false;
+      } else if (to.path === '/buy-instagram-daily-likes') {
+        this.tabsIndex = true;
       }
     }
   },
@@ -521,7 +521,7 @@ export default {
 
         } else if (originalPath === '/event-likes') {
 
-        }else{
+        } else {
           destPath = '/buy-instagram-likes';
           this.emittedData.meta.title = this.$t('store.meta.title-1');
           this.emittedData.meta.description
@@ -589,7 +589,7 @@ export default {
 
       this.productPkgListLoading = true;
 
-      this.$axios.post(
+      this.$nuxt.$axios.post(
         `${apiAccount.appConfig}?origin=web`,
         this.COMMON.paramSign({
           client_lan: this.$i18n.locale,
@@ -653,7 +653,7 @@ export default {
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
       pkgList.map(item => {
-        if (item['cycle_type'] > 1 && item.product_type===1) {
+        if (item['cycle_type'] > 1 && item.product_type === 1) {
           item.dailyQuantity = item['purchase_quantity'];
           this.pkgListWithUnit.push(item);
         }
@@ -691,7 +691,7 @@ export default {
       if (this.searchInsLoading) return;
 
       this.searchInsLoading = true;
-      this.$axios.post(
+      this.$nuxt.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
@@ -753,7 +753,7 @@ export default {
       }
       if (!this.searchInsLoading) {
         this.searchInsLoading = true;
-        this.$axios.post(
+        this.$nuxt.$axios.post(
           apiAccount.getInsInfo,
           this.COMMON.paramSign(
             {
@@ -831,10 +831,10 @@ export default {
       // this.postListNextRequestV2(param);
       this.postListNextRequest(param);
     },
-     postListNextRequest(param) {
+    postListNextRequest(param) {
       if (!this.postListLoading) {
         this.postListLoading = true;
-        this.$axios.post(
+        this.$nuxt.$axios.post(
           api.getInsPost,
           this.COMMON.paramSign(param)
         ).then((response) => {
@@ -871,7 +871,7 @@ export default {
 
         const paramTrans = JSON.stringify(param);
 
-        this.$axios.get(
+        this.$nuxt.$axios.get(
           `${apiIns.insPostList}${paramTrans}`
         ).then((response) => {
           this.postListLoading = false;
@@ -939,11 +939,11 @@ export default {
       }
 
       if (!this.postCurrent.like_id) {
-          this.postListTitle = true;
-          if (!this.independent)
-            this.$scrollTo('#title-post-like', { offset: -100 });
-          return;
-        }
+        this.postListTitle = true;
+        if (!this.independent)
+          this.$scrollTo('#title-post-like', { offset: -100 });
+        return;
+      }
 
       this.addToCart();
 
@@ -1026,7 +1026,7 @@ export default {
         'ins_id': this.insUser.ins_id,
         'ins_account': this.insUser.ins_account
       };
-     const post = this.postCurrent;
+      const post = this.postCurrent;
       // 关注
       if (!this.tabsIndex) {
         // console.log("非周期like",post)
@@ -1104,7 +1104,7 @@ export default {
       // 1 跳转 Stripe
       // 2 跳转 HotAntPay
       this.ajaxRequesting = true;
-      this.$axios.post(
+      this.$nuxt.$axios.post(
         apiPayment.getCheckoutMethod,
         this.COMMON.paramSign({
           client_lan: this.$i18n.locale
@@ -1191,7 +1191,7 @@ export default {
       // if (!this.ajaxRequesting) {
       //   this.ajaxRequesting = true;
       //   console.log(param);
-      this.$axios.post(
+      this.$nuxt.$axios.post(
         apiTask.shopifyPay,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -1264,7 +1264,7 @@ export default {
       if (c !== null) paramCheckout.ads = { c: c };
       if (k !== null) paramCheckout.ads = { k: k };
 
-      this.$axios.post(
+      this.$nuxt.$axios.post(
         apiTask.checkoutAndroid,
         this.COMMON.paramSign(paramCheckout)
       ).then((response) => {
@@ -1325,7 +1325,7 @@ export default {
       );
     },
     gaBottomBtn() {
-       this.$ga.event('insbuy', 'buy', 'store-daily-likes');
+      this.$ga.event('insbuy', 'buy', 'store-daily-likes');
 
       // let param = 'f';
       // let paramEvent0 = '';
@@ -1374,7 +1374,7 @@ export default {
       this.COMMON.throttle(fun, 60, 100);
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss" src="./view.scss"></style>

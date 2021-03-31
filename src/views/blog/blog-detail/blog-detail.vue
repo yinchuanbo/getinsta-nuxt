@@ -308,7 +308,7 @@ export default {
             let checkStr = [...document.querySelectorAll('.blogBanner')];
             if (checkStr.length) {
               for (let i = 0; i < checkStr.length; i++) {
-                let searchcomponent = new MyBlog({ propsData: { ax: this.blogID } }).$mount();
+                let searchcomponent = new MyBlog({ propsData: { ax: this.blogID, sendThis: this } }).$mount();
                 checkStr[i].parentNode.replaceChild(searchcomponent.$el, checkStr[i]);
               }
             }

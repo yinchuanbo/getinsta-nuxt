@@ -11,6 +11,11 @@ export default {
   async asyncData({ route, req, app, redirect, error, isDev }) {
     // article ID
     const paramID = route.params.id;
+    if (!paramID) {
+      redirect(301, '/blogs');
+      return;
+    }
+
     const idArray = paramID.split('-');
     const articleID = idArray.pop();
     if (typeof articleID !== 'string') return;
@@ -40,10 +45,9 @@ export default {
       if (res['status'] === 'ok') {
         DATA.reqObj = res;
         app.title = DATA.reqObj['seo_title'];
-        console.log('app', app);
       } else {
         if (res['redirect_url']) {
-          redirect(302, res['redirect_url']);
+          redirect(301, res['redirect_url']);
         } else {
           error({ statusCode: 404 });
         }
