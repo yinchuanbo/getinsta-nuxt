@@ -1,5 +1,4 @@
 import Crypto from 'crypto-js';
-import el from 'element-ui/src/locale/lang/el';
 
 export default {
   iosTouchHack() {
