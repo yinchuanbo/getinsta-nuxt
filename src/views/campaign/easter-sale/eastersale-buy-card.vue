@@ -53,7 +53,7 @@ export default {
     left: 10px;
     width: 437px;
     height: 121px;
-    background: url('images/card-bg.svg') no-repeat;
+    background: url('./images/card-bg.svg') no-repeat;
     background-size: cover;
   }
   .eastersale-buy-money {
