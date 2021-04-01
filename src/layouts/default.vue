@@ -206,8 +206,6 @@ export default {
       // V2开关
       this.v2SwitchGate(to.path);
 
-      console.log('to.path', to.path);
-
       this.recorderBlogLoginRegister(to, from);
 
       this.userAgentInit();
