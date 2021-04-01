@@ -141,6 +141,7 @@ export default {
     this.multiLangEnvInit(this.$nuxt.$route);
   },
   mounted() {
+    this.watchedMethods(this.$nuxt.$route);
     console.log(
       '%cGetInsta%cWeb APP',
       'padding: 4px 18px;' +
@@ -204,6 +205,8 @@ export default {
     watchedMethods(to = { path: '/', name: 'home' }, from = { path: '/', name: 'home' }) {
       // V2开关
       this.v2SwitchGate(to.path);
+
+      console.log('to.path', to.path);
 
       this.recorderBlogLoginRegister(to, from);
 
@@ -1058,16 +1061,30 @@ export default {
 
     // v2开关
     v2SwitchGate(path) {
+      this.platformDetective();
       if (this.COMMON.envTest() && location.hostname !== 'test.easygetinsta.com')
         this.v2SwitchForDev(path);
       else
         this.v2Switch(path);
+
+      // this.v2Switch(path);
     },
     v2Switch(path) {
-      this.platformDetective();
-      // const openOrNot = path === '/' && this.COMMON.randomAbTest();
-      const openOrNot = true;
-      this.$store.commit('v2', openOrNot);
+      const storePages = [
+        '/buy-instagram-followers',
+        '/buy-instagram-daily-followers',
+        '/buy-instagram-likes',
+        '/buy-instagram-daily-likes'
+      ];
+      const isStorePages = storePages.indexOf(path) > -1;
+      let openOrNot = this.COMMON.randomAbTest();
+
+      if (!isStorePages)
+        openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
+
+      this.$storage.set('s2', openOrNot);
+
+      this.$store.commit('v2', true);
       this.$store.commit('s2', openOrNot);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
@@ -1075,7 +1092,6 @@ export default {
       this.$store.commit('v2Ad', true);
     },
     v2SwitchForDev(path) {
-      this.platformDetective();
       // PC Beacon
       const openOrNot = path === '/';
       // V2 Switch Beacon
