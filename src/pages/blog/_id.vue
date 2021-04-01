@@ -26,7 +26,7 @@ export default {
     const paramID = route.params.id;
     if (!paramID) {
       DATA.isInstanceDetail = false;
-      return;
+      return DATA;
     }
 
     const idArray = paramID.split('-');
