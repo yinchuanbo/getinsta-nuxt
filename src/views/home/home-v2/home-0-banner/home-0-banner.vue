@@ -7,6 +7,7 @@
        }"
   >
     <div v-if="!pageSeoBuy" class="header-blank"></div>
+
     <!--main-->
     <div class="wrapper">
       <div class="home-0-banner__phone" :class="{ 'phone-on': !loading }">
@@ -22,6 +23,7 @@
         <!--h1 & h2-->
         <div v-if="pageName === '' && !(pageSeoBuy || pageSeoIOS)">
           <h1
+            v-if="$i18n.locale !== 'de'"
             :class="{ 'minor-lang': $i18n.locale !== 'en' }"
             v-html="$t('home.home-0.title')"
           ></h1>

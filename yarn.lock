@@ -9858,11 +9858,6 @@ vue-analytics@^5.22.1:
   resolved "https://registry.npm.taobao.org/vue-analytics/download/vue-analytics-5.22.1.tgz#9d6b32da56daee1b9dfb23a267b50349a03f710f"
   integrity sha1-nWsy2lba7hud+yOiZ7UDSaA/cQ8=
 
-vue-awesome-countdown@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.npm.taobao.org/vue-awesome-countdown/download/vue-awesome-countdown-1.1.4.tgz#2a9206f402cbf9720ea6a16250a6a5707e7e27a7"
-  integrity sha1-KpIG9ALL+XIOpqFiUKalcH5+J6c=
-
 vue-click-outside@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/vue-click-outside/download/vue-click-outside-1.1.0.tgz#48b7680b518923e701643cccb3e165854aad99eb"

@@ -23,7 +23,12 @@
                 <!-- 分流 -->
                 <!-- <a @click="getAutoBuy">Buy Auto Instagram Followers</a> -->
                 <nuxt-link to="/buy-auto-instagram-followers">Buy Auto Instagram Followers</nuxt-link>
-                <nuxt-link to="/buy-instagram-daily-likes">
+                <nuxt-link
+                  :to="{
+                    path: '/buy-instagram-daily-likes',
+                    query: { anchor },
+                  }"
+                >
                   Buy Auto Instagram Likes
                 </nuxt-link>
                 <nuxt-link to="/buy-instagram-likes">Buy Instagram Likes</nuxt-link>
@@ -50,21 +55,21 @@
                @click="routerPush('/affiliate-solutions')"
             >Affiliates</a>
           </div>
-          <nuxt-link v-show="$store.state.cartLength > 0" to="/checkout" class="cart"
+          <nuxt-link v-if="$store.state.cartLength > 0" to="/checkout" class="cart"
                      :title="$t('global.header.button.cart')"
           >
             <i class="cart"></i>
           </nuxt-link>
-          <a v-show="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
+          <a v-if="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
              href="javascript:"
              @click="gaHeaderBtn"
           >
             <i class="avatar-login-btn"></i>
           </a>
-          <div v-show="loginStatus" class="header-nav_menu_user" title="User Center">
+          <div v-if="loginStatus" class="header-nav_menu_user" title="User Center">
             <nuxt-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container">
               <div class="avatar">
-                <img :src="userAvatarImg" alt="avatar" />
+                <img :src="$store.state.userAvatar" alt="avatar" />
               </div>
             </nuxt-link>
           </div>
@@ -86,7 +91,7 @@
       </div>
       <div class="header-nav__logged_user pc">
         <div v-if="!routeWelcome" class="header-nav__logged_user_container">
-          <i class="download" @click="downloadHeaderPC">
+          <i class="download" @click="downloadHeaderPC" v-if="showPcButton">
             <button-download-windows-yellow :size="'header'" />
           </i>
           <nuxt-link
@@ -108,7 +113,7 @@
             title="User Center"
           >
             <div class="avatar">
-              <img :src="userAvatarImg" alt="avatar" />
+              <img :src="$store.state.userAvatar" alt="avatar" />
             </div>
           </nuxt-link>
         </div>
@@ -120,7 +125,7 @@
           <i class="cart"></i>
         </nuxt-link>
         <div class="avatar" @click="routeToUserCenter">
-          <img :src="userAvatarImg" alt="avatar" />
+          <img :src="$store.state.userAvatar" alt="" />
         </div>
       </div>
       <div class="header-nav__btn">
@@ -178,7 +183,7 @@
               :to="`/user${$nuxt.$constant.paymentChannel}`"
               @click.native="menuOff"
             >
-              <img :src="userAvatarImg" alt="avatar" />
+              <img :src="$store.state.userAvatar" alt="avatar" />
             </nuxt-link>
           </div>
           <!--Home-->
@@ -218,7 +223,7 @@
           <!--Buy Auto Likes-->
           <nuxt-link
             v-if="!storeMenuHide"
-            to="/buy-instagram-daily-likes"
+            :to="{ path: '/buy-instagram-daily-likes', query: { anchor } }"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
@@ -311,6 +316,7 @@ export default {
   },
   data() {
     return {
+      anchor: 'tab',
       windowWidth: process.client ? document.body.clientWidth : 0,
       windowHeight: process.client ? document.body.clientHeight : 0,
       sideBarStatus: false,
@@ -326,22 +332,11 @@ export default {
       routerPayment: false,
       routerClient: false,
       storeMenuHide: false,
-      routerIOT: false
+      routerIOT: false,
+      showPcButton: true
     };
   },
   computed: {
-    userAvatarImg() {
-      let avatar = defaultAvatar;
-      if (this.$nuxt.$store.state.userAvatar) {
-        avatar = this.$nuxt.$store.state.userAvatar;
-        return avatar;
-      }
-      if (process.client && this.$storage.has('userAvatar')) {
-        avatar = this.$storage.get('userAvatar');
-        return avatar;
-      }
-      return avatar;
-    },
     loginStatus() {
       return this.$store.state.loginStatus;
     },
@@ -388,6 +383,15 @@ export default {
       this.ptPage = to.path === '/pt/get-instagram-followers';
 
       this.routeWelcome = to.path === '/welcome';
+     
+    //  去除顶部黄色按钮
+      this.showPcButton = !(to.path === '/user' ||
+        to.path === '/user-get-followers' ||
+        to.path === '/user-get-likes' ||
+        to.path === '/user-asknet' ||
+        to.path === '/user-get-followers-asknet' ||
+        to.path === '/user-get-likes-asknet' ||
+        to.path === '/welcome');
 
       this.routerPayment =
         to.path === '/checkout' ||

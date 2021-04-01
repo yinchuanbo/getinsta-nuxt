@@ -2,7 +2,7 @@ export const state = () => ({
   loginStatus: false, // Mutation: loginChange
   userName: '',
   userCoins: '',
-  userAvatar: null,
+  userAvatar: '',
   blogID: '',
   googleTransLoad: false,
   isMobile: false,
@@ -37,7 +37,6 @@ export const state = () => ({
   v2Ad: false, // V2广告开关
   v2AdHeightPc: 0, // V2广告PC高度
   v2AdHeightMobile: 0, // V2广告Mobile高度
-  s2: true, // store 分流开关
 
   footerSelect: false,
   showAlert: false
@@ -47,7 +46,6 @@ export const mutations = {
   loginChange: (state, login) => {
     state.loginStatus = login;
     // Vue.$storage.set('loginStatus', login);
-    if (process.server) return;
     localStorage.setItem('GetInsta_loginStatus', JSON.stringify({ ttl: 0, value: login }));
   },
   userName: (state, name) => {
@@ -106,7 +104,6 @@ export const mutations = {
   },
   enAdrType: (state, status) => {
     state.enAdrType = status;
-    if (process.server) return;
     localStorage.setItem('GetInsta_enAdrType', JSON.stringify({ ttl: 0, value: status }));
   },
   enAdrLink: (state, status) => {
@@ -162,9 +159,6 @@ export const mutations = {
   },
   v2AdHeightMobile: (state, status) => {
     state.v2AdHeightMobile = status;
-  },
-  s2: (state, status) => {
-    state.s2 = status;
   },
   showAlert: (state, value) => {
     state.showAlert = value;

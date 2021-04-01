@@ -1,7 +1,6 @@
 <template>
   <div class="seo-1-0-main">
     <header-module-mk0 />
-
     <div class="wrapper">
       <h1 v-html="title"></h1>
       <div v-if="lotteryCountDownEnabled" class="countdown-container">
@@ -463,7 +462,7 @@ export default {
     requestLotteryList() {
       let param = { 'luckdraw_id': this.luckyDrawID };
 
-      this.$nuxt.$axios.post(
+      this.axios.post(
         apiOther.getRewards,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -532,7 +531,7 @@ export default {
 
       param.luckdraw_id = this.luckyDrawID;
 
-      this.$nuxt.$axios.post(
+      this.axios.post(
         apiOther.luckDrawInit,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -629,7 +628,7 @@ export default {
       if (this.COMMON.getURLQuery('key') !== null)
         param = { key: this.COMMON.getURLQuery('key') };
 
-      this.$nuxt.$axios.post(
+      this.axios.post(
         apiOther.clearRecord,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -673,7 +672,7 @@ export default {
 
       param.luckdraw_id = this.luckyDrawID;
 
-      this.$nuxt.$axios.post(
+      this.axios.post(
         apiOther.luckDrawConfirm,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -796,7 +795,7 @@ export default {
     requestWinningUser() {
       let param = { 'luckdraw_id': this.luckyDrawID };
 
-      this.$nuxt.$axios.post(
+      this.axios.post(
         apiOther.getRewardUser,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -866,7 +865,7 @@ export default {
       }
 
       this.ajaxRequesting = true;
-      this.$nuxt.$axios.post(
+      this.axios.post(
         api.login,
         this.COMMON.paramSign(
           {
@@ -948,7 +947,7 @@ export default {
       }
 
       this.ajaxRequesting = true;
-      this.$nuxt.$axios.post(
+      this.axios.post(
         api.register,
         this.COMMON.paramSign(
           {
@@ -998,8 +997,7 @@ export default {
       });
     },
     requestEmailLimitList() {
-      if (this.COMMON.envTest()) return;
-      this.$nuxt.$axios.get(
+      this.axios.get(
         apiSelf.emailLimitList
       ).then((response) => {
         this.emailProvider = response.data['site'];
@@ -1086,7 +1084,7 @@ export default {
       }
     },
     searchInsByServer(insAccount) {
-      this.$nuxt.$axios.post(
+      this.axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign(
           {

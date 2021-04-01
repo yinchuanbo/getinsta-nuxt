@@ -7,11 +7,6 @@
   }
 }
 
-// addThis Style (addThis Bar hide on mobile)
-.addthis-smartlayers-mobile {
-  display: none !important;
-}
-
 //***************************************main style****************************************
 * {
   font-family: Montserrat, sans-serif;
@@ -1598,7 +1593,7 @@ input[type="number"].no-spin-btn {
       background-repeat: no-repeat;
       content: "";
       opacity: 0;
-      transition: opacity 0.3s;
+      // transition: opacity 0.3s;
     }
 
     &:after {
@@ -2634,7 +2629,8 @@ body {
   }
 
   .header-blank {
-    height: (88px/2);
+    // height: (88px/2);
+    height: 64px;
   }
 
   .home__sec {
