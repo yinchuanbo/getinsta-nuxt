@@ -63,7 +63,7 @@ export default {
   }, // User Agent Language Env
   getURLQuery(name) { // 废弃，不支持欧元等特殊符号
     let reg = `(^|&)${name}=([^&]*)(&|$)`;
-    let r = window.location.search.substr(1).match(reg);
+    let r = process.client?window.location.search.substr(1).match(reg):'';
     if (r != null) return unescape(r[2]);
     return null;
   }, // Get URL Query
