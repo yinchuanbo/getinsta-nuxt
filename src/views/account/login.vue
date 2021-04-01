@@ -22,6 +22,8 @@
           </label>
           <p class="error-msg" v-if="errors['Email address']">{{ errors['Email address'][0] }}</p>
         </ValidationProvider>
+        
+
         <ValidationProvider v-slot="{ classes }" name="Password" rules="required|min:4|max:18">
           <label class="password" :class="classes">
             <input
@@ -106,7 +108,7 @@ export default {
       accountList: [],
       accountListIndex: 0,
       flag: true
-    }
+    };
   },
   mounted() {
     this.autoFill();
