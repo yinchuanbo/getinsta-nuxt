@@ -6,6 +6,7 @@
 import instance from '@/views/campaign/easter-sale/eastersale.vue';
 
 export default {
+  name: 'EasterSale',
   components: { instance },
   async asyncData({ req }) {
     return {
