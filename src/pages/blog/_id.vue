@@ -22,7 +22,6 @@ export default {
 
     // ***********************************************************************
 
-    // article ID
     const paramID = route.params.id;
     if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
