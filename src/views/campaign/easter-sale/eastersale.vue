@@ -1,6 +1,6 @@
 <template>
   <div class="eastersale-container">
-    <div v-if="screenWidth >= 769 && screenWidth !== 0">
+    <div v-show="screenWidth >= 769 && screenWidth !== 0">
       <eastersale-banner :end-time="endTime"></eastersale-banner>
       <eastersale-buy :products="products"></eastersale-buy>
       <eastersale-tips />
@@ -9,7 +9,7 @@
         <eastersale-alert v-if="$store.state.showAlert" />
       </transition>
     </div>
-    <div v-if="screenWidth <= 768 && screenWidth !== 0" :style="{ 'padding-top': v2AdHeightMobile + 'px' }">
+    <div v-show="screenWidth <= 768 && screenWidth !== 0" :style="{ 'padding-top': v2AdHeightMobile + 'px' }">
       <eastersale-banner-m />
       <eastersale-cards-m :end-time="endTime" :products="products" />
       <eastersale-tips-m />
