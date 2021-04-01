@@ -8,8 +8,11 @@
       </div>
       <div class="unit right">
         <div class="btn-container pc">
-          <div class="btn-c">
+          <div v-if="$i18n.locale === 'en'" class="btn-c">
             <button-download-drop-menu :ga="dropMenuGA" />
+          </div>
+          <div v-if="$i18n.locale !== 'en'" class="btn-c">
+            <button-download-two-apps :ga="dropMenuGA" />
           </div>
         </div>
         <div class="btn-container mobile" @click="downloadMobile">
@@ -46,7 +49,7 @@
 // import ButtonDownloadAndroid from '@/components/button/button-download-android';
 import ButtonDownloadDropMenu from '@/components/button/button-download-drop-menu';
 import ButtonBuyNow from '@/components/button/button-buy-now';
-// import ButtonDownloadTwoApps from '@/components/button/button-download-two-apps';
+import ButtonDownloadTwoApps from '@/components/button/button-download-two-apps';
 import ButtonDownloadIos from '@/components/button/button-download-ios';
 import ButtonDownloadAndroid from '@/components/button/button-download-android';
 
@@ -55,7 +58,7 @@ export default {
   components: {
     ButtonDownloadAndroid,
     ButtonDownloadIos,
-    // ButtonDownloadTwoApps,
+    ButtonDownloadTwoApps,
     ButtonBuyNow,
     ButtonDownloadDropMenu
     // ButtonDownloadAndroid,

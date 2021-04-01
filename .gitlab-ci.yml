@@ -1,10 +1,12 @@
 Build Test:
   stage: deploy
   when: manual
+  only:
+    refs:
+      - master
   script:
     - tar -Jxf node-linux.tar.xz
     - export PATH=$PATH:$(pwd)/node-v14.16.0-linux-x64/bin
-    - npm config set registry https://registry.npm.taobao.org
     - npm install --production
     - npm run-script build
 
@@ -14,7 +16,7 @@ Deploy to Testing:
   when: manual
   only:
     refs:
-      - master-test
+      - master
   script:
     - rm node-linux.tar.xz
     - mv package-prod-test.json package.json

@@ -7,11 +7,6 @@
   }
 }
 
-// addThis Style (addThis Bar hide on mobile)
-.addthis-smartlayers-mobile {
-  display: none !important;
-}
-
 //***************************************main style****************************************
 * {
   font-family: Montserrat, sans-serif;
@@ -1598,7 +1593,7 @@ input[type="number"].no-spin-btn {
       background-repeat: no-repeat;
       content: "";
       opacity: 0;
-      transition: opacity 0.3s;
+      // transition: opacity 0.3s;
     }
 
     &:after {
@@ -3500,9 +3495,6 @@ body {
   .v2 {
     .home__sec {
       padding: 78px 0 72px;
-
-      .home__sec_logo {
-      }
 
       .home__sec_h2 {
         padding: 0 15px;

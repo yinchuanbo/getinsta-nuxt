@@ -3,30 +3,39 @@
     <div class="header-blank"></div>
     <div class="login-register__title">
       <img src="@/assets/images/global/logo.svg" alt="Logo">
-      <h1>{{ $t('account.login.title') }}</h1>
-      <p>{{ $t('account.login.subTitle') }}</p>
+      <!-- <h1>{{ $t('account.login.title') }}</h1>
+      <p>{{ $t('account.login.subTitle') }}</p> -->
+      <h1>Welcome</h1>
+      <p>Log in to check and get more followers & likes.</p>
     </div>
+    <transition>
+      <div class="login-register_error" v-if="dialogFailMsg">{{dialogFailMsg}}</div>
+    </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
         <ValidationProvider v-slot="{ classes }" name="Email address" rules="required|email">
-          <label class="email" :class="classes">
+          <label class="email" :class="classes" style="margin-top: 16px;">
             <input
               v-model="form.field.email" name="email" type="email"
               :placeholder="$t('account.form.emailAddress')"
             >
           </label>
+          <p class="error-msg" v-if="errors['Email address']">{{ errors['Email address'][0] }}</p>
         </ValidationProvider>
         <ValidationProvider v-slot="{ classes }" name="Password" rules="required|min:4|max:18">
           <label class="password" :class="classes">
             <input
-              v-model="form.field.password" name="password" type="password"
+              v-model="form.field.password" name="password" :type="flag == true ? 'password':'text'"
               :placeholder="$t('account.form.password')"
             >
+            <span class="showPassword" @click.stop = "flag = !flag" :class="{flagfalse: flag}"></span>
           </label>
+          <p class="error-msg" v-if="errors['Password']">{{ errors['Password'][0]}}</p>
         </ValidationProvider>
-        <label class="msg">
+
+        <!-- <label class="msg">
           <i v-for="(unit, i) in errors" v-show="unit[0]" :key="i">{{ unit[0] }}<br></i>
-        </label>
+        </label> -->
         <label class="btn" @click="formSubmit(invalid, validate)">
           <button-purple text="Log In" :font-size="'size-16'" :square="true" :border-radius="6" :loading="ajaxRequesting" />
         </label>
@@ -96,7 +105,8 @@ export default {
       ajaxRequesting: false,
       accountList: [],
       accountListIndex: 0,
-    };
+      flag: true
+    }
   },
   mounted() {
     this.autoFill();
@@ -108,7 +118,6 @@ export default {
     },
     formSubmit(invalid, validate) {
       validate();
-
       if (!this.COMMON.checkSupportLocalStorage('localStorage')) {
         this.dialogFailMsg = 'To browse the website normally, please enable <b>Cookies</b> from Settings or turn <b>Private Browsing</b> off.';
         this.dialogFail = true;
@@ -184,7 +193,7 @@ export default {
               + '<br>' + '<b>Error Message:</b> ' + error.statusText
               + '</samp>';
           }
-          this.dialogFail = true;
+          // this.dialogFail = true;
         }
         this.ajaxRequesting = false;
       }).catch((error) => {
@@ -194,7 +203,7 @@ export default {
         //   + '<br>' + '<b>Error Message:</b> ' + error.statusText
         //   + '</samp>';
         this.dialogFailMsg = this.$t('account.errorText.failed');
-        this.dialogFail = true;
+        // this.dialogFail = true;
         console.log('Catch Error: sendLoginInfo');
         console.log(error);
       });
@@ -218,7 +227,7 @@ export default {
           this.renderHeaderAvatar(insObj['accounts'][this.accountListIndex]['profile_pic_url']);
         } else {
           this.dialogFailMsg = 'Server Ins Account Request Error. (Exceptional user.ins_account.accounts)';
-          this.dialogFail = true;
+          // this.dialogFail = true;
           console.error('Server Ins Account Request Error. (Exceptional user.ins_account.accounts)');
         }
       } else {
@@ -243,4 +252,3 @@ export default {
 </script>
 
 <style lang="scss" scoped src="./login-register.scss"></style>
-

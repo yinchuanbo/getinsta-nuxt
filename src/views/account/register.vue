@@ -1,22 +1,29 @@
 <template>
   <div class="login-register">
+    <div class="header-blank pc"></div>
     <div v-if="!(pageIos || pageAff)" class="header-blank"></div>
     <div class="login-register__title">
       <!--<img v-if="!pageIos" src="../../assets/images/global/logo.svg" alt="Logo">-->
       <!--<img v-if="pageIos" src="../../assets/images/global/logo_getinshot.svg" alt="Logo">-->
       <img :src="$store.state.productLogo" alt="Logo">
       <h1>{{ $t('account.register.title') }}</h1>
-      <p>{{ $t('account.register.subTitle') }}</p>
+      <!-- <p>{{ $t('account.register.subTitle') }}</p> -->
+      <p>Sign up to get FREE Instagram followers & likes</p>
     </div>
+    <transition>
+      <div class="login-register_error" v-if="dialogFailMsg">{{dialogFailMsg}}</div>
+      <div class="login-register_ok" v-if="editok" v-html="$t('account.successText.registerSuccess')"></div>
+    </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
         <ValidationProvider v-slot="{ classes }" name="Username" rules="required|alpha_dash|min:4|max:44">
-          <label class="username" :class="classes">
+          <label class="username" :class="classes" style="margin-top: 16px;">
             <input
               v-model="form.field.username" name="username" type="text"
               :placeholder="$t('account.form.username')"
             >
           </label>
+          <p class="error-msg" v-if="errors['Username']">{{ errors['Username'][0] }}</p>
         </ValidationProvider>
 
         <ValidationProvider
@@ -29,40 +36,51 @@
               :placeholder="$t('account.form.emailAddress')"
             >
           </label>
+          <p class="error-msg" v-if="errors['Email']">{{ errors['Email'][0] }}</p>
         </ValidationProvider>
 
         <ValidationProvider v-slot="{ classes }" vid="password" name="Password" rules="required|min:4|max:18">
           <label class="password" :class="classes">
             <input
-              v-model="form.field.password" name="password" type="password"
+              v-model="form.field.password" name="password" :type="flag == true ? 'password':'text'"
               :placeholder="$t('account.form.password')"
             >
+            <span class="showPassword" @click.stop = "flag = !flag" :class="{flagfalse: flag}"></span>
           </label>
+          <p class="error-msg" v-if="errors['password']">{{ errors['password'][0]}}</p>
         </ValidationProvider>
 
         <ValidationProvider v-slot="{ classes }" name="Confirmed password" rules="required|confirmed:password">
           <label class="password" :class="classes">
             <input
-              v-model="form.field.passwordConfirm" name="passwordConfirm" type="password"
+              v-model="form.field.passwordConfirm" name="passwordConfirm" :type="flag1 == true ? 'password':'text'"
               :placeholder="$t('account.form.confirmPassword')"
             >
+            <span class="showPassword" @click.stop = "flag1 = !flag1" :class="{flagfalse: flag1}"></span>
           </label>
+          <p class="error-msg" v-if="errors['Confirmed password']">{{ errors['Confirmed password'][0]}}</p>
         </ValidationProvider>
-        <label class="msg">
+        <!-- <label class="msg">
           <i v-for="(unit, i) in errors" v-show="unit[0]" :key="i">{{ unit[0] }}<br></i>
-        </label>
+        </label> -->
         <label class="btn" @click="formSubmit(invalid, validate)">
-          <button-purple
+          <!-- <button-purple
             :text="$t('account.register.btnSignUpNow')"
+            :font-size="'size-16'" :square="true" :border-radius="6" :loading="ajaxRequesting"
+          /> -->
+          <button-purple
+            text="Sign Up"
             :font-size="'size-16'" :square="true" :border-radius="6" :loading="ajaxRequesting"
           />
         </label>
       </ValidationObserver>
-      <label v-if="!pageIos" class="links-row">
+      <!-- <label v-if="!pageIos" class="links-row"> -->
+      <label class="links-row">
         {{ $t('account.register.link.agree') }}
         <router-link to="/privacy">{{ $t('account.register.link.PrivacyPolicy') }}</router-link>
       </label>
-      <label v-if="!(pageIos || pageAff)" class="links-row">
+      <!-- <label v-if="!(pageIos || pageAff)" class="links-row"> -->
+      <label class="links-row">
         <router-link to="/login">
           {{ $t('account.register.link.alreadyHave') }}
           {{ $t('account.register.link.LogIn') }}
@@ -128,6 +146,7 @@ export default {
           affiliate_id: ''
         }
       },
+      editok: false,
       dialogSuccess: false,
       dialogFail: false,
       dialogFailMsg: '',
@@ -136,7 +155,9 @@ export default {
       emailProvider: [],
       pageIos: false,
       pageAff: false,
-      productName: this.$store.state.productName
+      productName: this.$store.state.productName,
+      flag: true,
+      flag1: true
     };
   },
   watch: {
@@ -194,8 +215,8 @@ export default {
         )
       ).then((response) => {
         if (response.data.status === 'ok') {
-          this.dialogSuccess = true;
-
+          // this.dialogSuccess = true;
+          this.editok = true;
           // if (this.COMMON.getDomain() === this.$constant.url.easyDomain || this.COMMON.envTest()) {
           setTimeout(() => {
             this.login();
@@ -213,7 +234,7 @@ export default {
               + '<br>' + '<b>Error Message:</b> ' + response.data.error.message
               + '</samp>';
           }
-          this.dialogFail = true;
+          // this.dialogFail = true;
         }
         this.ajaxRequesting = false;
       }).catch((error) => {
@@ -267,7 +288,7 @@ export default {
             //   this.$router.push({ path: '/lucky-draw-test' });
             // else
             //   this.$router.push({ path: '/lucky-draw' });
-            this.$router.push({ path: '/user' });
+            this.$router.push({ path: '/user' })
 
 
             // this.$router.push({ path: '/followers-giveaway' });
@@ -290,7 +311,7 @@ export default {
       }).catch((error) => {
         this.ajaxRequesting = false;
         this.dialogFailMsg = this.$t('account.errorText.failed');
-        this.dialogFail = true;
+        // this.dialogFail = true;
         console.log('Catch Error: login');
         console.log(error);
       });
@@ -307,7 +328,6 @@ export default {
       }
     },
     requestEmailLimitList() {
-      if (this.COMMON.envTest()) return;
       this.$nuxt.$axios.get(
         apiSelf.emailLimitList
       ).then((response) => {
