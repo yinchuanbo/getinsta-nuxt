@@ -25,7 +25,7 @@
           <h3><span>{{ $t('global.footer.resource.resource') }}</span></h3>
           <nuxt-link v-if="$i18n.locale === 'en'" to="/login">{{ $t('global.footer.resource.login') }}</nuxt-link>
           <nuxt-link to="/faqs">{{ $t('global.footer.resource.faq') }}</nuxt-link>
-          <nuxt-link to="/blogs">{{ $t('global.footer.resource.blog') }}</nuxt-link>
+          <nuxt-link to="/blog">{{ $t('global.footer.resource.blog') }}</nuxt-link>
         </div>
         <!--<div v-if="$i18n.locale === 'en'" class="footer-text__links_column">-->
         <!--  <h3><span>Free Tools</span></h3>-->

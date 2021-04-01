@@ -32,7 +32,7 @@
           <br>
           <a download href="https://www.easygetinsta.com/downloadcenter" @click="ga">Download do App</a>
           <br>
-          <nuxt-link to="/blogs">Blog</nuxt-link>
+          <nuxt-link to="/blog">Blog</nuxt-link>
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@
               </div>
             </div>
             <a id="nav-menu-04" class="header-nav__menu_links"
-               @click="routerPush('/blogs')"
+               @click="routerPush('/blog')"
             >{{ $t('global.header.menu.blog') }}</a>
             <a class="header-nav__menu_links"
                @click="routerPush('/affiliate-solutions')"
@@ -314,7 +314,7 @@
           </nuxt-link>
           <!--Blog-->
           <nuxt-link
-            to="/blogs"
+            to="/blog"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
@@ -611,7 +611,7 @@ export default {
         this.gaHeaderBtnLabel = 'faq';
       } else if (to.path === '/feedback') {
         this.gaHeaderBtnLabel = 'feedback';
-      } else if (to.path === '/blogs') {
+      } else if (to.path === '/blog') {
         this.gaHeaderBtnLabel = 'blog';
       } else if (to.name === 'blog-detail') {
         this.gaHeaderBtnLabel = `blog-${this.$store.state.blogID}`;

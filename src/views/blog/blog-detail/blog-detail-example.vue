@@ -6,9 +6,9 @@
         <div class="breadcrumb">
           <nuxt-link to="/">Home</nuxt-link>
           <span>&gt;</span>
-          <nuxt-link to="/blogs">Blog</nuxt-link>
+          <nuxt-link to="/blog">Blog</nuxt-link>
           <span>&gt;</span>
-          <nuxt-link to="/blogs"><b>{{ blogDetailObj.blogTitle }}</b></nuxt-link>
+          <nuxt-link to="/blog"><b>{{ blogDetailObj.blogTitle }}</b></nuxt-link>
         </div>
         <div class="meta-info">
           <h1>{{ blogDetailObj.blogTitle }}</h1>
