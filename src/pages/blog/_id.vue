@@ -24,44 +24,43 @@ export default {
 
     // article ID
     const paramID = route.params.id;
-    if (!paramID) {
+    if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
-      return DATA;
-    }
+    } else { // 详情页
+      const idArray = paramID.split('-');
+      const articleID = idArray.pop();
+      if (typeof articleID !== 'string') return;
+      // if (isDev) console.log('articleID', articleID);
 
-    const idArray = paramID.split('-');
-    const articleID = idArray.pop();
-    if (typeof articleID !== 'string') return;
-    // if (isDev) console.log('articleID', articleID);
+      let apiParams = {
+        article_id: articleID,
+        client_lan: 'en',
+        page_url: paramID,
+        accept_lan: 'en'
+      };
 
-    let apiParams = {
-      article_id: articleID,
-      client_lan: 'en',
-      page_url: paramID,
-      accept_lan: 'en'
-    };
+      // request
+      try {
+        let res = await app.$axios.$get(
+          blogApi.getBlogDetailV2,
+          { params: apiParams }
+        );
+        // if (isDev) console.log('res:', res);
 
-    // request
-    try {
-      let res = await app.$axios.$get(
-        blogApi.getBlogDetailV2,
-        { params: apiParams }
-      );
-      // if (isDev) console.log('res:', res);
-
-      if (res['status'] === 'ok') {
-        DATA.reqObj = res;
-        app.title = DATA.reqObj['seo_title'];
-      } else {
-        if (res['redirect_url']) {
-          redirect(301, res['redirect_url']);
+        if (res['status'] === 'ok') {
+          DATA.reqObj = res;
+          app.title = DATA.reqObj['seo_title'];
         } else {
-          error({ statusCode: 404 });
+          if (res['redirect_url']) {
+            redirect(301, res['redirect_url']);
+          } else {
+            error({ statusCode: 404 });
+          }
         }
+      } catch (err) {
+        console.log('blog detail error:', err);
+        error({ statusCode: 500 });
       }
-    } catch (err) {
-      console.log('blog detail error:', err);
-      error({ statusCode: 500 });
     }
 
     return DATA;
