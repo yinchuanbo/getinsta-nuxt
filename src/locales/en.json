@@ -687,18 +687,18 @@
       "LogIn": "Log In"
     },
     "errorText": {
-      "badAccount": "Couldn't find your account.",
-      "badPassword": "Wrong password. <br> Try again or click 'Forgot Password?' to reset it.",
+      "badAccount": "Account not found.",
+      "badPassword": "Wrong password. Try again or click Forgot Password.",
       "accountLocked": "This account has been locked.",
       "failed": "Operating failed, please try again later",
-      "accountOccupied": "An account with these credentials already exists.",
-      "badAccountRegister": "Account error, please try another email.",
+      "accountOccupied": "Someone already has that username. Try another one.",
+      "badAccountRegister": "An account is already registered with that email. Please login.",
       "resetKeyError": "Key Error! <br> Please check the password reset email.",
-      "badKey": "Sorry. Reset failed. Please go to the Forgot Password page to request another reset."
+      "badKey": "Sorry, reset failed. Please click Forgot Password to reset again."
     },
     "successText": {
       "registerSuccess": "Account registered successfully! <br> Download app to get started.",
-      "forgotSuccess": "Please check your inbox.",
+      "forgotSuccess": "We have e-mailed your password reset link!",
       "resetSuccess": "Password set successfully!"
     },
     "login": {

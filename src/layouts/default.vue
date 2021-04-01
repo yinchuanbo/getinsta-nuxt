@@ -137,9 +137,6 @@ export default {
       this.productNameLogoInit();
     }
   },
-  created() {
-    this.multiLangEnvInit(this.$nuxt.$route);
-  },
   mounted() {
     this.watchedMethods(this.$nuxt.$route);
     console.log(
@@ -152,6 +149,8 @@ export default {
       'margin-left: 16px;' +
       'font-size: 14px; font-weight: 600;'
     );
+
+    this.watchedMethods(this.$nuxt.$route);
 
     // iOS触摸事件
     this.COMMON.iosTouchHack();
@@ -310,9 +309,9 @@ export default {
         = to.path === '/';
 
       // Multi-lang 跳转
-      this.multiLangEnvInit(to);
+      // this.multiLangEnvInit(to);
       // // Multi-lang 下载链接初始化
-      this.multiLangAppDwnInit(to);
+      // this.multiLangAppDwnInit(to);
 
 
       // iOS 下载地址
@@ -425,16 +424,10 @@ export default {
       // this.$storage.set('minorLangLocaleTest', this.$i18n.locale);
 
       // *************** i18n Locale 初始化 ******************
-      // if (subDomain !== 'en' && subDomain !== 'www' && !this.COMMON.envTest())
-      //   this.$i18n.locale = subDomain;
-      // else
-      //   this.$i18n.locale = userAgentLocale;
-
-      if (this.COMMON.isSupportedMinorLocale(subDomain) && !this.COMMON.envTest()) {
+      if (subDomain !== 'en' && subDomain !== 'www' && !this.COMMON.envTest())
         this.$i18n.locale = subDomain;
-      } else {
+      else
         this.$i18n.locale = userAgentLocale;
-      }
 
 
       if (this.$i18n.locale !== 'en') {
@@ -874,11 +867,11 @@ export default {
 
 
       // 特殊渠道判断 *********************************************************
-      // if (this.COMMON.getURLQuery('source') === 'tiktok') {
-      //   this.$store.commit('enAdrType', 1);
-      //   // this.$store.commit('enAdrType', 0);
-      //   this.$store.commit('enAdrLinkGpReferrer', 'tiktok');
-      // }
+      if (this.COMMON.getURLQuery('source') === 'tiktok') {
+        this.$store.commit('enAdrType', 1);
+        // this.$store.commit('enAdrType', 0);
+        this.$store.commit('enAdrLinkGpReferrer', 'tiktok');
+      }
       if (this.COMMON.getURLQuery('source') === 'sharechat') {
         this.$store.commit('enAdrType', 0);
         this.$store.commit('enAdrLink', this.$constant.app.download.androidShareChat);
@@ -1094,7 +1087,6 @@ export default {
       const openOrNot = path === '/';
       // V2 Switch Beacon
       this.$store.commit('v2', true);
-      this.$store.commit('s2', true);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
         this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
