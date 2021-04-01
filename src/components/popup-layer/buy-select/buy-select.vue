@@ -60,29 +60,29 @@
             <p style="display:none">
               <span>
                 <b>{{ myinsuser.post.post_count | numberAbbreviations }}</b>
-                {{ $t('global.instagramConcept.posts') }}
+                posts
               </span>
               <span>
                 <b>{{ myinsuser.followed_by | numberAbbreviations }}</b>
-                {{ $t('global.instagramConcept.followers') }}
+                followers
               </span>
               <span>
                 <b>{{ myinsuser.follow | numberAbbreviations }}</b>
-                {{ $t('global.instagramConcept.following') }}
+                following
               </span>
             </p>
             <p class="compact-p">
               <span>
                 <b>{{ myinsuser.post.post_count | numberAbbreviations }}</b>
-                <i>{{ $t('global.instagramConcept.posts') }}</i>
+                <i>posts</i>
               </span>
               <span>
                 <b>{{ myinsuser.follow | numberAbbreviations }}</b>
-                <i>{{ $t('global.instagramConcept.following') }}</i>
+                <i>following</i>
               </span>
               <span>
                 <b>{{ myinsuser.followed_by | numberAbbreviations }}</b>
-                <i>{{ $t('global.instagramConcept.followers') }}</i>
+                <i>followers</i>
               </span>
             </p>
           </div>

@@ -537,9 +537,6 @@ export default {
       deep: true
     }
   },
-  created() {
-    console.log(this.$route);
-  },
   metaInfo() {
     return {
       title: "Buy Instagram Daily Followers for $0.009 - Real & Automatic",

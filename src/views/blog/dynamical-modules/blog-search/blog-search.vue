@@ -6,7 +6,7 @@
       <label>
         <input
           v-model="searchInsInput" type="text"
-          :placeholder="$t('store.buy.search.searchinputBlogholder')"
+          :placeholder="'Your username'"
         >
       </label>
       <div class="search_btn" @click="searchUsername">
@@ -20,15 +20,15 @@
       <p>
         <span>
           <b>{{ insUser.post.post_count | numberAbbreviations }}</b>
-          {{ $t('global.instagramConcept.posts') }}
+          posts
         </span>
         <span>
           <b>{{ insUser.followed_by | numberAbbreviations }}</b>
-          {{ $t('global.instagramConcept.followers') }}
+          followers
         </span>
         <span>
           <b>{{ insUser.follow | numberAbbreviations }}</b>
-          {{ $t('global.instagramConcept.following') }}
+          following
         </span>
       </p>
       <div class="linewhite"></div>
@@ -57,13 +57,14 @@
 <script>
 import apiInsServer from '~/api/api.ins.server';
 import ButtonPurple from '~/components/button/button-purple';
+
 export default {
-  name:'BlogSearch',
+  name: 'BlogSearch',
   components: {
     ButtonPurple
   },
   filters: {
-     numberAbbreviations(num) {
+    numberAbbreviations(num) {
       let numFormatted = 0;
 
       if (Math.pow(10, 12) <= num && num < Math.pow(10, 15)) {
@@ -88,13 +89,22 @@ export default {
       }
     }
   },
-  props:{
-    ax:{
-      type:String,
-      default:''
+  props: {
+    ax: {
+      type: String,
+      default: ''
+    },
+    sendThis: {
+      type: Object,
+      default: null
     }
   },
-  data () {
+  // asyncData({ i18n }) {
+  //   const locale = i18n.locale;
+  //   console.log('i18n', i18n);
+  //   return { locale };
+  // },
+  data() {
     return {
       iostrue: this.COMMON.isiOS(),
       adrtrue: this.COMMON.isAndroid(),
@@ -121,49 +131,49 @@ export default {
         has_next_page: false,
         page_size: 12
       }
-    }
+    };
   },
-  mounted (){
+  mounted() {
     // console.log(111,this.$storage.get('adrDownloadLink'))
     // console.log(222,this.$storage.get('iosDownloadLink'))
 
   },
   methods: {
-      searchUsername () {
+    searchUsername() {
       this.searchInsByServerV2();
       this.$ga.event(
-        'buttonclick',
-        'click',
-        `b4-addname-${this.ax}`
+          'buttonclick',
+          'click',
+          `b4-addname-${this.ax}`
       );
     },
-    searchInsByServerV2 () {
+    searchInsByServerV2() {
       if (this.searchInsInput === '') {
-         this.$alert(
-          '', 'warn',
-          this.$t('store.buy.error.noInsID.title'),
-          this.$t('store.buy.error.noInsID.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
+        this.$alert(
+            '', 'warn',
+            this.$t('store.buy.error.noInsID.title'),
+            this.$t('store.buy.error.noInsID.text'),
+            'normal',
+            this.$t('global.modelBox.btn.close')
         );
         return;
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
-      this.$axios.post(
-        apiInsServer.getAccountByUsername,
-        this.COMMON.paramSign({ ins_account: this.searchInsInput })
+      this.sendThis.$nuxt.$axios.post(
+          apiInsServer.getAccountByUsername,
+          this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
         this.searchInsLoading = false;
         this.searchStatus = true;
 
         if (response.data.status !== 'ok') {
           this.$alert(
-            '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorInsID.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
+              '', 'error',
+              this.$t('global.modelBox.title.oops'),
+              this.$t('store.buy.error.errorInsID.text'),
+              'normal',
+              this.$t('global.modelBox.btn.close')
           );
           return;
         }
@@ -186,11 +196,11 @@ export default {
         this.closeDialog();
         this.searchInsLoading = false;
         this.$alert(
-          '', 'error',
-          this.$t('global.modelBox.title.oops'),
-          this.$t('store.buy.error.errorRequest.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
+            '', 'error',
+            this.$t('global.modelBox.title.oops'),
+            this.$t('store.buy.error.errorRequest.text'),
+            'normal',
+            this.$t('global.modelBox.btn.close')
         );
         console.error('Catch Error: searchIns: ', error);
       });
@@ -219,245 +229,286 @@ export default {
 
       return post;
     },
-    choiceandDow (msg) {
-         if(msg){
-           this.andicon = msg
-         }
+    choiceandDow(msg) {
+      if (msg) {
+        this.andicon = msg;
+      }
     },
-    clickadr () {
+    clickadr() {
       this.$ga.event('insdl', 'download', `blogappdl-b4-${this.ax}`);
       window.location.href = this.$storage.get('adrDownloadLink');
     },
-    clickapple () {
+    clickapple() {
       this.$ga.event('insdl', 'download', `blogiosdl-b4-${this.ax}`);
       window.location.href = this.$storage.get('iosDownloadLink');
     }
   }
-
-
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.search-containrer{
-    width: 800px;
-    margin-top: 40px;
-    padding:55px 125px 75px 125px;
-    background: transparent linear-gradient(262deg, #D178E3 0%, #4D65FA 100%) 0% 0% no-repeat padding-box;
-    border-radius: 12px;
-    opacity: 1;
-    color:#fff;
-    text-align: center;
-        h2{
-        font-size: 30px;
-        margin-bottom:14px;
-        font-weight: 500;
-      }
-      p{
-        font-size: 18px;
-      }
-      .control-search_ins{
+.search-containrer {
+  width: 800px;
+  margin-top: 40px;
+  padding: 55px 125px 75px 125px;
+  background: transparent linear-gradient(262deg, #D178E3 0%, #4D65FA 100%) 0% 0% no-repeat padding-box;
+  border-radius: 12px;
+  opacity: 1;
+  color: #fff;
+  text-align: center;
+
+  h2 {
+    font-size: 30px;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .control-search_ins {
     width: 549px;
     height: 70px;
-    margin:auto;
-    margin-top:38px;
+    margin: auto;
+    margin-top: 38px;
     box-shadow: 0px 8px 20px #000A3D4D;
     border: 1px solid #E0E1E6;
     border-radius: 10px;
-    color:#fff;
+    color: #fff;
     background-color: #fff;
-    .search_btn{
+
+    .search_btn {
       box-shadow: 0px 10px 26px #3F065670;
 
     }
-    label{
-      input{
+
+    label {
+      input {
         font-size: 16px;
         padding-left: 18%;
-        background:url("@/assets/images/global/icon_search_username.svg") no-repeat 31px 21px;
+        background: url("@/assets/images/global/icon_search_username.svg") no-repeat 31px 21px;
         background-size: 24px 26px;
       }
     }
-    input:focus{
-      border-color:#E0E1E6 !important;
+
+    input:focus {
+      border-color: #E0E1E6 !important;
     }
-    input:hover{
-      border-color:#FCDC4E !important;
+
+    input:hover {
+      border-color: #FCDC4E !important;
       background: url("@/assets/images/global/blog_hover_user.svg") no-repeat 31px 21px;
       background-size: 24px 26px;
     }
   }
-  .ins-info-container{
+
+  .ins-info-container {
     margin-top: 50px;
-    img.searchimg{
+
+    img.searchimg {
       width: 102px;
       height: 102px;
       border: 4px solid #fff;
     }
-    h3{
+
+    h3 {
       font: 500 16px/19px Montserrat;
-      color:#fff;
+      color: #fff;
     }
-    p{
-     color:#fff;
-     font: 500 20px Montserrat;
-     margin-top: 20px;
-     margin-bottom: 20px;
-     b{
-      color:#fff;
-     }
+
+    p {
+      color: #fff;
+      font: 500 20px Montserrat;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      b {
+        color: #fff;
+      }
     }
-      .linewhite{
-        width: 544px;
-        height: 1px;
-        background-color:#fff;
-        margin:auto;
-        opacity: 0.2;
-     }
-     .scanContain{
-       text-align: center;
-       h3{
-          font: 14px/18px Montserrat;
-          color: #FCE5FF;
-          margin: 23px 0;
-       }
-       .qrqdbg{
-          width: 150px;
-          height: 150px;
-          margin: auto;
-          background: url("@/assets/images/global/qrcode__download_android.svg") no-repeat center;
-       }
-       .scanbgdow.scanbgdow{
-          background: url("@/assets/images/global/qrcode__download_ios.svg") no-repeat center;
-       }
-       .detailScan{
-         margin-top:28px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          span{
-            display: inline-block;
-            width: 1px;
-            height: 26px;
-            background:#fff;
-            margin:0 20px;
-          }
-          img{
-            border:none;
-            cursor: pointer;
-            margin:0;
-          }
-          img.img01{
-              width: 26px;
-              height: 31px;
-              opacity: .4;
-          }
-          img.onimg01{
-            opacity: 1;
-          }
-          img.img02{
-              width: 24px;
-              height: 28px;
-              opacity:.4;
-          }
-          img.onimg02{
-            opacity: 1;
-          }
-       }
-     }
-     .mobileDown{
-       display: none;
-     }
-  }
-  }
-  @media (max-width: 768px){
-    .search-containrer{
-      padding: 31px 21px 48px;
-      width: 100%;
-      h2{
-        font:600 17px/25px Montserrat;
+
+    .linewhite {
+      width: 544px;
+      height: 1px;
+      background-color: #fff;
+      margin: auto;
+      opacity: 0.2;
+    }
+
+    .scanContain {
+      text-align: center;
+
+      h3 {
+        font: 14px/18px Montserrat;
+        color: #FCE5FF;
+        margin: 23px 0;
       }
-      p{
-       font:14px Montserrat;
+
+      .qrqdbg {
+        width: 150px;
+        height: 150px;
+        margin: auto;
+        background: url("@/assets/images/global/qrcode__download_android.svg") no-repeat center;
       }
-      .control-search_ins{
-        border:none;
-        label{
-          width: 68%;
+
+      .scanbgdow.scanbgdow {
+        background: url("@/assets/images/global/qrcode__download_ios.svg") no-repeat center;
+      }
+
+      .detailScan {
+        margin-top: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          display: inline-block;
+          width: 1px;
+          height: 26px;
+          background: #fff;
+          margin: 0 20px;
         }
-        margin-top:10px;
-        width: 88%;
-        height: 50px;
-        border-radius: 5px;
-        input{
+
+        img {
+          border: none;
+          cursor: pointer;
+          margin: 0;
+        }
+
+        img.img01 {
+          width: 26px;
+          height: 31px;
+          opacity: .4;
+        }
+
+        img.onimg01 {
+          opacity: 1;
+        }
+
+        img.img02 {
+          width: 24px;
+          height: 28px;
+          opacity: .4;
+        }
+
+        img.onimg02 {
+          opacity: 1;
+        }
+      }
+    }
+
+    .mobileDown {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .search-containrer {
+    padding: 31px 21px 48px;
+    width: 100%;
+
+    h2 {
+      font: 600 17px/25px Montserrat;
+    }
+
+    p {
+      font: 14px Montserrat;
+    }
+
+    .control-search_ins {
+      border: none;
+
+      label {
+        width: 68%;
+      }
+
+      margin-top: 10px;
+      width: 88%;
+      height: 50px;
+      border-radius: 5px;
+
+      input {
         padding-left: 20px;
         border-radius: 5px 0 0 5px;
         background-image: none !important;
-        font:14px Montserrat !important;
-        border:1px solid #fff;
+        font: 14px Montserrat !important;
+        border: 1px solid #fff;
         border: none !important;
-        }
-        .search_btn{
-         border-radius: 5px !important;
-         width: 32%;
-         overflow: visible;
-        }
       }
-      .ins-info-container{
-        margin-top:20px !important;
-        img.searchimg{
-         width: 88px;
-          height: 88px;
-        }
-        p{
-          span{
-            display: inline-block;
-            text-align:left;
-            font-size: 14px;
-          b{
-            display:block;
+
+      .search_btn {
+        border-radius: 5px !important;
+        width: 32%;
+        overflow: visible;
+      }
+    }
+
+    .ins-info-container {
+      margin-top: 20px !important;
+
+      img.searchimg {
+        width: 88px;
+        height: 88px;
+      }
+
+      p {
+        span {
+          display: inline-block;
+          text-align: left;
+          font-size: 14px;
+
+          b {
+            display: block;
             font-size: 18px;
-           }
-          }
-        }
-        .linewhite{
-          display:none;
-        }
-        .scanContain{
-          display: none;
-        }
-        .mobileDown{
-          display: block;
-          width:100%;
-          .getfreeDown{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin:auto;
-            width: 263px;
-            height: 56px;
-            background: transparent linear-gradient(270deg, #FFD256 0%, #F1FF33 100%) 0% 0% no-repeat padding-box;
-            box-shadow: 0px 12px 24px #00000029;
-            opacity: 1;
-            border-radius: 64px;
-            font:600 16px/56px Montserrat;
-            letter-spacing: 0px;
-            color: #2A2A2A;
-            margin-top:25px;
-          }
-          .getfreeDown:hover{
-            background: transparent linear-gradient(270deg, #F8DC2A 0%, #F7EE41 100%) 0% 0% no-repeat padding-box;
-            box-shadow: 0px 10px 26px #3F065670;
-          }
-          p{
-            margin:0;
-            margin-top:18px;
-            font-size:14px;
           }
         }
       }
 
+      .linewhite {
+        display: none;
+      }
+
+      .scanContain {
+        display: none;
+      }
+
+      .mobileDown {
+        display: block;
+        width: 100%;
+
+        .getfreeDown {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          width: 263px;
+          height: 56px;
+          background: transparent linear-gradient(270deg, #FFD256 0%, #F1FF33 100%) 0% 0% no-repeat padding-box;
+          box-shadow: 0px 12px 24px #00000029;
+          opacity: 1;
+          border-radius: 64px;
+          font: 600 16px/56px Montserrat;
+          letter-spacing: 0px;
+          color: #2A2A2A;
+          margin-top: 25px;
+        }
+
+        .getfreeDown:hover {
+          background: transparent linear-gradient(270deg, #F8DC2A 0%, #F7EE41 100%) 0% 0% no-repeat padding-box;
+          box-shadow: 0px 10px 26px #3F065670;
+        }
+
+        p {
+          margin: 0;
+          margin-top: 18px;
+          font-size: 14px;
+        }
+      }
     }
+
   }
+}
 
 </style>

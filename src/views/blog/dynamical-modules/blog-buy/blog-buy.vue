@@ -107,21 +107,21 @@ export default {
       if (this.productPkgListLoading) return;
       this.productPkgListLoading = true;
       this.sendThis.$nuxt.$axios.$post(
-        `${apiAccount.appConfig}?origin=web`,
-        this.COMMON.paramSign({
-          client_lan: 'en',
-          cycle_product_enable: true
-        })
+          `${apiAccount.appConfig}?origin=web`,
+          this.COMMON.paramSign({
+            client_lan: 'en',
+            cycle_product_enable: true
+          })
       ).then((response) => {
         this.productPkgListLoading = false;
 
-        if (response.data.product && response.data.product.list) {
-          this.renderProductPkgList(response.data.product.list);
+        if (response.product && response.product.list) {
+          this.renderProductPkgList(response.product.list);
 
         } else {
           this.$alert('', 'error', 'Oops',
-            'Requesting Offer List failed, please try later.',
-            '', 'Close');
+              'Requesting Offer List failed, please try later.',
+              '', 'Close');
         }
 
         setTimeout(() => {
@@ -130,9 +130,9 @@ export default {
       }).catch((error) => {
         this.productPkgListLoading = false;
         this.dialogFailMsg = '<samp>'
-          + '<b>Error Status:</b> ' + error.status
-          + '<br>' + '<b>Error Message:</b> ' + error.statusText
-          + '</samp>';
+            + '<b>Error Status:</b> ' + error.status
+            + '<br>' + '<b>Error Message:</b> ' + error.statusText
+            + '</samp>';
         this.dialogFail = true;
         console.error('Catch Error: getPkgList', error);
       });
@@ -152,7 +152,7 @@ export default {
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
       pkgList.map(item => {
-        if (item['cycle_type'] > 1) {
+        if (item['cycle_type'] > 1 && item.product_type === 1) {
           item.dailyQuantity = item['purchase_quantity'];
           this.pkgListWithUnit.push(item);
         }
@@ -164,7 +164,7 @@ export default {
     renderPkgListDaily() {
       const res = new Map();
       this.productPkgListDaily = this.pkgListWithUnit.filter((a) =>
-        !res.has(a.dailyQuantity) && res.set(a.dailyQuantity, 1));
+          !res.has(a.dailyQuantity) && res.set(a.dailyQuantity, 1));
       this.productPkgListDailyVM = this.productPkgListDaily[0];
     },
     // 生成Days Select数组（周期选择）
@@ -173,46 +173,45 @@ export default {
       this.productPkgListDaysVM = this.productPkgListDays[0];
     },
     searchUsername: function () {
-      this.$ga.event;
       this.$ga.event(
-        'buttonclick',
-        'click',
-        `dailyf-${this.sendThis.blogID}`
+          'buttonclick',
+          'click',
+          `dailyf-${this.sendThis.blogID}`
       );
       this.searchInsByServerV2();
     },
     searchInsByServerV2() {
       if (this.searchInsInput === '') {
         this.$alert(
-          '', 'warn',
-          this.$t('store.buy.error.noInsID.title'),
-          this.$t('store.buy.error.noInsID.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
+            '', 'warn',
+            this.$t('store.buy.error.noInsID.title'),
+            this.$t('store.buy.error.noInsID.text'),
+            'normal',
+            this.$t('global.modelBox.btn.close')
         );
         return;
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
-      this.$nuxt.$axios.$post(
-        apiInsServer.getAccountByUsername,
-        this.COMMON.paramSign({ ins_account: this.searchInsInput })
+      this.sendThis.$nuxt.$axios.$post(
+          apiInsServer.getAccountByUsername,
+          this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
         this.searchInsLoading = false;
         this.searchStatus = true;
 
-        if (response.data.status !== 'ok') {
+        if (response.status !== 'ok') {
           this.$alert(
-            '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorInsID.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
+              '', 'error',
+              this.$t('global.modelBox.title.oops'),
+              this.$t('store.buy.error.errorInsID.text'),
+              'normal',
+              this.$t('global.modelBox.btn.close')
           );
           return;
         }
 
-        const _sharedDataUser = response.data.content['graphql']['user'];
+        const _sharedDataUser = response.content['graphql']['user'];
         const _sharedDataUserPosts = _sharedDataUser['edge_owner_to_timeline_media'];
 
         this.insUser.ins_id = _sharedDataUser.id;
@@ -246,11 +245,11 @@ export default {
       }).catch((error) => {
         this.searchInsLoading = false;
         this.$alert(
-          '', 'error',
-          this.$t('global.modelBox.title.oops'),
-          this.$t('store.buy.error.errorRequest.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
+            '', 'error',
+            this.$t('global.modelBox.title.oops'),
+            this.$t('store.buy.error.errorRequest.text'),
+            'normal',
+            this.$t('global.modelBox.btn.close')
         );
         console.error('Catch Error: searchIns: ', error);
       });
@@ -290,7 +289,6 @@ export default {
       }, 600);
       this.searchInsInput = '';
     }
-
   }
 };
 </script>

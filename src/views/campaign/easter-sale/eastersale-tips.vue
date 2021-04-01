@@ -1,19 +1,19 @@
 <template>
   <div class="eastersale-tips">
     <div class="eastersale-tips_text">
-      <img src="images/feather-check-circle.svg" alt="">
+      <img src="./images/feather-check-circle.svg" alt="">
       100% Real Instagram Followers
     </div>
     <div class="eastersale-tips_text">
-      <img src="images/feather-check-circle.svg" alt="">
+      <img src="./images/feather-check-circle.svg" alt="">
       Followers drop protection
     </div>
     <div class="eastersale-tips_text">
-      <img src="images/feather-check-circle.svg" alt="">
+      <img src="./images/feather-check-circle.svg" alt="">
       The followers will be sent in 24 hours
     </div>
     <div class="eastersale-tips_text">
-      <img src="images/feather-check-circle.svg" alt="">
+      <img src="./images/feather-check-circle.svg" alt="">
       Profile must be public
     </div>
   </div>
