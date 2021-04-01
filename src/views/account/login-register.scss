@@ -74,7 +74,16 @@ label.invalid input {
       width: 327px;
       height: 56px;
       input {
-        padding-left: 66px;
+        padding-left: 47px;
+      }
+
+      &.invalid  {
+        input {
+          border-color: #ED2C5B;
+        }
+      }
+      &.btn {
+        margin-top: 24px;
       }
 
       &.invalid  {
@@ -89,10 +98,10 @@ label.invalid input {
       &:after {
         position: absolute;
         top: 0;
-        left: 24px;
+        left: 16px;
         z-index: 1;
         display: block;
-        width: 20px;
+        width: 16px;
         height: 100%;
         background-size: contain;
         background-repeat: no-repeat;
@@ -161,7 +170,7 @@ label.invalid input {
       }
 
       &.links-row {
-        margin-top: 50px;
+        margin-top: 32px;
         height: auto;
       }
     }

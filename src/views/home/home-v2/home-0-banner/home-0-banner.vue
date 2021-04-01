@@ -659,12 +659,13 @@ export default {
       }
 
       //v2
-      .phone, .followers, .like-num, .like-btn, .views, .phone-shadow {
+      .phone, .followers, .like-num, .like-btn, .views, .phone-shadow, .line, .bubble-0, .bubble-1 {
         //transform: translateY(33px);
         display: none;
       }
 
       .banner-animate-loading {
+        display: none;
         transform: translateY(-30px);
       }
     }

@@ -30,7 +30,7 @@
               v-model="form.field.password" name="password" :type="flag == true ? 'password':'text'"
               :placeholder="$t('account.form.password')"
             >
-            <span class="showPassword" @click.stop = "flag = !flag"></span>
+            <span class="showPassword" @click.stop = "flag = !flag" :class="{flagfalse: flag}"></span>
           </label>
           <p class="error-msg" v-if="errors['Password']">{{ errors['Password'][0]}}</p>
         </ValidationProvider>
@@ -205,7 +205,7 @@ export default {
         //   + '<br>' + '<b>Error Message:</b> ' + error.statusText
         //   + '</samp>';
         this.dialogFailMsg = this.$t('account.errorText.failed');
-        this.dialogFail = true;
+        // this.dialogFail = true;
         console.log('Catch Error: sendLoginInfo');
         console.log(error);
       });
@@ -229,7 +229,7 @@ export default {
           this.renderHeaderAvatar(insObj['accounts'][this.accountListIndex]['profile_pic_url']);
         } else {
           this.dialogFailMsg = 'Server Ins Account Request Error. (Exceptional user.ins_account.accounts)';
-          this.dialogFail = true;
+          // this.dialogFail = true;
           console.error('Server Ins Account Request Error. (Exceptional user.ins_account.accounts)');
         }
       } else {
@@ -254,4 +254,3 @@ export default {
 </script>
 
 <style lang="scss" scoped src="./login-register.scss"></style>
-

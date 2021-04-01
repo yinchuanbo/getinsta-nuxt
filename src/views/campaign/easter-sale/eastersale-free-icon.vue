@@ -23,7 +23,7 @@ export default {
 .eastersale-free-icon {
   width: 83px;
   height: 87px;
-  background: url('images/m/free-icon.svg') no-repeat;
+  background: url('./images/m/free-icon.svg') no-repeat;
   background-size: 100% 100%;
   display: flex;
   flex-flow: column;

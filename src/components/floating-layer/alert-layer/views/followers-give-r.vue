@@ -1,7 +1,7 @@
 <template>
   <div v-show="is" class="right_i" :class="{'ac':ac}" @click="jump">
     <i class="hide pc" @click.stop="is = false"></i>
-    <img class="pc" src="../img/alert-pc.svg" alt="" />
+    <img class="pc" src="../../img/alert-pc.svg" alt="" />
   </div>
 </template>
 <script>

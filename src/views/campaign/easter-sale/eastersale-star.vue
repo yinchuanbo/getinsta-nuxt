@@ -1,6 +1,6 @@
 <template>
   <span class="eastersale-star">
-    <img src="images/icon_star.svg" alt="">
+    <img src="./images/icon_star.svg" alt="">
   </span>
 </template>
 

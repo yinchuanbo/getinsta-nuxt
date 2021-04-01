@@ -8,7 +8,7 @@
             <div class="breadcrumb">
               <nuxt-link to="/">{{ $t('global.header.menu.home') }}</nuxt-link>
               <span>&gt;</span>
-              <nuxt-link to="/blogs">{{ $t('global.header.menu.blog') }}</nuxt-link>
+              <nuxt-link to="/blog">{{ $t('global.header.menu.blog') }}</nuxt-link>
               <span>&gt;</span>
               <a @click="backToBlogList">{{ blogSortObj.breadcrumb || '' }}</a>
               <span>&gt;</span>
@@ -39,7 +39,7 @@
               <h2>{{ $t('blogDetail.RelatedReadings') }}</h2>
               <nuxt-link
                 v-for="(unit, i) in relatedArticleList" :key="i"
-                :to="`/blogs/${unit.alia}`"
+                :to="`/blog/${unit.alia}`"
               >
                 {{ unit.title }}
               </nuxt-link>
@@ -308,7 +308,7 @@ export default {
             let checkStr = [...document.querySelectorAll('.blogBanner')];
             if (checkStr.length) {
               for (let i = 0; i < checkStr.length; i++) {
-                let searchcomponent = new MyBlog({ propsData: { ax: this.blogID } }).$mount();
+                let searchcomponent = new MyBlog({ propsData: { ax: this.blogID, sendThis: this } }).$mount();
                 checkStr[i].parentNode.replaceChild(searchcomponent.$el, checkStr[i]);
               }
             }
@@ -481,7 +481,7 @@ export default {
       if (process.client) {
         this.$storage.set('blogDetailVisited', true);
       }
-      this.$router.push({ path: '/blogs' });
+      this.$router.push({ path: '/blog' });
     },
 
     downloadWindows() {

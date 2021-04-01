@@ -138,6 +138,7 @@ export default {
     }
   },
   mounted() {
+    this.watchedMethods(this.$nuxt.$route);
     console.log(
       '%cGetInsta%cWeb APP',
       'padding: 4px 18px;' +
@@ -664,7 +665,7 @@ export default {
         return;
       }
 
-      this.$axios.get(
+      this.$nuxt.$axios.get(
         apiAdr.getCountry
       ).then((res) => {
         let countryCode = '';
@@ -936,7 +937,7 @@ export default {
         if (this.$storage.has('accessCountry'))
           params.country = this.$storage.get('accessCountry');
 
-        this.$axios.get(apiV2.getWebConfig, {
+        this.$nuxt.$axios.get(apiV2.getWebConfig, {
           params: params
         }).then((res) => {
           resolve(res);
@@ -1051,23 +1052,37 @@ export default {
 
     // v2开关
     v2SwitchGate(path) {
+      this.platformDetective();
       if (this.COMMON.envTest() && location.hostname !== 'test.easygetinsta.com')
         this.v2SwitchForDev(path);
       else
         this.v2Switch(path);
+
+      // this.v2Switch(path);
     },
     v2Switch(path) {
-      this.platformDetective();
-      // const openOrNot = path === '/' && this.COMMON.randomAbTest();
-      const openOrNot = true;
-      this.$store.commit('v2', openOrNot);
+      const storePages = [
+        '/buy-instagram-followers',
+        '/buy-instagram-daily-followers',
+        '/buy-instagram-likes',
+        '/buy-instagram-daily-likes'
+      ];
+      const isStorePages = storePages.indexOf(path) > -1;
+      let openOrNot = this.COMMON.randomAbTest();
+
+      if (!isStorePages)
+        openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
+
+      this.$storage.set('s2', openOrNot);
+
+      this.$store.commit('v2', true);
+      this.$store.commit('s2', openOrNot);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
         this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
       this.$store.commit('v2Ad', true);
     },
     v2SwitchForDev(path) {
-      this.platformDetective();
       // PC Beacon
       const openOrNot = path === '/';
       // V2 Switch Beacon

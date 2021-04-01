@@ -6,42 +6,82 @@
     <div class="user-info"
          :class="{ 'less-2': accountList.length <= 2 }"
     >
-      <div v-if="accountList.length !== 0" class="wrapper">
-        <div class="avatar title" title="Change or add Instagram account" @click="accountChange">
-          <img :src="accountCurrent.profile_pic_url | avatarCal" alt="">
+      <div class="name-email">
+        <h2>{{ $t('userCenter.tabs.profile.briefZone.hi') }} {{ profile.user_name }}, &nbsp;</h2>
+        <h3>{{ profile.user_account }}</h3>
+      </div>
+      <!-- 有 id -->
+      <div v-if="accountList.length !== 0" class="wrapper hasid">
+        <!-- @click="accountChange" -->
+        <div class="user-list-info">
+          <div class="avatar title" title="Change or add Instagram account">
+            <img :src="accountCurrent.profile_pic_url | avatarCal" alt="">
+            <span @click="showIdList = !showIdList" :class="{'open': showIdList }"></span>
+          </div>
+          <div class="text">
+            <h2>{{ accountCurrent.ins_account || 'Instagram info load error' }}</h2>
+            <p>
+              <span :title="`${accountCurrent.post.post_count} ${$t('global.instagramConcept.posts')}`">
+                <b>{{ profilePosts }}</b>
+                {{ $t('global.instagramConcept.posts') }}
+              </span>
+              <span :title="`${accountCurrent.followed_by} ${$t('global.instagramConcept.followers')}`">
+                <b>{{ profileFollowers }}</b>
+                {{ $t('global.instagramConcept.followers') }}
+              </span>
+              <span :title="`${accountCurrent.follow} ${$t('global.instagramConcept.following')}`">
+                <b>{{ profileLikes }}</b>
+                {{ $t('global.instagramConcept.following') }}
+              </span>
+            </p>
+          </div>
         </div>
-        <div class="text">
-          <h2>{{ accountCurrent.ins_account || 'Instagram info load error' }}</h2>
-          <p>
-            <span :title="`${accountCurrent.post.post_count} ${$t('global.instagramConcept.posts')}`">
-              <b>{{ profilePosts }}</b>
-              {{ $t('global.instagramConcept.posts') }}
-            </span>
-            <span :title="`${accountCurrent.followed_by} ${$t('global.instagramConcept.followers')}`">
-              <b>{{ profileFollowers }}</b>
-              {{ $t('global.instagramConcept.followers') }}
-            </span>
-            <span :title="`${accountCurrent.follow} ${$t('global.instagramConcept.following')}`">
-              <b>{{ profileLikes }}</b>
-              {{ $t('global.instagramConcept.following') }}
-            </span>
-          </p>
-        </div>
-        <div v-if="accountList.length !== 1" class="btn" @click="accountChange">
+        <transition name="fade">
+          <div class="user-list-content" v-if="showIdList">
+
+            <div class="add-name">
+              <h2>{{ $t('userCenter.tabs.profile.accountZone.title') }}</h2>
+              <h3>{{ $t('userCenter.tabs.profile.accountZone.tip') }}</h3>
+            </div>
+            <div class="add-container">
+              <div v-for="(unit, i) in accountList" :key="i"
+                 :class="{ 'account-on': accountListIndex === i }"
+                 class="unit"
+                 @click="accountListSwitch(unit, i)"
+              >
+                <img :src="unit.profile_pic_url | avatarCal" alt="">
+                <p>{{ unit.ins_account || 'Unknown' }}</p>
+                <i class="delete"
+                    :title="$t('userCenter.tabs.profile.accountZone.unbindBtn')"
+                    @click.stop="deleteIns(unit, i)"
+                ></i>
+              </div>
+              <div v-if="accountList.length !== 5" class="unit unit__add" @click="openInsSearchDialog">
+                <img src="./img/user-center__btn_add.svg" alt="">
+                <p>{{ $t('userCenter.accountZone.btnAdd') }}</p>
+              </div>
+            </div>
+
+          </div>
+        </transition>
+
+        <!-- <div v-if="accountList.length === 1" class="btn" @click="accountChange">
           <button-purple
             :text="$t('userCenter.accountZone.btnChangeAccount')"
             :font-size="'size-14'" :square="true"
           />
-        </div>
+        </div> -->
       </div>
+      <!-- 无 id -->
       <div v-if="accountList.length === 0" class="wrapper">
         <div class="add-ins">
-          <h2>{{ $t('userCenter.accountZone.noAccountTitle') }}</h2>
           <div class="add-ins__add-btn" @click="openInsSearchDialog">
-            <img src="img/user-center__btn_add.svg" alt="add btn">
+            <img src="./img/user-center__btn_add.svg" alt="add btn">
           </div>
+          <h2>{{ $t('userCenter.accountZone.noAccountTitle') }}</h2>
         </div>
       </div>
+      <!-- accountList 列表 -->
       <transition name="fade-skeleton">
         <div v-if="changeAccountStatus" class="wrapper">
           <div class="account">
@@ -56,7 +96,7 @@
               <p :title="unit.ins_account || 'Unknown'">{{ unit.ins_account || 'Unknown' }}</p>
             </div>
             <div v-if="accountList.length !== 5" class="unit unit__add" @click="openInsSearchDialog">
-              <img class="add-icon" src="img/user-center__btn_add.svg" alt="add icon">
+              <img class="add-icon" src="./img/user-center__btn_add.svg" alt="add icon">
               <p>{{ $t('userCenter.accountZone.btnAdd') }}</p>
             </div>
           </div>
@@ -65,101 +105,23 @@
     </div>
 
     <!--tabs-->
+
     <div class="user-tabs">
       <div class="wrapper">
+        <h2>Get Instagram Followers & Likes</h2>
         <div class="user-tabs__tabs">
           <div
             v-for="(unit, i) in tabs" :key="i"
             :class="{ 'on': tabsIndex === i }" class="unit"
             @click="tabSwitch(i)"
           >
-            {{ unit.text }}
+            <p>{{ unit.text }}</p>
           </div>
         </div>
         <transition name="fade-tabs" mode="out-in">
-          <div
-            v-if="tabsIndex === 0" key="tab0"
-            class="user-tabs__tabs_wrapper profile"
-          >
-            <div class="user-tabs__container">
-              <div class="info">
-                <h2><span>{{ $t('userCenter.tabs.profile.briefZone.hi') }}, {{ profile.user_name }}</span></h2>
-                <h3>{{ profile.user_account }}</h3>
-                <!--<p>You have<b>{{ $store.state.userCoins }} Coins</b>now <br> Use your coins to get free followers/likes instantly</p>-->
-                <p>{{ $t('userCenter.tabs.profile.briefZone.text') }}</p>
-                <div class="btn" @click="tabSwitch(1)">
-                  <span @click="gaProfileGet">
-                    <button-purple
-                      :text="$t('userCenter.tabs.profile.briefZone.btn')"
-                      font-size="size-16" square
-                    />
-                  </span>
-                </div>
-              </div>
-              <hr>
-              <div class="add">
-                <h2><span>{{ $t('userCenter.tabs.profile.accountZone.title') }}</span></h2>
-                <h3>{{ $t('userCenter.tabs.profile.accountZone.tip') }}</h3>
-                <div class="add-container">
-                  <div v-for="(unit, i) in accountList" :key="i" class="unit">
-                    <img :src="unit.profile_pic_url | avatarCal" alt="">
-                    <p>{{ unit.ins_account || 'Unknown' }}</p>
-                    <i class="delete"
-                       :title="$t('userCenter.tabs.profile.accountZone.unbindBtn')"
-                       @click="deleteIns(unit, i)"
-                    ></i>
-                  </div>
-                  <div v-if="accountList.length !== 5" class="unit unit__add" @click="openInsSearchDialog">
-                    <img src="img/user-center__btn_add.svg" alt="">
-                    <p>{{ $t('userCenter.accountZone.btnAdd') }}</p>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div class="task">
-                <h2 id="mark-task"><span>{{ $t('userCenter.tabs.profile.myTaskZone.title') }}</span></h2>
-                <div class="task-container">
-                  <div v-for="(unit, i) in taskList" :key="i"
-                       :class="{
-                         'like': unit.task_type === 1,
-                         'follow': unit.task_type === 2
-                       }" class="unit"
-                  >
-                    <!--<img alt="task thumb"-->
-                    <!--     :src="unit.task_type === 1 ? unit.like_pic_url : unit.follow_pic_url">-->
-                    <img alt="task thumb"
-                         :src="unit.task_type === 1
-                           ? `https://www.instagram.com/p/${unit.short_code}/media/?size=m`
-                           : unit.follow_pic_url"
-                    >
-                    <div class="progress"
-                         :class="{ 'full': unit['task_progress'] / unit['task_quantity'] === 1 }"
-                    >
-                      <p>
-                        {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}:
-                        <span>{{ unit['task_progress'] }} / {{ unit['task_quantity'] }}
-                          {{ unit.task_type === 1 ? 'Likes' : 'Followers' }}</span><i></i>
-                      </p>
-                      <div class="bar">
-                        <i :style="{ width: unit['task_progress'] / unit['task_quantity'] * 100 + '%' }"></i>
-                      </div>
-                    </div>
-                  </div>
-
-                  <list-empty
-                    v-if="taskList.length === 0"
-                    :msg="$t('userCenter.tabs.profile.myTaskZone.taskListEmptyText')"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div v-if="tabsIndex === 1" key="tab1" class="user-tabs__tabs_wrapper follow">
+          <div v-if="tabsIndex === 0" key="tab0" class="user-tabs__tabs_wrapper follow">
             <div class="user-tabs__container">
               <div class="pkg-container">
-                <h2 id="title-pkg-follow" :class="{ 'error': productPkgListFollowTitle }">
-                  <span>{{ $t('store.buy.title.text') }} <i>{{ $t('store.buy.title.error') }}</i></span>
-                </h2>
                 <div class="pc">
                   <div v-for="(pkg, i) in productPkgListFollow"
                        :key="i"
@@ -176,7 +138,10 @@
                     <span class="num">
                       <i class="num-i"></i>
                       <i class="cross"></i>
-                      <b>{{ pkg['purchase_quantity'] }}</b><span></span>
+                      <b>
+                        <span>{{ pkg['purchase_quantity'] }}</span>
+                        <span>Followers</span>
+                        </b><span></span>
                     </span>
 
                     <!--gives mk 0-->
@@ -186,7 +151,7 @@
 
                     <!--gives mk 1-->
                     <span v-if="pkg['gives'][0].quantity !== 0" class="likes-mk-1">
-                      <span style="background: transparent;color: #00A231">+ {{ pkg['gives'][0].quantity }}</span>
+                      <span style="background: transparent;color: #00A231">{{ pkg['gives'][0].quantity }} Free</span>
                     </span>
 
                     <!--price-->
@@ -203,6 +168,27 @@
                       </sup>
                       <!--<sub>{{ pkg['original_price_decimal'] | numToFixed }} USD</sub>-->
                     </span>
+
+                    <div class="pkg-line"></div>
+                    <div class="pkg-text">
+                      <div>
+                        <img src="./img/select01.svg" alt="">
+                        <p>Real Followers</p>
+                      </div>
+                      <div>
+                        <img src="./img/select01.svg" alt="">
+                        <p>RDrop Protection</p>
+                      </div>
+                      <div>
+                        <img src="./img/select01.svg" alt="">
+                        <p>Instant Delivery</p>
+                      </div>
+                      <div>
+                        <img src="./img/select01.svg" alt="">
+                        <p>24/7 Support</p>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
                 <div class="mobile">
@@ -231,15 +217,26 @@
                     <!--    &lt;!&ndash;</p>&ndash;&gt;-->
                     <!--  </span>-->
                     <!--</span>-->
+
+                    <span class="circle"></span>
+
                     <span class="num">
                       <i class="num-i"></i>
                       <i class="cross"></i>
                       <b>{{ pkg['purchase_quantity'] }}</b><span></span>
                     </span>
 
+                    <span class="juli" v-if="pkg['gives'][0].quantity === 0"></span>
+
                     <!--gives mk 1-->
-                    <span v-if="pkg['gives'][0].quantity !== 0" class="likes-mk-1">
-                      <span style="background: transparent;color: #00A231">+ {{ pkg['gives'][0].quantity }}</span>
+                    <span v-if="pkg['gives'][0].quantity !== 0" class="plus">+</span>
+                    <span v-if="pkg['gives'][0].quantity !== 0 && pkg['promote_sale_type'] !== 3" class="likes-mk-1">
+                      <span style="background: transparent;color: #00A231">{{ pkg['gives'][0].quantity }}</span>
+                    </span>
+
+                    <span v-if="pkg['gives'][0].quantity !== 0 && pkg['promote_sale_type'] === 3" class="likes-mk-1 hotlike">
+                      <i>Free</i>
+                      <i>{{ pkg['gives'][0].quantity }}</i>
                     </span>
 
                     <!--price-->
@@ -275,24 +272,21 @@
               <!--  </div>-->
               <!--  <p><i></i><span> +{{ productPkgCurrentFollow['gives'] ? productPkgCurrentFollow['gives'][0]['quantity'] : 0 }}</span></p>-->
               <!--</div>-->
-              <div v-if="accountList.length === 0">
+              <!-- <div v-if="accountList.length === 0">
                 <list-empty :msg="$t('userCenter.error.noInsAccount')" />
-              </div>
+              </div> -->
             </div>
 
             <div class="user-tabs__btn pc" @click="tabBottomBtnAction">
               <button-yellow-icon
                 :text="$t('global.header.button.buyNow')"
-                :icon="'cart'" :loading="ajaxRequesting"
+                :loading="ajaxRequesting"
               />
             </div>
           </div>
-          <div v-if="tabsIndex === 2" key="tab2" class="user-tabs__tabs_wrapper like">
+          <div v-if="tabsIndex === 1" key="tab1" class="user-tabs__tabs_wrapper like">
             <div class="user-tabs__container">
               <div class="pkg-container">
-                <h2 id="title-pkg-like" :class="{ 'error': productPkgListLikeTitle }">
-                  <span>{{ $t('store.buy.title.text') }} <i>{{ $t('store.buy.title.error') }}</i></span>
-                </h2>
                 <div class="pc">
                   <div v-for="(pkg, i) in productPkgListLike" :key="i"
                        :class="{
@@ -308,13 +302,18 @@
                     <span class="num">
                       <i class="num-i"></i>
                       <i class="cross"></i>
-                      <b>{{ pkg['purchase_quantity'] }}</b><span></span>
+                      <b>
+                        <span>{{ pkg['purchase_quantity'] }}</span>
+                        <span>Likes</span>
+                      </b>
+                      <span></span>
                     </span>
 
                     <!--gives mk 1-->
                     <span v-if="pkg['gives'][0].quantity !== 0" class="likes-mk-1">
-                      <span>+ {{ pkg['gives'][0].quantity }}</span>
+                      <span>+ {{ pkg['gives'][0].quantity }} OFF</span>
                     </span>
+
                     <!--<span v-if="pkg['gives'][0].quantity !== 0" class="likes">-->
                     <!--  <span>+ {{ pkg['gives'][0].quantity }} Follows</span><i></i>-->
                     <!--</span>-->
@@ -332,6 +331,26 @@
                         {{ pkg.price_decimal | numToFixed }} {{ $t('global.currencySymbol') }}
                       </sup>
                     </span>
+
+                    <div class="pkg-line"></div>
+                    <div class="pkg-text">
+                      <div>
+                        <img src="./img/select01.svg" alt="">
+                        <p>Real likes</p>
+                      </div>
+                      <div>
+                        <img src="./img/select01.svg" alt="">
+                        <p>RDrop Protection</p>
+                      </div>
+                      <div>
+                        <img src="./img/select01.svg" alt="">
+                        <p>Instant Delivery</p>
+                      </div>
+                      <div>
+                        <img src="./img/select01.svg" alt="">
+                        <p>24/7 Support</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="mobile">
@@ -359,16 +378,21 @@
                     <!--    &lt;!&ndash;</p>&ndash;&gt;-->
                     <!--  </span>-->
                     <!--</span>-->
-                    <span class="num">
-                      <i class="num-i"></i>
-                      <i class="cross"></i>
-                      <b>{{ pkg['purchase_quantity'] }}</b><span></span>
-                    </span>
+                    <div class="like-item-left">
+                      <span class="circle"></span>
+                      <span class="num">
+                        <i class="num-i"></i>
+                        <i class="cross"></i>
+                        <b>{{ pkg['purchase_quantity'] }}</b><span></span>
+                      </span>
+                    </div>
 
                     <!--gives mk 1-->
                     <span v-if="pkg['gives'][0].quantity !== 0" class="likes-mk-1">
                       <span>+ {{ pkg['gives'][0].quantity }}</span>
                     </span>
+
+                    <!-- <span class="off-m">10% OFF</span> -->
 
                     <!--price-->
                     <span v-if="pkg.payment_type === 1" class="coins">
@@ -435,41 +459,124 @@
             <div class="user-tabs__btn pc" @click="tabBottomBtnAction">
               <button-yellow-icon
                 :text="$t('global.header.button.buyNow')"
-                :icon="'cart'" :loading="ajaxRequesting"
+                :loading="ajaxRequesting"
               />
             </div>
           </div>
+          <!-- task list -->
+          <div v-if="tabsIndex === 2" key="tab2" class="user-tabs__tabs_wrapper profile">
+            <div class="user-tabs__container">
+              <div class="task">
+                <!-- <h2 id="mark-task"><span>{{ $t('userCenter.tabs.profile.myTaskZone.title') }}</span></h2> -->
+                <div class="task-container" :class="{ hasList:  taskList.length !== 0}">
+                  <template v-if="taskList && taskList.length !== 0">
+                    <div v-for="(unit, i) in taskList" :key="i"
+                         :class="{
+                           'like': unit.task_type === 1,
+                           'follow': unit.task_type === 2
+                         }" class="unit"
+                    >
+                      <!--<img alt="task thumb"-->
+                      <!--     :src="unit.task_type === 1 ? unit.like_pic_url : unit.follow_pic_url">-->
+                      <img alt="task thumb"
+                           src="unit.task_type === 1
+                             ? `https://www.instagram.com/p/${unit.short_code}/media/?size=m`
+                             : unit.follow_pic_url"
+                          onerror="this.src = 'https://cdn.easygetinsta.com/static/en/img/icon_avatar_default.2c1fbc4e.svg'"
+                      >
+
+                      <div class="progress pc"
+                           :class="{ 'full': unit['task_progress'] / unit['task_quantity'] === 1 }"
+                      >
+                        <p>
+                          {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}:
+                          <span>{{ unit['task_progress'] }} / {{ unit['task_quantity'] }}
+                            {{ unit.task_type === 1 ? 'Likes' : 'Followers' }}</span>
+                            <!-- <i></i> -->
+                        </p>
+                        <div class="bar">
+                          <i :style="{ width: unit['task_progress'] / unit['task_quantity'] * 100 + '%' }"></i>
+                        </div>
+                        <div class="time">{{Number(unit.task_create_time + '000') | formatDate}}</div>
+                        <div class="user-icon"></div>
+                      </div>
+
+                      <div class="progress mobile"
+                           :class="{ 'full': unit['task_progress'] / unit['task_quantity'] === 1 }"
+                      >
+                        <div>
+                          {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}:
+                          <span>{{ unit['task_progress'] }} / {{ unit['task_quantity'] }}
+                            {{ unit.task_type === 1 ? 'Likes' : 'Followers' }}</span>
+                            <!-- <i></i> -->
+                          <div class="time">{{Number(unit.task_create_time + '000') | formatDate}}</div>
+                          <div class="user-icon"></div>
+                        </div>
+                        <div class="bar">
+                          <i :style="{ width: unit['task_progress'] / unit['task_quantity'] * 100 + '%' }"></i>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </template>
+                  <div v-else class="no-task">
+                    <h2>{{ $t('userCenter.tabs.profile.myTaskZone.title') }}</h2>
+                    <div>
+                      <img src="./img/dialog__icon_alert-gray.svg" />
+                      <p>{{ $t('userCenter.tabs.profile.myTaskZone.taskListEmptyText') }}</p>
+                    </div>
+                  </div>
+
+                  <!-- <list-empty
+                    v-if="taskList.length === 0"
+                    :msg="$t('userCenter.tabs.profile.myTaskZone.taskListEmptyText')"
+                  /> -->
+                </div>
+              </div>
+
+            </div>
+          </div>
         </transition>
+        <div class="mobile mobile-buy-btn" @click="tabBottomBtnAction" v-if="tabsIndex !== 2">
+          <button-yellow-icon
+            :text="$t('global.header.button.buyNow')"
+            :font-size="'size-16'"
+          />
+        </div>
       </div>
     </div>
 
     <!--mobile-btn Buy Now-->
-    <div class="control-btn__bottom-buy mobile"
+    <!-- <div class="control-btn__bottom-buy mobile"
          :class="{ 'on': bottomBtnOn }"
          @click="tabBottomBtnAction"
     >
       <button-yellow-icon
         :text="$t('global.header.button.buyNow')"
-        :icon="'cart'" :font-size="'size-16'"
+        :font-size="'size-16'"
       />
-    </div>
+    </div> -->
 
     <!--Dialogs-->
     <transition name="fade">
-      <div v-if="dialogSearchIns" key="diag3" class="uni-dialog-box enter-box enter-mask">
+      <div v-if="dialogSearchIns" key="diag3" class="uni-dialog-box enter-box enter-mask searchAlert">
         <div class="mask"></div>
         <div class="container">
           <i class="close" @click="closeDialog()"></i>
           <div class="content">
             <div class="model-box">
               <div class="title search-add-ins">
-                <h3>{{ $t('userCenter.dialog.EnterUsername') }}</h3>
+                <!-- <h3>{{ $t('userCenter.dialog.EnterUsername') }}</h3> -->
+                <img src="./img/dialog__icon_alert.svg" alt="">
+                <p>Please add an Instagram account FIRST.</p>
               </div>
               <div class="input">
                 <label>
                   <input v-model="searchInsInput" type="text" placeholder="Your Instagram ID">
                 </label>
               </div>
+              <p class="error-msg" v-if="dialogFailMsg" v-html="dialogFailMsg"></p>
               <div class="btn" @click="searchIns">
                 <button-purple
                   :text="$t('userCenter.dialog.Add')"
@@ -500,21 +607,62 @@
           </div>
         </div>
       </div>
-      <div v-if="dialogDeleteIns" key="diag9" class="uni-dialog-box enter-box enter-mask">
+      <!-- 删除绑定的 ins id -->
+      <div v-if="dialogDeleteIns" key="diag9" class="uni-dialog-box enter-box enter-mask dialogDeleteIns">
         <div class="mask"></div>
         <div class="container">
           <i class="close" @click="closeDialog()"></i>
           <div class="content">
             <div class="model-box">
+              <h2>Delete This Account?</h2>
               <div class="ins">
                 <img :src="deleteInsCache.profile_pic_url | avatarCal" alt="avatar">
                 <p>{{ deleteInsCache.ins_account }}</p>
               </div>
-              <div class="btn" @click="deleteInsRequestPreCheck">
-                <button-red
-                  :text="$t('userCenter.dialog.DeleteAccount')"
-                  :font-size="'size-16'" :square="true" :loading="deleteInsLoading"
-                />
+              <div class="btn">
+                <div @click="closeDialog()">
+                  <button type="button">Cancel</button>
+                </div>
+                <div @click="deleteInsRequestPreCheck">
+                  <button-red
+                    text="Delete"
+                    :font-size="'size-16'" :square="true" :loading="deleteInsLoading"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 自定义删除 id 窗口 -->
+      <div v-if="customDeleteIns" key="diag99" class="uni-dialog-box enter-box enter-mask customDeleteIns">
+        <div class="mask"></div>
+        <div class="container">
+          <i class="close" @click="closeDialog()"></i>
+          <div class="content">
+            <div class="model-box">
+              <h2>Are you sure to remove this Instagram account?</h2>
+              <div class="ins-warrper">
+                <div class="ins">
+                  <img :src="deleteInsCache.profile_pic_url | avatarCal" alt="avatar">
+                  <p>{{ deleteInsCache.ins_account }}</p>
+                </div>
+                <div class="ins-tips">
+                  <img src="./img/dialog__icon_alert.svg" />
+                  <p>The account will be removed in 24 hours to ensure its security.</p>
+                </div>
+              </div>
+
+              <div class="btn">
+                <div @click="closeDialog()">
+                  <button type="button">Cancel</button>
+                </div>
+                <div @click="deleteInsRequest">
+                  <button-purple
+                    text="Remove"
+                    :font-size="'size-16'" :square="true" :loading="deleteInsLoading"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -730,11 +878,29 @@ export default {
     },
     numToFixed(num) {
       return num.toFixed(2);
-    }
+    },
+    formatDate: function (value) {
+        let date = new Date(value);
+        let y = date.getFullYear();
+        let MM = date.getMonth() + 1;
+        MM = MM < 10 ? ('0' + MM) : MM;
+        let d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        let h = date.getHours();
+        h = h < 10 ? ('0' + h) : h;
+        let m = date.getMinutes();
+        m = m < 10 ? ('0' + m) : m;
+        let s = date.getSeconds();
+        s = s < 10 ? ('0' + s) : s;
+        return y + '-' + MM + '-' + d;
+      }
   },
   data() {
     return {
       askNet: false, // 本字段控制页面支付方式是否为 askNet
+
+      showIdList: false,
+      customDeleteIns: false,
 
       payMethodDisplay: 2,
       // 本字段控制页面显示何种支付方式的产品
@@ -753,9 +919,9 @@ export default {
 
       tabsIndex: 0,
       tabs: [
-        { text: this.$t('userCenter.tabs.profile.tabTitle') },
-        { text: this.$t('store.buy.tabs.tab-0') },
-        { text: this.$t('store.buy.tabs.tab-1') }
+        { text: 'Get Followers' },
+        { text: 'Get Likes' },
+        { text: 'Task List' },
       ],
 
       errorObj: {},
@@ -910,6 +1076,7 @@ export default {
       this.dialogDeleteIns = false;
       this.dialogInsAddSuccess = false;
       this.dialogFailFirstAddIns = false;
+      this.customDeleteIns = false;
 
       if (this.needGoToTask) this.goToTask();
     },
@@ -930,12 +1097,12 @@ export default {
     anchorBottomBtn() {
       if (!this.COMMON.isMobile()) return;
 
-      if (this.tabsIndex === 1) {
+      if (this.tabsIndex === 0) {
         if (this.productPkgListFollowIndex !== -1) {
           this.bottomBtnOn = true;
           this.$scrollTo(`#mark-extra`, { offset: -60 });
         }
-      } else if (this.tabsIndex === 2) {
+      } else if (this.tabsIndex === 1) {
         if (this.productPkgListLikeIndex !== -1) {
           this.$scrollTo(`#title-post-like`, { offset: -60 });
           if (this.postListIndex !== -1) {
@@ -947,9 +1114,9 @@ export default {
     bottomBtnDetective() {
       if (this.tabsIndex === 0) {
         this.bottomBtnOn = false;
-      } else if (this.tabsIndex === 1) {
+      } else if (this.tabsIndex === 0) {
         this.bottomBtnOn = this.productPkgListFollowIndex !== -1;
-      } else if (this.tabsIndex === 2) {
+      } else if (this.tabsIndex === 1) {
         this.bottomBtnOn = this.productPkgListLikeIndex !== -1 && this.postListIndex !== -1;
       }
     },
@@ -963,6 +1130,8 @@ export default {
     },
     openInsSearchDialog() {
       this.dialogSearchIns = true;
+      this.dialogFailMsg = '';
+      this.searchInsInput = '';
     },
     openInsSearchDialogFirst() {
       this.closeDialog();
@@ -977,20 +1146,24 @@ export default {
           apiInsServer.getAccountByUsername,
           this.COMMON.paramSign({ ins_account: this.searchInsInput })
         ).then((response) => {
+
           this.ajaxRequesting = false;
           this.globalLoadingMask = false;
-          this.dialogSearchIns = false;
+          // this.dialogSearchIns = false;
           this.searchInsLoading = false;
 
           if (response.data.status !== 'ok') {
-            setTimeout(() => {
-              this.$alert(
-                '', 'error',
-                this.$t('global.modelBox.title.oops'),
-                this.$t('store.buy.error.errorInsID.text'),
-                'normal', 'Close'
-              );
-            }, 300);
+            // 查询不到 ins ID
+            // setTimeout(() => {
+            //   this.$alert(
+            //     '', 'error',
+            //     this.$t('global.modelBox.title.oops'),
+            //     this.$t('store.buy.error.errorInsID.text'),
+            //     'normal', 'Close'
+            //   );
+            // }, 300);
+            let reg = new RegExp('<br>','g')
+            this.dialogFailMsg = this.$t('store.buy.error.errorInsID.text').replace(reg,'');
             return;
           }
 
@@ -1008,17 +1181,20 @@ export default {
 
           this.addInsRequest();
         }).catch((error) => {
-          this.closeDialog();
+          // this.closeDialog();
           this.ajaxRequesting = false;
           this.globalLoadingMask = false;
-          setTimeout(() => {
-            this.$alert(
-              '', 'error',
-              this.$t('global.modelBox.title.oops'),
-              this.$t('store.buy.error.errorRequest.text'),
-              'normal', 'Close'
-            );
-          }, 300);
+          let reg = new RegExp('<br>','g')
+          this.dialogFailMsg = this.$t('store.buy.error.errorRequest.text').replace(reg,'');
+          // 请求 ins ID 报错
+          // setTimeout(() => {
+          //   this.$alert(
+          //     '', 'error',
+          //     this.$t('global.modelBox.title.oops'),
+          //     this.$t('store.buy.error.errorRequest.text'),
+          //     'normal', 'Close'
+          //   );
+          // }, 300);
           console.error('Catch Error: searchIns: ', error);
         });
       }
@@ -1102,6 +1278,7 @@ export default {
     addInsRequest() {
       if (!this.searchInsLoading) {
         this.searchInsLoading = true;
+
         this.$nuxt.$axios.post(
           apiAccount.setInsAccount,
           this.COMMON.paramSign(
@@ -1114,39 +1291,37 @@ export default {
             }
           )
         ).then((response) => {
-          this.closeDialog();
+          // this.closeDialog();
           this.searchInsLoading = false;
           if (response.data.status === 'ok') {
             // debugger
             this.accountList.push(this.searchInsCache);
-            console.log('searchInsCache', this.searchInsCache);
-            console.log('accountList', this.accountList);
             let data = response.data.result;
-            // debugger
             data.ins_account.accounts = this.accountList;
             this.updateInsList(data);
-            setTimeout(() => {
-              this.dialogInsAddSuccessTitle = this.$t('global.modelBox.title.success');
-              this.dialogInsAddSuccessMsg = this.$t('userCenter.msg.accountAddedSuccess');
-              this.dialogInsAddSuccess = true;
-            }, 300);
+            this.closeDialog();
+            // setTimeout(() => {
+            //   this.dialogInsAddSuccessTitle = this.$t('global.modelBox.title.success');
+            //   this.dialogInsAddSuccessMsg = this.$t('userCenter.msg.accountAddedSuccess');
+            //   this.dialogInsAddSuccess = true;
+            // }, 300);
           } else if (response.data.error !== undefined) {
             if (response.data.error.type === 'bad_token') {
               const msg = this.$t('global.modelBox.msg.loginExpired');
               this.redirectToLogin(msg);
             } else if (response.data.error.type === 'bad_ins_account') {
               this.dialogFailMsg = this.$t('userCenter.error.badInsAccount');
-              this.dialogFail = true;
+              // this.dialogFail = true;
             } else {
               this.dialogFailMsg = '<samp>'
                 + '<b>Error Type:</b> ' + response.data.error.type
                 + '<br>' + '<b>Error Message:</b> ' + response.data.error.message
                 + '</samp>';
-              this.dialogFail = true;
+              // this.dialogFail = true;
             }
           } else {
             this.dialogFailMsg = 'Unknown error';
-            this.dialogFail = true;
+            // this.dialogFail = true;
           }
         }).catch((error) => {
           this.searchInsLoading = false;
@@ -1174,20 +1349,19 @@ export default {
     },
     deleteInsRequestPreCheck() {
       this.dialogDeleteIns = false;
-
       setTimeout(() => {
         if (this.deleteInsCache.ins_status !== 3) {
-          this.$alert(
-            '', 'error', '',
-            this.$t('userCenter.msg.conFirmRemoveAccount'),
-            '', 'Remove'
-          ).then(() => {
-            this.deleteInsRequest();
-          }).catch();
+          this.customDeleteIns = true;
+          // this.$alert(
+          //   '', 'error', '',
+          //   this.$t('userCenter.msg.conFirmRemoveAccount'),
+          //   '', 'Remove'
+          // ).then(() => {
+          //   this.deleteInsRequest();
+          // }).catch();
         } else {
           const remainingTimeS = this.deleteInsCache['relieve_remaining_time'];
           const remainingTimeHour = Math.floor(remainingTimeS / 3600);
-
           this.$alert(
             '', 'info', '',
             `${this.$t('userCenter.msg.accountRemoved0')} ${remainingTimeHour} ${this.$t('userCenter.msg.accountRemoved1')}`,
@@ -1263,10 +1437,10 @@ export default {
     initTabIndex() {
       const path = this.$route.path;
       if (path === '/user-get-followers') {
-        this.tabsIndex = 1;
+        this.tabsIndex = 0;
         this.meta.title = `${this.$store.state.productName}${this.$t('userCenter.meta.title-1')}`;
       } else if (path === '/user-get-likes') {
-        this.tabsIndex = 2;
+        this.tabsIndex = 1;
         this.meta.title = `${this.$store.state.productName}${this.$t('userCenter.meta.title-2')}`;
       } else {
         this.tabsIndex = 0;
@@ -1275,30 +1449,28 @@ export default {
     },
     tabSwitch(i) {
       this.tabsIndex = i;
-      let originalPath = this.$route.path;
-      let destPath = '';
-      const insTestQuery = this.COMMON.getURLQuery('ins_test') === '1' ? '?ins_test=1' : '';
-
-      if (i === 1) {
-        destPath = `/user-get-followers${insTestQuery}`;
-        this.meta.title = `${this.$store.state.productName}${this.$t('userCenter.meta.title-1')}`;
-      } else if (i === 2) {
-        destPath = `/user-get-likes${insTestQuery}`;
-        this.meta.title = `${this.$store.state.productName}${this.$t('userCenter.meta.title-2')}`;
-      } else {
-        destPath = `/user${insTestQuery}`;
-        this.meta.title = `${this.$store.state.productName}${this.$t('userCenter.meta.title-0')}`;
-      }
-
-      if (originalPath !== destPath) {
-        this.$nuxt.$router.push({ path: destPath });
-      }
+      // let originalPath = this.$route.path;
+      // let destPath = '';
+      // const insTestQuery = this.COMMON.getURLQuery('ins_test') === '1' ? '?ins_test=1' : '';
+      // if (i === 0) {
+      //   destPath = `/user-get-followers${insTestQuery}`;
+      //   this.meta.title = `${this.$store.state.productName}${this.$t('userCenter.meta.title-1')}`;
+      // } else if (i === 1) {
+      //   destPath = `/user-get-likes${insTestQuery}`;
+      //   this.meta.title = `${this.$store.state.productName}${this.$t('userCenter.meta.title-2')}`;
+      // } else {
+      //   destPath = `/user${insTestQuery}`;
+      //   this.meta.title = `${this.$store.state.productName}${this.$t('userCenter.meta.title-0')}`;
+      // }
+      //
+      // if (originalPath !== destPath) {
+      //   this.$nuxt.$router.push({ path: destPath });
+      // }
 
       this.bottomBtnDetective();
     },
     accountChange() {
-      this.changeAccountStatus = !this.changeAccountStatus;
-
+      // this.changeAccountStatus = !this.changeAccountStatus;
       let gaLabel = '';
       if (this.tabsIndex === 0) {
         gaLabel = 'umpchange';
@@ -1350,20 +1522,35 @@ export default {
       this.anchorBottomBtn();
     },
     pkgSelectedInit(pkgList) {
-      let pkgLikeFirstNum = 0, pkgFollowFirstNum = 0;
+      let pkgLikeFirstNum = 0, pkgFollowFirstNum = 0, likesArr = [], followersArr = [];
       for (let unit of pkgList) {
-        if (unit['product_type'] === 1) { // like
-          pkgLikeFirstNum = unit['purchase_quantity'];
-          this.productPkgCurrentLike = unit;
+        if (unit['product_type'] === 1 && unit['payment_type'] === 2 && (unit['promote_sale_type'] === 0 || unit['promote_sale_type'] === 1 || unit['promote_sale_type'] === 3)) { // like
+          // pkgLikeFirstNum = unit['purchase_quantity'];
+          // this.productPkgCurrentLike = unit;
+          likesArr.push(unit);
         }
-        if (unit['product_type'] === 2) { // follow
-          pkgFollowFirstNum = unit['gives'][0]['quantity'];
-          this.productPkgCurrentFollow = unit;
+        if (unit['product_type'] === 2 && unit['payment_type'] === 2 && (unit['promote_sale_type'] === 0 || unit['promote_sale_type'] === 1 || unit['promote_sale_type'] === 3)) { // follow
+          followersArr.push(unit);
+          // pkgFollowFirstNum = unit['gives'][0]['quantity'];
+          // this.productPkgCurrentFollow = unit;
         }
-        if (pkgLikeFirstNum !== 0 && pkgFollowFirstNum !== 0) {
-          break;
-        }
+        // if (pkgLikeFirstNum !== 0 && pkgFollowFirstNum !== 0) {
+        //   break;
+        // }
       }
+      let _this = this;
+      likesArr.forEach(function(item, index) {
+        if(item.promote_sale_type === 3) {
+          _this.productPkgCurrentLike = item;
+          _this.productPkgListLikeIndex = index;
+        }
+      })
+      followersArr.forEach(function(item, index) {
+        if(item.promote_sale_type === 3) {
+          _this.productPkgCurrentFollow = item;
+          _this.productPkgListFollowIndex = index;
+        }
+      })
     },
 
     redirectToLogin(errorMsg) {
@@ -1484,7 +1671,6 @@ export default {
       // });
     },
     renderInsList(insObj) {
-      // console.log(insObj.count);
       if (insObj.count > 0) {
         this.accountList = insObj['accounts'];
         const storedIndex = this.$storage.has('userInsAccountCurrentIndex');
@@ -1524,7 +1710,7 @@ export default {
     },
     renderProductPkgList(pkgList) {
       this.productPkgList = pkgList;
-      // if (pkgList.length > 0) this.pkgSelectedInit(pkgList);
+      if (pkgList.length > 0) this.pkgSelectedInit(pkgList);
       this.$storage.set('productPkgList', pkgList);
     },
     renderProfile(data) {
@@ -1533,7 +1719,7 @@ export default {
       this.profile.coins.count = data.coins.count;
     },
     renderTask(task) {
-      this.taskList = task;
+      this.taskList = this.sortKey(task, "task_create_time");
 
       this.taskList.map(taskItem => {
         let image = '';
@@ -1548,8 +1734,16 @@ export default {
       });
       // this.$storage.set('userTaskList', task);
     },
+    sortKey(array, key) {
+      return array.sort(function(a, b) {
+        var x = a[key];
+        var y = b[key];
+        return x > y ? -1 : x < y ? 1 : 0;
+      });
+    },
     renderPost(postObj) {
       this.postList = postObj['post_list'];
+      console.log(this.postList);
       this.renderPostListInfo(
         postObj.post_count,
         postObj.end_cursor,
@@ -1562,7 +1756,6 @@ export default {
       obj.end_cursor = end_cursor;
       obj.has_next_page = has_next_page;
       obj.page_size = this.postListInfo.page_size;
-
       this.postListInfo = obj;
     },
     renderHeaderAvatar(avatar) {
@@ -1613,7 +1806,6 @@ export default {
           = _sharedDataUser['edge_follow']['count'];
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].post
           = this.insPostTransform(_sharedDataUserPosts);
-
         this.getInsInfoV2(this.dataStored.user.ins_account, this.dataStoredInsListIndex);
 
       }).catch((error) => {
@@ -1639,7 +1831,6 @@ export default {
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: insUsername })
       ).then((response) => {
-
         if (response.data.status !== 'ok') {
           this.ajaxRequesting = false;
           this.globalLoadingMask = false;
@@ -1666,7 +1857,7 @@ export default {
           = _sharedDataUser['edge_follow']['count'];
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].post
           = this.insPostTransform(_sharedDataUserPosts);
-
+          console.log(this.insPostTransform(_sharedDataUserPosts))
         this.getInsInfoV2(this.dataStored.user.ins_account, this.dataStoredInsListIndex);
 
       }).catch((error) => {
@@ -1750,6 +1941,7 @@ export default {
       }
     },
     getInsInfoV2(insAccountObj, dataStoredInsListIndex) {
+
       const insList = insAccountObj.accounts;
       const total = insAccountObj.count;
 
@@ -1770,7 +1962,6 @@ export default {
       let post = {};
       post.post_count = _sharedDataUserPosts.count;
       post.end_cursor = _sharedDataUserPosts['page_info']['end_cursor'];
-
       const insPostList = _sharedDataUserPosts['edges'];
       let postList = [];
 
@@ -1782,12 +1973,10 @@ export default {
         postObj.short_code = insPostObj['shortcode'];
         postObj.like_pic_url = insPostObj['thumbnail_src'];
         postObj.like_count = insPostObj['edge_liked_by']['count'];
-
         postList.push(postObj);
       }
 
       post.post_list = postList;
-
       return post;
     },
     // 数据流逻辑
@@ -1827,6 +2016,7 @@ export default {
       dataStored.product = this.$storage.get('productPkgList');
       // debugger
 
+
       this.dataStored = dataStored;
       this.dataStoredInsLoadingTotal = dataStored.user.ins_account.count;
 
@@ -1840,8 +2030,7 @@ export default {
       if (!this.tabBottomBtnPreCheck()) {
         return;
       }
-
-      if (this.tabsIndex === 1) {// 关注
+      if (this.tabsIndex === 0) {// 关注
         if (this.productPkgListFollowIndex === -1) {
           this.productPkgListFollowTitle = true;
           this.$scrollTo('#title-pkg-follow', { offset: -200 });
@@ -1855,7 +2044,7 @@ export default {
         // }
       }
 
-      if (this.tabsIndex === 2) {// 点赞
+      if (this.tabsIndex === 1) {// 点赞
         if (this.productPkgListLikeIndex === -1) {
           this.productPkgListLikeTitle = true;
           this.$scrollTo('#title-pkg-like', { offset: -200 });
@@ -1894,7 +2083,7 @@ export default {
         'ins_account': this.accountCurrent.ins_account
       };
 
-      if (this.tabsIndex === 1) {// 关注
+      if (this.tabsIndex === 0) {// 关注
         param.product_id = this.productPkgCurrentFollow.product_id;
         param.task_type = 2;
 
@@ -1914,7 +2103,7 @@ export default {
         this.$ga.event('buttonclick', 'click', 'umfpublish');
       }
 
-      if (this.tabsIndex === 2) {// 点赞
+      if (this.tabsIndex === 1) {// 点赞
         const post = this.postCurrent;
 
         param.product_id = this.productPkgCurrentLike.product_id;
@@ -1932,7 +2121,6 @@ export default {
     publishRequest(param) {
       if (!this.ajaxRequesting) {
         this.ajaxRequesting = true;
-        console.log(param);
         this.$nuxt.$axios.post(
           apiTask.publishTask,
           this.COMMON.paramSign(param)
@@ -1997,10 +2185,10 @@ export default {
         this.dialogFailCoins = true;
       } else {
         let price = 0;
-        if (this.tabsIndex === 1) {
+        if (this.tabsIndex === 0) {
           price = this.productPkgCurrentFollow.price;
           this.$ga.event('inspop', 'pop', 'notenoughcoinsf');
-        } else if (this.tabsIndex === 2) {
+        } else if (this.tabsIndex === 1) {
           price = this.productPkgCurrentLike.price;
           this.$ga.event('inspop', 'pop', 'notenoughcoinsl');
         }
@@ -2110,7 +2298,6 @@ export default {
         page_size: this.postListInfo.page_size,
         end_cursor: ''
       };
-
       if (!this.postListLoading) {
         this.globalLoadingMask = true;
         this.postListLoading = true;
@@ -2140,7 +2327,7 @@ export default {
             }
           } else {
             this.dialogFailMsg = 'Unknown error';
-            this.dialogFail = true;
+            // this.dialogFail = true;
           }
 
 
@@ -2152,7 +2339,7 @@ export default {
             + '<b>Error Status:</b> ' + error.status
             + '<br>' + '<b>Error Message:</b> ' + error.statusText
             + '</samp>';
-          this.dialogFail = true;
+          // this.dialogFail = true;
           console.log('Catch Error: postListNextRequest');
           console.error(error);
         });
@@ -2170,9 +2357,9 @@ export default {
     },
 
     gaCoinLackAppDownload() {
-      if (this.tabsIndex === 1) {
+      if (this.tabsIndex === 0) {
         this.$ga.event('insdl', 'download', 'pfappdl');
-      } else if (this.tabsIndex === 2) {
+      } else if (this.tabsIndex === 1) {
         this.$ga.event('insdl', 'download', 'plappdl');
       }
       this.closeDialog();
@@ -2195,7 +2382,7 @@ export default {
         'ins_account': this.accountCurrent.ins_account
       };
 
-      if (this.tabsIndex === 1) { // 关注
+      if (this.tabsIndex === 0) { // 关注
         param.task_type = 2;
         param.product_id = this.productPkgCurrentFollow.product_id;
         param.purchase_quantity = this.productPkgCurrentFollow.purchase_quantity;
@@ -2218,7 +2405,7 @@ export default {
         this.$ga.event('insbuy', 'buy', 'umfbuy');
       }
 
-      if (this.tabsIndex === 2) { // 点赞
+      if (this.tabsIndex === 1) { // 点赞
         const post = this.postCurrent;
 
         param.task_type = 1;
@@ -2363,7 +2550,7 @@ export default {
         }
       };
 
-      if (this.tabsIndex === 1) {// 关注
+      if (this.tabsIndex === 0) {// 关注
         param.tasks.product_id = this.productPkgCurrentFollow.product_id;
         param.tasks.task_type = 2;
 
@@ -2383,7 +2570,7 @@ export default {
         // this.$ga.event('buttonclick', 'click', 'umfpublish');
       }
 
-      if (this.tabsIndex === 2) {// 点赞
+      if (this.tabsIndex === 1) {// 点赞
         const post = this.postCurrent;
 
         param.tasks.product_id = this.productPkgCurrentLike.product_id;
@@ -2468,7 +2655,7 @@ export default {
         }
       };
 
-      if (this.tabsIndex === 1) {// 关注
+      if (this.tabsIndex === 0) {// 关注
         param.tasks.product_id = this.productPkgCurrentFollow.product_id;
         param.tasks.task_type = 2;
 
@@ -2486,7 +2673,7 @@ export default {
         }
       }
 
-      if (this.tabsIndex === 2) {// 点赞
+      if (this.tabsIndex === 1) {// 点赞
         const post = this.postCurrent;
 
         param.tasks.product_id = this.productPkgCurrentLike.product_id;
@@ -2561,12 +2748,12 @@ export default {
   padding-bottom: 140px;
 
   .wrapper {
-    width: 800px;
+    width: 1200px;
   }
 
   .user-info {
     padding-top: 40px;
-    height: 300px;
+    // height: 300px;
     background-color: #F8F8F8;
     transition: all 0.3s;
 
@@ -2955,6 +3142,7 @@ export default {
               &:hover {
               }
             }
+
           }
         }
       }
@@ -3101,14 +3289,721 @@ export default {
 
   &.no-ins {
     .user-info {
-      height: 400px;
+      // height: 400px;
+    }
+  }
+}
+
+.error-msg {
+  font: normal normal 500 14px/14px BalooChettan!important;
+  color: #ED2C5B;
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 3px;
+}
+
+@media (min-width: 769px) {
+  .user {
+    padding-bottom: 0;
+    background-color: #f8f8f8;;
+  }
+  .user-info {
+    // min-height: 400px!important;
+    margin-bottom: 50px;
+    .name-email {
+      width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      padding-left: 150px;
+      margin-bottom: 35px;
+      h2 {
+        font: normal normal 500 16px/20px BalooChettan;
+        color: #000000;
+      }
+      h3 {
+        font: normal normal 500 14px/20px BalooChettan;
+        color: #B1B1B1;
+      }
+    }
+    .wrapper {
+      .add-ins {
+        width: 1120px;
+        height: 140px;
+        border-radius: 12px;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        .add-ins__add-btn {
+          margin-top: 0;
+          width: 60px;
+          height: 60px;
+          margin-left: 115px;
+          margin-right: 22px;
+        }
+        h2 {
+          font: normal normal 600 16px/30px BalooChettan;
+          color: #000000;
+        }
+      }
+    }
+    .hasid {
+      min-height: 140px;
+      background-color: #fff;
+      padding-top: 20px!important;
+      padding-bottom: 20px!important;
+      overflow: hidden;
+      width: 1120px;
+      border-radius: 12px;
+      .user-list-info {
+        display: flex;
+        align-items: center;
+        padding-left: 115px!important;
+      }
+      .avatar {
+        width: 84px;
+        height: 84px;
+        border: 6px solid #EEEDFD;
+        border-radius: 100%;
+        position: relative;
+        span {
+          display: inline-block;
+          width: 37px;
+          height: 37px;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -23px;
+          background: url('./img/arrow.svg') no-repeat;
+          background-size: 100% 100%;
+          transition: all 0.08s;
+          &.open {
+            background: url('./img/arrow-top.svg') no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        &::after {
+          content: none!important;
+        }
+      }
+      .text {
+        h2 {
+          font: normal normal 600 18px/30px BalooChettan;
+          color: #000000;
+        }
+        p {
+          span {
+            font: normal normal 500 16px/30px BalooChettan;
+            color: #4D4D4D;
+            b {
+              font: normal normal 600 18px/30px BalooChettan;
+              color: #000000;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+      .user-list-content {
+        width: 100%;
+        height: 140px;
+        background: #F4F6FC;
+        border-radius: 8px;
+        position: relative;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        .add-name {
+          margin-left: 90px;
+          margin-right: 50px;
+          h2 {
+            font: normal normal 600 16px/25px BalooChettan;
+            color: #000000;
+          }
+          h3 {
+            font: normal normal 500 14px/20px BalooChettan;
+            color: #A8A8A8;
+          }
+        }
+        .add-container {
+          display: flex;
+          align-items: center;
+          .unit {
+            width: 70px;
+            margin-right: 60px;
+            position: relative;
+            cursor: pointer;
+            &.account-on {
+              position: relative;
+              img {
+                border: 1px solid #37C99D;
+                padding: 2px;
+                box-sizing: border-box;
+              }
+              &::before {
+                position: absolute;
+                content: '';
+                width: 30px;
+                height: 30px;
+                background: url('./img/select-on.svg') no-repeat;
+                background-size: 100% 100%;
+                top: 45px;
+                right: -7px;
+              }
+            }
+            .delete {
+              width: 16px;
+              height: 16px;
+              display: inline-block;
+              position: absolute;
+              background: url("./img/delete.svg") no-repeat;
+              background-size: 100% 100%;
+              top: 0;
+              left: 0;
+              cursor: pointer;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+            img {
+              width: 70px;
+              border-radius: 100%;
+              margin-bottom: 5px;
+            }
+            p {
+              text-align: center;
+              font: normal normal 500 14px/12px BalooChettan;
+              color: #7B7B7B;
+              word-break:break-all
+            }
+          }
+        }
+
+        &::before {
+          position: absolute;
+          content: '';
+          width: 0;
+          height: 0;
+          border: 10px solid;
+          border-color: transparent transparent #F4F6FC;
+          left: 147px;
+          top: -20px;
+        }
+      }
+    }
+  }
+  .user-tabs {
+    margin-top: 0!important;
+    background-color: #f8f8f8;
+    .user-tabs__btn {
+      margin: 0 auto;
+      margin-top: 0!important;
+      margin-bottom: 86px!important;
+      width: 444px!important;
+      height: 96px!important;
+      button {
+        background: transparent linear-gradient(90deg, #FFB24E 0%, #FF600E 100%) 0% 0% no-repeat padding-box;
+        box-shadow: 0px 12px 24px #5050501C;
+        border-radius: 12px;
+      }
+      &:hover {
+        button {
+          background: transparent linear-gradient(270deg, #FFBE4E 0%, #FF984A 100%) 0% 0% no-repeat padding-box;
+          box-shadow: 0px 12px 24px #7575753D;
+        }
+      }
+    }
+    .wrapper {
+      > h2 {
+        text-align: center;
+        font: normal normal 600 32px/36px BalooChettan;
+        color: #000000;
+        margin-bottom: 30px;
+      }
+      .user-tabs__tabs {
+        height: 64px;
+        .unit {
+          border-radius: 0;
+          margin: 0;
+          align-items: flex-start;
+          width: 150px;
+          background-color: transparent;
+          p {
+            height: 51px;
+            font: normal normal 600 16px/23px BalooChettan;
+            color: #000000;
+            width: 100%;
+            line-height: 51px;
+          }
+          &:nth-child(1) {
+            &.on {
+              background:url('./img/select03.svg') no-repeat;
+              background-size: 100% 100%;
+              background-position: 3px;
+              p {
+                color: #fff;
+              }
+            }
+          }
+          &:nth-child(2) {
+            &.on {
+              background: url('./img/select04.svg') no-repeat;
+              background-size: 100% 100%;
+              p {
+                color: #fff;
+              }
+            }
+          }
+          &:nth-child(3) {
+            &.on {
+              background: url('./img/select05.svg') no-repeat;
+              background-size: 100% 100%;
+              background-position: -3px 0;
+              p {
+                color: #fff;
+              }
+            }
+          }
+        }
+        .unit:first-child {
+          p {
+            border-radius: 26px 0 0 26px;
+            border-right: 1px solid #F59453;
+
+          }
+        }
+        .unit:last-child {
+          p {
+            border-radius: 0 26px 26px 0;
+            border-left: 1px solid #F59453;
+          }
+        }
+        .unit:not(.on) {
+          p {
+            height: 56px;
+            border-bottom: 5px solid #F59453;
+            background-color: #FFE3D1;
+          }
+        }
+      }
+      .user-tabs__tabs_wrapper {
+        margin-top: 55px;
+        .task {
+            .task-container {
+              .unit {
+                background-color: #f8f8f8;
+                height: 94px;
+                padding: 0;
+                background: #FFFFFF;
+                border: 1px solid #EBEBEB;
+                border-radius: 16px;
+                margin-bottom: 26px;
+                > img {
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 100%;
+                }
+                .progress {
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  height: 100%;
+                  padding-top: 0;
+                  .bar {
+                    width: 400px;
+                    margin-top: 0;
+                    margin-right: 30px;
+                    height: 11px;
+                  }
+                  .time {
+                    font: normal normal 400 16px/28px BalooChettan;
+                    color: #7F8498;
+                    margin-right: 51px;
+                  }
+                  .user-icon {
+                    width: 46px;
+                    height: 46px;
+                    background: url('./img/user-icon.svg') no-repeat;
+                    background-size: cover;
+                    background-position: center center;
+                  }
+                  p {
+                    font: normal normal 600 20px/29px BalooChettan;
+                    color: #000000;
+                    margin-right: 20px;
+                    span {
+                      font: normal normal 500 20px/29px BalooChettan;
+                      display: inline-block;
+                      color: #7B7B7B;
+                      width: 140px;
+                    }
+                  }
+                }
+                &:last-child {
+                  margin-bottom: 0
+                }
+              }
+            }
+        }
+        &.profile {
+          .no-task {
+            width: 1120px;
+            height: 145px;
+            background: #FFFFFF;
+            border-radius: 16px;
+            margin: 0 auto;
+            margin-top: 38px;
+            padding-left: 104px;
+            display: flex;
+            flex-direction:  column;
+            justify-content: center;
+
+            h2 {
+              font: normal normal 600 21px/39px BalooChettan;
+              color: #000000;
+              margin: 0;
+              padding: 0;
+              margin-bottom: 17px;
+            }
+            > div {
+              display: flex;
+              align-items: center;
+              img {
+                margin-right: 8px;
+              }
+              p {
+                font: normal normal 400 16px/16px BalooChettan;
+                color: #7F8498;
+              }
+            }
+          }
+        }
+        .user-tabs__container {
+          background-color: transparent;
+          box-shadow: none;
+          padding-top: 0;
+          .post-container {
+            .post-list {
+              .post-list-wrapper {
+                width: 100%;
+              }
+            }
+          }
+          .pkg-container {
+            padding: 0;
+            .pc {
+              display: flex;
+              justify-content: center;
+              .package {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                margin-right: 25px;
+                margin-top: 0;
+                &:last-child {
+                  margin-right: 0;
+                }
+                width: 220px;
+                height: 420px;
+                padding: 0;
+                box-sizing: border-box;
+                position: relative;
+                box-shadow: 0px 12px 24px #00000012;
+                border: 1px solid #FFFFFF;
+                border-radius: 16px;
+                backdrop-filter: blur(30px);
+                -webkit-backdrop-filter: blur(30px);
+                .num {
+                  display: flex;
+                  flex-direction: column;
+                  width: 100%;
+                  height: 138px;
+                  background-color: rgba(251, 251, 251);
+                  padding-top: 50px;
+                  border-radius: 16px 16px 0 0;
+                  position: relative;
+                  &::before {
+                    content: '';
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    width: 28px;
+                    height: 28px;
+                    background: #FFFFFF;
+                    border: 1px solid #AE9BA0;
+                    z-index: 10;
+                    border-radius: 100%;
+                  }
+                  .num-i,.cross {
+                    display: none;
+                  }
+                  b {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    span:first-child {
+                      font: normal normal 600 42px/42px BalooChettan;
+                      color: #000000;
+                    }
+                    span:last-child {
+                      font: normal normal 500 16px/16px BalooChettan;
+                      color: #7F8498;
+                    }
+                  }
+                }
+                .follow {
+                  .likes-mk-1 {
+                    span {
+                      color: #37C99D!important;
+                    }
+                  }
+                }
+                .likes-mk-1{
+                  width: 96px;
+                  height: 22px;
+                  background: #FFFFFF;
+                  border: 1px solid #37C99D;
+                  border-radius: 6px;
+                  position: absolute;
+                  top: 127px;
+                  span {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    font: normal normal 500 14px/22px BalooChettan;
+                    margin: 0;
+                    padding: 0;
+                  }
+                  &:before {
+                    content: none;
+                  }
+                }
+                .coins {
+                  margin-top: 26px;
+                  sup {
+                    font: normal normal 400 32px/45px BalooChettan;
+                    color: #000000;
+                  }
+                }
+                .pkg-line {
+                  width: 38px;
+                  height: 0px;
+                  border-bottom: 4px solid #000000;
+                  opacity: 0.07;
+                  margin: 15px auto 30px ;
+                }
+                .pkg-text {
+                  font: normal normal 400 16px/32px BalooChettan;
+                  width: 100%;
+                  color: #000000;
+                  padding-left: 24px;
+                  box-sizing: border-box;
+                  > div {
+                    display: flex;
+                    align-items: center;
+                    img {
+                      margin-right: 10px;
+                    }
+                  }
+                }
+              }
+              .like {
+                .likes-mk-1 {
+                  background-color: #fff;
+                  border-color: #FFA41C;
+                  span {
+                    background-color: #fff;
+                    color: #FFA41C;
+                  }
+                }
+                &.selected {
+                  .likes-mk-1 {
+                    span {
+                      background-color: #FFA41C!important;
+                      color: #fff;
+                      border-radius: 0;
+                    }
+                  }
+                }
+              }
+              .hot {
+                &::before {
+                  content: none;
+                }
+              }
+              .selected::after {
+                content: none;
+              }
+              .follow.selected {
+                .likes-mk-1 {
+                  background-color: #37C99D!important;
+                  span {
+                    background-color: #37C99D!important;
+                    color: #fff!important;
+                    border-radius: 0px!important;
+                  }
+                }
+              }
+              .selected{
+                padding: 0!important;
+                // border-color: #6257FF!important;
+                border: 0!important;
+                &::after {
+                  content: '';
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  top: 0;
+                  left: 0;
+                  border: 4px solid #6257FF!important;
+                  background: transparent!important;
+                  border-radius: 16px;
+                  box-sizing: inherit;
+                  transition: opacity 0!important;
+                }
+                .num::before {
+                  content: none;
+                }
+                .coins {
+                  sup {
+                    color: #FF4E4E;
+                  }
+                }
+                .num::after {
+                  content: '';
+                  position: absolute;
+                  top: 10px;
+                  left: 10px;
+                  width: 28px;
+                  height: 28px;
+                  z-index: 10;
+                  border-radius: 100%;
+                  background: url('./img/select02.svg') no-repeat;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // 处理弹框样式
+  .searchAlert {
+    .container {
+      width: 460px;
+      height: 290px;
+      .input {
+        margin-top: 0!important;
+      }
+      .search-add-ins {
+         display: flex;
+         align-items: center;
+         img {
+           margin-right: 10px;
+         }
+         p {
+           font: normal normal 500 18px/30px BalooChettan;
+           color: #000000;
+         }
+      }
+    }
+
+  }
+  // 处理ins id 删除第一步骤弹窗
+  .dialogDeleteIns,.customDeleteIns {
+    .container {
+      width: 460px;
+      height: 290px;
+      .content {
+        .model-box {
+          > h2 {
+            font: normal normal 500 18px/30px BalooChettan;
+            color: #000000;
+          }
+          .ins {
+            padding-top: 25px;
+            img {
+              width: 64px;
+              height: 64px;
+            }
+            p {
+              font: normal normal 500 14px/15px BalooChettan;
+              color: #7B7B7B;
+              margin-top: 5px;
+            }
+          }
+          .btn {
+            display: flex;
+            justify-content: center;
+            button {
+              width: 134px;
+              height: 40px;
+            }
+            >div:first-child {
+              margin-right: 36px;
+              button {
+                border: 1px solid #959595;
+                border-radius: 10px;
+                background: #fff;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                &:hover {
+                  background: #D2D2D2;
+                  font: normal normal 600 16px/30px BalooChettan;
+                  color: #343434;
+                  border-color: #D2D2D2;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .customDeleteIns {
+    .ins-warrper {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      padding-left: 50px;
+      .ins {
+        margin-right: 20px;
+        padding-top: 0!important;
+      }
+      .ins-tips {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 15px;
+        img {
+          margin-right: 6px;
+        }
+        p {
+          font: normal normal 400 14px/18px BalooChettan;
+          color: #7B7B7B;
+          text-align: left;
+          padding-right: 30px;
+        }
+      }
     }
   }
 }
 
 @media (max-width: 768px) {
+  .mobile-buy-btn {
+    width: 227px;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 43px;
+    button {
+      background: transparent linear-gradient(90deg, #FFB24E 0%, #FF600E 100%) 0% 0% no-repeat padding-box;
+      box-shadow: 0px 12px 24px #5050501C;
+    }
+  }
   .user {
-    padding-bottom: 70px;
+    padding-bottom: 0;
 
     .wrapper {
       padding: 0 4vw;
@@ -3117,11 +4012,194 @@ export default {
 
     .user-info {
       padding-top: 30px;
-      height: 250px;
+      margin-bottom: 37px;
+      background: #fff;
+      // height: 250px;
+
+      .name-email {
+        padding-left: 33px;
+        box-sizing: border-box;
+        margin-bottom: 14px;
+        h2 {
+          font: normal normal 500 16px/20px BalooChettan;
+          color: #343434;
+        }
+        h3 {
+          font: normal normal 500 14px/20px BalooChettan;
+          color: #D2D2D2;
+        }
+      }
 
       .wrapper {
-        padding: 0 8vw;
+        border-top: 1px dashed rgba(#707070, 0.45);
+        border-bottom: 1px dashed rgba(#707070, 0.45);
+        padding: 20px 0 20px 0;
+        // opacity: 0.45;
+        width: calc(100% - 32px);
+        margin: 0 auto;
+        .user-list-info {
+          padding-left: 16px;
+          box-sizing: border-box;
+        }
+        .add-ins {
+          display: flex;
+          align-items: center;
+          .add-ins__add-btn {
+            margin-top: 0;
+            margin-right: 24px;
+          }
+        }
       }
+      .hasid {
+      min-height: 100px;
+      padding-top: 20px!important;
+      padding-bottom: 20px!important;
+      .user-list-info {
+        display: flex;
+        align-items: center;
+      }
+      .avatar {
+        width: 52px;
+        height: 52px;
+        border: 6px solid #EEEDFD;
+        border-radius: 100%;
+        position: relative;
+        flex-shrink: 0;
+        span {
+          display: inline-block;
+          width: 37px;
+          height: 37px;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -23px;
+          background: url('./img/arrow.svg') no-repeat;
+          background-size: 100% 100%;
+          transition: all 0.08s;
+          &.open {
+            background: url('./img/arrow-top.svg') no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        &::after {
+          content: none!important;
+        }
+      }
+      .text {
+        h2 {
+          font: normal normal 600 14px/20px BalooChettan;
+          color: #000000;
+        }
+        p {
+          span {
+            font: normal normal 500 12px/12px BalooChettan;
+            color: #4D4D4D;
+            b {
+              font: normal normal 600 14px/14px BalooChettan;
+              color: #000000;
+              margin-right: 3px;
+            }
+          }
+        }
+      }
+      .user-list-content {
+        width: 100%;
+        height: 153px;
+        background: #F4F6FC;
+        border-radius: 8px;
+        position: relative;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .add-name {
+          display: flex;
+          align-items: flex-start;
+          padding-left: 16px;
+          box-sizing: border-box;
+          width: 100%;
+          margin-top: 17px;
+          margin-bottom: 13px;
+          h2 {
+            font: normal normal 600 16px/25px BalooChettan;
+            color: #000000;
+            margin-right: 14px;
+          }
+          h3 {
+            font: normal normal 500 14px/20px BalooChettan;
+            color: #A8A8A8;
+          }
+        }
+        .add-container {
+          display: flex;
+          align-items: flex-start;
+          width: 100%;
+          padding: 0 16px;
+          box-sizing: border-box;
+          .unit {
+            // width: 50px;
+            position: relative;
+            cursor: pointer;
+            margin-right: 10px;
+            &.account-on {
+              position: relative;
+              img {
+                border: 1px solid #37C99D;
+                padding: 2px;
+                box-sizing: border-box;
+              }
+              &::before {
+                position: absolute;
+                content: '';
+                width: 30px;
+                height: 30px;
+                background: url('./img/select-on.svg') no-repeat;
+                background-size: 100% 100%;
+                top: 30px;
+                right: -7px;
+              }
+            }
+            .delete {
+              width: 16px;
+              height: 16px;
+              display: inline-block;
+              position: absolute;
+              background: url("./img/delete.svg") no-repeat;
+              background-size: 100% 100%;
+              top: 0;
+              left: 0;
+              cursor: pointer;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+            img {
+              width: 50px;
+              border-radius: 100%;
+              margin-bottom: 5px;
+            }
+            p {
+              text-align: center;
+              font: normal normal 500 14px/12px BalooChettan;
+              color: #7B7B7B;
+              word-break:break-all;
+              width: 50px;
+            }
+          }
+        }
+
+        &::before {
+          position: absolute;
+          content: '';
+          width: 0;
+          height: 0;
+          border: 10px solid;
+          border-color: transparent transparent #F4F6FC;
+          left: 31px;
+          top: -20px;
+        }
+      }
+    }
 
       .avatar {
         width: 44px;
@@ -3236,24 +4314,142 @@ export default {
     }
 
     .user-tabs {
-      margin-top: -140px;
+      margin-top: 0;
+
+      // mobile task
+    .task {
+      margin-top: 25px;
+      .task-container {
+        // border: 1px solid #E1E1E1;
+        border-radius: 26px;
+        &.hasList {
+          border: 1px solid #E1E1E1;
+        }
+        .unit {
+          height: 94px!important;
+          background: #fff!important;
+          border-bottom: 1px solid #E1E1E1;
+          padding: 0!important;
+          margin: 0 16px!important;
+          &:last-child {
+            border-bottom: 0;
+            border-radius: 0 0 26px 26px;
+          }
+          &:first-child {
+            border-radius: 26px 26px 0 0 ;
+          }
+          > img {
+             margin-top: 18px;
+             width: 44px!important;
+             height: 44px!important;
+             left: 0px!important;
+          }
+          .mobile {
+            height: 100%;
+            padding-top: 0!important;
+            display: flex!important;
+            flex-direction: column;
+            justify-content: center;
+            &.progress {
+              padding-left: 54px!important;
+
+            }
+            > div:first-child {
+              display: flex;
+              justify-content: space-between;
+              font: normal normal 600 14px/21px BalooChettan;
+              color: #000000;
+              
+              span {
+                font: normal normal medium 14px/21px Baloo Chettan 2;
+                color: #7B7B7B;
+              }
+              .time {
+                font: normal normal 400 12px/21px BalooChettan;
+                color: #7F8498;
+              }
+              .user-icon {
+                width: 22px;
+                height: 22px;
+                background: url("./img/user-icon-small.svg") no-repeat;
+                background-position: -9px -3px;
+              }
+            }
+          }
+        }
+      }
+    }
+      
+      .wrapper {
+        >h2 {
+          font: normal normal 600 22px/36px BalooChettan;
+          color: #000000;
+          margin-bottom: 20px;
+          text-align: center;
+        }
+      }
+      
 
       .user-tabs__tabs {
-        height: 44px;
-
+        height: 35px;
+        display: flex;
+        border: 1px solid #E1E1E1;
+        border-radius: 31px;
+      
         .unit {
-          margin: 0 2px;
-          width: 30%;
+          margin: 0;
+          flex: 1;
           height: 100%;
-          border-radius: 6px 6px 0 0;
-
+          border-radius: 0;
           font: 600 12px Montserrat;
+          background: #fff;
+          &:first-child {
+            border-radius: 31px 0 0 31px;
+            border-right: 1px solid #E1E1E1;
+          }
+          &:last-child {
+            border-radius: 0 31px 31px 0;
+            border-left: 1px solid #E1E1E1;
+          }
+          p {
+            font: normal normal 600 14px/21px BalooChettan;
+            color: #000000;
+          }
+          &.on {
+            background: rgba(#000, 0.1);
+          }
+        }
+      }
+
+      .no-task {
+        height: 104px;
+        background: #F4F6FC;
+        border-radius: 8px;
+        // margin-top: 20px;
+        padding: 17px 19px;
+        box-sizing: border-box;
+        h2 {
+          font: normal normal 600 16px/30px BalooChettan;
+          color: #000000;
+          margin-bottom: 10px!important;
+          padding: 0!important;
+        }
+        div {
+          display: flex;
+          align-items: flex-start;
+          img {
+            margin-right: 5px;
+          }
         }
       }
 
       .user-tabs__container {
-        padding: 8vw 0 4vw;
-        border-radius: 6px;
+        padding: 0;
+        box-shadow: none;
+        
+        .pkg-container {
+          padding: 0!important;
+        }
 
         h2 {
           span {
@@ -3272,6 +4468,142 @@ export default {
 
         .info, .add, .task, .package, .pkg-container, .pkg-extra, .post-container {
           padding: 0 4vw;
+        }
+
+        // followers list 
+        .package {
+          height: 68px;
+          box-shadow: none;
+          border-radius: 34px;
+          padding-left: 20px!important;
+          // 取消hot
+          &::before {
+            content: none;
+          }
+          &.selected {
+            border-color: #7257FA!important;
+            .circle {
+              position: relative;
+              &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 16px;
+                height: 16px;
+                background: #7257FA;
+                border-radius: 100%;
+              }
+            }
+            &::after {
+              content: none;
+            }
+          }
+          .num {
+            .num-i {
+              width: 30px;
+              height: 23px;
+              margin-right: 20px;
+            }
+            .cross {
+              display: none;
+            }
+            b {
+              font: normal normal 700 18px/21px BalooChettan;
+              color: #000000;
+            }
+          }
+          .circle {
+            width: 26px;
+            height: 26px;
+            border: 2px solid #CFCFCF;
+            border-radius: 100%;
+          }
+          .plus {
+            font: normal normal 600 20px/23px BalooChettan;
+            color: #7F8498;
+          }
+          .juli {
+            width: 102px;
+          }
+          .coins {
+            sup {
+              font: normal normal 600 16px/17px BalooChettan;
+              color: #7F8498;
+            }
+          }
+          .likes-mk-1 {
+            span {
+              font: normal normal 500 14px/21px BalooChettan;
+              color: #000000!important;
+            }
+            &::before {
+              position: relative;
+              z-index: 1;
+              content: "";
+              display: inline-block;
+              width: 27px;
+              height: 32px;
+              background: url("./img/free.svg") no-repeat center;
+              background-size: contain;
+              vertical-align: middle;
+              left: -3px;
+            }
+          }
+          .hotlike {
+            position: relative;
+            &::before {
+              position: relative;
+              z-index: 1;
+              content: "";
+              display: inline-block;
+              width: 46px;
+              height: 49px;
+              background: url("./img/free2.svg") no-repeat center;
+              background-size: contain;
+              vertical-align: middle;
+              left: 0;
+            }
+            i:first-child {
+              font: normal normal 400 9px/9px BalooChettan;
+              color: #FFFFFF;
+              text-transform: uppercase;
+              text-align: center;
+              display: block;
+              position: absolute;
+              top: 9px;
+              left: 50%;
+              transform: translateX(-50%);
+              z-index: 2;
+            }
+            i:last-child {
+              text-align: center;
+              display: block;
+              width: 100%;
+              font: normal normal 600 13px/18px BalooChettan;
+              color: #FFFFFF;
+              position: absolute;
+              top: 22px;
+              left: 50%;
+              transform: translateX(-50%);
+              z-index: 2;
+            }
+          }
+        }
+
+        .package.like {
+          .like-item-left {
+            display: flex;
+            align-items: center;
+            .circle {
+              margin-right: 14px;
+            }
+          }
+          .off-m {
+            font: normal normal 600 18px/21px BalooChettan;
+            color: #FFA41C;
+          }
         }
 
         .info {
@@ -3391,6 +4723,130 @@ export default {
       }
     }
 
+    .searchAlert {
+      .container {
+        width: calc(100% - 32px);
+        height: 197px;
+        .input {
+          margin-top: 0!important;
+          input {
+            height: 50px;
+          }
+        }
+        i.close {
+          top: -8px;
+          right: -6px;
+          width: 18px;
+          height: 18px;
+          border: 1px solid #ddd;
+        }
+        .search-add-ins {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          img {
+            margin-right: 2px;
+          }
+          p {
+            font: normal normal 600 16px/30px BalooChettan;
+            color: #000000;
+          }
+        }
+      }
+
+    }
+    // 处理ins id 删除第一步骤弹窗
+  .dialogDeleteIns,.customDeleteIns {
+    .container {
+      width: calc(100% - 32px);
+      height: 235px;
+      .content {
+        .model-box {
+          > h2 {
+            font: normal normal 500 18px/30px BalooChettan;
+            color: #000000;
+          }
+          .ins {
+            padding-top: 25px;
+            img {
+              width: 64px;
+              height: 64px;
+            }
+            p {
+              font: normal normal 500 14px/15px BalooChettan;
+              color: #7B7B7B;
+              margin-top: 5px;
+            }
+          }
+          .btn {
+            display: flex;
+            justify-content: center;
+            button {
+              width: 134px;
+              height: 40px;
+            }
+            >div:first-child {
+              margin-right: 36px;
+              button {
+                border: 1px solid #959595;
+                border-radius: 10px;
+                background: #fff;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                &:hover {
+                  background: #D2D2D2;
+                  font: normal normal 600 16px/30px BalooChettan;
+                  color: #343434;
+                  border-color: #D2D2D2;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .customDeleteIns {
+    i.close {
+      top: -8px;
+      right: -6px;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #ddd;
+    }
+    .model-box {
+      > h2 {
+        font: normal normal 600 14px/18px BalooChettan!important;
+        margin-bottom: 10px;
+      }
+    }
+    .ins-warrper {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      .ins {
+        margin-right: 20px;
+        padding-top: 0!important;
+      }
+      .ins-tips {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 15px;
+        img {
+          margin-right: 6px;
+        }
+        p {
+          font: normal normal 500 14px/18px BalooChettan;
+          color: #7B7B7B;
+          text-align: left;
+          padding-right: 16px;
+        }
+      }
+    }
+  }
+
     &.on {
       .user-info {
         height: 470px;
@@ -3407,7 +4863,7 @@ export default {
 
     &.no-ins {
       .user-info {
-        height: 290px;
+        // height: 290px;
       }
     }
   }

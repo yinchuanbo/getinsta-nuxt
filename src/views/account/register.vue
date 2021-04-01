@@ -74,11 +74,13 @@
           />
         </label>
       </ValidationObserver>
-      <label v-if="!pageIos" class="links-row">
+      <!-- <label v-if="!pageIos" class="links-row"> -->
+      <label class="links-row">
         {{ $t('account.register.link.agree') }}
         <router-link to="/privacy">{{ $t('account.register.link.PrivacyPolicy') }}</router-link>
       </label>
-      <label v-if="!(pageIos || pageAff)" class="links-row">
+      <!-- <label v-if="!(pageIos || pageAff)" class="links-row"> -->
+      <label class="links-row">
         <router-link to="/login">
           {{ $t('account.register.link.alreadyHave') }}
           {{ $t('account.register.link.LogIn') }}
@@ -309,7 +311,7 @@ export default {
       }).catch((error) => {
         this.ajaxRequesting = false;
         this.dialogFailMsg = this.$t('account.errorText.failed');
-        this.dialogFail = true;
+        // this.dialogFail = true;
         console.log('Catch Error: login');
         console.log(error);
       });

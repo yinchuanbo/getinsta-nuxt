@@ -170,7 +170,7 @@ export default {
       // if (!this.ajaxRequesting) {
       this.ajaxRequestingTab = true;
       this.ajaxRequesting = true;
-      this.$axios.post(
+      this.$nuxt.$axios.post(
         api.getBlogCategory,
         this.COMMON.paramSign({
           client_lan: this.$i18n.locale
@@ -217,7 +217,7 @@ export default {
       // if (!this.ajaxRequesting) {
       this.ajaxRequesting = true;
       this.breadcrumb = breadcrumb;
-      this.$axios.post(
+      this.$nuxt.$axios.post(
         api.getBlogList,
         this.COMMON.paramSign({
           page: this.articleListCurrent,
@@ -242,7 +242,7 @@ export default {
     getHotArticleList() {
       // if (!this.ajaxRequestingHot) {
       this.ajaxRequestingHot = true;
-      this.$axios.post(
+      this.$nuxt.$axios.post(
         api.getHotBlogList,
         this.COMMON.paramSign({
           client_lan: this.$i18n.locale

@@ -692,13 +692,13 @@
       "accountLocked": "This account has been locked.",
       "failed": "Operating failed, please try again later",
       "accountOccupied": "Someone already has that username. Try another one.",
-      "badAccountRegister": "Account error, please try another email.",
+      "badAccountRegister": "An account is already registered with that email. Please login.",
       "resetKeyError": "Key Error! <br> Please check the password reset email.",
       "badKey": "Sorry, reset failed. Please click Forgot Password to reset again."
     },
     "successText": {
       "registerSuccess": "Account registered successfully! <br> Download app to get started.",
-      "forgotSuccess": "Please check your inbox.",
+      "forgotSuccess": "We have e-mailed your password reset link!",
       "resetSuccess": "Password set successfully!"
     },
     "login": {

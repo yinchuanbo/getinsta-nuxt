@@ -205,7 +205,7 @@ export default {
       // console.log('image[2]', formData.getAll('image[2]'));
 
       this.ajaxRequesting = true;
-      let instance = this.$axios.create({
+      let instance = this.$nuxt.$axios.create({
         withCredentials: true
       });
       instance.post(
@@ -325,6 +325,8 @@ export default {
       margin-top: 26px;
 
       &.double {
+        font-size: 0;
+
         label {
           width: 372px;
         }

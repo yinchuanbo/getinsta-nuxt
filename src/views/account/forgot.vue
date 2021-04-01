@@ -8,7 +8,7 @@
     </div>
     <transition>
       <div class="login-register_error" v-if="dialogFailMsg" v-html="dialogFailMsg"></div>
-      <div class="login-register_ok" v-if="editok">We have e-mailed your password reset link!</div>
+      <div class="login-register_ok" v-if="editok">{{ $t('account.successText.forgotSuccess') }}</div>
     </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
@@ -133,7 +133,7 @@ export default {
       }).catch((error) => {
         this.ajaxRequesting = false;
         this.dialogFailMsg = '<samp>' + error + '</samp>';
-        this.dialogFail = true;
+        // this.dialogFail = true;
         console.log('Catch Error: submitForm');
         console.log(error);
       });

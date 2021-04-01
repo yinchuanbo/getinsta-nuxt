@@ -11,6 +11,7 @@
     </div>
     <transition>
       <div class="login-register_error" v-if="dialogFailMsg" v-html="dialogFailMsg"></div>
+      <div class="login-register_ok" v-if="editok">{{ $t('account.successText.resetSuccess') }}</div>
     </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
@@ -23,7 +24,7 @@
           </label>
           <p class="error-msg" v-if="errors['password']">{{ errors['password'][0] }}</p>
         </ValidationProvider>
-        <ValidationProvider v-slot="{ classes }" name="Confirmed password" rules="confirmed:password">
+        <ValidationProvider v-slot="{ classes }" name="Confirmed password" rules="required|confirmed:password">
           <label class="password" :class="classes">
             <input
               v-model="form.field.passwordConfirm" name="passwordConfirm" type="password"
@@ -122,7 +123,8 @@ export default {
       dialogFailMsg: '',
       ajaxRequesting: false,
       pageIos: process.client ? window.location.hostname !== this.$constant.url.easy : false,
-      productName: this.$store.state.productName
+      productName: this.$store.state.productName,
+      editok: false
     };
   },
   mounted() {
@@ -157,7 +159,8 @@ export default {
       ).then((response) => {
         // console.log(response.data);
         if (response.data.status === 'ok') {
-          this.dialogSuccess = true;
+          // this.dialogSuccess = true;
+          this.editok = true
         } else {
           if (response.data.error.type === 'bad_key') {
             this.dialogFailMsg = this.$t('account.errorText.badKey');
@@ -167,7 +170,7 @@ export default {
               + '<br>' + '<b>Error Message:</b> ' + response.data.error.message
               + '</samp>';
           }
-          this.dialogFail = true;
+          // this.dialogFail = true;
         }
         this.ajaxRequesting = false;
       }).catch((error) => {
@@ -176,7 +179,7 @@ export default {
           + '<b>Error Status:</b> ' + error.status
           + '<br>' + '<b>Error Message:</b> ' + error.statusText
           + '</samp>';
-        this.dialogFail = true;
+        // this.dialogFail = true;
         console.log('Catch Error: submitForm');
         console.log(error);
       });
@@ -189,4 +192,3 @@ export default {
 </script>
 
 <style lang="scss" scoped src="./login-register.scss"></style>
-
