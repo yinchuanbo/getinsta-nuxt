@@ -60,12 +60,11 @@
           >
             <i class="cart"></i>
           </nuxt-link>
-          <a v-if="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
-             href="javascript:"
-             @click="gaHeaderBtn"
+          <div v-if="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
+               @click="gaHeaderBtn"
           >
             <i class="avatar-login-btn"></i>
-          </a>
+          </div>
           <div v-if="loginStatus" class="header-nav_menu_user" title="User Center">
             <nuxt-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container">
               <div class="avatar">
@@ -75,9 +74,9 @@
           </div>
         </div>
         <div v-if="ptPage" class="header-nav__menu">
-          <a class="header-nav__btn-container pt pc" href="javascript:" @click="gaPtBtn">
+          <div class="header-nav__btn-container pt pc" href="javascript:" @click="gaPtBtn">
             <button-white-blue text="Baixar para PC" :white="false" :font-size="'header-small'" />
-          </a>
+          </div>
         </div>
         <div class="header-nav__btn mobile">
           <i class="open" @click="switchMenu"></i>
@@ -134,7 +133,7 @@
     </div>
 
 
-    <!--    s2-->
+    <!--s2-->
     <div v-if="routerPayment && $store.state.s2 && checkPath" class="header-nav__wrapper header-nav__logged s2 pc">
       <div class="header-nav__logged_logo">
         <div class="header-nav__logged_logo_payment">
