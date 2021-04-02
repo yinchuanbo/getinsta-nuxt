@@ -510,7 +510,7 @@
                             {{ unit.task_type === 1 ? 'Likes' : 'Followers' }}</span>
                             <!-- <i></i> -->
                           <div class="time">{{Number(unit.task_create_time + '000') | formatDate}}</div>
-                          <div class="user-icon"></div>
+                          <div class="user-icon" :class="{'like-user-icon': unit.task_type === 1}"></div>
                         </div>
                         <div class="bar">
                           <i :style="{ width: unit['task_progress'] / unit['task_quantity'] * 100 + '%' }"></i>
@@ -2035,6 +2035,7 @@ export default {
 
     // Bottom 按钮动作
     tabBottomBtnAction() {
+      console.log('333')
       if (!this.tabBottomBtnPreCheck()) {
         return;
       }
@@ -2075,8 +2076,11 @@ export default {
     },
     tabBottomBtnPreCheck() {
       if (this.accountList.length === 0) {
-        this.dialogFailFirstAddInsMsg = this.$t('userCenter.error.addAccountFirst');
-        this.dialogFailFirstAddIns = true;
+        this.openInsSearchDialog()
+
+        // this.dialogFailFirstAddInsMsg = this.$t('userCenter.error.addAccountFirst');
+        // this.dialogFailFirstAddIns = true;
+
         return false;
       } else {
         return true;
@@ -3559,7 +3563,7 @@ export default {
             &.on {
               background:url('./img/select03.svg') no-repeat;
               background-size: 100% 100%;
-              background-position: 3px;
+              background-position: 3px 1px;
               p {
                 color: #fff;
               }
@@ -3601,7 +3605,7 @@ export default {
         .unit:not(.on) {
           p {
             height: 56px;
-            border-bottom: 5px solid #F59453;
+            border-bottom: 6px solid #F59453;
             background-color: #FFE3D1;
           }
         }
@@ -3648,6 +3652,11 @@ export default {
                     background: url('./img/user-icon.svg') no-repeat;
                     background-size: cover;
                     background-position: center center;
+                    &.like-user-icon {
+                      background: url('./img/user-icon-2.svg') no-repeat!important;
+                      background-size: cover!important;
+                      background-position: center center!important;
+                    }
                   }
                   p {
                     font: normal normal 600 20px/29px BalooChettan;
@@ -4403,6 +4412,10 @@ export default {
                 height: 22px;
                 background: url("./img/user-icon-small.svg") no-repeat;
                 background-position: -9px -3px;
+                &.like-user-icon {
+                  background: url("./img/user-icon-small-2.svg") no-repeat!important;
+                  background-position: -9px -3px!important;
+                }
               }
             }
           }
