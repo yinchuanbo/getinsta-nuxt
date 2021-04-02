@@ -18,7 +18,7 @@
 
     <!--bottom download cta-->
     <download-cta v-if="!bottomCTAHide && $store.state.isMobile && ifShowCta && !$store.state.v2" />
-    <download-cta-v2 v-if="$store.state.v2 && $store.state.isMobile" />
+    <download-cta-v2 v-if="$store.state.v2 && $store.state.isMobile && isEasterSale" />
     <!--top download cta-->
     <!--    <cta-download v-if="ctaDownloadShow && ifShowCta && $store.state.accessCountry !== 'BR'" />-->
     <!--    <cta-download v-if="false" />-->
@@ -118,7 +118,8 @@ export default {
       downloadCtaSeasonShow: false,
       showMinorLang: false,
       isEasterSale: true,
-      isGeneralBlank: true
+      isGeneralBlank: true,
+
     };
   },
   watch: {
