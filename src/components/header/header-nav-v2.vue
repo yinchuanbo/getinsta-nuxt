@@ -69,7 +69,7 @@
           <div v-if="loginStatus" class="header-nav_menu_user" title="User Center">
             <nuxt-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container">
               <div class="avatar">
-                <img :src="$store.state.userAvatar" alt="avatar" />
+                <img :src="userAvatarImg" alt="avatar" />
               </div>
             </nuxt-link>
           </div>
@@ -91,7 +91,7 @@
       </div>
       <div class="header-nav__logged_user pc">
         <div v-if="!routeWelcome" class="header-nav__logged_user_container">
-          <i class="download" @click="downloadHeaderPC" v-if="showPcButton">
+          <i v-if="showPcButton" class="download" @click="downloadHeaderPC">
             <button-download-windows-yellow :size="'header'" />
           </i>
           <nuxt-link
@@ -113,7 +113,7 @@
             title="User Center"
           >
             <div class="avatar">
-              <img :src="$store.state.userAvatar" alt="avatar" />
+              <img :src="userAvatarImg" alt="avatar" />
             </div>
           </nuxt-link>
         </div>
@@ -125,7 +125,7 @@
           <i class="cart"></i>
         </nuxt-link>
         <div class="avatar" @click="routeToUserCenter">
-          <img :src="$store.state.userAvatar" alt="" />
+          <img :src="userAvatarImg" alt="avatar" />
         </div>
       </div>
       <div class="header-nav__btn">
@@ -271,7 +271,7 @@
               :to="`/user${$nuxt.$constant.paymentChannel}`"
               @click.native="menuOff"
             >
-              <img :src="$store.state.userAvatar" alt="avatar" />
+              <img :src="userAvatarImg" alt="avatar" />
             </nuxt-link>
           </div>
           <!--Home-->
@@ -427,6 +427,18 @@ export default {
     };
   },
   computed: {
+    userAvatarImg() {
+      let avatar = defaultAvatar;
+      if (this.$nuxt.$store.state.userAvatar) {
+        avatar = this.$nuxt.$store.state.userAvatar;
+        return avatar;
+      }
+      if (process.client && this.$storage.has('userAvatar')) {
+        avatar = this.$storage.get('userAvatar');
+        return avatar;
+      }
+      return avatar;
+    },
     loginStatus() {
       return this.$store.state.loginStatus;
     },
@@ -486,8 +498,8 @@ export default {
       this.ptPage = to.path === '/pt/get-instagram-followers';
 
       this.routeWelcome = to.path === '/welcome';
-     
-    //  去除顶部黄色按钮
+
+      //  去除顶部黄色按钮
       this.showPcButton = !(to.path === '/user' ||
         to.path === '/user-get-followers' ||
         to.path === '/user-get-likes' ||

@@ -2,7 +2,7 @@ export const state = () => ({
   loginStatus: false, // Mutation: loginChange
   userName: '',
   userCoins: '',
-  userAvatar: '',
+  userAvatar: null,
   blogID: '',
   googleTransLoad: false,
   isMobile: false,
