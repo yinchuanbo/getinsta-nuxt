@@ -354,6 +354,13 @@ export default {
       // }, 2000);
     },
     getText(v) {
+      if(process.client){
+        this.$nextTick(function(){
+            this.getText2(v);
+        }) 
+      }
+    },
+    getText2(v) {
       let oInput = document.createElement('input');
       oInput.value = v.text;
       document.body.appendChild(oInput);

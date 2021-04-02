@@ -28,7 +28,7 @@
     <download-cta-spring v-if="downloadCtaSeasonShow && !$store.state.v2" />
 
     <!--giveaway gate-->
-    <floating-layer-right v-if="isRightWindows" :type="windowType" />
+    <floating-layer-right v-if="isRightWindows && $store.state.isMobile" :type="windowType" />
     <floating-layer-bottom v-if="false" :type="windowType" />
     <floating-layer-alert v-if="isAlertWindow" :type="windowType" />
 
@@ -340,7 +340,12 @@ export default {
         this.isRightWindows = blogPath;
       }
       this.isBottomWindows = homePath && !this.COMMON.isMobile();
-      this.isAlertWindow = !(blogPath || easterSalePath || checkout || storePath);
+      
+      if(this.COMMON.isMobile()) {
+         this.isAlertWindow = !(blogPath || easterSalePath || checkout || storePath);
+      } else {
+         this.isAlertWindow = !(easterSalePath || checkout || storePath || Path169);
+      }
 
       // auto buy
       const storeAutoUrlStr = 'buy-auto-instagram-followers';

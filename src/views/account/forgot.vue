@@ -26,7 +26,7 @@
         </label> -->
         <label class="btn" @click="formSubmit(invalid, validate)">
           <button-purple
-            :text="$t('global.modelBox.title.success')"
+            text="Reset Password"
             :font-size="'size-16'" :square="true" :border-radius="6" :loading="ajaxRequesting"
           />
         </label>
