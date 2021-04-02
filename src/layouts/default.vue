@@ -340,7 +340,7 @@ export default {
         this.isRightWindows = blogPath;
       }
       this.isBottomWindows = homePath && !this.COMMON.isMobile();
-      
+
       if(this.COMMON.isMobile()) {
          this.isAlertWindow = !(blogPath || easterSalePath || checkout || storePath);
       } else {
@@ -1059,12 +1059,12 @@ export default {
     // v2开关
     v2SwitchGate(path) {
       this.platformDetective();
-      if (this.COMMON.envTest() && location.hostname !== 'test.easygetinsta.com')
-        this.v2SwitchForDev(path);
-      else
-        this.v2Switch(path);
+      // if (this.COMMON.envTest() && location.hostname !== 'test.easygetinsta.com')
+      //   this.v2SwitchForDev(path);
+      // else
+      //   this.v2Switch(path);
 
-      // this.v2Switch(path);
+      this.v2Switch(path);
     },
     v2Switch(path) {
       const storePages = [
