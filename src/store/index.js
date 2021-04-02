@@ -39,7 +39,8 @@ export const state = () => ({
   v2AdHeightMobile: 0, // V2广告Mobile高度
 
   footerSelect: false,
-  showAlert: false
+  showAlert: false,
+  s2: true
 });
 
 export const mutations = {
@@ -167,5 +168,8 @@ export const mutations = {
   },
   footerSelect: (state, status) => {
     state.footerSelect = status;
+  },
+  s2: (state, status) => {
+    state.s2 = status;
   }
 };

@@ -470,7 +470,7 @@
                 <!-- <h2 id="mark-task"><span>{{ $t('userCenter.tabs.profile.myTaskZone.title') }}</span></h2> -->
                 <div class="task-container" :class="{ hasList:  taskList.length !== 0}">
                   <template v-if="taskList && taskList.length !== 0">
-                    <div v-for="(unit, i) in taskList" :key="i"
+                    <div v-show="i < showNum" v-for="(unit, i) in taskList" :key="i"
                          :class="{
                            'like': unit.task_type === 1,
                            'follow': unit.task_type === 2
@@ -489,7 +489,7 @@
                            :class="{ 'full': unit['task_progress'] / unit['task_quantity'] === 1 }"
                       >
                         <p>
-                          {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}:
+                          <!-- {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}: -->
                           <span>{{ unit['task_progress'] }} / {{ unit['task_quantity'] }}
                             {{ unit.task_type === 1 ? 'Likes' : 'Followers' }}</span>
                             <!-- <i></i> -->
@@ -505,7 +505,7 @@
                            :class="{ 'full': unit['task_progress'] / unit['task_quantity'] === 1 }"
                       >
                         <div>
-                          {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}:
+                          <!-- {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}: -->
                           <span>{{ unit['task_progress'] }} / {{ unit['task_quantity'] }}
                             {{ unit.task_type === 1 ? 'Likes' : 'Followers' }}</span>
                             <!-- <i></i> -->
@@ -516,8 +516,6 @@
                           <i :style="{ width: unit['task_progress'] / unit['task_quantity'] * 100 + '%' }"></i>
                         </div>
                       </div>
-
-
                     </div>
                   </template>
                   <div v-else class="no-task">
@@ -534,6 +532,7 @@
                   /> -->
                 </div>
               </div>
+              <div v-if="taskList && (taskList.length > 10)" class="show-more" @click="showmore">{{ showMoreTest }}</div>
 
             </div>
           </div>
@@ -899,9 +898,11 @@ export default {
     return {
       askNet: false, // 本字段控制页面支付方式是否为 askNet
 
+      showNum: 10,
+      showMoreTest: 'More Tasks',
+
       showIdList: false,
       customDeleteIns: false,
-
       payMethodDisplay: 2,
       // 本字段控制页面显示何种支付方式的产品
       // 1 = 金币购买
@@ -1085,6 +1086,13 @@ export default {
       this.firstEntryJump();
     },
 
+    showmore() {
+      const num = this.taskList.length;
+      if(num && num > 10) {
+        this.showNum = this.showNum === 10 ? num : 10;
+      }
+      this.showMoreTest = this.showMoreTest === 'More Tasks' ? 'Less Tasks' : 'More Tasks';
+    },
     anchor() {
       const anchor = this.$route.query.anchor;
       if (anchor === undefined || anchor === null || anchor === '') return;
@@ -3308,6 +3316,18 @@ export default {
     padding-bottom: 0;
     background-color: #f8f8f8;;
   }
+  .show-more {
+    width: 100%;
+    font: 600 20px/50px Montserrat;
+    color: #2a2a2a;
+    text-align: center;
+    text-decoration: underline;
+    transition: all .1s;
+    cursor: pointer;
+    &:hover {
+      color: #005fff;
+    }
+  }
   .user-info {
     // min-height: 400px!important;
     margin-bottom: 50px;
@@ -3602,6 +3622,7 @@ export default {
                   width: 50px;
                   height: 50px;
                   border-radius: 100%;
+                  left: 100px;
                 }
                 .progress {
                   display: flex;
@@ -3609,6 +3630,7 @@ export default {
                   align-items: center;
                   height: 100%;
                   padding-top: 0;
+                  padding-left: 180px;
                   .bar {
                     width: 400px;
                     margin-top: 0;
@@ -3635,7 +3657,7 @@ export default {
                       font: normal normal 500 20px/29px BalooChettan;
                       display: inline-block;
                       color: #7B7B7B;
-                      width: 140px;
+                      width: 250px;
                     }
                   }
                 }
@@ -3992,6 +4014,14 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .show-more {
+    width: 100%;
+    font: 600 14px/50px Montserrat;
+    color: #2a2a2a;
+    text-align: center;
+    text-decoration: underline;
+    transition: all .1s;
+  }
   .mobile-buy-btn {
     width: 227px;
     height: 60px;
