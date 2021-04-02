@@ -10,8 +10,8 @@ export const state = () => ({
   isAndroid: false,
   isWindows: false,
   cartLength: '',
-  productName: '',
-  productLogo: '',
+  productName: 'GetInsta',
+  productLogo: null,
   hideIosMinorLang: false, // 多语言隐藏与显示
   showIosDe: false, // 多语言隐藏与显示
   minorLangIosLink: '',
