@@ -375,7 +375,7 @@ export default {
         this.isEasterSale = false;
       } else {
         this.$store.commit('footerSelect', false);
-        this.isEasterSale = !(checkout || storePath || usePath);
+        this.isEasterSale = !(checkout || storePath );
       }
 
       this.isGeneralBlank = !(storePath || blogPath || getFlPath || freeToolsPath || loginUserPath || easterSalePath || checkout);
