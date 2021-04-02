@@ -462,7 +462,7 @@ export default {
     requestLotteryList() {
       let param = { 'luckdraw_id': this.luckyDrawID };
 
-      this.axios.post(
+      this.$nuxt.$axios.post(
         apiOther.getRewards,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -531,7 +531,7 @@ export default {
 
       param.luckdraw_id = this.luckyDrawID;
 
-      this.axios.post(
+      this.$nuxt.$axios.post(
         apiOther.luckDrawInit,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -628,7 +628,7 @@ export default {
       if (this.COMMON.getURLQuery('key') !== null)
         param = { key: this.COMMON.getURLQuery('key') };
 
-      this.axios.post(
+      this.$nuxt.$axios.post(
         apiOther.clearRecord,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -672,7 +672,7 @@ export default {
 
       param.luckdraw_id = this.luckyDrawID;
 
-      this.axios.post(
+      this.$nuxt.$axios.post(
         apiOther.luckDrawConfirm,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -795,7 +795,7 @@ export default {
     requestWinningUser() {
       let param = { 'luckdraw_id': this.luckyDrawID };
 
-      this.axios.post(
+      this.$nuxt.$axios.post(
         apiOther.getRewardUser,
         this.COMMON.paramSign(param)
       ).then((response) => {
@@ -865,7 +865,7 @@ export default {
       }
 
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$nuxt.$axios.post(
         api.login,
         this.COMMON.paramSign(
           {
@@ -947,7 +947,7 @@ export default {
       }
 
       this.ajaxRequesting = true;
-      this.axios.post(
+      this.$nuxt.$axios.post(
         api.register,
         this.COMMON.paramSign(
           {
@@ -997,7 +997,7 @@ export default {
       });
     },
     requestEmailLimitList() {
-      this.axios.get(
+      this.$nuxt.$axios.get(
         apiSelf.emailLimitList
       ).then((response) => {
         this.emailProvider = response.data['site'];
@@ -1084,7 +1084,7 @@ export default {
       }
     },
     searchInsByServer(insAccount) {
-      this.axios.post(
+      this.$nuxt.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign(
           {
