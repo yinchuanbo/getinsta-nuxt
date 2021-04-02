@@ -334,19 +334,18 @@
           </nuxt-link>
 
           <!--Free Tools (Drop Menu)-->
-          <a class="header-nav__logged_content_link drop-menu" @click="dropMenuSwitch">
+          <div class="header-nav__logged_content_link drop-menu" @click="dropMenuSwitch">
             Free Tools
             <i></i>
             <div class="drop-menu-container">
               <!--Instagram Video Downloader-->
-              <nuxt-link to="/instagram-video-downloader" @click.native="menuOff">Instagram Video Downloader
-              </nuxt-link>
+              <nuxt-link to="/instagram-video-downloader" @click.native="menuOff">Instagram Video Downloader</nuxt-link>
               <!--Instagram Ranking Tool-->
               <nuxt-link to="/the-most-followed-instagram" @click.native="menuOff">Instagram Ranking Tool</nuxt-link>
               <!--Instagram Name Generator-->
               <nuxt-link to="/instagram-name-generator" @click.native="menuOff">Instagram Name Generator</nuxt-link>
             </div>
-          </a>
+          </div>
 
           <!--logout (bottom login link-->
           <a v-if="loginStatus" class="header-nav__logged_content_link" @click="logout">
