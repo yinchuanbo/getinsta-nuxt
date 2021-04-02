@@ -175,7 +175,7 @@
                       </div>
                       <div>
                         <img src="./img/select01.svg" alt="">
-                        <p>RDrop Protection</p>
+                        <p>Drop Protection</p>
                       </div>
                       <div>
                         <img src="./img/select01.svg" alt="">
@@ -337,7 +337,7 @@
                       </div>
                       <div>
                         <img src="./img/select01.svg" alt="">
-                        <p>RDrop Protection</p>
+                        <p>Drop Protection</p>
                       </div>
                       <div>
                         <img src="./img/select01.svg" alt="">
@@ -3559,7 +3559,7 @@ export default {
             &.on {
               background:url('./img/select03.svg') no-repeat;
               background-size: 100% 100%;
-              background-position: 3px 1px;
+              background-position: 3px 0px;
               p {
                 color: #fff;
               }
