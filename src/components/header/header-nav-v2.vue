@@ -60,24 +60,23 @@
           >
             <i class="cart"></i>
           </nuxt-link>
-          <a v-if="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
-             href="javascript:"
-             @click="gaHeaderBtn"
+          <div v-if="!loginStatus && loginBtnShow" id="nav-menu-05" class="header-nav__btn-container"
+               @click="gaHeaderBtn"
           >
             <i class="avatar-login-btn"></i>
-          </a>
+          </div>
           <div v-if="loginStatus" class="header-nav_menu_user" title="User Center">
             <nuxt-link :to="`/user${$nuxt.$constant.paymentChannel}`" class="avatar-container">
               <div class="avatar">
-                <img :src="$store.state.userAvatar" alt="avatar" />
+                <img :src="userAvatarImg" alt="avatar" />
               </div>
             </nuxt-link>
           </div>
         </div>
         <div v-if="ptPage" class="header-nav__menu">
-          <a class="header-nav__btn-container pt pc" href="javascript:" @click="gaPtBtn">
+          <div class="header-nav__btn-container pt pc" href="javascript:" @click="gaPtBtn">
             <button-white-blue text="Baixar para PC" :white="false" :font-size="'header-small'" />
-          </a>
+          </div>
         </div>
         <div class="header-nav__btn mobile">
           <i class="open" @click="switchMenu"></i>
@@ -91,7 +90,7 @@
       </div>
       <div class="header-nav__logged_user pc">
         <div v-if="!routeWelcome" class="header-nav__logged_user_container">
-          <i class="download" @click="downloadHeaderPC" v-if="showPcButton">
+          <i v-if="showPcButton" class="download" @click="downloadHeaderPC">
             <button-download-windows-yellow :size="'header'" />
           </i>
           <nuxt-link
@@ -113,7 +112,7 @@
             title="User Center"
           >
             <div class="avatar">
-              <img :src="$store.state.userAvatar" alt="avatar" />
+              <img :src="userAvatarImg" alt="avatar" />
             </div>
           </nuxt-link>
         </div>
@@ -125,7 +124,7 @@
           <i class="cart"></i>
         </nuxt-link>
         <div class="avatar" @click="routeToUserCenter">
-          <img :src="$store.state.userAvatar" alt="" />
+          <img :src="userAvatarImg" alt="avatar" />
         </div>
       </div>
       <div class="header-nav__btn">
@@ -134,7 +133,7 @@
     </div>
 
 
-    <!--    s2-->
+    <!--s2-->
     <div v-if="routerPayment && $store.state.s2 && checkPath" class="header-nav__wrapper header-nav__logged s2 pc">
       <div class="header-nav__logged_logo">
         <div class="header-nav__logged_logo_payment">
@@ -271,7 +270,7 @@
               :to="`/user${$nuxt.$constant.paymentChannel}`"
               @click.native="menuOff"
             >
-              <img :src="$store.state.userAvatar" alt="avatar" />
+              <img :src="userAvatarImg" alt="avatar" />
             </nuxt-link>
           </div>
           <!--Home-->
@@ -427,6 +426,18 @@ export default {
     };
   },
   computed: {
+    userAvatarImg() {
+      let avatar = defaultAvatar;
+      if (this.$nuxt.$store.state.userAvatar) {
+        avatar = this.$nuxt.$store.state.userAvatar;
+        return avatar;
+      }
+      if (process.client && this.$storage.has('userAvatar')) {
+        avatar = this.$storage.get('userAvatar');
+        return avatar;
+      }
+      return avatar;
+    },
     loginStatus() {
       return this.$store.state.loginStatus;
     },
@@ -486,8 +497,8 @@ export default {
       this.ptPage = to.path === '/pt/get-instagram-followers';
 
       this.routeWelcome = to.path === '/welcome';
-     
-    //  去除顶部黄色按钮
+
+      //  去除顶部黄色按钮
       this.showPcButton = !(to.path === '/user' ||
         to.path === '/user-get-followers' ||
         to.path === '/user-get-likes' ||

@@ -7,8 +7,8 @@
       <p>{{ $t('account.forgot.subTitle') }}</p>
     </div>
     <transition>
-      <div class="login-register_error" v-if="dialogFailMsg" v-html="dialogFailMsg"></div>
-      <div class="login-register_ok" v-if="editok">{{ $t('account.successText.forgotSuccess') }}</div>
+      <div v-if="dialogFailMsg" class="login-register_error" v-html="dialogFailMsg"></div>
+      <div v-if="editok" class="login-register_ok">{{ $t('account.successText.forgotSuccess') }}</div>
     </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
@@ -19,7 +19,7 @@
               :placeholder="$t('account.form.emailAddress')"
             >
           </label>
-          <p class="error-msg" v-if="errors['Email address']">{{ errors['Email address'][0] }}</p>
+          <p v-if="errors['Email address']" class="error-msg">{{ errors['Email address'][0] }}</p>
         </ValidationProvider>
         <!-- <label class="msg">
           <i v-for="(unit, i) in errors" v-show="unit[0]" :key="i">{{ unit[0] }}<br></i>
