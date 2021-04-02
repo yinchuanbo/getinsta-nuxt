@@ -691,10 +691,10 @@
       "badPassword": "Wrong password. Try again or click Forgot Password.",
       "accountLocked": "This account has been locked.",
       "failed": "Operating failed, please try again later",
-      "accountOccupied": "Account already exists with that e-mail address.",
+      "accountOccupied": "Account already exists with that e-mail address",
       "badAccountRegister": "An account is already registered with that email. Please login.",
       "resetKeyError": "Key Error! <br> Please check the password reset email.",
-      "badKey": "Sorry, reset failed. Please click Forgot Password to reset again."
+      "badKey": "Sorry, reset failed. Please click <a href='/forgot' style='text-decoration:underline'>Forgot Password</a> to reset again."
     },
     "successText": {
       "registerSuccess": "Account registered successfully! <br> Download app to get started.",
