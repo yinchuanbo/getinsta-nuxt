@@ -16,7 +16,7 @@
         <div class="user-list-info">
           <div class="avatar title" title="Change or add Instagram account">
             <img :src="accountCurrent.profile_pic_url | avatarCal" alt="">
-            <span @click="showIdList = !showIdList" :class="{'open': showIdList }"></span>
+            <span :class="{'open': showIdList }" @click="showIdList = !showIdList"></span>
           </div>
           <div class="text">
             <h2>{{ accountCurrent.ins_account || 'Instagram info load error' }}</h2>
@@ -37,23 +37,22 @@
           </div>
         </div>
         <transition name="fade">
-          <div class="user-list-content" v-if="showIdList">
-
+          <div v-if="showIdList" class="user-list-content">
             <div class="add-name">
               <h2>{{ $t('userCenter.tabs.profile.accountZone.title') }}</h2>
               <h3>{{ $t('userCenter.tabs.profile.accountZone.tip') }}</h3>
             </div>
             <div class="add-container">
               <div v-for="(unit, i) in accountList" :key="i"
-                 :class="{ 'account-on': accountListIndex === i }"
-                 class="unit"
-                 @click="accountListSwitch(unit, i)"
+                   :class="{ 'account-on': accountListIndex === i }"
+                   class="unit"
+                   @click="accountListSwitch(unit, i)"
               >
                 <img :src="unit.profile_pic_url | avatarCal" alt="">
                 <p>{{ unit.ins_account || 'Unknown' }}</p>
                 <i class="delete"
-                    :title="$t('userCenter.tabs.profile.accountZone.unbindBtn')"
-                    @click.stop="deleteIns(unit, i)"
+                   :title="$t('userCenter.tabs.profile.accountZone.unbindBtn')"
+                   @click.stop="deleteIns(unit, i)"
                 ></i>
               </div>
               <div v-if="accountList.length !== 5" class="unit unit__add" @click="openInsSearchDialog">
@@ -61,7 +60,6 @@
                 <p>{{ $t('userCenter.accountZone.btnAdd') }}</p>
               </div>
             </div>
-
           </div>
         </transition>
 
@@ -141,7 +139,7 @@
                       <b>
                         <span>{{ pkg['purchase_quantity'] }}</span>
                         <span>Followers</span>
-                        </b><span></span>
+                      </b><span></span>
                     </span>
 
                     <!--gives mk 0-->
@@ -188,7 +186,6 @@
                         <p>24/7 Support</p>
                       </div>
                     </div>
-
                   </div>
                 </div>
                 <div class="mobile">
@@ -226,7 +223,7 @@
                       <b>{{ pkg['purchase_quantity'] }}</b><span></span>
                     </span>
 
-                    <span class="juli" v-if="pkg['gives'][0].quantity === 0"></span>
+                    <span v-if="pkg['gives'][0].quantity === 0" class="juli"></span>
 
                     <!--gives mk 1-->
                     <span v-if="pkg['gives'][0].quantity !== 0" class="plus">+</span>
@@ -468,9 +465,9 @@
             <div class="user-tabs__container">
               <div class="task">
                 <!-- <h2 id="mark-task"><span>{{ $t('userCenter.tabs.profile.myTaskZone.title') }}</span></h2> -->
-                <div class="task-container" :class="{ hasList:  taskList.length !== 0}">
+                <div class="task-container" :class="{ hasList: taskList.length !== 0}">
                   <template v-if="taskList && taskList.length !== 0">
-                    <div v-show="i < showNum" v-for="(unit, i) in taskList" :key="i"
+                    <div v-for="(unit, i) in taskList" v-show="i < showNum" :key="i"
                          :class="{
                            'like': unit.task_type === 1,
                            'follow': unit.task_type === 2
@@ -482,7 +479,7 @@
                            src="unit.task_type === 1
                              ? `https://www.instagram.com/p/${unit.short_code}/media/?size=m`
                              : unit.follow_pic_url"
-                          onerror="this.src = 'https://cdn.easygetinsta.com/static/en/img/icon_avatar_default.2c1fbc4e.svg'"
+                           onerror="this.src = 'https://cdn.easygetinsta.com/static/en/img/icon_avatar_default.2c1fbc4e.svg'"
                       >
 
                       <div class="progress pc"
@@ -492,12 +489,12 @@
                           <!-- {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}: -->
                           <span>{{ unit['task_progress'] }} / {{ unit['task_quantity'] }}
                             {{ unit.task_type === 1 ? 'Likes' : 'Followers' }}</span>
-                            <!-- <i></i> -->
+                          <!-- <i></i> -->
                         </p>
                         <div class="bar">
                           <i :style="{ width: unit['task_progress'] / unit['task_quantity'] * 100 + '%' }"></i>
                         </div>
-                        <div class="time">{{Number(unit.task_create_time + '000') | formatDate}}</div>
+                        <div class="time">{{ Number(unit.task_create_time + '000') | formatDate }}</div>
                         <div class="user-icon"></div>
                       </div>
 
@@ -508,8 +505,8 @@
                           <!-- {{ $t('userCenter.tabs.profile.myTaskZone.taskListText') }}: -->
                           <span>{{ unit['task_progress'] }} / {{ unit['task_quantity'] }}
                             {{ unit.task_type === 1 ? 'Likes' : 'Followers' }}</span>
-                            <!-- <i></i> -->
-                          <div class="time">{{Number(unit.task_create_time + '000') | formatDate}}</div>
+                          <!-- <i></i> -->
+                          <div class="time">{{ Number(unit.task_create_time + '000') | formatDate }}</div>
                           <div class="user-icon" :class="{'like-user-icon': unit.task_type === 1}"></div>
                         </div>
                         <div class="bar">
@@ -533,11 +530,10 @@
                 </div>
               </div>
               <div v-if="taskList && (taskList.length > 10)" class="show-more" @click="showmore">{{ showMoreTest }}</div>
-
             </div>
           </div>
         </transition>
-        <div class="mobile mobile-buy-btn" @click="tabBottomBtnAction" v-if="tabsIndex !== 2">
+        <div v-if="tabsIndex !== 2" class="mobile mobile-buy-btn" @click="tabBottomBtnAction">
           <button-yellow-icon
             :text="$t('global.header.button.buyNow')"
             :font-size="'size-16'"
@@ -575,7 +571,7 @@
                   <input v-model="searchInsInput" type="text" placeholder="Your Instagram ID">
                 </label>
               </div>
-              <p class="error-msg" v-if="dialogFailMsg" v-html="dialogFailMsg"></p>
+              <p v-if="dialogFailMsg" class="error-msg" v-html="dialogFailMsg"></p>
               <div class="btn" @click="searchIns">
                 <button-purple
                   :text="$t('userCenter.dialog.Add')"

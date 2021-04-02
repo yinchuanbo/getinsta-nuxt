@@ -19,8 +19,8 @@
               :end-time="new Date().getTime() + 61000" :speed="1000"
               :auto-start="true" @finish="vacFinished = true"
             >
-              <template v-slot:process="{ timeObj }">{{ timeObj.m }} m : {{ timeObj.s }} s</template>
-              <template v-slot:finish>Time Up!</template>
+              <template #process="{ timeObj }">{{ timeObj.m }} m : {{ timeObj.s }} s</template>
+              <template #finish>Time Up!</template>
             </countdown>
           </div>
           <p class="follow-num">200</p>

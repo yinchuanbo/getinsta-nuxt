@@ -10,8 +10,8 @@
       <p>{{ $t('account.reset.subTitle') }}</p>
     </div>
     <transition>
-      <div class="login-register_error" v-if="dialogFailMsg" v-html="dialogFailMsg"></div>
-      <div class="login-register_ok" v-if="editok">{{ $t('account.successText.resetSuccess') }}</div>
+      <div v-if="dialogFailMsg" class="login-register_error" v-html="dialogFailMsg"></div>
+      <div v-if="editok" class="login-register_ok">{{ $t('account.successText.resetSuccess') }}</div>
     </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
@@ -22,7 +22,7 @@
               :placeholder="$t('account.form.password')"
             >
           </label>
-          <p class="error-msg" v-if="errors['password']">{{ errors['password'][0] }}</p>
+          <p v-if="errors['password']" class="error-msg">{{ errors['password'][0] }}</p>
         </ValidationProvider>
         <ValidationProvider v-slot="{ classes }" name="Confirmed password" rules="required|confirmed:password">
           <label class="password" :class="classes">
@@ -31,7 +31,7 @@
               :placeholder="$t('account.form.confirmPassword')"
             >
           </label>
-          <p class="error-msg" v-if="errors['Confirmed password']">{{ errors['Confirmed password'][0] }}</p>
+          <p v-if="errors['Confirmed password']" class="error-msg">{{ errors['Confirmed password'][0] }}</p>
         </ValidationProvider>
         <!-- <label class="msg">
           <i v-for="(unit, i) in errors" v-show="unit[0]" :key="i">{{ unit[0] }}<br></i>

@@ -9,7 +9,7 @@
       <p>Log in to check and get more followers & likes.</p>
     </div>
     <transition>
-      <div class="login-register_error" v-if="dialogFailMsg">{{dialogFailMsg}}</div>
+      <div v-if="dialogFailMsg" class="login-register_error">{{ dialogFailMsg }}</div>
     </transition>
     <div class="login-register__form">
       <ValidationObserver v-slot="{ invalid, errors, validate}">
@@ -20,7 +20,7 @@
               :placeholder="$t('account.form.emailAddress')"
             >
           </label>
-          <p class="error-msg" v-if="errors['Email address']">{{ errors['Email address'][0] }}</p>
+          <p v-if="errors['Email address']" class="error-msg">{{ errors['Email address'][0] }}</p>
         </ValidationProvider>
         
 
@@ -30,9 +30,9 @@
               v-model="form.field.password" name="password" :type="flag == true ? 'password':'text'"
               :placeholder="$t('account.form.password')"
             >
-            <span class="showPassword" @click.stop = "flag = !flag" :class="{flagfalse: flag}"></span>
+            <span class="showPassword" :class="{flagfalse: flag}" @click.stop="flag = !flag"></span>
           </label>
-          <p class="error-msg" v-if="errors['Password']">{{ errors['Password'][0]}}</p>
+          <p v-if="errors['Password']" class="error-msg">{{ errors['Password'][0] }}</p>
         </ValidationProvider>
 
         <!-- <label class="msg">
