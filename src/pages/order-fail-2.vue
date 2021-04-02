@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import instance from '@/views/payment/order-detail.vue';
+import instance from '@/views/payment/order-fail.vue';
 
 export default {
   components: { instance },
@@ -13,10 +13,10 @@ export default {
       meta: { title: `` }
     };
 
-    if (route.path === '/order-detail-2') {
-      data.meta.title = `${store.state.productName}${app.i18n.t('orderDetail.meta.title-1')}`;
+    if (route.path === '/order-fail-2') {
+      data.meta.title = `${store.state.productName}${app.i18n.t('orderFail.meta.title-1')}`;
     } else {
-      data.meta.title = `${store.state.productName}${app.i18n.t('orderDetail.meta.title-0')}`;
+      data.meta.title = `${store.state.productName}${app.i18n.t('orderFail.meta.title-0')}`;
     }
 
     return data;
