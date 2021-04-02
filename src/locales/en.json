@@ -691,7 +691,7 @@
       "badPassword": "Wrong password. Try again or click Forgot Password.",
       "accountLocked": "This account has been locked.",
       "failed": "Operating failed, please try again later",
-      "accountOccupied": "Someone already has that username. Try another one.",
+      "accountOccupied": "Account already exists with that e-mail address.",
       "badAccountRegister": "An account is already registered with that email. Please login.",
       "resetKeyError": "Key Error! <br> Please check the password reset email.",
       "badKey": "Sorry, reset failed. Please click Forgot Password to reset again."
