@@ -1070,13 +1070,24 @@ export default {
       const isStorePages = storePages.indexOf(path) > -1;
       let openOrNot = this.COMMON.randomAbTest();
 
+      // Store页面判断
       if (!isStorePages)
         openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
 
-      this.$storage.set('s2', openOrNot);
+
+      const userCenterPages = [
+        '/user',
+        '/user-get-followers',
+        '/user-get-likes'
+      ];
+      const isUserCenterPages = userCenterPages.indexOf(path) > -1;
+      // 个人中心判断
+      if (isUserCenterPages) openOrNot = true;
+
 
       this.$store.commit('v2', true);
       this.$store.commit('s2', openOrNot);
+      this.$storage.set('s2', openOrNot);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
         this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
