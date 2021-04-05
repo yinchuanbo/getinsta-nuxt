@@ -7,7 +7,7 @@
     <div class="mask"></div>
     <div
       class="container buy-followers"
-      :class="{ next: myinsuser.ins_id, nexttwo: tipsShow }"
+      :class="{ next: myInsUser.ins_id, nexttwo: tipsShow }"
     >
       <i class="close" @click="modelBoxClose()"></i>
       <div class="content">
@@ -41,47 +41,38 @@
           </p>
         </div>
         <div class="content-detail">
-          <!-- <label for="dialog-ins-search">Saisissez un compte Instagram</label>
-          <input
-            id="dialog-ins-search"
-            v-model="searchInsInput"
-            type="text"
-            placeholder="Votre identifiant Instagram"
-            @input="modelBoxPrevStep"
-          />
-          <div v-if="tipsShow" class="content-detail-tips">{{ tipsmsg }}</div> -->
           <div
-            v-if="myinsuser.ins_id"
+            v-if="myInsUser.ins_id"
             class="ins-info-container compact"
-            :class="{ on: myinsuser.ins_id }"
+            :class="{ on: myInsUser.ins_id }"
           >
-            <img :src="myinsuser.profile_pic_url" alt="avatar" />
-            <h3>{{ myinsuser.ins_account }}</h3>
+            <img :src="myInsUser.profile_pic_url" alt="avatar" />
+            <h3>{{ myInsUser.ins_account }}</h3>
             <p style="display:none">
               <span>
-                <b>{{ myinsuser.post.post_count | numberAbbreviations }}</b>
+                <b>{{ myInsUser.post.post_count | numberAbbreviations }}</b>
                 posts
               </span>
               <span>
-                <b>{{ myinsuser.followed_by | numberAbbreviations }}</b>
+                <b>{{ myInsUser.followed_by | numberAbbreviations }}</b>
                 followers
               </span>
               <span>
-                <b>{{ myinsuser.follow | numberAbbreviations }}</b>
+                <b>{{ myInsUser.follow | numberAbbreviations }}</b>
                 following
               </span>
             </p>
             <p class="compact-p">
               <span>
-                <b>{{ myinsuser.post.post_count | numberAbbreviations }}</b>
+                <b>{{ myInsUser.post.post_count | numberAbbreviations }}</b>
                 <i>posts</i>
               </span>
               <span>
-                <b>{{ myinsuser.follow | numberAbbreviations }}</b>
+                <b>{{ myInsUser.follow | numberAbbreviations }}</b>
                 <i>following</i>
               </span>
               <span>
-                <b>{{ myinsuser.followed_by | numberAbbreviations }}</b>
+                <b>{{ myInsUser.followed_by | numberAbbreviations }}</b>
                 <i>followers</i>
               </span>
             </p>
@@ -140,11 +131,16 @@ export default {
     }
   },
   props: {
+    thisVue: {
+      type: Object,
+      default: null,
+      require: true
+    },
     followers: {
       type: Object,
       default: null
     },
-    myinsuser: {
+    myInsUser: {
       type: Object,
       default: null
     },
@@ -163,7 +159,7 @@ export default {
       type: Boolean,
       default: false
     },
-    isrouter: {
+    isRouter: {
       type: Boolean,
       default: false
     }
@@ -172,8 +168,6 @@ export default {
     return {
       searchInsLoading: false,
       searchInsInput: '',
-      tipsmsg:
-        'L’identifiant Instagram n’existe pas ou la demande de données Instagram échouée. Réessayez plus tard.',
       tipsShow: false,
       modelBoxBuyBtnText: 'Buy Now',
       productPkgListDailyVM: []
@@ -192,26 +186,14 @@ export default {
       this.$emit('closebox', false);
     },
     btnActionSearchAndBuy() {
-      if (!this.myinsuser.ins_id) {
-        return;
-      } else {
+      if (this.myInsUser.ins_id) {
         this.addToCart();
       }
     },
     addToCart() {
-      if (this.isrouter) {
-        this.$ga.event('insbuy', 'buy', `daily-buy-f`);
-      } else {
-        this.$ga.event(
-          'insbuy',
-          'buy',
-          `dailyfbuy-${this.followers.newmsg.blogID}`
-        );
-      }
-      // console.log(8888, `dailyfbuy-${this.followers.newmsg.blogID}`)
       let param = {
-        ins_id: this.myinsuser.ins_id,
-        ins_account: this.myinsuser.ins_account
+        ins_id: this.myInsUser.ins_id,
+        ins_account: this.myInsUser.ins_account
       };
 
       param.task_type = 2;
@@ -220,47 +202,34 @@ export default {
       param.price_decimal = this.followers.price_decimal;
 
       param.gives = this.followers['gives'];
-      param.follow_pic_url = this.myinsuser.profile_pic_url;
-      param.post_count = this.myinsuser.post.post_count;
-      param.follower_count = this.myinsuser.followed_by;
-      param.following_count = this.myinsuser.follow;
+      param.follow_pic_url = this.myInsUser.profile_pic_url;
+      param.post_count = this.myInsUser.post.post_count;
+      param.follower_count = this.myInsUser.followed_by;
+      param.following_count = this.myInsUser.follow;
       param.cycle_type = this.followers.cycle_type;
-      // 广告参数
-      // let adStore = {
-      //   s: "",
-      //   c: "",
-      //   k: ""
-      // };
-      // adStore.s = this.$route.query.s || "";
-      // adStore.c = this.$route.query.c || "";
-      // adStore.k = this.$route.query.k || "";
-      // this.$storage.set("adStore", adStore);
 
-      // console.log(this.$nuxt.$route.path);
-
-      // console.log(1, param);
-      // this.initGeoIPWhiteList(param);
       this.transportCartUnitData(param);
+
+      // GA
+      if (this.isRouter) {
+        this.$ga.event('insbuy', 'buy', `daily-buy-f`);
+      } else {
+        this.$ga.event(
+          'insbuy',
+          'buy',
+          `dailyfbuy-${this.followers.newmsg.blogID}`
+        );
+      }
     },
     transportCartUnitData(param) {
-      // console.log(111, this);
+      const thisVue = this.thisVue;
       this.$storage.set('cartUnit', param);
 
-      const query = this.COMMON.envTest()
-        ? {
-          env_test: '1'
-        }
-        : {};
+      const query = this.COMMON.envTest() ? { env_test: '1' } : {};
       if (this.followers.newmsg) {
-        this.$nuxt.$router.push({
-          path: '/checkout',
-          query: query
-        });
+        thisVue.$nuxt.$router.push({ path: '/checkout', query: query });
       } else {
-        this.$nuxt.$router.push({
-          path: '/checkout',
-          query: query
-        });
+        thisVue.$nuxt.$router.push({ path: '/checkout', query: query });
       }
     }
   }

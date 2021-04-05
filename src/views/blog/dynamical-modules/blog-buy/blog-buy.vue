@@ -45,8 +45,19 @@
         </div>
       </div>
     </div>
+
+
     <!-- 购买弹框 -->
-    <BuySelect :tabindex="tabsIndex" :model-box-buy-show="buyPopshow" :enter-mask="entermask" :followers="follerList" :enter-box="enterbox" :myinsuser="insUser" @closebox="closeBuyPop" />
+    <BuySelect
+      :tabindex="tabsIndex"
+      :model-box-buy-show="buyPopshow"
+      :enter-mask="entermask"
+      :followers="follerList"
+      :enter-box="enterbox"
+      :my-ins-user="insUser"
+      :this-vue="sendThis"
+      @closebox="closeBuyPop"
+    />
   </div>
 </template>
 
@@ -57,7 +68,7 @@ import ButtonPurple from '~/components/button/button-purple';
 import BuySelect from '@/components/popup-layer/buy-select/buy-select.vue';
 
 export default {
-  name: 'Blogbuy',
+  name: 'BlogBuy',
   components: {
     ButtonPurple,
     BuySelect
@@ -107,11 +118,11 @@ export default {
       if (this.productPkgListLoading) return;
       this.productPkgListLoading = true;
       this.sendThis.$nuxt.$axios.$post(
-          `${apiAccount.appConfig}?origin=web`,
-          this.COMMON.paramSign({
-            client_lan: 'en',
-            cycle_product_enable: true
-          })
+        `${apiAccount.appConfig}?origin=web`,
+        this.COMMON.paramSign({
+          client_lan: 'en',
+          cycle_product_enable: true
+        })
       ).then((response) => {
         this.productPkgListLoading = false;
 
@@ -120,8 +131,8 @@ export default {
 
         } else {
           this.$alert('', 'error', 'Oops',
-              'Requesting Offer List failed, please try later.',
-              '', 'Close');
+            'Requesting Offer List failed, please try later.',
+            '', 'Close');
         }
 
         setTimeout(() => {
@@ -130,9 +141,9 @@ export default {
       }).catch((error) => {
         this.productPkgListLoading = false;
         this.dialogFailMsg = '<samp>'
-            + '<b>Error Status:</b> ' + error.status
-            + '<br>' + '<b>Error Message:</b> ' + error.statusText
-            + '</samp>';
+          + '<b>Error Status:</b> ' + error.status
+          + '<br>' + '<b>Error Message:</b> ' + error.statusText
+          + '</samp>';
         this.dialogFail = true;
         console.error('Catch Error: getPkgList', error);
       });
@@ -164,7 +175,7 @@ export default {
     renderPkgListDaily() {
       const res = new Map();
       this.productPkgListDaily = this.pkgListWithUnit.filter((a) =>
-          !res.has(a.dailyQuantity) && res.set(a.dailyQuantity, 1));
+        !res.has(a.dailyQuantity) && res.set(a.dailyQuantity, 1));
       this.productPkgListDailyVM = this.productPkgListDaily[0];
     },
     // 生成Days Select数组（周期选择）
@@ -174,39 +185,39 @@ export default {
     },
     searchUsername: function () {
       this.$ga.event(
-          'buttonclick',
-          'click',
-          `dailyf-${this.sendThis.blogID}`
+        'buttonclick',
+        'click',
+        `dailyf-${this.sendThis.blogID}`
       );
       this.searchInsByServerV2();
     },
     searchInsByServerV2() {
       if (this.searchInsInput === '') {
         this.$alert(
-            '', 'warn',
-            this.$t('store.buy.error.noInsID.title'),
-            this.$t('store.buy.error.noInsID.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
+          '', 'warn',
+          this.$t('store.buy.error.noInsID.title'),
+          this.$t('store.buy.error.noInsID.text'),
+          'normal',
+          this.$t('global.modelBox.btn.close')
         );
         return;
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
       this.sendThis.$nuxt.$axios.$post(
-          apiInsServer.getAccountByUsername,
-          this.COMMON.paramSign({ ins_account: this.searchInsInput })
+        apiInsServer.getAccountByUsername,
+        this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
         this.searchInsLoading = false;
         this.searchStatus = true;
 
         if (response.status !== 'ok') {
           this.$alert(
-              '', 'error',
-              this.$t('global.modelBox.title.oops'),
-              this.$t('store.buy.error.errorInsID.text'),
-              'normal',
-              this.$t('global.modelBox.btn.close')
+            '', 'error',
+            this.$t('global.modelBox.title.oops'),
+            this.$t('store.buy.error.errorInsID.text'),
+            'normal',
+            this.$t('global.modelBox.btn.close')
           );
           return;
         }
@@ -245,11 +256,11 @@ export default {
       }).catch((error) => {
         this.searchInsLoading = false;
         this.$alert(
-            '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorRequest.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
+          '', 'error',
+          this.$t('global.modelBox.title.oops'),
+          this.$t('store.buy.error.errorRequest.text'),
+          'normal',
+          this.$t('global.modelBox.btn.close')
         );
         console.error('Catch Error: searchIns: ', error);
       });
