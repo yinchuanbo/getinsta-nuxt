@@ -139,7 +139,6 @@ export default {
   },
   created() {
     this.multiLangEnvInit(this.$nuxt.$route);
-    this.watchedMethods(this.$nuxt.$route);
   },
   mounted() {
     console.log(
@@ -152,6 +151,9 @@ export default {
       'margin-left: 16px;' +
       'font-size: 14px; font-weight: 600;'
     );
+
+    // 【重要】机制初始化【重要】
+    this.watchedMethods(this.$nuxt.$route);
 
     // iOS触摸事件
     this.COMMON.iosTouchHack();
