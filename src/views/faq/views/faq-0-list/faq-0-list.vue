@@ -17,11 +17,11 @@
           <div class="p">
             {{ $t('faq.faqList.download.text') }}
             <br><br>
-            <label v-if="$i18n.locale === 'en'" class="pc" @click="downloadWindows">
+            <label class="pc" @click="downloadWindows">
               <!--<button-download-windows-yellow />-->
               <button-download-windows />
             </label>
-            <span v-if="$i18n.locale === 'en'" class="blank pc"></span>
+            <span class="blank pc"></span>
             <label class="pc" @click="downloadAndroid">
               <button-download-android />
             </label>
@@ -30,11 +30,11 @@
               <button-download-ios />
             </label>
 
-            <label v-if="!$store.state.isiOS" class="mobile" @click="downloadAndroid">
+            <label v-show="!$store.state.isiOS" class="mobile" @click="downloadAndroid">
               <button-download-android />
             </label>
             <div class="blank"></div>
-            <label v-if="$store.state.isiOS" class="mobile" @click="downloadIOS">
+            <label v-show="$store.state.isiOS" class="mobile" @click="downloadIOS">
               <button-download-ios />
             </label>
           </div>
@@ -71,7 +71,7 @@ export default {
     ButtonDownloadWindows,
     ButtonYellowIcon,
     ButtonDownloadIos,
-    ButtonDownloadAndroid,
+    ButtonDownloadAndroid
     // ButtonDownloadWindowsYellow
   },
   data() {
@@ -85,9 +85,7 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.animateOn = true;
-    }, 100);
+    this.animateOn = true;
   },
   methods: {
     downloadWindows() {
@@ -151,8 +149,11 @@ export default {
       this.$nuxt.$router.push({ path: '/buy-instagram-followers', query: query });
     },
     accordionDOM(ev) {
-      let thisDOM = this.COMMON.closest(ev.target, '.unit');
-      if (thisDOM.classList.contains('active')) {
+      let thisDOM = this.COMMON.closest(ev.target, 'h2');
+      console.log(thisDOM);
+      if (!thisDOM) return;
+      let unit = thisDOM.closest('.unit');
+      if (unit.classList.contains('active')) {
         thisDOM.classList.remove('active');
         return;
       }
@@ -163,7 +164,7 @@ export default {
       });
 
       // setTimeout(() => {
-      thisDOM.classList.add('active');
+      unit.classList.add('active');
       // }, 300);
     }
   }

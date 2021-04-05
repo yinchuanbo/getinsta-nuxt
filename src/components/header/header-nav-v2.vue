@@ -23,14 +23,7 @@
                 <!-- 分流 -->
                 <!-- <a @click="getAutoBuy">Buy Auto Instagram Followers</a> -->
                 <nuxt-link to="/buy-auto-instagram-followers">Buy Auto Instagram Followers</nuxt-link>
-                <nuxt-link
-                  :to="{
-                    path: '/buy-instagram-daily-likes',
-                    query: { anchor },
-                  }"
-                >
-                  Buy Auto Instagram Likes
-                </nuxt-link>
+                <nuxt-link to="/buy-instagram-daily-likes">Buy Auto Instagram Likes</nuxt-link>
                 <nuxt-link to="/buy-instagram-likes">Buy Instagram Likes</nuxt-link>
               </div>
             </div>
@@ -228,11 +221,7 @@
           }"
           @click="paymentHeaderBtnJump"
         >
-          <button-white
-            :text="paymentHeaderBtnText"
-            :white="false"
-            :font-size="'header-small'"
-          />
+          <button-white :text="paymentHeaderBtnText" :white="false" :font-size="'header-small'" />
         </div>
       </div>
       <div v-if="!routerIOT" class="header-nav__btn">
@@ -310,7 +299,7 @@
           <!--Buy Auto Likes-->
           <nuxt-link
             v-if="!storeMenuHide"
-            :to="{ path: '/buy-instagram-daily-likes', query: { anchor } }"
+            to="/buy-instagram-daily-likes"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
@@ -402,7 +391,6 @@ export default {
   },
   data() {
     return {
-      anchor: 'tab',
       windowWidth: process.client ? document.body.clientWidth : 0,
       windowHeight: process.client ? document.body.clientHeight : 0,
       sideBarStatus: false,
@@ -420,7 +408,6 @@ export default {
       storeMenuHide: false,
       routerIOT: false,
       showPcButton: true,
-
       checkPath: false
     };
   },
@@ -556,6 +543,7 @@ export default {
     // v2
     dropMenuSwitch(el) {
       let target = el.target;
+      if (!target.classList.contains('drop-menu')) return;
       const originalHeight = target.offsetHeight;
       const height = target.querySelector('.drop-menu-container').offsetHeight;
       let i = target.querySelector('i');
@@ -1238,7 +1226,7 @@ export default {
       cursor: pointer;
     }
 
-    a.header-nav__logged_content_link {
+    .header-nav__logged_content_link {
       margin-top: 20px;
       padding: 0 16px;
       display: block;
@@ -1672,7 +1660,7 @@ export default {
         background-size: 14px 14px;
       }
 
-      a.header-nav__logged_content_link {
+      .header-nav__logged_content_link {
         margin-top: 10px;
         height: 50px;
         font: 600 16px/50px BalooChettan;

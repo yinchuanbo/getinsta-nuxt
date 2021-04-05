@@ -118,8 +118,7 @@ export default {
       downloadCtaSeasonShow: false,
       showMinorLang: false,
       isEasterSale: true,
-      isGeneralBlank: true,
-
+      isGeneralBlank: true
     };
   },
   watch: {
@@ -138,8 +137,10 @@ export default {
       this.productNameLogoInit();
     }
   },
+  created() {
+    this.multiLangEnvInit(this.$nuxt.$route);
+  },
   mounted() {
-    this.watchedMethods(this.$nuxt.$route);
     console.log(
       '%cGetInsta%cWeb APP',
       'padding: 4px 18px;' +
@@ -150,8 +151,6 @@ export default {
       'margin-left: 16px;' +
       'font-size: 14px; font-weight: 600;'
     );
-
-    this.watchedMethods(this.$nuxt.$route);
 
     // iOS触摸事件
     this.COMMON.iosTouchHack();
@@ -310,9 +309,9 @@ export default {
         = to.path === '/';
 
       // Multi-lang 跳转
-      // this.multiLangEnvInit(to);
+      this.multiLangEnvInit(to);
       // // Multi-lang 下载链接初始化
-      // this.multiLangAppDwnInit(to);
+      this.multiLangAppDwnInit(to);
 
 
       // iOS 下载地址
@@ -340,12 +339,7 @@ export default {
         this.isRightWindows = blogPath;
       }
       this.isBottomWindows = homePath && !this.COMMON.isMobile();
-
-      if(this.COMMON.isMobile()) {
-         this.isAlertWindow = !(blogPath || easterSalePath || checkout || storePath);
-      } else {
-         this.isAlertWindow = !(easterSalePath || checkout || storePath || Path169);
-      }
+      this.isAlertWindow = !(blogPath || easterSalePath || checkout || storePath);
 
       // auto buy
       const storeAutoUrlStr = 'buy-auto-instagram-followers';
@@ -380,7 +374,7 @@ export default {
         this.isEasterSale = false;
       } else {
         this.$store.commit('footerSelect', false);
-        this.isEasterSale = !(checkout || storePath );
+        this.isEasterSale = !(checkout || storePath || usePath);
       }
 
       this.isGeneralBlank = !(storePath || blogPath || getFlPath || freeToolsPath || loginUserPath || easterSalePath || checkout);
@@ -430,10 +424,16 @@ export default {
       // this.$storage.set('minorLangLocaleTest', this.$i18n.locale);
 
       // *************** i18n Locale 初始化 ******************
-      if (subDomain !== 'en' && subDomain !== 'www' && !this.COMMON.envTest())
+      // if (subDomain !== 'en' && subDomain !== 'www' && !this.COMMON.envTest())
+      //   this.$i18n.locale = subDomain;
+      // else
+      //   this.$i18n.locale = userAgentLocale;
+
+      if (this.COMMON.isSupportedMinorLocale(subDomain) && !this.COMMON.envTest()) {
         this.$i18n.locale = subDomain;
-      else
+      } else {
         this.$i18n.locale = userAgentLocale;
+      }
 
 
       if (this.$i18n.locale !== 'en') {
@@ -671,7 +671,7 @@ export default {
         return;
       }
 
-      this.$nuxt.$axios.get(
+      this.$axios.get(
         apiAdr.getCountry
       ).then((res) => {
         let countryCode = '';
@@ -873,11 +873,11 @@ export default {
 
 
       // 特殊渠道判断 *********************************************************
-      if (this.COMMON.getURLQuery('source') === 'tiktok') {
-        this.$store.commit('enAdrType', 1);
-        // this.$store.commit('enAdrType', 0);
-        this.$store.commit('enAdrLinkGpReferrer', 'tiktok');
-      }
+      // if (this.COMMON.getURLQuery('source') === 'tiktok') {
+      //   this.$store.commit('enAdrType', 1);
+      //   // this.$store.commit('enAdrType', 0);
+      //   this.$store.commit('enAdrLinkGpReferrer', 'tiktok');
+      // }
       if (this.COMMON.getURLQuery('source') === 'sharechat') {
         this.$store.commit('enAdrType', 0);
         this.$store.commit('enAdrLink', this.$constant.app.download.androidShareChat);
@@ -943,7 +943,7 @@ export default {
         if (this.$storage.has('accessCountry'))
           params.country = this.$storage.get('accessCountry');
 
-        this.$nuxt.$axios.get(apiV2.getWebConfig, {
+        this.$axios.get(apiV2.getWebConfig, {
           params: params
         }).then((res) => {
           resolve(res);
@@ -1034,11 +1034,11 @@ export default {
       if (this.$store.state.downloadBtnTestB) this.$store.commit('gaColor', 'colorful');
       if (this.$store.state.downloadBtnTestC) this.$store.commit('gaColor', 'green');
 
-      console.log(
-        'downloadBtnTestA:', this.$store.state.downloadBtnTestA,
-        'downloadBtnTestB:', this.$store.state.downloadBtnTestB,
-        'downloadBtnTestC:', this.$store.state.downloadBtnTestC
-      );
+      // console.log(
+      //   'downloadBtnTestA:', this.$store.state.downloadBtnTestA,
+      //   'downloadBtnTestB:', this.$store.state.downloadBtnTestB,
+      //   'downloadBtnTestC:', this.$store.state.downloadBtnTestC
+      // );
     },
 
     // 加载Google翻译
@@ -1058,13 +1058,10 @@ export default {
 
     // v2开关
     v2SwitchGate(path) {
-      this.platformDetective();
-      // if (this.COMMON.envTest() && location.hostname !== 'test.easygetinsta.com')
-      //   this.v2SwitchForDev(path);
-      // else
-      //   this.v2Switch(path);
-
-      this.v2Switch(path);
+      if (this.COMMON.envTest() && location.hostname !== 'test.easygetinsta.com')
+        this.v2SwitchForDev(path);
+      else
+        this.v2Switch(path);
     },
     v2Switch(path) {
       const storePages = [
@@ -1104,6 +1101,7 @@ export default {
       const openOrNot = path === '/';
       // V2 Switch Beacon
       this.$store.commit('v2', true);
+      this.$store.commit('s2', true);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
         this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
