@@ -240,9 +240,7 @@ export default {
   },
   envTest() {
     if (process.client) {
-      return this.getSubDomain() === 'test'
-        || this.getSubDomain() === 'www2test'
-        || window.location.hostname === 'localhost'
+      return window.location.hostname === 'localhost'
         || window.location.hostname === '192.168.1.41'
         || window.location.hostname === '192.168.1.42';
     } else

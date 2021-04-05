@@ -139,6 +139,7 @@ export default {
   },
   created() {
     this.multiLangEnvInit(this.$nuxt.$route);
+    this.watchedMethods(this.$nuxt.$route);
   },
   mounted() {
     console.log(
@@ -1058,7 +1059,7 @@ export default {
 
     // v2开关
     v2SwitchGate(path) {
-      if (this.COMMON.envTest() && location.hostname !== 'test.easygetinsta.com')
+      if (this.COMMON.envTest())
         this.v2SwitchForDev(path);
       else
         this.v2Switch(path);
