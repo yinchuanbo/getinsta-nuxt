@@ -150,7 +150,6 @@ export default {
     },
     accordionDOM(ev) {
       let thisDOM = this.COMMON.closest(ev.target, 'h2');
-      console.log(thisDOM);
       if (!thisDOM) return;
       let unit = thisDOM.closest('.unit');
       if (unit.classList.contains('active')) {
