@@ -291,17 +291,11 @@ export default {
       return text;
     }
   },
-  created() {
-    this.getUrlKey();
-  },
   mounted() {
+    this.getUrlKey();
     this.requestLotteryList();
     this.winningNews2Show();
     this.requestEmailLimitList();
-    // this.requestLotteryReset();
-    setTimeout(() => {
-      //this.modelBoxLoginRegisterOpen(false);
-    }, 1000);
 
     this.pageAndroid = this.$route.path === '/event-lucky-draw-1';
     if (this.$route.path === '/lucky-draw-test') this.pageTestLabel = '-test';

@@ -39,12 +39,4 @@ export default {
     color: #FFFFFF;
   }
 }
-
-@media (max-width: 768px) {
-  .header-module-mk-0 {
-    h1 {
-
-    }
-  }
-}
 </style>

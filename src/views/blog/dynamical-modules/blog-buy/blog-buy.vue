@@ -9,18 +9,16 @@
         <div v-if="!productPkgListLoading">
           <label class="cycle days">
             <select v-model="productPkgListDaysVM" name="offer-daily" class="package changed blogbuySelect Selectone">
-              <option v-for="(item, i) in productPkgListDays" :key="i"
-                      :value="item"
-              >{{ item }}-Day Subscription
+              <option v-for="(item, i) in productPkgListDays" :key="i" :value="item">
+                {{ item }}-Day Subscription
               </option>
             </select>
           </label>
           <label class="cycle daily">
             <select v-model="productPkgListDailyVM" name="offer-daily" class="package changed blogbuySelect">
-              <option
-                v-for="(item, i) in productPkgListDaily" :key="i"
-                :value="item"
-              >{{ item.dailyQuantity }} Followers/Day (${{ (item.price_decimal / item.cycle_type).toFixed(2) }})
+              <option v-for="(item, i) in productPkgListDaily" :key="i" :value="item">
+                {{ item.dailyQuantity }} Followers/Day
+                (${{ (item.price_decimal / item.cycle_type).toFixed(2) }})
               </option>
             </select>
           </label>
@@ -130,7 +128,7 @@ export default {
           this.renderProductPkgList(response.product.list);
 
         } else {
-          this.$alert('', 'error', 'Oops',
+          this.sendThis.$alert('', 'error', 'Oops',
             'Requesting Offer List failed, please try later.',
             '', 'Close');
         }
@@ -193,12 +191,12 @@ export default {
     },
     searchInsByServerV2() {
       if (this.searchInsInput === '') {
-        this.$alert(
+        this.sendThis.$alert(
           '', 'warn',
-          this.$t('store.buy.error.noInsID.title'),
-          this.$t('store.buy.error.noInsID.text'),
+          this.sendThis.$t('store.buy.error.noInsID.title'),
+          this.sendThis.$t('store.buy.error.noInsID.text'),
           'normal',
-          this.$t('global.modelBox.btn.close')
+          this.sendThis.$t('global.modelBox.btn.close')
         );
         return;
       }
@@ -212,12 +210,12 @@ export default {
         this.searchStatus = true;
 
         if (response.status !== 'ok') {
-          this.$alert(
+          this.sendThis.$alert(
             '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorInsID.text'),
+            this.sendThis.$t('global.modelBox.title.oops'),
+            this.sendThis.$t('store.buy.error.errorInsID.text'),
             'normal',
-            this.$t('global.modelBox.btn.close')
+            this.sendThis.$t('global.modelBox.btn.close')
           );
           return;
         }
@@ -255,12 +253,12 @@ export default {
 
       }).catch((error) => {
         this.searchInsLoading = false;
-        this.$alert(
+        this.sendThis.$alert(
           '', 'error',
-          this.$t('global.modelBox.title.oops'),
-          this.$t('store.buy.error.errorRequest.text'),
+          this.sendThis.$t('global.modelBox.title.oops'),
+          this.sendThis.$t('store.buy.error.errorRequest.text'),
           'normal',
-          this.$t('global.modelBox.btn.close')
+          this.sendThis.$t('global.modelBox.btn.close')
         );
         console.error('Catch Error: searchIns: ', error);
       });
