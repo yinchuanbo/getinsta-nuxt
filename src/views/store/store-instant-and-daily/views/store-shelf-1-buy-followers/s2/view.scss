@@ -451,6 +451,41 @@
         }
       }
     }
+    .country-select {
+      display: flex;
+      align-items: center;
+      h2 {
+        margin-right: 15px;
+        font: normal normal 600 14px/21px BalooChettan;
+        color: #000000;
+      }
+      .select-content {
+        position: relative;
+        .national-flag {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 16px;
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          background: red;
+          z-index: 5;
+        }
+        select {
+          width: 156px;
+          height: 35px;
+          border: 0;
+          font: normal normal 600 16px/35px BalooChettan;
+          color: #000000;
+          padding-left: 45px;
+          cursor: pointer;
+          background: rgba(#fff, 0.5) url("~@/assets/images/global/icon_from__select_arrow.svg") no-repeat right 3% center !important;
+        }
+      }
+      
+    }
     .pc-content_main {
       margin-top: 30px;
       .pc-content_main-item {

@@ -10,6 +10,21 @@
             <p>Daily Followers</p>
           </div>
         </div>
+
+        <div class="country-select" v-if="!tabsIndex">
+          <h2>Country-Targeted:</h2>
+          <div class="select-content">
+            <span class="national-flag">
+              <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
+            </span>
+            <select v-model="countryFlagSelect">
+              <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
+                {{ item.name[0].txt }}
+              </option>
+            </select>
+          </div>
+        </div>
+
         <div class="pc-content_main">
           <transition name="fade-tabs" mode="out-in">
             <div v-if="!tabsIndex" key="box0" class="pc-content_main-item">
@@ -534,6 +549,7 @@ import apiIns from '@/api/api.ins';
 import apiInsServer from '@/api/api.ins.server';
 import apiPayment from '@/api/api.payment';
 import apiTask from '@/api/api.task';
+import apiV2 from '@/api/api.v2.js';
 
 import ButtonPurple from '@/components/button/button-purple';
 import ButtonYellowIcon from '@/components/button/button-yellow-icon';
@@ -654,7 +670,10 @@ export default {
       productPkgListDaily: [],
       productPkgListDailyVM: [],
       productPkgListDays: [],
-      productPkgListDaysVM: []
+      productPkgListDaysVM: [],
+      regionList: [],
+      countryFlagSelect: '',
+      currentCountry: {}
     };
   },
   computed: {
@@ -675,6 +694,7 @@ export default {
         return productPkg['product_type'] === 1;
       });
     },
+    // followers
     productPkgListFollow: function () {
       return this.productPkgListDisplay.filter(function (productPkg) {
         return productPkg['product_type'] === 2;
@@ -696,6 +716,17 @@ export default {
       this.productPkgListDaily = this.pkgListWithUnit.filter(item => item.cycle_type === val);
       // console.log("followers-daily-----",this.productPkgListDaily)
       this.productPkgListDailyVM = this.productPkgListDaily[0];
+    },
+    countryFlagSelect(newValue, oldVal) {
+      let regionList = this.regionList;
+      if(regionList && regionList.length !==0) {
+        regionList.forEach((item, index) => {
+          if(item.region_id == newValue ) {
+            this.currentCountry = item;
+            this.getCountryProduct(item.region_id);
+          }
+        })
+      }
     }
   },
   created() {
@@ -704,6 +735,7 @@ export default {
   },
   mounted() {
     this.getPkgList();
+    this.getRegionList();
     window.addEventListener('scroll', this.handle);
     const that = this;
     window.onresize = () => {
@@ -722,6 +754,73 @@ export default {
     },
     dayClick(val) {
       this.productPkgListDaysVM = val;
+    },
+    getCountryProduct() {
+      var _this = this;
+      this.$nuxt.$axios.post(
+        `${apiV2.getProduct}`,
+        this.COMMON.paramSign({
+           client_lan:"",
+           cycle_product_enable: false,
+           subscribe_product_enable: false,
+           app_name:"getinshot",
+           system_id: 1,
+           product_group: 1,
+           region_id: this.countryFlagSelect
+        })
+      ).then((response) => {
+        let { data } = response;
+        if(data.status !== 'ok') return;
+        let { list } = data.product;
+        console.log(list);
+        
+      }).catch((error) => {
+        this.productPkgListLoading = false;
+        this.dialogFailMsg = '<samp>'
+          + '<b>Error Status:</b> ' + error.status
+          + '<br>' + '<b>Error Message:</b> ' + error.statusText
+          + '</samp>';
+        this.dialogFail = true;
+        console.error('Catch Error: getProduct', error);
+      });
+    },
+    getRegionList() {
+      var _this = this;
+      this.$nuxt.$axios.post(
+        `${apiV2.getRegionList}`,
+        this.COMMON.paramSign({
+           "origin":"web",
+           "system_id": 1
+        })
+      ).then((response) => {
+        let { data } = response;
+        if(data.status !== 'ok') return;
+        data.region_list.forEach(function(item, index) {
+          if(item.region_status !== 0) {
+            if(item.length != 1) {
+              item.name = item.name.filter(function(names) {
+                return names.locale === 'en';
+              })
+            }
+            _this.regionList.push(item);
+          }
+        })
+        this.currentCountry = _this.regionList[0]
+        // 默认选中国别
+        let region_id = parseInt(this.regionList[0].region_id);
+        this.countryFlagSelect = region_id;
+        if(region_id && region_id != 0) {
+          this.getCountryProduct();
+        }
+      }).catch((error) => {
+        this.productPkgListLoading = false;
+        this.dialogFailMsg = '<samp>'
+          + '<b>Error Status:</b> ' + error.status
+          + '<br>' + '<b>Error Message:</b> ' + error.statusText
+          + '</samp>';
+        this.dialogFail = true;
+        console.error('Catch Error: getRegionList', error);
+      });
     },
     keyupSubmit() {
       if (process.server) return;
