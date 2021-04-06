@@ -23,14 +23,7 @@
                 <!-- 分流 -->
                 <!-- <a @click="getAutoBuy">Buy Auto Instagram Followers</a> -->
                 <nuxt-link to="/buy-auto-instagram-followers">Buy Auto Instagram Followers</nuxt-link>
-                <nuxt-link
-                  :to="{
-                    path: '/buy-instagram-daily-likes',
-                    query: { anchor },
-                  }"
-                >
-                  Buy Auto Instagram Likes
-                </nuxt-link>
+                <nuxt-link to="/buy-instagram-daily-likes">Buy Auto Instagram Likes</nuxt-link>
                 <nuxt-link to="/buy-instagram-likes">Buy Instagram Likes</nuxt-link>
               </div>
             </div>
@@ -228,11 +221,7 @@
           }"
           @click="paymentHeaderBtnJump"
         >
-          <button-white
-            :text="paymentHeaderBtnText"
-            :white="false"
-            :font-size="'header-small'"
-          />
+          <button-white :text="paymentHeaderBtnText" :white="false" :font-size="'header-small'" />
         </div>
       </div>
       <div v-if="!routerIOT" class="header-nav__btn">
@@ -310,7 +299,7 @@
           <!--Buy Auto Likes-->
           <nuxt-link
             v-if="!storeMenuHide"
-            :to="{ path: '/buy-instagram-daily-likes', query: { anchor } }"
+            to="/buy-instagram-daily-likes"
             class="header-nav__logged_content_link"
             @click.native="menuOff"
           >
@@ -334,19 +323,18 @@
           </nuxt-link>
 
           <!--Free Tools (Drop Menu)-->
-          <a class="header-nav__logged_content_link drop-menu" @click="dropMenuSwitch">
+          <div class="header-nav__logged_content_link drop-menu" @click="dropMenuSwitch">
             Free Tools
             <i></i>
             <div class="drop-menu-container">
               <!--Instagram Video Downloader-->
-              <nuxt-link to="/instagram-video-downloader" @click.native="menuOff">Instagram Video Downloader
-              </nuxt-link>
+              <nuxt-link to="/instagram-video-downloader" @click.native="menuOff">Instagram Video Downloader</nuxt-link>
               <!--Instagram Ranking Tool-->
               <nuxt-link to="/the-most-followed-instagram" @click.native="menuOff">Instagram Ranking Tool</nuxt-link>
               <!--Instagram Name Generator-->
               <nuxt-link to="/instagram-name-generator" @click.native="menuOff">Instagram Name Generator</nuxt-link>
             </div>
-          </a>
+          </div>
 
           <!--logout (bottom login link-->
           <a v-if="loginStatus" class="header-nav__logged_content_link" @click="logout">
@@ -403,7 +391,6 @@ export default {
   },
   data() {
     return {
-      anchor: 'tab',
       windowWidth: process.client ? document.body.clientWidth : 0,
       windowHeight: process.client ? document.body.clientHeight : 0,
       sideBarStatus: false,
@@ -421,7 +408,6 @@ export default {
       storeMenuHide: false,
       routerIOT: false,
       showPcButton: true,
-
       checkPath: false
     };
   },
@@ -557,6 +543,7 @@ export default {
     // v2
     dropMenuSwitch(el) {
       let target = el.target;
+      if (!target.classList.contains('drop-menu')) return;
       const originalHeight = target.offsetHeight;
       const height = target.querySelector('.drop-menu-container').offsetHeight;
       let i = target.querySelector('i');
@@ -1239,7 +1226,7 @@ export default {
       cursor: pointer;
     }
 
-    a.header-nav__logged_content_link {
+    .header-nav__logged_content_link {
       margin-top: 20px;
       padding: 0 16px;
       display: block;
@@ -1673,7 +1660,7 @@ export default {
         background-size: 14px 14px;
       }
 
-      a.header-nav__logged_content_link {
+      .header-nav__logged_content_link {
         margin-top: 10px;
         height: 50px;
         font: 600 16px/50px BalooChettan;

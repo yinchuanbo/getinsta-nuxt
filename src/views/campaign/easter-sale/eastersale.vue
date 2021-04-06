@@ -1,6 +1,6 @@
 <template>
   <div class="eastersale-container">
-    <div v-show="screenWidth >= 769 && screenWidth !== 0">
+    <div v-show="!$store.state.isMobile">
       <eastersale-banner :end-time="endTime"></eastersale-banner>
       <eastersale-buy :products="products"></eastersale-buy>
       <eastersale-tips />
@@ -9,7 +9,7 @@
         <eastersale-alert v-if="$store.state.showAlert" />
       </transition>
     </div>
-    <div v-show="screenWidth <= 768 && screenWidth !== 0" :style="{ 'padding-top': v2AdHeightMobile + 'px' }">
+    <div v-show="$store.state.isMobile" :style="{ 'padding-top': v2AdHeightMobile + 'px' }">
       <eastersale-banner-m />
       <eastersale-cards-m :end-time="endTime" :products="products" />
       <eastersale-tips-m />
@@ -106,17 +106,6 @@ export default {
         window.screenWidth = document.body.clientWidth;
         that.screenWidth = window.screenWidth;
       })();
-    };
-  },
-  metaInfo() {
-    return {
-      title: 'Special Easter Sale 2021-GetInsta',
-      meta: [
-        {
-          name: 'description',
-          content: 'Buy 1000 Instagram Followers and Get 1000 for Free. GetInsta Easter Sale 2021.'
-        }
-      ]
     };
   },
   destroyed() {

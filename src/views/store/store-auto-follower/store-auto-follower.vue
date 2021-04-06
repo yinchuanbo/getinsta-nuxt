@@ -272,8 +272,8 @@
       :enter-mask="entermask"
       :followers="follerList"
       :enter-box="enterbox"
-      :myinsuser="insUser"
-      :isrouter="true"
+      :my-ins-user="insUser"
+      :is-router="true"
       @closebox="closeBuyPop"
     />
   </div>

@@ -1,6 +1,7 @@
 <template>
   <div class="seo-1-0-main">
     <header-module-mk0 />
+
     <div class="wrapper">
       <h1 v-html="title"></h1>
       <div v-if="lotteryCountDownEnabled" class="countdown-container">
