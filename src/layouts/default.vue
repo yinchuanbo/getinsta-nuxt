@@ -1081,13 +1081,13 @@ export default {
 
 
       // checkout页面判断
-      const checkoutPages = [
-        '/checkout',
-        '/checkout-2'
-      ];
-      const isCheckoutPages = checkoutPages.indexOf(path) > -1;
-      if (isCheckoutPages)
-        openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
+      // const checkoutPages = [
+      //   '/checkout',
+      //   '/checkout-2'
+      // ];
+      // const isCheckoutPages = checkoutPages.indexOf(path) > -1;
+      // if (isCheckoutPages)
+      //   openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
 
 
       // 用户中心页面判断
