@@ -1064,7 +1064,7 @@ export default {
       if (this.COMMON.envTest())
         this.v2SwitchForDev(path);
       else
-      this.v2Switch(path);
+        this.v2Switch(path);
     },
     v2Switch(path) {
       // Store页面判断
@@ -1087,6 +1087,8 @@ export default {
       const isCheckoutPages = checkoutPages.indexOf(path) > -1;
       if (isCheckoutPages)
         openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
+      else
+        openOrNot = true;
 
       // 用户中心页面判断
       const userCenterPages = [
