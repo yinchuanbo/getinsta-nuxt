@@ -532,7 +532,7 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 212px;
+                width: calc(100% - 8px);
                 height: 412px;
                 background: transparent;
                 border: 4px solid #6257FF;
@@ -698,7 +698,7 @@
               position: absolute;
               top: 0;
               left: 0;
-              width: 212px;
+              width: calc(100% - 8px);
               height: 412px;
               background: transparent;
               border: 4px solid #6257FF;

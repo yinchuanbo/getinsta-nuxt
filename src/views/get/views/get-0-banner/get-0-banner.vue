@@ -1,7 +1,7 @@
 <template>
   <div class="get-0-banner" :class="{ 'on': animateBegin, 'text-on': textBegin }">
     <div class="wrapper">
-      <div class="header-blank"></div>
+      <!-- <div class="header-blank"></div> -->
       <div class="get-0-banner__content">
         <h1>{{ $t('get.banner.title') }}</h1>
         <div class="get-0-banner__content_btn-container">

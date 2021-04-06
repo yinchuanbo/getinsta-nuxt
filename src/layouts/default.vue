@@ -380,7 +380,7 @@ export default {
         this.isEasterSale = !(checkout || storePath || usePath);
       }
 
-      this.isGeneralBlank = !(storePath || blogPath || getFlPath || freeToolsPath || loginUserPath || easterSalePath || checkout);
+      this.isGeneralBlank = !(storePath || freeToolsPath || loginUserPath || easterSalePath || checkout);
     },
 
     addThisHideEvent(addThisHide) {
