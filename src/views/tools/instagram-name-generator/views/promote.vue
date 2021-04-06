@@ -8,7 +8,7 @@
       <div class="fatest">
         <h3><span>Fatest Way</span> to Promote Your Instagram Account</h3>
         <p>The most important and direct points that affect the performance of your account are the number of followers and likes. It’s time-wasting to use traditional methods to get followers and likes. That’s why many <a href="https://www.easygetinsta.com/blog/instagram-followers-app-28 ">Instagram followers apps</a> are listed on the market and popular. Try the best Instagram auto followers app GetInsta to get free Instagram followers and likes <a href="https://www.easygetinsta.com/blog/free-instagram-followers-no-password-31">without password</a>.</p>
-        <div v-if="ispc" class="steps">
+        <div v-show="isPc" class="steps">
           <ul class="step-num">
             <li>
               <div class="imgcontainer"><img src="../img/1.svg" alt=""></div>
@@ -49,12 +49,12 @@
               <p class="des">GetInsta</p>
               <p class="destext">Get Free Instagram Followers & Likes</p>
               <div class="btn-container">
-                <span v-if="!pageIOS" class="pc" @click="ga1PC">
+                <span v-show="!pageIOS" class="pc" @click="ga1PC">
                   <button-purple :text="'Download GetInsta'" :font-size="'size-20'" :icon="'windows'" />
                 </span>
               </div>
               <!--two small btn-->
-              <div v-if="!pageIOS" class="download-container pc">
+              <div v-show="!pageIOS" class="download-container pc">
                 <a class="android" href="javascript:"
                    @click="ga3Android"
                    @mouseenter="tipQrCode('android', $event)"
@@ -62,7 +62,7 @@
                 >
                   <img src="../img/icon_android_logo.svg" alt="icon">
                 </a>
-                <a v-if="!$store.state.hideIosMinorLang" class="ios" href="javascript:"
+                <a v-show="!$store.state.hideIosMinorLang" class="ios" href="javascript:"
                    @click="ga3Ios"
                    @mouseenter="tipQrCode('ios', $event)"
                    @mouseleave="tipQrCode(false)"
@@ -76,7 +76,7 @@
             <li><img src="../img/a3.png" alt=""></li>
           </ul>
         </div>
-        <div v-if="!ispc" class="stepMobile">
+        <div v-show="!isPc" class="stepMobile">
           <div class="left">
             <div class="step-one">
               <div class="imgcontainer"><img src="../img/1.svg" alt=""></div>
@@ -86,10 +86,10 @@
                 <p class="des">GetInsta</p>
                 <p class="destext">Get Free Instagram Followers & Likes</p>
                 <div class="btn-container">
-                  <div v-if="isAdr" @click="gaDownloadAPPTest">
+                  <div v-show="isAdr" @click="gaDownloadAPPTest">
                     <img src="@/assets/images/global/button/btn__download_original-googleplay.svg" alt="" class="andr">
                   </div>
-                  <div v-if="isios" @click="gaDownloadAPPTest">
+                  <div v-show="isIos" @click="gaDownloadAPPTest">
                     <img src="../img/btn.svg" alt="" class="btnios">
                   </div>
                 </div>
@@ -129,9 +129,9 @@ export default {
   data() {
     return {
       pageIOS: false,
-      ispc: !this.COMMON.isMobile(),
+      isPc: !this.COMMON.isMobile(),
       isAdr: this.COMMON.isAndroid(),
-      isios: this.COMMON.isiOS()
+      isIos: this.COMMON.isiOS()
     };
   },
   methods: {

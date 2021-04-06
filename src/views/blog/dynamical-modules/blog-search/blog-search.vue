@@ -46,8 +46,8 @@
       </div>
       <!-- mobile 下载按钮 -->
       <div class="mobileDown">
-        <a v-if="iostrue" class="getfreeDown" @click="clickapple">Get Free Followers</a>
-        <a v-if="adrtrue" class="getfreeDown" @click="clickadr">Get Free Followers</a>
+        <a v-if="isIos" class="getfreeDown" @click="clickapple">Get Free Followers</a>
+        <a v-if="isAdr" class="getfreeDown" @click="clickadr">Get Free Followers</a>
         <p>Download the app to get free followers</p>
       </div>
     </div>
@@ -106,8 +106,8 @@ export default {
   // },
   data() {
     return {
-      iostrue: this.COMMON.isiOS(),
-      adrtrue: this.COMMON.isAndroid(),
+      isIos: this.COMMON.isiOS(),
+      isAdr: this.COMMON.isAndroid(),
       postList: [],
       relatedArticleList: [],
       articleHotList: [],
@@ -133,47 +133,42 @@ export default {
       }
     };
   },
-  mounted() {
-    // console.log(111,this.$storage.get('adrDownloadLink'))
-    // console.log(222,this.$storage.get('iosDownloadLink'))
-
-  },
   methods: {
     searchUsername() {
       this.searchInsByServerV2();
       this.$ga.event(
-          'buttonclick',
-          'click',
-          `b4-addname-${this.ax}`
+        'buttonclick',
+        'click',
+        `b4-addname-${this.ax}`
       );
     },
     searchInsByServerV2() {
       if (this.searchInsInput === '') {
-        this.$alert(
-            '', 'warn',
-            this.$t('store.buy.error.noInsID.title'),
-            this.$t('store.buy.error.noInsID.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
+        this.sendThis.$alert(
+          '', 'warn',
+          this.sendThis.$t('store.buy.error.noInsID.title'),
+          this.sendThis.$t('store.buy.error.noInsID.text'),
+          'normal',
+          this.sendThis.$t('global.modelBox.btn.close')
         );
         return;
       }
       if (this.searchInsLoading) return;
       this.searchInsLoading = true;
       this.sendThis.$nuxt.$axios.post(
-          apiInsServer.getAccountByUsername,
-          this.COMMON.paramSign({ ins_account: this.searchInsInput })
+        apiInsServer.getAccountByUsername,
+        this.COMMON.paramSign({ ins_account: this.searchInsInput })
       ).then((response) => {
         this.searchInsLoading = false;
         this.searchStatus = true;
 
         if (response.data.status !== 'ok') {
-          this.$alert(
-              '', 'error',
-              this.$t('global.modelBox.title.oops'),
-              this.$t('store.buy.error.errorInsID.text'),
-              'normal',
-              this.$t('global.modelBox.btn.close')
+          this.sendThis.$alert(
+            '', 'error',
+            this.sendThis.$t('global.modelBox.title.oops'),
+            this.sendThis.$t('store.buy.error.errorInsID.text'),
+            'normal',
+            this.sendThis.$t('global.modelBox.btn.close')
           );
           return;
         }
@@ -195,12 +190,12 @@ export default {
       }).catch((error) => {
         this.closeDialog();
         this.searchInsLoading = false;
-        this.$alert(
-            '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorRequest.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
+        this.sendThis.$alert(
+          '', 'error',
+          this.sendThis.$t('global.modelBox.title.oops'),
+          this.sendThis.$t('store.buy.error.errorRequest.text'),
+          'normal',
+          this.sendThis.$t('global.modelBox.btn.close')
         );
         console.error('Catch Error: searchIns: ', error);
       });

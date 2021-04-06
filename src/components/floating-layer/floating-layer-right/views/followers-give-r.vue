@@ -68,6 +68,7 @@ export default {
 
     &.ac {
       right: 20px;
+      z-index: 5;
     }
   }
 }

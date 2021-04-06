@@ -23,20 +23,10 @@
             {{ followers.cycle_type }}-Day Subscription
           </h2>
 
-          <p
-            v-if="
-              followers.gives !== undefined && followers.gives[0].type === 1
-            "
-            class="gifts"
-          >
+          <p v-if="followers.gives !== undefined && followers.gives[0].type === 1" class="gifts">
             {{ followers.gives[0].quantity }} likes gratuits
           </p>
-          <p
-            v-if="
-              followers.gives !== undefined && followers.gives[0].type === 2
-            "
-            class="gifts"
-          >
+          <p v-if="followers.gives !== undefined && followers.gives[0].type === 2" class="gifts">
             {{ followers.gives[0].quantity }} followers gratuits
           </p>
         </div>
@@ -48,32 +38,18 @@
           >
             <img :src="myInsUser.profile_pic_url" alt="avatar" />
             <h3>{{ myInsUser.ins_account }}</h3>
-            <p style="display:none">
-              <span>
-                <b>{{ myInsUser.post.post_count | numberAbbreviations }}</b>
-                posts
-              </span>
-              <span>
-                <b>{{ myInsUser.followed_by | numberAbbreviations }}</b>
-                followers
-              </span>
-              <span>
-                <b>{{ myInsUser.follow | numberAbbreviations }}</b>
-                following
-              </span>
-            </p>
             <p class="compact-p">
               <span>
                 <b>{{ myInsUser.post.post_count | numberAbbreviations }}</b>
-                <i>posts</i>
+                <i>{{ thisVue.$t('global.instagramConcept.posts') }}</i>
               </span>
               <span>
                 <b>{{ myInsUser.follow | numberAbbreviations }}</b>
-                <i>following</i>
+                <i>{{ thisVue.$t('global.instagramConcept.following') }}</i>
               </span>
               <span>
                 <b>{{ myInsUser.followed_by | numberAbbreviations }}</b>
-                <i>followers</i>
+                <i>{{ thisVue.$t('global.instagramConcept.followers') }}</i>
               </span>
             </p>
           </div>

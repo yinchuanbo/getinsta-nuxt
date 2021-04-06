@@ -161,6 +161,9 @@ button, .button {
           background-image: url("~@/assets/images/global/button/icon__btn-download_logo_apple_black.svg");
         }
       }
+      .text {
+        margin-left: 8%!important;
+      }
     }
 
     &.android {

@@ -30,27 +30,10 @@ import FooterModuleMk0 from '@/components/footer/footer-module-mk-0';
 export default {
   name: 'Seo1Lottery',
   components: {
-    TipsMk0,
-    DownloadBannerMk1,
     Seo10Main,
+    DownloadBannerMk1,
+    TipsMk0,
     FooterModuleMk0
-  },
-  metaInfo() {
-    return {
-      title: 'GetInsta - Lucky Draw',
-      meta: [
-        {
-          name: 'description',
-          content: 'Participate in the Lucky Draw on easygetinsta.com to get real Instagram followers for free instantly. 100% Winning!'
-        }
-      ],
-      link: [
-        {
-          rel: 'canonical',
-          href: `${window.location.origin}${this.$route.path}`
-        }
-      ]
-    };
   },
   data() {
     return {

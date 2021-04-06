@@ -11,7 +11,7 @@
           </div>
         </div>
 
-        <div class="country-select" v-if="!tabsIndex">
+        <!-- <div class="country-select" v-if="!tabsIndex">
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
@@ -23,7 +23,7 @@
               </option>
             </select>
           </div>
-        </div>
+        </div> -->
 
         <div class="pc-content_main">
           <transition name="fade-tabs" mode="out-in">
