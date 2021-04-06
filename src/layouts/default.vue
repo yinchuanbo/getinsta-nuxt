@@ -1068,10 +1068,7 @@ export default {
     },
     v2Switch(path) {
       const storePages = [
-        '/buy-instagram-followers',
-        '/buy-instagram-daily-followers',
-        '/buy-instagram-likes',
-        '/buy-instagram-daily-likes'
+        '/buy-instagram-likes'
       ];
       const isStorePages = storePages.indexOf(path) > -1;
       let openOrNot = this.COMMON.randomAbTest();
