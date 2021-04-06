@@ -1,6 +1,6 @@
 <template>
   <div class="blog-0-title">
-    <div class="header-blank"></div>
+    <!-- <div class="header-blank"></div> -->
     <div class="wrapper">
       <div class="unit left">
         <h1>{{ $t('blog.title') }}</h1>

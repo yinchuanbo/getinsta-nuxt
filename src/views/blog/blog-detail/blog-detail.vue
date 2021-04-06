@@ -1,6 +1,6 @@
 <template>
   <div class="blog-detail">
-    <div id="header-blank" class="header-blank"></div>
+    <!-- <div id="header-blank" class="header-blank"></div> -->
     <div class="wrapper">
       <div class="left" :class="{ 'lang-arabic': langArabic }">
         <transition name="fade-skeleton" mode="out-in">
