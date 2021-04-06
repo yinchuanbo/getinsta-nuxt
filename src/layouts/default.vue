@@ -1061,25 +1061,34 @@ export default {
 
     // v2开关
     v2SwitchGate(path) {
-      if (this.COMMON.envTest())
-        this.v2SwitchForDev(path);
-      else
-        this.v2Switch(path);
+      // if (this.COMMON.envTest())
+      //   this.v2SwitchForDev(path);
+      // else
+      this.v2Switch(path);
     },
     v2Switch(path) {
+      // Store页面判断
       const storePages = [
         '/buy-instagram-likes'
       ];
       const isStorePages = storePages.indexOf(path) > -1;
-      let openOrNot = this.COMMON.randomAbTest();
 
-      // Store页面判断
+      let openOrNot = true;
       if (!isStorePages)
-        openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
-      else
         openOrNot = true;
+      else
+        openOrNot = this.COMMON.randomAbTest();
 
+      // checkout页面判断
+      const checkoutPages = [
+        '/checkout',
+        '/checkout-2'
+      ];
+      const isCheckoutPages = checkoutPages.indexOf(path) > -1;
+      if (isCheckoutPages)
+        openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
 
+      // 用户中心页面判断
       const userCenterPages = [
         '/user',
         '/user-get-followers',
@@ -1090,6 +1099,7 @@ export default {
       if (isUserCenterPages) openOrNot = true;
 
 
+      // 状态存储
       this.$store.commit('v2', true);
       this.$store.commit('s2', openOrNot);
       this.$storage.set('s2', openOrNot);
