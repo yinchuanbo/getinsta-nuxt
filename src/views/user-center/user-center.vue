@@ -2401,6 +2401,9 @@ export default {
         param.follower_count = this.accountCurrent.followed_by;
         param.following_count = this.accountCurrent.follow;
 
+        param.product_type = 2;
+        param.cycle_type = 1;
+
         if (this.postList.length > 1) {
           param.like_id = this.postList[0].like_id;
           param.like_pic_url = this.postList[0].like_pic_url;
@@ -2424,6 +2427,9 @@ export default {
         param.like_pic_url = post.like_pic_url;
         param.short_code = post.short_code;
         param.like_count = this.productPkgCurrentLike['purchase_quantity'];
+
+        param.product_type = 1;
+        param.cycle_type = 1;
 
         this.$ga.event('insbuy', 'buy', 'umlbuy');
       }
