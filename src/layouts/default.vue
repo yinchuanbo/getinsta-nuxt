@@ -1079,16 +1079,6 @@ export default {
       else
         openOrNot = this.COMMON.randomAbTest();
 
-      // checkout页面判断
-      const checkoutPages = [
-        '/checkout',
-        '/checkout-2'
-      ];
-      const isCheckoutPages = checkoutPages.indexOf(path) > -1;
-      if (isCheckoutPages)
-        openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
-      else
-        openOrNot = this.COMMON.randomAbTest();
 
       // checkout页面判断
       const checkoutPages = [
@@ -1098,6 +1088,7 @@ export default {
       const isCheckoutPages = checkoutPages.indexOf(path) > -1;
       if (isCheckoutPages)
         openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
+
 
       // 用户中心页面判断
       const userCenterPages = [
