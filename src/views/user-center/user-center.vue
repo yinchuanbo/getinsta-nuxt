@@ -2031,7 +2031,6 @@ export default {
 
     // Bottom 按钮动作
     tabBottomBtnAction() {
-      console.log('333')
       if (!this.tabBottomBtnPreCheck()) {
         return;
       }

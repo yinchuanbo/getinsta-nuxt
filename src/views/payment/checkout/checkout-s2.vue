@@ -177,7 +177,7 @@
                             </p>
                           </div>
 
-                          <div v-if="unit.cycle_type === 1" class="addNum">
+                          <div v-if="!unit.cycle_type || unit.cycle_type === 1" class="addNum">
                             <div>
                               <span
                                 @click="
@@ -1505,7 +1505,6 @@ export default {
         this.$store.commit('cartLength', array ? array.length : 0);
         this.$storage.set('cartLength', array ? array.length : 0);
         this.transCartList();
-        console.log(this.cartListMultiple);
       },
       deep: true
     },
@@ -1584,7 +1583,6 @@ export default {
         }
         this.cartListMultiple = arr;
       }
-      console.log(this.cartListMultiple);
     },
     metaDataInit() {
       if (this.$route.path === '/checkout-2') {
@@ -1614,7 +1612,8 @@ export default {
     },
     addClick(product_id, product_num, like_id) {
       let cartList = this.$storage.get('cartList');
-      if (product_num >= 5 && !cartList) return;
+      if (!cartList) return;
+      if(product_num == 5) return;
       for (let i = 0; i < cartList.length; i++) {
         if (
           cartList[i].product_id == product_id &&
@@ -1678,27 +1677,31 @@ export default {
       this.cartUnitToList(unitObj);
     },
     cartUnitToList(cartUnit) {
-      let oldList = this.$storage.get('cartList');
+      let oldList = this.$storage.get("cartList");
       if (cartUnit !== false) {
         cartUnit.product_num = 1;
-        if (this.$storage.has('cartList')) {
-          if (cartUnit.cycle_type !== 1) {
+        if (this.$storage.has("cartList")) {
+          if (cartUnit.cycle_type && cartUnit.cycle_type !== 1) {
             oldList.push(cartUnit);
           } else {
             if (!oldList.length) {
               oldList.push(cartUnit);
             } else {
               let result;
-              result = oldList.some(function (item) {
+              result = oldList.some(function(item) {
                 let res;
-                if (cartUnit.task_type == 2) {
+                if (cartUnit.task_type == 2) { // followers
                   res = cartUnit.product_id == item.product_id;
-                } else if (cartUnit.task_type == 1) {
+                } else if (cartUnit.task_type == 1) { // likes
                   res = cartUnit.product_id == item.product_id && cartUnit.like_id == item.like_id;
                 }
                 return res;
-              });
-              if (!result) {
+              })
+
+              console.log('result', result)
+
+
+              if(!result) {
                 oldList.push(cartUnit);
               } else {
                 for (let i = 0; i < oldList.length; i++) {
@@ -1725,13 +1728,12 @@ export default {
             this.cartList.push(cartUnit);
           }
         }
-        this.$storage.set('cartList', this.cartList);
+        this.$storage.set("cartList", this.cartList);
       } else {
         this.cartList = oldList;
       }
-      this.$storage.remove('cartUnit');
+      this.$storage.remove("cartUnit");
     },
-
     // Pay Channel Selection 支付通道初始化判断
     payChannelInit() {
       // const domain = window.location.hostname;
