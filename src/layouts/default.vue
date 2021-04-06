@@ -1076,6 +1076,8 @@ export default {
       // Store页面判断
       if (!isStorePages)
         openOrNot = this.$storage.has('s2') ? this.$storage.get('s2') : false;
+      else
+        openOrNot = true;
 
 
       const userCenterPages = [
