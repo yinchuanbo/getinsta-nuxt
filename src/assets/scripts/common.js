@@ -6,6 +6,7 @@ export default {
     });
   }, // iOS device touch event hack
   googleTransInit() {
+    if (process.server) return;
     window.googleTranslateElementInit = function googleTranslateElementInit() {
       new google.translate.TranslateElement(
         {
@@ -45,35 +46,43 @@ export default {
       document.getElementsByTagName('body')[0].appendChild(script);
     });
   }, // Load third party JS
+  supportedLocale() {
+    return ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+  }, // 目前项目支持的语言
+  isSupportedLocale(locale) {
+    return this.supportedLocale().indexOf(locale) > -1;
+  }, // 是否在目前项目支持的语言列表中
+  isSupportedMinorLocale(locale) {
+    return this.supportedLocale().indexOf(locale) > -1 && locale !== 'en';
+  }, // 是否在目前项目支持的语言列表中
   userAgentLocale() {
-    const browserLang = process.client ? navigator.language.toLowerCase() : '';
-    let locale = browserLang;
-
-    const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
-
-    if (browserLang.indexOf('en') > -1) locale = 'en';
-    if (browserLang.indexOf('fr') > -1) locale = 'fr';
-    if (browserLang.indexOf('de') > -1) locale = 'de';
-    if (browserLang.indexOf('es') > -1) locale = 'es';
-    if (browserLang.indexOf('ar') > -1) locale = 'ar';
-    if (browserLang.indexOf('it') > -1) locale = 'it';
-    if (browserLang.indexOf('pt') > -1) locale = 'pt';
-
-    return supportedLocale.indexOf(locale) > -1 ? locale : 'en';
-  }, // User Agent Language Env
+    const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
+    let locale = '';
+    const supportedLocale = this.supportedLocale();
+    for (let i = 0; i < supportedLocale.length; i++) {
+      if (supportedLocale[i] === browserLang) {
+        locale = supportedLocale[i];
+        break;
+      } else {
+        locale = 'en';
+      }
+    }
+    return locale;
+  }, // User Agent Language Env (根据'浏览器语言环境'和'supportedLocale'输出最终的语言判定)
   getURLQuery(name) { // 废弃，不支持欧元等特殊符号
     let reg = `(^|&)${name}=([^&]*)(&|$)`;
-    let r = process.client?window.location.search.substr(1).match(reg):'';
+    let r = process.client ? window.location.search.substr(1).match(reg) : '';
     if (r != null) return unescape(r[2]);
     return null;
   }, // Get URL Query
   getURLQueryWithDecodeURI(name) {
     let reg = `(^|&)${name}=([^&]*)(&|$)`;
-    let r = decodeURIComponent(window.location.search).substr(1).match(reg);
+    let r = process.client ? decodeURIComponent(window.location.search).substr(1).match(reg) : '';
     if (r != null) return unescape(r[2]);
     return null;
   }, // Get URL Query
   deleteURLQuery(name) {
+    if (process.server) return;
     let local = window.location;
     let baseUrl = local.origin + local.pathname + '?';
     let query = local.search.substr(1);
@@ -131,7 +140,7 @@ export default {
   checkSupportLocalStorage(type) {
     let storage;
     try {
-      storage = window[type];
+      storage = process.client ? window[type] : '';
       let x = '__storage_test__';
       storage.setItem(x, x);
       storage.removeItem(x);
@@ -230,12 +239,11 @@ export default {
     document.getElementById(parentID).appendChild(iframe);
   },
   envTest() {
-    if (process.client)
-      return window.location.href.split('.')[0].split('//')[1] === 'test'
-        || window.location.hostname === 'localhost'
+    if (process.client) {
+      return window.location.hostname === 'localhost'
         || window.location.hostname === '192.168.1.41'
         || window.location.hostname === '192.168.1.42';
-    else
+    } else
       return false;
   },
   numberAbbreviations(num) {
