@@ -1061,9 +1061,9 @@ export default {
 
     // v2开关
     v2SwitchGate(path) {
-      // if (this.COMMON.envTest())
-      //   this.v2SwitchForDev(path);
-      // else
+      if (this.COMMON.envTest())
+        this.v2SwitchForDev(path);
+      else
       this.v2Switch(path);
     },
     v2Switch(path) {
