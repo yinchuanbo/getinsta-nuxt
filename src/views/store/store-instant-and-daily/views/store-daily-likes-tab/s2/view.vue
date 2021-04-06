@@ -1454,8 +1454,13 @@ export default {
 
       if (!this.postCurrent.like_id) {
         this.postListTitle = true;
-        if (!this.independent)
-          this.$scrollTo('#title-post-like', { offset: -110 });
+        if (!this.independent) {
+          if(this.COMMON.isMobile()) {
+            this.$scrollTo('#title-post-like', { offset: 700 });
+          } else {
+            this.$scrollTo('#title-post-like', { offset: -100 });
+          }
+        }
         return;
       }
 
@@ -1520,10 +1525,9 @@ export default {
 
       if (!this.tabsIndex) {
         if (this.productPkgListFollowIndex !== -1 && this.insUser.ins_id) {
-          if (!this.independent)
-            this.$scrollTo(`#title-post-like`, { offset: -60 });
+          // if (!this.independent)
+          //   this.$scrollTo(`#title-post-like`, { offset: -60 });
         }
-
         if (this.productPkgListFollowIndex !== -1 && !this.insUser.ins_id) {
           if (!this.independent)
             this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
@@ -1533,10 +1537,9 @@ export default {
           if (!this.independent)
             this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
         }
-
         if (this.productPkgListLikeIndex !== -1 && this.insUser.ins_id) {
-          if (!this.independent)
-            this.$scrollTo(`#title-post-like`, { offset: -60 });
+          // if (!this.independent)
+          //   this.$scrollTo(`#title-post-like`, { offset: -60 });
         }
       }
       this.bottomBtnDetective();
