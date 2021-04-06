@@ -83,12 +83,12 @@ export default {
       }
 
       .text {
-        margin-left: 26px;
+        margin-left: 20px;
         display: inline-block;
         vertical-align: top;
 
         h2 {
-          font: 800 italic 28px/34px Montserrat;
+          font: 800 28px/34px Montserrat;
           color: #2A2A2A;
           cursor: pointer;
         }
