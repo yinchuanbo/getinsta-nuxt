@@ -11,7 +11,7 @@
           </div>
         </div>
 
-        <!-- <div class="country-select" v-if="!tabsIndex">
+        <div class="country-select" v-if="!tabsIndex && !productPkgListLoading">
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
@@ -23,7 +23,7 @@
               </option>
             </select>
           </div>
-        </div> -->
+        </div>
 
         <div class="pc-content_main">
           <transition name="fade-tabs" mode="out-in">
@@ -723,7 +723,7 @@ export default {
         regionList.forEach((item, index) => {
           if(item.region_id == newValue ) {
             this.currentCountry = item;
-            this.getCountryProduct(item.region_id);
+            this.getCountryProduct();
           }
         })
       }
@@ -760,20 +760,21 @@ export default {
       this.$nuxt.$axios.post(
         `${apiV2.getProduct}`,
         this.COMMON.paramSign({
-           client_lan:"",
+           client_lan:"en",
            cycle_product_enable: false,
            subscribe_product_enable: false,
            app_name:"getinshot",
            system_id: 1,
+           // invitation_enable: false,
            product_group: 1,
-           region_id: this.countryFlagSelect
+           region_id: Number(this.countryFlagSelect)
         })
       ).then((response) => {
         let { data } = response;
         if(data.status !== 'ok') return;
         let { list } = data.product;
         console.log(list);
-        
+
       }).catch((error) => {
         this.productPkgListLoading = false;
         this.dialogFailMsg = '<samp>'
@@ -796,8 +797,8 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
-          if(item.region_status !== 0) {
-            if(item.length != 1) {
+          if(item.region_status !== 0 && item.name.length != 0) {
+            if(item.length != 1 ) {
               item.name = item.name.filter(function(names) {
                 return names.locale === 'en';
               })
