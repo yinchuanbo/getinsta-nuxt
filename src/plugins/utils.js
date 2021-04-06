@@ -25,18 +25,3 @@ Vue.use(Vue2Storage, {
 Vue.use(Vue2TouchEvents, { swipeTolerance: 30 });
 Vue.component('Pagination', Pagination);
 Vue.use(vueAwesomeCountdown, 'vac'); // Component name, `countdown` and `vac` by default
-
-
-// element
-import {
-  Slider,
-  Checkbox,
-  CheckboxGroup
-} from "element-ui";
-
-Vue.use(Slider);
-Vue.use(Checkbox);
-Vue.use(CheckboxGroup);
-Vue.prototype.$slider = Slider;
-Vue.prototype.$checkbox = Checkbox;
-import "element-ui/lib/theme-chalk/index.css";

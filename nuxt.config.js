@@ -45,6 +45,7 @@ export default {
   plugins: [
     { src: '@/plugins/axios.js' },
     { src: '@/plugins/common.js' },
+    { src: '@/plugins/element.config.js' },
     { src: '@/plugins/utils.js', mode: 'client' },
     { src: '@/plugins/model-box.js', mode: 'client' },
     { src: '@/plugins/vee-validate.js', mode: 'client' },

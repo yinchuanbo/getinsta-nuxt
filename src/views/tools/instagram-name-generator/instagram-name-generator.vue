@@ -357,7 +357,7 @@ export default {
       if(process.client){
         this.$nextTick(function(){
             this.getText2(v);
-        }) 
+        })
       }
     },
     getText2(v) {
