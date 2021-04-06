@@ -1317,16 +1317,22 @@ export default {
       ) {
         pageParam = 'store';
       }
-
-      this.$ga.event(
-        'buttonclick',
-        'click',
-        `store-daily-likes`
-      );
+      if(!this.tabsIndex) {
+          this.$ga.event(
+            'buttonclick',
+            'click',
+            'storeaddl'
+          );
+      } else {
+        this.$ga.event(
+            'buttonclick',
+            'click',
+            'dailylbuy'
+        );
+      }
     },
     gaBottomBtn() {
       this.$ga.event('insbuy', 'buy', 'store-daily-likes');
-
       // let param = 'f';
       // let paramEvent0 = '';
       // if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
