@@ -323,8 +323,6 @@ export default {
       this.downloadCtaTextChange(to);
 
       // path 定义
-
-      console.log(to.name)
       let homePath = to.path === '/';
       let blogPath = to.path === '/blog' || to.name === 'blog-id___en' || to.path === '/blog/';
       let easterSalePath = to.path === '/eastersale';

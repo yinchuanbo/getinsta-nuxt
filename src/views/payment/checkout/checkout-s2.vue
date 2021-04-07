@@ -247,7 +247,7 @@
                       <b>{{ cartTotalPrice | numToFixed }} {{ $t('global.currency') }}</b> -->
                     </div>
                   </div>
-                  <div v-if="cartList && cartList.length === 0" class="checkout__main_cart">
+                  <div v-if="!cartList || cartList.length === 0" class="checkout__main_cart">
                     <list-empty :msg="$t('checkout.error.cartEmpty.text')" />
                   </div>
                 </div>

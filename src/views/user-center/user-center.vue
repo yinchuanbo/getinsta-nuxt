@@ -117,13 +117,14 @@
           </div>
         </div>
 
-        <div class="country-select" v-if="tabsIndex === 0">
+        <div class="country-select" v-if="tabsIndex === 0 && regionList.length != 0">
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
               <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
             </span>
             <select v-model="countryFlagSelect">
+              <option value="-1" selected="true">Global</option>
               <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
                 {{ item.name[0].txt }}
               </option>
@@ -136,7 +137,7 @@
             <div class="user-tabs__container">
               <div class="pkg-container">
                 <div class="pc">
-                  <template v-if="showTab0">
+                  <template v-if="!productPkgListLoading">
                     <div v-for="(pkg, i) in productPkgListFollow"
                        :key="i"
                        :class="{
@@ -207,12 +208,13 @@
                     </div>
                   </div>
                   </template>
-                  <div v-if="!showTab0" style="width: 100%;height: 420px;display: flex;justify-content: center;align-items: flex-start">
+                  <div v-if="productPkgListLoading" style="width: 100%;height: 420px;display: flex;justify-content: center;align-items: flex-start">
                     <img src="./img/loading-puff-black.svg" width="100" height="100" alt="">
                   </div>
                 </div>
                 <div class="mobile">
-                  <div v-for="(pkg, i) in productPkgListFollow"
+                  <template v-if="!productPkgListLoading" >
+                    <div v-for="(pkg, i) in productPkgListFollow"
                        :key="i"
                        :class="{
                          'follow': pkg['product_type'] === 2,
@@ -277,9 +279,18 @@
                       <!--<sub>{{ pkg['original_price_decimal'] | numToFixed }} USD</sub>-->
                     </span>
                   </div>
+                  </template>
+                  
+                  <div v-if="productPkgListLoading">
+                      <div v-for="i in productPkgListFollow.length" :key="i" class="package skeleton">
+                        <span class="num"><span class="s skeleton-bg"></span></span>
+                        <span class="likes"><span class="s skeleton-bg"></span></span>
+                        <span class="coins"><span class="s skeleton-bg"></span></span>
+                      </div>
+                    </div>
                 </div>
               </div>
-              <div v-if="productPkgListFollow.length === 0">
+              <div v-if="productPkgListFollow.length === 0 && !productPkgListLoading">
                 <list-empty :msg="$t('userCenter.error.OfferListEmpty')" />
               </div>
               <!--<div v-if="postList.length !== 0" id="mark-extra" class="pkg-extra">-->
@@ -923,12 +934,12 @@ export default {
 
       showNum: 10,
       showMoreTest: 'More Tasks',
-      countryFlagSelect: '',
+      countryFlagSelect: -1,
       regionList: [],
-      currentCountry: {},
+      currentCountry: {
+        icon_url: ''
+      },
       productCountryList: [],
-      showTab0: true,
-
       showIdList: false,
       customDeleteIns: false,
       payMethodDisplay: 2,
@@ -1032,7 +1043,8 @@ export default {
 
       dataStored: {},
       dataStoredInsListIndex: 0,
-      dataStoredInsLoadingTotal: 6
+      dataStoredInsLoadingTotal: 6,
+      productPkgListLoading: false
     };
   },
   computed: {
@@ -1054,7 +1066,6 @@ export default {
     // followers
     productCountryListDisplay: function () {
       const payMethodDisplay = this.payMethodDisplay;
-      console.log(this.productCountryList)
       return this.productCountryList.filter(function (productPkg) {
         // promote_sale_type 展示种类
         return productPkg['payment_type'] === payMethodDisplay
@@ -1066,9 +1077,18 @@ export default {
       });
     },
     productPkgListFollow: function () {
-      return this.productCountryListDisplay.filter(function (productPkg) {
-        return productPkg['product_type'] === 2;
-      });
+      let list = [];
+      let _this = this;
+      if(this.countryFlagSelect != -1) {
+        list = _this.productCountryListDisplay.filter(function (productPkg) {
+          return productPkg['product_type'] === 2;
+        });
+      } else {
+        list = _this.productPkgListDisplay.filter(function (productPkg) {
+          return productPkg['product_type'] === 2;
+        });
+      }
+      return list;
     },
     loadingProgress() {
       const percent = (this.dataStoredInsListIndex + 1) / (this.dataStoredInsLoadingTotal + 1) * 100;
@@ -1090,15 +1110,22 @@ export default {
     },
     countryFlagSelect(newValue, oldVal) {
       let regionList = this.regionList;
-      this.showTab0 = false;
       this.productPkgListLoading = true;
       if(regionList && regionList.length !==0) {
         regionList.forEach((item, index) => {
           if(item.region_id == newValue ) {
             this.currentCountry = item;
-            this.getCountryProduct();
+            return;
           }
         })
+      }
+      if(oldVal != '' && newValue != -1) {
+        this.getCountryProduct()
+      } else if(oldVal != '' && newValue == -1) {
+        this.productPkgListLoading = false;
+        this.productPkgListFollowIndex = -1;
+        this.currentCountry = {};
+        // this.getPkgList();
       }
     }
   },
@@ -1106,7 +1133,9 @@ export default {
     this.initTabIndex();
   },
   mounted() {
-    this.getRegionList();
+    if(this.tabsIndex === 0) {
+      this.getRegionList();
+    }
     if (this.COMMON.getURLQuery('ins_test') === '1') {
       this.readUserInfo();
       this.getInfo();
@@ -1154,20 +1183,17 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
-          // const isInArr = item.display_locale_list.includes(_this.$i18n.locale);
+          let lang = navigator.language || navigator.userLanguage; 
+          lang = lang.replace(/-/g, '_').toLowerCase();
+          let display_locale_list = item.display_locale_list.join(',').toLowerCase().split(',');
+          const isInArr = display_locale_list.includes(lang);
           if(item.region_status === 1) {
-            // if(item.length != 1 ) {
-            //   item.name = item.name.filter(function(names) {
-            //     return names.locale === 'en';
-            //   })
-            // }
             _this.regionList.push(item);
           }
         })
+        if(this.countryFlagSelect == -1) return;
         this.currentCountry = _this.regionList[0];
-        // 默认选中国别
         let region_id = parseInt(this.regionList[0].region_id);
-        this.countryFlagSelect = region_id;
         if(region_id && region_id != 0) {
           this.getCountryProduct();
         }
@@ -1198,11 +1224,13 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         let { list } = data.product;
+        
         this.productCountryList = list;
         this.productPkgListLoading = false;
         this.productPkgCurrentFollow = list[0];
-        this.productPkgListFollowIndex = 0;
-        this.showTab0 = true;
+        if(this.countryFlagSelect != -1) {
+          this.productPkgListFollowIndex = 0;
+        }
       }).catch((error) => {
         this.productPkgListLoading = false;
         this.dialogFailMsg = '<samp>'
@@ -1668,7 +1696,9 @@ export default {
         if (unit['product_type'] === 2 && unit['payment_type'] === 2 && (unit['promote_sale_type'] === 0 || unit['promote_sale_type'] === 1 || unit['promote_sale_type'] === 3)) { // follow
           followersArr.push(unit);
           // pkgFollowFirstNum = unit['gives'][0]['quantity'];
-          // this.productPkgCurrentFollow = unit;
+          // if(this.countryFlagSelect == -1) {
+          //   this.productPkgCurrentFollow = unit;
+          // }
         }
         // if (pkgLikeFirstNum !== 0 && pkgFollowFirstNum !== 0) {
         //   break;
@@ -1683,8 +1713,8 @@ export default {
       })
       followersArr.forEach(function(item, index) {
         if(item.promote_sale_type === 3) {
-          // _this.productPkgCurrentFollow = item;
-          // _this.productPkgListFollowIndex = index;
+          _this.productPkgCurrentFollow = item;
+          _this.productPkgListFollowIndex = index;
         }
       })
     },

@@ -17,6 +17,7 @@
               <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
             </span>
             <select v-model="countryFlagSelect">
+              <option value="-1" selected="true">Global</option>
               <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
                 {{ item.name[0].txt }}
               </option>
@@ -80,6 +81,7 @@
                 </li>
               </ul>
             </div>
+            
             <div v-if="tabsIndex" key="box1" class="pc-content_main-item">
               <div v-if="!productPkgListLoading" class="pc-content_main-item_btns" style="margin-bottom: 24px;">
                 <div v-for="(item, i) in productPkgListDays" :key="i" :class="{ 'dayactive': productPkgListDaysVM == item }" @click="dayClick(item)">
@@ -240,6 +242,7 @@
                         <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
                       </span>
                       <select v-model="countryFlagSelect">
+                        <option value="-1" selected="true">Global</option>
                         <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
                           {{ item.name[0].txt }}
                         </option>
@@ -345,15 +348,8 @@
                         </div>
                       </div>
                     </div>
-                    <div v-if="productPkgListLoading && this.tabsIndex">
+                    <div v-if="productPkgListLoading">
                       <div v-for="i in 4" :key="i" class="package skeleton">
-                        <span class="num"><span class="s skeleton-bg"></span></span>
-                        <span class="likes"><span class="s skeleton-bg"></span></span>
-                        <span class="coins"><span class="s skeleton-bg"></span></span>
-                      </div>
-                    </div>
-                    <div v-if="productPkgListLoading && !this.tabsIndex">
-                      <div v-for="i in productPkgListFollow.length" :key="i" class="package skeleton">
                         <span class="num"><span class="s skeleton-bg"></span></span>
                         <span class="likes"><span class="s skeleton-bg"></span></span>
                         <span class="coins"><span class="s skeleton-bg"></span></span>
@@ -698,8 +694,10 @@ export default {
       productPkgListDays: [],
       productPkgListDaysVM: [],
       regionList: [],
-      countryFlagSelect: '',
-      currentCountry: {},
+      countryFlagSelect: -1,
+      currentCountry: {
+        icon_url: ''
+      },
       productCountryList: []
     };
   },
@@ -735,9 +733,18 @@ export default {
       });
     },
     productPkgListFollow: function () {
-      return this.productCountryListDisplay.filter(function (productPkg) {
-        return productPkg['product_type'] === 2;
-      });
+      let list = [];
+      let _this = this;
+      if(this.countryFlagSelect != -1) {
+        list = _this.productCountryListDisplay.filter(function (productPkg) {
+          return productPkg['product_type'] === 2;
+        });
+      } else {
+        list = _this.productPkgListDisplay.filter(function (productPkg) {
+          return productPkg['product_type'] === 2;
+        });
+      }
+      return list;
     }
   },
   watch: {
@@ -763,9 +770,17 @@ export default {
         regionList.forEach((item, index) => {
           if(item.region_id == newValue ) {
             this.currentCountry = item;
-            this.getCountryProduct();
+            return;
           }
         })
+      }
+      if(oldVal != '' && newValue != -1) {
+        this.getCountryProduct()
+      } else if(oldVal != '' && newValue == -1) {
+        this.productPkgListLoading = false;
+        this.productPkgListFollowIndex = -1;
+        this.currentCountry = {};
+        this.getPkgList();
       }
     }
   },
@@ -775,7 +790,9 @@ export default {
   },
   mounted() {
     this.getPkgList();
-    this.getRegionList();
+    if(!this.tabsIndex) {
+      this.getRegionList();
+    } 
     window.addEventListener('scroll', this.handle);
     const that = this;
     window.onresize = () => {
@@ -810,11 +827,13 @@ export default {
       ).then((response) => {
         let { data } = response;
         if(data.status !== 'ok') return;
+        this.productPkgListLoading = false;
         let { list } = data.product;
         this.productCountryList = list;
-        this.productPkgListLoading = false;
         this.productPkgCurrentFollow = list[0];
-        this.productPkgListFollowIndex = 0;
+        if(this.countryFlagSelect != -1) {
+          this.productPkgListFollowIndex = 0;
+        }
       }).catch((error) => {
         this.productPkgListLoading = false;
         this.dialogFailMsg = '<samp>'
@@ -827,6 +846,7 @@ export default {
     },
     getRegionList() {
       var _this = this;
+      _this.productPkgListLoading = true;
       this.$nuxt.$axios.post(
         `${apiV2.getRegionList}`,
         this.COMMON.paramSign({
@@ -837,21 +857,17 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
-          // const isInArr = item.display_locale_list.includes(_this.$i18n.locale);
+          let lang = navigator.language || navigator.userLanguage; 
+          lang = lang.replace(/-/g, '_').toLowerCase();
+          let display_locale_list = item.display_locale_list.join(',').toLowerCase().split(',');
+          const isInArr = display_locale_list.includes(lang);
           if(item.region_status === 1) {
-            // if(item.length != 1 ) {
-            //   item.name = item.name.filter(function(names) {
-            //     return names.locale === 'en';
-            //   })
-            // }
             _this.regionList.push(item);
           }
         })
-        console.log(_this.regionList)
+        if(this.countryFlagSelect == -1) return;
         this.currentCountry = _this.regionList[0];
-        // 默认选中国别
         let region_id = parseInt(this.regionList[0].region_id);
-        this.countryFlagSelect = region_id;
         if(region_id && region_id != 0) {
           this.getCountryProduct();
         }
@@ -1022,7 +1038,9 @@ export default {
         }
         if (unit['product_type'] === 2) { // follow
           pkgFollowFirstNum = unit['gives'][0]['quantity'];
-          // this.productPkgCurrentFollow = unit;
+          if(this.countryFlagSelect == -1) {
+            this.productPkgCurrentFollow = unit;
+          }
         }
         if (pkgLikeFirstNum !== 0 && pkgFollowFirstNum !== 0) {
           break;
@@ -1054,6 +1072,7 @@ export default {
         this.productPkgListLoading = false;
 
         if (response.data.product && response.data.product.list) {
+          
           this.renderProductPkgList(response.data.product.list);
 
           //console.log(response.data.product.list);
@@ -1113,6 +1132,9 @@ export default {
     },
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
+
+      // 2222
+
       pkgList.map(item => {
         if (item['cycle_type'] > 1 && item.product_type === 2) {
           item.dailyQuantity = item['purchase_quantity'];
