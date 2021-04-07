@@ -23,7 +23,7 @@
               <p>{{ item.dailyQuantity }} followers/Day</p>
               <h6>${{ (item.price_decimal / selectday) | jisuan }}</h6>
 
-              <span>${{ item.original_price_decimal/ selectday | jisuan }}</span>
+              <span>${{ item.original_price_decimal / selectday | jisuan }}</span>
               <!-- <h5>
                 Save
                 {{
@@ -94,15 +94,15 @@
             <p>
               <span>
                 <b>{{ insUser.post.post_count | numberAbbreviations }}</b>
-                {{ $t("global.instagramConcept.posts") }}
+                {{ $t('global.instagramConcept.posts') }}
               </span>
               <span>
                 <b>{{ insUser.followed_by | numberAbbreviations }}</b>
-                {{ $t("global.instagramConcept.followers") }}
+                {{ $t('global.instagramConcept.followers') }}
               </span>
               <span>
                 <b>{{ insUser.follow | numberAbbreviations }}</b>
-                {{ $t("global.instagramConcept.following") }}
+                {{ $t('global.instagramConcept.following') }}
               </span>
             </p>
           </div>
@@ -280,18 +280,19 @@
 </template>
 
 <script>
-import WhyBuy from "./views/why-buy";
-import WhichOne from "./views/which-one";
-import ButtonPurple from "@/components/button/button-purple";
-import AutoStep from "./views/auto-step";
-import PaymentMobile from "./views/payment-mobile";
-import BotPayment from "./views/bot-payment";
-import BotPaymentwo from "./views/bot-payment-two";
-import ButtonYellowIcon from "@/components/button/button-yellow-icon";
-import BuySelect from "@/components/popup-layer/buy-select/buy-select.vue";
-import DigitRoll from "@/assets/scripts/digitRoll.js";
-import apiAccount from "@/api/api.account";
+import WhyBuy from './views/why-buy';
+import WhichOne from './views/which-one';
+import ButtonPurple from '@/components/button/button-purple';
+import AutoStep from './views/auto-step';
+import PaymentMobile from './views/payment-mobile';
+import BotPayment from './views/bot-payment';
+import BotPaymentwo from './views/bot-payment-two';
+import ButtonYellowIcon from '@/components/button/button-yellow-icon';
+import BuySelect from '@/components/popup-layer/buy-select/buy-select.vue';
+import DigitRoll from '@/assets/scripts/digitRoll.js';
+import apiAccount from '@/api/api.account';
 import apiInsServer from '@/api/api.ins.server';
+
 export default {
   filters: {
     toPercentage(num) {
@@ -299,26 +300,26 @@ export default {
       if (isNaN(str)) {
         return 0;
       }
-      str += "%";
+      str += '%';
       return str;
     },
     numberAbbreviations(num) {
       let numFormatted = 0;
 
       if (Math.pow(10, 12) <= num && num < Math.pow(10, 15)) {
-        numFormatted = (num / Math.pow(10, 12)).toFixed(1) + "T";
+        numFormatted = (num / Math.pow(10, 12)).toFixed(1) + 'T';
         return numFormatted;
       }
       if (Math.pow(10, 9) <= num && num < Math.pow(10, 12)) {
-        numFormatted = (num / Math.pow(10, 9)).toFixed(1) + "B";
+        numFormatted = (num / Math.pow(10, 9)).toFixed(1) + 'B';
         return numFormatted;
       }
       if (Math.pow(10, 6) <= num && num < Math.pow(10, 9)) {
-        numFormatted = (num / Math.pow(10, 6)).toFixed(1) + "M";
+        numFormatted = (num / Math.pow(10, 6)).toFixed(1) + 'M';
         return numFormatted;
       }
       if (Math.pow(10, 3) <= num && num < Math.pow(10, 6)) {
-        numFormatted = (num / Math.pow(10, 3)).toFixed(1) + "K";
+        numFormatted = (num / Math.pow(10, 3)).toFixed(1) + 'K';
         return numFormatted;
       }
       if (num < Math.pow(10, 3)) {
@@ -343,13 +344,13 @@ export default {
   },
   data() {
     return {
-      isfalse:false,
-      searchInsInput: "",
+      isfalse: false,
+      searchInsInput: '',
       dialogFail: false,
       buyflag: false,
       enterFirstTime: true,
       searchInsLoading: false,
-      dialogFailMsg: "",
+      dialogFailMsg: '',
       dialogAttention: false,
       mobileinputshow: true,
       bottomBtnOn: true,
@@ -375,7 +376,7 @@ export default {
       FalseData2: [],
       FalseData4: [
         {
-          channel: "",
+          channel: '',
           cycle_type: 30,
           dailyQuantity: 50,
           discount: 10,
@@ -389,7 +390,7 @@ export default {
           region_id: 0
         },
         {
-          channel: "",
+          channel: '',
           cycle_type: 30,
           dailyQuantity: 100,
           discount: 40,
@@ -403,7 +404,7 @@ export default {
           region_id: 0
         },
         {
-          channel: "",
+          channel: '',
           cycle_type: 30,
           dailyQuantity: 200,
           discount: 50,
@@ -418,7 +419,7 @@ export default {
         },
 
         {
-          channel: "",
+          channel: '',
           cycle_type: 60,
           dailyQuantity: 50,
           discount: 20,
@@ -431,8 +432,8 @@ export default {
           purchase_quantity: 50,
           region_id: 0
         },
-         {
-          channel: "",
+        {
+          channel: '',
           cycle_type: 60,
           dailyQuantity: 100,
           discount: 50,
@@ -446,7 +447,7 @@ export default {
           region_id: 0
         },
         {
-          channel: "",
+          channel: '',
           cycle_type: 60,
           dailyQuantity: 200,
           discount: 70,
@@ -461,7 +462,7 @@ export default {
         },
 
         {
-          channel: "",
+          channel: '',
           cycle_type: 90,
           dailyQuantity: 50,
           discount: 25,
@@ -475,7 +476,7 @@ export default {
           region_id: 0
         },
         {
-          channel: "",
+          channel: '',
           cycle_type: 90,
           dailyQuantity: 100,
           discount: 50,
@@ -489,7 +490,7 @@ export default {
           region_id: 0
         },
         {
-          channel: "",
+          channel: '',
           cycle_type: 90,
           dailyQuantity: 200,
           discount: 75,
@@ -504,24 +505,24 @@ export default {
         }
       ],
       FalseData3: [
-        { title: "100% Real Instagram Followers" },
-        { title: " Secure & Private Purchase " },
-        { title: "No Password & No Verification " },
-        { title: "Deliver Every 24 Hours " },
-        { title: "Drop Protection" },
-        { title: "24/7 Customer Support" }
+        { title: '100% Real Instagram Followers' },
+        { title: ' Secure & Private Purchase ' },
+        { title: 'No Password & No Verification ' },
+        { title: 'Deliver Every 24 Hours ' },
+        { title: 'Drop Protection' },
+        { title: '24/7 Customer Support' }
       ],
       postList: [],
       postListInfo: {
         post_count: 0,
-        end_cursor: "",
+        end_cursor: '',
         has_next_page: false,
         page_size: 12
       },
       dailyprice: null,
       insUser: {},
       selectfollower: null,
-      selectfollowerprice:null,
+      selectfollowerprice: null,
       selectday: null,
       // 装一个开关
       flag: false,
@@ -533,104 +534,105 @@ export default {
   },
   watch: {
     dailyprice: {
-      handler(newVal, oldVal) {},
+      handler(newVal, oldVal) {
+      },
       deep: true
     }
   },
   metaInfo() {
     return {
-      title: "Buy Instagram Daily Followers for $0.009 - Real & Automatic",
+      title: 'Buy Instagram Daily Followers for $0.009 - Real & Automatic',
       meta: [
         // vue-meta 版本升级后语法更改
         // { description: this.$t('home.meta.description') },
         {
-          name: "description",
+          name: 'description',
           content:
-            "Buy Instagram daily followers at the cheapest price. Get Instagram followers automatically every 24 hours, 100% real, active & organic."
+            'Buy Instagram daily followers at the cheapest price. Get Instagram followers automatically every 24 hours, 100% real, active & organic.'
         }
       ],
       link: [
         {
-          rel: "canonical",
+          rel: 'canonical',
           href: `${window.location.origin}${this.$route.path}`
         },
         {
-          rel: "alternate",
-          hreflang: "en",
+          rel: 'alternate',
+          hreflang: 'en',
           href: `https://www.easygetinsta.com${this.$route.path}`
         },
         {
-          rel: "alternate",
-          hreflang: "fr",
+          rel: 'alternate',
+          hreflang: 'fr',
           href: `https://fr.easygetinsta.com${this.$route.path}`
         },
         {
-          rel: "alternate",
-          hreflang: "de",
+          rel: 'alternate',
+          hreflang: 'de',
           href: `https://de.easygetinsta.com${this.$route.path}`
         }
       ]
     };
   },
   mounted() {
-    if (this.$route.path === "/buy-auto-instagram-followers-1") {
+    if (this.$route.path === '/buy-auto-instagram-followers-1') {
       this.renderPkgListDaystwo();
     } else {
       this.getAutoList();
     }
 
     this.roll1 = new DigitRoll({
-      container: "#num-roll1",
+      container: '#num-roll1',
       width: 1
     });
     this.roll2 = new DigitRoll({
-      container: "#num-roll2",
+      container: '#num-roll2',
       width: 1
     });
     this.roll3 = new DigitRoll({
-      container: "#num-roll3",
+      container: '#num-roll3',
       width: 1
     });
     this.roll1 = new DigitRoll({
-      container: "#num-roll1",
+      container: '#num-roll1',
       width: 1
     });
     this.roll2 = new DigitRoll({
-      container: "#num-roll2",
+      container: '#num-roll2',
       width: 1
     });
     this.roll3 = new DigitRoll({
-      container: "#num-roll3",
+      container: '#num-roll3',
       width: 1
     });
     this.roll4 = new DigitRoll({
-      container: "#num-roll4",
+      container: '#num-roll4',
       width: 1
     });
     this.roll5 = new DigitRoll({
-      container: "#num-roll5",
+      container: '#num-roll5',
       width: 1
     });
     this.roll6 = new DigitRoll({
-      container: "#num-roll6",
+      container: '#num-roll6',
       width: 1
     });
     this.roll7 = new DigitRoll({
-      container: "#num-roll7",
+      container: '#num-roll7',
       width: 1
     });
     this.roll8 = new DigitRoll({
-      container: "#num-roll8",
+      container: '#num-roll8',
       width: 1
     });
     this.roll9 = new DigitRoll({
-      container: "#num-roll9",
+      container: '#num-roll9',
       width: 1
     });
-    window.addEventListener("scroll", this.handle);
+    window.addEventListener('scroll', this.handle);
   },
   destroyed() {
-    window.removeEventListener("scroll", this.handle);
+    window.removeEventListener('scroll', this.handle);
     this.destroyedRoll();
   },
   methods: {
@@ -649,12 +651,12 @@ export default {
             this.renderPkgListWithUnit(response.data.product.list);
           } else {
             this.$alert(
-              "",
-              "error",
-              "Oops",
-              "Requesting Offer List failed, please try later.",
-              "",
-              "Close"
+              '',
+              'error',
+              'Oops',
+              'Requesting Offer List failed, please try later.',
+              '',
+              'Close'
             );
           }
           setTimeout(() => {
@@ -663,21 +665,21 @@ export default {
         })
         .catch(error => {
           this.dialogFailMsg =
-            "<samp>" +
-            "<b>Error Status:</b> " +
+            '<samp>' +
+            '<b>Error Status:</b> ' +
             error.status +
-            "<br>" +
-            "<b>Error Message:</b> " +
+            '<br>' +
+            '<b>Error Message:</b> ' +
             error.statusText +
-            "</samp>";
+            '</samp>';
           this.dialogFail = true;
-          console.error("Catch Error: getPkgList", error);
+          console.error('Catch Error: getPkgList', error);
         });
     },
     renderPkgListWithUnit(pkgList) {
       pkgList.map(item => {
-        if (item["cycle_type"] > 1  && item.product_type === 2) {
-          item.dailyQuantity = item["purchase_quantity"];
+        if (item['cycle_type'] > 1 && item.product_type === 2) {
+          item.dailyQuantity = item['purchase_quantity'];
           this.pkgListWithUnit.push(item);
         }
       });
@@ -713,7 +715,7 @@ export default {
       ];
       if (this.COMMON.isMobile()) {
         this.FalseData.reverse();
-        this.dailyprice = this.FalseData[2];
+        this.dailyprice = this.FalseData[this.isflag];
         this.isflag = 0;
       } else {
         let newobj;
@@ -730,7 +732,7 @@ export default {
       }
       this.selectday = this.dailyprice.cycle_type;
       this.selectfollower = this.dailyprice.dailyQuantity;
-      this.selectfollowerprice =(this.dailyprice.price_decimal/this.dailyprice.cycle_type).toFixed(2)
+      this.selectfollowerprice = (this.dailyprice.price_decimal / this.dailyprice.cycle_type).toFixed(2);
     },
     renderPkgListDaystwo() {
       this.renderPkgListWithUnit(this.FalseData4);
@@ -751,7 +753,7 @@ export default {
       this.isflag = v;
       this.selectb(item.cycle_type, this.isindex);
       this.selectfollower = item.dailyQuantity;
-      this.selectfollowerprice =(item.price_decimal/item.cycle_type).toFixed(2)
+      this.selectfollowerprice = (item.price_decimal / item.cycle_type).toFixed(2);
       if (!this.flag) {
         this.mobileroull();
         this.flag = !this.flag;
@@ -771,11 +773,11 @@ export default {
         ...new Set(this.pkgListWithUnit.filter(item => item.cycle_type === c))
       ];
 
-        if(this.COMMON.isMobile()){
-          this.FalseData.reverse();
+      if (this.COMMON.isMobile()) {
+        this.FalseData.reverse();
         this.dailyprice = this.FalseData[2];
         // this.isflag = 0;
-        }else {
+      } else {
         let newobj;
         for (let i = 0; i < this.FalseData.length; i++) {
           if (this.FalseData[i].dailyQuantity === 200) {
@@ -788,10 +790,10 @@ export default {
         }
       }
       this.dailyprice = this.FalseData[this.isflag];
-      this.selectfollowerprice =(this.dailyprice.price_decimal/this.dailyprice.cycle_type).toFixed(2)
+      this.selectfollowerprice = (this.dailyprice.price_decimal / this.dailyprice.cycle_type).toFixed(2);
       if (this.flag) {
-        this.mobileroull1();
-        this.flag = !this.flag;
+        this.mobileroull();
+        // this.flag = !this.flag;
       }
     },
     mobileroull() {
@@ -831,19 +833,19 @@ export default {
       }
     },
     searchUsername(event) {
-      if (event.target.id == "orangebtn") {
-        this.$ga.event("buttonclick", "click", "daily-addaccount");
+      if (event.target.id == 'orangebtn') {
+        this.$ga.event('buttonclick', 'click', 'daily-addaccount');
       } else {
-        this.$ga.event("buttonclick", "click", "daily-addaccount-f");
+        this.$ga.event('buttonclick', 'click', 'daily-addaccount-f');
       }
-      if (this.searchInsInput === "") {
+      if (this.searchInsInput === '') {
         this.$alert(
-          "",
-          "warn",
-          this.$t("store.buy.error.noInsID.title"),
-          this.$t("store.buy.error.noInsID.text"),
-          "normal",
-          this.$t("global.modelBox.btn.close")
+          '',
+          'warn',
+          this.$t('store.buy.error.noInsID.title'),
+          this.$t('store.buy.error.noInsID.text'),
+          'normal',
+          this.$t('global.modelBox.btn.close')
         );
         return;
       } else {
@@ -865,21 +867,21 @@ export default {
 
           // window.addEventListener("scroll",this.scrollone)
           this.searchInsLoading = false;
-          if (response.data.status === "ok") {
+          if (response.data.status === 'ok') {
             const _sharedDataUser = response.data.content['graphql']['user'];
             const _sharedDataUserPosts = _sharedDataUser['edge_owner_to_timeline_media'];
 
-        this.insUser.ins_id = _sharedDataUser.id;
-        this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
-        this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
-        this.insUser.follow = _sharedDataUser['edge_follow']['count'];
-        this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
+            this.insUser.ins_id = _sharedDataUser.id;
+            this.insUser.ins_account = _sharedDataUser.username;
+            this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
+            this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
+            this.insUser.follow = _sharedDataUser['edge_follow']['count'];
+            this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
 
-        this.postList = this.insUser.post.post_list;
-        this.postListInfo.post_count = this.insUser.post.post_count;
-        this.postListInfo.end_cursor = this.insUser.post.end_cursor;
-        this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
+            this.postList = this.insUser.post.post_list;
+            this.postListInfo.post_count = this.insUser.post.post_count;
+            this.postListInfo.end_cursor = this.insUser.post.end_cursor;
+            this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
             // this.insUser = response.data["ins_info"];
             // this.postList = response.data["ins_info"].post["post_list"];
 
@@ -891,33 +893,33 @@ export default {
             //   response.data["ins_info"].post.post_count >
             //   this.postListInfo.page_size;
             this.bottomBtnOn = true;
-             this.$scrollTo('#auto-step3', { offset: -1 * this.COMMON.headerHeight() });
+            this.$scrollTo('#auto-step3', { offset: -1 * this.COMMON.headerHeight() });
 
             // 移动端调用购买弹窗
-            if (event.target.id !== "orangebtn") {
+            if (event.target.id !== 'orangebtn') {
               this.getpopBuy();
             }
           } else {
-            this.dialogFailMsg = "Please enter valid username.";
+            this.dialogFailMsg = 'Please enter valid username.';
             this.dialogFail = true;
           }
         })
         .catch(error => {
           this.searchInsLoading = false;
           this.dialogFailMsg =
-            "<samp>" +
-            "<b>Error Status:</b> " +
+            '<samp>' +
+            '<b>Error Status:</b> ' +
             error.status +
-            "<br>" +
-            "<b>Error Message:</b> " +
+            '<br>' +
+            '<b>Error Message:</b> ' +
             error.statusText +
-            "</samp>";
+            '</samp>';
           this.dialogFail = true;
-          console.log("Catch Error: searchIns");
+          console.log('Catch Error: searchIns');
           console.log(error);
         });
     },
-     insPostTransform(_sharedDataUserPosts) {
+    insPostTransform(_sharedDataUserPosts) {
       let post = {};
       post.post_count = _sharedDataUserPosts.count;
       post.end_cursor = _sharedDataUserPosts['page_info']['end_cursor'];
@@ -947,53 +949,53 @@ export default {
       this.$nuxt.$axios
         .post(
           // apiAccount.getInsInfo,
-           apiInsServer.getAccountByUsername,
+          apiInsServer.getAccountByUsername,
           this.COMMON.paramSign({
             ins_account: this.searchInsInput
           })
         )
         .then(response => {
           this.searchInsLoading = false;
-          if (response.data.status === "ok") {
+          if (response.data.status === 'ok') {
             const _sharedDataUser = response.data.content['graphql']['user'];
             const _sharedDataUserPosts = _sharedDataUser['edge_owner_to_timeline_media'];
 
-        this.insUser.ins_id = _sharedDataUser.id;
-        this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
-        this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
-        this.insUser.follow = _sharedDataUser['edge_follow']['count'];
-        this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
+            this.insUser.ins_id = _sharedDataUser.id;
+            this.insUser.ins_account = _sharedDataUser.username;
+            this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
+            this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
+            this.insUser.follow = _sharedDataUser['edge_follow']['count'];
+            this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
 
-        this.postList = this.insUser.post.post_list;
-        this.postListInfo.post_count = this.insUser.post.post_count;
-        this.postListInfo.end_cursor = this.insUser.post.end_cursor;
-        this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
+            this.postList = this.insUser.post.post_list;
+            this.postListInfo.post_count = this.insUser.post.post_count;
+            this.postListInfo.end_cursor = this.insUser.post.end_cursor;
+            this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
             if (this.insUser != null) {
               this.pcbannerbuy = false;
             }
           } else {
-            this.dialogFailMsg = "Please enter valid username.";
+            this.dialogFailMsg = 'Please enter valid username.';
             this.dialogFail = true;
           }
         })
         .catch(error => {
           this.searchInsLoading = false;
           this.dialogFailMsg =
-            "<samp>" +
-            "<b>Error Status:</b> " +
+            '<samp>' +
+            '<b>Error Status:</b> ' +
             error.status +
-            "<br>" +
-            "<b>Error Message:</b> " +
+            '<br>' +
+            '<b>Error Message:</b> ' +
             error.statusText +
-            "</samp>";
+            '</samp>';
           this.dialogFail = true;
-          console.log("Catch Error: searchIns");
+          console.log('Catch Error: searchIns');
           console.log(error);
         });
     },
     searchUsernameytwo() {
-      this.$ga.event("buttonclick", "click", `daily-addaccount-f`);
+      this.$ga.event('buttonclick', 'click', `daily-addaccount-f`);
       this.getuser();
     },
     handleScroll() {
@@ -1005,20 +1007,20 @@ export default {
       }
       // console.log(document.documentElement.scrollTop);
       if (
-        document.querySelector(".auto-paypal").offsetTop <
+        document.querySelector('.auto-paypal').offsetTop <
         document.documentElement.scrollTop
       ) {
         this.buyflag = false;
-        this.isfalse =true
+        this.isfalse = true;
       } else {
         this.buyflag = true;
-        this.isfalse =false
+        this.isfalse = false;
       }
       this.scrollone();
     },
     scrollone() {
       if (
-        document.querySelector(".auto-step").offsetTop <
+        document.querySelector('.auto-step').offsetTop <
         document.documentElement.scrollTop + 200
       ) {
         this.btnshow = true;
@@ -1049,12 +1051,12 @@ export default {
       this.gaBottomBtn();
       if (!this.insUser.ins_id) {
         this.$alert(
-          "",
-          "warn",
-          this.$t("store.buy.error.noInsID.title"),
-          this.$t("store.buy.error.noInsID.text"),
-          "normal",
-          this.$t("global.modelBox.btn.close")
+          '',
+          'warn',
+          this.$t('store.buy.error.noInsID.title'),
+          this.$t('store.buy.error.noInsID.text'),
+          'normal',
+          this.$t('global.modelBox.btn.close')
         );
 
         return;
@@ -1072,9 +1074,9 @@ export default {
       param.product_id = this.dailyprice.product_id;
       param.purchase_quantity = this.dailyprice.purchase_quantity;
       param.price_decimal = this.dailyprice.price_decimal;
-      param.product_type =this.dailyprice.product_type
+      param.product_type = this.dailyprice.product_type;
 
-      param.gives = this.dailyprice["gives"];
+      param.gives = this.dailyprice['gives'];
       param.follow_pic_url = this.insUser.profile_pic_url;
       param.post_count = this.insUser.post.post_count;
       param.follower_count = this.insUser.followed_by;
@@ -1084,20 +1086,20 @@ export default {
       // this.gaBottomBtn();
 
       // 广告参数
-      let adStore = { s: "", c: "", k: "" };
-      adStore.s = this.$route.query.s || "";
-      adStore.c = this.$route.query.c || "";
-      adStore.k = this.$route.query.k || "";
-      this.$storage.set("adStore", adStore);
+      let adStore = { s: '', c: '', k: '' };
+      adStore.s = this.$route.query.s || '';
+      adStore.c = this.$route.query.c || '';
+      adStore.k = this.$route.query.k || '';
+      this.$storage.set('adStore', adStore);
       this.transportCartUnitData(param);
     },
     transportCartUnitData(param) {
-      this.$storage.set("cartUnit", param);
-      const query = this.COMMON.envTest() ? { env_test: "1" } : {};
-      this.$router.push({ path: "/checkout", query: query });
+      this.$storage.set('cartUnit', param);
+      const query = this.COMMON.envTest() ? { env_test: '1' } : {};
+      this.$router.push({ path: '/checkout', query: query });
     },
     gaBottomBtn() {
-      this.$ga.event("insbuy", "buy", `daily-buy`);
+      this.$ga.event('insbuy', 'buy', `daily-buy`);
       // if (!this.buyflag) {
 
       // } else {
