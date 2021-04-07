@@ -22,6 +22,9 @@
                   <div v-if="cartList && cartList.length !== 0" class="checkout__main_cart">
                     <div class="checkout__main_cart-list">
                       <div v-for="(unit, i) in cartList" :key="i" class="unit">
+                        <div class="national-flag" v-if="unit.icon_url" :style="{background: 'url('+ unit.icon_url +')', backgroundSize: '100% 100%'}">
+                          <!-- <img :src="unit.icon_url" alt=""> -->
+                        </div>
                         <!--icon-->
                         <img
                           v-if="unit['is_coin'] !== 1"
@@ -1443,10 +1446,8 @@ export default {
       for (let i = 0; i < this.cartList.length; i++) {
         let item = this.cartList[i];
         let product_num = item.product_num ? item.product_num : 1;
-        let givesnum;
-        if(!item.gives) {
-          givesnum = 0;
-        } else if(item.gives) {
+        let givesnum = 0;
+        if(item.gives && item.gives[0].quantity) {
           givesnum = item.gives[0].quantity;
         }
         if (item.product_type === 2) {
@@ -1466,11 +1467,9 @@ export default {
       if (!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
         let item = this.cartList[i];
-        let givesnum;
+        let givesnum = 0;
         let product_num = item.product_num ? item.product_num : 1;
-        if(!item.gives) {
-          givesnum = 0;
-        } else if(item.gives && item.gives[0].quantity) {
+        if(item.gives && item.gives[0].quantity) {
           givesnum = item.gives[0].quantity;
         }
         if (item.product_type === 1) {
@@ -3516,6 +3515,15 @@ export default {
   //     height: 50px;
   //   }
   // }
+  .national-flag {
+    position: absolute;
+    top: 33px;
+    left: 62px;
+    width: 18px;
+    height: 18px;
+    z-index: 9;
+    border-radius: 100%;
+  }
   .checkout {
     padding-top: 117px;
     padding-bottom: 50px;
@@ -4092,6 +4100,15 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .national-flag {
+    position: absolute;
+    top: 33px;
+    left: 51px;
+    width: 16px;
+    height: 16px;
+    z-index: 9;
+    border-radius: 100%;
+  }
   .checkout__main_cart-total {
     border: 1px solid #e5effa !important;
     border-radius: 8px !important;

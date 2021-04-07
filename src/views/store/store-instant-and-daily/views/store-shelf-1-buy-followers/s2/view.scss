@@ -267,6 +267,7 @@
             background: #7F8498;
             border-radius: 3px;
             opacity: 0.24;
+            margin-top: 10px;
           }
         }
 
@@ -470,8 +471,12 @@
           width: 20px;
           height: 20px;
           border-radius: 100%;
-          background: red;
           z-index: 5;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
         }
         select {
           width: 156px;
@@ -492,7 +497,7 @@
         ul {
           width: 100%;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           height: 420px;
           li {
             width: 220px;
@@ -506,6 +511,10 @@
             box-sizing: border-box;
             position: relative;
             z-index: 9;
+            margin-right: 25px;
+            &:last-child {
+              margin-right: 0;
+            }
             &.hot {
               &::after {
                 position: absolute;
@@ -583,6 +592,13 @@
                 font: normal normal 400 16px/16px BalooChettan;
                 color: #7F8498;
                 margin-bottom: 20px;
+                margin-top: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img {
+                  margin-right: 8px;
+                }
               }
               .pc-content_main-item_top-tags {
                 position: absolute;
@@ -865,6 +881,46 @@
 @media (max-width: 768px) {
   .store-shelf-1-buy {
     margin-top: -110px;
+    .country-select-mobile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      h2 {
+        margin-right: 15px;
+        font: normal normal 600 14px/21px BalooChettan;
+        color: #7F8498;
+      }
+      .select-content {
+        position: relative;
+        .national-flag {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 16px;
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          z-index: 5;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        select {
+          width: 140px;
+          height: 35px;
+          border: 0;
+          font: normal normal 600 16px/25px BalooChettan!important;
+          color: #000000;
+          padding-left: 45px;
+          cursor: pointer;
+        }
+      }
+      
+    }
 
     .wrapper {
       padding: 0 12px;
@@ -1115,6 +1171,7 @@
         margin-right: 12px;
       }
       .num {
+        position: relative;
         .num-i {
           width: 30px;
           height: 23px;
@@ -1137,6 +1194,20 @@
           text-align: left;
           display: inline-block;
           margin-right: 12px;
+        }
+        .item-flag {
+          position: absolute;
+          top: 11px;
+          left: 24px;
+          width: 16px;
+          height: 16px;
+          border-radius: 100%;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+          }
         }
       }
       .likes-mk-1 {

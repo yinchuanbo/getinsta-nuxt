@@ -10,8 +10,7 @@
             <p>Daily Followers</p>
           </div>
         </div>
-
-        <div class="country-select" v-if="!tabsIndex && !productPkgListLoading">
+        <div class="country-select" v-if="!tabsIndex">
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
@@ -48,7 +47,10 @@
                       <span></span>
                     </div>
                     <h2>{{ pkg['purchase_quantity'] }}</h2>
-                    <p>Followers</p>
+                    <p>
+                      <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="" width="20" height="20">
+                      Followers
+                    </p>
                     <div v-if="pkg['gives'][0].quantity !== 0" class="pc-content_main-item_top-tags">
                       <span>+ {{ pkg['gives'][0].quantity }} Free</span>
                     </div>
@@ -231,6 +233,20 @@
                     <span>Country-Targeted:</span>
                   </h2> -->
 
+                  <div class="country-select-mobile">
+                    <h2>Country-Targeted:</h2>
+                    <div class="select-content">
+                      <span class="national-flag">
+                        <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
+                      </span>
+                      <select v-model="countryFlagSelect">
+                        <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
+                          {{ item.name[0].txt }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
                   <!-- 购买列表 -->
                   <transition name="fade-skeleton" mode="out-in">
                     <div v-if="!productPkgListLoading">
@@ -297,6 +313,9 @@
                               <i class="num-i"></i>
                               <b>{{ pkg['purchase_quantity'] }}</b><span></span>
                               <i v-if="pkg['gives'][0].quantity !== 0" class="cross">+</i>
+                              <div class="item-flag" v-if="currentCountry.icon_url">
+                                <img :src="currentCountry.icon_url" alt="">
+                              </div>
                             </span>
                             <!--gives mk 1-->
                             <span v-if="pkg['gives'][0].quantity !== 0 && pkg['promote_sale_type'] === 3" class="likes-mk-1 spring hot-3">
@@ -326,8 +345,15 @@
                         </div>
                       </div>
                     </div>
-                    <div v-if="productPkgListLoading">
+                    <div v-if="productPkgListLoading && this.tabsIndex">
                       <div v-for="i in 4" :key="i" class="package skeleton">
+                        <span class="num"><span class="s skeleton-bg"></span></span>
+                        <span class="likes"><span class="s skeleton-bg"></span></span>
+                        <span class="coins"><span class="s skeleton-bg"></span></span>
+                      </div>
+                    </div>
+                    <div v-if="productPkgListLoading && !this.tabsIndex">
+                      <div v-for="i in productPkgListFollow.length" :key="i" class="package skeleton">
                         <span class="num"><span class="s skeleton-bg"></span></span>
                         <span class="likes"><span class="s skeleton-bg"></span></span>
                         <span class="coins"><span class="s skeleton-bg"></span></span>
@@ -673,7 +699,8 @@ export default {
       productPkgListDaysVM: [],
       regionList: [],
       countryFlagSelect: '',
-      currentCountry: {}
+      currentCountry: {},
+      productCountryList: []
     };
   },
   computed: {
@@ -695,8 +722,20 @@ export default {
       });
     },
     // followers
+    productCountryListDisplay: function () {
+      const payMethodDisplay = this.payMethodDisplay;
+      return this.productCountryList.filter(function (productPkg) {
+        // promote_sale_type 展示种类
+        return productPkg['payment_type'] === payMethodDisplay
+          && (productPkg['promote_sale_type'] === undefined
+            || productPkg['promote_sale_type'] === 0
+            || productPkg['promote_sale_type'] === 1
+            || productPkg['promote_sale_type'] === 3)
+          && productPkg['cycle_type'] === 1;
+      });
+    },
     productPkgListFollow: function () {
-      return this.productPkgListDisplay.filter(function (productPkg) {
+      return this.productCountryListDisplay.filter(function (productPkg) {
         return productPkg['product_type'] === 2;
       });
     }
@@ -719,6 +758,7 @@ export default {
     },
     countryFlagSelect(newValue, oldVal) {
       let regionList = this.regionList;
+      this.productPkgListLoading = true;
       if(regionList && regionList.length !==0) {
         regionList.forEach((item, index) => {
           if(item.region_id == newValue ) {
@@ -760,21 +800,21 @@ export default {
       this.$nuxt.$axios.post(
         `${apiV2.getProduct}`,
         this.COMMON.paramSign({
-           client_lan:"en",
-           cycle_product_enable: false,
-           subscribe_product_enable: false,
-           app_name:"getinshot",
-           system_id: 1,
-           // invitation_enable: false,
-           product_group: 1,
-           region_id: Number(this.countryFlagSelect)
+          "origin": "web",
+          "client_lan": 'en',
+          "cycle_product_enable": false,
+          "subscribe_product_enable": false,
+          "system_id": 1,
+          "region_id": parseInt(this.countryFlagSelect)
         })
       ).then((response) => {
         let { data } = response;
         if(data.status !== 'ok') return;
         let { list } = data.product;
-        console.log(list);
-
+        this.productCountryList = list;
+        this.productPkgListLoading = false;
+        this.productPkgCurrentFollow = list[0];
+        this.productPkgListFollowIndex = 0;
       }).catch((error) => {
         this.productPkgListLoading = false;
         this.dialogFailMsg = '<samp>'
@@ -797,16 +837,18 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
-          if(item.region_status !== 0 && item.name.length != 0) {
-            if(item.length != 1 ) {
-              item.name = item.name.filter(function(names) {
-                return names.locale === 'en';
-              })
-            }
+          // const isInArr = item.display_locale_list.includes(_this.$i18n.locale);
+          if(item.region_status === 1) {
+            // if(item.length != 1 ) {
+            //   item.name = item.name.filter(function(names) {
+            //     return names.locale === 'en';
+            //   })
+            // }
             _this.regionList.push(item);
           }
         })
-        this.currentCountry = _this.regionList[0]
+        console.log(_this.regionList)
+        this.currentCountry = _this.regionList[0];
         // 默认选中国别
         let region_id = parseInt(this.regionList[0].region_id);
         this.countryFlagSelect = region_id;
@@ -971,6 +1013,7 @@ export default {
         this.anchorBottomBtn();
     },
     pkgSelectedInit(pkgList) {
+      console.log(pkgList)
       let pkgLikeFirstNum = 0, pkgFollowFirstNum = 0;
       for (let unit of pkgList) {
         if (unit['product_type'] === 1) { // like
@@ -979,7 +1022,7 @@ export default {
         }
         if (unit['product_type'] === 2) { // follow
           pkgFollowFirstNum = unit['gives'][0]['quantity'];
-          this.productPkgCurrentFollow = unit;
+          // this.productPkgCurrentFollow = unit;
         }
         if (pkgLikeFirstNum !== 0 && pkgFollowFirstNum !== 0) {
           break;
@@ -1611,7 +1654,13 @@ export default {
         param.post_count = this.insUser.post.post_count;
         param.follower_count = this.insUser.followed_by;
         param.following_count = this.insUser.follow;
+        if(this.countryFlagSelect.region_id) {
+           param.region_id = this.countryFlagSelect.region_id;
+        }
 
+        if(this.currentCountry.icon_url) {
+          param.icon_url = this.currentCountry.icon_url;
+        }
 
         if (this.postList.length > 1) {
           param.like_id = this.postList[0].like_id;

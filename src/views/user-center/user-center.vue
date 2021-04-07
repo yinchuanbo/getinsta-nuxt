@@ -116,12 +116,28 @@
             <p>{{ unit.text }}</p>
           </div>
         </div>
+
+        <div class="country-select" v-if="tabsIndex === 0">
+          <h2>Country-Targeted:</h2>
+          <div class="select-content">
+            <span class="national-flag">
+              <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
+            </span>
+            <select v-model="countryFlagSelect">
+              <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
+                {{ item.name[0].txt }}
+              </option>
+            </select>
+          </div>
+        </div>
+
         <transition name="fade-tabs" mode="out-in">
           <div v-if="tabsIndex === 0" key="tab0" class="user-tabs__tabs_wrapper follow">
             <div class="user-tabs__container">
               <div class="pkg-container">
                 <div class="pc">
-                  <div v-for="(pkg, i) in productPkgListFollow"
+                  <template v-if="showTab0">
+                    <div v-for="(pkg, i) in productPkgListFollow"
                        :key="i"
                        :class="{
                          'follow': pkg['product_type'] === 2,
@@ -137,8 +153,11 @@
                       <i class="num-i"></i>
                       <i class="cross"></i>
                       <b>
-                        <span>{{ pkg['purchase_quantity'] }}</span>
-                        <span>Followers</span>
+                        <span style="margin-bottom: 5px">{{ pkg['purchase_quantity'] }}</span>
+                        <span>
+                          <img style="vertical-align: middle;" v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="" width="18" height="18">
+                          Followers
+                        </span>
                       </b><span></span>
                     </span>
 
@@ -187,6 +206,10 @@
                       </div>
                     </div>
                   </div>
+                  </template>
+                  <div v-if="!showTab0" style="width: 100%;height: 420px;display: flex;justify-content: center;align-items: flex-start">
+                    <img src="./img/loading-puff-black.svg" width="100" height="100" alt="">
+                  </div>
                 </div>
                 <div class="mobile">
                   <div v-for="(pkg, i) in productPkgListFollow"
@@ -221,6 +244,9 @@
                       <i class="num-i"></i>
                       <i class="cross"></i>
                       <b>{{ pkg['purchase_quantity'] }}</b><span></span>
+                      <div class="item-flag" v-if="currentCountry.icon_url">
+                                <img :src="currentCountry.icon_url" alt="">
+                              </div>
                     </span>
 
                     <span v-if="pkg['gives'][0].quantity === 0" class="juli"></span>
@@ -849,6 +875,7 @@ import apiTask from '@/api/api.task';
 import apiIns from '@/api/api.ins';
 import apiPayment from '@/api/api.payment';
 import apiInsServer from '@/api/api.ins.server';
+import apiV2 from '@/api/api.v2.js';
 
 import ListEmpty from '@/components/list/list-empty';
 import ButtonPurple from '@/components/button/button-purple';
@@ -896,6 +923,11 @@ export default {
 
       showNum: 10,
       showMoreTest: 'More Tasks',
+      countryFlagSelect: '',
+      regionList: [],
+      currentCountry: {},
+      productCountryList: [],
+      showTab0: true,
 
       showIdList: false,
       customDeleteIns: false,
@@ -1019,8 +1051,22 @@ export default {
         return productPkg['product_type'] === 1;
       });
     },
+    // followers
+    productCountryListDisplay: function () {
+      const payMethodDisplay = this.payMethodDisplay;
+      console.log(this.productCountryList)
+      return this.productCountryList.filter(function (productPkg) {
+        // promote_sale_type 展示种类
+        return productPkg['payment_type'] === payMethodDisplay
+          && (productPkg['promote_sale_type'] === undefined
+            || productPkg['promote_sale_type'] === 0
+            || productPkg['promote_sale_type'] === 1
+            || productPkg['promote_sale_type'] === 3)
+          && productPkg['cycle_type'] === 1;
+      });
+    },
     productPkgListFollow: function () {
-      return this.productPkgListDisplay.filter(function (productPkg) {
+      return this.productCountryListDisplay.filter(function (productPkg) {
         return productPkg['product_type'] === 2;
       });
     },
@@ -1041,12 +1087,26 @@ export default {
   watch: {
     $route() {
       this.meta.canonical = this.$route.path;
+    },
+    countryFlagSelect(newValue, oldVal) {
+      let regionList = this.regionList;
+      this.showTab0 = false;
+      this.productPkgListLoading = true;
+      if(regionList && regionList.length !==0) {
+        regionList.forEach((item, index) => {
+          if(item.region_id == newValue ) {
+            this.currentCountry = item;
+            this.getCountryProduct();
+          }
+        })
+      }
     }
   },
   created() {
     this.initTabIndex();
   },
   mounted() {
+    this.getRegionList();
     if (this.COMMON.getURLQuery('ins_test') === '1') {
       this.readUserInfo();
       this.getInfo();
@@ -1080,6 +1140,78 @@ export default {
     closeDialogInsAddSuccess() {
       this.dialogInsAddSuccess = false;
       this.firstEntryJump();
+    },
+
+    getRegionList() {
+      var _this = this;
+      this.$nuxt.$axios.post(
+        `${apiV2.getRegionList}`,
+        this.COMMON.paramSign({
+           "origin":"web",
+           "system_id": 1
+        })
+      ).then((response) => {
+        let { data } = response;
+        if(data.status !== 'ok') return;
+        data.region_list.forEach(function(item, index) {
+          // const isInArr = item.display_locale_list.includes(_this.$i18n.locale);
+          if(item.region_status === 1) {
+            // if(item.length != 1 ) {
+            //   item.name = item.name.filter(function(names) {
+            //     return names.locale === 'en';
+            //   })
+            // }
+            _this.regionList.push(item);
+          }
+        })
+        this.currentCountry = _this.regionList[0];
+        // 默认选中国别
+        let region_id = parseInt(this.regionList[0].region_id);
+        this.countryFlagSelect = region_id;
+        if(region_id && region_id != 0) {
+          this.getCountryProduct();
+        }
+      }).catch((error) => {
+        this.productPkgListLoading = false;
+        this.dialogFailMsg = '<samp>'
+          + '<b>Error Status:</b> ' + error.status
+          + '<br>' + '<b>Error Message:</b> ' + error.statusText
+          + '</samp>';
+        this.dialogFail = true;
+        console.error('Catch Error: getRegionList', error);
+      });
+    },
+
+    getCountryProduct() {
+      var _this = this;
+      this.$nuxt.$axios.post(
+        `${apiV2.getProduct}`,
+        this.COMMON.paramSign({
+          "origin": "web",
+          "client_lan": 'en',
+          "cycle_product_enable": false,
+          "subscribe_product_enable": false,
+          "system_id": 1,
+          "region_id": parseInt(this.countryFlagSelect)
+        })
+      ).then((response) => {
+        let { data } = response;
+        if(data.status !== 'ok') return;
+        let { list } = data.product;
+        this.productCountryList = list;
+        this.productPkgListLoading = false;
+        this.productPkgCurrentFollow = list[0];
+        this.productPkgListFollowIndex = 0;
+        this.showTab0 = true;
+      }).catch((error) => {
+        this.productPkgListLoading = false;
+        this.dialogFailMsg = '<samp>'
+          + '<b>Error Status:</b> ' + error.status
+          + '<br>' + '<b>Error Message:</b> ' + error.statusText
+          + '</samp>';
+        this.dialogFail = true;
+        console.error('Catch Error: getProduct', error);
+      });
     },
 
     showmore() {
@@ -1551,8 +1683,8 @@ export default {
       })
       followersArr.forEach(function(item, index) {
         if(item.promote_sale_type === 3) {
-          _this.productPkgCurrentFollow = item;
-          _this.productPkgListFollowIndex = index;
+          // _this.productPkgCurrentFollow = item;
+          // _this.productPkgListFollowIndex = index;
         }
       })
     },
@@ -2403,6 +2535,14 @@ export default {
 
         param.product_type = 2;
         param.cycle_type = 1;
+
+        if(this.countryFlagSelect.region_id) {
+           param.region_id = this.countryFlagSelect.region_id;
+        }
+
+        if(this.currentCountry.icon_url) {
+          param.icon_url = this.currentCountry.icon_url;
+        }
 
         if (this.postList.length > 1) {
           param.like_id = this.postList[0].like_id;
@@ -3520,6 +3660,48 @@ export default {
   .user-tabs {
     margin-top: 0!important;
     background-color: #f8f8f8;
+    .country-select {
+      display: flex;
+      align-items: center;
+      h2 {
+        margin-right: 15px;
+        font: normal normal 600 14px/21px BalooChettan;
+        color: #000000;
+      }
+      .select-content {
+        position: relative;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 7px;
+        .national-flag {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 16px;
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          z-index: 5;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        select {
+          width: 156px;
+          height: 35px;
+          border: 0;
+          font: normal normal 600 16px/35px BalooChettan;
+          color: #000000;
+          padding-left: 45px;
+          cursor: pointer;
+          background: rgba(#fff, 0.5) url("~@/assets/images/global/icon_from__select_arrow.svg") no-repeat right 3% center !important;
+          border-radius: 7px;
+        }
+      }
+      
+    }
     .user-tabs__btn {
       margin: 0 auto;
       margin-top: 0!important;
@@ -3892,7 +4074,7 @@ export default {
                   background: transparent!important;
                   border-radius: 16px;
                   box-sizing: inherit;
-                  transition: opacity 0!important;
+                  // transition: opacity 0!important;
                 }
                 .num::before {
                   content: none;
@@ -4024,6 +4206,47 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .country-select {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      h2 {
+        margin-right: 15px;
+        font: normal normal 600 14px/21px BalooChettan;
+        color: #7F8498;
+      }
+      .select-content {
+        position: relative;
+        .national-flag {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 16px;
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          z-index: 5;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        select {
+          width: 140px;
+          height: 35px;
+          border: 0;
+          font: normal normal 600 16px/25px BalooChettan!important;
+          color: #000000;
+          padding-left: 45px;
+          cursor: pointer;
+        }
+      }
+      
+  }
   .show-more {
     width: 100%;
     font: 600 14px/50px Montserrat;
@@ -4545,6 +4768,7 @@ export default {
             }
           }
           .num {
+            position: relative;
             .num-i {
               width: 30px;
               height: 23px;
@@ -4556,6 +4780,20 @@ export default {
             b {
               font: normal normal 700 18px/21px BalooChettan;
               color: #000000;
+            }
+            .item-flag {
+              position: absolute;
+              top: 11px;
+              left: 24px;
+              width: 16px;
+              height: 16px;
+              border-radius: 100%;
+              img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border-radius: 100%;
+              }
             }
           }
           .circle {
