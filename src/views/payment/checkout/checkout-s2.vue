@@ -1441,15 +1441,21 @@ export default {
       let len = 0;
       if (!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
-        let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
-        if (this.cartList[i].product_type === 2) {
-          if (this.cartList[i].cycle_type === 1) {
+        let item = this.cartList[i];
+        let product_num = item.product_num ? item.product_num : 1;
+        let givesnum;
+        if(!item.gives) {
+          givesnum = 0;
+        } else if(item.gives) {
+          givesnum = item.gives[0].quantity;
+        }
+        if (item.product_type === 2) {
+          if (item.cycle_type === 1) {
             len +=
-              (this.cartList[i].purchase_quantity +
-                this.cartList[i].gives[0].quantity) * product_num;
+              (item.purchase_quantity + givesnum) * product_num;
           } else {
             len +=
-              this.cartList[i].cycle_type * this.cartList[i].purchase_quantity;
+              item.cycle_type * item.purchase_quantity;
           }
         }
       }
@@ -1459,15 +1465,21 @@ export default {
       let len = 0;
       if (!this.cartList) return;
       for (let i = 0; i < this.cartList.length; i++) {
-        let product_num = this.cartList[i].product_num ? this.cartList[i].product_num : 1;
-        if (this.cartList[i].product_type === 1) {
-          if (this.cartList[i].cycle_type === 1) {
+        let item = this.cartList[i];
+        let givesnum;
+        let product_num = item.product_num ? item.product_num : 1;
+        if(!item.gives) {
+          givesnum = 0;
+        } else if(item.gives && item.gives[0].quantity) {
+          givesnum = item.gives[0].quantity;
+        }
+        if (item.product_type === 1) {
+          if (item.cycle_type === 1) {
             len +=
-              (this.cartList[i].purchase_quantity +
-                this.cartList[i].gives[0].quantity) * product_num;
+              (item.purchase_quantity + givesnum) * product_num;
           } else {
             len +=
-              this.cartList[i].cycle_type * this.cartList[i].purchase_quantity;
+              item.cycle_type * item.purchase_quantity;
           }
         }
       }
@@ -1681,7 +1693,7 @@ export default {
       if (cartUnit !== false) {
         cartUnit.product_num = 1;
         if (this.$storage.has("cartList")) {
-          if (cartUnit.cycle_type && cartUnit.cycle_type !== 1) {
+          if (!cartUnit.cycle_type || cartUnit.cycle_type !== 1) {
             oldList.push(cartUnit);
           } else {
             if (!oldList.length) {
