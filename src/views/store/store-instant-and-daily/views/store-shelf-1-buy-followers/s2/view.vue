@@ -81,7 +81,7 @@
                 </li>
               </ul>
             </div>
-            
+
             <div v-if="tabsIndex" key="box1" class="pc-content_main-item">
               <div v-if="!productPkgListLoading" class="pc-content_main-item_btns" style="margin-bottom: 24px;">
                 <div v-for="(item, i) in productPkgListDays" :key="i" :class="{ 'dayactive': productPkgListDaysVM == item }" @click="dayClick(item)">
@@ -386,7 +386,7 @@
                       </label>
                     </div>
                     <div v-if="productPkgListLoading">
-                      <div v-for="i in 4" :key="i" class="package skeleton">
+                      <div v-for="i in 2" :key="i" class="package skeleton">
                         <span class="num"><span class="s skeleton-bg"></span></span>
                         <span class="likes"><span class="s skeleton-bg"></span></span>
                         <span class="coins"><span class="s skeleton-bg"></span></span>
@@ -792,7 +792,7 @@ export default {
     this.getPkgList();
     if(!this.tabsIndex) {
       this.getRegionList();
-    } 
+    }
     window.addEventListener('scroll', this.handle);
     const that = this;
     window.onresize = () => {
@@ -857,11 +857,11 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
-          let lang = navigator.language || navigator.userLanguage; 
+          let lang = navigator.language || navigator.userLanguage;
           lang = lang.replace(/-/g, '_').toLowerCase();
           let display_locale_list = item.display_locale_list.join(',').toLowerCase().split(',');
           const isInArr = display_locale_list.includes(lang);
-          if(item.region_status === 1) {
+          if(item.region_status === 1 && isInArr) {
             _this.regionList.push(item);
           }
         })
@@ -1072,7 +1072,7 @@ export default {
         this.productPkgListLoading = false;
 
         if (response.data.product && response.data.product.list) {
-          
+
           this.renderProductPkgList(response.data.product.list);
 
           //console.log(response.data.product.list);

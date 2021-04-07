@@ -117,7 +117,7 @@
           </div>
         </div>
 
-        <div class="country-select" v-if="tabsIndex === 0 && regionList.length != 0">
+        <div class="country-select" v-if="tabsIndex === 0">
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
@@ -156,7 +156,7 @@
                       <b>
                         <span style="margin-bottom: 5px">{{ pkg['purchase_quantity'] }}</span>
                         <span>
-                          <img style="vertical-align: middle;" v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="" width="18" height="18">
+                          <img style="vertical-align: bottom;" v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="" width="18" height="18">
                           Followers
                         </span>
                       </b><span></span>
@@ -280,9 +280,9 @@
                     </span>
                   </div>
                   </template>
-                  
+
                   <div v-if="productPkgListLoading">
-                      <div v-for="i in productPkgListFollow.length" :key="i" class="package skeleton">
+                      <div v-for="i in 4" :key="i" class="package skeleton">
                         <span class="num"><span class="s skeleton-bg"></span></span>
                         <span class="likes"><span class="s skeleton-bg"></span></span>
                         <span class="coins"><span class="s skeleton-bg"></span></span>
@@ -1120,7 +1120,8 @@ export default {
         })
       }
       if(oldVal != '' && newValue != -1) {
-        this.getCountryProduct()
+        this.getCountryProduct();
+        // this.productPkgListLoading = false;
       } else if(oldVal != '' && newValue == -1) {
         this.productPkgListLoading = false;
         this.productPkgListFollowIndex = -1;
@@ -1183,11 +1184,11 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
-          let lang = navigator.language || navigator.userLanguage; 
+          let lang = navigator.language || navigator.userLanguage;
           lang = lang.replace(/-/g, '_').toLowerCase();
           let display_locale_list = item.display_locale_list.join(',').toLowerCase().split(',');
           const isInArr = display_locale_list.includes(lang);
-          if(item.region_status === 1) {
+          if(item.region_status === 1 && isInArr) {
             _this.regionList.push(item);
           }
         })
@@ -1224,7 +1225,7 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         let { list } = data.product;
-        
+
         this.productCountryList = list;
         this.productPkgListLoading = false;
         this.productPkgCurrentFollow = list[0];
@@ -3700,7 +3701,7 @@ export default {
       }
       .select-content {
         position: relative;
-        box-shadow: 0px 3px 6px #00000029;
+        box-shadow: 0px 3px 6px rgb(0 0 0 / 10%);
         border-radius: 7px;
         .national-flag {
           display: inline-block;
@@ -3726,11 +3727,12 @@ export default {
           color: #000000;
           padding-left: 45px;
           cursor: pointer;
-          background: rgba(#fff, 0.5) url("~@/assets/images/global/icon_from__select_arrow.svg") no-repeat right 3% center !important;
+          background: rgba(#fff, 0.5) url("~@/assets/images/global/arrow-bottom.svg") no-repeat right 3% center !important;
+          background-size: 15px 15px!important;
           border-radius: 7px;
         }
       }
-      
+
     }
     .user-tabs__btn {
       margin: 0 auto;
@@ -4273,9 +4275,11 @@ export default {
           color: #000000;
           padding-left: 45px;
           cursor: pointer;
+          background: rgba(#fff, 0.5) url("~@/assets/images/global/arrow-bottom.svg") no-repeat right 3% center !important;
+          background-size: 15px 15px!important;
         }
       }
-      
+
   }
   .show-more {
     width: 100%;
@@ -4652,7 +4656,7 @@ export default {
               justify-content: space-between;
               font: normal normal 600 14px/21px BalooChettan;
               color: #000000;
-              
+
               span {
                 font: normal normal medium 14px/21px Baloo Chettan 2;
                 color: #7B7B7B;
@@ -4676,7 +4680,7 @@ export default {
         }
       }
     }
-      
+
       .wrapper {
         >h2 {
           font: normal normal 600 22px/36px BalooChettan;
@@ -4685,14 +4689,14 @@ export default {
           text-align: center;
         }
       }
-      
+
 
       .user-tabs__tabs {
         height: 35px;
         display: flex;
         border: 1px solid #E1E1E1;
         border-radius: 31px;
-      
+
         .unit {
           margin: 0;
           flex: 1;
@@ -4743,7 +4747,7 @@ export default {
       .user-tabs__container {
         padding: 0;
         box-shadow: none;
-        
+
         .pkg-container {
           padding: 0!important;
         }
@@ -4767,7 +4771,7 @@ export default {
           padding: 0 4vw;
         }
 
-        // followers list 
+        // followers list
         .package {
           height: 68px;
           box-shadow: none;
