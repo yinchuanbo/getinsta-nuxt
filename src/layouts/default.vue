@@ -324,7 +324,7 @@ export default {
 
       // path 定义
       let homePath = to.path === '/';
-      let blogPath = to.path === '/blog' || to.name === 'blog-detail' || to.path === '/blog/';
+      let blogPath = to.path === '/blog' || to.name === 'blog-id___en' || to.path === '/blog/';
       let easterSalePath = to.path === '/eastersale';
       let checkout = to.path === '/checkout' || to.path === '/checkout-2';
       let storePath = to.path === '/buy-instagram-followers' || to.path === '/buy-auto-instagram-followers' || to.path === '/buy-instagram-daily-likes' || to.path === '/buy-instagram-likes' || to.path === '/buy-instagram-daily-followers' || to.path === '/buy-auto-instagram-followers-1';
