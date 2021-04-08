@@ -117,7 +117,7 @@
           </div>
         </div>
 
-        <div class="country-select" v-if="tabsIndex === 0">
+        <div class="country-select" v-if="tabsIndex === 0 && showCountrySelect">
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
@@ -939,6 +939,7 @@ export default {
       currentCountry: {
         icon_url: ''
       },
+      showCountrySelect: false,
       productCountryList: [],
       showIdList: false,
       customDeleteIns: false,
@@ -1185,15 +1186,28 @@ export default {
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
           let lang = navigator.language || navigator.userLanguage;
+          if(lang === 'hi') {
+             lang = 'hi-in';
+          } else if(lang === 'id') {
+            lang = "id-id"
+          }
           lang = lang.replace(/-/g, '_').toLowerCase();
           let display_locale_list = item.display_locale_list.join(',').toLowerCase().split(',');
           const isInArr = display_locale_list.includes(lang);
-          if(item.region_status === 1 && isInArr) {
-            _this.regionList.push(item);
+          if(!isInArr) {
+            _this.showCountrySelect = false;
+          } else {
+            if(item.region_status === 1 && isInArr) {
+              _this.showCountrySelect = true;
+              _this.regionList.push(item);
+            }
           }
         })
         if(this.countryFlagSelect == -1) return;
+
+
         this.currentCountry = _this.regionList[0];
+
         let region_id = parseInt(this.regionList[0].region_id);
         if(region_id && region_id != 0) {
           this.getCountryProduct();
@@ -2566,10 +2580,6 @@ export default {
 
         param.product_type = 2;
         param.cycle_type = 1;
-
-        if(this.countryFlagSelect.region_id) {
-           param.region_id = this.countryFlagSelect.region_id;
-        }
 
         if(this.currentCountry.icon_url) {
           param.icon_url = this.currentCountry.icon_url;

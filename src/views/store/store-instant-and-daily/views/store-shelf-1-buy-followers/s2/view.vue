@@ -10,7 +10,7 @@
             <p>Daily Followers</p>
           </div>
         </div>
-        <div class="country-select" v-if="!tabsIndex">
+        <div class="country-select" v-if="!tabsIndex && showCountrySelect">
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
@@ -162,7 +162,7 @@
                 >
               </label>
               <div class="search_btn" @click="searchUsername">
-                <button-yellow-icon text="Next" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
+                <button-yellow-icon text="Ok" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
               </div>
             </div>
 
@@ -235,7 +235,7 @@
                     <span>Country-Targeted:</span>
                   </h2> -->
 
-                  <div class="country-select-mobile">
+                  <div class="country-select-mobile" v-if="showCountrySelect">
                     <h2>Country-Targeted:</h2>
                     <div class="select-content">
                       <span class="national-flag">
@@ -632,6 +632,7 @@ export default {
 
       showbottombutton: false,
       screenWidth: 0,
+      showCountrySelect: false,
 
       isFocus: false,
 
@@ -858,11 +859,21 @@ export default {
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
           let lang = navigator.language || navigator.userLanguage;
+          if(lang === 'hi') {
+             lang = 'hi-in';
+          } else if(lang === 'id') {
+            lang = "id-id"
+          }
           lang = lang.replace(/-/g, '_').toLowerCase();
           let display_locale_list = item.display_locale_list.join(',').toLowerCase().split(',');
           const isInArr = display_locale_list.includes(lang);
-          if(item.region_status === 1 && isInArr) {
-            _this.regionList.push(item);
+          if(!isInArr) {
+            _this.showCountrySelect = false;
+          } else {
+            if(item.region_status === 1 && isInArr) {
+              _this.showCountrySelect = true;
+              _this.regionList.push(item);
+            }
           }
         })
         if(this.countryFlagSelect == -1) return;
@@ -1676,9 +1687,6 @@ export default {
         param.post_count = this.insUser.post.post_count;
         param.follower_count = this.insUser.followed_by;
         param.following_count = this.insUser.follow;
-        if(this.countryFlagSelect.region_id) {
-           param.region_id = this.countryFlagSelect.region_id;
-        }
 
         if(this.currentCountry.icon_url) {
           param.icon_url = this.currentCountry.icon_url;
