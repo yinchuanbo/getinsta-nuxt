@@ -162,7 +162,7 @@
                 >
               </label>
               <div class="search_btn" @click="searchUsername">
-                <button-yellow-icon text="Ok" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
+                <button-yellow-icon text="OK" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
               </div>
             </div>
 
@@ -459,7 +459,7 @@
                     >
                   </label>
                   <div v-if="!isBuyBtn" class="search_btn" @click="searchUsername">
-                    <button-yellow-icon text="Next" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
+                    <button-yellow-icon text="OK" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
                   </div>
 
                   <div v-if="isBuyBtn" class="search_btn" @click="tabBottomBtnAction">
