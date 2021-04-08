@@ -196,7 +196,7 @@
           </label>
           <div class="search_btn" @click="searchUsername">
             <button-yellow-icon
-              text="Ok"
+              text="OK"
               :sharp="true"
               font-size="size-16"
               :loading="searchInsLoading"
@@ -534,7 +534,7 @@
                   </label>
                   <div class="search_btn" @click="searchUsername">
                     <button-yellow-icon
-                      text="Next"
+                      text="OK"
                       :sharp="true"
                       :loading="searchInsLoading"
                     />

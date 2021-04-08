@@ -14,7 +14,7 @@
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
-              <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
+              <img v-if="iconUrl" :src="iconUrl" alt="" width="20" height="20">
             </span>
             <select v-model="countryFlagSelect">
               <option value="-1" selected="true">Global</option>
@@ -162,7 +162,7 @@
                 >
               </label>
               <div class="search_btn" @click="searchUsername">
-                <button-yellow-icon text="Ok" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
+                <button-yellow-icon text="OK" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
               </div>
             </div>
 
@@ -459,7 +459,7 @@
                     >
                   </label>
                   <div v-if="!isBuyBtn" class="search_btn" @click="searchUsername">
-                    <button-yellow-icon text="Next" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
+                    <button-yellow-icon text="OK" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
                   </div>
 
                   <div v-if="isBuyBtn" class="search_btn" @click="tabBottomBtnAction">
@@ -746,6 +746,13 @@ export default {
         });
       }
       return list;
+    },
+    iconUrl: function() {
+      let icon_url = this.currentCountry.icon_url;
+      if(!icon_url && this.countryFlagSelect == -1) {
+        icon_url = require('./img/earth.png');
+      }
+      return icon_url;
     }
   },
   watch: {
@@ -834,6 +841,13 @@ export default {
         this.productPkgCurrentFollow = list[0];
         if(this.countryFlagSelect != -1) {
           this.productPkgListFollowIndex = 0;
+          let _this = this;
+          list.forEach(function(item, index) {
+            if(item.promote_sale_type === 3) {
+              _this.productPkgListFollowIndex = index;
+              return;
+            }
+          })
         }
       }).catch((error) => {
         this.productPkgListLoading = false;
