@@ -121,7 +121,7 @@
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
-              <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
+              <img v-if="iconUrl" :src="iconUrl" alt="">
             </span>
             <select v-model="countryFlagSelect">
               <option value="-1" selected="true">Global</option>
@@ -1103,6 +1103,13 @@ export default {
     },
     profileLikes() {
       return this.COMMON.numberAbbreviations(this.accountCurrent.follow);
+    },
+    iconUrl: function() {
+      let icon_url = this.currentCountry.icon_url;
+      if(!icon_url && this.countryFlagSelect == -1) {
+        icon_url = require('./img/earth.png');
+      }
+      return icon_url;
     }
   },
   watch: {
@@ -1239,12 +1246,18 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         let { list } = data.product;
-
         this.productCountryList = list;
         this.productPkgListLoading = false;
         this.productPkgCurrentFollow = list[0];
         if(this.countryFlagSelect != -1) {
           this.productPkgListFollowIndex = 0;
+          let _this = this;
+          list.forEach(function(item, index) {
+            if(item.promote_sale_type === 3) {
+              _this.productPkgListFollowIndex = index;
+              return;
+            }
+          })
         }
       }).catch((error) => {
         this.productPkgListLoading = false;
