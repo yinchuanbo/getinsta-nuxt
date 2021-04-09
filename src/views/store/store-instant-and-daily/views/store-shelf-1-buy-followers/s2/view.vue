@@ -239,7 +239,7 @@
                     <h2>Country-Targeted:</h2>
                     <div class="select-content">
                       <span class="national-flag">
-                        <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
+                        <img v-if="iconUrl" :src="iconUrl" alt="">
                       </span>
                       <select v-model="countryFlagSelect">
                         <option value="-1" selected="true">Global</option>
@@ -786,8 +786,15 @@ export default {
         this.getCountryProduct()
       } else if(oldVal != '' && newValue == -1) {
         this.productPkgListLoading = false;
-        this.productPkgListFollowIndex = -1;
+        this.productPkgListFollowIndex = 0;
         this.currentCountry = {};
+        let _this = this;
+        this.productPkgListFollow.forEach(function(item, index) {
+          if(item['promote_sale_type'] === 3) {
+            _this.productPkgListFollowIndex = index;
+            _this.productPkgCurrentFollow = item;
+          }
+        })
         this.getPkgList();
       }
     }
@@ -838,13 +845,13 @@ export default {
         this.productPkgListLoading = false;
         let { list } = data.product;
         this.productCountryList = list;
-        this.productPkgCurrentFollow = list[0];
         if(this.countryFlagSelect != -1) {
           this.productPkgListFollowIndex = 0;
           let _this = this;
           list.forEach(function(item, index) {
             if(item.promote_sale_type === 3) {
               _this.productPkgListFollowIndex = index;
+              _this.productPkgCurrentFollow = item;
               return;
             }
           })
