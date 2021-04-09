@@ -111,12 +111,12 @@ export default {
   axios: {
     proxy: true,
     baseURL: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
-      ? 'https://www.easygetinsta.com/api'
-      : 'https://test.easygetinsta.com/test/api',
+      ? 'https://api.easygetinsta.com/api'
+      : 'https://test.easygetinsta.com/test/api', // 对asyncData中的接口刷新页面有效
     prefix: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
-      ? '/api'
+      ? '/prod/api'
       : '/dev/test/api',
-    credentials: true // 表示跨域请求时是否需要使用凭证
+    credentials: true // 跨域请求时是否需要使用凭证
   },
 
   // Proxy Config
@@ -129,7 +129,7 @@ export default {
       }
     },
     '/prod': {
-      target: 'https://www.easygetinsta.com',
+      target: 'https://api.easygetinsta.com',
       pathRewrite: {
         '^/prod': '',
         changeOrigin: true
