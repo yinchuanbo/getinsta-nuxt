@@ -786,8 +786,15 @@ export default {
         this.getCountryProduct()
       } else if(oldVal != '' && newValue == -1) {
         this.productPkgListLoading = false;
-        this.productPkgListFollowIndex = -1;
+        this.productPkgListFollowIndex = 0;
         this.currentCountry = {};
+        let _this = this;
+        this.productPkgListFollow.forEach(function(item, index) {
+          if(item['promote_sale_type'] === 3) {
+            _this.productPkgListFollowIndex = index;
+            _this.productPkgCurrentFollow = item;
+          }
+        })
         this.getPkgList();
       }
     }
