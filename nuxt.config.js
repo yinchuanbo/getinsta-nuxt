@@ -116,7 +116,7 @@ export default {
     prefix: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
       ? 'https://api.easygetinsta.com/api'
       : '/dev/test/api',
-    credentials: true // 跨域请求时是否需要使用凭证
+    credentials: false // 跨域请求时是否需要使用凭证
   },
 
   // Proxy Config

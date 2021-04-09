@@ -96,7 +96,7 @@ export default {
 <style lang="scss" scoped>
 button {
   position: relative;
-  padding: 0 4%;
+  padding: 0 1%;
   width: 100%;
   height: 100%;
   background-image: linear-gradient(
@@ -196,6 +196,7 @@ button {
 
   &:hover {
     background-position: 50% 0;
+    transform: scale(1.03);
   }
 
   &:after {
