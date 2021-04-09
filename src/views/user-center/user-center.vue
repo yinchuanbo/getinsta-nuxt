@@ -513,11 +513,9 @@
                       <!--<img alt="task thumb"-->
                       <!--     :src="unit.task_type === 1 ? unit.like_pic_url : unit.follow_pic_url">-->
                       <img alt="task thumb"
-                           src="unit.task_type === 1
-                             ? `https://www.instagram.com/p/${unit.short_code}/media/?size=m`
-                             : unit.follow_pic_url"
+                           :src="unit.task_type == 1 ? `https://www.instagram.com/p/${unit.short_code}/media/?size=m` : unit.follow_pic_url"
                            onerror="this.src = 'https://cdn.easygetinsta.com/static/en/img/icon_avatar_default.2c1fbc4e.svg'"
-                      >
+                      />
 
                       <div class="progress pc"
                            :class="{ 'full': unit['task_progress'] / unit['task_quantity'] === 1 }"
