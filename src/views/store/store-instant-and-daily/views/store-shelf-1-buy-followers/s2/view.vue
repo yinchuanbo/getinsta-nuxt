@@ -10,20 +10,20 @@
             <p>Daily Followers</p>
           </div>
         </div>
-
-        <!-- <div class="country-select" v-if="!tabsIndex">
+        <div class="country-select" v-if="!tabsIndex && showCountrySelect">
           <h2>Country-Targeted:</h2>
           <div class="select-content">
             <span class="national-flag">
-              <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="">
+              <img v-if="iconUrl" :src="iconUrl" alt="" width="20" height="20">
             </span>
             <select v-model="countryFlagSelect">
+              <option value="-1" selected="true">Global</option>
               <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
                 {{ item.name[0].txt }}
               </option>
             </select>
           </div>
-        </div> -->
+        </div>
 
         <div class="pc-content_main">
           <transition name="fade-tabs" mode="out-in">
@@ -48,7 +48,10 @@
                       <span></span>
                     </div>
                     <h2>{{ pkg['purchase_quantity'] }}</h2>
-                    <p>Followers</p>
+                    <p>
+                      <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="" width="20" height="20">
+                      Followers
+                    </p>
                     <div v-if="pkg['gives'][0].quantity !== 0" class="pc-content_main-item_top-tags">
                       <span>+ {{ pkg['gives'][0].quantity }} Free</span>
                     </div>
@@ -78,6 +81,7 @@
                 </li>
               </ul>
             </div>
+
             <div v-if="tabsIndex" key="box1" class="pc-content_main-item">
               <div v-if="!productPkgListLoading" class="pc-content_main-item_btns" style="margin-bottom: 24px;">
                 <div v-for="(item, i) in productPkgListDays" :key="i" :class="{ 'dayactive': productPkgListDaysVM == item }" @click="dayClick(item)">
@@ -158,7 +162,7 @@
                 >
               </label>
               <div class="search_btn" @click="searchUsername">
-                <button-yellow-icon text="Next" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
+                <button-yellow-icon text="OK" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
               </div>
             </div>
 
@@ -231,6 +235,21 @@
                     <span>Country-Targeted:</span>
                   </h2> -->
 
+                  <div class="country-select-mobile" v-if="showCountrySelect">
+                    <h2>Country-Targeted:</h2>
+                    <div class="select-content">
+                      <span class="national-flag">
+                        <img v-if="iconUrl" :src="iconUrl" alt="">
+                      </span>
+                      <select v-model="countryFlagSelect">
+                        <option value="-1" selected="true">Global</option>
+                        <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
+                          {{ item.name[0].txt }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
                   <!-- 购买列表 -->
                   <transition name="fade-skeleton" mode="out-in">
                     <div v-if="!productPkgListLoading">
@@ -297,6 +316,9 @@
                               <i class="num-i"></i>
                               <b>{{ pkg['purchase_quantity'] }}</b><span></span>
                               <i v-if="pkg['gives'][0].quantity !== 0" class="cross">+</i>
+                              <div class="item-flag" v-if="currentCountry.icon_url">
+                                <img :src="currentCountry.icon_url" alt="">
+                              </div>
                             </span>
                             <!--gives mk 1-->
                             <span v-if="pkg['gives'][0].quantity !== 0 && pkg['promote_sale_type'] === 3" class="likes-mk-1 spring hot-3">
@@ -364,7 +386,7 @@
                       </label>
                     </div>
                     <div v-if="productPkgListLoading">
-                      <div v-for="i in 4" :key="i" class="package skeleton">
+                      <div v-for="i in 2" :key="i" class="package skeleton">
                         <span class="num"><span class="s skeleton-bg"></span></span>
                         <span class="likes"><span class="s skeleton-bg"></span></span>
                         <span class="coins"><span class="s skeleton-bg"></span></span>
@@ -437,7 +459,7 @@
                     >
                   </label>
                   <div v-if="!isBuyBtn" class="search_btn" @click="searchUsername">
-                    <button-yellow-icon text="Next" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
+                    <button-yellow-icon text="OK" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
                   </div>
 
                   <div v-if="isBuyBtn" class="search_btn" @click="tabBottomBtnAction">
@@ -610,6 +632,7 @@ export default {
 
       showbottombutton: false,
       screenWidth: 0,
+      showCountrySelect: false,
 
       isFocus: false,
 
@@ -672,8 +695,11 @@ export default {
       productPkgListDays: [],
       productPkgListDaysVM: [],
       regionList: [],
-      countryFlagSelect: '',
-      currentCountry: {}
+      countryFlagSelect: -1,
+      currentCountry: {
+        icon_url: ''
+      },
+      productCountryList: []
     };
   },
   computed: {
@@ -695,10 +721,38 @@ export default {
       });
     },
     // followers
-    productPkgListFollow: function () {
-      return this.productPkgListDisplay.filter(function (productPkg) {
-        return productPkg['product_type'] === 2;
+    productCountryListDisplay: function () {
+      const payMethodDisplay = this.payMethodDisplay;
+      return this.productCountryList.filter(function (productPkg) {
+        // promote_sale_type 展示种类
+        return productPkg['payment_type'] === payMethodDisplay
+          && (productPkg['promote_sale_type'] === undefined
+            || productPkg['promote_sale_type'] === 0
+            || productPkg['promote_sale_type'] === 1
+            || productPkg['promote_sale_type'] === 3)
+          && productPkg['cycle_type'] === 1;
       });
+    },
+    productPkgListFollow: function () {
+      let list = [];
+      let _this = this;
+      if(this.countryFlagSelect != -1) {
+        list = _this.productCountryListDisplay.filter(function (productPkg) {
+          return productPkg['product_type'] === 2;
+        });
+      } else {
+        list = _this.productPkgListDisplay.filter(function (productPkg) {
+          return productPkg['product_type'] === 2;
+        });
+      }
+      return list;
+    },
+    iconUrl: function() {
+      let icon_url = this.currentCountry.icon_url;
+      if(!icon_url && this.countryFlagSelect == -1) {
+        icon_url = require('./img/earth.png');
+      }
+      return icon_url;
     }
   },
   watch: {
@@ -719,13 +773,22 @@ export default {
     },
     countryFlagSelect(newValue, oldVal) {
       let regionList = this.regionList;
+      this.productPkgListLoading = true;
       if(regionList && regionList.length !==0) {
         regionList.forEach((item, index) => {
           if(item.region_id == newValue ) {
             this.currentCountry = item;
-            this.getCountryProduct(item.region_id);
+            return;
           }
         })
+      }
+      if(oldVal != '' && newValue != -1) {
+        this.getCountryProduct()
+      } else if(oldVal != '' && newValue == -1) {
+        this.productPkgListLoading = false;
+        this.productPkgListFollowIndex = -1;
+        this.currentCountry = {};
+        this.getPkgList();
       }
     }
   },
@@ -735,7 +798,9 @@ export default {
   },
   mounted() {
     this.getPkgList();
-    this.getRegionList();
+    if(!this.tabsIndex) {
+      this.getRegionList();
+    }
     window.addEventListener('scroll', this.handle);
     const that = this;
     window.onresize = () => {
@@ -760,20 +825,30 @@ export default {
       this.$nuxt.$axios.post(
         `${apiV2.getProduct}`,
         this.COMMON.paramSign({
-           client_lan:"",
-           cycle_product_enable: false,
-           subscribe_product_enable: false,
-           app_name:"getinshot",
-           system_id: 1,
-           product_group: 1,
-           region_id: this.countryFlagSelect
+          "origin": "web",
+          "client_lan": 'en',
+          "cycle_product_enable": false,
+          "subscribe_product_enable": false,
+          "system_id": 1,
+          "region_id": parseInt(this.countryFlagSelect)
         })
       ).then((response) => {
         let { data } = response;
         if(data.status !== 'ok') return;
+        this.productPkgListLoading = false;
         let { list } = data.product;
-        console.log(list);
-        
+        this.productCountryList = list;
+        if(this.countryFlagSelect != -1) {
+          this.productPkgListFollowIndex = 0;
+          let _this = this;
+          list.forEach(function(item, index) {
+            if(item.promote_sale_type === 3) {
+              _this.productPkgListFollowIndex = index;
+              _this.productPkgCurrentFollow = item;
+              return;
+            }
+          })
+        }
       }).catch((error) => {
         this.productPkgListLoading = false;
         this.dialogFailMsg = '<samp>'
@@ -786,6 +861,7 @@ export default {
     },
     getRegionList() {
       var _this = this;
+      _this.productPkgListLoading = true;
       this.$nuxt.$axios.post(
         `${apiV2.getRegionList}`,
         this.COMMON.paramSign({
@@ -796,19 +872,27 @@ export default {
         let { data } = response;
         if(data.status !== 'ok') return;
         data.region_list.forEach(function(item, index) {
-          if(item.region_status !== 0) {
-            if(item.length != 1) {
-              item.name = item.name.filter(function(names) {
-                return names.locale === 'en';
-              })
+          let lang = navigator.language || navigator.userLanguage;
+          if(lang === 'hi') {
+             lang = 'hi-in';
+          } else if(lang === 'id') {
+            lang = "id-id"
+          }
+          lang = lang.replace(/-/g, '_').toLowerCase();
+          let display_locale_list = item.display_locale_list.join(',').toLowerCase().split(',');
+          const isInArr = display_locale_list.includes(lang);
+          if(!isInArr) {
+            _this.showCountrySelect = false;
+          } else {
+            if(item.region_status === 1 && isInArr) {
+              _this.showCountrySelect = true;
+              _this.regionList.push(item);
             }
-            _this.regionList.push(item);
           }
         })
-        this.currentCountry = _this.regionList[0]
-        // 默认选中国别
+        if(this.countryFlagSelect == -1) return;
+        this.currentCountry = _this.regionList[0];
         let region_id = parseInt(this.regionList[0].region_id);
-        this.countryFlagSelect = region_id;
         if(region_id && region_id != 0) {
           this.getCountryProduct();
         }
@@ -970,6 +1054,7 @@ export default {
         this.anchorBottomBtn();
     },
     pkgSelectedInit(pkgList) {
+      console.log(pkgList)
       let pkgLikeFirstNum = 0, pkgFollowFirstNum = 0;
       for (let unit of pkgList) {
         if (unit['product_type'] === 1) { // like
@@ -978,7 +1063,9 @@ export default {
         }
         if (unit['product_type'] === 2) { // follow
           pkgFollowFirstNum = unit['gives'][0]['quantity'];
-          this.productPkgCurrentFollow = unit;
+          if(this.countryFlagSelect == -1) {
+            this.productPkgCurrentFollow = unit;
+          }
         }
         if (pkgLikeFirstNum !== 0 && pkgFollowFirstNum !== 0) {
           break;
@@ -1010,6 +1097,7 @@ export default {
         this.productPkgListLoading = false;
 
         if (response.data.product && response.data.product.list) {
+
           this.renderProductPkgList(response.data.product.list);
 
           //console.log(response.data.product.list);
@@ -1069,6 +1157,9 @@ export default {
     },
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
+
+      // 2222
+
       pkgList.map(item => {
         if (item['cycle_type'] > 1 && item.product_type === 2) {
           item.dailyQuantity = item['purchase_quantity'];
@@ -1611,6 +1702,9 @@ export default {
         param.follower_count = this.insUser.followed_by;
         param.following_count = this.insUser.follow;
 
+        if(this.currentCountry.icon_url) {
+          param.icon_url = this.currentCountry.icon_url;
+        }
 
         if (this.postList.length > 1) {
           param.like_id = this.postList[0].like_id;
