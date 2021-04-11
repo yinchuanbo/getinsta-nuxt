@@ -159,7 +159,7 @@
             </ul>
           </div>
 
-          <h2 id="aa">Types of Advertising on Instagram</h2>
+          <h2><a id="aa" class="anchor-locator"></a>Types of Advertising on Instagram</h2>
 
           <p>
             The first option you have when it comes to how to advertise on Instagram, is to use promotions. Promotions are simply a tool that allows you to extend the reach of an
