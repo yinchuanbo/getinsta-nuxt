@@ -50,6 +50,5 @@
     "vue-simple-addthis-share": "^0.1.4",
     "vue2-storage": "^5.0.0",
     "vue2-touch-events": "^2.3.2"
-  },
-  "devDependencies": {}
+  }
 }
