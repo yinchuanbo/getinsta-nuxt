@@ -282,7 +282,7 @@ export default {
       input {
         font-size: 16px;
         padding-left: 18%;
-        background: url("@/assets/images/global/icon_search_username.svg") no-repeat 31px 21px;
+        background: url("~@/assets/images/global/icon_search_username.svg") no-repeat 31px 21px;
         background-size: 24px 26px;
       }
     }
@@ -293,7 +293,7 @@ export default {
 
     input:hover {
       border-color: #FCDC4E !important;
-      background: url("@/assets/images/global/blog_hover_user.svg") no-repeat 31px 21px;
+      background: url("~@/assets/images/global/blog_hover_user.svg") no-repeat 31px 21px;
       background-size: 24px 26px;
     }
   }
@@ -344,11 +344,11 @@ export default {
         width: 150px;
         height: 150px;
         margin: auto;
-        background: url("@/assets/images/global/qrcode__download_android.svg") no-repeat center;
+        background: url("~@/assets/images/global/qrcode__download_android.svg") no-repeat center;
       }
 
       .scanbgdow.scanbgdow {
-        background: url("@/assets/images/global/qrcode__download_ios.svg") no-repeat center;
+        background: url("~@/assets/images/global/qrcode__download_ios.svg") no-repeat center;
       }
 
       .detailScan {
