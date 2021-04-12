@@ -25,13 +25,20 @@
                'windows': $store.state.isWindows,
              }"
         >
+          <!--tips-->
           <div class="tips">
             Want to know how to advertise on Instagram? There are actually a few different options, but this post will help to make sense of it all by showing you how to advertise
             on Instagram using each of them.
           </div>
 
+          <!--notice-->
+          <div class="tips notice">
+            Want to know how to advertise on Instagram? There are actually a few different options, but this post will help to make sense of it all by showing you how to advertise
+            on Instagram using each of them.
+          </div>
+
           <!--download module 0-->
-          EN
+          <p>EN</p>
           <div class="download">
             <div class="download__left">
               <h3>GetInsta - Ultimate Tool to Get Free Instagram Followers & Likes</h3>
@@ -61,7 +68,7 @@
           </div>
 
           <!--download module 0 fr-->
-          FR
+          <p>FR</p>
           <div class="download">
             <div class="download__left">
               <h3>GetInsta – L’outil ultime pour obtenir des abonnés et des likes sur Instagram</h3>
@@ -104,7 +111,7 @@
           </div>
 
           <!--download module 0 de-->
-          DE
+          <p>DE</p>
           <div class="download">
             <div class="download__left">
               <h3>GetInsta – ultimatives Tool um kostenlose Instagram-Follower und Likes zu bekommen</h3>
@@ -151,12 +158,73 @@
             already existing Instagram post to a much larger audience.
           </p>
 
+          <!--索引-->
           <div class="index">
             <ul>
               <li><a href="#aa">Types of Advertising on Instagram</a></li>
               <li>Promotions</li>
               <li>The Bottom Line</li>
             </ul>
+          </div>
+
+          <!--索引v2-->
+          <div class="index-v2">
+            <p class="index-v2__title"><span>Contents</span></p>
+            <div class="index-v2__unit-container">
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit sub active">
+                <span class="index-v2__sub-title">Index sub title</span>
+                <div class="index-v2__subunit-container">
+                  <div class="index-v2__subunit">
+                    <a>Index sub list</a>
+                  </div>
+                  <div class="index-v2__subunit">
+                    <a>Index sub list</a>
+                  </div>
+                </div>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+              <div class="index-v2__unit">
+                <a href="#aa">Index list</a>
+              </div>
+            </div>
           </div>
 
           <h2><a id="aa" class="anchor-locator"></a>Types of Advertising on Instagram</h2>
@@ -193,7 +261,7 @@
           </table>
 
           <!--download module 1-->
-          EN
+          <p>EN</p>
           <div class="download-type-1">
             <h2>GetInsta - Get Free Instagram Followers & Likes</h2>
             <ul>
@@ -240,10 +308,9 @@
             </div>
           </div>
 
-          <div style="height: 60px;"></div>
 
           <!--download module 1 fr-->
-          FR
+          <p>FR</p>
           <div class="download-type-1">
             <h2>GetInsta - Gagnez des followers et des likes Instagram gratuits</h2>
             <ul>
@@ -297,10 +364,9 @@
             </div>
           </div>
 
-          <div style="height: 60px;"></div>
 
           <!--download module 1 de-->
-          DE
+          <p>DE</p>
           <div class="download-type-1">
             <h2>GetInsta – bekommen Sie kostenlose Instagram Follower und Likes</h2>
             <ul>
@@ -354,10 +420,9 @@
             </div>
           </div>
 
-          <div style="height: 60px;"></div>
 
           <!--download module 2-->
-          EN
+          <p>EN</p>
           <div class="download-type-2">
             <hr>
             <div class="btn-container">
@@ -401,9 +466,8 @@
             <hr>
           </div>
 
-          <div style="height: 60px;"></div>
 
-          FR
+          <p>FR</p>
           <div class="download-type-2">
             <hr>
             <div class="btn-container">
@@ -454,9 +518,8 @@
             <hr>
           </div>
 
-          <div style="height: 60px;"></div>
 
-          DE
+          <p>DE</p>
           <div class="download-type-2">
             <hr>
             <div class="btn-container">
@@ -507,13 +570,74 @@
             <hr>
           </div>
 
-          <div style="height: 60px;"></div>
 
-          2021.04.09 新增
-          <div class="tips notice">
-            Want to know how to advertise on Instagram? There are actually a few different options, but this post will help to make sense of it all by showing you how to advertise
-            on Instagram using each of them.
+          <p>Download Module 3</p>
+          <div class="download-type-3">
+            <div class="left">
+              <h2>GetInsta - Ultimate Tool to Get Free Instagram Followers & Likes</h2>
+              <ul>
+                <li><span>Get followers and likes from 100% real and activated Instagram users.</span></li>
+                <li><span>Organically increasing of followers or likes day by day.</span></li>
+                <li><span>Unlimited free and 100% safe. No payment. No password. No survey.</span></li>
+              </ul>
+            </div>
+            <div class="btn-container">
+              <a class="btn-windows" download href="https://www.easygetinsta.com/downloadpc">
+                <button class="btn-download-green icon-windows">
+                  <div class="icon">
+                    <i></i>
+                    <b></b>
+                  </div>
+                  <div class="text">Free Download</div>
+                </button>
+              </a>
+
+              <a class="btn-android" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
+                <button class="btn-download-green icon-android">
+                  <div class="icon">
+                    <i></i>
+                    <b></b>
+                  </div>
+                  <div class="text">Free Download</div>
+                </button>
+                <!--                <button-download-android />-->
+              </a>
+
+              <a class="btn-ios" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
+                <button class="btn-download-green icon-ios">
+                  <div class="icon">
+                    <i></i>
+                    <b></b>
+                  </div>
+                  <div class="text">Free Download</div>
+                </button>
+                <!--                <button-download-ios />-->
+              </a>
+
+              <a class="btn-buy" href="https://www.easygetinsta.com/buy-instagram-followers">
+                <button class="buy">Buy Now</button>
+              </a>
+
+              <p class="safe">100% safe & clean</p>
+            </div>
           </div>
+
+          <p>Images Gallery vertical</p>
+          <div class="img-gallery vertical">
+            <img src="./img/temp-img-gallery.png" alt="">
+            <img src="./img/temp-img-gallery.png" alt="">
+            <img src="./img/temp-img-gallery.png" alt="">
+          </div>
+
+          <p>Images Gallery horizontal</p>
+          <div class="img-gallery horizontal">
+            <img src="./img/temp-img-gallery.png" alt="">
+            <img src="./img/temp-img-gallery.png" alt="">
+            <img src="./img/temp-img-gallery.png" alt="">
+          </div>
+
+          <p>Buy Instagram Daily Likes</p>
+          <div class="blogBuyDailyLikes"></div>
         </div>
 
         <div class="related-list">
@@ -566,6 +690,14 @@
 import ButtonGreen from '@/components/button/button-green';
 import BlogTitleV2 from '@/views/blog/static-modules/blog-title-v2/blog-title-v2';
 
+// 动态挂载
+import Vue from 'vue';
+import imgGalleryCom from '@/views/blog/dynamical-modules/blog-img-gallery/blog-img-gallery';
+import blogBuyAutoLikes from '@/views/blog/dynamical-modules/blog-buy-auto-likes/blog-buy-auto-likes.vue';
+
+const ImgGallery = Vue.extend(imgGalleryCom);
+const BlogBuyAutoLikes = Vue.extend(blogBuyAutoLikes);
+
 export default {
   name: 'BlogDetailExample',
   components: {
@@ -611,6 +743,41 @@ export default {
       dialogFail: false,
       dialogFailMsg: ''
     };
+  },
+  mounted() {
+    this.imgGalleryDisplay();
+    this.blogBuyAutoLikesDisplay();
+  },
+  methods: {
+    imgGalleryDisplay() {
+      const checkNode = [...document.querySelectorAll('.img-gallery')];
+      if (checkNode.length) {
+        for (let i = 0; i < checkNode.length; i++) {
+          let imgListArray = [];
+          const container = checkNode[i];
+          const imgNodes = container.querySelectorAll('img');
+          for (let j = 0; j < imgNodes.length; j++) {
+            imgListArray.push(imgNodes[j].src);
+          }
+          let component = new ImgGallery({
+            propsData: {
+              imgDirectionHorizontal: container.classList.contains('horizontal'),
+              imgList: imgListArray
+            }
+          }).$mount();
+          container.parentNode.replaceChild(component.$el, container);
+        }
+      }
+    },
+    blogBuyAutoLikesDisplay() {
+      const checkNode = [...document.querySelectorAll('.blogBuyDailyLikes')];
+      if (checkNode.length) {
+        for (let j = 0; j < checkNode.length; j++) {
+          let buyModal = new BlogBuyAutoLikes({ propsData: { sendThis: this } }).$mount();
+          checkNode[j].parentNode.replaceChild(buyModal.$el, checkNode[j]);
+        }
+      }
+    }
   }
 };
 </script>

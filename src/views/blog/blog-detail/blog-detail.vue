@@ -178,7 +178,7 @@ import ButtonPurple from '@/components/button/button-purple';
 import ButtonDownloadIos from '@/components/button/button-download-ios';
 import ButtonDownloadWindows from '@/components/button/button-download-windows';
 import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
-import blogBuy from '@/views/blog/dynamical-modules/blog-buy/blog-buy.vue';
+import blogBuy from '@/views/blog/dynamical-modules/blog-buy-auto-followers/blog-buy-auto-followers.vue';
 import BlogTitleV2 from '@/views/blog/static-modules/blog-title-v2/blog-title-v2';
 
 const MyBlog = Vue.extend(blogSearch);
