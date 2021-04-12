@@ -1,5 +1,5 @@
 <template>
-  <div class="search-containrer">
+  <div class="search-container">
     <h2>Get Free Instagram Followers</h2>
     <p>Add username to get free followers now!</p>
     <div class="control-search_ins">
@@ -15,7 +15,7 @@
     </div>
     <!-- 搜索结果 -->
     <div v-if="insUser.ins_id" class="ins-info-container">
-      <img class="searchimg" :src="insUser.profile_pic_url || ''" alt="">
+      <img class="search-img" :src="insUser.profile_pic_url || ''" alt="">
       <h3>{{ insUser.ins_account }}</h3>
       <p>
         <span>
@@ -242,11 +242,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search-containrer {
+.search-container {
   width: 800px;
   margin-top: 40px;
   padding: 55px 125px 75px 125px;
-  background: transparent linear-gradient(262deg, #D178E3 0%, #4D65FA 100%) 0% 0% no-repeat padding-box;
+  background: url("./img/bg.svg") top center no-repeat;
   border-radius: 12px;
   opacity: 1;
   color: #fff;
@@ -301,7 +301,7 @@ export default {
   .ins-info-container {
     margin-top: 50px;
 
-    img.searchimg {
+    img.search-img {
       width: 102px;
       height: 102px;
       border: 4px solid #fff;
@@ -400,7 +400,7 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .search-containrer {
+  .search-container {
     padding: 31px 21px 48px;
     width: 100%;
 
@@ -443,7 +443,7 @@ export default {
     .ins-info-container {
       margin-top: 20px !important;
 
-      img.searchimg {
+      img.search-img {
         width: 88px;
         height: 88px;
       }

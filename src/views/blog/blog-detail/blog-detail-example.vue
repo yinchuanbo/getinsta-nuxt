@@ -67,92 +67,6 @@
             </div>
           </div>
 
-          <!--download module 0 fr-->
-          <p>FR</p>
-          <div class="download">
-            <div class="download__left">
-              <h3>GetInsta – L’outil ultime pour obtenir des abonnés et des likes sur Instagram</h3>
-              <ul>
-                <li>Gagnez des followers et des likes d’utilisateurs Instagram 100% vrais et actifs.</li>
-                <li>Boostez naturellement vos followers et likes de jour en jour.</li>
-                <li>Illimité gratuit et 100% sécurisé. Pas de paiement, pas de mot de passe et pas d’enquête.</li>
-              </ul>
-            </div>
-            <div class="download__right">
-              <p class="star"><i></i><i></i><i></i><i></i><i></i></p>
-              <div class="btn-container">
-                <div class="btn-apps btn-windows">
-                  <a class="btn-apps__links" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                    <button class="btn-download-green no-text icon-android">
-                      <div class="icon">
-                        <i></i>
-                        <b></b>
-                      </div>
-                    </button>
-                  </a>
-                  <a class="btn-apps__links" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                    <button class="btn-download-green no-text icon-ios">
-                      <div class="icon">
-                        <i></i>
-                        <b></b>
-                      </div>
-                    </button>
-                  </a>
-                </div>
-                <a class="btn-android" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                  <button-green text="Télécharger l’application" />
-                </a>
-                <a class="btn-ios" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                  <button-green text="Télécharger l’application" />
-                </a>
-              </div>
-              <p class="note">100% sûr et fiable</p>
-            </div>
-          </div>
-
-          <!--download module 0 de-->
-          <p>DE</p>
-          <div class="download">
-            <div class="download__left">
-              <h3>GetInsta – ultimatives Tool um kostenlose Instagram-Follower und Likes zu bekommen</h3>
-              <ul>
-                <li>Bekommen Sie Instagram Follower und Likes von 100 % echten und aktiven Nutzern.</li>
-                <li>Erhöhen Sie die Anzahl der Instagram-Follower von Tag zu Tag.</li>
-                <li>Unbegrenzt kostenlos und 100% sicher. Keine Zahlung, kein Passwort und keine Umfrage.</li>
-              </ul>
-            </div>
-            <div class="download__right">
-              <p class="star"><i></i><i></i><i></i><i></i><i></i></p>
-              <div class="btn-container">
-                <div class="btn-apps btn-windows">
-                  <a class="btn-apps__links" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                    <button class="btn-download-green no-text icon-android">
-                      <div class="icon">
-                        <i></i>
-                        <b></b>
-                      </div>
-                    </button>
-                  </a>
-                  <a class="btn-apps__links" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                    <button class="btn-download-green no-text icon-ios">
-                      <div class="icon">
-                        <i></i>
-                        <b></b>
-                      </div>
-                    </button>
-                  </a>
-                </div>
-                <a class="btn-android" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                  <button-green text="Kostenlos Downloaden" />
-                </a>
-                <a class="btn-ios" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                  <button-green text="Kostenlos Downloaden" />
-                </a>
-              </div>
-              <p class="note">100% sicher</p>
-            </div>
-          </div>
-
           <p>
             The first option you have when it comes to how to advertise on Instagram, is to use promotions. Promotions are simply a tool that allows you to extend the reach of an
             already existing Instagram post to a much larger audience.
@@ -308,119 +222,6 @@
             </div>
           </div>
 
-
-          <!--download module 1 fr-->
-          <p>FR</p>
-          <div class="download-type-1">
-            <h2>GetInsta - Gagnez des followers et des likes Instagram gratuits</h2>
-            <ul>
-              <li>Des abonnés Instagram gratuits et de haute qualité, personnes 100% réelles</li>
-              <li>Obtenez des followers et gagnez également le même nombre de likes gratuits supplémentaires.</li>
-              <li>Livraison instantanée garantie et support client 24/7.</li>
-            </ul>
-            <div class="btn-container">
-              <div class="btn-apps btn-windows">
-                <a class="btn-apps__links" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                  <button class="btn-download-green no-text icon-android">
-                    <div class="icon">
-                      <i></i>
-                      <b></b>
-                    </div>
-                  </button>
-                </a>
-                <a class="btn-apps__links" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                  <button class="btn-download-green no-text icon-ios">
-                    <div class="icon">
-                      <i></i>
-                      <b></b>
-                    </div>
-                  </button>
-                </a>
-              </div>
-
-              <a class="btn-android" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                <button class="btn-download-green">
-                  <div class="icon">
-                    <i></i>
-                    <b></b>
-                  </div>
-                  <div class="text">Télécharger Gratuitement</div>
-                </button>
-              </a>
-
-              <a class="btn-ios" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                <button class="btn-download-green">
-                  <div class="icon">
-                    <i></i>
-                    <b></b>
-                  </div>
-                  <div class="text">Télécharger Gratuitement</div>
-                </button>
-              </a>
-
-              <a class="btn-buy" href="https://de.easygetinsta.com/buy-instagram-followers?utm_source=PC&utm_medium=blogbaner">
-                <button class="buy">Acheter Maintenant</button>
-              </a>
-            </div>
-          </div>
-
-
-          <!--download module 1 de-->
-          <p>DE</p>
-          <div class="download-type-1">
-            <h2>GetInsta – bekommen Sie kostenlose Instagram Follower und Likes</h2>
-            <ul>
-              <li>Kostenlose, hochwertige Instagram-Follower, 100% echte Menschen.</li>
-              <li>Bekommen Sie Follower und erhalten Sie die gleiche Anzahl zusätzlicher kostenloser Likes.</li>
-              <li>Garantierte sofortige Lieferung und 24/7 Kundenservice.</li>
-            </ul>
-            <div class="btn-container">
-              <div class="btn-apps btn-windows">
-                <a class="btn-apps__links" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                  <button class="btn-download-green no-text icon-android">
-                    <div class="icon">
-                      <i></i>
-                      <b></b>
-                    </div>
-                  </button>
-                </a>
-                <a class="btn-apps__links" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                  <button class="btn-download-green no-text icon-ios">
-                    <div class="icon">
-                      <i></i>
-                      <b></b>
-                    </div>
-                  </button>
-                </a>
-              </div>
-
-              <a class="btn-android" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                <button class="btn-download-green">
-                  <div class="icon">
-                    <i></i>
-                    <b></b>
-                  </div>
-                  <div class="text">Kostenlos Downloaden</div>
-                </button>
-              </a>
-
-              <a class="btn-ios" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                <button class="btn-download-green">
-                  <div class="icon">
-                    <i></i>
-                    <b></b>
-                  </div>
-                  <div class="text">Kostenlos Downloaden</div>
-                </button>
-              </a>
-
-              <a class="btn-buy" href="https://de.easygetinsta.com/buy-instagram-followers?utm_source=PC&utm_medium=blogbaner">
-                <button class="buy">JETZT KAUFEN</button>
-              </a>
-            </div>
-          </div>
-
-
           <!--download module 2-->
           <p>EN</p>
           <div class="download-type-2">
@@ -466,111 +267,7 @@
             <hr>
           </div>
 
-
-          <p>FR</p>
-          <div class="download-type-2">
-            <hr>
-            <div class="btn-container">
-              <div class="btn-apps btn-windows">
-                <a class="btn-apps__links" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                  <button class="btn-download-green no-text icon-android">
-                    <div class="icon">
-                      <i></i>
-                      <b></b>
-                    </div>
-                  </button>
-                </a>
-                <a class="btn-apps__links" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                  <button class="btn-download-green no-text icon-ios">
-                    <div class="icon">
-                      <i></i>
-                      <b></b>
-                    </div>
-                  </button>
-                </a>
-              </div>
-
-              <a class="btn-android" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                <button class="btn-download-green">
-                  <div class="icon">
-                    <i></i>
-                    <b></b>
-                  </div>
-                  <div class="text">Télécharger Gratuitement</div>
-                </button>
-              </a>
-
-              <a class="btn-ios" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                <button class="btn-download-green">
-                  <div class="icon">
-                    <i></i>
-                    <b></b>
-                  </div>
-                  <div class="text">Télécharger Gratuitement</div>
-                </button>
-              </a>
-
-              <a class="btn-buy" href="https://www.easygetinsta.com/buy-instagram-followers">
-                <button class="buy">Acheter Maintenant</button>
-              </a>
-            </div>
-            <p class="note">100% sûr et fiable</p>
-            <hr>
-          </div>
-
-
-          <p>DE</p>
-          <div class="download-type-2">
-            <hr>
-            <div class="btn-container">
-              <div class="btn-apps btn-windows">
-                <a class="btn-apps__links" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                  <button class="btn-download-green no-text icon-android">
-                    <div class="icon">
-                      <i></i>
-                      <b></b>
-                    </div>
-                  </button>
-                </a>
-                <a class="btn-apps__links" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                  <button class="btn-download-green no-text icon-ios">
-                    <div class="icon">
-                      <i></i>
-                      <b></b>
-                    </div>
-                  </button>
-                </a>
-              </div>
-
-              <a class="btn-android" download href="https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo">
-                <button class="btn-download-green">
-                  <div class="icon">
-                    <i></i>
-                    <b></b>
-                  </div>
-                  <div class="text">Kostenlos Downloaden</div>
-                </button>
-              </a>
-
-              <a class="btn-ios" href="https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo&mt=8">
-                <button class="btn-download-green">
-                  <div class="icon">
-                    <i></i>
-                    <b></b>
-                  </div>
-                  <div class="text">Kostenlos Downloaden</div>
-                </button>
-              </a>
-
-              <a class="btn-buy" href="https://www.easygetinsta.com/buy-instagram-followers">
-                <button class="buy">JETZT KAUFEN</button>
-              </a>
-            </div>
-            <p class="note">100% sicher</p>
-            <hr>
-          </div>
-
-
+          <!--download module 3-->
           <p>Download Module 3</p>
           <div class="download-type-3">
             <div class="left">
@@ -638,6 +335,9 @@
 
           <p>Buy Instagram Daily Likes</p>
           <div class="blogBuyDailyLikes"></div>
+
+          <p>Instagram Search Banner</p>
+          <div class="blogBanner"></div>
         </div>
 
         <div class="related-list">
@@ -694,9 +394,11 @@ import BlogTitleV2 from '@/views/blog/static-modules/blog-title-v2/blog-title-v2
 import Vue from 'vue';
 import imgGalleryCom from '@/views/blog/dynamical-modules/blog-img-gallery/blog-img-gallery';
 import blogBuyAutoLikes from '@/views/blog/dynamical-modules/blog-buy-auto-likes/blog-buy-auto-likes.vue';
+import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
 
 const ImgGallery = Vue.extend(imgGalleryCom);
 const BlogBuyAutoLikes = Vue.extend(blogBuyAutoLikes);
+const BlogSearch = Vue.extend(blogSearch);
 
 export default {
   name: 'BlogDetailExample',
@@ -747,6 +449,7 @@ export default {
   mounted() {
     this.imgGalleryDisplay();
     this.blogBuyAutoLikesDisplay();
+    this.blogSearchDisplay();
   },
   methods: {
     imgGalleryDisplay() {
@@ -773,8 +476,17 @@ export default {
       const checkNode = [...document.querySelectorAll('.blogBuyDailyLikes')];
       if (checkNode.length) {
         for (let j = 0; j < checkNode.length; j++) {
-          let buyModal = new BlogBuyAutoLikes({ propsData: { sendThis: this } }).$mount();
-          checkNode[j].parentNode.replaceChild(buyModal.$el, checkNode[j]);
+          let component = new BlogBuyAutoLikes({ propsData: { sendThis: this } }).$mount();
+          checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
+        }
+      }
+    },
+    blogSearchDisplay() {
+      const checkNode = [...document.querySelectorAll('.blogBanner')];
+      if (checkNode.length) {
+        for (let j = 0; j < checkNode.length; j++) {
+          let component = new BlogSearch({ propsData: { ax: '10', sendThis: this } }).$mount();
+          checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
         }
       }
     }
