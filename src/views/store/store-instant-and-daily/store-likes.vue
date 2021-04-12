@@ -7,7 +7,8 @@
     </div>
     <div v-if="$store.state.s2" class="store-shelf">
       <StoreDailyLikesBannerS2 />
-      <StoreDailyLikesTabS2 @emitToParent="parentHandle" />
+      <StoreDailyLikesTabS2 @emitToParent="parentHandle" @changetabsIndex="changetabsIndex"/>
+      <StoreLikesHave v-if="tabsIndex == 1"/>
       <StoreLikesWhy />
       <StoreLikesStep />
       <StoreLikesFaqs />
@@ -25,6 +26,7 @@ import StoreDailyLikesTabS2 from '@/views/store/store-instant-and-daily/views/st
 import StoreLikesWhy from '@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/why.vue';
 import StoreLikesStep from '@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/step.vue';
 import StoreLikesFaqs from '@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/faqs.vue';
+import StoreLikesHave from '@/views/store/store-instant-and-daily/views/store-s2/buy-instagram-likes/have.vue';
 
 export default {
   name: 'StoreShelf',
@@ -37,7 +39,8 @@ export default {
     StoreDailyLikesTabS2,
     StoreLikesWhy,
     StoreLikesStep,
-    StoreLikesFaqs
+    StoreLikesFaqs,
+    StoreLikesHave
   },
   data() {
     return {
@@ -45,7 +48,8 @@ export default {
         title: 'GetInsta - Store - Buy Followers',
         description:
           'Buy Instagram followers from the best and trusted supplier. Get real followers for your Instagram account, reach more people and grow Your account!'
-      }
+      },
+      tabsIndex: 1
     };
   },
   watch: {
@@ -82,6 +86,9 @@ export default {
           this.$ga.event('insimp', 'impression', 'dailyl-old');
         }
       }
+    },
+    changetabsIndex(i) {
+      this.tabsIndex = i;
     }
   }
 };

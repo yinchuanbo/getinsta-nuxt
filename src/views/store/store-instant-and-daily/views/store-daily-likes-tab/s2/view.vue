@@ -5,22 +5,32 @@
         <div class="buy-tabs">
           <div
             class="buy-tabs_item"
-            :class="{ on: !tabsIndex }"
-            @click="tabSwitch(false)"
+            :class="{ on: tabsIndex === 0 }"
+            @click="tabSwitch(0)"
           >
             <p>Instant Likes</p>
           </div>
+
           <div
             class="buy-tabs_item"
-            :class="{ on: tabsIndex }"
-            @click="tabSwitch(true)"
+            :class="{ on: tabsIndex === 1 }"
+            @click="tabSwitch(1)"
+          >
+            <p>Auto Likes</p>
+          </div>
+
+
+          <div
+            class="buy-tabs_item"
+            :class="{ on: tabsIndex === 2 }"
+            @click="tabSwitch(2)"
           >
             <p>Daily Likes</p>
           </div>
         </div>
         <div class="buy-tabs_content">
           <transition name="fade-tabs" mode="out-in">
-            <div v-if="!tabsIndex" key="box0" class="buy-tabs_content-item">
+            <div v-if="tabsIndex === 0" key="box0" class="buy-tabs_content-item">
               <!-- v-if="!productPkgListLoading" -->
               <div v-if="productPkgListLoading" style="width: 100%;height: 420px;display: flex;justify-content: center;align-items: flex-start">
                 <img src="./img/loading-puff-black.svg" width="100" height="100" alt="">
@@ -85,9 +95,48 @@
                 </li>
               </ul>
             </div>
+
+            <!-- auto likes -->
+            <div v-if="tabsIndex === 1" key="box1" class="buy-tabs_content-item like-day-main auto-like">
+
+              <p>This service will automatically deliver an equivalent number of likes to your upcoming new posts.</p>
+
+              <div v-if="!productPkgListLoading" class="like-day">
+                <label class="cycle days">
+                    <select v-model="productPkgListDaysVMAuto" name="offer-daily" class="package changed">
+                      <option v-for="(item, i) in productPkgListDaysAuto" :key="i" :value="item"
+                      >For {{ item }} New Posts
+                      </option>
+                    </select>
+                </label>
+              </div>
+              <!-- v-if="!productPkgListLoading" -->
+              <div v-if="productPkgListLoading" style="width: 100%;height: 420px;display: flex;justify-content: center;align-items: flex-start">
+                <img src="./img/loading-puff-black.svg" width="100" height="100" alt="">
+              </div>
+              <ul v-if="!productPkgListLoading">
+                <li
+                  v-for="(item, i) in productPkgListDailyAuto"
+                  :key="i"
+                  :class="{ dayActive: productPkgListDailyVMAuto === item, mostPopular: i=== 1 }"
+                  @click="dayClick(item)"
+                >
+                  <span class="circle-span"></span>
+
+                  <h3>{{ item.purchase_quantity * productPkgListDaysVMAuto}} Likes</h3>
+                  <h4>{{ item.discount }}% OFF</h4>
+                  <div class="auto-price">
+                    <span>$</span>
+                    <span>{{ item.price_decimal }}</span>
+                    <s>${{ item.original_price_decimal }}</s>
+                  </div>
+                  <p>* {{ item.purchase_quantity }} likes/post</p>
+                </li>
+              </ul>
+            </div>
             <div
-              v-if="tabsIndex"
-              key="box1"
+              v-if="tabsIndex === 2"
+              key="box2"
               class="buy-tabs_content-item like-day-main"
             >
               <div v-if="!productPkgListLoading" class="like-day">
@@ -159,14 +208,28 @@
           </transition>
         </div>
       </div>
+
       <div class="buy-box">
-        <div v-if="!tabsIndex" class="box-text">
+        <div v-if="tabsIndex === 0" class="box-text">
           <img src="./img/selecte-icon4.svg" alt="" width="16" height="16" />
           <div class="box-text_num">{{ productPkgCurrentLike.purchase_quantity }} Likes</div>
           <div class="box-text-price">${{ productPkgCurrentLike.price_decimal }}</div>
         </div>
 
-        <div v-if="tabsIndex" class="box-text">
+        <div v-if="tabsIndex === 1" class="box-text">
+          <img src="./img/selecte-icon4.svg" alt="" width="16" height="16" />
+          <div class="box-text_num">
+            <h3>{{ productPkgListDailyVMAuto.purchase_quantity * productPkgListDailyVMAuto.require_post_count}} Likes</h3>
+            <p>For {{ productPkgListDailyVMAuto.require_post_count }} New Posts</p>
+          </div>
+          <div class="box-text-price">
+            ${{
+              (productPkgListDailyVMAuto.price_decimal ? productPkgListDailyVMAuto.price_decimal : 0).toFixed(2)
+            }}
+          </div>
+        </div>
+
+        <div v-if="tabsIndex === 2" class="box-text">
           <img src="./img/selecte-icon4.svg" alt="" width="16" height="16" />
           <div class="box-text_num">
             <h3>{{ productPkgListDailyVM.purchase_quantity }} Likes/Day</h3>
@@ -203,6 +266,7 @@
             />
           </div>
         </div>
+
         <transition name="fade-tabs" mode="out-in">
           <div v-if="insUser.ins_id" class="box-request">
             <div class="box-request_avator">
@@ -273,6 +337,31 @@
           </div>
         </transition>
       </div>
+
+
+
+      <div class="new-module" v-if="tabsIndex === 1">
+        <div class="new-module_text">
+          <ul>
+            <li>
+              <img src="./img/autoLike-icon1.svg" width="56" alt="">
+              Instant Detection</li>
+            <li><img src="./img/autoLike-icon2.svg" width="56" alt="">
+              No Password Required</li>
+          </ul>
+          <ul>
+            <li>
+              <img src="./img/autoLike-icon3.svg" width="56" alt="">
+              100% Real Instagram Likes</li>
+            <li>
+              <img src="./img/autoLike-icon4.svg" width="56" alt="">
+              24/7 Customer Support</li>
+          </ul>
+        </div>
+      </div>
+
+
+
       <div class="likes-link">
         <!-- <router-link to="/buy-instagram-followers">Buy Instagram Followers >></router-link> -->
       </div>
@@ -284,15 +373,26 @@
           <div class="tabs">
             <div
               class="unit"
-              :class="{ on: !tabsIndex }"
-              @click="tabSwitch(false)"
+              :class="{ on: tabsIndex === 0 }"
+              @click="tabSwitch(0)"
             >
               Instant Likes
             </div>
+
             <div
               class="unit"
-              :class="{ on: tabsIndex }"
-              @click="tabSwitch(true)"
+              :class="{ on: tabsIndex === 1 }"
+              @click="tabSwitch(1)"
+            >
+              Auto Likes
+            </div>
+
+
+
+            <div
+              class="unit"
+              :class="{ on: tabsIndex === 2 }"
+              @click="tabSwitch(2)"
             >
               Daily Likes
             </div>
@@ -303,7 +403,7 @@
               <!--pkg-container-->
               <transition name="fade-tabs" mode="out-in">
                 <!--非周期Like任务-->
-                <div v-if="!tabsIndex" key="box0" class="pkg-container">
+                <div v-if="tabsIndex === 0" key="box0" class="pkg-container">
                   <!-- <h2 id="title-pkg-follow" :class="{ 'error': productPkgListFollowTitle }">
                   <span>{{ $t('store.buy.title.text') }} <i>{{ $t('store.buy.title.error') }}</i></span>
                 </h2> -->
@@ -451,8 +551,51 @@
                   </transition>
                 </div>
 
+                <div v-if="tabsIndex === 1" key="box1" class="pkg-container auto-like-m">
+
+              <p>This service will automatically deliver an equivalent number of likes to your upcoming new posts.</p>
+
+              <div v-if="!productPkgListLoading">
+                <label>
+                    <select v-model="productPkgListDaysVMAuto" name="offer-daily" class="package changed">
+                      <option v-for="(item, i) in productPkgListDaysAuto" :key="i" :value="item"
+                      >For {{ item }} New Posts
+                      </option>
+                    </select>
+                </label>
+              </div>
+              <!-- v-if="!productPkgListLoading" -->
+              <div v-if="productPkgListLoading" style="width: 100%;height: 420px;display: flex;justify-content: center;align-items: flex-start">
+                <img src="./img/loading-puff-black.svg" width="100" height="100" alt="">
+              </div>
+              <ul v-if="!productPkgListLoading">
+                <li
+                  v-for="(item, i) in productPkgListDailyAuto"
+                  :key="i"
+                  :class="{ dayActive: productPkgListDailyVMAuto === item, mostPopular: i=== 1  }"
+                  @click="dayClick(item)"
+                >
+                  <span class="circle-span"></span>
+                  <div class="auto-like-right">
+                    <div class="auto-like-right_top">
+                      <div>
+                        <img src="./img/package__favorite.svg" alt="">
+                        {{ item.purchase_quantity * productPkgListDaysVMAuto}}
+                      </div>
+                      <h4>{{ item.discount }}% OFF</h4>
+                      <span>${{ item.price_decimal }}</span>
+                    </div>
+                    <div class="auto-like-right_bottom">
+                      <p>* {{ item.purchase_quantity }} likes/post</p>
+                      <s>${{ item.original_price_decimal }}</s>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
                 <!--周期Like任务-->
-                <div v-if="tabsIndex" key="box1" class="pkg-container">
+                <div v-if="tabsIndex === 2" key="box2" class="pkg-container">
                   <!--此处暂用like的标题-->
                   <h2
                     id="title-pkg-like"
@@ -631,6 +774,24 @@
                   </div>
                 </div>
               </transition-group>
+
+              <div class="new-module" v-if="tabsIndex === 1">
+                <div class="new-module_text">
+                  <ul>
+                    <li>
+                      <img src="./img/autoLike-icon1.svg" width="56" alt="">
+                      Instant Detection</li>
+                    <li><img src="./img/autoLike-icon2.svg" width="56" alt="">
+                      No Password Required</li>
+                    <li>
+                      <img src="./img/autoLike-icon3.svg" width="56" alt="">
+                      100% Real Instagram Likes</li>
+                    <li>
+                      <img src="./img/autoLike-icon4.svg" width="56" alt="">
+                      24/7 Customer Support</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -803,7 +964,7 @@ export default {
       dialogAttention: false,
       dialogAttentionMsg: '',
 
-      tabsIndex: false,
+      tabsIndex: 0,
       searchStatus: false,
 
       searchInsLoading: false,
@@ -834,7 +995,11 @@ export default {
       productPkgListDaily: [],
       productPkgListDailyVM: [],
       productPkgListDays: [],
-      productPkgListDaysVM: []
+      productPkgListDaysVM: [],
+      productPkgListDaysAuto: [],
+      productPkgListDaysVMAuto: [],
+      productPkgListDailyAuto: [],
+      productPkgListDailyVMAuto: [],
     };
   },
   computed: {
@@ -854,7 +1019,7 @@ export default {
     productPkgListLike: function () {
       return this.productPkgListDisplay.filter(function (productPkg) {
         return (
-          productPkg['product_type'] === 1 && productPkg['cycle_type'] === 1
+          productPkg['product_type'] === 1 && productPkg['cycle_type'] === 1 && productPkg['require_post_count'] === 0
         );
       });
     },
@@ -871,11 +1036,19 @@ export default {
       );
       this.productPkgListDailyVM = this.productPkgListDaily[0];
     },
+    productPkgListDaysVMAuto(val) {
+      this.productPkgListDailyAuto = this.pkgListWithUnit.filter(
+        (item) => item.require_post_count === val
+      );
+      this.productPkgListDailyVMAuto = this.productPkgListDailyAuto[1];
+    },
     $route(to, from) {
       if (to.path === '/buy-instagram-likes') {
-        this.tabsIndex = false;
+        this.tabsIndex = 0;
+      } else if(to.path === '/buy-instagram-auto-likes') {
+        this.tabsIndex = 1;
       } else if (to.path === '/buy-instagram-daily-likes') {
-        this.tabsIndex = true;
+        this.tabsIndex = 2;
       }
     }
   },
@@ -886,6 +1059,7 @@ export default {
   mounted() {
     this.getPkgList();
     window.addEventListener('scroll', this.handle);
+    this.$emit('changetabsIndex', this.tabsIndex);
   },
   destroyed() {
     window.removeEventListener('scroll', this.handle);
@@ -913,19 +1087,25 @@ export default {
       this.productPkgListDaysVM = val;
     },
     dayClick(val) {
+      if(this.tabsIndex === 1) {
+        this.productPkgListDailyVMAuto = val;
+        return;
+      }
       this.productPkgListDailyVM = val;
     },
     initTabIndex() {
       const path = this.$route.path;
       if (path === '/buy-instagram-likes') {
-        this.tabsIndex = false;
+        this.tabsIndex = 0;
         this.emittedData.meta.title = this.$t('store.meta.title-1');
         this.emittedData.meta.description =
           this.$i18n.locale === 'en'
             ? this.$t('store.meta.description-1')
             : this.$t('store.meta.description');
+      } else if(path == '/buy-instagram-auto-likes') {
+        this.tabsIndex = 1;
       } else if (path === '/buy-instagram-daily-likes') {
-        this.tabsIndex = true;
+        this.tabsIndex = 2;
         this.emittedData.meta.title = this.$t('store.meta.title-1');
         this.emittedData.meta.description =
           this.$i18n.locale === 'en'
@@ -950,9 +1130,10 @@ export default {
     },
     tabSwitch(i) {
       this.tabsIndex = i;
+      this.$emit('changetabsIndex', i);
       let originalPath = this.$route.path;
       let destPath = '';
-      if (i === false) {
+      if (i === 0) {
         if (originalPath === '/event-followers') {
         } else if (originalPath === '/event-likes') {
         } else {
@@ -963,7 +1144,18 @@ export default {
               ? this.$t('store.meta.description-1')
               : this.$t('store.meta.description');
         }
-      } else if (i === true) {
+      } else if(i == 1) {
+       if (originalPath === '/event-followers') {
+        } else if (originalPath === '/event-likes') {
+        } else {
+          destPath = '/buy-instagram-auto-likes';
+          // this.emittedData.meta.title = this.$t('store.meta.title-1');
+          // this.emittedData.meta.description =
+          //   this.$i18n.locale === 'en'
+          //     ? this.$t('store.meta.description-1')
+          //     : this.$t('store.meta.description');
+        }
+      } else if (i === 2) {
         if (originalPath === '/event-followers') {
         } else if (originalPath === '/event-likes') {
         } else {
@@ -990,7 +1182,6 @@ export default {
         this.productPkgListFollowIndex = i;
         this.productPkgCurrentFollow = pkg;
       }
-      console.log(this.productPkgCurrentLike);
       this.productPkgListFollowTitle = false;
       this.productPkgListLikeTitle = false;
       this.postListTitle = false;
@@ -1021,18 +1212,17 @@ export default {
       if (this.productPkgListLoading) return;
 
       this.productPkgListLoading = true;
-
       this.$nuxt.$axios
         .post(
           `${apiAccount.appConfig}?origin=web`,
           this.COMMON.paramSign({
             client_lan: this.$i18n.locale,
-            cycle_product_enable: true
+            cycle_product_enable: true,
+            auto_like_enable: true
           })
         )
         .then((response) => {
           this.productPkgListLoading = false;
-
           if (response.data.product && response.data.product.list) {
             this.renderProductPkgList(response.data.product.list);
           } else {
@@ -1105,8 +1295,10 @@ export default {
     },
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
+      console.log('pkgList', pkgList)
+      // daily like 数据
       pkgList.map((item) => {
-        if (item['cycle_type'] > 1 && item.product_type === 1) {
+        if ((item['cycle_type'] > 1 && item.product_type === 1) || item.require_post_count !== 0) {
           item.dailyQuantity = item['purchase_quantity'];
           this.pkgListWithUnit.push(item);
         }
@@ -1123,10 +1315,22 @@ export default {
     },
     // 生成Days Select数组（周期选择）
     renderPkgListDays() {
+      let autoList = this.pkgListWithUnit.filter(function(item, index) {
+          return item.require_post_count != 0;
+      });
+      let DailyList = this.pkgListWithUnit.filter(function(item, index) {
+          return item.require_post_count == 0;
+      });
+
       this.productPkgListDays = [
-        ...new Set(this.pkgListWithUnit.map((item) => item.cycle_type))
+        ...new Set(DailyList.map((item) => item.cycle_type))
       ];
       this.productPkgListDaysVM = this.productPkgListDays[0];
+
+      this.productPkgListDaysAuto = [
+        ...new Set(autoList.map((item) => item.require_post_count))
+      ];
+      this.productPkgListDaysVMAuto = this.productPkgListDaysAuto[0];
     },
 
     inputBlur() {
@@ -1435,11 +1639,8 @@ export default {
 
     // Bottom 按钮动作
     tabBottomBtnAction() {
-      // console.log("this.postList",this.postList)
       if (this.productPkgListLoading) return;
-
-      if (!this.tabsIndex) {
-        // 关注
+      if (this.tabsIndex === 0) {
         if (this.productPkgListFollowIndex === -1) {
           this.productPkgListFollowTitle = true;
           if (!this.independent)
@@ -1451,7 +1652,6 @@ export default {
       if (!this.tabBottomBtnPreCheck()) {
         return;
       }
-
       if (!this.postCurrent.like_id) {
         this.postListTitle = true;
         if (!this.independent) {
@@ -1512,10 +1712,10 @@ export default {
       }
     },
     bottomBtnDetective() {
-      if (!this.tabsIndex) {
+      if (this.tabsIndex === 0) {
         this.bottomBtnOn =
           this.productPkgListFollowIndex !== -1 && this.insUser.ins_id;
-      } else if (this.tabsIndex) {
+      } else if (this.tabsIndex === 2) {
         this.bottomBtnOn = this.insUser.ins_id;
       }
       // console.log(this.insUser.ins_id !== undefined);
@@ -1523,7 +1723,7 @@ export default {
     anchorBottomBtn() {
       if (!this.COMMON.isMobile()) return;
 
-      if (!this.tabsIndex) {
+      if (this.tabsIndex === 0) {
         if (this.productPkgListFollowIndex !== -1 && this.insUser.ins_id) {
           // if (!this.independent)
           //   this.$scrollTo(`#title-post-like`, { offset: -60 });
@@ -1532,7 +1732,7 @@ export default {
           if (!this.independent)
             this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
         }
-      } else if (this.tabsIndex) {
+      } else if (this.tabsIndex === 2) {
         if (this.productPkgListLikeIndex !== -1 && !this.insUser.ins_id) {
           if (!this.independent)
             this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
@@ -1553,7 +1753,7 @@ export default {
       const post = this.postCurrent;
 
       // 关注
-      if (!this.tabsIndex) {
+      if (this.tabsIndex === 0) {
         var quantityNum = this.productPkgCurrentLike.purchase_quantity;
         // ga
         if (this.$store.state.s2) {
@@ -1598,7 +1798,7 @@ export default {
       }
 
       // 周期关注
-      if (this.tabsIndex) {
+      if (this.tabsIndex === 2) {
         // console.log("周期like",this.insUser)
         var likeDailyNum =
           this.productPkgListDailyVM.cycle_type +
@@ -1742,7 +1942,7 @@ export default {
         }
       };
 
-      if (!this.tabsIndex) {
+      if (this.tabsIndex === 0) {
         // 关注
         param.tasks.product_id = this.productPkgCurrentFollow.product_id;
         param.tasks.task_type = 2;
@@ -1761,7 +1961,7 @@ export default {
         }
       }
 
-      if (this.tabsIndex) {
+      if (this.tabsIndex === 2) {
         // 点赞
         const post = this.postCurrent;
 
@@ -1896,7 +2096,7 @@ export default {
     },
 
     gaSearchBtn() {
-      let param = !this.tabsIndex ? 'f' : 'l';
+      let param = this.tabsIndex === 0 ? 'f' : 'l';
       let paramEvent0 = '';
       if (
         this.$route.path === '/event-followers' ||
@@ -1904,7 +2104,7 @@ export default {
       ) {
         paramEvent0 = '-ad';
       }
-      if (this.tabsIndex) paramEvent0 = '-daily';
+      if (this.tabsIndex === 2) paramEvent0 = '-daily';
 
       let gaPlatform = '';
       if (this.$i18n.locale !== 'en') {
@@ -1931,16 +2131,16 @@ export default {
       // );
 
       if (this.$store.state.s2) {
-        if (!this.tabsIndex) {
+        if (this.tabsIndex === 0) {
           this.$ga.event('buttonclick', 'click', 'likebuy');
-        } else {
+        } else if(this.tabsIndex === 2) {
           this.$ga.event('buttonclick', 'click', 'dailylbuy');
         }
       } else {
-        if (!this.tabsIndex) {
+        if (this.tabsIndex === 0) {
           // instant likes ok
           this.$ga.event('buttonclick', 'click', `storeaddl`);
-        } else {
+        } else if(this.tabsIndex === 2) {
           // Daily likes ok
           this.$ga.event('buttonclick', 'click', `store-daily-likes`);
         }
@@ -1956,11 +2156,11 @@ export default {
       //  this.$ga.event('insbuy', 'buy', 'store-daily-likes');
       // this.$ga.event('insbuy', 'buy', 'storebuyl')
 
-      if (!this.tabsIndex) {
+      if (this.tabsIndex === 0) {
         if (!this.$store.state.s2) {
           this.$ga.event('insbuy', 'buy', 'storebuyl');
         }
-      } else {
+      } else if(this.tabsIndex === 2) {
         if (!this.$store.state.s2) {
           this.$ga.event('insbuy', 'buy', 'store-daily-likes');
         }
