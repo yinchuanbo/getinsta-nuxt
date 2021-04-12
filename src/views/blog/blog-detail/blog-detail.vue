@@ -13,8 +13,8 @@
               <nuxt-link to="/blog">{{ $t('global.header.menu.blog') }}</nuxt-link>
               <span>&gt;</span>
               <a @click="backToBlogList">{{ blogSortObj.breadcrumb || '' }}</a>
-              <span>&gt;</span>
-              <b>{{ blogDetailObj['page_title'] || '' }}</b>
+              <!--<span>&gt;</span>-->
+              <!--<b>{{ blogDetailObj['page_title'] || '' }}</b>-->
             </div>
             <div class="meta-info">
               <h1>{{ blogDetailObj['page_title'] || '' }}</h1>
@@ -85,6 +85,7 @@
           <div id="testbox"></div>
         </transition>
       </div>
+
       <div class="right">
         <div class="mix-container">
           <img src="@/assets/images/global/logo.svg" alt="LOGO">
