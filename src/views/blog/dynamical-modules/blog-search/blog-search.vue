@@ -1,16 +1,17 @@
 <template>
   <div class="search-container">
-    <h2>Get Free Instagram Followers</h2>
-    <p>Add username to get free followers now!</p>
+    <h2>1000+ Free IG Followers Trial [Real & Fast]</h2>
+    <p>Get your first 1K organic followers instantly!</p>
     <div class="control-search_ins">
       <label>
         <input
           v-model="searchInsInput" type="text"
-          :placeholder="'Your username'"
+          :placeholder="'Enter Instagram username'"
         >
       </label>
       <div class="search_btn" @click="searchUsername">
-        <button-purple text="Get Now" :sharp="true" :loading="searchInsLoading" :themecolor="blogorange" />
+        <!--<button-purple text="Get Now" :sharp="true" :loading="searchInsLoading" :themecolor="blogorange" />-->
+        <button-icon-ins text="Get Now" theme="cyan" font-size="size-16" :border-radius="8" :loading="searchInsLoading" />
       </div>
     </div>
     <!-- 搜索结果 -->
@@ -31,24 +32,9 @@
           following
         </span>
       </p>
-      <div class="linewhite"></div>
-      <!-- 二维码 -->
-      <div class="scanContain">
-        <h3>Scan the QR code below to download app to get free followers</h3>
-        <div class="qrqdbg" :class="{scanbgdow:andicon==='aple'}"></div>
-        <div class="detailScan">
-          <img class="img01" :class="{onimg01:andicon==='andr'}" src="../../../../assets/images/global/adricon.svg" alt="android" @click="choiceandDow('andr')">
-          <span></span>
-          <img class="img02" :class="{onimg02:andicon==='aple'}" src="../../../../assets/images/global/button/icon__btn-download_logo_apple_white.svg"
-               alt="apple" @click="choiceandDow('aple')"
-          >
-        </div>
-      </div>
       <!-- mobile 下载按钮 -->
       <div class="mobileDown">
-        <a v-if="isIos" class="getfreeDown" @click="clickapple">Get Free Followers</a>
-        <a v-if="isAdr" class="getfreeDown" @click="clickadr">Get Free Followers</a>
-        <p>Download the app to get free followers</p>
+        <button-icon-ins text="Get Free Followers" theme="cyan" font-size="size-16" :border-radius="8" />
       </div>
     </div>
   </div>
@@ -57,11 +43,13 @@
 <script>
 import apiInsServer from '~/api/api.ins.server';
 import ButtonPurple from '~/components/button/button-purple';
+import ButtonIconIns from '@/components/button/button-icon-ins';
 
 export default {
   name: 'BlogSearch',
   components: {
-    ButtonPurple
+    ButtonIconIns
+    // ButtonPurple
   },
   filters: {
     numberAbbreviations(num) {
@@ -243,9 +231,8 @@ export default {
 
 <style lang="scss" scoped>
 .search-container {
-  width: 800px;
-  margin-top: 40px;
-  padding: 55px 125px 75px 125px;
+  width: 760px;
+  padding: 60px 0 45px;
   background: url("./img/bg.svg") top center no-repeat;
   border-radius: 12px;
   opacity: 1;
@@ -253,48 +240,39 @@ export default {
   text-align: center;
 
   h2 {
-    font-size: 30px;
     margin-bottom: 14px;
-    font-weight: 500;
+    font-size: 28px;
+    font-weight: 700;
   }
 
   p {
-    font-size: 18px;
+    margin-bottom: 0;
+    font-size: 14px;
   }
 
   .control-search_ins {
     width: 549px;
-    height: 70px;
-    margin: auto;
-    margin-top: 38px;
-    box-shadow: 0px 8px 20px #000A3D4D;
-    border: 1px solid #E0E1E6;
+    height: 60px;
+    margin: 38px auto auto;
     border-radius: 10px;
     color: #fff;
     background-color: #fff;
+    box-shadow: none;
+    overflow: visible;
+
 
     .search_btn {
-      box-shadow: 0px 10px 26px #3F065670;
-
+      overflow: visible;
+      box-shadow: 0 12px 24px #00000030;
     }
 
     label {
       input {
         font-size: 16px;
-        padding-left: 18%;
-        background: url("~@/assets/images/global/icon_search_username.svg") no-repeat 31px 21px;
-        background-size: 24px 26px;
+        padding-left: 6%;
+        border: none !important;
+        background: none;
       }
-    }
-
-    input:focus {
-      border-color: #E0E1E6 !important;
-    }
-
-    input:hover {
-      border-color: #FCDC4E !important;
-      background: url("~@/assets/images/global/blog_hover_user.svg") no-repeat 31px 21px;
-      background-size: 24px 26px;
     }
   }
 
@@ -302,28 +280,31 @@ export default {
     margin-top: 50px;
 
     img.search-img {
-      width: 102px;
-      height: 102px;
+      width: 82px;
+      height: 82px;
       border: 4px solid #fff;
     }
 
     h3 {
+      margin: 8px auto 0;
       font: 500 16px/19px Montserrat;
       color: #fff;
     }
 
     p {
+      margin-top: 22px;
+      margin-bottom: 22px;
       color: #fff;
-      font: 500 20px Montserrat;
-      margin-top: 20px;
-      margin-bottom: 20px;
+      font: 500 14px Montserrat;
 
       b {
+        margin-right: 0;
+        font-size: 24px;
         color: #fff;
       }
     }
 
-    .linewhite {
+    .line {
       width: 544px;
       height: 1px;
       background-color: #fff;
@@ -394,7 +375,10 @@ export default {
     }
 
     .mobileDown {
-      display: none;
+      display: block;
+      margin: 0 auto;
+      width: 253px;
+      height: 60px;
     }
   }
 }
@@ -403,6 +387,7 @@ export default {
   .search-container {
     padding: 31px 21px 48px;
     width: 100%;
+    //background-image: url("");
 
     h2 {
       font: 600 17px/25px Montserrat;
@@ -461,48 +446,14 @@ export default {
         }
       }
 
-      .linewhite {
+      .line {
         display: none;
       }
 
       .scanContain {
         display: none;
       }
-
-      .mobileDown {
-        display: block;
-        width: 100%;
-
-        .getfreeDown {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: auto;
-          width: 263px;
-          height: 56px;
-          background: transparent linear-gradient(270deg, #FFD256 0%, #F1FF33 100%) 0% 0% no-repeat padding-box;
-          box-shadow: 0px 12px 24px #00000029;
-          opacity: 1;
-          border-radius: 64px;
-          font: 600 16px/56px Montserrat;
-          letter-spacing: 0px;
-          color: #2A2A2A;
-          margin-top: 25px;
-        }
-
-        .getfreeDown:hover {
-          background: transparent linear-gradient(270deg, #F8DC2A 0%, #F7EE41 100%) 0% 0% no-repeat padding-box;
-          box-shadow: 0px 10px 26px #3F065670;
-        }
-
-        p {
-          margin: 0;
-          margin-top: 18px;
-          font-size: 14px;
-        }
-      }
     }
-
   }
 }
 

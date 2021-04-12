@@ -99,12 +99,7 @@ button {
   padding: 0 1%;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    90deg,
-    #fcd362 0%,
-    #ff57b6 45%,
-    #ff2ab8 100%
-  );
+  background-image: linear-gradient(90deg, #fcd362 0%, #ff57b6 45%, #ff2ab8 100%);
   //background-size: 125% 100%;
   //background-position: 100% 0;
   border-radius: 64px;
@@ -129,6 +124,7 @@ button {
 
     &.icon-ins {
       &:before {
+        display: inline-block;
         background-image: url("~@/assets/images/global/button/icon__btn-download_logo_ins_black.svg");
       }
     }
@@ -159,9 +155,8 @@ button {
     animation-duration: 5s;
     animation-timing-function: ease-in;
     animation-iteration-count: infinite;
-    background: linear-gradient(90deg, #4761ff 0%, #fe5c88  50%, #4761ff 100%);
     background-size: 200% 100%;
-    background-position: 200% 0;
+    background: linear-gradient(90deg, #4761ff 0%, #fe5c88 50%, #4761ff 100%) 200% 0;
 
     @keyframes loading {
       0% {
@@ -209,8 +204,7 @@ button {
     margin: auto;
     width: 100%;
     height: 100%;
-    background: url("~@/assets/images/global/loading-puff-white.svg") no-repeat
-      center;
+    background: url("~@/assets/images/global/loading-puff-white.svg") no-repeat center;
     background-size: contain;
     transform: translateY(-20px);
     opacity: 0;
@@ -275,30 +269,30 @@ button {
     }
   }
 
-  &:before {
-    display: inline-block;
-  }
-
   &.icon-ios {
     &:before {
+      display: inline-block;
       background-image: url("~@/assets/images/global/button/icon__btn-download_logo_apple_white.svg");
     }
   }
 
   &.icon-android {
     &:before {
+      display: inline-block;
       background-image: url("~@/assets/images/global/button/icon__btn-download_logo_android_white.svg");
     }
   }
 
   &.icon-windows {
     &:before {
+      display: inline-block;
       background-image: url("~@/assets/images/global/button/icon__btn-download_logo_windows_white.svg");
     }
   }
 
   &.icon-ins {
     &:before {
+      display: inline-block;
       background-image: url("~@/assets/images/global/button/icon__btn-download_logo_ins_white.svg");
     }
   }

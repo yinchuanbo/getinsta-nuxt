@@ -39,7 +39,7 @@
           >
         </label>
         <div class="search_btn" @click="searchUsername">
-          <button-purple text="Continue" :sharp="true" :loading="searchInsLoading" :watermelcolor="buybtnColor" />
+          <button-purple text="Continue" sharp font-size="size-16" :loading="searchInsLoading" :watermelcolor="buybtnColor" />
         </div>
       </div>
     </div>

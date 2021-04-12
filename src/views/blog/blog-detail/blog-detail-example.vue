@@ -92,10 +92,10 @@
                 <span class="index-v2__sub-title">Index sub title</span>
                 <div class="index-v2__subunit-container">
                   <div class="index-v2__subunit">
-                    <a>Index sub list</a>
+                    <a href="#aa">Index sub list</a>
                   </div>
                   <div class="index-v2__subunit">
-                    <a>Index sub list</a>
+                    <a href="#aa">Index sub list</a>
                   </div>
                 </div>
               </div>
@@ -333,9 +333,11 @@
             <img src="./img/temp-img-gallery.png" alt="">
           </div>
 
+          <br><br>
           <p>Buy Instagram Daily Likes</p>
           <div class="blogBuyDailyLikes"></div>
 
+          <br><br>
           <p>Instagram Search Banner</p>
           <div class="blogBanner"></div>
         </div>

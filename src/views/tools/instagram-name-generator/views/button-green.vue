@@ -102,21 +102,21 @@ export default {
     }
   },
   methods: {
-   dowEvent(res) {
-     let ct = this.$store.state.enIosLinkCt;
-     if(res === 'ios'){
-       location.href
+    dowEvent(res) {
+      let ct = this.$store.state.enIosLinkCt;
+      if (res === 'ios') {
+        location.href
           = `${this.$store.state.enIosLink}`
           + `?pt=${this.$store.state.enIosLinkPt}`
           + `&ct=${ct}`
           + `&mt=8`;
-     }else{
-       location.href
-        = this.$store.state.enAdrLinkWithoutGpReferrer
-        + this.$constant.app.campaign.androidReferrerQuery
-        + 'en-seo-iug';
-     }
-   }
+      } else {
+        location.href
+          = this.$store.state.enAdrLinkWithoutGpReferrer
+          + this.$constant.app.campaign.androidReferrerQuery
+          + 'en-seo-iug';
+      }
+    }
   }
 
 };
@@ -303,12 +303,8 @@ button {
   }
 
   &.blogbuy {
-    background: transparent linear-gradient(90deg, #ffa087 0%, #ff568c 100%) 0% 0% no-repeat padding-box;
-    border-radius: 0px 6px 6px 0px;
-
-    span {
-      font: 600 20px/60px Montserrat !important;
-    }
+    background: linear-gradient(90deg, #ffa087 0%, #ff568c 100%);
+    border-radius: 0 6px 6px 0;
   }
 }
 
@@ -361,18 +357,10 @@ button {
     }
   }
   button.blogSearch {
-    box-shadow: 0px 10px 26px #3f065670;
+    box-shadow: 0 10px 26px #3f065670;
 
     span {
       font: 600 14px Montserrat;
-    }
-  }
-  button.blogSearch.sharp {
-    border-radius: 5px !important;
-  }
-  button.blogbuy {
-    span {
-      font: 600 14px/44px Montserrat !important;
     }
   }
   .button-green {
