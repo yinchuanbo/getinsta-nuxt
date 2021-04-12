@@ -1089,9 +1089,10 @@ export default {
     dayClick(val) {
       if(this.tabsIndex === 1) {
         this.productPkgListDailyVMAuto = val;
-        return;
+      } else {
+        this.productPkgListDailyVM = val;
       }
-      this.productPkgListDailyVM = val;
+      
     },
     initTabIndex() {
       const path = this.$route.path;
@@ -1104,6 +1105,7 @@ export default {
             : this.$t('store.meta.description');
       } else if(path == '/buy-instagram-auto-likes') {
         this.tabsIndex = 1;
+        // 添加 TDK
       } else if (path === '/buy-instagram-daily-likes') {
         this.tabsIndex = 2;
         this.emittedData.meta.title = this.$t('store.meta.title-1');
@@ -1411,6 +1413,7 @@ export default {
             this.insUser.post.post_count > this.postListInfo.page_size;
 
           this.$nextTick(() => {
+            // 弹出底部购买 btn
             this.anchorBottomBtn();
           });
         })
@@ -1663,7 +1666,6 @@ export default {
         }
         return;
       }
-
       this.addToCart();
     },
     tabBottomBtnPreCheck() {
@@ -1712,36 +1714,55 @@ export default {
       }
     },
     bottomBtnDetective() {
-      if (this.tabsIndex === 0) {
-        this.bottomBtnOn =
-          this.productPkgListFollowIndex !== -1 && this.insUser.ins_id;
-      } else if (this.tabsIndex === 2) {
-        this.bottomBtnOn = this.insUser.ins_id;
-      }
+      // if (this.tabsIndex === 0) {
+      //   this.bottomBtnOn =
+      //     this.productPkgListFollowIndex !== -1 && this.insUser.ins_id;
+      // } else if (this.tabsIndex === 2) {
+      //   this.bottomBtnOn = this.insUser.ins_id;
+      // }
       // console.log(this.insUser.ins_id !== undefined);
+      this.bottomBtnOn = this.insUser.ins_id;
     },
     anchorBottomBtn() {
       if (!this.COMMON.isMobile()) return;
-
-      if (this.tabsIndex === 0) {
-        if (this.productPkgListFollowIndex !== -1 && this.insUser.ins_id) {
-          // if (!this.independent)
-          //   this.$scrollTo(`#title-post-like`, { offset: -60 });
+      
+      if(this.tabsIndex === 0) {
+        if (!this.insUser.ins_id) {
+          setTimeout(() => {
+            if (!this.independent)
+              this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
+          }, 500);
         }
-        if (this.productPkgListFollowIndex !== -1 && !this.insUser.ins_id) {
-          if (!this.independent)
-            this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
-        }
-      } else if (this.tabsIndex === 2) {
-        if (this.productPkgListLikeIndex !== -1 && !this.insUser.ins_id) {
-          if (!this.independent)
-            this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
-        }
-        if (this.productPkgListLikeIndex !== -1 && this.insUser.ins_id) {
-          // if (!this.independent)
-          //   this.$scrollTo(`#title-post-like`, { offset: -60 });
-        }
+      } else if(this.tabsIndex === 1) {
+        
+      } else if(this.tabsIndex === 2) {
+        // if (this.productPkgListLikeIndex !== -1 && this.insUser.ins_id) {
+        //   if (!this.independent)
+        //     this.$scrollTo(`#title-post-like`, { offset: -60 });
+        // }
       }
+
+      // if (!this.tabsIndex) {
+      //   if (this.productPkgListFollowIndex !== -1 && this.insUser.ins_id) {
+      //   }
+      //   if (this.productPkgListFollowIndex !== -1 && !this.insUser.ins_id) {
+      //     setTimeout(() => {
+      //       if (!this.independent)
+      //         this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
+      //     }, 500);
+      //   }
+      // } else if (this.tabsIndex) {
+      //   if (this.productPkgListLikeIndex !== -1 && !this.insUser.ins_id) {
+      //     if (!this.independent)
+      //       this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
+      //   }
+      //   if (this.productPkgListLikeIndex !== -1 && this.insUser.ins_id) {
+      //     if (!this.independent)
+      //       this.$scrollTo(`#title-post-like`, { offset: -60 });
+      //   }
+      // }
+
+
       this.bottomBtnDetective();
     },
 
@@ -1751,6 +1772,7 @@ export default {
         ins_account: this.insUser.ins_account
       };
       const post = this.postCurrent;
+      console.log(post)
 
       // 关注
       if (this.tabsIndex === 0) {
@@ -1772,9 +1794,7 @@ export default {
               break;
           }
         }
-        // console.log("非周期like",post)
-        // console.log("this.productPkgCurrentLike",this.productPkgCurrentLike)
-        // console.log("this.insUser===",this.insUser)
+
         param.task_type = 1;
         param.product_id = this.productPkgCurrentLike.product_id;
         param.purchase_quantity = quantityNum;
@@ -1795,6 +1815,27 @@ export default {
         param.follower_count = this.insUser.followed_by;
         param.following_count = this.insUser.follow;
         this.gaBottomBtn();
+      }
+
+      if(this.tabsIndex === 1) {
+        param.task_type = 1;
+        param.product_id = this.productPkgListDailyVMAuto.product_id;
+        param.like_id = post.like_id;
+        param.like_pic_url = post.like_pic_url;
+        param.short_code = post.short_code;
+        param.like_count = this.productPkgListDailyVMAuto['purchase_quantity'];
+        param.follow_pic_url = this.insUser.profile_pic_url;
+        param.post_count = this.insUser.post.post_count;
+        param.follower_count = this.insUser.followed_by;
+        param.following_count = this.insUser.follow;
+        param.purchase_quantity = this.productPkgListDailyVMAuto.purchase_quantity;
+        param.price_decimal = this.productPkgListDailyVMAuto.price_decimal;
+        param.product_type = this.productPkgListDailyVMAuto.product_type;
+        param.cycle_type = this.productPkgListDailyVMAuto.cycle_type;
+        param.like_count = this.productPkgListDailyVMAuto['purchase_quantity'];
+        param.gives = this.productPkgListDailyVMAuto['gives'];
+        param.require_post_count = this.productPkgListDailyVMAuto.require_post_count;
+        param.latest_post_time = new Date().getTime();
       }
 
       // 周期关注
@@ -1871,7 +1912,6 @@ export default {
       this.transportCartUnitData(param);
     },
     transportCartUnitData(param) {
-      // console.log('param=======',param);
       this.$storage.set('cartUnit', param);
 
       const query = this.COMMON.envTest() ? { env_test: '1' } : {};

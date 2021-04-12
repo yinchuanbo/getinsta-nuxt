@@ -13,10 +13,12 @@
       .buy-tabs_item {
         width: 155px;
         height: 46px;
+
         &.on {
           p {
             background-color: #fff;
             color: #000;
+            border: 0;
           }
         }
         &:first-child {
@@ -26,6 +28,7 @@
           }
           p {
             border-radius: 31px 0 0 31px;
+            border-right: 1px solid #fff;
           }
         }
 
@@ -33,6 +36,9 @@
           &.on {
             background: url("./img/button_icon_center.svg") no-repeat;
             background-position: center bottom;
+          }
+          p {
+            border-right: 1px solid #fff;
           }
         }
 
