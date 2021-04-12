@@ -166,23 +166,27 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import $ from 'jquery';
-// import ButtonGreen from '@/components/button/button-green';
-// import ButtonYellowDownload from '@/components/button/button-yellow-download';
 import api from '@/api/api.blog';
-import apiInsServer from '@/api/api.ins.server';
-// import ButtonDownloadWindowsYellow from '@/components/button/button-download-windows-yellow';
 import ButtonDownloadAndroid from '@/components/button/button-download-android';
 import ButtonPurple from '@/components/button/button-purple';
 import ButtonDownloadIos from '@/components/button/button-download-ios';
 import ButtonDownloadWindows from '@/components/button/button-download-windows';
-import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
-import blogBuy from '@/views/blog/dynamical-modules/blog-buy-auto-followers/blog-buy-auto-followers.vue';
 import BlogTitleV2 from '@/views/blog/static-modules/blog-title-v2/blog-title-v2';
 
-const MyBlog = Vue.extend(blogSearch);
+// 模块动态挂载 *************************************************************************
+import Vue from 'vue';
+import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
+import blogBuy from '@/views/blog/dynamical-modules/blog-buy-auto-followers/blog-buy-auto-followers.vue';
+import imgGalleryCom from '@/views/blog/dynamical-modules/blog-img-gallery/blog-img-gallery';
+import blogBuyAutoLikes from '@/views/blog/dynamical-modules/blog-buy-auto-likes/blog-buy-auto-likes.vue';
+
 const MyBlogBuy = Vue.extend(blogBuy);
+const ImgGallery = Vue.extend(imgGalleryCom);
+const BlogBuyAutoLikes = Vue.extend(blogBuyAutoLikes);
+const BlogSearch = Vue.extend(blogSearch);
+// **************************************************************************************
+
 export default {
   name: 'BlogDetail',
   components: {
@@ -190,9 +194,6 @@ export default {
     ButtonDownloadWindows,
     ButtonDownloadIos,
     ButtonDownloadAndroid,
-    // ButtonDownloadWindowsYellow,
-    // ButtonYellowDownload,
-    // ButtonGreen
     ButtonPurple
   },
   filters: {
@@ -242,8 +243,8 @@ export default {
       ajaxRequestingHot: true,
       dialogFail: false,
       dialogFailMsg: '',
-      jQRenderTimer: false,
-      jQRenderTimerCounter: 0,
+      renderTimer: false,
+      renderTimerCounter: 0,
       postListInfo: {
         post_count: 0,
         end_cursor: '',
@@ -271,7 +272,7 @@ export default {
     }
   },
   destroyed() {
-    clearInterval(this.jQRenderTimer);
+    clearInterval(this.renderTimer);
   },
   created() {
     // nuxt
@@ -298,33 +299,14 @@ export default {
       // if (this.needGoToTask) this.goToTask();
     },
 
-    // nuxt props
+    // New nuxt asyncData方式请求
     getBlogDetailByProps(data) {
       this.blogDetailObj = data['article'];
       this.langArabic = this.COMMON.langCheckIsArabic(data['article']['seo_title']);
 
       if (process.client) {
         this.$nextTick(() => {
-          setTimeout(() => {
-            this.renderByJQ();
-            this.renderDetector();
-
-            let checkStr = [...document.querySelectorAll('.blogBanner')];
-            if (checkStr.length) {
-              for (let i = 0; i < checkStr.length; i++) {
-                let searchcomponent = new MyBlog({ propsData: { ax: this.blogID, sendThis: this } }).$mount();
-                checkStr[i].parentNode.replaceChild(searchcomponent.$el, checkStr[i]);
-              }
-            }
-
-            let checBuy = [...document.querySelectorAll('.blogBuy')];
-            if (checBuy.length) {
-              for (let j = 0; j < checBuy.length; j++) {
-                let buymodal = new MyBlogBuy({ propsData: { sendThis: this } }).$mount();
-                checBuy[j].parentNode.replaceChild(buymodal.$el, checBuy[j]);
-              }
-            }
-          }, 500);
+          this.renderOfDynamicalModules();
         });
         this.getHotArticleList();
         this.blogSortObj = data['sort'] || {};
@@ -334,7 +316,7 @@ export default {
 
       this.ajaxRequesting = false;
     },
-    // old CSR
+    // Old CSR方式请求
     getBlogDetail(ID, firstQuest) {
       if (firstQuest) this.ajaxRequesting = false;
 
@@ -350,7 +332,7 @@ export default {
 
       if (!this.ajaxRequesting) {
         this.ajaxRequesting = true;
-        this.$nuxt.$axios(
+        this.$nuxt.$axios.post(
           api.getBlogDetail,
           this.COMMON.paramSign(param)
         ).then((response) => {
@@ -359,26 +341,7 @@ export default {
             this.langArabic = this.COMMON.langCheckIsArabic(response.data['article']['seo_title']);
 
             this.$nextTick(() => {
-              setTimeout(() => {
-                this.renderByJQ();
-                this.renderDetector();
-
-                let checkStr = [...document.querySelectorAll('.blogBanner')];
-                if (checkStr.length) {
-                  for (let i = 0; i < checkStr.length; i++) {
-                    let searchcomponent = new MyBlog({ propsData: { ax: this.blogID } }).$mount();
-                    checkStr[i].parentNode.replaceChild(searchcomponent.$el, checkStr[i]);
-                  }
-                }
-
-                let checBuy = [...document.querySelectorAll('.blogBuy')];
-                if (checBuy.length) {
-                  for (let j = 0; j < checBuy.length; j++) {
-                    let buymodal = new MyBlogBuy({ propsData: { sendThis: this } }).$mount();
-                    checBuy[j].parentNode.replaceChild(buymodal.$el, checBuy[j]);
-                  }
-                }
-              }, 500);
+              this.renderOfDynamicalModules();
             });
 
             this.getHotArticleList();
@@ -415,7 +378,7 @@ export default {
     },
     getHotArticleList() {
       this.ajaxRequestingHot = true;
-      this.$nuxt.$axios(
+      this.$nuxt.$axios.post(
         api.getHotBlogList,
         this.COMMON.paramSign({
           client_lan: 'en'
@@ -431,11 +394,32 @@ export default {
       });
     },
 
-    renderByJQ() {
+    // 动态挂载
+    renderOfDynamicalModules() {
       this.renderRelatedListByJQ();
       this.renderArticleIndexByJQ();
+      this.blogSearchDisplay();
+      this.blogBuyAutoFollowersDisplay();
+      this.blogBuyAutoLikesDisplay();
+      this.imgGalleryDisplay();
+
+      setTimeout(() => {
+        this.renderDetector();
+      }, 500);
+    },
+    renderDetector() {
+      this.renderTimer = setInterval(() => {
+        if (this.renderTimerCounter === 0 && this.renderTimerCounter < 2) {
+          this.renderOfDynamicalModules();
+          this.renderTimerCounter++;
+          console.log('DynamicalModulesRenderDetector Ticks');
+        } else {
+          clearInterval(this.renderTimer);
+        }
+      }, 1000);
     },
     renderArticleIndexByJQ() {
+      let _this = this;
       let titleList = $('#blogDetailContent').find('.title-list');
 
       let indexClassName = titleList.length > 9 ? 'double' : '';
@@ -445,6 +429,7 @@ export default {
       let articleIndexContent = ``;
       titleList.each(function () {
         articleIndexContent += `<li>${$(this).text()}</li>`;
+        _this.renderTimerCounter++;
       });
 
       let articleIndex = articleIndexA + articleIndexContent + articleIndexB;
@@ -458,6 +443,7 @@ export default {
       });
     },
     renderRelatedListByJQ() {
+      let _this = this;
       let rList = [];
       let container = $('#blogDetailContent').find('.redirect');
       container.off().find('a').each(function () {
@@ -465,22 +451,67 @@ export default {
           title: $(this).text(),
           alia: $(this).attr('href').split('/').pop()
         });
+        _this.renderTimerCounter++;
       });
       container.remove();
       this.relatedArticleList = rList;
     },
-    renderDetector() {
-      this.jQRenderTimer = setInterval(() => {
-        if (document.getElementsByClassName('related-list').length === 0
-          && this.jQRenderTimerCounter < 20) {
-          this.renderByJQ();
-          this.jQRenderTimerCounter++;
-          console.log('jQRenderTimer Tick');
-        } else {
-          clearInterval(this.jQRenderTimer);
+    blogSearchDisplay() {
+      let _this = this;
+      const checkNode = [...document.querySelectorAll('.blogBanner')];
+      if (checkNode.length) {
+        for (let j = 0; j < checkNode.length; j++) {
+          let component = new BlogSearch({ propsData: { ax: '10', sendThis: this } }).$mount();
+          checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
+          _this.renderTimerCounter++;
         }
-      }, 1000);
+      }
     },
+    blogBuyAutoFollowersDisplay() {
+      let _this = this;
+      let checkBuy = [...document.querySelectorAll('.blogBuy')];
+      if (checkBuy.length) {
+        for (let j = 0; j < checkBuy.length; j++) {
+          let component = new MyBlogBuy({ propsData: { sendThis: this } }).$mount();
+          checkBuy[j].parentNode.replaceChild(component.$el, checkBuy[j]);
+          _this.renderTimerCounter++;
+        }
+      }
+    },
+    blogBuyAutoLikesDisplay() {
+      let _this = this;
+      const checkNode = [...document.querySelectorAll('.blogBuyDailyLikes')];
+      if (checkNode.length) {
+        for (let j = 0; j < checkNode.length; j++) {
+          let component = new BlogBuyAutoLikes({ propsData: { sendThis: this } }).$mount();
+          checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
+          _this.renderTimerCounter++;
+        }
+      }
+    },
+    imgGalleryDisplay() {
+      let _this = this;
+      const checkNode = [...document.querySelectorAll('.img-gallery')];
+      if (checkNode.length) {
+        for (let i = 0; i < checkNode.length; i++) {
+          let imgListArray = [];
+          const container = checkNode[i];
+          const imgNodes = container.querySelectorAll('img');
+          for (let j = 0; j < imgNodes.length; j++) {
+            imgListArray.push(imgNodes[j].src);
+          }
+          let component = new ImgGallery({
+            propsData: {
+              imgDirectionHorizontal: container.classList.contains('horizontal'),
+              imgList: imgListArray
+            }
+          }).$mount();
+          container.parentNode.replaceChild(component.$el, container);
+          _this.renderTimerCounter++;
+        }
+      }
+    },
+
     backToBlogList() {
       if (process.client) {
         this.$storage.set('blogDetailVisited', true);

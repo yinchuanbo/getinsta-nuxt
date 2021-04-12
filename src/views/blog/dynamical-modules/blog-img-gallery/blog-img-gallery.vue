@@ -121,7 +121,7 @@ export default {
       width: 100%;
       height: 100%;
       background-color: #e0e0e0;
-      object-fit: contain;
+      object-fit: cover;
       opacity: 0;
       transform: translateX(0);
       transition: all 0.5s ease-in-out;
