@@ -539,6 +539,9 @@ export default {
           checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
         }
       }
+    },
+    blogIndexClickEvent(){
+      document.querySelectorAll('.index-v2__unit')
     }
   }
 };
