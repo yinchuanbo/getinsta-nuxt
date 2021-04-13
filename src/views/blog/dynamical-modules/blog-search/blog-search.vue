@@ -1,5 +1,5 @@
 <template>
-  <div class="search-container">
+  <div class="search-container" :class="{ expand: insUser.ins_id }">
     <h2>1000+ Free IG Followers Trial [Real & Fast]</h2>
     <p>Get your first 1K organic followers instantly!</p>
     <div class="control-search_ins">
@@ -36,6 +36,7 @@
       <div class="mobileDown">
         <button-icon-ins text="Get Free Followers" theme="cyan" font-size="size-16" :border-radius="8" />
       </div>
+      <p class="note mobile">Download the app to get free followers</p>
     </div>
   </div>
 </template>
@@ -260,7 +261,6 @@ export default {
     box-shadow: none;
     overflow: visible;
 
-
     .search_btn {
       overflow: visible;
       box-shadow: 0 12px 24px #00000030;
@@ -385,37 +385,44 @@ export default {
 
 @media (max-width: 768px) {
   .search-container {
-    padding: 31px 21px 48px;
+    padding: 31px 20px 38px;
     width: 100%;
-    //background-image: url("");
+    background-image: url("./img/bg-m.svg");
+
+    .expand {
+      padding-bottom: 18px;
+    }
 
     h2 {
-      font: 600 17px/25px Montserrat;
+      margin-bottom: 0;
+      font: 600 24px/35px Montserrat;
     }
 
     p {
-      font: 14px Montserrat;
+      margin-top: 16px;
+      font: 14px/20px Montserrat;
     }
 
     .control-search_ins {
+      margin-top: 40px;
+      width: 100%;
+      height: 50px;
       border: none;
 
       label {
         width: 68%;
       }
 
-      margin-top: 10px;
-      width: 88%;
-      height: 50px;
-      border-radius: 5px;
-
       input {
         padding-left: 20px;
         border-radius: 5px 0 0 5px;
         background-image: none !important;
-        font: 14px Montserrat !important;
-        border: 1px solid #fff;
+        font: 14px/23px Montserrat !important;
         border: none !important;
+
+        &::placeholder {
+          font-size: 14px;
+        }
       }
 
       .search_btn {
@@ -440,10 +447,13 @@ export default {
           font-size: 14px;
 
           b {
-            display: block;
             font-size: 18px;
           }
         }
+      }
+
+      .mobileDown {
+        width: 100%;
       }
 
       .line {
@@ -453,8 +463,13 @@ export default {
       .scanContain {
         display: none;
       }
+
+      p.note {
+        margin: 16px 0 0;
+        font: normal normal 400 13px/19px BalooChettan;
+        color: #FFFFFF;
+      }
     }
   }
 }
-
 </style>
