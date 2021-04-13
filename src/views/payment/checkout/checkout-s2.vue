@@ -1247,18 +1247,18 @@ export default {
         //     }
         //   ]
         // },
-        {
-          countryName: 'Singapore',
-          countryCode: 'SG',
-          countryFlag: flagSingapore,
-          supportedPayment: [
-            {
-              pmName: 'e-Nets',
-              pmID: 'enets_sg',
-              icon: payssionIconEnetsSg
-            }
-          ]
-        },
+        // {
+        //   countryName: 'Singapore',
+        //   countryCode: 'SG',
+        //   countryFlag: flagSingapore,
+        //   supportedPayment: [
+        //     {
+        //       pmName: 'e-Nets',
+        //       pmID: 'enets_sg',
+        //       icon: payssionIconEnetsSg
+        //     }
+        //   ]
+        // },
         {
           countryName: 'Spain',
           countryCode: 'ES',

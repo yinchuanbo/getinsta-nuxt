@@ -14,7 +14,7 @@ export default {
   },
   head() {
     return {
-      title: this.$t('store.meta.title-1'),
+      title: this.$t('store.meta.title-3'),
       meta: [
         {
           hid: 'description',
