@@ -311,6 +311,7 @@
         }
         ul {
           align-items: flex-end;
+          height: 304px;
           li {
             width: 302px;
             height: 284px;
@@ -355,6 +356,7 @@
             &.dayActive {
               background-color: #fff;
               height: 304px;
+              transition: height 0.3s;
               border: 0;
               &::before {
                 width: 100%;
@@ -1235,6 +1237,9 @@
         }
         .auto-like-m {
           padding-top: 18px;
+          > div {
+            text-align: center;
+          }
           label {
             select {
               width: 195px;
@@ -1248,6 +1253,8 @@
               border-radius: 4px!important;
               background: #6257FF url("./img/arrow-bottom.svg") no-repeat right 14px center !important;
               background-size: 12px 9px !important;
+              padding-left: 40px!important;
+              
               option {
                 background-color: #fff!important;
               }

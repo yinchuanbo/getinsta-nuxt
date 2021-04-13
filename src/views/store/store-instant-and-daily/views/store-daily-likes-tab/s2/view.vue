@@ -557,7 +557,7 @@
 
               <div v-if="!productPkgListLoading">
                 <label>
-                    <select v-model="productPkgListDaysVMAuto" name="offer-daily" class="package changed">
+                    <select v-model="productPkgListDaysVMAuto" name="offer-daily" class="changed">
                       <option v-for="(item, i) in productPkgListDaysAuto" :key="i" :value="item"
                       >For {{ item }} New Posts
                       </option>
@@ -583,11 +583,11 @@
                         {{ item.purchase_quantity * productPkgListDaysVMAuto}}
                       </div>
                       <h4>{{ item.discount }}% OFF</h4>
-                      <span>${{ item.price_decimal }}</span>
+                      <span>${{ item.price_decimal.toFixed(2) }}</span>
                     </div>
                     <div class="auto-like-right_bottom">
                       <p>* {{ item.purchase_quantity }} likes/post</p>
-                      <s>${{ item.original_price_decimal }}</s>
+                      <s>${{ item.original_price_decimal.toFixed(2) }}</s>
                     </div>
                   </div>
                 </li>
@@ -709,7 +709,7 @@
               <!--extra-post-container-->
               <transition-group name="fade-tabs" mode="out-in">
                 <!--post-container-->
-                <div v-if="insUser.ins_id" :key="1" class="post-container">
+                <div v-if="insUser.ins_id && this.tabsIndex !== 1" :key="1" class="post-container">
                   <h2 id="title-post-like" :class="{ error: postListTitle }">
                     <span>
                       {{ $t('store.buy.search.post.title.text') }}
@@ -816,7 +816,7 @@
           'control-btn__bottom-buy': !independent,
           'btn-container mk0': independent,
         }"
-        style="z-index: 5"
+        style="z-index: 6"
         @click="tabBottomBtnAction"
       >
         <button-yellow-icon
@@ -1667,8 +1667,6 @@ export default {
         }
         return;
       }
-
-      
       this.addToCart();
     },
     tabBottomBtnPreCheck() {
@@ -1728,44 +1726,9 @@ export default {
     },
     anchorBottomBtn() {
       if (!this.COMMON.isMobile()) return;
-      
-      if(this.tabsIndex === 0) {
-        if (!this.insUser.ins_id) {
-          setTimeout(() => {
-            if (!this.independent)
-              this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
-          }, 500);
-        }
-      } else if(this.tabsIndex === 1) {
-        
-      } else if(this.tabsIndex === 2) {
-        // if (this.productPkgListLikeIndex !== -1 && this.insUser.ins_id) {
-        //   if (!this.independent)
-        //     this.$scrollTo(`#title-post-like`, { offset: -60 });
-        // }
-      }
-
-      // if (!this.tabsIndex) {
-      //   if (this.productPkgListFollowIndex !== -1 && this.insUser.ins_id) {
-      //   }
-      //   if (this.productPkgListFollowIndex !== -1 && !this.insUser.ins_id) {
-      //     setTimeout(() => {
-      //       if (!this.independent)
-      //         this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
-      //     }, 500);
-      //   }
-      // } else if (this.tabsIndex) {
-      //   if (this.productPkgListLikeIndex !== -1 && !this.insUser.ins_id) {
-      //     if (!this.independent)
-      //       this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
-      //   }
-      //   if (this.productPkgListLikeIndex !== -1 && this.insUser.ins_id) {
-      //     if (!this.independent)
-      //       this.$scrollTo(`#title-post-like`, { offset: -60 });
-      //   }
-      // }
-
-
+      setTimeout(() => {
+          this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
+      }, 500);
       this.bottomBtnDetective();
     },
 

@@ -29,12 +29,20 @@
                         <img
                           v-if="unit['is_coin'] !== 1"
                           :src="
-                            unit.task_type === 1
+                            unit.task_type === 1 && !unit.require_post_count
                               ? unit.like_pic_url
                               : unit.follow_pic_url
                           "
                           alt="Task avatar"
                         />
+
+                        <img
+                          v-if="unit['is_coin'] !== 1 && unit.task_type === 1 && unit.require_post_count && unit.require_post_count != 0"
+                          :src="unit.follow_pic_url"
+                          alt="Task avatar"
+                        />
+
+
                         <img
                           v-if="unit['is_coin'] === 1"
                           src="../../../assets/images/global/icon_coins.svg"
