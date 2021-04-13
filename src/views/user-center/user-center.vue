@@ -1217,10 +1217,7 @@ export default {
           }
         })
         if(this.countryFlagSelect == -1) return;
-
-
         this.currentCountry = _this.regionList[0];
-
         let region_id = parseInt(this.regionList[0].region_id);
         if(region_id && region_id != 0) {
           this.getCountryProduct();
