@@ -76,8 +76,11 @@ export default {
           this.h = Math.floor((leftTime / 1000 / 60 / 60) % 24)
           this.m = Math.floor((leftTime / 1000 / 60) % 60)
           this.s = Math.floor((leftTime / 1000) % 60)
+          setTimeout(this.countTime, 1000)
+        } else {
+          console.log('已截止')
         }
-        setTimeout(this.countTime, 1000)
+        
       }
     }
   }

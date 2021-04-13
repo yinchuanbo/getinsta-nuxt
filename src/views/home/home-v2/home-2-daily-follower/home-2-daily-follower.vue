@@ -131,7 +131,6 @@
                    type="text" placeholder="Your Instagram Username"
                    @input="modelBoxPrevStep"
             >
-
             <div v-if="insUser.ins_id" class="ins-info-container compact" :class="{ on: insUser.ins_id }">
               <img :src="insUser.profile_pic_url" alt="avatar">
               <h3>{{ insUser.ins_account }}</h3>
@@ -165,9 +164,14 @@
               </p>
             </div>
 
-            <div class="btn" @click="btnActionSearchAndBuy()">
+            <div class="btn" @click="btnActionSearchAndBuy()" v-if="!showBuyButton">
               <button-yellow-icon :text="modelBoxBuyBtnText" font-size="size-16" :loading="searchInsLoading" />
             </div>
+
+            <div class="btn" @click="AddToCartList()" v-if="showBuyButton">
+              <button-yellow-icon :text="modelBoxBuyBtnText" font-size="size-16" :loading="searchInsLoading" />
+            </div>
+
           </div>
         </div>
       </div>
@@ -234,6 +238,8 @@ export default {
       reviewListIndex: 0,
       changeList1: false,
       changeList2: true,
+
+      showBuyButton: false,
 
       searchInsLoading: false,
       searchInsInput: '',
@@ -409,6 +415,7 @@ export default {
     modelBoxPrevStep() {
       this.modelBoxBuyBtnText = 'Continue';
       this.insUser = {};
+      this.showBuyButton = false;
     },
 
     btnActionSearchAndBuy() {
@@ -556,9 +563,10 @@ export default {
         this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
         this.insUser.follow = _sharedDataUser['edge_follow']['count'];
         this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
+        this.showBuyButton = true;
 
         // 调整后
-        this.addToCart();
+        // this.addToCart();
       }).catch((error) => {
         this.closeDialog();
         this.ajaxRequesting = false;
@@ -577,6 +585,9 @@ export default {
         );
         console.error('Catch Error: searchIns: ', error);
       });
+    },
+    AddToCartList() {
+      this.addToCart();
     },
     insPostTransform(_sharedDataUserPosts) {
       let post = {};
