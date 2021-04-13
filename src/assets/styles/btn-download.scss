@@ -68,6 +68,7 @@ button, .button {
       }
 
       &:first-child {
+        margin-bottom: -6px;
         font-size: 12px;
         font-weight: 400;
       }
@@ -112,6 +113,7 @@ button, .button {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
     &.ios {
       .icon {
         margin-left: 6px;
@@ -142,10 +144,13 @@ button, .button {
 
       p {
         display: inline-block;
+
         &:first-child {
+          margin-bottom: 0;
           font-size: 8px;
           line-height: 12px;
         }
+
         &:last-child {
           margin-top: -2px;
           font-size: 14px;
@@ -161,8 +166,9 @@ button, .button {
           background-image: url("~@/assets/images/global/button/icon__btn-download_logo_apple_black.svg");
         }
       }
+
       .text {
-        margin-left: 8%!important;
+        margin-left: 8% !important;
       }
     }
 
@@ -338,6 +344,7 @@ button, .button {
 
     &.footer {
       background-color: transparent;
+
       &.android {
         .icon {
           margin-left: -4% !important;

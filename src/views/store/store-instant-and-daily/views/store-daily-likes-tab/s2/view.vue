@@ -233,7 +233,7 @@
           <img src="./img/selecte-icon4.svg" alt="" width="16" height="16" />
           <div class="box-text_num">
             <h3>{{ productPkgListDailyVM.purchase_quantity }} Likes/Day</h3>
-            <p>{{ productPkgListDailyVM.cycle_type }} Day Plan</p>
+            <p>{{ productPkgListDailyVM.cycle_type }} - Day Plan</p>
           </div>
           <div class="box-text-price">
             ${{
@@ -657,7 +657,7 @@
                 class="control-search_ins-container"
               >
                 <!-- <h2>{{ $t('store.buy.search.title') }}</h2> -->
-                <!-- <h2>Add an Instagram Account</h2> -->
+                <h2 style="margin-bottom: 30px">Add an Instagram Account</h2>
 
                 <div class="control-search_ins">
                   <label>
