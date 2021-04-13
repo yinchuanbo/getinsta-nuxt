@@ -1677,6 +1677,47 @@
         font: 500 12px Montserrat;
       }
     }
+
+    .download-type-3 {
+      padding: 20px 32px;
+      width: 100%;
+      height: auto;
+      background-image: url("./img/blog__download-type-3_bg-m.svg");
+
+      .left {
+        width: 100%;
+      }
+
+      .btn-container {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      .btn-container {
+        a {
+          height: 60px !important;
+
+          &.btn-buy {
+            width: 100% !important;
+            min-width: 100% !important;
+            margin-left: 0;
+
+            button.buy {
+              border-color: #fff;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
   }
 
   // 文章内容区外样式
