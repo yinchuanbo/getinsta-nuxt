@@ -297,11 +297,12 @@
             select {
               width: 166px;
               height: 32px;
-              background-color: #6257FF!important;
               color: #fff;
               border: 0;
               outline: none;
               font: normal normal 600 14px/21px BalooChettan;
+              background: #6257FF url("./img/arrow-bottom-pc.svg") no-repeat right 14px center !important;
+              background-size: 10px 5px !important;
               option {
                 background-color: #fff!important;
               }
@@ -758,13 +759,13 @@
       align-items: center;
       width: 340px;
       height: 75px;
-      background: rgba(255, 255, 255, 0.3);
+      background: #E5E5E5 ;
       border-radius: 12px 12px 0 0;
       cursor: pointer;
       transition: all 0.3s;
 
       font: 600 20px/60px Montserrat;
-      color: #FFFFFF;
+      color: #000000;
 
       &:last-child {
         // margin-left: 16px;
@@ -927,6 +928,12 @@
   background-color: #F9F8F2;
 }
 @media (max-width: 768px) {
+  .btnPurple {
+    button {
+      background: #7C56FF 0% 0% no-repeat padding-box!important;
+      box-shadow: 0px 6px 12px #9B9B9B3D;
+    }
+  }
   .new-module {
     .new-module_text {
       width: 295px;
@@ -950,6 +957,12 @@
           img {
             margin-right: 10px;
             display: block;
+          }
+          &:first-child {
+            margin-bottom: 12px;
+          }
+          &:nth-child(3) {
+            margin-bottom: 0px;
           }
           &:last-child {
             margin-bottom: 0;
@@ -998,21 +1011,37 @@
     }
 
     .tabs {
-      border: 1px solid #E1E1E1;
+      border: 2px solid #E1E1E1;
       border-radius: 31px;
       margin: 0 17px;
       box-sizing: border-box;
       .unit {
         width: 50%;
-        height: 44px;
+        height: 37px;
         border-radius: 6px 6px 0 0;
         font: normal normal 600 14px/21px BalooChettan;
         color: #000000;
 
         &.on {
-          background-color: #e5e5e5 !important;
+          background-color: #fff !important;
           border-radius: 0;
           color: #000;
+          // 选中状态
+          position: relative;
+          &::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #E5E5E5;
+          }
+
+
         }
 
         &:first-child {
@@ -1202,13 +1231,14 @@
               width: 195px;
               height: 38px!important;
               min-height: 38px!important;
-              background-color: #6257FF!important;
               color: #fff;
               border: 0;
               outline: none;
               font: normal normal 600 14px/21px BalooChettan;
               margin: 0 auto!important;
               border-radius: 4px!important;
+              background: #6257FF url("./img/arrow-bottom.svg") no-repeat right 14px center !important;
+              background-size: 12px 9px !important;
               option {
                 background-color: #fff!important;
               }
@@ -1231,7 +1261,7 @@
               border-radius: 44px;
               margin-bottom: 20px;
               display: flex;
-              padding-right: 50px;
+              padding-right: 30px;
               box-sizing: border-box;
               position: relative;
               &.mostPopular {
@@ -1315,6 +1345,9 @@
                   span {
                     font: normal normal 600 18px/17px BalooChettan;
                     color: #000000;
+                    display: inline-block;
+                    width: 52px;
+                    text-align: left;
                   }
                   margin-bottom: 3px;
                 }
@@ -1329,6 +1362,9 @@
                   s {
                     font: normal normal 500 14px/17px BalooChettan;
                     color: #7F8498;
+                    display: inline-block;
+                    width: 52px;
+                    text-align: left;
                   }
                 }
               }

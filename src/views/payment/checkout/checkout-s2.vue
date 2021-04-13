@@ -100,7 +100,7 @@
                               </span>
 
                               <span v-if="unit['is_coin'] !== 1 && unit.require_post_count">
-                                {{ unit.purchase_quantity }} Like/Post
+                                {{ unit.purchase_quantity }} Likes/Post
                               </span>
 
 

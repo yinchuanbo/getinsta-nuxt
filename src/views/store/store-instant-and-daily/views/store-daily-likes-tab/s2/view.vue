@@ -127,8 +127,8 @@
                   <h4>{{ item.discount }}% OFF</h4>
                   <div class="auto-price">
                     <span>$</span>
-                    <span>{{ item.price_decimal }}</span>
-                    <s>${{ item.original_price_decimal }}</s>
+                    <span>{{ item.price_decimal.toFixed(2) }}</span>
+                    <s>${{ item.original_price_decimal.toFixed(2) }}</s>
                   </div>
                   <p>* {{ item.purchase_quantity }} likes/post</p>
                 </li>
@@ -658,7 +658,6 @@
               >
                 <!-- <h2>{{ $t('store.buy.search.title') }}</h2> -->
                 <h2 style="margin-bottom: 30px">Add an Instagram Account</h2>
-
                 <div class="control-search_ins">
                   <label>
                     <input
@@ -675,7 +674,7 @@
                       @blur="inputBlur"
                     />
                   </label>
-                  <div class="search_btn" @click="searchUsername">
+                  <div class="search_btn" @click="searchUsername" :class="{btnPurple: tabsIndex === 1}">
                     <button-yellow-icon
                       text="OK"
                       :sharp="true"
