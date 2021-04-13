@@ -4,6 +4,7 @@
       'size-16': fontSize === 'size-16',
       'size-20': fontSize === 'size-20',
       'square': square === true,
+      'square-radius-8': squareRadius8 === true,
       'shadow': shadow === true
     }"
   >
@@ -26,6 +27,11 @@ export default {
       required: false
     },
     square: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    squareRadius8: {
       type: Boolean,
       default: false,
       required: false
@@ -72,6 +78,7 @@ button {
 
   &:hover {
     background-color: rgba(255, 156, 57, 0.8);
+    transform: scale(1.03);
   }
 
   &.size-16 {
@@ -88,6 +95,10 @@ button {
 
   &.square {
     border-radius: 5px;
+  }
+
+  &.square-radius-8 {
+    border-radius: 8px;
   }
 
   &.shadow {

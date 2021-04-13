@@ -1,3 +1,4 @@
+// 文章内容区样式
 .blog-detail__content {
   padding-top: 40px;
   color: #2A2A2A;
@@ -17,9 +18,19 @@
     }
   }
 
-  h2 {
+  & > h2 {
+    position: relative;
     margin: 36px 0 16px;
-    font: 600 24px Montserrat;
+    padding: 6px 13px;
+    display: inline-block;
+    width: 100%;
+    background-color: rgba(81, 132, 220, 0.12);
+    border-radius: 12px;
+    border-left: 7px solid #005FFF;
+
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 31px;
   }
 
   h3 {
@@ -85,11 +96,22 @@
       display: block;
       width: 74px;
       height: 28px;
-      background-image: url("~@/views/blog/blog-detail/img/blog__icon_tips.svg");
+      background-image: url("./img/blog__icon_tips.svg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
       content: "";
+    }
+
+    &.notice {
+      background: #F1FBF1;
+      color: #129246;
+
+      &:before {
+        width: 89px;
+        height: 28px;
+        background-image: url("./img/blog__icon_notice.svg");
+      }
     }
   }
 
@@ -101,6 +123,7 @@
     border: 1px solid #CECECE;
     border-radius: 12px;
     color: #2A2A2A;
+    font-size: 0;
 
     .download__left {
       display: inline-block;
@@ -210,6 +233,7 @@
     }
   }
 
+  // 索引
   .index {
     margin: 40px 0;
     padding: 22px 40px;
@@ -283,6 +307,142 @@
 
             &:before {
               left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 索引V2
+  .index-v2 {
+    padding: 23px 10px 39px 37px;
+    background-color: #F3F5F7;
+    border-radius: 12px;
+
+    .index-v2__title {
+      span {
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 700;
+        color: #005FFF;
+        vertical-align: middle;
+      }
+
+      &:before {
+        margin-right: 13px;
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url("./img/icon-index-icon.svg") center/contain no-repeat;
+        vertical-align: middle;
+      }
+    }
+
+    .index-v2__unit-container {
+      max-height: 360px;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        border-radius: 4px;
+      }
+
+      &::-webkit-scrollbar-track-piece {
+        width: 6px;
+        background-color: #E3E8F3;
+        border-radius: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        width: 10px;
+        background-color: #B9D1F5;
+        border-radius: 5px;
+      }
+
+      .index-v2__unit {
+        &:before {
+          margin-right: 11px;
+          content: "";
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          background-color: #88B2F2;
+          border-radius: 50%;
+          vertical-align: middle;
+        }
+
+        a {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 32px;
+          color: #000;
+          transition: all 0.2s;
+
+          &:hover {
+            color: #005FFF;
+            text-decoration: underline;
+          }
+        }
+
+        .index-v2__sub-title {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 31px;
+          color: #000;
+          transition: all 0.1s;
+          cursor: pointer;
+
+          &:hover {
+            color: #005FFF;
+          }
+
+          &:after {
+            margin-left: 8px;
+            content: "";
+            display: inline-block;
+            width: 11px;
+            height: 6px;
+            background: url("./img/icon-arrow.svg") center/contain no-repeat;
+            vertical-align: middle;
+            transform: rotate(-90deg);
+            transition: all 0.3s;
+          }
+        }
+
+        .index-v2__subunit-container {
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.5s;
+
+          .index-v2__subunit {
+            padding-left: 42px;
+
+            a {
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 24px;
+              color: #7D7D7D;
+
+              &:hover {
+                color: #005FFF;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+
+        &.sub {
+          &.active {
+            .index-v2__subunit-container {
+              max-height: 200px;
+            }
+
+            .index-v2__sub-title {
+              &:after {
+                transform: rotate(0);
+              }
             }
           }
         }
@@ -539,6 +699,7 @@
     }
   }
 
+  // 下载模块新样式
   .download-type-1 {
     padding: 52px 20px 40px 300px;
     width: 800px;
@@ -630,6 +791,98 @@
     }
   }
 
+  .download-type-3 {
+    padding: 26px 37px 0 48px;
+    width: 100%;
+    height: 200px;
+    background: url("./img/blog__download-type-3_bg.svg") no-repeat center;
+    background-size: cover;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .left, .btn-container {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .left {
+      width: 476px;
+    }
+
+    .btn-container {
+      margin-left: 25px;
+      width: 210px;
+    }
+
+    h2 {
+      font: 600 24px/28px BalooChettan;
+      color: #FFFFFF;
+    }
+
+    ul {
+      margin: 18px 0 0;
+      padding-left: 0;
+      font-size: 0;
+
+      li {
+        list-style: none;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        span {
+          position: relative;
+          font: 400 13px/24px Montserrat;
+          color: #FFFFFF;
+          vertical-align: middle;
+        }
+
+        &:before {
+          margin-right: 7px;
+          content: "";
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          background: url("./img/icon-check.svg") no-repeat center;
+          background-size: contain;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .btn-container {
+      padding-top: 10px;
+
+      a {
+        margin-top: 8px;
+        width: 100%;
+        height: 50px !important;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        button {
+          width: 100% !important;
+          min-width: 100% !important;
+          height: 100% !important;
+        }
+
+        &.btn-buy {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .safe {
+      margin: 10px 0 0;
+      font: 12px BalooChettan;
+      color: #FFFFFF;
+      text-align: center;
+    }
+  }
+
   // button样式 - 小语种
   .btn-apps {
     position: relative;
@@ -674,8 +927,19 @@
       }
     }
   }
+
+  // 锚点定位————暗锚
+  .anchor-locator {
+    content: "";
+    position: absolute;
+    top: -80px;
+    left: 0;
+    display: inline-block;
+    visibility: hidden;
+  }
 }
 
+// 阿拉伯语样式
 .lang-arabic {
   .blog-detail__content .index ul {
     direction: rtl;
@@ -692,7 +956,462 @@
   }
 }
 
+// 文章内容区外样式
+.blog-detail {
+  padding-bottom: 100px;
+
+  .wrapper {
+    padding-top: 32px;
+  }
+
+  .left {
+    display: inline-block;
+    vertical-align: top;
+    width: 800px;
+
+    .breadcrumb {
+      padding: 18px 0;
+      border-bottom: 1px solid #E8E8E8;
+      line-height: 24px;
+
+      a, span {
+        margin: 0 2px;
+        display: inline-block;
+        font: 500 16px Montserrat;
+        color: #7E7E7E;
+
+        b {
+          color: #000000;
+          font-weight: 600;
+        }
+      }
+
+      a {
+        color: #005FFF;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .meta-info {
+      padding-top: 28px;
+
+      h1 {
+        font: 600 40px/50px Montserrat;
+        color: #000000;
+      }
+
+      p.intro {
+        margin-top: 40px;
+        font: 400 16px/20px Montserrat;
+        color: #2A2A2A;
+      }
+
+      hr {
+        margin-top: 30px;
+        border-top: 1px solid #E8E8E8;
+      }
+
+      p.info {
+        margin-top: 20px;
+        font: Regular 16px/20px Montserrat;
+        letter-spacing: 0;
+        color: #A8A8A8;
+      }
+    }
+
+    .related-list {
+      margin-top: 60px;
+
+      h2 {
+        font: 600 20px/46px Montserrat;
+        color: #2A2A2A;
+      }
+
+      a {
+        display: inline-block;
+        width: 100%;
+        border-bottom: 1px solid #E8E8E8;
+        font: 500 16px/64px Montserrat;
+        color: #005fff;
+        transition: all 0.1s;
+
+        &:hover {
+          color: #2128BD;
+        }
+      }
+    }
+
+    &.lang-arabic {
+      h1, p.intro {
+        direction: rtl;
+      }
+    }
+  }
+
+  .right {
+    position: sticky;
+    top: 32px+80px;
+    margin-left: 56px;
+    display: inline-block;
+    vertical-align: top;
+    width: 342px;
+
+    .mix-container {
+      padding: 32px 20px 32px;
+      width: 100%;
+      background: #7C56FF;
+      box-shadow: 0 3px 6px #00000029;
+      border-radius: 12px;
+
+      text-align: center;
+
+      h2 {
+        margin-top: 20px;
+        font: 800 28px Montserrat;
+        color: #fff;
+      }
+
+      p.sub {
+        margin-top: 16px;
+        font-size: 0;
+
+        &.b {
+          margin-top: 32px;
+        }
+
+        * {
+          vertical-align: middle;
+        }
+
+        span {
+          font: 400 16px/20px Montserrat;
+          color: #FFFFFF;
+        }
+
+        i {
+          margin-right: 16px;
+          display: inline-block;
+          width: 19px;
+          height: 24px;
+          background: url("~@/assets/images/global/icon_safe.svg") no-repeat center;
+          background-size: contain;
+          vertical-align: middle;
+        }
+      }
+
+      .btn {
+        margin-top: 22px;
+        display: inline-block;
+
+        .btn-c {
+          margin-top: 16px;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+
+      img.qr {
+        margin-top: 22px;
+        width: 100px;
+      }
+    }
+
+    .hot-list {
+      margin-top: 62px;
+
+      h2 {
+        font: 600 20px/47px Montserrat;
+        color: #2A2A2A;
+      }
+
+      .links {
+        a {
+          margin-top: 20px;
+          padding-bottom: 14px;
+          display: block;
+          border-bottom: 1px solid #E8E8E8;
+
+          &:hover {
+            span {
+              color: #2128BD;
+            }
+          }
+
+          span {
+            font: 500 16px/19px Montserrat;
+            color: #7E7E7E;
+            @include text-ellipsis-multi(2);
+            transition: all 0.1s;
+          }
+        }
+      }
+    }
+  }
+
+  .skeleton-blog-detail {
+    .breadcrumb {
+      span {
+        width: 80%;
+        height: 20px;
+      }
+    }
+
+    .meta-info {
+      h1 {
+        span {
+          width: 100%;
+          height: 40px;
+        }
+      }
+
+      p.intro {
+        span {
+          width: 86%;
+          height: 16px;
+        }
+      }
+
+      p.info {
+        span {
+          width: 30%;
+          height: 16px;
+        }
+      }
+    }
+
+    .blog-detail__content {
+      p {
+        span {
+          width: 100%;
+          height: 16px;
+        }
+      }
+
+      h2 {
+        span {
+          width: 60%;
+          height: 24px;
+        }
+      }
+    }
+
+    span {
+      display: inline-block;
+      background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+      background-size: 200% 100%;
+      animation: shimmer 4s infinite linear;
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 100%;
+        }
+        100% {
+          background-position: -200% 100%;
+        }
+      }
+    }
+  }
+
+  .skeleton-hot-list {
+    h2 {
+      span {
+        width: 40%;
+        height: 20px;
+      }
+    }
+
+    a {
+      span {
+        margin-bottom: 5px;
+        width: 100%;
+        height: 16px;
+
+        &:last-child {
+          width: 80%;
+        }
+      }
+    }
+
+    span {
+      display: inline-block;
+      background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+      background-size: 200% 100%;
+      animation: shimmer 4s infinite linear;
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 100%;
+        }
+        100% {
+          background-position: -200% 100%;
+        }
+      }
+    }
+  }
+
+  .search-containrer {
+    width: 800px;
+    margin-top: 40px;
+    padding: 55px 125px 75px 125px;
+    background: transparent linear-gradient(262deg, #D178E3 0%, #4D65FA 100%) 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    opacity: 1;
+    color: #fff;
+    text-align: center;
+  }
+
+  //h2 {
+  //  font-size: 30px;
+  //  margin-bottom: 14px;
+  //  font-weight: 500;
+  //}
+
+  p {
+    font-size: 18px;
+  }
+
+  .control-search_ins {
+    width: 549px;
+    height: 70px;
+    margin: auto;
+    margin-top: 38px;
+    box-shadow: 0px 8px 20px #000A3D4D;
+    border: 1px solid #E0E1E6;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #fff;
+
+    .search_btn {
+      box-shadow: 0px 10px 26px #3F065670;
+
+    }
+
+    label {
+      input {
+        font-size: 16px;
+        padding-left: 18%;
+        background: url("~@/assets/images/global/icon_search_username.svg") no-repeat 31px 21px;
+        background-size: 24px 26px;
+      }
+    }
+
+    input:focus {
+      border-color: #E0E1E6 !important;
+    }
+
+    input:hover {
+      border-color: #FCDC4E !important;
+      background: url("~@/assets/images/global/blog_hover_user.svg") no-repeat 31px 21px;
+      background-size: 24px 26px;
+    }
+  }
+
+  .ins-info-container {
+    margin-top: 50px;
+
+    img.searchimg {
+      width: 102px;
+      height: 102px;
+      border: 4px solid #fff;
+    }
+
+    h3 {
+      font: 500 16px/19px Montserrat;
+      color: #fff;
+    }
+
+    p {
+      color: #fff;
+      font: 500 20px Montserrat;
+      margin-top: 30px;
+      margin-bottom: 23px;
+
+      b {
+        color: #fff;
+      }
+    }
+
+    .linewhite {
+      width: 544px;
+      height: 1px;
+      background-color: #fff;
+      margin: auto;
+      opacity: 0.2;
+    }
+
+    .scanContain {
+      text-align: center;
+
+      h3 {
+        font: 14px/18px Montserrat;
+        color: #FCE5FF;
+        margin: 23px 0;
+      }
+
+      .qrqdbg {
+        width: 150px;
+        height: 150px;
+        margin: auto;
+        background: url("~@/assets/images/global/qrcode__download_android.svg") no-repeat center;
+      }
+
+      .scanbgdow.scanbgdow {
+        background: url("~@/assets/images/global/qrcode__download_ios.svg") no-repeat center;
+      }
+
+      .detailScan {
+        margin-top: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          display: inline-block;
+          width: 1px;
+          height: 26px;
+          background: #fff;
+          margin: 0 20px;
+        }
+
+        img {
+          border: none;
+          cursor: pointer;
+        }
+
+        img.img01 {
+          width: 26px;
+          height: 31px;
+          opacity: .4;
+        }
+
+        img.onimg01 {
+          opacity: 1;
+        }
+
+        img.img02 {
+          width: 24px;
+          height: 28px;
+          opacity: .4;
+        }
+
+        img.onimg02 {
+          opacity: 1;
+        }
+      }
+    }
+
+    .mobileDown {
+      display: none;
+    }
+  }
+
+}
+
 @media (max-width: 768px) {
+  // 文章内容区样式
   .blog-detail__content {
     padding-top: 25px;
 
@@ -704,7 +1423,9 @@
     h2 {
       margin-top: 30px;
       margin-bottom: 14px;
-      font: 600 18px Montserrat;
+
+      font-size: 21px;
+      line-height: 31px;
     }
 
     h3 {
@@ -955,6 +1676,205 @@
         margin: 16px 0 0;
         font: 500 12px Montserrat;
       }
+    }
+  }
+
+  // 文章内容区外样式
+  .blog-detail {
+    padding-bottom: 60px;
+
+    .wrapper {
+      padding: 0 4vw;
+    }
+
+    .left {
+      width: 100%;
+
+      .breadcrumb {
+        padding-top: 20px;
+        line-height: normal;
+        border-bottom: none;
+
+        a, span {
+          display: inline-block;
+          font: 500 14px Montserrat;
+        }
+      }
+
+      .meta-info {
+        padding-top: 22px;
+
+        h1 {
+          font: 600 22px/27px Montserrat;
+        }
+
+        p.intro {
+          margin-top: 16px;
+          font: 400 14px/17px Montserrat;
+        }
+
+        hr {
+          margin-top: 16px;
+        }
+
+        p.info {
+          margin-top: 12px;
+          font: 400 12px/14px Montserrat;
+        }
+      }
+
+      .related-list {
+        margin-top: 40px;
+
+        h2 {
+          margin-bottom: 18px;
+          font: 600 16px/24px Montserrat;
+        }
+
+        a {
+          margin-top: 10px;
+          padding-bottom: 10px;
+          font: 500 14px/20px Montserrat;
+          @include text-ellipsis-multi(2);
+        }
+      }
+    }
+
+    .right {
+      margin-left: 0;
+      margin-top: 60px;
+      width: 100%;
+
+      .mix-container {
+        padding: 4vw;
+
+        .btn {
+          margin-top: 22px;
+          width: 72vw;
+          height: 50px;
+        }
+      }
+
+      .hot-list {
+        margin-top: 62px;
+
+        h2 {
+          font: 600 16px/24px Montserrat;
+        }
+
+        .links {
+          a {
+            margin-top: 20px;
+            padding-bottom: 14px;
+
+            span {
+              font: 500 16px Montserrat;
+            }
+          }
+        }
+      }
+    }
+
+    .search-containrer {
+      padding: 31px 21px 48px;
+      width: 100%;
+
+      h2 {
+        font: 600 17px/25px Montserrat;
+      }
+
+      p {
+        font: 14px Montserrat;
+      }
+
+      .control-search_ins {
+        border: none;
+
+        label {
+          width: 68%;
+        }
+
+        margin-top: 10px;
+        width: 88%;
+        height: 50px;
+        border-radius: 5px;
+
+        input {
+          padding-left: 20px;
+          border-radius: 5px 0 0 5px;
+          background-image: none !important;
+          font: 14px Montserrat;
+          border: 1px solid #fff;
+          border: none !important;
+        }
+
+        .search_btn {
+          border-radius: 5px !important;
+          width: 32%;
+          overflow: visible;
+        }
+      }
+
+      .ins-info-container {
+        margin-top: 20px !important;
+
+        img.searchimg {
+          width: 88px;
+          height: 88px;
+        }
+
+        p {
+          span {
+            display: inline-block;
+            text-align: left;
+
+            b {
+              display: block;
+            }
+          }
+        }
+
+        .linewhite {
+          display: none;
+        }
+
+        .scanContain {
+          display: none;
+        }
+
+        .mobileDown {
+          display: block;
+          width: 100%;
+
+          .getfreeDown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            width: 263px;
+            height: 56px;
+            background: transparent linear-gradient(270deg, #FFD256 0%, #F1FF33 100%) 0% 0% no-repeat padding-box;
+            box-shadow: 0px 12px 24px #00000029;
+            opacity: 1;
+            border-radius: 64px;
+            font: 600 16px/56px Montserrat;
+            letter-spacing: 0px;
+            color: #2A2A2A;
+            margin-top: 25px;
+          }
+
+          .getfreeDown:hover {
+            background: transparent linear-gradient(270deg, #F8DC2A 0%, #F7EE41 100%) 0% 0% no-repeat padding-box;
+            box-shadow: 0px 10px 26px #3F065670;
+          }
+
+          p {
+            margin: 0;
+            margin-top: 18px;
+          }
+        }
+      }
+
     }
   }
 }

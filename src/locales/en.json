@@ -263,7 +263,7 @@
     "banner": {
       "title": "Buy Instagram Followers and Likes",
       "titleFollowers": "Buy Instagram Followers",
-      "titleLikesDaily":"Buy Instagram Likes",
+      "titleLikesDaily": "Buy Instagram Likes",
       "titleLikes": "Buy Instagram Likes",
       "titleSubGoTo": "Go to buy followers"
     },
@@ -446,6 +446,14 @@
     },
     "error": {
       "listEmpty": "There is no article on this category."
+    },
+    "blogTitle": {
+      "title": "GetInsta - Get Free Instagram Followers Easily",
+      "list": [
+        "Get real and organic followers & likes on Instagram.",
+        "Unlimited free Instagram followers & likes.",
+        "Easy steps, 100% safe and 24/7 support."
+      ]
     }
   },
   "blogDetail": {
