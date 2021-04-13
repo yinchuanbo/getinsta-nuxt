@@ -342,7 +342,7 @@
 
     .index-v2__unit-container {
       max-height: 360px;
-      overflow-y: scroll;
+      overflow-y: auto;
 
       &::-webkit-scrollbar {
         width: 6px;
