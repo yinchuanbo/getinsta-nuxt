@@ -1816,8 +1816,44 @@ export default {
         param.following_count = this.insUser.follow;
         this.gaBottomBtn();
       }
-
       if(this.tabsIndex === 1) {
+
+        let autoLikeNum = this.productPkgListDailyVMAuto.require_post_count + '*' + this.productPkgListDailyVMAuto['purchase_quantity'];
+
+        if (this.$store.state.s2) {
+          switch (autoLikeNum) {
+            case '20*50':
+              this.$ga.event('insbuy', 'autolbuy', 'st20*50');
+              break;
+            case '30*50':
+              this.$ga.event('insbuy', 'autolbuy', 'st30*50');
+              break;
+            case '50*50':
+              this.$ga.event('insbuy', 'autolbuy', 'st50*50');
+              break;
+            case '20*100':
+              this.$ga.event('insbuy', 'autolbuy', 'st20*100');
+              break;
+            case '30*100':
+              this.$ga.event('insbuy', 'autolbuy', 'st30*100');
+              break;
+            case '50*100':
+              this.$ga.event('insbuy', 'autolbuy', 'st50*100');
+              break;
+            case '20*250':
+              this.$ga.event('insbuy', 'autolbuy', 'st20*250');
+              break;
+            case '30*250':
+              this.$ga.event('insbuy', 'autolbuy', 'st30*250');
+              break;
+            case '50*250':
+              this.$ga.event('insbuy', 'autolbuy', 'st50*250');
+              break;
+          }
+        }
+
+        
+
         param.task_type = 1;
         param.product_id = this.productPkgListDailyVMAuto.product_id;
         param.like_id = post.like_id;
@@ -1866,7 +1902,6 @@ export default {
             case '60*100':
               this.$ga.event('insbuy', 'dailylbuy', 'st6*100');
               break;
-
             case '90*30':
               this.$ga.event('insbuy', 'dailylbuy', 'st9*30');
               break;
@@ -2173,6 +2208,8 @@ export default {
       if (this.$store.state.s2) {
         if (this.tabsIndex === 0) {
           this.$ga.event('buttonclick', 'click', 'likebuy');
+        } else if(this.tabsIndex === 1)  {
+          this.$ga.event('buttonclick', 'click', 'autolbuy');
         } else if(this.tabsIndex === 2) {
           this.$ga.event('buttonclick', 'click', 'dailylbuy');
         }
