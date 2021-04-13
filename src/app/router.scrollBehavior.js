@@ -1,11 +1,11 @@
 export default function (to, from, savedPosition) {
   if (savedPosition) {
     if (to.hash === '') {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(savedPosition);
-        }, 500);
-      });
+      // return new Promise((resolve) => {
+      //   setTimeout(() => {
+      //     resolve(savedPosition);
+      //   }, 500);
+      // });
     }
   } else {
     if (!to.query.anchor) {

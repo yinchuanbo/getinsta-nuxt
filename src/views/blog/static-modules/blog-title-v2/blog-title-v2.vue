@@ -34,9 +34,9 @@ export default {
   components: {},
   props: {
     blogId: {
-      type: Number,
+      type: String,
       required: false,
-      default: 0
+      default: ''
     }
   },
   computed: {
@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     gaDownload() {
-      let param = this.blogId === 0 ? `bloghp` : this.blogId;
+      let param = this.blogId === '0' ? `bloghp` : this.blogId;
       this.$ga.event('insrg', 'register', `rg-${param}`);
 
 
@@ -120,7 +120,7 @@ export default {
         };
 
       // this.$ga.event('insbuy', 'buy', `bloghp${gaPlatform}buy${multiLang}`);
-      let param = this.blogId === 0 ? `bloghp` : this.blogId;
+      let param = this.blogId === '0' ? `bloghp` : this.blogId;
       this.$ga.event('insbuy', 'buy', `buy-${param}`);
       this.$nuxt.$router.push({ path: '/buy-instagram-followers', query: query });
     }

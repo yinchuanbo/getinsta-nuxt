@@ -1,7 +1,7 @@
 <template>
   <div class="blog-detail">
     <!--    <div id="header-blank" class="header-blank pc"></div>-->
-    <blog-title-v2 :blog-id="blogSortObj.id" />
+    <blog-title-v2 :blog-id="blogID" />
 
     <div class="wrapper">
       <div class="left" :class="{ 'lang-arabic': langArabic }">
@@ -403,6 +403,7 @@ export default {
       this.blogBuyAutoFollowersDisplay();
       this.blogBuyAutoLikesDisplay();
       this.imgGalleryDisplay();
+      this.blogIndexClickEvent();
 
       setTimeout(() => {
         this.renderDetector();
@@ -510,6 +511,19 @@ export default {
           container.parentNode.replaceChild(component.$el, container);
           _this.renderTimerCounter++;
         }
+      }
+    },
+    blogIndexClickEvent() {
+      let units = document.querySelectorAll('.index-v2__unit');
+      for (let i = 0; i < units.length; i++) {
+        units[i].addEventListener('click', function () {
+          let thisClassList = this.classList;
+          if (thisClassList.contains('active')) {
+            thisClassList.remove('active');
+          } else {
+            thisClassList.add('active');
+          }
+        });
       }
     },
 
