@@ -171,6 +171,54 @@
                 <td><i class="cross"></i></td>
                 <td><i class="check"></i></td>
               </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
             </tbody>
           </table>
 
