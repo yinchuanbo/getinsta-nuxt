@@ -1,7 +1,7 @@
 <template>
   <div class="blog-detail">
     <!--    <div id="header-blank" class="header-blank pc"></div>-->
-    <blog-title-v2 />
+    <blog-title-v2 :blog-id="blogSortObj.id" />
 
     <div class="wrapper">
       <div class="left" :class="{ 'lang-arabic': langArabic }">

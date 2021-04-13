@@ -177,5 +177,88 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .blog-img-gallery {
+    &.vertical {
+      .img-container {
+        width: 100%;
+        height: 128vw;
+      }
+    }
+
+    &.horizontal {
+      .img-container {
+        width: 100%;
+        height: 65.6vw;
+      }
+    }
+
+    .img-container {
+      position: relative;
+      margin: 0 auto;
+
+      img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        background-color: #e0e0e0;
+        object-fit: cover;
+        opacity: 0;
+        transform: translateX(0);
+        transition: all 0.5s ease-in-out;
+
+        &.center {
+          opacity: 1;
+        }
+
+        &.left {
+          transform: translateX(-50px);
+        }
+
+        &.right {
+          transform: translateX(50px);
+        }
+      }
+    }
+
+    .pagination {
+      margin-top: 20px;
+      text-align: center;
+
+      span {
+        margin: 0 10px;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-color: #D1D1D1;
+        border-radius: 50%;
+        vertical-align: middle;
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+
+        &.left, &.right {
+          width: 12px;
+          height: 12px;
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          background-image: url("./img/icon-arrow.svg");
+        }
+
+        &.right {
+          transform: rotate(180deg);
+        }
+
+        &.on {
+          background-color: #005FFF;
+        }
+      }
+    }
+  }
 }
 </style>

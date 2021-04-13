@@ -1720,6 +1720,13 @@ export default {
           param.short_code = this.postList[0].short_code;
         }
 
+        // 广告
+        let adStore = { s: '', c: '', k: '' };
+        adStore.s = this.$route.query.source || '';
+        adStore.c = this.$route.query.camp || '';
+        adStore.k = this.$route.query.k || '';
+        this.$storage.set('adStore', adStore);
+
         // console.log(param);
         this.gaBottomBtn();
       }
@@ -1747,11 +1754,11 @@ export default {
       }
 
       // 广告参数
-      let adStore = { s: '', c: '', k: '' };
-      adStore.s = this.$route.query.s || '';
-      adStore.c = this.$route.query.c || '';
-      adStore.k = this.$route.query.k || '';
-      this.$storage.set('adStore', adStore);
+      // let adStore = { s: '', c: '', k: '' };
+      // adStore.s = this.$route.query.s || '';
+      // adStore.c = this.$route.query.c || '';
+      // adStore.k = this.$route.query.k || '';
+      // this.$storage.set('adStore', adStore);
 
       // console.log(this.$route.path);
 

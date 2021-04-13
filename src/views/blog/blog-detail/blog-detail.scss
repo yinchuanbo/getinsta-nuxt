@@ -342,7 +342,7 @@
 
     .index-v2__unit-container {
       max-height: 360px;
-      overflow-y: scroll;
+      overflow-y: auto;
 
       &::-webkit-scrollbar {
         width: 6px;
@@ -460,6 +460,10 @@
     font: 400 14px Montserrat;
 
     tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+
       th, td {
         padding: 0 10px;
         border: 1px solid #E5E5E5;
@@ -506,6 +510,33 @@
         }
       }
     }
+
+    thead {
+      tr {
+        width: calc(100% - 6px);
+      }
+    }
+
+    tbody {
+      display: block;
+      width: 100%;
+      max-height: 380px;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track-piece {
+        width: 6px;
+        background-color: #EEEEEE;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        width: 10px;
+        background-color: #B9D1F5;
+      }
+    }
   }
 
   * {
@@ -532,6 +563,7 @@
 
       &.btn-buy {
         margin-left: 24px;
+
       }
     }
   }
@@ -696,6 +728,13 @@
       span {
         transition: all 0.1s;
       }
+
+      &.yellow {
+        background: linear-gradient(90deg, #FEB85C 0%, #FF7347 100%);
+        box-shadow: 0 3px 6px #00000029;
+        border: none;
+        color: #FFFFFF;
+      }
     }
   }
 
@@ -825,6 +864,7 @@
       font-size: 0;
 
       li {
+        margin-top: 10px;
         list-style: none;
 
         &:first-child {
@@ -833,20 +873,24 @@
 
         span {
           position: relative;
-          font: 400 13px/24px Montserrat;
+          padding-left: 21px;
+          display: inline-block;
+          font: 400 13px Montserrat;
           color: #FFFFFF;
           vertical-align: middle;
-        }
 
-        &:before {
-          margin-right: 7px;
-          content: "";
-          display: inline-block;
-          width: 14px;
-          height: 14px;
-          background: url("./img/icon-check.svg") no-repeat center;
-          background-size: contain;
-          vertical-align: middle;
+          &:before {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            content: "";
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: url("./img/icon-check.svg") no-repeat center;
+            background-size: contain;
+            vertical-align: middle;
+          }
         }
       }
     }
@@ -1585,7 +1629,7 @@
 
         .icon {
           position: relative;
-          width: 10.4%;
+          width: 22px;
           height: 44px;
         }
 
@@ -1617,28 +1661,28 @@
     .download-type-1 {
       padding: 0 0 30px;
       width: 100%;
-      background: #F2F2F2;
-      border-radius: 6px;
+      border-radius: 12px;
+      background: url("./img/blog__download-type-1_bg-m.svg") center/cover no-repeat;
 
       h2 {
         position: relative;
-        padding: 24px 21px 21px 21+50+18px;
+        padding: 28px 20px 30px;
         display: inline-block;
         width: 100%;
-        font: 600 16px/20px Montserrat;
-        background-image: linear-gradient(to right, #FF81E2, #2C85FF);
+        font: 600 24px/28px BalooChettan;
+        text-align: center;
 
         &:before {
-          position: absolute;
-          top: 20px;
-          left: 21px;
-          content: "";
-          display: inline-block;
-          width: 50px;
-          height: 50px;
-          background: url("~@/assets/images/global/logo.svg") no-repeat center;
-          background-size: contain;
-          vertical-align: middle;
+          //position: absolute;
+          //top: 20px;
+          //left: 21px;
+          //content: "";
+          //display: inline-block;
+          //width: 50px;
+          //height: 50px;
+          //background: url("~@/assets/images/global/logo.svg") no-repeat center;
+          //background-size: contain;
+          //vertical-align: middle;
         }
       }
 
@@ -1647,13 +1691,25 @@
 
         li {
           margin-top: 14px;
-          font: 500 12px/14px Montserrat;
-          color: #2a2a2a;
+          font: 400 14px/14px Montserrat;
+          color: #FFFFFF;
 
           &:before {
             width: 14px;
             height: 14px;
-            background-image: url("~@/assets/images/global/icon_ul_star.svg");
+            background-image: url("./img/icon-check.svg");
+          }
+        }
+      }
+
+      .btn-container {
+        padding: 20px;
+
+        a {
+          width: 100%;
+
+          button {
+            width: 100%;
           }
         }
       }
@@ -1675,6 +1731,47 @@
       p.note {
         margin: 16px 0 0;
         font: 500 12px Montserrat;
+      }
+    }
+
+    .download-type-3 {
+      padding: 20px 32px;
+      width: 100%;
+      height: auto;
+      background-image: url("./img/blog__download-type-3_bg-m.svg");
+
+      .left {
+        width: 100%;
+      }
+
+      .btn-container {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      .btn-container {
+        a {
+          height: 60px !important;
+
+          &.btn-buy {
+            width: 100% !important;
+            min-width: 100% !important;
+            margin-left: 0;
+
+            button.buy {
+              border-color: #fff;
+              color: #fff;
+            }
+          }
+        }
       }
     }
   }

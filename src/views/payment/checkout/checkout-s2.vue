@@ -2549,6 +2549,8 @@ export default {
         this.COMMON.getURLQuery('cart_cache') === '1'
       ) {
         const storedCartCache = this.$storage.get('cartCache');
+
+        
         // console.log(storedCartCache);
 
         if (storedCartCache.order_id)
