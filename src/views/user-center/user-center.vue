@@ -1215,10 +1215,7 @@ export default {
           }
         })
         if(this.countryFlagSelect == -1) return;
-
-
         this.currentCountry = _this.regionList[0];
-
         let region_id = parseInt(this.regionList[0].region_id);
         if(region_id && region_id != 0) {
           this.getCountryProduct();
@@ -1258,6 +1255,7 @@ export default {
           let _this = this;
           list.forEach(function(item, index) {
             if(item.promote_sale_type === 3) {
+              _this.productPkgCurrentFollow = item;
               _this.productPkgListFollowIndex = index;
               return;
             }

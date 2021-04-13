@@ -1,7 +1,7 @@
 <template>
   <div class="blog">
     <!--<blog0-title />-->
-    <blog-title-v2 />
+    <blog-title-v2 :blog-id="'0'" />
     <blog1-content />
   </div>
 </template>

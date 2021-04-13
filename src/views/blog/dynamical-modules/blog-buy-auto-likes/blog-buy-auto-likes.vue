@@ -6,7 +6,7 @@
     </div>
     <div class="buy-content">
       <transition name="fade-skeleton" mode="out-in">
-        <div v-if="!productPkgListLoading">
+        <div v-if="!productPkgListLoading" class="buy-content-container">
           <label class="cycle days">
             <select v-model="productPkgListDaysVM" name="offer-daily" class="package changed blogbuySelect Selectone">
               <option v-for="(item, i) in productPkgListDays" :key="i" :value="item">
@@ -53,6 +53,7 @@
       :enter-box="enterbox"
       :my-ins-user="insUser"
       :this-vue="sendThis"
+      :is-followers="false"
       @closebox="closeBuyPop"
     />
   </div>
@@ -184,7 +185,7 @@ export default {
       this.$ga.event(
         'buttonclick',
         'click',
-        `dailyf-${this.sendThis.blogID}`
+        `dailyl-continue-${this.sendThis.blogID}`
       );
       this.searchInsByServerV2();
     },
@@ -418,30 +419,40 @@ export default {
 
 @media (max-width: 768px) {
   .BlogBuy {
-    padding: 0 10px;
+    padding: 36px 16px;
     width: 100%;
+    height: auto;
     background-image: url("./img/bg-m.svg");
 
     .title-content {
+      padding-top: 0;
       width: 100%;
-      height: 90px;
+      height: auto;
 
       h2 {
-        font: 600 16px/20px Montserrat;
+        margin-bottom: 0;
+        font: 600 26px/38px Montserrat;
       }
 
       p {
-        font: 500 12px/15px Montserrat;
+        margin: 0;
+        font: 500 14px/20px Montserrat;
       }
     }
 
     .buy-content {
-      padding: 44px 0 56px 0;
+      margin: 20px 0 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       width: 100%;
+      height: auto;
+
+      .buy-content-container {
+        width: 100%;
+      }
 
       .blogbuySelect {
         height: 44px;
@@ -496,7 +507,7 @@ export default {
       }
 
       .control-search_ins {
-        width: 280px;
+        width: 100%;
         height: 44px;
 
         label {
