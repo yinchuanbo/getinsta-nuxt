@@ -717,6 +717,7 @@ export default {
     }
 
     span {
+      display: inline-block;
       font: normal normal 700 52px BalooChettan;
       background: linear-gradient(270deg, #FF5C87 0%, #4761FF 100%);
       -webkit-background-clip: text;
@@ -1053,8 +1054,8 @@ export default {
               height: 40px;
 
               &:before {
-                  left: calc(13px + 6.4vw);
-                  top: 8px;
+                left: calc(13px + 6.4vw);
+                top: 8px;
               }
 
               &.second {
