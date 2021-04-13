@@ -9,7 +9,7 @@
 
 <style lang="scss">
 .eastersale-banner-tags {
-  width: 235px;
+  width: 240px;
   height: 22px;
   margin: 0 auto;
   background: url('../images/m/tags.svg') no-repeat;

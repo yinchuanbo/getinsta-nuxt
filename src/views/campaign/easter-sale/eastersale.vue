@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       screenWidth: process.client ? document.body.clientWidth : 0,
-      endTime: '2021-04-10 00:00:00',
+      endTime: '2021-05-01 00:00:00',
       products: [
         {
           pro_num: 500,

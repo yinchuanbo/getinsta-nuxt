@@ -77,15 +77,15 @@
           m = Math.floor((leftTime / 1000 / 60) % 60)
           s = Math.floor((leftTime / 1000) % 60)
           ms = Math.floor(leftTime % 1000)
+          this.date_d = d
+          this.date_h = h
+          this.date_m = m
+          this.date_s = s
+          this.date_ms = ms
+          setTimeout(this.countTime, 50)
         } else {
           console.log('已截止')
         }
-        this.date_d = d
-        this.date_h = h
-        this.date_m = m
-        this.date_s = s
-        this.date_ms = ms
-        setTimeout(this.countTime, 50)
       }
     }
   };
