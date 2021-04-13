@@ -864,6 +864,7 @@
       font-size: 0;
 
       li {
+        margin-top: 10px;
         list-style: none;
 
         &:first-child {
@@ -872,20 +873,24 @@
 
         span {
           position: relative;
-          font: 400 13px/24px Montserrat;
+          padding-left: 21px;
+          display: inline-block;
+          font: 400 13px Montserrat;
           color: #FFFFFF;
           vertical-align: middle;
-        }
 
-        &:before {
-          margin-right: 7px;
-          content: "";
-          display: inline-block;
-          width: 14px;
-          height: 14px;
-          background: url("./img/icon-check.svg") no-repeat center;
-          background-size: contain;
-          vertical-align: middle;
+          &:before {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            content: "";
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: url("./img/icon-check.svg") no-repeat center;
+            background-size: contain;
+            vertical-align: middle;
+          }
         }
       }
     }

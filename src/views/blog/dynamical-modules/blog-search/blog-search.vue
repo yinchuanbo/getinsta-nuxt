@@ -239,6 +239,7 @@ export default {
   width: 760px;
   padding: 60px 0 45px;
   background: url("./img/bg.svg") top center no-repeat;
+  background-size: cover;
   border-radius: 12px;
   opacity: 1;
   color: #fff;
@@ -421,12 +422,8 @@ export default {
         padding-left: 20px;
         border-radius: 5px 0 0 5px;
         background-image: none !important;
-        font: 14px/23px Montserrat !important;
+        font: 12px/23px Montserrat !important;
         border: none !important;
-
-        &::placeholder {
-          font-size: 14px;
-        }
       }
 
       .search_btn {

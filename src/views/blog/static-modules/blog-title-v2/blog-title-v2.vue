@@ -29,7 +29,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'BlogTitleV2',
   components: {},
@@ -74,7 +73,7 @@ export default {
   },
   methods: {
     gaDownload() {
-      let param = this.blogID === 0 ? `bloghp` : this.blogID;
+      let param = this.blogId === 0 ? `bloghp` : this.blogId;
       this.$ga.event('insrg', 'register', `rg-${param}`);
 
 
@@ -121,7 +120,7 @@ export default {
         };
 
       // this.$ga.event('insbuy', 'buy', `bloghp${gaPlatform}buy${multiLang}`);
-      let param = this.blogID === 0 ? `bloghp` : this.blogID;
+      let param = this.blogId === 0 ? `bloghp` : this.blogId;
       this.$ga.event('insbuy', 'buy', `buy-${param}`);
       this.$nuxt.$router.push({ path: '/buy-instagram-followers', query: query });
     }
