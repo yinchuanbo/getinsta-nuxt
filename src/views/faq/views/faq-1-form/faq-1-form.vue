@@ -68,6 +68,15 @@
             </ValidationProvider>
           </div>
 
+          <!--App Name-->
+          <div v-if="appNameShow" class="row">
+            <ValidationProvider v-slot="{ classes }" name="App Name" rules="required">
+              <label :class="classes">
+                <input v-model="formAppName" type="text" placeholder="App Name">
+              </label>
+            </ValidationProvider>
+          </div>
+
           <div class="row">
             <ValidationProvider v-slot="{ classes }" name="Message" rules="required|min:50">
               <label class="message" :class="classes">
@@ -136,7 +145,9 @@ export default {
       dialogFail: false,
       dialogFailMsg: '',
       ajaxRequesting: false,
-      clicked: false
+      clicked: false,
+      appNameShow: false,
+      formAppName: ''
     };
   },
   computed: {
@@ -156,6 +167,7 @@ export default {
     }
   },
   mounted() {
+    this.appNameShow = this.COMMON.getURLQuery('variables') === null;
   },
   methods: {
     formSubmit(invalid, validate) {
@@ -185,6 +197,8 @@ export default {
         const app_version = appVariablesJSON.app_version || undefined;
         if (appVariablesJSON && channel) params.channel = channel;
         if (appVariablesJSON && app_version) params.app_version = app_version;
+
+        params.app_name = this.formAppName;
       }
 
       const paramsSigned = this.COMMON.paramSign(params);

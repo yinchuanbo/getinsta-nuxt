@@ -14,11 +14,11 @@
       'icon-ios': icon === 'ios',
       'loading': loading,
       'blogSearch':themecolor,
-      'blogbuy':watermelcolor
+      'blogBuy':watermelcolor
     }"
     :style="{ borderRadius: `${borderRadius}px` }"
   >
-    <span class="spantext" :class="{'spantext':sizeweight}" v-html="text"></span>
+    <span v-html="text"></span>
   </button>
 </template>
 
@@ -26,11 +26,6 @@
 export default {
   name: 'ButtonPurple',
   props: {
-    sizeweight:{
-       type: Boolean,
-      default: false,
-      required: false
-    },
     text: {
       type: String,
       default: 'Button',
@@ -42,7 +37,7 @@ export default {
       required: false
     },
     watermelcolor: {
-       type: Boolean,
+      type: Boolean,
       default: false,
       required: false
     },
@@ -103,9 +98,11 @@ button {
   color: #ffffff;
   transition: all 0.3s;
   user-select: none;
-  &:hover{
-    background-color:#ae70ff;
+
+  &:hover {
+    background-color: #ae70ff;
   }
+
   span {
     display: inline-block;
     font-weight: 600;
@@ -115,9 +112,6 @@ button {
     transform: translateY(0);
     opacity: 1;
     transition: all 0.3s;
-  }
-  span.spantext{
-    font-weight: 500;
   }
 
   &:hover {
@@ -171,25 +165,25 @@ button {
 
   &.header-small {
     span {
-      font-size: 16px;
+      font-size: 16px !important;
     }
   }
 
   &.size-20 {
     span {
-      font-size: 20px;
+      font-size: 20px !important;
     }
   }
 
   &.size-14 {
     span {
-      font-size: 14px;
+      font-size: 14px !important;
     }
   }
 
   &.size-16 {
     span {
-      font-size: 16px;
+      font-size: 16px !important;
     }
   }
 
@@ -219,9 +213,11 @@ button {
 
   &.loading {
     cursor: default;
+
     &:hover {
       background-color: #7c56ff;
     }
+
     &:after {
       transform: translateY(0);
       opacity: 1;
@@ -232,30 +228,32 @@ button {
       opacity: 0;
     }
   }
-  &.blogSearch{
+
+  &.blogSearch {
     width: 100%;
     height: 100%;
     background: transparent linear-gradient(90deg, #FFD256 0%, #F7EE41 100%) 0% 0% no-repeat padding-box;
     box-shadow: 0px 10px 26px #3F065670;
     border-radius: 11px;
-    span{
-    color: #2A2A2A;
-    font:600 18px Montserrat;
-    margin:auto;
+
+    span {
+      color: #2A2A2A;
+      font: 600 18px Montserrat;
+      margin: auto;
     }
   }
-  &.blogSearch.sharp{
-    border-radius:10px !important;
-    }
-  &.blogSearch:hover{
-     background: transparent linear-gradient(270deg, #F8DC2A 0%, #F7EE41 100%) 0% 0% no-repeat padding-box;
+
+  &.blogSearch.sharp {
+    border-radius: 10px !important;
   }
-  &.blogbuy{
-    background: transparent linear-gradient(90deg, #FFA087 0%, #FF568C 100%) 0% 0% no-repeat padding-box;
-    border-radius: 0px 6px 6px 0px;
-    span{
-      font: 600 20px/60px Montserrat !important;
-    }
+
+  &.blogSearch:hover {
+    background: linear-gradient(270deg, #F8DC2A 0%, #F7EE41 100%);
+  }
+
+  &.blogBuy {
+    background: linear-gradient(90deg, #FFA087 0%, #FF568C 100%);
+    border-radius: 0 6px 6px 0;
   }
 }
 
@@ -305,20 +303,6 @@ button {
 
     &.shadow {
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-    }
-  }
-  button.blogSearch{
-    box-shadow: 0px 10px 26px #3F065670;
-    span{
-      font:600 14px Montserrat;
-    }
-  }
-  button.blogSearch.sharp{
-    border-radius:5px !important;
-    }
-    button.blogbuy{
-    span{
-      font: 600 14px/44px Montserrat !important;
     }
   }
 }

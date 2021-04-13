@@ -9,7 +9,7 @@ Build Test:
     - npm run-script build
 
 
-Deploy to Testing:
+Deploy to Testing Server:
   stage: deploy
   when: manual
   only:
@@ -22,7 +22,7 @@ Deploy to Testing:
 
 
 
-Deploy to Production:
+Deploy to Production Server:
   stage: deploy
   when: manual
   only:

@@ -196,7 +196,7 @@
           </label>
           <div class="search_btn" @click="searchUsername">
             <button-yellow-icon
-              text="Next"
+              text="OK"
               :sharp="true"
               font-size="size-16"
               :loading="searchInsLoading"
@@ -498,7 +498,7 @@
                       </label>
                     </div>
                     <div v-if="productPkgListLoading">
-                      <div v-for="i in 4" :key="i" class="package skeleton">
+                      <div v-for="i in 2" :key="i" class="package skeleton">
                         <span class="num"><span class="s skeleton-bg"></span></span>
                         <span class="likes"><span class="s skeleton-bg"></span></span>
                         <span class="coins"><span class="s skeleton-bg"></span></span>
@@ -534,7 +534,7 @@
                   </label>
                   <div class="search_btn" @click="searchUsername">
                     <button-yellow-icon
-                      text="Next"
+                      text="OK"
                       :sharp="true"
                       :loading="searchInsLoading"
                     />
