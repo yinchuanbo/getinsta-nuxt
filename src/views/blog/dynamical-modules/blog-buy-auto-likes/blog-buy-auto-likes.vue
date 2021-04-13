@@ -340,7 +340,7 @@ export default {
     .blogbuySelect {
       width: 100%;
       height: 52px;
-      border: 2px solid #E7E7E7;
+      border: none;
       border-radius: 6px;
       background: #FFF;
       margin-bottom: 16px;
@@ -394,8 +394,7 @@ export default {
 
       label {
         width: 67%;
-        border: 2px solid #E0E1E6;
-        border-right: none;
+        border: none;
         border-radius: 6px 0 0 6px;
 
         input {
@@ -419,10 +418,12 @@ export default {
 
 @media (max-width: 768px) {
   .BlogBuy {
+    padding: 0 10px;
     width: 100%;
+    background-image: url("./img/bg-m.svg");
 
     .title-content {
-      flex: 0 0 90px;
+      width: 100%;
       height: 90px;
 
       h2 {
@@ -440,6 +441,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      width: 100%;
 
       .blogbuySelect {
         height: 44px;
