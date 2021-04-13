@@ -719,7 +719,7 @@ export default {
     span {
       display: inline-block;
       font: normal normal 700 52px BalooChettan;
-      background: linear-gradient(270deg, #FF5C87 0%, #4761FF 100%);
+      background: linear-gradient(-23deg, #FF5C87 31%, #4761FF 100%);
       -webkit-background-clip: text;
       color: transparent;
     }
