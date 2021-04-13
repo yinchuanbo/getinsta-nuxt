@@ -73,12 +73,10 @@ export default {
   },
   methods: {
     gaDownload() {
-      let param = this.blogId === '0' ? `bloghp` : this.blogId;
-      this.$ga.event('insrg', 'register', `rg-${param}`);
-
+      let param = this.blogId === '0' ? `hp` : this.blogId;
 
       if (this.COMMON.isiOS()) {
-        // this.$ga.event(this.dropMenuGA.ios.category, this.dropMenuGA.ios.action, this.dropMenuGA.ios.label);
+        this.$ga.event('insdl', 'download', `blogiosdl-topbanner-${param}`);
         location.href
           = `${this.$store.state.enIosLink}`
           + `?pt=${this.$store.state.enIosLinkPt}`
@@ -86,11 +84,11 @@ export default {
           + `&mt=8`;
       }
       if (this.COMMON.isAndroid()) {
-        // this.$ga.event(this.dropMenuGA.android.category, this.dropMenuGA.android.action, this.dropMenuGA.android.label);
+        this.$ga.event('insdl', 'download', `blogappdl-topbanner-${param}`);
         location.href = this.$store.state.enAdrLink;
       }
       if (!this.COMMON.isMobile()) {
-        // this.$ga.event(this.dropMenuGA.android.category, this.dropMenuGA.android.action, this.dropMenuGA.android.label);
+        this.$ga.event('insrg', 'register', `blogrg-topbanner-${param}`);
         this.$nuxt.$router.push('/register');
       }
     },
@@ -120,8 +118,8 @@ export default {
         };
 
       // this.$ga.event('insbuy', 'buy', `bloghp${gaPlatform}buy${multiLang}`);
-      let param = this.blogId === '0' ? `bloghp` : this.blogId;
-      this.$ga.event('insbuy', 'buy', `buy-${param}`);
+      let param = this.blogId === '0' ? `hp` : this.blogId;
+      this.$ga.event('insbuy', 'buy', `blogbuy-topbanner-${param}`);
       this.$nuxt.$router.push({ path: '/buy-instagram-followers', query: query });
     }
   }
