@@ -1748,14 +1748,11 @@ export default {
 
       // 广告参数
       let adStore = { s: '', c: '', k: '' };
-      adStore.s = this.$route.query.s || '';
-      adStore.c = this.$route.query.c || '';
+      adStore.s = this.$route.query.source || '';
+      adStore.c = this.$route.query.camp || '';
       adStore.k = this.$route.query.k || '';
       this.$storage.set('adStore', adStore);
 
-      // console.log(this.$route.path);
-
-      // console.log(1, param);
       // this.initGeoIPWhiteList(param);
       this.transportCartUnitData(param);
     },

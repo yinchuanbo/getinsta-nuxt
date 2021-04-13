@@ -160,7 +160,12 @@
             <div class="counter-container-item6">
                 <h3>No more Instagram follower count stuck by using GetInsta</h3>
                 <p>nstagram Follower Counter enables you to check real-time and accutate number of any IG account's followers. Any changes of follower count could be detected and help you make adjustments. No more Instagram follower count stuck or frozen would happen after using this tool. Moreover, this process could be simplified by <a href="">GetInsta</a>. This Instagram followers app help you get free IG followers and refresh your follower count.</p>
-                <img src="./img/followers-count.svg" alt="">
+
+                <div class="item6-img" ref="item6" :class="{'on': item6Val}">
+                  <img src="./img/nomore-icon2.svg" alt="">
+                  <div class="item6-img_top"></div>
+                  <div class="item6-img_bottom"></div>
+                </div>
             </div>
         </div>
         <div class="counter-signup" ref="signup" :class="{ 'on': isSignup }">
@@ -361,6 +366,7 @@ export default {
 
       ajaxRequesting: false,
       bottomBtnOn: false,
+      item6Val: false,
 
       dialogFail: false,
       dialogFailMsg: '',
@@ -1584,6 +1590,7 @@ export default {
       this.isSignup = this.getBoundingClientRect(this.$refs.signup); 
       this.counterPeopleVal = this.getBoundingClientRect(this.$refs.counterPeople);
       this.item3Val = this.getBoundingClientRect(this.$refs.item3);
+      this.item6Val = this.getBoundingClientRect(this.$refs.item6);
     },
     getBoundingClientRect(el) {
       let rect = el.getBoundingClientRect();
