@@ -500,6 +500,8 @@ export default {
     this.imgGalleryDisplay();
     this.blogBuyAutoLikesDisplay();
     this.blogSearchDisplay();
+
+    this.blogIndexClickEvent();
   },
   methods: {
     imgGalleryDisplay() {
@@ -540,8 +542,18 @@ export default {
         }
       }
     },
-    blogIndexClickEvent(){
-      document.querySelectorAll('.index-v2__unit')
+    blogIndexClickEvent() {
+      let units = document.querySelectorAll('.index-v2__unit');
+      for (let i = 0; i < units.length; i++) {
+        units[i].addEventListener('click', function () {
+          let thisClassList = this.classList;
+          if (thisClassList.contains('active')) {
+            thisClassList.remove('active');
+          } else {
+            thisClassList.add('active');
+          }
+        });
+      }
     }
   }
 };
