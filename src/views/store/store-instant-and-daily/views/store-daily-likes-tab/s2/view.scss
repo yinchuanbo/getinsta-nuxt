@@ -1018,7 +1018,7 @@
       .unit {
         width: 50%;
         height: 37px;
-        border-radius: 6px 6px 0 0;
+        border-radius: 0;
         font: normal normal 600 14px/21px BalooChettan;
         color: #000000;
 
@@ -1028,6 +1028,7 @@
           color: #000;
           // 选中状态
           position: relative;
+          border: 0!important;
           &::before {
             content: '';
             position: absolute;
@@ -1041,16 +1042,24 @@
             border-top: 10px solid #E5E5E5;
           }
 
-
         }
-
         &:first-child {
           border-radius: 31px 0 0 31px;
+          &.on + div{
+             border-left: 0;
+          }
+        }
+        &:nth-child(2) {
+          border-right: 1px solid #d5cfcf;
+          border-left: 1px solid #d5cfcf;
         }
 
         &:last-child {
           // margin-left: 8px;
           border-radius: 0 31px 31px 0;
+          &.on ~ div{
+            border-right: 0!important;
+         }
 
           &:after {
             top: -16px;

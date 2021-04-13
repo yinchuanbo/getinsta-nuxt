@@ -289,7 +289,7 @@
                 </li>
               </ul>
             </div>
-            <div class="box-request_list">
+            <div v-if="tabsIndex !== 1" class="box-request_list">
               <h3 id="title-post-like" :class="{ error: postListTitle }">
                 {{ $t('store.buy.search.post.title.text') }}
                 <i>{{ $t('store.buy.search.post.title.error') }}</i>
@@ -316,7 +316,7 @@
                 </div>
               </div>
             </div>
-            <div class="post-more">
+            <div v-if="tabsIndex !== 1" class="post-more">
               <a
                 v-if="postListInfo.has_next_page && !postListLoading"
                 class="load-more"
@@ -1654,9 +1654,9 @@ export default {
       }
 
       if (!this.tabBottomBtnPreCheck()) {
-        return;
+          return;
       }
-      if (!this.postCurrent.like_id) {
+      if (!this.postCurrent.like_id && this.tabsIndex != 1) {
         this.postListTitle = true;
         if (!this.independent) {
           if(this.COMMON.isMobile()) {
@@ -1667,6 +1667,8 @@ export default {
         }
         return;
       }
+
+      
       this.addToCart();
     },
     tabBottomBtnPreCheck() {
@@ -1852,12 +1854,16 @@ export default {
           }
         }
 
-      
         param.task_type = 1;
         param.product_id = this.productPkgListDailyVMAuto.product_id;
-        param.like_id = post.like_id;
-        param.like_pic_url = post.like_pic_url;
-        param.short_code = post.short_code;
+
+        if (this.postList.length > 1) {
+          param.like_id = this.postList[0].like_id;
+          param.like_pic_url = this.postList[0].like_pic_url;
+          param.like_count = this.postList[0].like_count;
+          param.short_code = this.postList[0].short_code;
+        }
+
         param.like_count = this.productPkgListDailyVMAuto['purchase_quantity'];
         param.follow_pic_url = this.insUser.profile_pic_url;
         param.post_count = this.insUser.post.post_count;
@@ -1871,6 +1877,7 @@ export default {
         param.gives = this.productPkgListDailyVMAuto['gives'];
         param.require_post_count = this.productPkgListDailyVMAuto.require_post_count;
         param.latest_post_time = this.latest_post_time;
+
       }
 
       // 周期关注
