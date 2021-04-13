@@ -53,6 +53,7 @@
       :enter-box="enterbox"
       :my-ins-user="insUser"
       :this-vue="sendThis"
+      :is-followers="false"
       @closebox="closeBuyPop"
     />
   </div>
@@ -184,7 +185,7 @@ export default {
       this.$ga.event(
         'buttonclick',
         'click',
-        `dailyf-${this.sendThis.blogID}`
+        `dailyl-continue-${this.sendThis.blogID}`
       );
       this.searchInsByServerV2();
     },
