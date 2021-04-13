@@ -92,12 +92,18 @@
                               </span>
                             </p>
                             <p v-if="!unit['cycle_type'] || unit['cycle_type'] === 1" class="main">
-                              <span v-if="unit['is_coin'] !== 1">
+                              <span v-if="unit['is_coin'] !== 1 && !unit.require_post_count">
                                 {{ unit.purchase_quantity }} {{ unit.task_type === 2 ? displayletFollowers : displayletLikes }}
                                 <!-- | {{ $i18n.locale === 'en' ? $t('global.currencySymbol') : '' }}
                               {{ unit.price_decimal | numToFixed }}
                               {{ $i18n.locale !== 'en' ? $t('global.currencySymbol') : '' }} -->
                               </span>
+
+                              <span v-if="unit['is_coin'] !== 1 && unit.require_post_count">
+                                {{ unit.purchase_quantity }} Like/Post
+                              </span>
+
+
                               <span v-if="unit['is_coin'] === 1">
                                 {{ unit.purchase_quantity }} Coins | {{ $i18n.locale === 'en' ? $t('global.currencySymbol'): ''}}
                                 {{ unit.price_decimal | numToFixed }}

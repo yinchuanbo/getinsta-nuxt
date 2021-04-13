@@ -956,6 +956,7 @@ export default {
         }
       },
 
+      latest_post_time: 0,
       ajaxRequesting: false,
       bottomBtnOn: false,
 
@@ -1405,6 +1406,7 @@ export default {
             _sharedDataUser['edge_followed_by']['count'];
           this.insUser.follow = _sharedDataUser['edge_follow']['count'];
           this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
+          this.latest_post_time = _sharedDataUserPosts['edges'][0]['node']['taken_at_timestamp'];
 
           this.postList = this.insUser.post.post_list;
           this.postListInfo.post_count = this.insUser.post.post_count;
@@ -1772,7 +1774,6 @@ export default {
         ins_account: this.insUser.ins_account
       };
       const post = this.postCurrent;
-      console.log(post)
 
       // 关注
       if (this.tabsIndex === 0) {
@@ -1852,8 +1853,7 @@ export default {
           }
         }
 
-        
-
+      
         param.task_type = 1;
         param.product_id = this.productPkgListDailyVMAuto.product_id;
         param.like_id = post.like_id;
@@ -1871,7 +1871,7 @@ export default {
         param.like_count = this.productPkgListDailyVMAuto['purchase_quantity'];
         param.gives = this.productPkgListDailyVMAuto['gives'];
         param.require_post_count = this.productPkgListDailyVMAuto.require_post_count;
-        param.latest_post_time = new Date().getTime();
+        param.latest_post_time = this.latest_post_time;
       }
 
       // 周期关注
