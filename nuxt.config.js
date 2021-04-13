@@ -110,17 +110,10 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: true,
-<<<<<<< HEAD
-    baseURL: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
-      ? 'https://api.easygetinsta.com/api'
-      : 'https://test.easygetinsta.com/test/api',
-    prefix: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
-=======
     baseURL: process.env.NODE_ENV === 'production'
       ? 'https://api.easygetinsta.com/api'
       : 'https://test.easygetinsta.com/test/api', // 对asyncData中的接口刷新页面有效
     prefix: process.env.NODE_ENV === 'production'
->>>>>>> master-test
       ? 'https://api.easygetinsta.com/api'
       : '/dev/test/api',
     credentials: false // 跨域请求时是否需要使用凭证
@@ -134,15 +127,9 @@ export default {
         '^/dev': '',
         changeOrigin: true
       }
-<<<<<<< HEAD
-    },
-    // '/prod': {
-    //   target: 'https://www.easygetinsta.com',
-=======
     }
     // '/prod': {
     //   target: 'https://api.easygetinsta.com',
->>>>>>> master-test
     //   pathRewrite: {
     //     '^/prod': '',
     //     changeOrigin: true
