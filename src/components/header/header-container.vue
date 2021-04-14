@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed" :class="{ 'active': headerActive }">
+  <header id="header" class="fixed" :class="{ 'active': headerActive }">
     <header-nav
       :home-path="headerShape.homePath"
       :home-scroll="headerShape.homeScroll"

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!routerClient" id="header" class="header-nav__navigator" :style="{ height: `64+${adHeight}px` }">
+  <div v-if="!routerClient" class="header-nav__navigator" :style="{ height: `64 + ${adHeight}px` }">
     <div v-if="!routeUserCenter && !routerPayment" class="header-nav__wrapper">
       <div class="wrapper">
         <div class="header-nav__logo">
@@ -426,6 +426,9 @@ export default {
     },
     loginStatus() {
       return this.$store.state.loginStatus;
+    },
+    height() {
+      return (this.adHeight + 64) + 'px';
     },
     paymentTitle() {
       let path = this.$nuxt.$route.path;

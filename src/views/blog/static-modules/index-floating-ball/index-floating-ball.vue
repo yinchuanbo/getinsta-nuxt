@@ -6,9 +6,7 @@
        :style="{ left }"
        @mousedown="dragStart"
        @touchstart="dragStart"
-       @mousemove="dragMove"
        @touchmove.prevent="dragMove"
-       @mouseup="dragEnd"
        @touchend="dragEnd"
   ></div>
 </template>
@@ -96,6 +94,9 @@ export default {
       document.onmousemove = () => {
         this.dragMove();
       };
+      document.onmouseup = () => {
+        this.dragEnd();
+      };
     },
     dragMove() {
       if (this.flags) {
@@ -121,6 +122,7 @@ export default {
       event.preventDefault();
       document.onmouseup = () => {
         document.onmousemove = null;
+        document.onmouseup = null;
         this.flags = false;
         event.preventDefault();
       };

@@ -85,57 +85,33 @@
           <div id="index-v2" class="index-v2">
             <p class="index-v2__title"><span>Contents</span></p>
             <div class="index-v2__unit-container">
-              <div class="index-v2__unit">
+              <div class="index-v2__unit index-v2__all-unit">
                 <a data-id="aa">Index list</a>
               </div>
               <div class="index-v2__unit sub active">
                 <span class="index-v2__sub-title">Index sub title</span>
                 <div class="index-v2__subunit-container">
-                  <div class="index-v2__subunit">
-                    <a data-id="aa">Index sub list</a>
+                  <div class="index-v2__subunit index-v2__all-unit">
+                    <a data-id="bb">Index sub list</a>
                   </div>
-                  <div class="index-v2__subunit">
-                    <a data-id="aa">Index sub list</a>
-                  </div>
-                  <div class="index-v2__subunit">
-                    <a data-id="aa">Index sub list</a>
+                  <div class="index-v2__subunit index-v2__all-unit">
+                    <a data-id="cc">Index sub list</a>
                   </div>
                 </div>
               </div>
-              <div class="index-v2__unit">
+
+              <div class="index-v2__unit index-v2__all-unit">
                 <a data-id="aa">Index list</a>
               </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
+              <div class="index-v2__unit index-v2__all-unit">
                 <a data-id="aa">Index list</a>
               </div>
             </div>
           </div>
 
           <h2><a id="aa"></a>Types of Advertising on Instagram</h2>
+          <h2><a id="bb"></a>Anchor bb</h2>
+          <h2><a id="cc"></a>Anchor cc</h2>
 
           <p>
             The first option you have when it comes to how to advertise on Instagram, is to use promotions. Promotions are simply a tool that allows you to extend the reach of an
@@ -548,7 +524,8 @@ export default {
     },
     blogIndexClickEvent() {
       let _this = this;
-      let units = document.querySelectorAll('.index-v2__unit');
+      const units = document.querySelectorAll('.index-v2__unit');
+      const allUnits = document.querySelectorAll('.index-v2__all-unit');
 
       // 悬浮球显示
       this.indexFloatingBallShow = units.length > 0;
@@ -571,8 +548,8 @@ export default {
       }
 
       // Index锚点事件绑定
-      for (let j = 0; j < units.length; j++) {
-        let aTag = units[j].querySelector('a');
+      for (let j = 0; j < allUnits.length; j++) {
+        let aTag = allUnits[j].querySelector('a');
         aTag.addEventListener('click', function (e) {
           _this.$scrollTo(
             `#${e.target.attributes['data-id'].value}`,
