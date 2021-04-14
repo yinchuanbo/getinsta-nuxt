@@ -2,7 +2,7 @@
   <div v-if="show && scrollShow"
        ref="moveDiv"
        class="index-floating-ball"
-       title="Drag to any position. Click to return article index."
+       title="Click to return article index."
        :style="{ left }"
        @click="scrollToIndex"
        @touchstart="touchStart"
