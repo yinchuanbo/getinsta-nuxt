@@ -39,7 +39,7 @@
                       <button-yellow-icon text="Check Now" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
                     </div>
                 </div>
-                <div class="counter-download"><a href="">Download</a> GetInsta to increase your Instagram follower count</div>
+                <div class="counter-download"><a @click.prevent="downloadAll">Download</a> GetInsta to increase your Instagram follower count</div>
             </div>
             <div class="counter-wave">
                 <div class="waveWrapper waveAnimation">
@@ -480,7 +480,21 @@ export default {
     inputFocus() {
       this.isFocus = true;
     },
+    downloadAll() {
 
+    },
+    downloadIOS() {
+      this.$ga.event('insdl', 'download', 'umniosdl2');
+      location.href
+        = `${this.$store.state.enIosLink}`
+        + `?pt=${this.$store.state.enIosLinkPt}`
+        + `&ct=${this.$store.state.enIosLinkCt}`
+        + `&mt=8`;
+    },
+    downloadAndroid() {
+      this.$ga.event('insdl', 'download', 'umnappdl2');
+      window.location.href = this.$store.state.enAdrLink;
+    },
     initTabIndex() {
       const path = this.$nuxt.$route.path;
       if (path === '/buy-instagram-followers') {
@@ -725,7 +739,7 @@ export default {
 
     searchUsername: function () {
       this.searchInsByServerV2();
-    //   this.gaSearchBtn();
+      this.gaSearchBtn();
     },
     searchInsByServerV2() {
       if (this.searchInsInput === '') {
@@ -1513,35 +1527,10 @@ export default {
     },
 
     gaSearchBtn() {
-      let param = !this.tabsIndex ? 'f' : 'l';
-      let paramEvent0 = '';
-      if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
-        paramEvent0 = '-ad';
-      }
-      if (this.tabsIndex) paramEvent0 = '-daily';
-
-      let gaPlatform = '';
-      if (this.$i18n.locale !== 'en') {
-        if (this.COMMON.isiOS()) gaPlatform = 'ios';
-        if (this.COMMON.isAndroid()) gaPlatform = 'adr';
-      }
-
-      let gaMultiLang = this.$i18n.locale !== 'en' ? `-${this.$i18n.locale}` : '';
-
-      let pageParam = '';
-      if (this.$nuxt.$route.path === '/') {
-        pageParam = 'hp';
-      } else if (
-        this.$nuxt.$route.path === '/buy-instagram-followers'
-        || this.$nuxt.$route.path === '/buy-instagram-likes'
-      ) {
-        pageParam = 'store';
-      }
-
       this.$ga.event(
         'buttonclick',
         'click',
-        `${pageParam}${gaPlatform}add${param}${paramEvent0}${gaMultiLang}`
+        'check-now-counter'
       );
     },
     gaBottomBtn() {

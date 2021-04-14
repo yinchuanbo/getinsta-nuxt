@@ -421,6 +421,7 @@
     width: 1120px;
     height: auto;
     background-color: red;
+    margin: 0 auto;
     margin-top: 70px;
     background: #FFFFFF;
     box-shadow: 0px 12px 24px #2B25BC0F;
@@ -1047,9 +1048,6 @@
         }
         &:first-child {
           border-radius: 31px 0 0 31px;
-          &.on + div{
-             border-left: 0;
-          }
         }
         &:nth-child(2) {
           border-right: 1px solid #d5cfcf;
@@ -1057,12 +1055,7 @@
         }
 
         &:last-child {
-          // margin-left: 8px;
           border-radius: 0 31px 31px 0;
-          &.on ~ div{
-            border-right: 0!important;
-         }
-
           &:after {
             top: -16px;
             right: -4px;

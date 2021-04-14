@@ -1,226 +1,367 @@
 <template>
-  <div>
-    <div class="have-container pc">
-      <div class="have-wrapper">
+  <div ref="homeSecrecy" class="auto-two">
+      <div class="wrapper">
         <h2>Until Now, We Have:</h2>
-        <div class="have-line"></div>
-        <div class="have-content">
-          <img src="./img/pic-have.svg" alt="" />
-          <div class="have-content_info">
-            <ul>
-              <li>
-                <h2>505,602,663</h2>
-                <p>Likes Delivered</p>
-              </li>
-              <li>
-                <h2>65,203,802</h2>
-                <p>Followers Provided</p>
-              </li>
-              <li>
-                <h2>25,368,975</h2>
-                <p>Repeat Customer</p>
-              </li>
-            </ul>
+        <div class="num-contain">
+          <div class="leftimg"></div>
+          <div class="rightnum">
+            <div class="myroll01">
+              <div class="myroll">
+                <div id="num-roll1"></div>
+                ,
+                <div id="num-roll2"></div>
+                ,
+                <div id="num-roll3"></div>
+              </div>
+              <p class="marginbtm35">Likes Delivered</p>
+            </div>
+            <div class="myroll02">
+              <div class="myroll">
+                <div id="num-roll4"></div>
+                ,
+                <div id="num-roll5"></div>
+                ,
+                <div id="num-roll6"></div>
+              </div>
+              <p class="marginbtm35">Followers Provided</p>
+            </div>
+            <div class="myroll03">
+              <div class="myroll">
+                <div id="num-roll7"></div>
+                ,
+                <div id="num-roll8"></div>
+                ,
+                <div id="num-roll9"></div>
+              </div>
+              <p>Repeat Customer</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="have-container mobile">
-        <div class="have-wrapper">
-            <h2>Until Now, We Have:</h2>
-            <div class="have-line"></div>
-            <div class="have-circle">
-              <div class="img-center"></div>
-              <div class="have-item1">
-                <h2>505,602,663</h2>
-                <p>Likes Delivered</p>
-              </div>
-              <div class="have-item2">
-                <h2>65,203,802</h2>
-                <p>Followers Provided</p>
-              </div>
-              <div class="have-item3">
-                <h2>25,368,975</h2>
-                <p>Repeat Customer</p>
-              </div>
-            </div>
-        </div>
-    </div>
-  </div>
 </template>
 
 <script>
-export default {};
+import DigitRoll from '@/assets/scripts/digitRoll.js';
+export default {
+  data() {
+    return {
+      isfalse: false,
+      buyflag: false,
+      roll1: null,
+      roll2: null,
+      roll3: null,
+      roll4: null,
+      roll5: null,
+      roll6: null,
+      roll7: null,
+      roll8: null,
+      roll9: null,
+      // moblie
+      btnshow: false,
+    };
+  },
+  mounted() {
+    this.roll1 = new DigitRoll({
+      container: '#num-roll1',
+      width: 1
+    });
+    this.roll2 = new DigitRoll({
+      container: '#num-roll2',
+      width: 1
+    });
+    this.roll3 = new DigitRoll({
+      container: '#num-roll3',
+      width: 1
+    });
+    this.roll1 = new DigitRoll({
+      container: '#num-roll1',
+      width: 1
+    });
+    this.roll2 = new DigitRoll({
+      container: '#num-roll2',
+      width: 1
+    });
+    this.roll3 = new DigitRoll({
+      container: '#num-roll3',
+      width: 1
+    });
+    this.roll4 = new DigitRoll({
+      container: '#num-roll4',
+      width: 1
+    });
+    this.roll5 = new DigitRoll({
+      container: '#num-roll5',
+      width: 1
+    });
+    this.roll6 = new DigitRoll({
+      container: '#num-roll6',
+      width: 1
+    });
+    this.roll7 = new DigitRoll({
+      container: '#num-roll7',
+      width: 1
+    });
+    this.roll8 = new DigitRoll({
+      container: '#num-roll8',
+      width: 1
+    });
+    this.roll9 = new DigitRoll({
+      container: '#num-roll9',
+      width: 1
+    });
+    window.addEventListener('scroll', this.handle);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handle);
+    this.destroyedRoll();
+  },
+  methods: {
+    getScrollTop() {
+      let scroll_top = 0;
+      if (document.documentElement && document.documentElement.scrollTop) {
+        scroll_top = document.documentElement.scrollTop;
+      } else if (document.body) {
+        scroll_top = document.body.scrollTop;
+      }
+      return scroll_top;
+    },
+    mobileroull() {
+      if (this.COMMON.isMobile()) {
+        this.$scrollTo('#auto-step2', { offset: -1 * this.COMMON.headerHeight() });
+      }
+    },
+    mobileroull1() {
+      if (this.COMMON.isMobile()) {
+        this.$scrollTo('#auto-step3', { offset: -1 * this.COMMON.headerHeight() });
+      }
+    },
+    rollrun() {
+      this.roll1.roll(505);
+      this.roll2.roll(602);
+      this.roll3.roll(663);
+      this.roll4.roll(65);
+      this.roll5.roll(203);
+      this.roll6.roll(802);
+      this.roll7.roll(25);
+      this.roll8.roll(368);
+      this.roll9.roll(975);
+    },
+    handleScroll() {
+      if (
+        this.$refs.homeSecrecy.getBoundingClientRect().top <
+        window.innerHeight * 0.66
+      ) {
+        setTimeout(this.rollrun(), 400);
+      }
+      // console.log(document.documentElement.scrollTop);
+      if (
+        document.querySelector('.auto-paypal').offsetTop <
+        document.documentElement.scrollTop
+      ) {
+        this.buyflag = false;
+        this.isfalse = true;
+      } else {
+        this.buyflag = true;
+        this.isfalse = false;
+      }
+      this.scrollone();
+    },
+    scrollone() {
+      if (
+        document.querySelector('.auto-step').offsetTop <
+        document.documentElement.scrollTop + 200
+      ) {
+        this.btnshow = true;
+      } else {
+        this.btnshow = false;
+      }
+    },
+    handle() {
+      const fun = this.handleScroll();
+      this.COMMON.throttle(fun, 60, 100);
+    },
+    destroyedRoll() {
+      this.roll1.roll(505);
+      this.roll2.roll(602);
+      this.roll3.roll(663);
+      this.roll4.roll(65);
+      this.roll5.roll(203);
+      this.roll6.roll(802);
+      this.roll7.roll(25);
+      this.roll8.roll(368);
+      this.roll9.roll(975);
+    },
+  }
+};
 </script>
-
-<style lang="scss" scoped>
-.have-container.pc {
-  width: 100%;
-  height: 613px;
-  background: transparent linear-gradient(180deg, #d091ff 0%, #8a86fe 100%) 0%
-    0% no-repeat padding-box;
-  padding-top: 76px;
-  box-sizing: border-box;
-  .have-wrapper {
+<style lang="scss" scope>
+.auto-two {
     width: 100%;
-    height: 100%;
-    background: url("./img/have-bg.svg") no-repeat;
-    background-position: left bottom;
-    > h2 {
-      text-align: center;
-      font: normal normal 600 36px/53px BalooChettan;
-      color: #ffffff;
-      margin-bottom: 33px;
+    padding-top: 76px;
+    text-align: center;
+    height: 613px;
+    background: transparent linear-gradient(180deg, #D091FF 0%, #8A86FE 100%) 0% 0% no-repeat padding-box;
+    background-size: cover;
+
+    h2 {
+      font: 600 36px/44px BalooChettan;
+      color: #fff;
+      position: relative;
     }
-    .have-line {
+
+    h2:after {
+      position: absolute;
+      content: "";
       width: 116px;
       height: 8px;
-      background: #ffffff 0% 0% no-repeat padding-box;
+      background: #fff;
       border-radius: 7px;
-      margin: 0 auto;
-      margin-bottom: 52px;
+      left: calc(50% - 58px);
+      opacity: 1;
+      top: 82px;
     }
-    .have-content {
+
+    .num-contain {
+      margin-top: 100px;
       display: flex;
       justify-content: center;
-      img {
-        margin-right: 97px;
+
+      .leftimg {
+        width: 534px;
+        height: 327px;
+        background: url("./img/auto-two/auto_two_per.svg") no-repeat top center;
+        margin-right: 84px;
       }
-      ul {
-        li {
-          h2 {
-            font: normal normal 600 40px/50px BalooChettan;
-            color: #fff239;
-          }
-          p {
-            font: normal normal 500 24px/41px BalooChettan;
-            color: #ffffff;
-          }
-          margin-bottom: 28px;
-          &:last-child {
-            margin-bottom: 0;
-          }
+
+      .rightnum {
+        text-align: left;
+
+        p {
+          font: 500 24px/29px BalooChettan;
+          letter-spacing: 0px;
+          color: #ffffff;
+        }
+
+        p.marginbtm35 {
+          margin-bottom: 30px;
+        }
+
+        .myroll {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          color: #fff239;
+          font: 40px BalooChettan;
         }
       }
     }
   }
-}
-.have-container.mobile {
-    width: 100%;
-    height: 512px;
-    background: transparent linear-gradient(180deg, #E484F0 0%, #8A86FE 100%) 0% 0% no-repeat padding-box;
-    .have-wrapper {
-        padding-top: 36px;
-        box-sizing: border-box;
-        >h2 {
+@media (max-width: 768px) {
+  .auto-two {
+      overflow: hidden;
+      width: 100%;
+      height: 512px;
+      background: transparent linear-gradient(180deg, #e484f0 0%, #8a86fe 100%) 0% 0% no-repeat padding-box;
+      opacity: 1;
+      padding-top: 40px;
+
+      h2 {
+        font: 600 18px/22px BalooChettan;
+      }
+
+      h2:after {
+        width: 58px;
+        height: 4px;
+        left: calc(50% - 29px);
+        top: 41px;
+      }
+
+      .num-contain {
+        width: 361px;
+        height: 361px;
+        margin: auto;
+        margin-top: 50px;
+        background: url("./img/auto-two/circle.png") no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+
+        .leftimg {
+          width: 224px;
+          height: 137px;
+          position: absolute;
+          background-size: contain;
+          top: calc(50% - 68px);
+          left: calc(50% - 112px);
+          z-index: 2;
+        }
+
+        .rightnum {
+          p {
+            font: 500 14px/17px BalooChettan !important;
+
+          }
+
+          p.marginbtm35 {
+            margin-bottom: 0;
+            margin-top: -15px;
+          }
+
+          .myroll {
+            font: 25px BalooChettan !important;
+            margin-top: -8px;
+
+          }
+
+          .myroll01 {
+            width: 220px;
+            height: 68px;
+            line-height: 40px;
+            border-radius: 34px 0 0 34px;
+            position: absolute;
+            background: #e094ff 0% 0% no-repeat padding-box;
+            right: -50px;
+            top: 16px;
+            padding-left: 21px;
+          }
+
+          .myroll02 {
+            width: 220px;
+            height: 68px;
+            line-height: 40px;
+            border-radius: 0 34px 34px 0;
+            position: absolute;
+            background: #cb9aff 0% 0% no-repeat padding-box;
+            left: -54px;
+            top: 65px;
+            padding-left: 60px;
+            z-index: 1;
+          }
+
+          .myroll03 {
+            width: 220px;
+            height: 68px;
+            line-height: 40px;
+            position: absolute;
+            background: #c2a8ff 0% 0% no-repeat padding-box;
+            border-radius: 34px;
+            bottom: 32px;
             text-align: center;
-            font: normal normal 600 18px/25px BalooChettan;
-            letter-spacing: 0px;
-            color: #FFFFFF;
-            margin-bottom: 17px;
-        }
-        .have-line {
-            width: 58px;
-            height: 4px;
-            background: #FFFFFF;
-            border-radius: 7px;
-            margin: 0 auto;
-            margin-bottom: 30px;
-        }
-        .have-circle {
-            width: 100%;
-            height: 100vw;
-            background: url('./img/circle.svg') no-repeat; 
-            background-size: contain;
-            display: flex;
-            justify-content: center;
+
             align-items: center;
-            position: relative;
-            .img-center {
-               width: 233px;
-               height: 136px;
-               background: url('./img/auto_two_per.svg') no-repeat; 
-               background-size: contain;
-               position: relative;
-               z-index: 5;
-            }
-            .have-item1 {
-                position: absolute;
-                top: 64px;
-                left: 0;
-                width: 178px;
-                height: 68px;
-                background: #CB9AFF;
-                border-radius: 0 68px 68px 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                h2 {
-                    font: normal normal 600 25px/20px BalooChettan;
-                    letter-spacing: 0px;
-                    color: #FFF239;
-                    margin-bottom: 3px;
-                }
-                p {
-                    font: normal normal 500 13px/19px BalooChettan;
-                    letter-spacing: 0px;
-                    color: #FFFFFF;
-                }
+            left: calc(50% - 105px);
+
+            p {
+              margin-top: -15px;
             }
 
-            .have-item2 {
-                position: absolute;
-                top: 10px;
-                right: 0;
-                width: 187px;
-                height: 68px;
-                background: #E094FF;
-                border-radius: 68px 0 0 68px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                h2 {
-                    font: normal normal 600 25px/20px BalooChettan;
-                    letter-spacing: 0px;
-                    color: #FFF239;
-                    margin-bottom: 3px;
-                }
-                p {
-                    font: normal normal 500 13px/19px BalooChettan;
-                    letter-spacing: 0px;
-                    color: #FFFFFF;
-                }
+            .myroll {
+              display: flex;
+              justify-content: center;
             }
-
-            .have-item3 {
-                position: absolute;
-                bottom: 25px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 209px;
-                height: 68px;
-                background: #C2A8FF;
-                border-radius: 68px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                h2 {
-                    font: normal normal 600 25px/20px BalooChettan;
-                    letter-spacing: 0px;
-                    color: #FFF239;
-                    margin-bottom: 3px;
-                }
-                p {
-                    font: normal normal 500 13px/19px BalooChettan;
-                    letter-spacing: 0px;
-                    color: #FFFFFF;
-                }
-            }
+          }
         }
+      }
     }
-    
 }
 </style>

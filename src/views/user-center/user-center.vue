@@ -1259,6 +1259,7 @@ export default {
           list.forEach(function(item, index) {
             if(item.promote_sale_type === 3) {
               _this.productPkgListFollowIndex = index;
+              _this.productPkgCurrentFollow = item;
               return;
             }
           })
