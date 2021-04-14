@@ -154,28 +154,6 @@ export default {
       ) {
         setTimeout(this.rollrun(), 400);
       }
-      // console.log(document.documentElement.scrollTop);
-      if (
-        document.querySelector('.auto-paypal').offsetTop <
-        document.documentElement.scrollTop
-      ) {
-        this.buyflag = false;
-        this.isfalse = true;
-      } else {
-        this.buyflag = true;
-        this.isfalse = false;
-      }
-      this.scrollone();
-    },
-    scrollone() {
-      if (
-        document.querySelector('.auto-step').offsetTop <
-        document.documentElement.scrollTop + 200
-      ) {
-        this.btnshow = true;
-      } else {
-        this.btnshow = false;
-      }
     },
     handle() {
       const fun = this.handleScroll();
