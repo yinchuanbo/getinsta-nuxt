@@ -1,568 +1,276 @@
 <template>
-  <div>
-    <div id="store-shelf-1-buy" class="pc">
-      <div class="pc-content">
-        <div class="pc-content_tabs">
-          <div class="pc-content_tabs-item" :class="{ on: !tabsIndex }" @click="tabSwitch(false)">
-            <p>Instant Followers</p>
-          </div>
-          <div class="pc-content_tabs-item" :class="{ on: tabsIndex }" @click="tabSwitch (true)">
-            <p>Daily Followers</p>
-          </div>
-        </div>
-        <div class="country-select" v-if="!tabsIndex && showCountrySelect">
-          <h2>Country-Targeted:</h2>
-          <div class="select-content">
-            <span class="national-flag">
-              <img v-if="iconUrl" :src="iconUrl" alt="" width="20" height="20">
-            </span>
-            <select v-model="countryFlagSelect">
-              <option value="-1" selected="true">Global</option>
-              <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
-                {{ item.name[0].txt }}
-              </option>
-            </select>
-          </div>
-        </div>
-
-        <div class="pc-content_main">
-          <transition name="fade-tabs" mode="out-in">
-            <div v-if="!tabsIndex" key="box0" class="pc-content_main-item">
-              <!-- <ul v-if="!productPkgListLoading"> -->
-              <div v-if="productPkgListLoading" style="width: 100%;height: 420px;display: flex;justify-content: center;align-items: flex-start">
-                <img src="./img/loading-puff-black.svg" width="100" height="100" alt="">
-              </div>
-              <ul v-if="!productPkgListLoading">
-                <li v-for="(pkg, i) in productPkgListFollow"
-                    :key="i"
-                    :class="{
-                      'follow': pkg['product_type'] === 2,
-                      'like': pkg['product_type'] === 1,
-                      'selected': productPkgListFollowIndex === i,
-                      'hot': pkg['promote_sale_type'] === 3
-                    }"
-                    @click="pkgCheck(pkg, i)"
-                >
-                  <div class="pc-content_main-item_top">
-                    <div class="pc-content_main-item_top-circle">
-                      <span></span>
+    <div class="instagram-follower-counter">
+        <div class="header-blank pc"></div>
+        <div class="counter-banner">
+            <div class="counter-wrapper">
+                <h2>Live Instagram Follower Counter</h2>
+                <p>Real-time, accurate, exact Instagram follower count. No Instagram account log in.</p>
+                <div class="counter-banner_inputs pc" :class="{'errorActive': isBoxRed}">
+                    <label>
+                        <input 
+                          v-model="searchInsInput" 
+                          @input="bottomBtnDetective" 
+                          type="text" 
+                          placeholder="Type Instagram Username" 
+                          :disabled="searchInsLoading"
+                          @keyup.enter="searchUsername"
+                          @blur="inputBlur"
+                          @focus="inputFocus"
+                        />
+                    </label>
+                    <div class="search_btn" @click="searchUsername">
+                      <button-yellow-icon text="Check Now" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
                     </div>
-                    <h2>{{ pkg['purchase_quantity'] }}</h2>
-                    <p>
-                      <img v-if="currentCountry.icon_url" :src="currentCountry.icon_url" alt="" width="20" height="20">
-                      Followers
-                    </p>
-                    <div v-if="pkg['gives'][0].quantity !== 0" class="pc-content_main-item_top-tags">
-                      <span>+ {{ pkg['gives'][0].quantity }} Free</span>
-                    </div>
-                  </div>
-                  <div class="pc-content_main-item_bottom">
-                    <h3 v-if="pkg.payment_type === 2">{{ $t('global.currencySymbol') }} {{ pkg.price_decimal | numToFixed }}</h3>
-                    <span></span>
-                    <dl>
-                      <dd>
-                        <img src="./img/right.svg" width="16" height="16" />
-                        Real Followers
-                      </dd>
-                      <dd>
-                        <img src="./img/right.svg" width="16" height="16" />
-                        Drop Protection
-                      </dd>
-                      <dd>
-                        <img src="./img/right.svg" width="16" height="16" />
-                        Instant Delivery
-                      </dd>
-                      <dd>
-                        <img src="./img/right.svg" width="16" height="16" />
-                        24/7 Support
-                      </dd>
-                    </dl>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div v-if="tabsIndex" key="box1" class="pc-content_main-item">
-              <div v-if="!productPkgListLoading" class="pc-content_main-item_btns" style="margin-bottom: 24px;">
-                <div v-for="(item, i) in productPkgListDays" :key="i" :class="{ 'dayactive': productPkgListDaysVM == item }" @click="dayClick(item)">
-                  <span></span>
-                  <p>{{ item }}-Day</p>
                 </div>
-              </div>
-              <!-- followers day -->
-              <!-- v-if="!productPkgListLoading"  -->
-              <div v-if="productPkgListLoading" style="width: 100%;height: 420px;display: flex;justify-content: center;align-items: flex-start">
-                <img src="./img/loading-puff-black.svg" width="100" height="100" alt="">
-              </div>
-              <ul v-if="!productPkgListLoading" class="day-followers">
-                <li v-for="(item, i) in productPkgListDaily" :key="i" :class="{ 'dailyactive': productPkgListDailyVM == item }" @click="dailyClick(item)">
-                  <div class="pc-content_main-item_top">
-                    <div class="pc-content_main-item_top-circle">
-                      <span></span>
+                <div class="counter-banner_inputs mobile">
+                    <label :class="{'errorActive': isBoxRed}">
+                        <input 
+                          v-model="searchInsInput" 
+                          @input="bottomBtnDetective" 
+                          type="text" 
+                          placeholder="Type Instagram Username" 
+                          :disabled="searchInsLoading"
+                          @keyup.enter="searchUsername"
+                          @blur="inputBlur"
+                          @focus="inputFocus"
+                        />
+                    </label>
+                    <div class="search_btn" @click="searchUsername">
+                      <button-yellow-icon text="Check Now" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
                     </div>
-                    <h2>{{ item.dailyQuantity }}</h2>
-                    <p>Followers</p>
-                  </div>
-                  <div class="pc-content_main-item_bottom">
-                    <h3>
-                      ${{ (item.price_decimal / item.cycle_type).toFixed(2) }}<span>/Day</span>
-                    </h3>
-                    <span></span>
-                    <dl>
-                      <dd>
-                        <img src="./img/right.svg" width="16" height="16" />
-                        Real Followers
-                      </dd>
-                      <dd>
-                        <img src="./img/right.svg" width="16" height="16" />
-                        Drop Protection
-                      </dd>
-                      <dd>
-                        <img src="./img/right.svg" width="16" height="16" />
-                        Instant Delivery
-                      </dd>
-                      <dd>
-                        <img src="./img/right.svg" width="16" height="16" />
-                        24/7 Support
-                      </dd>
-                    </dl>
-                  </div>
-                </li>
-              </ul>
+                </div>
+                <div class="counter-download"><a @click.prevent="downloadAll">Download</a> GetInsta to increase your Instagram follower count</div>
             </div>
-          </transition>
+            <div class="counter-wave">
+                <div class="waveWrapper waveAnimation">
+                    <!-- <div class="waveWrapperInner bgTop">
+                        <div class="wave waveTop"></div>
+                    </div> -->
+                    <div class="waveWrapperInner bgMiddle">
+                        <div class="wave waveMiddle"></div>
+                    </div>
+                    <div class="waveWrapperInner bgBottom">
+                        <div class="wave waveBottom"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- 输入框 -->
-        <div class="inputSelect">
-          <div class="inputSelect-info">
-            <img src="./img/small-selected.svg" />
-            <p v-if="!tabsIndex">
-              <span class="sp1">{{ productPkgCurrentFollow.purchase_quantity }} Followers</span>
-              <span v-if="productPkgCurrentFollow && productPkgCurrentFollow.gives && productPkgCurrentFollow.gives[0] && productPkgCurrentFollow.gives[0].quantity != 0" class="sp2">+ {{ productPkgCurrentFollow.gives[0].quantity }} Free</span>
-            </p>
-            <p v-if="tabsIndex">
-              <span class="sp1"> {{ productPkgListDailyVM.dailyQuantity }} Followers/Day</span>
-              <span class="sp2">{{ productPkgListDailyVM.cycle_type }} - Day Plan</span>
-            </p>
-
-            <span>${{ tabsIndex ? (productPkgListDailyVM.price_decimal / productPkgListDailyVM.cycle_type).toFixed(2) : productPkgCurrentFollow.price_decimal }}</span>
-          </div>
-          <div class="inputSelect-input">
-            <div v-if="!isBuyBtn" class="inputSelect-input_search">
-              <label>
-                <input
-                  v-model="searchInsInput" type="text"
-                  placeholder="Enter Instagram username"
-                  :disabled="searchInsLoading"
-                  :style="{borderColor:(isBoxRed ? 'red!important' : '#E0E1E6!important')}"
-                  @input="bottomBtnDetective"
-                  @blur="inputBlur"
-                  @focus="inputFocus"
-                  @keyup.enter="searchUsername"
-                >
-              </label>
-              <div class="search_btn" @click="searchUsername">
-                <button-yellow-icon text="OK" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
-              </div>
-            </div>
-
-            <div v-if="isBuyBtn" class="inputSelect-input_buy">
-              <div class="inputSelect-avator">
+        <transition name="fade">
+          <div v-if="insUser.ins_id" class="search_result" >
+            <h2>Instagram Follower Count</h2>
+            <div class="avator">
                 <img :src="insUser.profile_pic_url || ''" alt="">
-              </div>
-              <div class="inputSelect-text">
-                <h2>{{ insUser.ins_account }}</h2>
-                <ul>
-                  <li>
-                    <h3>{{ insUser.post.post_count | numberAbbreviations }}</h3>
-                    <p>{{ $t('global.instagramConcept.posts') }}</p>
-                  </li>
-                  <li>
-                    <h3>{{ insUser.followed_by | numberAbbreviations }}</h3>
-                    <p>{{ $t('global.instagramConcept.followers') }}</p>
-                  </li>
-                  <li>
-                    <h3>{{ insUser.follow | numberAbbreviations }}</h3>
-                    <p>{{ $t('global.instagramConcept.following') }}</p>
-                  </li>
-                </ul>
-              </div>
-              <label>
-                <input
-                  v-model="searchInsInput" type="text"
-                  placeholder="Enter Instagram username"
-                  :disabled="searchInsLoading"
-                  :style="{borderColor:(isBoxRed ? 'red!important' : '#E0E1E6!important')}"
-                  @input="bottomBtnDetective"
-                  @blur="inputBlur"
-                  @focus="inputFocus"
-                >
-              </label>
-              <div class="buyBtn" @click="tabBottomBtnAction">
-                <button-yellow-icon
-                  :text="$t('store.buy.buyNow')" :font-size="'size-16'" :loading="ajaxRequesting"
-                />
-              </div>
             </div>
-          </div>
-        </div>
-        <div class="followers-link">
-          <router-link to="/buy-instagram-likes">Buy Instagram Likes >></router-link>
-        </div>
-      </div>
-    </div>
-    <div id="store-shelf-1-buy" class="store-shelf-1-buy spring mobile">
-      <!--main--><!--圣诞活动-->
-      <div ref="pronbit" class="wrapper">
-        <div class="section-store">
-          <div class="tabs">
-            <div class="unit" :class="{ on: !tabsIndex }" @click="tabSwitch(false)">
-              {{ $t('store.buy.tabs.tab-followers-0') }}
+            <p class="name">{{ insUser.ins_account }}</p>
+            <p class="title">Real-time Followers</p>
+            <p class="num">{{ insUser.followed_by}}</p>
+            <span>Updated {{ currentTime }}</span>
+            <div class="info">
+                <p>
+                <span>{{ $t('global.instagramConcept.following') }}</span>
+                <span>{{ insUser.follow | numberAbbreviations }}</span>
+                </p>
+                <p>
+                <span>{{ $t('global.instagramConcept.posts') }}</span>
+                <span>{{ insUser.post.post_count | numberAbbreviations }}</span>
+                </p>
             </div>
-            <div class="unit" :class="{ on: tabsIndex }" @click="tabSwitch (true)">
-              {{ $t('store.buy.tabs.tab-followers-1') }}
+            <hr />
+            <h3>Increase followers now and say goodbye to Instagram follower count stuck</h3>
+            <div class="btn-group">
+                <div>
+                  <button-icon-ins text="Get Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
+                </div>
+                <div>
+                  <button>Buy Now</button>
+                </div>
             </div>
-          </div>
-
-          <div class="tab-content">
-            <div class="store-container">
-              <!--pkg-container-->
-              <transition name="fade-tabs" mode="out-in">
-                <!--非周期Follower任务-->
-                <div v-if="!tabsIndex" key="box0" class="pkg-container">
-                  <!-- <h2 id="title-pkg-follow" :class="{ 'error': productPkgListFollowTitle }">
-                    <span>{{ $t('store.buy.title.text') }} <i>{{ $t('store.buy.title.error') }}</i></span>
-                    <span>Country-Targeted:</span>
-                  </h2> -->
-
-                  <div class="country-select-mobile" v-if="showCountrySelect">
-                    <h2>Country-Targeted:</h2>
-                    <div class="select-content">
-                      <span class="national-flag">
-                        <img v-if="iconUrl" :src="iconUrl" alt="">
-                      </span>
-                      <select v-model="countryFlagSelect">
-                        <option value="-1" selected="true">Global</option>
-                        <option v-for="item in regionList" :key="item.region_id" :value="item.region_id" >
-                          {{ item.name[0].txt }}
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <!-- 购买列表 -->
-                  <transition name="fade-skeleton" mode="out-in">
-                    <div v-if="!productPkgListLoading">
-                      <div class="pc">
-                        <div
-                          v-for="(pkg, i) in productPkgListFollow" :key="i"
-                          :class="{
-                            'follow': pkg['product_type'] === 2,
-                            'like': pkg['product_type'] === 1,
-                            'selected': productPkgListFollowIndex === i,
-                            'hot': pkg['promote_sale_type'] === 3,
-                          }"
-                          class="package spring"
-                          @click="pkgCheck(pkg, i)"
-                        >
-                          <!--num-->
-                          <span class="num">
-                            <i class="num-i"></i>
-                            <i class="cross"></i>
-                            <i class="hot-tag"></i>
-                            <b>{{ pkg['purchase_quantity'] }}</b><span></span>
-                          </span>
-                          <!--gives mk 0-->
-                          <!--<span v-if="pkg['gives'][0].quantity !== 0" class="likes">-->
-                          <!--  <span>+ {{ pkg['gives'][0].quantity }} Likes</span><i></i>-->
-                          <!--</span>-->
-
-                          <!--gives mk 1-->
-                          <span v-if="pkg['gives'][0].quantity !== 0" class="likes-mk-1">
-                            <span>+ {{ pkg['gives'][0].quantity }}</span>
-                          </span>
-
-                          <!--price-->
-                          <span v-if="pkg.payment_type === 1" class="coins">
-                            <sup>{{ pkg.price | numToFixed }} coins</sup>
-                            <sub>{{ pkg['original_price'] | numToFixed }} coins</sub>
-                          </span>
-                          <span v-if="pkg.payment_type === 2" class="coins">
-                            <sup>{{ $t('global.currencySymbol') }} {{ pkg.price_decimal | numToFixed }}</sup>
-                            <!--<sub>-->
-                            <!--  Total:-->
-                            <!--  {{ $t('global.currencySymbol') }}{{ pkg['price_decimal'] | numToFixed }}-->
-                            <!--</sub>-->
-                          </span>
-                        </div>
-                      </div>
-                      <!-- 手机端 -->
-                      <div class="mobile">
-                        <div
-                          v-for="(pkg, i) in productPkgListFollow" :key="i"
-                          :class="{
-                            'follow': pkg['product_type'] === 2,
-                            'like': pkg['product_type'] === 1,
-                            'selected': productPkgListFollowIndex === i,
-                            'hot': pkg['promote_sale_type'] === 3,
-                          }"
-                          class="package spring"
-                          @click="pkgCheck(pkg, i)"
-                        >
-                          <div class="package-left">
-                            <div class="circle on"></div>
-                            <i class="hot-tag"></i>
-                            <span class="num">
-                              <i class="num-i"></i>
-                              <b>{{ pkg['purchase_quantity'] }}</b><span></span>
-                              <i v-if="pkg['gives'][0].quantity !== 0" class="cross">+</i>
-                              <div class="item-flag" v-if="currentCountry.icon_url">
-                                <img :src="currentCountry.icon_url" alt="">
-                              </div>
-                            </span>
-                            <!--gives mk 1-->
-                            <span v-if="pkg['gives'][0].quantity !== 0 && pkg['promote_sale_type'] === 3" class="likes-mk-1 spring hot-3">
-                              <span>FREE</span>
-                              <span>{{ pkg['gives'][0].quantity }}</span>
-                            </span>
-
-                            <span v-if="pkg['gives'][0].quantity === 0" style="width: 100px"></span>
-
-                            <span v-if="pkg['gives'][0].quantity !== 0 && pkg['promote_sale_type'] !== 3" class="likes-mk-1 spring">
-                              <span>{{ pkg['gives'][0].quantity }}</span>
-                            </span>
-                          </div>
-
-                          <!--price-->
-                          <span v-if="pkg.payment_type === 1" class="coins">
-                            <sup>{{ pkg.price | numToFixed }} coins</sup>
-                            <sub>{{ pkg['original_price'] | numToFixed }} coins</sub>
-                          </span>
-                          <span v-if="pkg.payment_type === 2" class="coins">
-                            <sup>{{ $t('global.currencySymbol') }} {{ pkg.price_decimal | numToFixed }}</sup>
-                            <!--<sub>-->
-                            <!--  Total:-->
-                            <!--  {{ $t('global.currencySymbol') }}{{ pkg['price_decimal'] | numToFixed }}-->
-                            <!--</sub>-->
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div v-if="productPkgListLoading">
-                      <div v-for="i in 4" :key="i" class="package skeleton">
-                        <span class="num"><span class="s skeleton-bg"></span></span>
-                        <span class="likes"><span class="s skeleton-bg"></span></span>
-                        <span class="coins"><span class="s skeleton-bg"></span></span>
-                      </div>
-                    </div>
-                  </transition>
+            </div>
+        </transition>
+        <div class="counter-container">
+            <h2>Introducing You to the Instagram Follower Counter</h2>
+            <p>Learn how Instagram follower counter could help you upgrage your Instagram management and efficiency by checking content below.</p>
+            <div class="counter-container-item1">
+                <div class="counter-container-item1_text">
+                    <h3>What is Instagram follower counter?</h3>
+                    <p>Instagram Follower Counter is tool to help you check the accurate and real-time follower count of any Instagram account wihtout login or using Instagram. It is online and free to use. GetInsta Instagram Followers Counter could be your first choice when considering checking follower count conveniently.</p>
                 </div>
-
-                <!--周期Follower任务-->
-                <div v-if="tabsIndex" key="box1" class="pkg-container">
-                  <!--此处暂用like的标题-->
-                  <h2 id="title-pkg-like" :class="{ 'error': productPkgListLikeTitle }">
-                    <span>{{ $t('store.buy.title.text') }} <i>{{ $t('store.buy.title.error') }}</i></span>
-                  </h2>
-
-                  <transition name="fade-skeleton" mode="out-in">
-                    <div v-if="!productPkgListLoading">
-                      <label class="cycle days">
-                        <select v-model="productPkgListDaysVM" name="offer-daily" class="package changed">
-                          <option v-for="(item, i) in productPkgListDays" :key="i"
-                                  :value="item"
-                          >{{ item }}-Day Subscription
-                          </option>
-                        </select>
-                      </label>
-                      <label class="cycle daily" style="margin-top: 12px;">
-                        <select v-model="productPkgListDailyVM" name="offer-daily" class="package changed">
-                          <option
-                            v-for="(item, i) in productPkgListDaily" :key="i"
-                            :value="item"
-                          >{{ item.dailyQuantity }} Followers/Day (${{ (item.price_decimal / item.cycle_type).toFixed(2) }})
-                          </option>
-                        </select>
-                      </label>
-                    </div>
-                    <div v-if="productPkgListLoading">
-                      <div v-for="i in 2" :key="i" class="package skeleton">
-                        <span class="num"><span class="s skeleton-bg"></span></span>
-                        <span class="likes"><span class="s skeleton-bg"></span></span>
-                        <span class="coins"><span class="s skeleton-bg"></span></span>
-                      </div>
-                    </div>
-                  </transition>
+                <div class="counter-container-item1_img" ref="item1" :class="{'on': item1Val}">
+                    <img src="./img/pic01.png" alt="">
                 </div>
-              </transition>
-
-              <!--search-container-->
-              <div v-if="showbottombutton" id="control-search_ins-container" class="control-search_ins-container">
-                <span class="search_click" @click="openOrHide">
-                  <span></span>
-                </span>
-
-                <div v-if="noUser" class="no-user">
-                  <div class="noUser-info">
-                    <span></span>
-                    <div v-if="insUser.profile_pic_url" class="user_avator">
-                      <img :src="insUser.profile_pic_url || ''" alt="">
+            </div>
+            <div class="counter-container-item2">
+                <h3>Real-time Instagram follower count</h3>
+                <p>Instagram Follower Counter provides you real-time, accurate and exact follower count. It is real-time because the statistics are acquired from Instagram at the monent you tap the 'Check Now' button. Then this follower counter would acquire the data from Instagram immediately and present it to you. <a href="">Real-time instagram followers</a> are within your reach.</p>
+                <div class="clock-around">
+                    <img src="./img/clock-around.svg" alt="">
+                    <div>
+                        <img src="./img/arrow-around.svg" alt="">
                     </div>
-
-                    <!-- <div v-if="!tabsIndex" class="followers-title">{{ productPkgCurrentFollow.purchase_quantity }} Followers</div> -->
-
-                    <div v-if="!tabsIndex" class="followers-title">
-                      <div class="followers-title_top"> {{ productPkgCurrentFollow.purchase_quantity }} Followers</div>
-                      <div v-if="productPkgCurrentFollow && productPkgCurrentFollow.gives && productPkgCurrentFollow.gives[0] && productPkgCurrentFollow.gives[0].quantity != 0" class="followers-title_bottom">+ {{ productPkgCurrentFollow.gives[0].quantity }} Free</div>
-                    </div>
-
-                    <div v-if="tabsIndex" class="followers-title">
-                      <div class="followers-title_top"> {{ productPkgListDailyVM.dailyQuantity }} Followers/Day</div>
-                      <div class="followers-title_bottom">{{ productPkgListDailyVM.cycle_type }} - Day Plan</div>
-                    </div>
-                  </div>
-                  <div class="followers-amount">${{ tabsIndex ? (productPkgListDailyVM.price_decimal / productPkgListDailyVM.cycle_type).toFixed(2) : productPkgCurrentFollow.price_decimal }}</div>
                 </div>
-
-                <div v-if="insUser.ins_id && hasUser" class="has-user">
-                  <div v-if="insUser.profile_pic_url" class="user-persal-avator">
-                    <img :src="insUser.profile_pic_url || ''" alt="">
-                  </div>
-                  <div style="flex: 1">
-                    <h2>{{ insUser.ins_account }}</h2>
-                    <ul>
-                      <li>
-                        <h3>{{ insUser.post.post_count | numberAbbreviations }}</h3>
-                        <p>{{ $t('global.instagramConcept.posts') }}</p>
-                      </li>
-                      <li>
-                        <h3>{{ insUser.followed_by | numberAbbreviations }}</h3>
-                        <p>{{ $t('global.instagramConcept.followers') }}</p>
-                      </li>
-                      <li>
-                        <h3>{{ insUser.follow | numberAbbreviations }}</h3>
-                        <p>{{ $t('global.instagramConcept.following') }}</p>
-                      </li>
-                    </ul>
-                  </div>
+                <span>Updated 3:13:05 PM 12.31.2020</span>
+            </div>
+            <div class="counter-container-item3" ref="item3">
+                <h3>Accurate and exact Instagram follower count</h3>
+                <p>It is accurate and exact because the follower count would be displayed in the format of complete numbers rather than abbreviation. For instance, 148m followers of National Geographic on Instagram would be 148,458,486* on this page. It is correct because the number was directled obtained from Instagram.</p>
+                <span>+ <i ref="aroundNum">{{value}}</i></span>
+            </div>
+            <div class="counter-container-item4">
+                <h3>
+                    Why you need this Instagram follower counter?
+                </h3>
+                <p>
+                    Since Instagram being one of the biggest social platform on this planet, this tool provides you updated Instagram follower count with detailed numbers, which could help you detect even the most salient change of follower count and take actions to avoid losing followers. It is online and has a clear user interface to offer you the most convenient and direct information.
+                </p>
+                <div class="counter-container-item4_img">
+                   <div class="counter-people" ref="counterPeople" :class="{'on': counterPeopleVal}">
+                     <img src="./img/people.svg" alt="">
+                   </div>
+                   <span></span>
+                   <span></span>
+                   <span></span>
+                   <span></span>
                 </div>
-                <div class="control-search_ins">
-                  <label>
-                    <input
-                      v-model="searchInsInput" type="text"
-                      placeholder="Enter Instagram username"
-                      :disabled="searchInsLoading"
-                      :style="{borderColor:(isBoxRed ? 'red!important' : '#E0E1E6!important')}"
-                      @input="bottomBtnDetective"
-                      @blur="inputBlur"
-                      @focus="inputFocus"
-                    >
-                  </label>
-                  <div v-if="!isBuyBtn" class="search_btn" @click="searchUsername">
-                    <button-yellow-icon text="OK" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
-                  </div>
-
-                  <div v-if="isBuyBtn" class="search_btn" @click="tabBottomBtnAction">
-                    <button-yellow-icon
-                      :text="$t('store.buy.buyNow')" :loading="ajaxRequesting"
-                    />
-                  </div>
-                </div>
-
-                <!-- <transition name="fade-tabs" mode="out-in">
-                  <div v-if="insUser.ins_id" class="ins-info-container">
-                    <img :src="insUser.profile_pic_url || ''" alt="">
-                    <h3>{{ insUser.ins_account }}</h3>
+            </div>
+            <div class="counter-container-item5">
+                <h3>Tips for Instagram followers growth</h3>
+                <p>Besides focusing on real-time Instagram follower count, there are some other ways to promote your IG account.</p>
+                <div>
                     <p>
-                      <span>
-                        <b>{{ insUser.post.post_count | numberAbbreviations }}</b>
-                        {{ $t('global.instagramConcept.posts') }}
-                      </span>
-                      <span>
-                        <b>{{ insUser.followed_by | numberAbbreviations }}</b>
-                        {{ $t('global.instagramConcept.followers') }}
-                      </span>
-                      <span>
-                        <b>{{ insUser.follow | numberAbbreviations }}</b>
-                        {{ $t('global.instagramConcept.following') }}
-                      </span>
+                        <span></span>
+                        Use all the features of Instagram
                     </p>
-                  </div>
-                </transition> -->
-              </div>
+                    <span>Your content should not be limited to photos or videos. Instagram Reels, Live, IG TV, etc. are hot among people of today, remember to try all of them.</span>
+                </div>
+                <div>
+                    <p>
+                        <span></span>
+                        Try Instagram creator studio
+                    </p>
+                    <span>This tool could help be more prfessional when talking about running Instagram account. Managing your account on desktop is practical by using this platform, why not trying it?</span>
+                </div>
+                <div>
+                    <p>
+                        <span></span>
+                        Get Your posts in Explore
+                    </p>
+                    <span>This will help your content gain more organic reach and impression of your profile. Local followers would see your posts more eaisy and make them become your followers would increase your account's authenticity.</span>
+                </div>
             </div>
-          </div>
+            <div class="counter-container-item6">
+                <h3>No more Instagram follower count stuck by using GetInsta</h3>
+                <p>nstagram Follower Counter enables you to check real-time and accutate number of any IG account's followers. Any changes of follower count could be detected and help you make adjustments. No more Instagram follower count stuck or frozen would happen after using this tool. Moreover, this process could be simplified by <a href="">GetInsta</a>. This Instagram followers app help you get free IG followers and refresh your follower count.</p>
 
-          <div class="btn-container pc" @click="tabBottomBtnAction">
-            <button-yellow-icon
-              :text="$t('store.buy.buyNow')"
-              :icon="'cart'" :loading="ajaxRequesting"
-            />
-          </div>
-        </div>
-
-        <!--圣诞活动-->
-        <div class="new-year__santa-claus" :class="{ hide: santaClausHide }"></div>
-      </div>
-
-      <!--buyNow Btn-->
-      <div
-        class="mobile"
-        :class="{
-          'on': bottomBtnOn,
-          'control-btn__bottom-buy':!independent,
-          'btn-container mk0':independent
-        }"
-        @click="tabBottomBtnAction"
-      >
-        <button-yellow-icon
-          :text="$t('store.buy.buyNow')"
-          :icon="'cart'"
-          :font-size="'size-16'"
-        />
-      </div>
-
-      <!--dialogs-->
-      <transition name="fade">
-        <div v-if="dialogFail" class="uni-dialog-box enter-box enter-mask">
-          <div class="mask"></div>
-          <div class="container">
-            <i class="close" @click="closeDialog()"></i>
-            <div class="content">
-              <div class="model-box alert">
-                <div class="title">
-                  <i class="icon"></i>
-                  <h3>Oops</h3>
+                <div class="item6-img" ref="item6" :class="{'on': item6Val}">
+                  <img src="./img/nomore-icon2.svg" alt="">
+                  <div class="item6-img_top"></div>
+                  <div class="item6-img_bottom"></div>
                 </div>
-                <p class="note" v-html="dialogFailMsg"></p>
-                <div class="btn" @click="closeDialog()">
-                  <button-purple text="Close" :font-size="'size-16'" :square="true" />
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-        <div v-if="dialogAttention" class="uni-dialog-box enter-box enter-mask">
-          <div class="mask"></div>
-          <div class="container">
-            <i class="close" @click="closeDialog()"></i>
-            <div class="content">
-              <div class="model-box attention">
-                <div class="title">
-                  <i class="icon"></i>
-                  <h3>Wait</h3>
-                </div>
-                <p class="note" v-html="dialogAttentionMsg"></p>
-                <div class="btn" @click="closeDialog()">
-                  <button-purple text="Close" :font-size="'size-16'" :square="true" />
-                </div>
-              </div>
+        <div class="counter-signup" ref="signup" :class="{ 'on': isSignup }">
+          <div class="counter-signup_leftimg pc">
+             <i></i>
+             <i></i>
+             <i></i>
+             <i></i>
+             <i></i>
+             <i></i>
+             <i></i>
+             <i></i>
+             <i></i>
+          </div>
+          <div class="counter-signup_leftimg mobile"></div>
+          <div class="counter-signup_content">
+            <h2>How to Solve Instagram Follower Count Stuck?</h2>
+            <div class="counter-signup_content-box">
+              <h3>GetInsta
+                <span> - You Free Instagram Followers Solution</span>
+              </h3>
+              <ul>
+                <li>100% Free Instagram Followers</li>
+                <li>Real Instagram Followers</li>
+                <li>High-Quality Instagram Likes</li>
+                <li>Safe and Private</li>
+              </ul>
+            </div>
+            <div class="btns">
+              <button>Sign Up Now</button>
             </div>
           </div>
         </div>
-      </transition>
+        <div class="counter-why">
+            <h2>Why GetInsta is Trustworthy?</h2>
+            <div class="counter-why-item_group">
+                <div class="counter-why-item">
+                    <div class="counter-why-item_top">
+                        <img src="./img/why01.svg" alt="">
+                    </div>
+                    <h2>100% Free</h2>
+                    <p>100% Free Instagram followers and likes are available in GetInsta. You can earn the virtual coins in the app for unlimited free followers and likes. Thousands of free coins would be given to you when you open the app.</p>
+                </div>
+                <div class="counter-why-item">
+                    <div class="counter-why-item_top">
+                        <img src="./img/why02.svg" alt="">
+                    </div>
+                    <h2>Real Instagram Followers</h2>
+                    <p>GetInsta can solve Instagram followers count stuck. It provides you with real and high-quality followers who are real and active Instagram users from all over the world. You can make them become your followers easily by using GetInsta.</p>
+                </div>
+                <div class="counter-why-item">
+                    <div class="counter-why-item_top">
+                        <img src="./img/why03.svg" alt="">
+                    </div>
+                    <h2>High-Quality Instagram Likes</h2>
+                    <p>GetInsta also provides you with high-quality Instargam likes from real Instargam users around the world. Getting Instagram likes for free is 100% practical in GetInsta. Try this great app and it will not let you down.</p>
+                </div>
+                <div class="counter-why-item">
+                    <div class="counter-why-item_top">
+                        <img src="./img/why04.svg" alt="">
+                    </div>
+                    <h2>Safe and Private</h2>
+                    <p>User's privacy is always the first priority of GetInsta. No leak and virus will not appear during the whole process of using this app, and your personal data would be protected strictly . Just add Instagram usernames and start to hack Instagram followers and likes.</p>
+                </div>
+            </div>
+            <div class="button-group">
+                <div>
+                  <button-icon-ins text="Get Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
+                </div>
+                <div>
+                  <button>Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="counter-tips">
+            <h2>More Instagram Tips</h2>
+            <div class="counter-tips-item_group">
+                <div class="counter-tips-item">
+                    <span></span>
+                    <p>How to Get Free Instagram Followers & Likes</p>
+                </div>
+                <div class="counter-tips-item">
+                    <span></span>
+                    <p>How to Hack Instagram Followers</p>
+                </div>
+                <div class="counter-tips-item">
+                    <span></span>
+                    <p>Get Free Instagram Followers Instantly</p>
+                </div>
+                <div class="counter-tips-item">
+                    <span></span>
+                    <p>6 Best Apps to Get Instagram Likes and Followers</p>
+                </div>
+                <div class="counter-tips-item">
+                    <span></span>
+                    <p>Best Instagram Auto Liker App</p>
+                </div>
+                <div class="counter-tips-item">
+                    <span></span>
+                    <p>How to Hack Instagram Followers Without Following</p>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -571,10 +279,10 @@ import apiIns from '@/api/api.ins';
 import apiInsServer from '@/api/api.ins.server';
 import apiPayment from '@/api/api.payment';
 import apiTask from '@/api/api.task';
-import apiV2 from '@/api/api.v2.js';
 
-import ButtonPurple from '@/components/button/button-purple';
+// import ButtonPurple from '@/components/button/button-purple';
 import ButtonYellowIcon from '@/components/button/button-yellow-icon';
+import ButtonIconIns from '@/components/button/button-icon-ins';
 // import ListEmpty from '@/components/list/list-empty';
 
 export default {
@@ -582,7 +290,8 @@ export default {
   components: {
     // ListEmpty,
     ButtonYellowIcon,
-    ButtonPurple
+    ButtonIconIns
+    // ButtonPurple
   },
   filters: {
     numToFixed(num) {
@@ -628,19 +337,9 @@ export default {
       // 圣诞
       santaClausHide: false,
 
-      isBoxRed: false,
-
-      showbottombutton: false,
-      screenWidth: 0,
-      showCountrySelect: false,
-
-      isFocus: false,
-
-      noUser: false,
-      hasUser: false,
-
       enterFirstTime: true,
       payMethodDisplay: 2,
+      isBoxRed: false,
       // 本字段控制页面显示何种支付方式的产品
       // 1 = 金币购买
       // 2 = 现金购买
@@ -654,9 +353,20 @@ export default {
         }
       },
 
-      isBuyBtn: false,
+      animateBegin: false,
+      value: 148458486,
+      time: 5,
+      funOnce: true,
+      isFocus: false,
+      currentTime: '',
+      isSignup: false,
+      item1Val: false,
+      item3Val: false,
+      counterPeopleVal: false,
+
       ajaxRequesting: false,
       bottomBtnOn: false,
+      item6Val: false,
 
       dialogFail: false,
       dialogFailMsg: '',
@@ -693,13 +403,7 @@ export default {
       productPkgListDaily: [],
       productPkgListDailyVM: [],
       productPkgListDays: [],
-      productPkgListDaysVM: [],
-      regionList: [],
-      countryFlagSelect: -1,
-      currentCountry: {
-        icon_url: ''
-      },
-      productCountryList: []
+      productPkgListDaysVM: []
     };
   },
   computed: {
@@ -720,39 +424,10 @@ export default {
         return productPkg['product_type'] === 1;
       });
     },
-    // followers
-    productCountryListDisplay: function () {
-      const payMethodDisplay = this.payMethodDisplay;
-      return this.productCountryList.filter(function (productPkg) {
-        // promote_sale_type 展示种类
-        return productPkg['payment_type'] === payMethodDisplay
-          && (productPkg['promote_sale_type'] === undefined
-            || productPkg['promote_sale_type'] === 0
-            || productPkg['promote_sale_type'] === 1
-            || productPkg['promote_sale_type'] === 3)
-          && productPkg['cycle_type'] === 1;
-      });
-    },
     productPkgListFollow: function () {
-      let list = [];
-      let _this = this;
-      if(this.countryFlagSelect != -1) {
-        list = _this.productCountryListDisplay.filter(function (productPkg) {
-          return productPkg['product_type'] === 2;
-        });
-      } else {
-        list = _this.productPkgListDisplay.filter(function (productPkg) {
-          return productPkg['product_type'] === 2;
-        });
-      }
-      return list;
-    },
-    iconUrl: function() {
-      let icon_url = this.currentCountry.icon_url;
-      if(!icon_url && this.countryFlagSelect == -1) {
-        icon_url = require('./img/earth.png');
-      }
-      return icon_url;
+      return this.productPkgListDisplay.filter(function (productPkg) {
+        return productPkg['product_type'] === 2;
+      });
     }
   },
   watch: {
@@ -771,31 +446,11 @@ export default {
       // console.log("followers-daily-----",this.productPkgListDaily)
       this.productPkgListDailyVM = this.productPkgListDaily[0];
     },
-    countryFlagSelect(newValue, oldVal) {
-      let regionList = this.regionList;
-      this.productPkgListLoading = true;
-      if(regionList && regionList.length !==0) {
-        regionList.forEach((item, index) => {
-          if(item.region_id == newValue ) {
-            this.currentCountry = item;
-            return;
-          }
-        })
-      }
-      if(oldVal != '' && newValue != -1) {
-        this.getCountryProduct()
-      } else if(oldVal != '' && newValue == -1) {
-        this.productPkgListLoading = false;
-        this.productPkgListFollowIndex = 0;
-        this.currentCountry = {};
-        let _this = this;
-        this.productPkgListFollow.forEach(function(item, index) {
-          if(item['promote_sale_type'] === 3) {
-            _this.productPkgListFollowIndex = index;
-            _this.productPkgCurrentFollow = item;
-          }
-        })
-        this.getPkgList();
+    item3Val(newVal, oldVal) {
+      if(newVal !== oldVal && newVal == true && oldVal == false) {
+        this.numberGrow(this.$refs.aroundNum, true);
+      } else {
+        this.numberGrow(this.$refs.aroundNum, false);
       }
     }
   },
@@ -805,17 +460,7 @@ export default {
   },
   mounted() {
     this.getPkgList();
-    if(!this.tabsIndex) {
-      this.getRegionList();
-    }
     window.addEventListener('scroll', this.handle);
-    const that = this;
-    window.onresize = () => {
-      return (() => {
-        window.screenWidth = document.body.clientWidth;
-        that.screenWidth = window.screenWidth;
-      })();
-    };
   },
   destroyed() {
     window.removeEventListener('scroll', this.handle);
@@ -824,134 +469,34 @@ export default {
     emitToParent() {
       this.$emit('emitToParent', this.emittedData);
     },
-    dayClick(val) {
-      this.productPkgListDaysVM = val;
-    },
-    getCountryProduct() {
-      var _this = this;
-      this.$nuxt.$axios.post(
-        `${apiV2.getProduct}`,
-        this.COMMON.paramSign({
-          "origin": "web",
-          "client_lan": 'en',
-          "cycle_product_enable": false,
-          "subscribe_product_enable": false,
-          "system_id": 1,
-          "region_id": parseInt(this.countryFlagSelect)
-        })
-      ).then((response) => {
-        let { data } = response;
-        if(data.status !== 'ok') return;
-        this.productPkgListLoading = false;
-        let { list } = data.product;
-        this.productCountryList = list;
-        if(this.countryFlagSelect != -1) {
-          this.productPkgListFollowIndex = 0;
-          let _this = this;
-          list.forEach(function(item, index) {
-            if(item.promote_sale_type === 3) {
-              _this.productPkgListFollowIndex = index;
-              _this.productPkgCurrentFollow = item;
-              return;
-            }
-          })
-        }
-      }).catch((error) => {
-        this.productPkgListLoading = false;
-        this.dialogFailMsg = '<samp>'
-          + '<b>Error Status:</b> ' + error.status
-          + '<br>' + '<b>Error Message:</b> ' + error.statusText
-          + '</samp>';
-        this.dialogFail = true;
-        console.error('Catch Error: getProduct', error);
-      });
-    },
-    getRegionList() {
-      var _this = this;
-      _this.productPkgListLoading = true;
-      this.$nuxt.$axios.post(
-        `${apiV2.getRegionList}`,
-        this.COMMON.paramSign({
-           "origin":"web",
-           "system_id": 1
-        })
-      ).then((response) => {
-        let { data } = response;
-        if(data.status !== 'ok') return;
-        data.region_list.forEach(function(item, index) {
-          let lang = navigator.language || navigator.userLanguage;
-          if(lang === 'hi') {
-             lang = 'hi-in';
-          } else if(lang === 'id') {
-            lang = "id-id"
-          }
-          lang = lang.replace(/-/g, '_').toLowerCase();
-          let display_locale_list = item.display_locale_list.join(',').toLowerCase().split(',');
-          const isInArr = display_locale_list.includes(lang);
-          if(!isInArr) {
-            _this.showCountrySelect = false;
-          } else {
-            if(item.region_status === 1 && isInArr) {
-              _this.showCountrySelect = true;
-              _this.regionList.push(item);
-            }
-          }
-        })
-        if(this.countryFlagSelect == -1) return;
-        this.currentCountry = _this.regionList[0];
-        let region_id = parseInt(this.regionList[0].region_id);
-        if(region_id && region_id != 0) {
-          this.getCountryProduct();
-        }
-      }).catch((error) => {
-        this.productPkgListLoading = false;
-        this.dialogFailMsg = '<samp>'
-          + '<b>Error Status:</b> ' + error.status
-          + '<br>' + '<b>Error Message:</b> ' + error.statusText
-          + '</samp>';
-        this.dialogFail = true;
-        console.error('Catch Error: getRegionList', error);
-      });
-    },
-    keyupSubmit() {
-      if (process.server) return;
-      document.onkeydown = (e) => {
-        let _key = window.event.keyCode;
-        if (_key === 13 && this.isFocus) {
-          if (!this.isBuyBtn) {
-            this.searchUsername();
-          } else {
-            this.tabBottomBtnAction();
-          }
-        }
-      };
-    },
-    dailyClick(val) {
-      this.productPkgListDailyVM = val;
-    },
     closeDialog() {
       this.dialogFail = false;
       this.dialogAttention = false;
-    },
-    openOrHide() {
-      if (!this.noUser) {
-        this.noUser = true;
-        this.hasUser = this.insUser.ins_id ? true : false;
-      } else {
-        this.noUser = false;
-        this.hasUser = false;
-      }
     },
     inputBlur() {
       this.isBoxRed = false;
       this.isFocus = false;
     },
     inputFocus() {
-      this.noUser = true;
       this.isFocus = true;
     },
+    downloadAll() {
+
+    },
+    downloadIOS() {
+      this.$ga.event('insdl', 'download', 'umniosdl2');
+      location.href
+        = `${this.$store.state.enIosLink}`
+        + `?pt=${this.$store.state.enIosLinkPt}`
+        + `&ct=${this.$store.state.enIosLinkCt}`
+        + `&mt=8`;
+    },
+    downloadAndroid() {
+      this.$ga.event('insdl', 'download', 'umnappdl2');
+      window.location.href = this.$store.state.enAdrLink;
+    },
     initTabIndex() {
-      const path = this.$route.path;
+      const path = this.$nuxt.$route.path;
       if (path === '/buy-instagram-followers') {
         this.tabsIndex = false;
         this.emittedData.meta.title = this.$t('store.meta.title-0');
@@ -985,9 +530,18 @@ export default {
 
       this.$emit('emitToParent', this.emittedData);
     },
+    keyupSubmit() {
+      if (process.server) return;
+      document.onkeydown = (e) => {
+        let _key = window.event.keyCode;
+        if (_key === 13 && this.isFocus) {
+          this.searchUsername();
+        }
+      };
+    },
     tabSwitch(i) {
       this.tabsIndex = i;
-      let originalPath = this.$route.path;
+      let originalPath = this.$nuxt.$route.path;
       let destPath = '';
 
       if (i === false) {
@@ -1040,9 +594,10 @@ export default {
         this.emitToParent();
       }
 
-      // this.bottomBtnDetective();
+      this.bottomBtnDetective();
       // this.anchorBottomBtn();
     },
+
     pkgCheck(pkg, i) {
       if (pkg['product_type'] === 1) {
         this.productPkgListLikeIndex = i;
@@ -1061,7 +616,6 @@ export default {
         this.anchorBottomBtn();
     },
     pkgSelectedInit(pkgList) {
-      console.log(pkgList)
       let pkgLikeFirstNum = 0, pkgFollowFirstNum = 0;
       for (let unit of pkgList) {
         if (unit['product_type'] === 1) { // like
@@ -1070,9 +624,7 @@ export default {
         }
         if (unit['product_type'] === 2) { // follow
           pkgFollowFirstNum = unit['gives'][0]['quantity'];
-          if(this.countryFlagSelect == -1) {
-            this.productPkgCurrentFollow = unit;
-          }
+          this.productPkgCurrentFollow = unit;
         }
         if (pkgLikeFirstNum !== 0 && pkgFollowFirstNum !== 0) {
           break;
@@ -1104,7 +656,6 @@ export default {
         this.productPkgListLoading = false;
 
         if (response.data.product && response.data.product.list) {
-
           this.renderProductPkgList(response.data.product.list);
 
           //console.log(response.data.product.list);
@@ -1164,9 +715,6 @@ export default {
     },
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
-
-      // 2222
-
       pkgList.map(item => {
         if (item['cycle_type'] > 1 && item.product_type === 2) {
           item.dailyQuantity = item['purchase_quantity'];
@@ -1195,26 +743,13 @@ export default {
     },
     searchInsByServerV2() {
       if (this.searchInsInput === '') {
-        // this.dialogAttentionMsg = 'Please enter username.';
-        // this.dialogAttention = true;
-
         this.isBoxRed = true;
-        // this.$alert(
-        //   '', 'warn',
-        //   this.$t('store.buy.error.noInsID.title'),
-        //   this.$t('store.buy.error.noInsID.text'),
-        //   'normal',
-        //   this.$t('global.modelBox.btn.close')
-        // );
         return;
       }
-
       this.isBoxRed = false;
-
       if (this.searchInsLoading) return;
 
       this.searchInsLoading = true;
-
       this.$nuxt.$axios.post(
         apiInsServer.getAccountByUsername,
         this.COMMON.paramSign({ ins_account: this.searchInsInput })
@@ -1247,16 +782,16 @@ export default {
         this.postListInfo.post_count = this.insUser.post.post_count;
         this.postListInfo.end_cursor = this.insUser.post.end_cursor;
         this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
-        this.$nextTick(() => {
-          this.noUser = true;
-          this.hasUser = this.insUser.ins_id ? true : false;
-          this.isBuyBtn = true;
-          this.anchorBottomBtn();
-        });
+
+        // 设置当前时间
+        this.getCurrentTime();
+
+        // this.$nextTick(() => {
+        //   this.anchorBottomBtn();
+        // });
       }).catch((error) => {
         this.closeDialog();
         this.searchInsLoading = false;
-        this.isBuyBtn = false;
         // this.$alert(
         //   '', 'error', 'Oops',
         //   'Request Instagram Data failed, please try again later.',
@@ -1271,6 +806,18 @@ export default {
         );
         console.error('Catch Error: searchIns: ', error);
       });
+    },
+    getCurrentTime() {
+                // Updated 3:13 PM 12/31/2020
+        // this.currentTime
+        let aData = new Date();
+        let currentYear = aData.getFullYear();
+        let currentMonth = aData.getMonth() + 1;
+        let currentDate = aData.getDate();
+        let currentHour = aData.getHours();
+        let currentMin = aData.getMinutes();
+        let str = currentHour > 12 ? 'PM':'am';
+        this.currentTime = ` ${currentHour}:${currentMin} ${str} ${currentDate}/${currentMonth}/${currentYear}`;
     },
     // 搜索ins后直接跳转checkout
     searchInsByServerV2AndAddToCart() {
@@ -1561,10 +1108,12 @@ export default {
     // Bottom 按钮动作
     tabBottomBtnAction() {
       if (this.productPkgListLoading) return;
+
       // 关注
       if (!this.tabsIndex) {
         if (this.productPkgListFollowIndex === -1) {
           this.productPkgListFollowTitle = true;
+
           if (!this.independent)
             this.$scrollTo('#title-pkg-follow', { offset: -200 });
           return;
@@ -1618,11 +1167,11 @@ export default {
         ).then(() => {
           if (this.$i18n.locale !== 'en') {
             let gaPage = '', gaPlatform = '';
-            if (this.$route.path === '/') {//home
+            if (this.$nuxt.$route.path === '/') {//home
               gaPage = 'hp';
             } else if (
-              this.$route.path === '/buy-instagram-followers'
-              || this.$route.path === '/buy-instagram-likes'
+              this.$nuxt.$route.path === '/buy-instagram-followers'
+              || this.$nuxt.$route.path === '/buy-instagram-likes'
             ) {//store
               gaPage = 'store';
             }
@@ -1646,7 +1195,6 @@ export default {
       }
     },
     bottomBtnDetective() {
-
       this.insUser = {};
       this.isBuyBtn = false;
 
@@ -1655,26 +1203,18 @@ export default {
       } else {
         this.isBoxRed = true;
       }
-
-      // if (!this.tabsIndex) {
-      //   this.bottomBtnOn = this.productPkgListFollowIndex !== -1 && this.insUser.ins_id;
-      // } else if (this.tabsIndex) {
-      //   this.bottomBtnOn = this.insUser.ins_id;
-      // }
-      // 调整后
-      // this.bottomBtnOn = this.searchInsInput !== '';
     },
     anchorBottomBtn() {
       if (!this.COMMON.isMobile()) return;
+
       if (!this.tabsIndex) {
         if (this.productPkgListFollowIndex !== -1 && this.insUser.ins_id) {
         }
         if (this.productPkgListFollowIndex !== -1 && !this.insUser.ins_id) {
-          // 选择套餐，自动滚动
-          // setTimeout(() => {
-          //   if (!this.independent)
-          //     this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
-          // }, 500);
+          setTimeout(() => {
+            if (!this.independent)
+              this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
+          }, 500);
         }
       } else if (this.tabsIndex) {
         if (this.productPkgListLikeIndex !== -1 && !this.insUser.ins_id) {
@@ -1686,7 +1226,8 @@ export default {
             this.$scrollTo(`#title-post-like`, { offset: -60 });
         }
       }
-      // this.bottomBtnDetective();
+
+      this.bottomBtnDetective();
     },
 
     addToCart() {
@@ -1709,9 +1250,6 @@ export default {
         param.follower_count = this.insUser.followed_by;
         param.following_count = this.insUser.follow;
 
-        if(this.currentCountry.icon_url) {
-          param.icon_url = this.currentCountry.icon_url;
-        }
 
         if (this.postList.length > 1) {
           param.like_id = this.postList[0].like_id;
@@ -1719,13 +1257,6 @@ export default {
           param.like_count = this.postList[0].like_count;
           param.short_code = this.postList[0].short_code;
         }
-
-        // 广告
-        let adStore = { s: '', c: '', k: '' };
-        adStore.s = this.$route.query.source || '';
-        adStore.c = this.$route.query.camp || '';
-        adStore.k = this.$route.query.k || '';
-        this.$storage.set('adStore', adStore);
 
         // console.log(param);
         this.gaBottomBtn();
@@ -1739,6 +1270,7 @@ export default {
         param.product_id = this.productPkgListDailyVM.product_id;
         param.purchase_quantity = this.productPkgListDailyVM.purchase_quantity;
         param.price_decimal = this.productPkgListDailyVM.price_decimal;
+
         // param.like_id = post.like_id;
         // param.like_pic_url = post.like_pic_url;
         // param.short_code = post.short_code;
@@ -1754,22 +1286,25 @@ export default {
       }
 
       // 广告参数
-      // let adStore = { s: '', c: '', k: '' };
-      // adStore.s = this.$route.query.s || '';
-      // adStore.c = this.$route.query.c || '';
-      // adStore.k = this.$route.query.k || '';
-      // this.$storage.set('adStore', adStore);
+      let adStore = { s: '', c: '', k: '' };
+      adStore.s = this.$route.query.s || '';
+      adStore.c = this.$route.query.c || '';
+      adStore.k = this.$route.query.k || '';
+      this.$storage.set('adStore', adStore);
 
+      // console.log(this.$nuxt.$route.path);
+
+      // console.log(1, param);
       // this.initGeoIPWhiteList(param);
       this.transportCartUnitData(param);
     },
     transportCartUnitData(param) {
-      console.log(param);
+      // console.log(param);
       this.$storage.set('cartUnit', param);
       // this.$store.commit('cartUnit', param);
 
       const query = this.COMMON.envTest() ? { env_test: '1' } : {};
-      this.$router.push({ path: '/checkout', query: query });
+      this.$nuxt.$router.push({ path: '/checkout', query: query });
     },
     // 获取白名单（功能已变更为获取该地区支持的支付方式）
     initGeoIPWhiteList(param) {
@@ -1785,7 +1320,7 @@ export default {
         })
       ).then((response) => {
         if (response.data.status === 'ok') {
-          // if (this.$route.path === '/event-followers' || this.$route.path === '/event-likes') {
+          // if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
           //   this.sendCheckoutInfo(param);
           // } else {
           //   if (response.data['checkout_method'] === 1) {
@@ -1992,50 +1527,17 @@ export default {
     },
 
     gaSearchBtn() {
-      let param = !this.tabsIndex ? 'f' : 'l';
-      let paramEvent0 = '';
-      if (this.$route.path === '/event-followers' || this.$route.path === '/event-likes') {
-        paramEvent0 = '-ad';
-      }
-      if (this.tabsIndex) paramEvent0 = '-daily';
-
-      let gaPlatform = '';
-      if (this.$i18n.locale !== 'en') {
-        if (this.COMMON.isiOS()) gaPlatform = 'ios';
-        if (this.COMMON.isAndroid()) gaPlatform = 'adr';
-      }
-
-      let gaMultiLang = this.$i18n.locale !== 'en' ? `-${this.$i18n.locale}` : '';
-
-      let pageParam = '';
-      if (this.$route.path === '/') {
-        pageParam = 'hp';
-      } else if (
-        this.$route.path === '/buy-instagram-followers'
-        || this.$route.path === '/buy-instagram-likes'
-      ) {
-        pageParam = 'store';
-      }
-
-      if (this.$store.state.s2) {
-        if (!this.tabsIndex) {
-          this.$ga.event('buttonclick', 'click', 'followerbuy');
-        } else {
-          this.$ga.event('buttonclick', 'click', 'dailyfbuy');
-        }
-      } else {
-        this.$ga.event(
-          'buttonclick',
-          'click',
-          `${pageParam}${gaPlatform}add${param}${paramEvent0}${gaMultiLang}`
-        );
-      }
+      this.$ga.event(
+        'buttonclick',
+        'click',
+        'check-now-counter'
+      );
     },
     gaBottomBtn() {
       // let param = !this.tabsIndex ? 'f' : 'l';
       let param = 'f';
       let paramEvent0 = '';
-      if (this.$route.path === '/event-followers' || this.$route.path === '/event-likes') {
+      if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
         paramEvent0 = '-ad';
       }
       if (this.tabsIndex) paramEvent0 = '-daily';
@@ -2049,113 +1551,73 @@ export default {
       let gaMultiLang = this.$i18n.locale !== 'en' ? `-${this.$i18n.locale}` : '';
 
       let pageParam = '';
-      if (this.$route.path === '/') {
+      if (this.$nuxt.$route.path === '/') {
         pageParam = 'hp';
       } else if (
-        this.$route.path === '/buy-instagram-followers'
-        || this.$route.path === '/buy-instagram-likes'
+        this.$nuxt.$route.path === '/buy-instagram-followers'
+        || this.$nuxt.$route.path === '/buy-instagram-likes'
       ) {
         pageParam = 'store';
       }
 
-      // console.log(this.$route.path);
+      // console.log(this.$nuxt.$route.path);
 
-      if (this.$route.path === '/event-get') {
+      if (this.$nuxt.$route.path === '/event-get') {
         this.$ga.event('insbuy', 'buy', 'paidlp-3');
       } else {
-        if (this.$store.state.s2) {
-          if (!this.tabsIndex) {
-            var allNum = this.productPkgCurrentFollow.purchase_quantity + this.productPkgCurrentFollow.gives[0].quantity;
-            switch (allNum) {
-              case 100:
-                this.$ga.event('insbuy', 'followerbuy', 'st100');
-                break;
-              case 750:
-                this.$ga.event('insbuy', 'followerbuy', 'st750');
-                break;
-              case 1500:
-                this.$ga.event('insbuy', 'followerbuy', 'st1500');
-                break;
-              case 3000:
-                this.$ga.event('insbuy', 'followerbuy', 'st3000');
-                break;
-              case 5000:
-                this.$ga.event('insbuy', 'followerbuy', 'st5000');
-                break;
-            }
-          } else {
-            var likesNum = this.productPkgListDailyVM.cycle_type + '*' + this.productPkgListDailyVM.dailyQuantity;
-            switch (likesNum) {
-              case '30*50':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st3*50');
-                break;
-              case '30*150':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st3*150');
-                break;
-              case '30*200':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st3*200');
-                break;
-              case '60*50':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st6*50');
-                break;
-              case '60*150':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st6*150');
-                break;
-              case '60*200':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st6*200');
-                break;
-              case '90*50':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st9*50');
-                break;
-              case '90*150':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st9*150');
-                break;
-              case '90*200':
-                this.$ga.event('insbuy', 'dailyfbuy', 'st9*200');
-                break;
-            }
-          }
-        } else {
-          this.$ga.event(
-            'insbuy',
-            'buy',
-            `${pageParam}${gaPlatform}buy${param}${paramEvent0}${gaMultiLang}`
-          );
-        }
-
-
+        this.$ga.event(
+          'insbuy',
+          'buy',
+          `${pageParam}${gaPlatform}buy${param}${paramEvent0}${gaMultiLang}`
+        );
       }
     },
 
 
-    // 圣诞
     handleScroll: function () {
-      this.santaClausHide
-        = document.querySelector('.footer-text').getBoundingClientRect().top
-        < window.innerHeight * 1.1;
+      this.item1Val = this.getBoundingClientRect(this.$refs.item1);
+      this.isSignup = this.getBoundingClientRect(this.$refs.signup); 
+      this.counterPeopleVal = this.getBoundingClientRect(this.$refs.counterPeople);
+      this.item3Val = this.getBoundingClientRect(this.$refs.item3);
+      this.item6Val = this.getBoundingClientRect(this.$refs.item6);
+    },
+    getBoundingClientRect(el) {
+      let rect = el.getBoundingClientRect();
+      return !(rect.top >= (window.innerHeight || document.documentElement.clientHeight) || rect.bottom <= 0);
     },
     handle() {
-      this.showbottombutton = true;
       const fun = this.handleScroll();
       this.COMMON.throttle(fun, 60, 100);
+    },
+    numberGrow (ele, bool) {
+      let t = null;
+      let step = parseInt(this.value / (this.time * 100));
+      let current = 0;
+      let start = 0;
 
-      if (this.screenWidth >= 769) return;
-      // 滚动的高度
-      let scrollH = window.pageYOffset;
-      // 元素的高度的
-      let eleH = this.$refs.pronbit.offsetHeight - 98;
+      if(!bool) {
+        clearInterval(t);
+        return;
+      };
 
-      // 距离顶部的告诉
-      let TopH = this.$refs.pronbit.getBoundingClientRect().top;
-
-      if (TopH + scrollH + eleH < scrollH) { // 消失
-        this.showbottombutton = false;
-      } else { // 显示
-        this.showbottombutton = true;
-      }
+      t = setInterval(() => {
+        start += step + 10;
+        if (start >= this.value) {
+          clearInterval(t);
+          start = this.value;
+          t = null;
+        }
+        if (current === start) {
+          return;
+        }
+        current = start;
+        ele.innerHTML = current
+          .toString()
+          .replace(/(\d)(?=(?:\d{3}[+]?)+$)/g, "$1,");
+      }, 10);
     }
   }
 };
 </script>
 
-<style scoped lang="scss" src="./view.scss"></style>
+<style scoped lang="scss" src="./instagram-follower-counter.scss"></style>

@@ -9,14 +9,16 @@
     .buy-tabs {
       display: flex;
       justify-content: center;
-      margin-bottom: 66px;
+      margin-bottom: 30px;
       .buy-tabs_item {
         width: 155px;
         height: 46px;
+
         &.on {
           p {
             background-color: #fff;
             color: #000;
+            border: 0;
           }
         }
         &:first-child {
@@ -26,8 +28,20 @@
           }
           p {
             border-radius: 31px 0 0 31px;
+            border-right: 1px solid #fff;
           }
         }
+
+        &:nth-child(2) {
+          &.on {
+            background: url("./img/button_icon_center.svg") no-repeat;
+            background-position: center bottom;
+          }
+          p {
+            border-right: 1px solid #fff;
+          }
+        }
+
         &:last-child {
           &.on {
             background: url("./img/button_icon_right.svg") no-repeat;
@@ -270,12 +284,144 @@
           }
         }
       }
+      // auto-like
+      .buy-tabs_content-item.auto-like {
+        > p{
+          text-align: center;
+          margin-bottom: 30px;
+          font: normal normal 500 16px/27px BalooChettan;
+          color: #FFE8EB;
+        }
+        .like-day {
+          label {
+            select {
+              width: 166px;
+              height: 32px;
+              color: #fff;
+              border: 0;
+              outline: none;
+              font: normal normal 600 14px/21px BalooChettan;
+              background: #6257FF url("./img/arrow-bottom-pc.svg") no-repeat right 14px center !important;
+              background-size: 10px 5px !important;
+              option {
+                background-color: #fff!important;
+              }
+            }
+          }
+        }
+        ul {
+          align-items: flex-end;
+          height: 304px;
+          li {
+            width: 302px;
+            height: 284px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0px 12px 24px #0000001C;
+            border: 1px solid #FFFFFF;
+            border-radius: 16px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            padding-top: 32px;
+            position: relative;
+            &.mostPopular {
+              &::after {
+                content: '';
+                position: absolute;
+                width: 157px;
+                height: 66px;
+                top: -13px;
+                right: -34px;
+                background-color: red;
+                z-index: 5;
+                background: url('./img/pc-most.svg') no-repeat;
+                background-size: 100% 100%;
+              }
+            }
+            .circle-span {
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              display: block;
+              width: 28px;
+              height: 28px;
+              background: #FFFFFF;
+              border: 1px solid #AE9BA0;
+              border-radius: 100%;
+            }
+            &.dayActive {
+              background-color: #fff;
+              height: 304px;
+              transition: height 0.3s;
+              border: 0;
+              &::before {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                box-sizing: border-box;
+              }
+              .circle-span {
+                background: url('./img/select-icon2.svg') no-repeat;
+                background-size: 100% 100%;
+                border: 0;
+              }
+              h4 {
+                background-color: #FF4343;
+                color: #fff;
+              }
+            }
+            h3 {
+              text-align: center;
+              font: normal normal 600 28px/41px BalooChettan;
+              color: #000000;
+            }
+            h4 {
+              width: auto;
+              height: 28px;
+              border: 2px solid #FF4343;
+              border-radius: 6px;
+              padding: 0 18px;
+              text-align: center;
+              font: normal normal 500 16px/26px BalooChettan;
+              color: #FF4343;
+              box-sizing: border-box;
+              margin-bottom: 33px;
+            }
+            .auto-price {
+              margin-bottom: 35px;
+              span:nth-child(1) {
+                font: normal normal 500 24px/45px BalooChettan;
+                color: #000000;
+              }
+              span:nth-child(2) {
+                font: normal normal 500 36px/45px BalooChettan;
+                color: #000000;
+              }
+              s {
+                // text-decoration: line-through;
+                font: normal normal 500 14px/21px BalooChettan;
+                color: #666168;
+              }
+            }
+            > p {
+              font: normal normal 500 14px/21px BalooChettan;
+              color: #666168;
+            };
+          }
+        }
+      }
     }
   }
   .buy-box {
     width: 1120px;
     height: auto;
     background-color: red;
+    margin: 0 auto;
     margin-top: 70px;
     background: #FFFFFF;
     box-shadow: 0px 12px 24px #2B25BC0F;
@@ -504,6 +650,35 @@
       margin: 0 auto;
     }
   }
+  .new-module {
+    margin-top: 71px;
+    .new-module_text {
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        li{
+          width: 250px;
+          height: auto;
+          display: flex;
+          align-items: center;
+          font: normal normal 500 16px/50px BalooChettan;
+          color: #000000;
+          img {
+            margin-right: 10px;
+            display: block;
+          }
+          &:first-child {
+            margin-right: 137px;
+          }
+        };
+        &:first-child {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
   .likes-link {
     text-align: center;
     margin: 50px 0;
@@ -587,13 +762,13 @@
       align-items: center;
       width: 340px;
       height: 75px;
-      background: rgba(255, 255, 255, 0.3);
+      background: #E5E5E5 ;
       border-radius: 12px 12px 0 0;
       cursor: pointer;
       transition: all 0.3s;
 
       font: 600 20px/60px Montserrat;
-      color: #FFFFFF;
+      color: #000000;
 
       &:last-child {
         // margin-left: 16px;
@@ -756,6 +931,50 @@
   background-color: #F9F8F2;
 }
 @media (max-width: 768px) {
+  .btnPurple {
+    button {
+      background: #7C56FF 0% 0% no-repeat padding-box!important;
+      box-shadow: 0px 6px 12px #9B9B9B3D;
+    }
+  }
+  .new-module {
+    .new-module_text {
+      width: 295px;
+      height: 218px;
+      border: 1px solid rgba(#7F8498, 0.26);
+      border-radius: 8px;
+      margin: 40px auto;
+      padding-left: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      ul {
+        li {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+          font: normal normal 500 16px/16px BalooChettan;
+          color: #000000;
+          img {
+            margin-right: 10px;
+            display: block;
+          }
+          &:first-child {
+            margin-bottom: 12px;
+          }
+          &:nth-child(3) {
+            margin-bottom: 0px;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
   .store-shelf-1-buy.mobile {
     margin-top: -110px;
 
@@ -795,31 +1014,48 @@
     }
 
     .tabs {
-      border: 1px solid #E1E1E1;
+      border: 2px solid #E1E1E1;
       border-radius: 31px;
       margin: 0 17px;
       box-sizing: border-box;
       .unit {
         width: 50%;
-        height: 44px;
-        border-radius: 6px 6px 0 0;
+        height: 37px;
+        border-radius: 0;
         font: normal normal 600 14px/21px BalooChettan;
         color: #000000;
 
         &.on {
-          background-color: #e5e5e5 !important;
+          background-color: #fff !important;
           border-radius: 0;
           color: #000;
-        }
+          // 选中状态
+          position: relative;
+          border: 0!important;
+          &::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #E5E5E5;
+          }
 
+        }
         &:first-child {
           border-radius: 31px 0 0 31px;
         }
+        &:nth-child(2) {
+          border-right: 1px solid #d5cfcf;
+          border-left: 1px solid #d5cfcf;
+        }
 
         &:last-child {
-          // margin-left: 8px;
           border-radius: 0 31px 31px 0;
-
           &:after {
             top: -16px;
             right: -4px;
@@ -988,6 +1224,161 @@
                 &::before {
                   content: none;
                 }
+              }
+            }
+          }
+        }
+        .auto-like-m {
+          padding-top: 18px;
+          > div {
+            text-align: center;
+          }
+          label {
+            select {
+              width: 195px;
+              height: 38px!important;
+              min-height: 38px!important;
+              color: #fff;
+              border: 0;
+              outline: none;
+              font: normal normal 600 14px/21px BalooChettan;
+              margin: 0 auto!important;
+              border-radius: 4px!important;
+              background: #6257FF url("./img/arrow-bottom.svg") no-repeat right 14px center !important;
+              background-size: 12px 9px !important;
+              padding-left: 40px!important;
+              
+              option {
+                background-color: #fff!important;
+              }
+            }
+            
+          }
+          > p {
+            text-align: center;
+            font: normal normal 500 14px/17px BalooChettan;
+            color: #7F8498;
+            margin-bottom: 30px;
+          }
+          ul {
+            margin-top: 33px;
+            li {
+              width: 100%;
+              height: 68px;
+              background: #FFFFFF;
+              border: 1px solid #EBEBEB;
+              border-radius: 44px;
+              margin-bottom: 20px;
+              display: flex;
+              padding-right: 30px;
+              box-sizing: border-box;
+              position: relative;
+              &.mostPopular {
+                box-sizing: border-box;
+                &::after {
+                  content: '';
+                  position: absolute;
+                  width: 116px;
+                  height: 56px;
+                  top: -16px;
+                  right: -21px;
+                  background-color: red;
+                  z-index: 5;
+                  background: url('./img/mob-most.svg') no-repeat;
+                  background-size: 100% 100%;
+                }
+              }
+              &.dayActive {
+                >span {
+                  background: url('./img/select-icon2.svg') no-repeat;
+                  background-size: cover;
+                  border: 0;
+                }
+                &::before {
+                   content: '';
+                   position: absolute;
+                   width: 100%;
+                   height: 100%;
+                   top: 0;
+                   left: 0;
+                   border: 2px solid #7257FA;
+                   box-sizing: border-box;
+                   border-radius: 44px;
+                }
+                .auto-like-right_top {
+                  h4 {
+                    background-color: #FF3A3A;
+                    color: #fff!important;
+                  }
+                }
+              }
+              > span {
+                display: block;
+                width: 26px;
+                height: 26px;
+                margin: 0 18px;
+                border: 2px solid #CFCFCF;
+                border-radius: 13px;
+                margin-top: 21px;
+              }
+              .auto-like-right {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 14px;
+                .auto-like-right_top {
+                  display: flex;
+                  justify-content: space-between;
+                  div {
+                    display: flex;
+                    align-items: center;
+                    font: normal normal 600 18px/21px BalooChettan;
+                    color: #000000;
+                    img {
+                      width: 24px;
+                      height: 21px;
+                      margin-right: 7px;
+                    }
+                  }
+                  h4 {
+                    height: 20px;
+                    border: 1px solid #FF3A3A;
+                    border-radius: 4px;
+                    padding: 0 10px;
+                    text-align: left;
+                    font: normal normal 600 14px/18px BalooChettan;
+                    letter-spacing: 0.28px;
+                    color: #FF3A3A;
+                  }
+                  span {
+                    font: normal normal 600 18px/17px BalooChettan;
+                    color: #000000;
+                    display: inline-block;
+                    width: 52px;
+                    text-align: left;
+                  }
+                  margin-bottom: 3px;
+                }
+                .auto-like-right_bottom {
+                  display: flex;
+                  justify-content: space-between;
+                  p {
+                    font: normal normal 500 12px/17px BalooChettan;
+                    letter-spacing: 0px;
+                    color: #7F8498;
+                  }
+                  s {
+                    font: normal normal 500 14px/17px BalooChettan;
+                    color: #7F8498;
+                    display: inline-block;
+                    width: 52px;
+                    text-align: left;
+                  }
+                }
+              }
+              &:last-child {
+                margin-bottom: 0;
               }
             }
           }

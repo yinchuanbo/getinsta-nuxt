@@ -327,7 +327,7 @@ export default {
       let blogPath = to.path === '/blog' || to.name === 'blog-id___en' || to.path === '/blog/';
       let easterSalePath = to.path === '/eastersale';
       let checkout = to.path === '/checkout' || to.path === '/checkout-2';
-      let storePath = to.path === '/buy-instagram-followers' || to.path === '/buy-auto-instagram-followers' || to.path === '/buy-instagram-daily-likes' || to.path === '/buy-instagram-likes' || to.path === '/buy-instagram-daily-followers' || to.path === '/buy-auto-instagram-followers-1';
+      let storePath = to.path === '/buy-instagram-followers' || to.path === '/buy-auto-instagram-followers' || to.path === '/buy-instagram-daily-likes' || to.path === '/buy-instagram-likes' || to.path === '/buy-instagram-daily-followers' || to.path === '/buy-auto-instagram-followers-1' || to.path === '/buy-instagram-auto-likes';
       let Path169 = to.path === '/blog/download-private-instagram-videos-169';
       let getFlPath = to.path === '/get-instagram-followers-likes';
       let freeToolsPath = to.path === '/instagram-name-generator' || to.path === '/the-most-followed-instagram' || to.path === '/instagram-video-downloader';
