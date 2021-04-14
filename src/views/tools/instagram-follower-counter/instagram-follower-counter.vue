@@ -1,339 +1,472 @@
 <template>
-    <div class="instagram-follower-counter">
-        <div class="header-blank pc"></div>
-        <div class="counter-banner">
-            <div class="counter-wrapper">
-                <h2>Live Instagram Follower Counter</h2>
-                <p>Real-time, accurate, exact Instagram follower count. No Instagram account log in.</p>
-                <div class="counter-banner_inputs pc" :class="{'errorActive': isBoxRed}">
-                    <label>
-                        <input 
-                          v-model="searchInsInput" 
-                          @input="bottomBtnDetective" 
-                          type="text" 
-                          placeholder="Type Instagram Username" 
-                          :disabled="searchInsLoading"
-                          @keyup.enter="searchUsername"
-                          @blur="inputBlur"
-                          @focus="inputFocus"
-                        />
-                    </label>
-                    <div class="search_btn" @click="searchUsername">
-                      <button-yellow-icon text="Check Now" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
-                    </div>
-                </div>
-                <div class="counter-banner_inputs mobile">
-                    <label :class="{'errorActive': isBoxRed}">
-                        <input 
-                          v-model="searchInsInput" 
-                          @input="bottomBtnDetective" 
-                          type="text" 
-                          placeholder="Type Instagram Username" 
-                          :disabled="searchInsLoading"
-                          @keyup.enter="searchUsername"
-                          @blur="inputBlur"
-                          @focus="inputFocus"
-                        />
-                    </label>
-                    <div class="search_btn" @click="searchUsername">
-                      <button-yellow-icon text="Check Now" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
-                    </div>
-                </div>
-                <div class="counter-download"><a @click="downloadAll">Download</a> GetInsta to increase your Instagram follower count</div>
-            </div>
-            <div class="counter-wave">
-                <div class="waveWrapper waveAnimation">
-                    <!-- <div class="waveWrapperInner bgTop">
+  <div class="instagram-follower-counter">
+    <div class="header-blank pc"></div>
+    <div class="counter-banner">
+      <div class="counter-wrapper">
+        <h2>Live Instagram Follower Counter</h2>
+        <p>
+          Real-time, accurate, exact Instagram follower count. No Instagram
+          account log in.
+        </p>
+        <div
+          class="counter-banner_inputs pc"
+          :class="{ errorActive: isBoxRed }"
+        >
+          <label>
+            <input
+              v-model="searchInsInput"
+              @input="bottomBtnDetective"
+              type="text"
+              placeholder="Type Instagram Username"
+              :disabled="searchInsLoading"
+              @keyup.enter="searchUsername"
+              @blur="inputBlur"
+              @focus="inputFocus"
+            />
+          </label>
+          <div class="search_btn" @click="searchUsername">
+            <button-yellow-icon
+              text="Check Now"
+              :font-size="'size-16'"
+              :sharp="true"
+              :loading="searchInsLoading"
+            />
+          </div>
+        </div>
+        <div class="counter-banner_inputs mobile">
+          <label :class="{ errorActive: isBoxRed }">
+            <input
+              v-model="searchInsInput"
+              @input="bottomBtnDetective"
+              type="text"
+              placeholder="Type Instagram Username"
+              :disabled="searchInsLoading"
+              @keyup.enter="searchUsername"
+              @blur="inputBlur"
+              @focus="inputFocus"
+            />
+          </label>
+          <div class="search_btn" @click="searchUsername">
+            <button-yellow-icon
+              text="Check Now"
+              :font-size="'size-16'"
+              :sharp="true"
+              :loading="searchInsLoading"
+            />
+          </div>
+        </div>
+        <div class="counter-download">
+          <a @click="downloadAll">Download</a> GetInsta to increase your
+          Instagram follower count
+        </div>
+      </div>
+      <div class="counter-wave">
+        <div class="waveWrapper waveAnimation">
+          <!-- <div class="waveWrapperInner bgTop">
                         <div class="wave waveTop"></div>
                     </div> -->
-                    <div class="waveWrapperInner bgMiddle">
-                        <div class="wave waveMiddle"></div>
-                    </div>
-                    <div class="waveWrapperInner bgBottom">
-                        <div class="wave waveBottom"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <transition name="fade">
-          <div v-if="insUser.ins_id" class="search_result" >
-            <h2>Instagram Follower Count</h2>
-            <div class="avator">
-                <img :src="insUser.profile_pic_url || ''" alt="">
-            </div>
-            <p class="name">{{ insUser.ins_account }}</p>
-            <p class="title">Real-time Followers</p>
-            <p class="num">{{ insUser.followed_by}}</p>
-            <span>Updated {{ currentTime }}</span>
-            <div class="info">
-                <p>
-                <span>{{ $t('global.instagramConcept.following') }}</span>
-                <span>{{ insUser.follow | numberAbbreviations }}</span>
-                </p>
-                <p>
-                <span>{{ $t('global.instagramConcept.posts') }}</span>
-                <span>{{ insUser.post.post_count | numberAbbreviations }}</span>
-                </p>
-            </div>
-            <hr />
-            <h3>Increase followers now and say goodbye to Instagram follower count stuck</h3>
-            <div class="btn-group">
-                <div @click="gaBtnFreeGetItNow">
-                  <button-icon-ins text="Get Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
-                </div>
-                <div @click="buynow">
-                  <button>Buy Now</button>
-                </div>
-            </div>
-            </div>
-        </transition>
-        <div class="counter-container">
-            <h2>Introducing You to the Instagram Follower Counter</h2>
-            <p>Learn how Instagram follower counter could help you upgrage your Instagram management and efficiency by checking content below.</p>
-            <div class="counter-container-item1">
-                <div class="counter-container-item1_text">
-                    <h3>What is Instagram follower counter?</h3>
-                    <p>Instagram Follower Counter is tool to help you check the accurate and real-time follower count of any Instagram account wihtout login or using Instagram. It is online and free to use. GetInsta Instagram Followers Counter could be your first choice when considering checking follower count conveniently.</p>
-                </div>
-                <div class="counter-container-item1_img" ref="item1" :class="{'on': item1Val}">
-                    <img src="./img/pic01.png" alt="">
-                </div>
-            </div>
-            <div class="counter-container-item2">
-                <h3>Real-time Instagram follower count</h3>
-                <p>Instagram Follower Counter provides you real-time, accurate and exact follower count. It is real-time because the statistics are acquired from Instagram at the monent you tap the 'Check Now' button. Then this follower counter would acquire the data from Instagram immediately and present it to you. <a href="/blog/real-time-instagram-followers-323">Real-time instagram followers</a> are within your reach.</p>
-                <div class="clock-around" ref="clockAround" :class="{'on': clockAroundVal}">
-                    <img src="./img/clock-around.svg" alt="">
-                    <div>
-                        <img src="./img/arrow-around.svg" alt="">
-                    </div>
-                </div>
-                <!-- <span>Updated 3:13:05 PM 12.31.2020</span> -->
-            </div>
-            <div class="counter-container-item3" ref="item3">
-                <h3>Accurate and exact Instagram follower count</h3>
-                <p>It is accurate and exact because the follower count would be displayed in the format of complete numbers rather than abbreviation. For instance, 148m followers of National Geographic on Instagram would be 148,458,486* on this page. It is correct because the number was directled obtained from Instagram.</p>
-                <span>+ <i ref="aroundNum">{{value}}</i></span>
-            </div>
-            <div class="counter-container-item4">
-                <h3>
-                    Why you need this Instagram follower counter?
-                </h3>
-                <p>
-                    Since Instagram being one of the biggest social platform on this planet, this tool provides you updated Instagram follower count with detailed numbers, which could help you detect even the most salient change of follower count and take actions to avoid losing followers. It is online and has a clear user interface to offer you the most convenient and direct information.
-                </p>
-                <div class="counter-container-item4_img">
-                   <div class="counter-people" ref="counterPeople" :class="{'on': counterPeopleVal}">
-                     <img src="./img/people.svg" alt="">
-                   </div>
-                   <span></span>
-                   <span></span>
-                   <span></span>
-                   <span></span>
-                </div>
-            </div>
-            <div class="counter-container-item5">
-                <h3>Tips for Instagram followers growth</h3>
-                <p>Besides focusing on real-time Instagram follower count, there are some other ways to promote your IG account.</p>
-                <div>
-                    <p>
-                        <span></span>
-                        Use all the features of Instagram
-                    </p>
-                    <span>Your content should not be limited to photos or videos. Instagram Reels, Live, IG TV, etc. are hot among people of today, remember to try all of them.</span>
-                </div>
-                <div>
-                    <p>
-                        <span></span>
-                        Try Instagram creator studio
-                    </p>
-                    <span>This tool could help be more prfessional when talking about running Instagram account. Managing your account on desktop is practical by using this platform, why not trying it?</span>
-                </div>
-                <div>
-                    <p>
-                        <span></span>
-                        Get Your posts in Explore
-                    </p>
-                    <span>This will help your content gain more organic reach and impression of your profile. Local followers would see your posts more eaisy and make them become your followers would increase your account's authenticity.</span>
-                </div>
-            </div>
-            <div class="counter-container-item6">
-                <h3>No more Instagram follower count stuck by using GetInsta</h3>
-                <p>nstagram Follower Counter enables you to check real-time and accutate number of any IG account's followers. Any changes of follower count could be detected and help you make adjustments. No more Instagram follower count stuck or frozen would happen after using this tool. Moreover, this process could be simplified by <a href="/">GetInsta</a>. This Instagram followers app help you get free IG followers and refresh your follower count.</p>
-
-                <div class="item6-img" ref="item6" :class="{'on': item6Val}">
-                  <img src="./img/nomore-icon2.svg" alt="">
-                  <div class="item6-img_top"></div>
-                  <div class="item6-img_bottom"></div>
-                </div>
-            </div>
-        </div>
-        <div class="counter-signup" ref="signup" :class="{ 'on': isSignup }">
-          <div class="counter-signup_leftimg pc">
-             <i></i>
-             <i></i>
-             <i></i>
-             <i></i>
-             <i></i>
-             <i></i>
-             <i></i>
-             <i></i>
-             <i></i>
+          <div class="waveWrapperInner bgMiddle">
+            <div class="wave waveMiddle"></div>
           </div>
-          <div class="counter-signup_leftimg mobile"></div>
-          <div class="counter-signup_content">
-            <h2>How to Solve Instagram Follower Count Stuck?</h2>
-            <div class="counter-signup_content-box">
-              <h3>GetInsta
-                <span> - You Free Instagram Followers Solution</span>
-              </h3>
-              <ul>
-                <li>100% Free Instagram Followers</li>
-                <li>Real Instagram Followers</li>
-                <li>High-Quality Instagram Likes</li>
-                <li>Safe and Private</li>
-              </ul>
-            </div>
-            <div class="btns pc" @click="signup">
-              <button>Sign Up Now</button>
-            </div>
-            <div @click="gaBtnFreeGetItNow1" class="mobile gaBtnFreeGetItNow">
-              <button-icon-ins text="Get Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
-            </div>
+          <div class="waveWrapperInner bgBottom">
+            <div class="wave waveBottom"></div>
           </div>
         </div>
-        <div class="counter-why">
-            <h2>Why GetInsta is Trustworthy?</h2>
-            <div class="counter-why-item_group">
-                <div class="counter-why-item">
-                    <div class="counter-why-item_top">
-                        <img src="./img/why01.svg" alt="">
-                    </div>
-                    <h2>100% Free</h2>
-                    <p>100% Free Instagram followers and likes are available in GetInsta. You can earn the virtual coins in the app for unlimited free followers and likes. Thousands of free coins would be given to you when you open the app.</p>
-                </div>
-                <div class="counter-why-item">
-                    <div class="counter-why-item_top">
-                        <img src="./img/why02.svg" alt="">
-                    </div>
-                    <h2>Real Instagram Followers</h2>
-                    <p>GetInsta can solve Instagram followers count stuck. It provides you with real and high-quality followers who are real and active Instagram users from all over the world. You can make them become your followers easily by using GetInsta.</p>
-                </div>
-                <div class="counter-why-item">
-                    <div class="counter-why-item_top">
-                        <img src="./img/why03.svg" alt="">
-                    </div>
-                    <h2>High-Quality Instagram Likes</h2>
-                    <p>GetInsta also provides you with high-quality Instargam likes from real Instargam users around the world. Getting Instagram likes for free is 100% practical in GetInsta. Try this great app and it will not let you down.</p>
-                </div>
-                <div class="counter-why-item">
-                    <div class="counter-why-item_top">
-                        <img src="./img/why04.svg" alt="">
-                    </div>
-                    <h2>Safe and Private</h2>
-                    <p>User's privacy is always the first priority of GetInsta. No leak and virus will not appear during the whole process of using this app, and your personal data would be protected strictly . Just add Instagram usernames and start to hack Instagram followers and likes.</p>
-                </div>
-            </div>
-            <div class="button-group">
-                <div @click="gaBtnFreeGetItNow2">
-                  <button-icon-ins text="Get Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
-                </div>
-                <div @click="buynow1">
-                  <button>Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="counter-tips">
-            <h2>More Instagram Tips</h2>
-            <div class="counter-tips-item_group">
-                <div class="counter-tips-item">
-                    <span></span>
-                    <p>How to Get Free Instagram Followers & Likes</p>
-                </div>
-                <div class="counter-tips-item">
-                    <span></span>
-                    <p>How to Hack Instagram Followers</p>
-                </div>
-                <div class="counter-tips-item">
-                    <span></span>
-                    <p>Get Free Instagram Followers Instantly</p>
-                </div>
-                <div class="counter-tips-item">
-                    <span></span>
-                    <p>6 Best Apps to Get Instagram Likes and Followers</p>
-                </div>
-                <div class="counter-tips-item">
-                    <span></span>
-                    <p>Best Instagram Auto Liker App</p>
-                </div>
-                <div class="counter-tips-item">
-                    <span></span>
-                    <p>How to Hack Instagram Followers Without Following</p>
-                </div>
-
-            </div>
-        </div>
+      </div>
     </div>
+    <transition name="fade">
+      <div v-if="insUser.ins_id" class="search_result">
+        <h2>Instagram Follower Count</h2>
+        <div class="avator">
+          <img :src="insUser.profile_pic_url || ''" alt="" />
+        </div>
+        <p class="name">{{ insUser.ins_account }}</p>
+        <p class="title">Real-time Followers</p>
+        <p class="num">{{ insUser.followed_by }}</p>
+        <span>Updated {{ currentTime }}</span>
+        <div class="info">
+          <p>
+            <span>{{ $t("global.instagramConcept.following") }}</span>
+            <span>{{ insUser.follow | numberAbbreviations }}</span>
+          </p>
+          <p>
+            <span>{{ $t("global.instagramConcept.posts") }}</span>
+            <span>{{ insUser.post.post_count | numberAbbreviations }}</span>
+          </p>
+        </div>
+        <hr />
+        <h3>
+          Increase followers now and say goodbye to Instagram follower count
+          stuck
+        </h3>
+        <div class="btn-group">
+          <div @click="gaBtnFreeGetItNow">
+            <button-icon-ins
+              text="Get Followers Now"
+              bubble-float
+              square
+              shadow
+              :icon="'ins'"
+              font-size="size-16"
+              theme="cyan"
+              class="button-hover-1"
+            />
+          </div>
+          <div @click="buynow">
+            <button>Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </transition>
+    <div class="counter-container">
+      <h2>Introducing You to the Instagram Follower Counter</h2>
+      <p>
+        Learn how Instagram follower counter could help you upgrage your
+        Instagram management and efficiency by checking content below.
+      </p>
+      <div class="counter-container-item1">
+        <div class="counter-container-item1_text">
+          <h3>What is Instagram follower counter?</h3>
+          <p>
+            Instagram Follower Counter is tool to help you check the accurate
+            and real-time follower count of any Instagram account wihtout login
+            or using Instagram. It is online and free to use. GetInsta Instagram
+            Followers Counter could be your first choice when considering
+            checking follower count conveniently.
+          </p>
+        </div>
+        <div
+          class="counter-container-item1_img"
+          ref="item1"
+          :class="{ on: item1Val }"
+        >
+          <img src="./img/pic01.png" alt="" />
+        </div>
+      </div>
+      <div class="counter-container-item2">
+        <h3>Real-time Instagram follower count</h3>
+        <p>
+          Instagram Follower Counter provides you real-time, accurate and exact
+          follower count. It is real-time because the statistics are acquired
+          from Instagram at the monent you tap the 'Check Now' button. Then this
+          follower counter would acquire the data from Instagram immediately and
+          present it to you.
+          <a href="/blog/real-time-instagram-followers-323"
+            >Real-time instagram followers</a
+          >
+          are within your reach.
+        </p>
+        <div
+          class="clock-around"
+          ref="clockAround"
+          :class="{ on: clockAroundVal }"
+        >
+          <img src="./img/clock-around.svg" alt="" />
+          <div>
+            <img src="./img/arrow-around.svg" alt="" />
+          </div>
+        </div>
+        <!-- <span>Updated 3:13:05 PM 12.31.2020</span> -->.
+      </div>
+      <div class="counter-container-item3" ref="item3">
+        <h3>Accurate and exact Instagram follower count</h3>
+        <p>
+          It is accurate and exact because the follower count would be displayed
+          in the format of complete numbers rather than abbreviation. For
+          instance, 148m followers of National Geographic on Instagram would be
+          148,458,486* on this page. It is correct because the number was
+          directled obtained from Instagram.
+        </p>
+        <span
+          >+ <i ref="aroundNum">{{ value }}</i></span
+        >
+      </div>
+      <div class="counter-container-item4">
+        <h3>Why you need this Instagram follower counter?</h3>
+        <p>
+          Since Instagram being one of the biggest social platform on this
+          planet, this tool provides you updated Instagram follower count with
+          detailed numbers, which could help you detect even the most salient
+          change of follower count and take actions to avoid losing followers.
+          It is online and has a clear user interface to offer you the most
+          convenient and direct information.
+        </p>
+        <div class="counter-container-item4_img">
+          <div
+            class="counter-people"
+            ref="counterPeople"
+            :class="{ on: counterPeopleVal }"
+          >
+            <img src="./img/people.svg" alt="" />
+          </div>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="counter-container-item5">
+        <h3>Tips for Instagram followers growth</h3>
+        <p>
+          Besides focusing on real-time Instagram follower count, there are some
+          other ways to promote your IG account.
+        </p>
+        <div>
+          <p>
+            <span></span>
+            Use all the features of Instagram
+          </p>
+          <span
+            >Your content should not be limited to photos or videos. Instagram
+            Reels, Live, IG TV, etc. are hot among people of today, remember to
+            try all of them.</span
+          >
+        </div>
+        <div>
+          <p>
+            <span></span>
+            Try Instagram creator studio
+          </p>
+          <span
+            >This tool could help be more prfessional when talking about running
+            Instagram account. Managing your account on desktop is practical by
+            using this platform, why not trying it?</span
+          >
+        </div>
+        <div>
+          <p>
+            <span></span>
+            Get Your posts in Explore
+          </p>
+          <span
+            >This will help your content gain more organic reach and impression
+            of your profile. Local followers would see your posts more eaisy and
+            make them become your followers would increase your account's
+            authenticity.</span
+          >
+        </div>
+      </div>
+      <div class="counter-container-item6">
+        <h3>No more Instagram follower count stuck by using GetInsta</h3>
+        <p>
+          nstagram Follower Counter enables you to check real-time and accutate
+          number of any IG account's followers. Any changes of follower count
+          could be detected and help you make adjustments. No more Instagram
+          follower count stuck or frozen would happen after using this tool.
+          Moreover, this process could be simplified by
+          <a href="/">GetInsta</a>. This Instagram followers app help you get
+          free IG followers and refresh your follower count.
+        </p>
+
+        <div class="item6-img" ref="item6" :class="{ on: item6Val }">
+          <img src="./img/nomore-icon2.svg" alt="" />
+          <div class="item6-img_top"></div>
+          <div class="item6-img_bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="counter-signup" ref="signup" :class="{ on: isSignup }">
+      <div class="counter-signup_leftimg pc">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+      <div class="counter-signup_leftimg mobile"></div>
+      <div class="counter-signup_content">
+        <h2>How to Solve Instagram Follower Count Stuck?</h2>
+        <div class="counter-signup_content-box">
+          <h3>
+            GetInsta
+            <span> - You Free Instagram Followers Solution</span>
+          </h3>
+          <ul>
+            <li>100% Free Instagram Followers</li>
+            <li>Real Instagram Followers</li>
+            <li>High-Quality Instagram Likes</li>
+            <li>Safe and Private</li>
+          </ul>
+        </div>
+        <div class="btns pc" @click="signup">
+          <button>Sign Up Now</button>
+        </div>
+        <div @click="gaBtnFreeGetItNow1" class="mobile gaBtnFreeGetItNow">
+          <button-icon-ins
+            text="Get Followers Now"
+            bubble-float
+            square
+            shadow
+            :icon="'ins'"
+            font-size="size-16"
+            theme="cyan"
+            class="button-hover-1"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="counter-why">
+      <h2>Why GetInsta is Trustworthy?</h2>
+      <div class="counter-why-item_group">
+        <div class="counter-why-item">
+          <div class="counter-why-item_top">
+            <img src="./img/why01.svg" alt="" />
+          </div>
+          <h2>100% Free</h2>
+          <p>
+            100% Free Instagram followers and likes are available in GetInsta.
+            You can earn the virtual coins in the app for unlimited free
+            followers and likes. Thousands of free coins would be given to you
+            when you open the app.
+          </p>
+        </div>
+        <div class="counter-why-item">
+          <div class="counter-why-item_top">
+            <img src="./img/why02.svg" alt="" />
+          </div>
+          <h2>Real Instagram Followers</h2>
+          <p>
+            GetInsta can solve Instagram followers count stuck. It provides you
+            with real and high-quality followers who are real and active
+            Instagram users from all over the world. You can make them become
+            your followers easily by using GetInsta.
+          </p>
+        </div>
+        <div class="counter-why-item">
+          <div class="counter-why-item_top">
+            <img src="./img/why03.svg" alt="" />
+          </div>
+          <h2>High-Quality Instagram Likes</h2>
+          <p>
+            GetInsta also provides you with high-quality Instargam likes from
+            real Instargam users around the world. Getting Instagram likes for
+            free is 100% practical in GetInsta. Try this great app and it will
+            not let you down.
+          </p>
+        </div>
+        <div class="counter-why-item">
+          <div class="counter-why-item_top">
+            <img src="./img/why04.svg" alt="" />
+          </div>
+          <h2>Safe and Private</h2>
+          <p>
+            User's privacy is always the first priority of GetInsta. No leak and
+            virus will not appear during the whole process of using this app,
+            and your personal data would be protected strictly . Just add
+            Instagram usernames and start to hack Instagram followers and likes.
+          </p>
+        </div>
+      </div>
+      <div class="button-group">
+        <div @click="gaBtnFreeGetItNow2">
+          <button-icon-ins
+            text="Get Followers Now"
+            bubble-float
+            square
+            shadow
+            :icon="'ins'"
+            font-size="size-16"
+            theme="cyan"
+            class="button-hover-1"
+          />
+        </div>
+        <div @click="buynow1">
+          <button>Buy Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="counter-tips">
+      <h2>More Instagram Tips</h2>
+      <div class="counter-tips-item_group">
+        <div class="counter-tips-item">
+          <span></span>
+          <p>How to Get Free Instagram Followers & Likes</p>
+        </div>
+        <div class="counter-tips-item">
+          <span></span>
+          <p>How to Hack Instagram Followers</p>
+        </div>
+        <div class="counter-tips-item">
+          <span></span>
+          <p>Get Free Instagram Followers Instantly</p>
+        </div>
+        <div class="counter-tips-item">
+          <span></span>
+          <p>6 Best Apps to Get Instagram Likes and Followers</p>
+        </div>
+        <div class="counter-tips-item">
+          <span></span>
+          <p>Best Instagram Auto Liker App</p>
+        </div>
+        <div class="counter-tips-item">
+          <span></span>
+          <p>How to Hack Instagram Followers Without Following</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import apiAccount from '@/api/api.account';
-import apiIns from '@/api/api.ins';
-import apiInsServer from '@/api/api.ins.server';
-import apiPayment from '@/api/api.payment';
-import apiTask from '@/api/api.task';
+import apiAccount from "@/api/api.account";
+import apiIns from "@/api/api.ins";
+import apiInsServer from "@/api/api.ins.server";
+import apiPayment from "@/api/api.payment";
+import apiTask from "@/api/api.task";
 
 // import ButtonPurple from '@/components/button/button-purple';
-import ButtonYellowIcon from '@/components/button/button-yellow-icon';
-import ButtonIconIns from '@/components/button/button-icon-ins';
+import ButtonYellowIcon from "@/components/button/button-yellow-icon";
+import ButtonIconIns from "@/components/button/button-icon-ins";
 // import ListEmpty from '@/components/list/list-empty';
 
 export default {
-  name: 'StoreShelf1BuyFollowers',
+  name: "StoreShelf1BuyFollowers",
   components: {
     // ListEmpty,
     ButtonYellowIcon,
-    ButtonIconIns
+    ButtonIconIns,
     // ButtonPurple
   },
   filters: {
     numToFixed(num) {
-      if (typeof num === 'number')
-        return num.toFixed(2);
-      else
-        return parseFloat(num).toFixed(2);
+      if (typeof num === "number") return num.toFixed(2);
+      else return parseFloat(num).toFixed(2);
     },
     numberAbbreviations(num) {
       let numFormatted = 0;
 
       if (Math.pow(10, 12) <= num && num < Math.pow(10, 15)) {
-        numFormatted = (num / Math.pow(10, 12)).toFixed(1) + 'T';
+        numFormatted = (num / Math.pow(10, 12)).toFixed(1) + "T";
         return numFormatted;
       }
       if (Math.pow(10, 9) <= num && num < Math.pow(10, 12)) {
-        numFormatted = (num / Math.pow(10, 9)).toFixed(1) + 'B';
+        numFormatted = (num / Math.pow(10, 9)).toFixed(1) + "B";
         return numFormatted;
       }
       if (Math.pow(10, 6) <= num && num < Math.pow(10, 9)) {
-        numFormatted = (num / Math.pow(10, 6)).toFixed(1) + 'M';
+        numFormatted = (num / Math.pow(10, 6)).toFixed(1) + "M";
         return numFormatted;
       }
       if (Math.pow(10, 3) <= num && num < Math.pow(10, 6)) {
-        numFormatted = (num / Math.pow(10, 3)).toFixed(1) + 'K';
+        numFormatted = (num / Math.pow(10, 3)).toFixed(1) + "K";
         return numFormatted;
       }
       if (num < Math.pow(10, 3)) {
         numFormatted = num;
         return numFormatted;
       }
-    }
+    },
   },
   props: {
     independent: {
       type: Boolean,
       default: false,
-      required: false
-    }
+      required: false,
+    },
   },
   data() {
     return {
@@ -349,11 +482,11 @@ export default {
 
       emittedData: {
         meta: {
-          title: this.$t('store.meta.title-0')
+          title: this.$t("store.meta.title-0"),
         },
         route: {
-          path: ''
-        }
+          path: "",
+        },
       },
 
       animateBegin: false,
@@ -361,7 +494,7 @@ export default {
       time: 5,
       funOnce: true,
       isFocus: false,
-      currentTime: '',
+      currentTime: "",
       isSignup: false,
       item1Val: false,
       item3Val: false,
@@ -373,15 +506,15 @@ export default {
       clockAroundVal: false,
 
       dialogFail: false,
-      dialogFailMsg: '',
+      dialogFailMsg: "",
       dialogAttention: false,
-      dialogAttentionMsg: '',
+      dialogAttentionMsg: "",
 
       tabsIndex: false,
       searchStatus: false,
 
       searchInsLoading: false,
-      searchInsInput: '',
+      searchInsInput: "",
       insUser: {},
       postList: [],
       postListIndex: -1,
@@ -389,9 +522,9 @@ export default {
       postListTitle: false,
       postListInfo: {
         post_count: 0,
-        end_cursor: '',
+        end_cursor: "",
         has_next_page: false,
-        page_size: 12
+        page_size: 12,
       },
       postListLoading: false,
 
@@ -407,7 +540,7 @@ export default {
       productPkgListDaily: [],
       productPkgListDailyVM: [],
       productPkgListDays: [],
-      productPkgListDaysVM: []
+      productPkgListDaysVM: [],
     };
   },
   computed: {
@@ -415,24 +548,26 @@ export default {
       const payMethodDisplay = this.payMethodDisplay;
       return this.productPkgList.filter(function (productPkg) {
         // promote_sale_type 展示种类
-        return productPkg['payment_type'] === payMethodDisplay
-          && (productPkg['promote_sale_type'] === undefined
-            || productPkg['promote_sale_type'] === 0
-            || productPkg['promote_sale_type'] === 1
-            || productPkg['promote_sale_type'] === 3)
-          && productPkg['cycle_type'] === 1;
+        return (
+          productPkg["payment_type"] === payMethodDisplay &&
+          (productPkg["promote_sale_type"] === undefined ||
+            productPkg["promote_sale_type"] === 0 ||
+            productPkg["promote_sale_type"] === 1 ||
+            productPkg["promote_sale_type"] === 3) &&
+          productPkg["cycle_type"] === 1
+        );
       });
     },
     productPkgListLike: function () {
       return this.productPkgListDisplay.filter(function (productPkg) {
-        return productPkg['product_type'] === 1;
+        return productPkg["product_type"] === 1;
       });
     },
     productPkgListFollow: function () {
       return this.productPkgListDisplay.filter(function (productPkg) {
-        return productPkg['product_type'] === 2;
+        return productPkg["product_type"] === 2;
       });
-    }
+    },
   },
   watch: {
     // productPkgListDailyVM(val) {
@@ -446,17 +581,19 @@ export default {
     //   this.productPkgListDaysVM = this.productPkgListDays[0];
     // }
     productPkgListDaysVM(val) {
-      this.productPkgListDaily = this.pkgListWithUnit.filter(item => item.cycle_type === val);
+      this.productPkgListDaily = this.pkgListWithUnit.filter(
+        (item) => item.cycle_type === val
+      );
       // console.log("followers-daily-----",this.productPkgListDaily)
       this.productPkgListDailyVM = this.productPkgListDaily[0];
     },
     item3Val(newVal, oldVal) {
-      if(newVal !== oldVal && newVal == true && oldVal == false) {
+      if (newVal !== oldVal && newVal == true && oldVal == false) {
         this.numberGrow(this.$refs.aroundNum, true);
       } else {
         this.numberGrow(this.$refs.aroundNum, false);
       }
-    }
+    },
   },
   created() {
     this.initTabIndex();
@@ -464,14 +601,14 @@ export default {
   },
   mounted() {
     this.getPkgList();
-    window.addEventListener('scroll', this.handle);
+    window.addEventListener("scroll", this.handle);
   },
   destroyed() {
-    window.removeEventListener('scroll', this.handle);
+    window.removeEventListener("scroll", this.handle);
   },
   methods: {
     emitToParent() {
-      this.$emit('emitToParent', this.emittedData);
+      this.$emit("emitToParent", this.emittedData);
     },
     closeDialog() {
       this.dialogFail = false;
@@ -482,106 +619,124 @@ export default {
       this.isFocus = false;
     },
     buynow() {
-      this.$nuxt.$router.push('/buy-instagram-followers');
-      this.$ga.event('insbuy', 'buy', 'buy-counter1');
+      this.$nuxt.$router.push("/buy-instagram-followers");
+      this.$ga.event("insbuy", "buy", "buy-counter1");
     },
     buynow1() {
-      this.$nuxt.$router.push('/buy-instagram-followers');
-      this.$ga.event('insbuy', 'buy', 'buy-counter2');
+      this.$nuxt.$router.push("/buy-instagram-followers");
+      this.$ga.event("insbuy", "buy", "buy-counter2");
     },
     gaBtnFreeGetItNow() {
-      if(this.$store.state.isMobile) { // mobile
-        if(this.$store.state.isiOS) { // ios
-          this.downloadIOS('iosdl-counter2');
-        } else if(this.$store.state.isAndroid) { // android
-          this.downloadAndroid('adrdl-counter2');
+      if (this.$store.state.isMobile) {
+        // mobile
+        if (this.$store.state.isiOS) {
+          // ios
+          this.downloadIOS("iosdl-counter2");
+        } else if (this.$store.state.isAndroid) {
+          // android
+          this.downloadAndroid("adrdl-counter2");
         }
-      } else { // pc
-        this.$nuxt.$router.push('/register');
+      } else {
+        // pc
+        this.$nuxt.$router.push("/register");
       }
     },
     gaBtnFreeGetItNow1() {
-      if(this.$store.state.isMobile) { // mobile
-        if(this.$store.state.isiOS) { // ios
-          this.downloadIOS('iosdl-counter3');
-        } else if(this.$store.state.isAndroid) { // android
-          this.downloadAndroid('adrdl-counter3');
+      if (this.$store.state.isMobile) {
+        // mobile
+        if (this.$store.state.isiOS) {
+          // ios
+          this.downloadIOS("iosdl-counter3");
+        } else if (this.$store.state.isAndroid) {
+          // android
+          this.downloadAndroid("adrdl-counter3");
         }
-      } else { // pc
-        this.$nuxt.$router.push('/register');
+      } else {
+        // pc
+        this.$nuxt.$router.push("/register");
       }
     },
     gaBtnFreeGetItNow2() {
-      if(this.$store.state.isMobile) { // mobile
-        if(this.$store.state.isiOS) { // ios
-          this.downloadIOS('iosdl-counter4');
-        } else if(this.$store.state.isAndroid) { // android
-          this.downloadAndroid('adrdl-counter4');
+      if (this.$store.state.isMobile) {
+        // mobile
+        if (this.$store.state.isiOS) {
+          // ios
+          this.downloadIOS("iosdl-counter4");
+        } else if (this.$store.state.isAndroid) {
+          // android
+          this.downloadAndroid("adrdl-counter4");
         }
-      } else { // pc
-        this.$nuxt.$router.push('/register');
+      } else {
+        // pc
+        this.$nuxt.$router.push("/register");
       }
     },
     inputFocus() {
       this.isFocus = true;
     },
     downloadAll() {
-      if(this.$store.state.isMobile) { // mobile
-        if(this.$store.state.isiOS) { // ios
-          this.downloadIOS('iosdl-counter1');
-        } else if(this.$store.state.isAndroid) { // android
-          this.downloadAndroid('adrdl-counter1');
+      if (this.$store.state.isMobile) {
+        // mobile
+        if (this.$store.state.isiOS) {
+          // ios
+          this.downloadIOS("iosdl-counter1");
+        } else if (this.$store.state.isAndroid) {
+          // android
+          this.downloadAndroid("adrdl-counter1");
         }
-      } else { // pc
-        this.$nuxt.$router.push('/register');
+      } else {
+        // pc
+        this.$nuxt.$router.push("/register");
       }
     },
     signup() {
-      this.$ga.event('insrg', 'register', 'register-counter');
-      this.$nuxt.$router.push('/register');
+      this.$ga.event("insrg", "register", "register-counter");
+      this.$nuxt.$router.push("/register");
     },
     downloadIOS(param) {
-      this.$ga.event('insdl', 'download', param);
+      this.$ga.event("insdl", "download", param);
       location.href = `https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-counter&mt=8`;
     },
     downloadAndroid(param) {
-      this.$ga.event('insdl', 'download', param);
+      this.$ga.event("insdl", "download", param);
       window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-counter`;
     },
     initTabIndex() {
       const path = this.$nuxt.$route.path;
-      if (path === '/buy-instagram-followers') {
+      if (path === "/buy-instagram-followers") {
         this.tabsIndex = false;
-        this.emittedData.meta.title = this.$t('store.meta.title-0');
-        this.emittedData.meta.description
-          = this.$i18n.locale === 'en'
-          ? this.$t('store.meta.description-0')
-          : this.$t('store.meta.description');
-      } else if (path === '/buy-instagram-daily-followers') {
+        this.emittedData.meta.title = this.$t("store.meta.title-0");
+        this.emittedData.meta.description =
+          this.$i18n.locale === "en"
+            ? this.$t("store.meta.description-0")
+            : this.$t("store.meta.description");
+      } else if (path === "/buy-instagram-daily-followers") {
         this.tabsIndex = true;
-        this.emittedData.meta.title = this.$t('store.meta.title-0');
-        this.emittedData.meta.description
-          = this.$i18n.locale === 'en'
-          ? this.$t('store.meta.description-0')
-          : this.$t('store.meta.description');
-      } else if (path === '/buy-instagram-likes') {
+        this.emittedData.meta.title = this.$t("store.meta.title-0");
+        this.emittedData.meta.description =
+          this.$i18n.locale === "en"
+            ? this.$t("store.meta.description-0")
+            : this.$t("store.meta.description");
+      } else if (path === "/buy-instagram-likes") {
         this.tabsIndex = true;
-        this.emittedData.meta.title = this.$t('store.meta.title-1');
-        this.emittedData.meta.description
-          = this.$i18n.locale === 'en'
-          ? this.$t('store.meta.description-1')
-          : this.$t('store.meta.description');
-      } else if (path === '/event-followers') {
+        this.emittedData.meta.title = this.$t("store.meta.title-1");
+        this.emittedData.meta.description =
+          this.$i18n.locale === "en"
+            ? this.$t("store.meta.description-1")
+            : this.$t("store.meta.description");
+      } else if (path === "/event-followers") {
         this.tabsIndex = false;
-        this.emittedData.meta.title = 'Get Unlimited Real Instagram Followers & Likes';
-        this.emittedData.meta.description = this.$t('store.meta.description-0');
-      } else if (path === '/event-likes') {
+        this.emittedData.meta.title =
+          "Get Unlimited Real Instagram Followers & Likes";
+        this.emittedData.meta.description = this.$t("store.meta.description-0");
+      } else if (path === "/event-likes") {
         this.tabsIndex = true;
-        this.emittedData.meta.title = 'Get Unlimited Real Instagram Followers & Likes';
-        this.emittedData.meta.description = this.$t('store.meta.description-1');
+        this.emittedData.meta.title =
+          "Get Unlimited Real Instagram Followers & Likes";
+        this.emittedData.meta.description = this.$t("store.meta.description-1");
       }
 
-      this.$emit('emitToParent', this.emittedData);
+      this.$emit("emitToParent", this.emittedData);
     },
     keyupSubmit() {
       if (process.server) return;
@@ -595,51 +750,59 @@ export default {
     tabSwitch(i) {
       this.tabsIndex = i;
       let originalPath = this.$nuxt.$route.path;
-      let destPath = '';
+      let destPath = "";
 
       if (i === false) {
-
-        if (originalPath === '/event-likes') {
-          destPath = '/event-followers';
-          this.emittedData.meta.title = 'Get Unlimited Real Instagram Followers & Likes';
-          this.emittedData.meta.description = this.$t('store.meta.description-0');
-        } else if (originalPath === '/event-followers') {
-          destPath = '/event-followers';
-          this.emittedData.meta.title = 'Get Unlimited Real Instagram Followers & Likes';
-          this.emittedData.meta.description = this.$t('store.meta.description-1');
+        if (originalPath === "/event-likes") {
+          destPath = "/event-followers";
+          this.emittedData.meta.title =
+            "Get Unlimited Real Instagram Followers & Likes";
+          this.emittedData.meta.description = this.$t(
+            "store.meta.description-0"
+          );
+        } else if (originalPath === "/event-followers") {
+          destPath = "/event-followers";
+          this.emittedData.meta.title =
+            "Get Unlimited Real Instagram Followers & Likes";
+          this.emittedData.meta.description = this.$t(
+            "store.meta.description-1"
+          );
         } else {
-          destPath = '/buy-instagram-followers';
-          this.emittedData.meta.title = this.$t('store.meta.title-0');
-          this.emittedData.meta.description
-            = this.$i18n.locale === 'en'
-            ? this.$t('store.meta.description-0')
-            : this.$t('store.meta.description');
+          destPath = "/buy-instagram-followers";
+          this.emittedData.meta.title = this.$t("store.meta.title-0");
+          this.emittedData.meta.description =
+            this.$i18n.locale === "en"
+              ? this.$t("store.meta.description-0")
+              : this.$t("store.meta.description");
         }
-
       } else if (i === true) {
-
-        if (originalPath === '/event-followers') {
-          destPath = '/event-likes';
-          this.emittedData.meta.title = 'Get Unlimited Real Instagram Followers & Likes';
-          this.emittedData.meta.description = this.$t('store.meta.description-0');
-        } else if (originalPath === '/event-likes') {
-          destPath = '/event-likes';
-          this.emittedData.meta.title = 'Get Unlimited Real Instagram Followers & Likes';
-          this.emittedData.meta.description = this.$t('store.meta.description-1');
+        if (originalPath === "/event-followers") {
+          destPath = "/event-likes";
+          this.emittedData.meta.title =
+            "Get Unlimited Real Instagram Followers & Likes";
+          this.emittedData.meta.description = this.$t(
+            "store.meta.description-0"
+          );
+        } else if (originalPath === "/event-likes") {
+          destPath = "/event-likes";
+          this.emittedData.meta.title =
+            "Get Unlimited Real Instagram Followers & Likes";
+          this.emittedData.meta.description = this.$t(
+            "store.meta.description-1"
+          );
         } else {
-          destPath = '/buy-instagram-daily-followers';
+          destPath = "/buy-instagram-daily-followers";
           // this.emittedData.meta.title = this.$t('store.meta.title-1');
           // this.emittedData.meta.description
           //   = this.$i18n.locale === 'en'
           //   ? this.$t('store.meta.description-1')
           //   : this.$t('store.meta.description');
-          this.emittedData.meta.title = this.$t('store.meta.title-0');
-          this.emittedData.meta.description
-            = this.$i18n.locale === 'en'
-            ? this.$t('store.meta.description-0')
-            : this.$t('store.meta.description');
+          this.emittedData.meta.title = this.$t("store.meta.title-0");
+          this.emittedData.meta.description =
+            this.$i18n.locale === "en"
+              ? this.$t("store.meta.description-0")
+              : this.$t("store.meta.description");
         }
-
       }
 
       if (originalPath !== destPath) {
@@ -652,10 +815,10 @@ export default {
     },
 
     pkgCheck(pkg, i) {
-      if (pkg['product_type'] === 1) {
+      if (pkg["product_type"] === 1) {
         this.productPkgListLikeIndex = i;
         this.productPkgCurrentLike = pkg;
-      } else if (pkg['product_type'] === 2) {
+      } else if (pkg["product_type"] === 2) {
         this.productPkgListFollowIndex = i;
         this.productPkgCurrentFollow = pkg;
       }
@@ -665,18 +828,20 @@ export default {
       this.productPkgListLikeTitle = false;
       this.postListTitle = false;
 
-      if (!this.enterFirstTime && !this.independent)
-        this.anchorBottomBtn();
+      if (!this.enterFirstTime && !this.independent) this.anchorBottomBtn();
     },
     pkgSelectedInit(pkgList) {
-      let pkgLikeFirstNum = 0, pkgFollowFirstNum = 0;
+      let pkgLikeFirstNum = 0,
+        pkgFollowFirstNum = 0;
       for (let unit of pkgList) {
-        if (unit['product_type'] === 1) { // like
-          pkgLikeFirstNum = unit['purchase_quantity'];
+        if (unit["product_type"] === 1) {
+          // like
+          pkgLikeFirstNum = unit["purchase_quantity"];
           this.productPkgCurrentLike = unit;
         }
-        if (unit['product_type'] === 2) { // follow
-          pkgFollowFirstNum = unit['gives'][0]['quantity'];
+        if (unit["product_type"] === 2) {
+          // follow
+          pkgFollowFirstNum = unit["gives"][0]["quantity"];
           this.productPkgCurrentFollow = unit;
         }
         if (pkgLikeFirstNum !== 0 && pkgFollowFirstNum !== 0) {
@@ -696,44 +861,55 @@ export default {
 
       this.productPkgListLoading = true;
 
-
       // this.$nuxt.$axios.get(
       //   `${apiAccount.appConfig}?origin=web`
-      this.$nuxt.$axios.post(
-        `${apiAccount.appConfig}?origin=web`,
-        this.COMMON.paramSign({
-          client_lan: this.$i18n.locale,
-          cycle_product_enable: true
+      this.$nuxt.$axios
+        .post(
+          `${apiAccount.appConfig}?origin=web`,
+          this.COMMON.paramSign({
+            client_lan: this.$i18n.locale,
+            cycle_product_enable: true,
+          })
+        )
+        .then((response) => {
+          this.productPkgListLoading = false;
+
+          if (response.data.product && response.data.product.list) {
+            this.renderProductPkgList(response.data.product.list);
+
+            //console.log(response.data.product.list);
+          } else {
+            this.$alert(
+              "",
+              "error",
+              "Oops",
+              "Requesting Offer List failed, please try later.",
+              "",
+              "Close"
+            );
+          }
+
+          setTimeout(() => {
+            this.enterFirstTime = false;
+          }, 1000);
         })
-      ).then((response) => {
-        this.productPkgListLoading = false;
-
-        if (response.data.product && response.data.product.list) {
-          this.renderProductPkgList(response.data.product.list);
-
-          //console.log(response.data.product.list);
-        } else {
-          this.$alert('', 'error', 'Oops',
-            'Requesting Offer List failed, please try later.',
-            '', 'Close');
-        }
-
-        setTimeout(() => {
-          this.enterFirstTime = false;
-        }, 1000);
-      }).catch((error) => {
-        this.productPkgListLoading = false;
-        this.dialogFailMsg = '<samp>'
-          + '<b>Error Status:</b> ' + error.status
-          + '<br>' + '<b>Error Message:</b> ' + error.statusText
-          + '</samp>';
-        this.dialogFail = true;
-        console.error('Catch Error: getPkgList', error);
-      });
+        .catch((error) => {
+          this.productPkgListLoading = false;
+          this.dialogFailMsg =
+            "<samp>" +
+            "<b>Error Status:</b> " +
+            error.status +
+            "<br>" +
+            "<b>Error Message:</b> " +
+            error.statusText +
+            "</samp>";
+          this.dialogFail = true;
+          console.error("Catch Error: getPkgList", error);
+        });
     },
     renderProductPkgList(pkgList) {
       this.productPkgList = pkgList;
-      this.$storage.set('productPkgList', pkgList);
+      this.$storage.set("productPkgList", pkgList);
 
       this.$nextTick(() => {
         setTimeout(() => {
@@ -745,13 +921,21 @@ export default {
     },
     renderPkgListHighlight() {
       let indexFollow = 0;
-      for (indexFollow = 0; indexFollow < this.productPkgListFollow.length; indexFollow++) {
-        if (this.productPkgListFollow[indexFollow]['promote_sale_type'] === 3)
+      for (
+        indexFollow = 0;
+        indexFollow < this.productPkgListFollow.length;
+        indexFollow++
+      ) {
+        if (this.productPkgListFollow[indexFollow]["promote_sale_type"] === 3)
           break;
       }
       let indexLike = 0;
-      for (indexLike = 0; indexLike < this.productPkgListLike.length; indexLike++) {
-        if (this.productPkgListLike[indexLike]['promote_sale_type'] === 3)
+      for (
+        indexLike = 0;
+        indexLike < this.productPkgListLike.length;
+        indexLike++
+      ) {
+        if (this.productPkgListLike[indexLike]["promote_sale_type"] === 3)
           break;
       }
 
@@ -768,9 +952,9 @@ export default {
     },
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
-      pkgList.map(item => {
-        if (item['cycle_type'] > 1 && item.product_type === 2) {
-          item.dailyQuantity = item['purchase_quantity'];
+      pkgList.map((item) => {
+        if (item["cycle_type"] > 1 && item.product_type === 2) {
+          item.dailyQuantity = item["purchase_quantity"];
           this.pkgListWithUnit.push(item);
         }
       });
@@ -780,13 +964,16 @@ export default {
     // 生成Daily Select数组（Offer选择）（未使用）
     renderPkgListDaily() {
       const res = new Map();
-      this.productPkgListDaily = this.pkgListWithUnit.filter((a) =>
-        !res.has(a.dailyQuantity) && res.set(a.dailyQuantity, 1));
+      this.productPkgListDaily = this.pkgListWithUnit.filter(
+        (a) => !res.has(a.dailyQuantity) && res.set(a.dailyQuantity, 1)
+      );
       this.productPkgListDailyVM = this.productPkgListDaily[0];
     },
     // 生成Days Select数组（周期选择）
     renderPkgListDays() {
-      this.productPkgListDays = [...new Set(this.pkgListWithUnit.map(item => item.cycle_type))];
+      this.productPkgListDays = [
+        ...new Set(this.pkgListWithUnit.map((item) => item.cycle_type)),
+      ];
       this.productPkgListDaysVM = this.productPkgListDays[0];
     },
 
@@ -795,7 +982,7 @@ export default {
       this.gaSearchBtn();
     },
     searchInsByServerV2() {
-      if (this.searchInsInput === '') {
+      if (this.searchInsInput === "") {
         this.isBoxRed = true;
         return;
       }
@@ -803,87 +990,96 @@ export default {
       if (this.searchInsLoading) return;
 
       this.searchInsLoading = true;
-      this.$nuxt.$axios.post(
-        apiInsServer.getAccountByUsername,
-        this.COMMON.paramSign({ ins_account: this.searchInsInput })
-      ).then((response) => {
-        this.searchInsLoading = false;
-        this.searchStatus = true;
+      this.$nuxt.$axios
+        .post(
+          apiInsServer.getAccountByUsername,
+          this.COMMON.paramSign({ ins_account: this.searchInsInput })
+        )
+        .then((response) => {
+          this.searchInsLoading = false;
+          this.searchStatus = true;
 
-        if (response.data.status !== 'ok') {
+          if (response.data.status !== "ok") {
+            this.$alert(
+              "",
+              "error",
+              this.$t("global.modelBox.title.oops"),
+              this.$t("store.buy.error.errorInsID.text"),
+              "normal",
+              this.$t("global.modelBox.btn.close")
+            );
+            return;
+          }
+
+          const _sharedDataUser = response.data.content["graphql"]["user"];
+          const _sharedDataUserPosts =
+            _sharedDataUser["edge_owner_to_timeline_media"];
+
+          this.insUser.ins_id = _sharedDataUser.id;
+          this.insUser.ins_account = _sharedDataUser.username;
+          this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
+          this.insUser.followed_by =
+            _sharedDataUser["edge_followed_by"]["count"];
+          this.insUser.follow = _sharedDataUser["edge_follow"]["count"];
+          this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
+
+          this.postList = this.insUser.post.post_list;
+          this.postListInfo.post_count = this.insUser.post.post_count;
+          this.postListInfo.end_cursor = this.insUser.post.end_cursor;
+          this.postListInfo.has_next_page =
+            this.insUser.post.post_count > this.postListInfo.page_size;
+
+          // 设置当前时间
+          this.getCurrentTime();
+
+          // this.$nextTick(() => {
+          //   this.anchorBottomBtn();
+          // });
+        })
+        .catch((error) => {
+          this.closeDialog();
+          this.searchInsLoading = false;
+          // this.$alert(
+          //   '', 'error', 'Oops',
+          //   'Request Instagram Data failed, please try again later.',
+          //   'normal', 'Close'
+          // );
           this.$alert(
-            '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorInsID.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
+            "",
+            "error",
+            this.$t("global.modelBox.title.oops"),
+            this.$t("store.buy.error.errorRequest.text"),
+            "normal",
+            this.$t("global.modelBox.btn.close")
           );
-          return;
-        }
-
-        const _sharedDataUser = response.data.content['graphql']['user'];
-        const _sharedDataUserPosts = _sharedDataUser['edge_owner_to_timeline_media'];
-
-        this.insUser.ins_id = _sharedDataUser.id;
-        this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
-        this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
-        this.insUser.follow = _sharedDataUser['edge_follow']['count'];
-        this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
-
-        this.postList = this.insUser.post.post_list;
-        this.postListInfo.post_count = this.insUser.post.post_count;
-        this.postListInfo.end_cursor = this.insUser.post.end_cursor;
-        this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
-
-        // 设置当前时间
-        this.getCurrentTime();
-
-        // this.$nextTick(() => {
-        //   this.anchorBottomBtn();
-        // });
-      }).catch((error) => {
-        this.closeDialog();
-        this.searchInsLoading = false;
-        // this.$alert(
-        //   '', 'error', 'Oops',
-        //   'Request Instagram Data failed, please try again later.',
-        //   'normal', 'Close'
-        // );
-        this.$alert(
-          '', 'error',
-          this.$t('global.modelBox.title.oops'),
-          this.$t('store.buy.error.errorRequest.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
-        );
-        console.error('Catch Error: searchIns: ', error);
-      });
+          console.error("Catch Error: searchIns: ", error);
+        });
     },
     getCurrentTime() {
-         // Updated 3:13 PM 12/31/2020
-        // this.currentTime
-        let aData = new Date();
-        let currentYear = aData.getFullYear();
-        let currentMonth = aData.getMonth() + 1;
-        let currentDate = aData.getDate();
-        let currentHour = aData.getHours();
-        let currentMin = aData.getMinutes();
-        let str = currentHour > 12 ? 'PM':'AM';
-        this.currentTime = ` ${currentHour}:${currentMin} ${str} ${currentDate}/${currentMonth}/${currentYear}`;
+      // Updated 3:13 PM 12/31/2020
+      // this.currentTime
+      let aData = new Date();
+      let currentYear = aData.getFullYear();
+      let currentMonth = aData.getMonth() + 1;
+      let currentDate = aData.getDate();
+      let currentHour = aData.getHours();
+      let currentMin = aData.getMinutes();
+      let str = currentHour > 12 ? "PM" : "AM";
+      this.currentTime = ` ${currentHour}:${currentMin} ${str} ${currentDate}/${currentMonth}/${currentYear}`;
     },
     // 搜索ins后直接跳转checkout
     searchInsByServerV2AndAddToCart() {
-      if (this.searchInsInput === '') {
+      if (this.searchInsInput === "") {
         // this.dialogAttentionMsg = 'Please enter username.';
         // this.dialogAttention = true;
 
         this.$alert(
-          '', 'warn',
-          this.$t('store.buy.error.noInsID.title'),
-          this.$t('store.buy.error.noInsID.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
+          "",
+          "warn",
+          this.$t("store.buy.error.noInsID.title"),
+          this.$t("store.buy.error.noInsID.text"),
+          "normal",
+          this.$t("global.modelBox.btn.close")
         );
         return;
       }
@@ -892,184 +1088,209 @@ export default {
 
       this.ajaxRequesting = true;
       this.searchInsLoading = true;
-      this.$nuxt.$axios.post(
-        apiInsServer.getAccountByUsername,
-        this.COMMON.paramSign({ ins_account: this.searchInsInput })
-      ).then((response) => {
-        this.ajaxRequesting = false;
-        this.searchInsLoading = false;
-        this.searchStatus = true;
+      this.$nuxt.$axios
+        .post(
+          apiInsServer.getAccountByUsername,
+          this.COMMON.paramSign({ ins_account: this.searchInsInput })
+        )
+        .then((response) => {
+          this.ajaxRequesting = false;
+          this.searchInsLoading = false;
+          this.searchStatus = true;
 
-        if (response.data.status !== 'ok') {
+          if (response.data.status !== "ok") {
+            this.$alert(
+              "",
+              "error",
+              this.$t("global.modelBox.title.oops"),
+              this.$t("store.buy.error.errorInsID.text"),
+              "normal",
+              this.$t("global.modelBox.btn.close")
+            );
+            return;
+          }
+
+          const _sharedDataUser = response.data.content["graphql"]["user"];
+          const _sharedDataUserPosts =
+            _sharedDataUser["edge_owner_to_timeline_media"];
+
+          this.insUser.ins_id = _sharedDataUser.id;
+          this.insUser.ins_account = _sharedDataUser.username;
+          this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
+          this.insUser.followed_by =
+            _sharedDataUser["edge_followed_by"]["count"];
+          this.insUser.follow = _sharedDataUser["edge_follow"]["count"];
+          this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
+
+          this.postList = this.insUser.post.post_list;
+          this.postListInfo.post_count = this.insUser.post.post_count;
+          this.postListInfo.end_cursor = this.insUser.post.end_cursor;
+          this.postListInfo.has_next_page =
+            this.insUser.post.post_count > this.postListInfo.page_size;
+
+          this.$nextTick(() => {
+            this.anchorBottomBtn();
+            this.addToCart();
+          });
+        })
+        .catch((error) => {
+          this.closeDialog();
+          this.searchInsLoading = false;
+          this.ajaxRequesting = false;
+          // this.$alert(
+          //   '', 'error', 'Oops',
+          //   'Request Instagram Data failed, please try again later.',
+          //   'normal', 'Close'
+          // );
           this.$alert(
-            '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorInsID.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
+            "",
+            "error",
+            this.$t("global.modelBox.title.oops"),
+            this.$t("store.buy.error.errorRequest.text"),
+            "normal",
+            this.$t("global.modelBox.btn.close")
           );
-          return;
-        }
-
-        const _sharedDataUser = response.data.content['graphql']['user'];
-        const _sharedDataUserPosts = _sharedDataUser['edge_owner_to_timeline_media'];
-
-        this.insUser.ins_id = _sharedDataUser.id;
-        this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
-        this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
-        this.insUser.follow = _sharedDataUser['edge_follow']['count'];
-        this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
-
-        this.postList = this.insUser.post.post_list;
-        this.postListInfo.post_count = this.insUser.post.post_count;
-        this.postListInfo.end_cursor = this.insUser.post.end_cursor;
-        this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
-
-        this.$nextTick(() => {
-          this.anchorBottomBtn();
-          this.addToCart();
+          console.error("Catch Error: searchIns: ", error);
         });
-      }).catch((error) => {
-        this.closeDialog();
-        this.searchInsLoading = false;
-        this.ajaxRequesting = false;
-        // this.$alert(
-        //   '', 'error', 'Oops',
-        //   'Request Instagram Data failed, please try again later.',
-        //   'normal', 'Close'
-        // );
-        this.$alert(
-          '', 'error',
-          this.$t('global.modelBox.title.oops'),
-          this.$t('store.buy.error.errorRequest.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
-        );
-        console.error('Catch Error: searchIns: ', error);
-      });
     },
     searchIns() {
-      if (this.searchInsInput === '') {
+      if (this.searchInsInput === "") {
         this.$alert(
-          '', 'warn',
-          this.$t('store.buy.error.noInsID.title'),
-          this.$t('store.buy.error.noInsID.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
+          "",
+          "warn",
+          this.$t("store.buy.error.noInsID.title"),
+          this.$t("store.buy.error.noInsID.text"),
+          "normal",
+          this.$t("global.modelBox.btn.close")
         );
         return;
       }
       if (this.searchInsLoading) return;
 
       this.searchInsLoading = true;
-      this.$nuxt.$axios.get(
-        `https://www.instagram.com/${this.searchInsInput}/`
-      ).then((response) => {
-        this.searchInsLoading = false;
-        this.searchStatus = true;
+      this.$nuxt.$axios
+        .get(`https://www.instagram.com/${this.searchInsInput}/`)
+        .then((response) => {
+          this.searchInsLoading = false;
+          this.searchStatus = true;
 
-        const responsePage = response.data;
-        const _sharedDataStr = responsePage.match('window._sharedData = (.*);<\/script')[1];
-        const _sharedData = JSON.parse(_sharedDataStr);
-        const _sharedDataUser = _sharedData['entry_data']['ProfilePage'][0]['graphql']['user'];
-        const _sharedDataUserPosts = _sharedDataUser['edge_owner_to_timeline_media'];
-        // console.log(_sharedData);
-        // console.log(_sharedDataUser);
-        // console.log(this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1]);
-        // console.log(this.dataStored.user.ins_account.accounts);
+          const responsePage = response.data;
+          const _sharedDataStr = responsePage.match("window._sharedData = (.*);<\/script")[1];
+          const _sharedData = JSON.parse(_sharedDataStr);
+          const _sharedDataUser =
+            _sharedData["entry_data"]["ProfilePage"][0]["graphql"]["user"];
+          const _sharedDataUserPosts =
+            _sharedDataUser["edge_owner_to_timeline_media"];
+          // console.log(_sharedData);
+          // console.log(_sharedDataUser);
+          // console.log(this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1]);
+          // console.log(this.dataStored.user.ins_account.accounts);
 
-        this.insUser.ins_id = _sharedDataUser.id;
-        this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
-        this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
-        this.insUser.follow = _sharedDataUser['edge_follow']['count'];
-        this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
+          this.insUser.ins_id = _sharedDataUser.id;
+          this.insUser.ins_account = _sharedDataUser.username;
+          this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
+          this.insUser.followed_by =
+            _sharedDataUser["edge_followed_by"]["count"];
+          this.insUser.follow = _sharedDataUser["edge_follow"]["count"];
+          this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
 
-        this.postList = this.insUser.post.post_list;
-        this.postListInfo.post_count = this.insUser.post.post_count;
-        this.postListInfo.end_cursor = this.insUser.post.end_cursor;
-        this.postListInfo.has_next_page = this.insUser.post.post_count > this.postListInfo.page_size;
+          this.postList = this.insUser.post.post_list;
+          this.postListInfo.post_count = this.insUser.post.post_count;
+          this.postListInfo.end_cursor = this.insUser.post.end_cursor;
+          this.postListInfo.has_next_page =
+            this.insUser.post.post_count > this.postListInfo.page_size;
 
-        this.$nextTick(() => {
-          this.anchorBottomBtn();
+          this.$nextTick(() => {
+            this.anchorBottomBtn();
+          });
+        })
+        .catch((error) => {
+          this.closeDialog();
+          this.searchInsLoading = false;
+          this.dialogFailMsg =
+            "Failed to get your Instagram data, or there's no such an Instagram account. Please try again.";
+          setTimeout(() => {
+            this.dialogFail = true;
+          }, 300);
+          console.error("Catch Error: searchIns: ", error);
         });
-      }).catch((error) => {
-        this.closeDialog();
-        this.searchInsLoading = false;
-        this.dialogFailMsg = 'Failed to get your Instagram data, or there\'s no such an Instagram account. Please try again.';
-        setTimeout(() => {
-          this.dialogFail = true;
-        }, 300);
-        console.error('Catch Error: searchIns: ', error);
-      });
     },
     searchInsByServer() {
-      if (this.searchInsInput === '') {
+      if (this.searchInsInput === "") {
         this.$alert(
-          '', 'warn',
-          this.$t('store.buy.error.noInsID.title'),
-          this.$t('store.buy.error.noInsID.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
+          "",
+          "warn",
+          this.$t("store.buy.error.noInsID.title"),
+          this.$t("store.buy.error.noInsID.text"),
+          "normal",
+          this.$t("global.modelBox.btn.close")
         );
         return;
       }
       if (!this.searchInsLoading) {
         this.searchInsLoading = true;
-        this.$nuxt.$axios.post(
-          apiAccount.getInsInfo,
-          this.COMMON.paramSign(
-            {
-              'ins_account': this.searchInsInput
-            }
+        this.$nuxt.$axios
+          .post(
+            apiAccount.getInsInfo,
+            this.COMMON.paramSign({
+              ins_account: this.searchInsInput,
+            })
           )
-        ).then((response) => {
-          this.searchInsLoading = false;
-          if (response.data.status === 'ok') {
-            this.userStatus.search = true;
-            this.insUser = response.data['ins_info'];
-            this.postList = response.data['ins_info'].post['post_list'];
+          .then((response) => {
+            this.searchInsLoading = false;
+            if (response.data.status === "ok") {
+              this.userStatus.search = true;
+              this.insUser = response.data["ins_info"];
+              this.postList = response.data["ins_info"].post["post_list"];
 
-            this.postListInfo.post_count = response.data['ins_info'].post.post_count;
-            this.postListInfo.end_cursor = response.data['ins_info'].post.end_cursor;
-            this.postListInfo.has_next_page = response.data['ins_info'].post.post_count > this.postListInfo.page_size;
-            setTimeout(() => {
-              if (!this.independent)
-                this.$scrollTo('#search-result', { offset: -100 });
-            }, 500);
-          } else {
-            this.dialogFailMsg = 'Please enter valid username.';
+              this.postListInfo.post_count =
+                response.data["ins_info"].post.post_count;
+              this.postListInfo.end_cursor =
+                response.data["ins_info"].post.end_cursor;
+              this.postListInfo.has_next_page =
+                response.data["ins_info"].post.post_count >
+                this.postListInfo.page_size;
+              setTimeout(() => {
+                if (!this.independent)
+                  this.$scrollTo("#search-result", { offset: -100 });
+              }, 500);
+            } else {
+              this.dialogFailMsg = "Please enter valid username.";
+              this.dialogFail = true;
+            }
+          })
+          .catch((error) => {
+            this.searchInsLoading = false;
+            this.dialogFailMsg =
+              "<samp>" +
+              "<b>Error Status:</b> " +
+              error.status +
+              "<br>" +
+              "<b>Error Message:</b> " +
+              error.statusText +
+              "</samp>";
             this.dialogFail = true;
-          }
-        }).catch((error) => {
-          this.searchInsLoading = false;
-          this.dialogFailMsg = '<samp>'
-            + '<b>Error Status:</b> ' + error.status
-            + '<br>' + '<b>Error Message:</b> ' + error.statusText
-            + '</samp>';
-          this.dialogFail = true;
-          console.log('Catch Error: searchIns');
-          console.log(error);
-        });
+            console.log("Catch Error: searchIns");
+            console.log(error);
+          });
       }
     },
     insPostTransform(_sharedDataUserPosts) {
       let post = {};
       post.post_count = _sharedDataUserPosts.count;
-      post.end_cursor = _sharedDataUserPosts['page_info']['end_cursor'];
+      post.end_cursor = _sharedDataUserPosts["page_info"]["end_cursor"];
 
-      const insPostList = _sharedDataUserPosts['edges'];
+      const insPostList = _sharedDataUserPosts["edges"];
       let postList = [];
 
       for (let i = 0; i < insPostList.length; i++) {
         let postObj = {};
-        let insPostObj = insPostList[i]['node'];
+        let insPostObj = insPostList[i]["node"];
 
         postObj.like_id = insPostObj.id;
-        postObj.short_code = insPostObj['shortcode'];
-        postObj.like_pic_url = insPostObj['thumbnail_src'];
-        postObj.like_count = insPostObj['edge_liked_by']['count'];
+        postObj.short_code = insPostObj["shortcode"];
+        postObj.like_pic_url = insPostObj["thumbnail_src"];
+        postObj.like_count = insPostObj["edge_liked_by"]["count"];
 
         postList.push(postObj);
       }
@@ -1090,7 +1311,7 @@ export default {
       let param = {
         id: this.insUser.ins_id,
         first: this.postListInfo.page_size,
-        after: this.postListInfo.end_cursor
+        after: this.postListInfo.end_cursor,
       };
       this.postListNextRequestV2(param);
     },
@@ -1100,50 +1321,58 @@ export default {
 
         const paramTrans = JSON.stringify(param);
 
-        this.$nuxt.$axios.get(
-          `${apiIns.insPostList}${paramTrans}`
-        ).then((response) => {
-          this.postListLoading = false;
+        this.$nuxt.$axios
+          .get(`${apiIns.insPostList}${paramTrans}`)
+          .then((response) => {
+            this.postListLoading = false;
 
-          // console.log(response.data.data.user['edge_owner_to_timeline_media']['edges']);
-          const insPostObj = response.data.data.user['edge_owner_to_timeline_media'];
+            // console.log(response.data.data.user['edge_owner_to_timeline_media']['edges']);
+            const insPostObj =
+              response.data.data.user["edge_owner_to_timeline_media"];
 
-          for (let i = 0; i < insPostObj['edges'].length; i++) {
-            let insPostObjTransUnit = {};
-            insPostObjTransUnit.like_id = insPostObj['edges'][i]['node']['id'];
-            insPostObjTransUnit.like_pic_url = insPostObj['edges'][i]['node']['thumbnail_src'];
-            insPostObjTransUnit.like_count = insPostObj['edges'][i]['node']['edge_media_preview_like']['count'];
-            insPostObjTransUnit.short_code = insPostObj['edges'][i]['node']['shortcode'];
+            for (let i = 0; i < insPostObj["edges"].length; i++) {
+              let insPostObjTransUnit = {};
+              insPostObjTransUnit.like_id =
+                insPostObj["edges"][i]["node"]["id"];
+              insPostObjTransUnit.like_pic_url =
+                insPostObj["edges"][i]["node"]["thumbnail_src"];
+              insPostObjTransUnit.like_count =
+                insPostObj["edges"][i]["node"]["edge_media_preview_like"][
+                  "count"
+                ];
+              insPostObjTransUnit.short_code =
+                insPostObj["edges"][i]["node"]["shortcode"];
 
-            this.postList.push(insPostObjTransUnit);
-          }
+              this.postList.push(insPostObjTransUnit);
+            }
 
-          this.renderPostListInfo(
-            insPostObj.count,
-            insPostObj['page_info']['end_cursor'],
-            insPostObj['page_info']['has_next_page']
-          );
+            this.renderPostListInfo(
+              insPostObj.count,
+              insPostObj["page_info"]["end_cursor"],
+              insPostObj["page_info"]["has_next_page"]
+            );
+          })
+          .catch((error) => {
+            this.postListLoading = false;
 
-        }).catch((error) => {
-          this.postListLoading = false;
-
-          this.$alert(
-            '', 'error',
-            this.$t('global.modelBox.title.oops'),
-            this.$t('store.buy.error.errorRequest.text'),
-            'normal',
-            this.$t('global.modelBox.btn.close')
-          );
-          console.error('Catch Error: postListNextRequestV2: ', error);
-        });
+            this.$alert(
+              "",
+              "error",
+              this.$t("global.modelBox.title.oops"),
+              this.$t("store.buy.error.errorRequest.text"),
+              "normal",
+              this.$t("global.modelBox.btn.close")
+            );
+            console.error("Catch Error: postListNextRequestV2: ", error);
+          });
       }
     },
     postListUpdateV2(unit, i) {
-      this.postList = unit.post['post_list'];
+      this.postList = unit.post["post_list"];
       this.renderPostListInfo(
-        unit.post['post_count'],
-        unit.post['end_cursor'],
-        unit.post['post_count'] > this.postList.length
+        unit.post["post_count"],
+        unit.post["end_cursor"],
+        unit.post["post_count"] > this.postList.length
       );
 
       this.accountListSwitchCallback(unit, i);
@@ -1168,7 +1397,7 @@ export default {
           this.productPkgListFollowTitle = true;
 
           if (!this.independent)
-            this.$scrollTo('#title-pkg-follow', { offset: -200 });
+            this.$scrollTo("#title-pkg-follow", { offset: -200 });
           return;
         }
       }
@@ -1181,7 +1410,6 @@ export default {
         //     this.$scrollTo('#title-pkg-like', { offset: -200 });
         //   return;
         // }
-
         // if (!this.postCurrent.like_id) {
         //   this.postListTitle = true;
         //   if (!this.independent)
@@ -1212,36 +1440,41 @@ export default {
     tabBottomBtnPreCheck() {
       if (!this.insUser.ins_account) {
         this.$alert(
-          '', 'warn',
-          this.$t('store.buy.error.noInsID.title'),
-          this.$t('store.buy.error.noInsID.text'),
-          'normal',
-          this.$t('global.modelBox.btn.close')
-        ).then(() => {
-          if (this.$i18n.locale !== 'en') {
-            let gaPage = '', gaPlatform = '';
-            if (this.$nuxt.$route.path === '/') {//home
-              gaPage = 'hp';
-            } else if (
-              this.$nuxt.$route.path === '/buy-instagram-followers'
-              || this.$nuxt.$route.path === '/buy-instagram-likes'
-            ) {//store
-              gaPage = 'store';
+          "",
+          "warn",
+          this.$t("store.buy.error.noInsID.title"),
+          this.$t("store.buy.error.noInsID.text"),
+          "normal",
+          this.$t("global.modelBox.btn.close")
+        )
+          .then(() => {
+            if (this.$i18n.locale !== "en") {
+              let gaPage = "",
+                gaPlatform = "";
+              if (this.$nuxt.$route.path === "/") {
+                //home
+                gaPage = "hp";
+              } else if (
+                this.$nuxt.$route.path === "/buy-instagram-followers" ||
+                this.$nuxt.$route.path === "/buy-instagram-likes"
+              ) {
+                //store
+                gaPage = "store";
+              }
+
+              if (this.COMMON.isiOS()) gaPlatform = "ios";
+              if (this.COMMON.isAndroid()) gaPlatform = "adr";
+
+              this.$ga.event(
+                "buttonclick",
+                "click",
+                `${gaPage}${gaPlatform}popclose-${this.$i18n.locale}`
+              );
             }
-
-            if (this.COMMON.isiOS()) gaPlatform = 'ios';
-            if (this.COMMON.isAndroid()) gaPlatform = 'adr';
-
-            this.$ga.event(
-              'buttonclick',
-              'click',
-              `${gaPage}${gaPlatform}popclose-${this.$i18n.locale}`
-            );
-          }
-        }).catch(() => {
-        });
+          })
+          .catch(() => {});
         if (!this.independent)
-          this.$scrollTo('#control-search_ins-container', { offset: -44 });
+          this.$scrollTo("#control-search_ins-container", { offset: -44 });
         return false;
       } else {
         return true;
@@ -1251,7 +1484,7 @@ export default {
       this.insUser = {};
       this.isBuyBtn = false;
 
-      if (this.searchInsInput !== '') {
+      if (this.searchInsInput !== "") {
         this.isBoxRed = false;
       } else {
         this.isBoxRed = true;
@@ -1285,8 +1518,8 @@ export default {
 
     addToCart() {
       let param = {
-        'ins_id': this.insUser.ins_id,
-        'ins_account': this.insUser.ins_account
+        ins_id: this.insUser.ins_id,
+        ins_account: this.insUser.ins_account,
       };
 
       // 关注
@@ -1297,12 +1530,11 @@ export default {
         param.price_decimal = this.productPkgCurrentFollow.price_decimal || 8.8;
         param.cycle_type = this.productPkgCurrentFollow.cycle_type;
         param.product_type = this.productPkgCurrentFollow.product_type;
-        param.gives = this.productPkgCurrentFollow['gives'];
+        param.gives = this.productPkgCurrentFollow["gives"];
         param.follow_pic_url = this.insUser.profile_pic_url;
         param.post_count = this.insUser.post.post_count;
         param.follower_count = this.insUser.followed_by;
         param.following_count = this.insUser.follow;
-
 
         if (this.postList.length > 1) {
           param.like_id = this.postList[0].like_id;
@@ -1328,7 +1560,7 @@ export default {
         // param.like_pic_url = post.like_pic_url;
         // param.short_code = post.short_code;
         // param.like_count = this.productPkgCurrentLike['purchase_quantity'];
-        param.gives = this.productPkgListDailyVM['gives'];
+        param.gives = this.productPkgListDailyVM["gives"];
         param.follow_pic_url = this.insUser.profile_pic_url;
         param.post_count = this.insUser.post.post_count;
         param.follower_count = this.insUser.followed_by;
@@ -1339,11 +1571,11 @@ export default {
       }
 
       // 广告参数
-      let adStore = { s: '', c: '', k: '' };
-      adStore.s = this.$route.query.s || '';
-      adStore.c = this.$route.query.c || '';
-      adStore.k = this.$route.query.k || '';
-      this.$storage.set('adStore', adStore);
+      let adStore = { s: "", c: "", k: "" };
+      adStore.s = this.$route.query.s || "";
+      adStore.c = this.$route.query.c || "";
+      adStore.k = this.$route.query.k || "";
+      this.$storage.set("adStore", adStore);
 
       // console.log(this.$nuxt.$route.path);
 
@@ -1353,11 +1585,11 @@ export default {
     },
     transportCartUnitData(param) {
       // console.log(param);
-      this.$storage.set('cartUnit', param);
+      this.$storage.set("cartUnit", param);
       // this.$store.commit('cartUnit', param);
 
-      const query = this.COMMON.envTest() ? { env_test: '1' } : {};
-      this.$nuxt.$router.push({ path: '/checkout', query: query });
+      const query = this.COMMON.envTest() ? { env_test: "1" } : {};
+      this.$nuxt.$router.push({ path: "/checkout", query: query });
     },
     // 获取白名单（功能已变更为获取该地区支持的支付方式）
     initGeoIPWhiteList(param) {
@@ -1366,84 +1598,90 @@ export default {
       // 1 跳转 Stripe
       // 2 跳转 HotAntPay
       this.ajaxRequesting = true;
-      this.$nuxt.$axios.post(
-        apiPayment.getCheckoutMethod,
-        this.COMMON.paramSign({
-          client_lan: this.$i18n.locale
-        })
-      ).then((response) => {
-        if (response.data.status === 'ok') {
-          // if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
-          //   this.sendCheckoutInfo(param);
-          // } else {
-          //   if (response.data['checkout_method'] === 1) {
-          //     // Stripe
-          //     this.sendCheckoutInfo(param);
-          //   } else {
-          //     // HotAntPay
-          //     this.transportCartUnitData(param);
-          //   }
-          // }
+      this.$nuxt.$axios
+        .post(
+          apiPayment.getCheckoutMethod,
+          this.COMMON.paramSign({
+            client_lan: this.$i18n.locale,
+          })
+        )
+        .then((response) => {
+          if (response.data.status === "ok") {
+            // if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
+            //   this.sendCheckoutInfo(param);
+            // } else {
+            //   if (response.data['checkout_method'] === 1) {
+            //     // Stripe
+            //     this.sendCheckoutInfo(param);
+            //   } else {
+            //     // HotAntPay
+            //     this.transportCartUnitData(param);
+            //   }
+            // }
 
+            // askNet
+            // if (this.askNet) {
+            //   this.askNetPay();
+            //   return;
+            // }
 
-          // askNet
-          // if (this.askNet) {
-          //   this.askNetPay();
-          //   return;
-          // }
+            // Shopify
+            // if (this.shopify) {
+            //   this.shopifyPay();
+            //   return;
+            // }
 
-          // Shopify
-          // if (this.shopify) {
-          //   this.shopifyPay();
-          //   return;
-          // }
-
-          if (response.data['checkout_method'] === 1) {
-            this.shopifyPay();
+            if (response.data["checkout_method"] === 1) {
+              this.shopifyPay();
+            } else {
+              this.transportCartUnitData(param);
+            }
           } else {
-            this.transportCartUnitData(param);
+            this.ajaxRequesting = false;
+            this.$alert(
+              "",
+              "error",
+              "Sorry",
+              "Something wrong with check payment method, please try later.",
+              "normal",
+              "Close"
+            );
           }
-
-        } else {
+        })
+        .catch((error) => {
           this.ajaxRequesting = false;
           this.$alert(
-            '', 'error', 'Sorry',
-            'Something wrong with check payment method, please try later.',
-            'normal',
-            'Close'
+            "",
+            "error",
+            "Sorry",
+            "Something wrong with check payment method, please try later.",
+            "normal",
+            "Close"
           );
-        }
-      }).catch((error) => {
-        this.ajaxRequesting = false;
-        this.$alert(
-          '', 'error', 'Sorry',
-          'Something wrong with check payment method, please try later.',
-          'normal',
-          'Close'
-        );
-        console.log('initGeoIPWhiteList Error:', error);
-        console.log(error);
-      });
+          console.log("initGeoIPWhiteList Error:", error);
+          console.log(error);
+        });
     },
 
     // Shopify 跳转支付
     // 注意task结构体中的insInfo对象名（与User页面不同）
     shopifyPay() {
       let param = {
-        'token': this.$storage.get('token'),
-        'locale': navigator.language,
-        'tasks': {
-          'ins_id': this.insUser.ins_id,
-          'ins_account': this.insUser.ins_account
+        token: this.$storage.get("token"),
+        locale: navigator.language,
+        tasks: {
+          ins_id: this.insUser.ins_id,
+          ins_account: this.insUser.ins_account,
         },
-        'ads': {
-          's': this.$route.query.s || '',
-          'c': this.$route.query.c || '',
-          'k': this.$route.query.k || ''
-        }
+        ads: {
+          s: this.$route.query.s || "",
+          c: this.$route.query.c || "",
+          k: this.$route.query.k || "",
+        },
       };
 
-      if (!this.tabsIndex) {// 关注
+      if (!this.tabsIndex) {
+        // 关注
         param.tasks.product_id = this.productPkgCurrentFollow.product_id;
         param.tasks.task_type = 2;
 
@@ -1461,7 +1699,8 @@ export default {
         }
       }
 
-      if (this.tabsIndex) {// 点赞
+      if (this.tabsIndex) {
+        // 点赞
         const post = this.postCurrent;
 
         param.tasks.product_id = this.productPkgCurrentLike.product_id;
@@ -1469,7 +1708,9 @@ export default {
         param.tasks.like_id = post.like_id;
         param.tasks.like_pic_url = post.like_pic_url;
         param.tasks.short_code = post.short_code;
-        param.tasks.like_count = this.productPkgCurrentLike['purchase_quantity'];
+        param.tasks.like_count = this.productPkgCurrentLike[
+          "purchase_quantity"
+        ];
       }
 
       this.shopifyPayRequest(param);
@@ -1478,54 +1719,63 @@ export default {
       // if (!this.ajaxRequesting) {
       //   this.ajaxRequesting = true;
       //   console.log(param);
-      this.$nuxt.$axios.post(
-        apiTask.shopifyPay,
-        this.COMMON.paramSign(param)
-      ).then((response) => {
-        this.ajaxRequesting = false;
-        // console.log(response);
-        if (response.data.status === 'ok') {
-          console.log(response.data.status);
-          window.location.href = response.data['payment_url'];
-
-        } else if (response.data.error !== undefined) {
-          if (response.data.error.type === 'bad_token') {
-            const msg = 'Login expired, redirecting to login page.';
-            this.redirectToLogin(msg);
-          } else if (response.data.error.type === 'bad_ins_account') {
-            this.dialogFailMsg = 'This Instagram account does not been added yet.';
-            this.dialogFail = true;
-          } else if (response.data.error.type === 'money_deficit') {
-            this.coinsLackNumCal();
-          } else if (response.data.error.type === 'product_expired') {
-            this.dialogFailMsg = 'This task cannot be published at this time.';
-            this.dialogFail = true;
-          } else if (response.data.error.type === 'product_locale') {
-            this.dialogFailMsg = 'Sorry. This package is not currently available in your country or region.';
-            this.dialogFail = true;
+      this.$nuxt.$axios
+        .post(apiTask.shopifyPay, this.COMMON.paramSign(param))
+        .then((response) => {
+          this.ajaxRequesting = false;
+          // console.log(response);
+          if (response.data.status === "ok") {
+            console.log(response.data.status);
+            window.location.href = response.data["payment_url"];
+          } else if (response.data.error !== undefined) {
+            if (response.data.error.type === "bad_token") {
+              const msg = "Login expired, redirecting to login page.";
+              this.redirectToLogin(msg);
+            } else if (response.data.error.type === "bad_ins_account") {
+              this.dialogFailMsg =
+                "This Instagram account does not been added yet.";
+              this.dialogFail = true;
+            } else if (response.data.error.type === "money_deficit") {
+              this.coinsLackNumCal();
+            } else if (response.data.error.type === "product_expired") {
+              this.dialogFailMsg =
+                "This task cannot be published at this time.";
+              this.dialogFail = true;
+            } else if (response.data.error.type === "product_locale") {
+              this.dialogFailMsg =
+                "Sorry. This package is not currently available in your country or region.";
+              this.dialogFail = true;
+            } else {
+              this.dialogFailMsg =
+                "<samp>" +
+                "<b>Error Type:</b> " +
+                response.data.error.type +
+                "<br>" +
+                "<b>Error Message:</b> " +
+                response.data.error.message +
+                "</samp>";
+              this.dialogFail = true;
+            }
           } else {
-            this.dialogFailMsg = '<samp>'
-              + '<b>Error Type:</b> ' + response.data.error.type
-              + '<br>' + '<b>Error Message:</b> ' + response.data.error.message
-              + '</samp>';
+            this.dialogFailMsg = JSON.stringify(response.data);
             this.dialogFail = true;
           }
-        } else {
-          this.dialogFailMsg = JSON.stringify(response.data);
+        })
+        .catch((error) => {
+          this.ajaxRequesting = false;
+          this.dialogFailMsg =
+            "<samp>" +
+            "<b>Error Status:</b> " +
+            error.status +
+            "<br>" +
+            "<b>Error Message:</b> " +
+            error.statusText +
+            "</samp>";
           this.dialogFail = true;
-        }
-      }).catch((error) => {
-        this.ajaxRequesting = false;
-        this.dialogFailMsg = '<samp>'
-          + '<b>Error Status:</b> ' + error.status
-          + '<br>' + '<b>Error Message:</b> ' + error.statusText
-          + '</samp>';
-        this.dialogFail = true;
-        console.log('Catch Error: shopifyPayRequest', error);
-      });
+          console.log("Catch Error: shopifyPayRequest", error);
+        });
       // }
     },
-
 
     // 使用安卓版接口（2-6）发起，
     // 可用于发起Stripe支付
@@ -1534,125 +1784,134 @@ export default {
       paramCheckout.tasks = [];
       paramCheckout.tasks.push(param);
 
-      paramCheckout.token = this.$storage.get('token');
-      paramCheckout.lan = '';
+      paramCheckout.token = this.$storage.get("token");
+      paramCheckout.lan = "";
       paramCheckout.show_header = 1;
-      paramCheckout.origin = 'web';
+      paramCheckout.origin = "web";
       paramCheckout.locale = navigator.language;
 
       // Google 广告参数
-      let s = this.COMMON.getURLQuery('s');
-      s = this.COMMON.getURLQuery('source');
-      let c = this.COMMON.getURLQuery('c');
-      c = this.COMMON.getURLQuery('camp');
-      let k = this.COMMON.getURLQuery('k');
+      let s = this.COMMON.getURLQuery("s");
+      s = this.COMMON.getURLQuery("source");
+      let c = this.COMMON.getURLQuery("c");
+      c = this.COMMON.getURLQuery("camp");
+      let k = this.COMMON.getURLQuery("k");
 
       if (s !== null) paramCheckout.ads = { s: s };
       if (c !== null) paramCheckout.ads = { c: c };
       if (k !== null) paramCheckout.ads = { k: k };
 
-      this.$nuxt.$axios.post(
-        apiTask.checkoutAndroid,
-        this.COMMON.paramSign(paramCheckout)
-      ).then((response) => {
-        this.ajaxRequesting = false;
-        if (response.data.status === 'ok') {
-          const query = this.COMMON.envTest() ? '&env_test=1' : '';
-          window.location.href = `${response.data['checkout_url']}${query}`;
-        } else {
+      this.$nuxt.$axios
+        .post(apiTask.checkoutAndroid, this.COMMON.paramSign(paramCheckout))
+        .then((response) => {
+          this.ajaxRequesting = false;
+          if (response.data.status === "ok") {
+            const query = this.COMMON.envTest() ? "&env_test=1" : "";
+            window.location.href = `${response.data["checkout_url"]}${query}`;
+          } else {
+            this.$alert(
+              "",
+              "error",
+              "Sorry",
+              "Something wrong with send checkout info, please try later.",
+              "normal",
+              "Close"
+            );
+          }
+        })
+        .catch((error) => {
+          this.ajaxRequesting = false;
           this.$alert(
-            '', 'error', 'Sorry',
-            'Something wrong with send checkout info, please try later.',
-            'normal',
-            'Close'
+            "",
+            "error",
+            "Sorry",
+            "Something wrong with send checkout info, please try later.",
+            "normal",
+            "Close"
           );
-        }
-      }).catch((error) => {
-        this.ajaxRequesting = false;
-        this.$alert(
-          '', 'error', 'Sorry',
-          'Something wrong with send checkout info, please try later.',
-          'normal',
-          'Close'
-        );
-        console.log('sendCheckoutInfo Error:', error);
-      });
+          console.log("sendCheckoutInfo Error:", error);
+        });
     },
 
     gaSearchBtn() {
-      this.$ga.event(
-        'buttonclick',
-        'click',
-        'check-now-counter'
-      );
+      this.$ga.event("buttonclick", "click", "check-now-counter");
     },
     gaBottomBtn() {
       // let param = !this.tabsIndex ? 'f' : 'l';
-      let param = 'f';
-      let paramEvent0 = '';
-      if (this.$nuxt.$route.path === '/event-followers' || this.$nuxt.$route.path === '/event-likes') {
-        paramEvent0 = '-ad';
-      }
-      if (this.tabsIndex) paramEvent0 = '-daily';
-
-      let gaPlatform = '';
-      if (this.$i18n.locale !== 'en') {
-        if (this.COMMON.isiOS()) gaPlatform = 'ios';
-        if (this.COMMON.isAndroid()) gaPlatform = 'adr';
-      }
-
-      let gaMultiLang = this.$i18n.locale !== 'en' ? `-${this.$i18n.locale}` : '';
-
-      let pageParam = '';
-      if (this.$nuxt.$route.path === '/') {
-        pageParam = 'hp';
-      } else if (
-        this.$nuxt.$route.path === '/buy-instagram-followers'
-        || this.$nuxt.$route.path === '/buy-instagram-likes'
+      let param = "f";
+      let paramEvent0 = "";
+      if (
+        this.$nuxt.$route.path === "/event-followers" ||
+        this.$nuxt.$route.path === "/event-likes"
       ) {
-        pageParam = 'store';
+        paramEvent0 = "-ad";
+      }
+      if (this.tabsIndex) paramEvent0 = "-daily";
+
+      let gaPlatform = "";
+      if (this.$i18n.locale !== "en") {
+        if (this.COMMON.isiOS()) gaPlatform = "ios";
+        if (this.COMMON.isAndroid()) gaPlatform = "adr";
+      }
+
+      let gaMultiLang =
+        this.$i18n.locale !== "en" ? `-${this.$i18n.locale}` : "";
+
+      let pageParam = "";
+      if (this.$nuxt.$route.path === "/") {
+        pageParam = "hp";
+      } else if (
+        this.$nuxt.$route.path === "/buy-instagram-followers" ||
+        this.$nuxt.$route.path === "/buy-instagram-likes"
+      ) {
+        pageParam = "store";
       }
 
       // console.log(this.$nuxt.$route.path);
 
-      if (this.$nuxt.$route.path === '/event-get') {
-        this.$ga.event('insbuy', 'buy', 'paidlp-3');
+      if (this.$nuxt.$route.path === "/event-get") {
+        this.$ga.event("insbuy", "buy", "paidlp-3");
       } else {
         this.$ga.event(
-          'insbuy',
-          'buy',
+          "insbuy",
+          "buy",
           `${pageParam}${gaPlatform}buy${param}${paramEvent0}${gaMultiLang}`
         );
       }
     },
 
-
     handleScroll: function () {
       this.item1Val = this.getBoundingClientRect(this.$refs.item1);
-      this.isSignup = this.getBoundingClientRect(this.$refs.signup); 
-      this.counterPeopleVal = this.getBoundingClientRect(this.$refs.counterPeople);
+      this.isSignup = this.getBoundingClientRect(this.$refs.signup);
+      this.counterPeopleVal = this.getBoundingClientRect(
+        this.$refs.counterPeople
+      );
       this.item3Val = this.getBoundingClientRect(this.$refs.item3);
       this.item6Val = this.getBoundingClientRect(this.$refs.item6);
       this.clockAroundVal = this.getBoundingClientRect(this.$refs.clockAround);
     },
     getBoundingClientRect(el) {
       let rect = el.getBoundingClientRect();
-      return !(rect.top >= (window.innerHeight || document.documentElement.clientHeight) || rect.bottom <= 0);
+      return !(
+        rect.top >=
+          (window.innerHeight || document.documentElement.clientHeight) ||
+        rect.bottom <= 0
+      );
     },
     handle() {
       const fun = this.handleScroll();
       this.COMMON.throttle(fun, 60, 100);
     },
-    numberGrow (ele, bool) {
+    numberGrow(ele, bool = true) {
       let t = null;
       let step = parseInt(this.value / (this.time * 100));
       let current = 0;
       let start = 0;
 
-      if(!bool) {
+      if (!bool) {
         clearInterval(t);
         return;
-      };
+      }
 
       t = setInterval(() => {
         start += step + 10;
@@ -1669,8 +1928,8 @@ export default {
           .toString()
           .replace(/(\d)(?=(?:\d{3}[+]?)+$)/g, "$1,");
       }, 10);
-    }
-  }
+    },
+  },
 };
 </script>
 
