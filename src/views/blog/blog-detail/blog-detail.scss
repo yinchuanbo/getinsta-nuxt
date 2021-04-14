@@ -511,30 +511,32 @@
       }
     }
 
-    thead {
-      tr {
-        width: calc(100% - 6px);
-      }
-    }
-
-    tbody {
-      display: block;
-      width: 100%;
-      max-height: 380px;
-      overflow-y: auto;
-
-      &::-webkit-scrollbar {
-        width: 6px;
+    &.table-v2 {
+      thead {
+        tr {
+          width: calc(100% - 6px);
+        }
       }
 
-      &::-webkit-scrollbar-track-piece {
-        width: 6px;
-        background-color: #EEEEEE;
-      }
+      tbody {
+        display: block;
+        width: 100%;
+        max-height: 380px;
+        overflow-y: auto;
 
-      &::-webkit-scrollbar-thumb {
-        width: 10px;
-        background-color: #B9D1F5;
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        &::-webkit-scrollbar-track-piece {
+          width: 6px;
+          background-color: #EEEEEE;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 10px;
+          background-color: #B9D1F5;
+        }
       }
     }
   }

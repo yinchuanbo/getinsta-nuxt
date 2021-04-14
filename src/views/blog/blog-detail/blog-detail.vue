@@ -313,7 +313,9 @@ export default {
 
       if (process.client) {
         this.$nextTick(() => {
-          this.renderOfDynamicalModules();
+          setTimeout(() => {
+            this.renderOfDynamicalModules();
+          }, 500);
         });
         this.getHotArticleList();
         this.blogSortObj = data['sort'] || {};
@@ -348,7 +350,9 @@ export default {
             this.langArabic = this.COMMON.langCheckIsArabic(response.data['article']['seo_title']);
 
             this.$nextTick(() => {
-              this.renderOfDynamicalModules();
+              setTimeout(() => {
+                this.renderOfDynamicalModules();
+              }, 500);
             });
 
             this.getHotArticleList();
