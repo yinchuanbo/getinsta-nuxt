@@ -28,14 +28,13 @@
                 {{ blogDetailObj.author || '' }}
               </p>
             </div>
-            <div
-              id="blogDetailContent" class="blog-detail__content"
-              :class="{
-                'ios': $store.state.isiOS,
-                'android': $store.state.isAndroid,
-                'windows': $store.state.isWindows
-              }"
-              v-html="blogDetailObj.content || ''"
+            <div id="blogDetailContent" class="blog-detail__content"
+                 :class="{
+                   'ios': $store.state.isiOS,
+                   'android': $store.state.isAndroid,
+                   'windows': $store.state.isWindows
+                 }"
+                 v-html="blogDetailObj.content || ''"
             ></div>
             <div v-if="relatedArticleList.length !== 0" class="related-list">
               <h2>{{ $t('blogDetail.RelatedReadings') }}</h2>
