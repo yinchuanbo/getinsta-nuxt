@@ -39,7 +39,7 @@
                       <button-yellow-icon text="Check Now" :font-size="'size-16'" :sharp="true" :loading="searchInsLoading" />
                     </div>
                 </div>
-                <div class="counter-download"><a @click.prevent="downloadAll">Download</a> GetInsta to increase your Instagram follower count</div>
+                <div class="counter-download"><a @click="downloadAll">Download</a> GetInsta to increase your Instagram follower count</div>
             </div>
             <div class="counter-wave">
                 <div class="waveWrapper waveAnimation">
@@ -78,10 +78,10 @@
             <hr />
             <h3>Increase followers now and say goodbye to Instagram follower count stuck</h3>
             <div class="btn-group">
-                <div>
+                <div @click="gaBtnFreeGetItNow">
                   <button-icon-ins text="Get Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
                 </div>
-                <div>
+                <div @click="buynow">
                   <button>Buy Now</button>
                 </div>
             </div>
@@ -101,7 +101,7 @@
             </div>
             <div class="counter-container-item2">
                 <h3>Real-time Instagram follower count</h3>
-                <p>Instagram Follower Counter provides you real-time, accurate and exact follower count. It is real-time because the statistics are acquired from Instagram at the monent you tap the 'Check Now' button. Then this follower counter would acquire the data from Instagram immediately and present it to you. <a href="">Real-time instagram followers</a> are within your reach.</p>
+                <p>Instagram Follower Counter provides you real-time, accurate and exact follower count. It is real-time because the statistics are acquired from Instagram at the monent you tap the 'Check Now' button. Then this follower counter would acquire the data from Instagram immediately and present it to you. <a href="/blog/real-time-instagram-followers-323">Real-time instagram followers</a> are within your reach.</p>
                 <div class="clock-around">
                     <img src="./img/clock-around.svg" alt="">
                     <div>
@@ -159,7 +159,7 @@
             </div>
             <div class="counter-container-item6">
                 <h3>No more Instagram follower count stuck by using GetInsta</h3>
-                <p>nstagram Follower Counter enables you to check real-time and accutate number of any IG account's followers. Any changes of follower count could be detected and help you make adjustments. No more Instagram follower count stuck or frozen would happen after using this tool. Moreover, this process could be simplified by <a href="">GetInsta</a>. This Instagram followers app help you get free IG followers and refresh your follower count.</p>
+                <p>nstagram Follower Counter enables you to check real-time and accutate number of any IG account's followers. Any changes of follower count could be detected and help you make adjustments. No more Instagram follower count stuck or frozen would happen after using this tool. Moreover, this process could be simplified by <a href="/">GetInsta</a>. This Instagram followers app help you get free IG followers and refresh your follower count.</p>
 
                 <div class="item6-img" ref="item6" :class="{'on': item6Val}">
                   <img src="./img/nomore-icon2.svg" alt="">
@@ -194,8 +194,11 @@
                 <li>Safe and Private</li>
               </ul>
             </div>
-            <div class="btns">
+            <div class="btns pc" @click="signup">
               <button>Sign Up Now</button>
+            </div>
+            <div @click="gaBtnFreeGetItNow1" class="mobile gaBtnFreeGetItNow">
+              <button-icon-ins text="Get Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
             </div>
           </div>
         </div>
@@ -232,10 +235,10 @@
                 </div>
             </div>
             <div class="button-group">
-                <div>
+                <div @click="gaBtnFreeGetItNow2">
                   <button-icon-ins text="Get Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
                 </div>
-                <div>
+                <div @click="buynow1">
                   <button>Buy Now</button>
                 </div>
             </div>
@@ -477,23 +480,72 @@ export default {
       this.isBoxRed = false;
       this.isFocus = false;
     },
+    buynow() {
+      this.$nuxt.$router.push('/buy-instagram-followers');
+      this.$ga.event('insbuy', 'buy', 'buy-counter1');
+    },
+    buynow1() {
+      this.$nuxt.$router.push('/buy-instagram-followers');
+      this.$ga.event('insbuy', 'buy', 'buy-counter2');
+    },
+    gaBtnFreeGetItNow() {
+      if(this.$store.state.isMobile) { // mobile
+        if(this.$store.state.isiOS) { // ios
+          this.downloadIOS('iosdl-counter2');
+        } else if(this.$store.state.isAndroid) { // android
+          this.downloadAndroid('adrdl-counter2');
+        }
+      } else { // pc
+        this.$nuxt.$router.push('/register');
+      }
+    },
+    gaBtnFreeGetItNow1() {
+      if(this.$store.state.isMobile) { // mobile
+        if(this.$store.state.isiOS) { // ios
+          this.downloadIOS('iosdl-counter3');
+        } else if(this.$store.state.isAndroid) { // android
+          this.downloadAndroid('adrdl-counter3');
+        }
+      } else { // pc
+        this.$nuxt.$router.push('/register');
+      }
+    },
+    gaBtnFreeGetItNow2() {
+      if(this.$store.state.isMobile) { // mobile
+        if(this.$store.state.isiOS) { // ios
+          this.downloadIOS('iosdl-counter4');
+        } else if(this.$store.state.isAndroid) { // android
+          this.downloadAndroid('adrdl-counter4');
+        }
+      } else { // pc
+        this.$nuxt.$router.push('/register');
+      }
+    },
     inputFocus() {
       this.isFocus = true;
     },
     downloadAll() {
-
+      if(this.$store.state.isMobile) { // mobile
+        if(this.$store.state.isiOS) { // ios
+          this.downloadIOS('iosdl-counter1');
+        } else if(this.$store.state.isAndroid) { // android
+          this.downloadAndroid('adrdl-counter1');
+        }
+      } else { // pc
+        this.$nuxt.$router.push('/register');
+      }
     },
-    downloadIOS() {
-      this.$ga.event('insdl', 'download', 'umniosdl2');
-      location.href
-        = `${this.$store.state.enIosLink}`
-        + `?pt=${this.$store.state.enIosLinkPt}`
-        + `&ct=${this.$store.state.enIosLinkCt}`
-        + `&mt=8`;
+    signup() {
+      this.$ga.event('insrg', 'register', 'register-counter');
+      this.$nuxt.$router.push('/register');
     },
-    downloadAndroid() {
-      this.$ga.event('insdl', 'download', 'umnappdl2');
-      window.location.href = this.$store.state.enAdrLink;
+    downloadIOS(param) {
+      this.$ga.event('insdl', 'download', param);
+      location.href = `https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-counter&mt=8`;
+    },
+    downloadAndroid(param) {
+      this.$ga.event('insdl', 'download', param);
+      window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-counter`;
     },
     initTabIndex() {
       const path = this.$nuxt.$route.path;
@@ -808,7 +860,7 @@ export default {
       });
     },
     getCurrentTime() {
-                // Updated 3:13 PM 12/31/2020
+         // Updated 3:13 PM 12/31/2020
         // this.currentTime
         let aData = new Date();
         let currentYear = aData.getFullYear();
@@ -816,7 +868,7 @@ export default {
         let currentDate = aData.getDate();
         let currentHour = aData.getHours();
         let currentMin = aData.getMinutes();
-        let str = currentHour > 12 ? 'PM':'am';
+        let str = currentHour > 12 ? 'PM':'AM';
         this.currentTime = ` ${currentHour}:${currentMin} ${str} ${currentDate}/${currentMonth}/${currentYear}`;
     },
     // 搜索ins后直接跳转checkout

@@ -1770,6 +1770,20 @@
             margin: 0 auto;
           }
         }
+        .gaBtnFreeGetItNow {
+          text-align: center;
+          button {
+            width: 253px;
+            height: 60px;
+            background: transparent
+              linear-gradient(90deg, #20d2a8 0%, #05c3e1 100%) 0% 0% no-repeat
+              padding-box;
+            box-shadow: 0px 12px 24px #00000030;
+            border-radius: 8px;
+            font: normal normal 500 16px/37px BalooChettan;
+            color: #ffffff;
+          }
+        }
       }
     }
     .counter-why {
