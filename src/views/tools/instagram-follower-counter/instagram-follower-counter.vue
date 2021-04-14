@@ -102,13 +102,13 @@
             <div class="counter-container-item2">
                 <h3>Real-time Instagram follower count</h3>
                 <p>Instagram Follower Counter provides you real-time, accurate and exact follower count. It is real-time because the statistics are acquired from Instagram at the monent you tap the 'Check Now' button. Then this follower counter would acquire the data from Instagram immediately and present it to you. <a href="/blog/real-time-instagram-followers-323">Real-time instagram followers</a> are within your reach.</p>
-                <div class="clock-around">
+                <div class="clock-around" ref="clockAround" :class="{'on': clockAroundVal}">
                     <img src="./img/clock-around.svg" alt="">
                     <div>
                         <img src="./img/arrow-around.svg" alt="">
                     </div>
                 </div>
-                <span>Updated 3:13:05 PM 12.31.2020</span>
+                <!-- <span>Updated 3:13:05 PM 12.31.2020</span> -->
             </div>
             <div class="counter-container-item3" ref="item3">
                 <h3>Accurate and exact Instagram follower count</h3>
@@ -370,6 +370,7 @@ export default {
       ajaxRequesting: false,
       bottomBtnOn: false,
       item6Val: false,
+      clockAroundVal: false,
 
       dialogFail: false,
       dialogFailMsg: '',
@@ -1632,6 +1633,7 @@ export default {
       this.counterPeopleVal = this.getBoundingClientRect(this.$refs.counterPeople);
       this.item3Val = this.getBoundingClientRect(this.$refs.item3);
       this.item6Val = this.getBoundingClientRect(this.$refs.item6);
+      this.clockAroundVal = this.getBoundingClientRect(this.$refs.clockAround);
     },
     getBoundingClientRect(el) {
       let rect = el.getBoundingClientRect();
