@@ -13,8 +13,15 @@
       <div class="content">
         <div class="content-title">
           <h1>
-            <span v-if="!followers.dailyQuantity">{{ followers.purchase_quantity }} Followers</span>
-            <span v-if="followers.dailyQuantity">{{ followers.dailyQuantity }} Daily Followers</span>
+            <span v-if="!followers.dailyQuantity">
+              {{ followers.purchase_quantity }}
+              {{ isFollowers ? `Followers` : `Likes` }}
+            </span>
+            <span v-if="followers.dailyQuantity">
+              {{ followers.dailyQuantity }}
+              Daily
+              {{ isFollowers ? `Followers` : `Likes` }}
+            </span>
             &nbsp;<span>${{
               (followers.price_decimal / followers.cycle_type).toFixed(2)
             }}</span>
@@ -138,6 +145,10 @@ export default {
     isRouter: {
       type: Boolean,
       default: false
+    },
+    isFollowers: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -187,13 +198,14 @@ export default {
       this.transportCartUnitData(param);
 
       // GA
+      let gaParam = this.isFollowers ? 'f' : 'l';
       if (this.isRouter) {
-        this.$ga.event('insbuy', 'buy', `daily-buy-f`);
+        this.$ga.event('insbuy', 'buy', `daily-buy-${gaParam}`);
       } else {
         this.$ga.event(
           'insbuy',
           'buy',
-          `dailyfbuy-${this.followers.newmsg.blogID}`
+          `daily${gaParam}buy-${this.followers.newmsg.blogID}`
         );
       }
     },

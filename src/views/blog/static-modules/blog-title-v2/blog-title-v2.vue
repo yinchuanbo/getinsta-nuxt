@@ -1,6 +1,6 @@
 <template>
   <div class="blog-title-v2">
-    <div class="header-blank"></div>
+    <div class="header-blank pc"></div>
 
     <div class="wrapper">
       <div class="banner-img"></div>
@@ -13,8 +13,8 @@
         </ul>
 
         <div class="btns">
-          <div class="btn" @click="downloadMobile">
-            <button-icon-ins text="Get Free Followers Now"
+          <div class="btn" @click="gaDownload">
+            <button-icon-ins :text="!$store.state.isMobile ? 'Get Free Followers Now' : 'Get Free Followers'"
                              bubble-float square shadow :icon="'ins'"
                              font-size="size-15" theme="cyan"
             />
@@ -29,15 +29,14 @@
 </template>
 
 <script>
-
 export default {
   name: 'BlogTitleV2',
   components: {},
   props: {
-    blogID: {
-      type: Number,
+    blogId: {
+      type: String,
       required: false,
-      default: 0
+      default: ''
     }
   },
   computed: {
@@ -73,17 +72,24 @@ export default {
   mounted() {
   },
   methods: {
-    downloadMobile() {
+    gaDownload() {
+      let param = this.blogId === '0' ? `hp` : this.blogId;
+
       if (this.COMMON.isiOS()) {
-        this.$ga.event(this.dropMenuGA.ios.category, this.dropMenuGA.ios.action, this.dropMenuGA.ios.label);
+        this.$ga.event('insdl', 'download', `blogiosdl-topbanner-${param}`);
         location.href
           = `${this.$store.state.enIosLink}`
           + `?pt=${this.$store.state.enIosLinkPt}`
           + `&ct=${this.$store.state.enIosLinkCt}`
           + `&mt=8`;
-      } else {
-        this.$ga.event(this.dropMenuGA.android.category, this.dropMenuGA.android.action, this.dropMenuGA.android.label);
+      }
+      if (this.COMMON.isAndroid()) {
+        this.$ga.event('insdl', 'download', `blogappdl-topbanner-${param}`);
         location.href = this.$store.state.enAdrLink;
+      }
+      if (!this.COMMON.isMobile()) {
+        this.$ga.event('insrg', 'register', `blogrg-topbanner-${param}`);
+        this.$nuxt.$router.push('/register');
       }
     },
     gaBuy() {
@@ -111,7 +117,9 @@ export default {
           utm_medium: 'hpblog'
         };
 
-      this.$ga.event('insbuy', 'buy', `bloghp${gaPlatform}buy${multiLang}`);
+      // this.$ga.event('insbuy', 'buy', `bloghp${gaPlatform}buy${multiLang}`);
+      let param = this.blogId === '0' ? `hp` : this.blogId;
+      this.$ga.event('insbuy', 'buy', `blogbuy-topbanner-${param}`);
       this.$nuxt.$router.push({ path: '/buy-instagram-followers', query: query });
     }
   }
