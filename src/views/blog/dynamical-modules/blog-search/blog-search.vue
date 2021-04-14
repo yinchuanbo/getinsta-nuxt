@@ -1,7 +1,7 @@
 <template>
   <div class="search-container" :class="{ expand: insUser.ins_id }">
     <h2>1000+ Free IG Followers Trial [Real & Fast]</h2>
-    <p>Get your first 1K organic followers instantly!</p>
+    <p>Boost your IG account with 1K 10K free Instagram followers now!</p>
     <div class="control-search_ins">
       <label>
         <input
@@ -33,7 +33,7 @@
         </span>
       </p>
       <!-- mobile 下载按钮 -->
-      <div class="mobileDown">
+      <div class="mobileDown" @click="download">
         <button-icon-ins text="Get Free Followers" theme="cyan" font-size="size-16" :border-radius="8" />
       </div>
       <p class="note mobile">Download the app to get free followers</p>
@@ -213,18 +213,22 @@ export default {
 
       return post;
     },
-    choiceandDow(msg) {
-      if (msg) {
-        this.andicon = msg;
+    download() {
+      let _this = this;
+      if (!this.COMMON.isMobile()) {
+        this.$ga.event('insrg', 'register', `b4-register-${this.ax}`);
+        _this.sendThis.$nuxt.$router.push('/register');
       }
-    },
-    clickadr() {
-      this.$ga.event('insdl', 'download', `blogappdl-b4-${this.ax}`);
-      window.location.href = this.$storage.get('adrDownloadLink');
-    },
-    clickapple() {
-      this.$ga.event('insdl', 'download', `blogiosdl-b4-${this.ax}`);
-      window.location.href = this.$storage.get('iosDownloadLink');
+
+      if (this.COMMON.isiOS()) {
+        this.$ga.event('insdl', 'download', `blogiosdl-b4-${this.ax}`);
+        window.location.href = this.$storage.get('iosDownloadLink');
+      }
+
+      if (this.COMMON.isAndroid()) {
+        this.$ga.event('insdl', 'download', `blogappdl-b4-${this.ax}`);
+        window.location.href = this.$storage.get('adrDownloadLink');
+      }
     }
   }
 };
@@ -235,6 +239,7 @@ export default {
   width: 760px;
   padding: 60px 0 45px;
   background: url("./img/bg.svg") top center no-repeat;
+  background-size: cover;
   border-radius: 12px;
   opacity: 1;
   color: #fff;
@@ -417,12 +422,8 @@ export default {
         padding-left: 20px;
         border-radius: 5px 0 0 5px;
         background-image: none !important;
-        font: 14px/23px Montserrat !important;
+        font: 12px/23px Montserrat !important;
         border: none !important;
-
-        &::placeholder {
-          font-size: 14px;
-        }
       }
 
       .search_btn {

@@ -53,6 +53,7 @@
       :enter-box="enterbox"
       :my-ins-user="insUser"
       :this-vue="sendThis"
+      :is-followers="false"
       @closebox="closeBuyPop"
     />
   </div>
@@ -184,7 +185,7 @@ export default {
       this.$ga.event(
         'buttonclick',
         'click',
-        `dailyf-${this.sendThis.blogID}`
+        `dailyl-continue-${this.sendThis.blogID}`
       );
       this.searchInsByServerV2();
     },
@@ -418,13 +419,13 @@ export default {
 
 @media (max-width: 768px) {
   .BlogBuy {
-    padding: 0 16px;
+    padding: 36px 16px;
     width: 100%;
-    height: 310px;
+    height: auto;
     background-image: url("./img/bg-m.svg");
 
     .title-content {
-      padding-top: 38px;
+      padding-top: 0;
       width: 100%;
       height: auto;
 

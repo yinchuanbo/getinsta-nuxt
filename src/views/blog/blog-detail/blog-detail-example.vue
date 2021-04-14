@@ -171,17 +171,65 @@
                 <td><i class="cross"></i></td>
                 <td><i class="check"></i></td>
               </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
+              <tr>
+                <td>High Quality - Real & Safe</td>
+                <td></td>
+                <td><i class="cross"></i></td>
+                <td><i class="check"></i></td>
+              </tr>
             </tbody>
           </table>
 
           <!--download module 1-->
           <p>EN</p>
           <div class="download-type-1">
-            <h2>GetInsta - Get Free Instagram Followers & Likes</h2>
+            <h2>GetInsta - Best Instagram Followers & Likes App</h2>
             <ul>
               <li>Free high-quality Instagram followers & likes from 100% real person.</li>
-              <li>Getting followers and also get the same amount of additional free likes.</li>
-              <li>Instant delivery guaranteed and 24/7 customer support.</li>
+              <li>Organic daily IG followers & likes with various subscriptions.</li>
+              <li>Instant delivery and 24/7 customer support.</li>
             </ul>
             <div class="btn-container">
               <a class="btn-windows" download href="https://www.easygetinsta.com/downloadpc">
@@ -217,7 +265,7 @@
               </a>
 
               <a class="btn-buy" href="https://www.easygetinsta.com/buy-instagram-followers">
-                <button class="buy">Buy Now</button>
+                <button class="buy yellow">Buy Now</button>
               </a>
             </div>
           </div>
@@ -452,6 +500,8 @@ export default {
     this.imgGalleryDisplay();
     this.blogBuyAutoLikesDisplay();
     this.blogSearchDisplay();
+
+    this.blogIndexClickEvent();
   },
   methods: {
     imgGalleryDisplay() {
@@ -490,6 +540,19 @@ export default {
           let component = new BlogSearch({ propsData: { ax: '10', sendThis: this } }).$mount();
           checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
         }
+      }
+    },
+    blogIndexClickEvent() {
+      let units = document.querySelectorAll('.index-v2__unit');
+      for (let i = 0; i < units.length; i++) {
+        units[i].addEventListener('click', function () {
+          let thisClassList = this.classList;
+          if (thisClassList.contains('active')) {
+            thisClassList.remove('active');
+          } else {
+            thisClassList.add('active');
+          }
+        });
       }
     }
   }
