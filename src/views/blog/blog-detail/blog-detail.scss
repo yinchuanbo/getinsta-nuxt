@@ -460,10 +460,6 @@
     font: 400 14px Montserrat;
 
     tr {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-
       th, td {
         padding: 0 10px;
         border: 1px solid #E5E5E5;
@@ -537,6 +533,12 @@
           width: 10px;
           background-color: #B9D1F5;
         }
+      }
+
+      tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
       }
     }
   }
