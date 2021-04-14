@@ -412,7 +412,7 @@ export default {
       this.blogIndexClickEvent();
 
       setTimeout(() => {
-        this.renderDetector();
+        // this.renderDetector();
       }, 500);
     },
     renderDetector() {
@@ -521,7 +521,8 @@ export default {
     },
     blogIndexClickEvent() {
       let _this = this;
-      let units = document.querySelectorAll('.index-v2__unit');
+      const units = document.querySelectorAll('.index-v2__unit');
+      const allUnits = document.querySelectorAll('.index-v2__all-unit');
 
       // 悬浮球显示
       this.indexFloatingBallShow = units.length > 0;
@@ -544,8 +545,8 @@ export default {
       }
 
       // Index锚点事件绑定
-      for (let j = 0; j < units.length; j++) {
-        let aTag = units[j].querySelector('a');
+      for (let j = 0; j < allUnits.length; j++) {
+        let aTag = allUnits[j].querySelector('a');
         aTag.addEventListener('click', function (e) {
           _this.$scrollTo(
             `#${e.target.attributes['data-id'].value}`,
