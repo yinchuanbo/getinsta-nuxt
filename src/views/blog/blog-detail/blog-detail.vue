@@ -171,7 +171,7 @@
 <script>
 // 模块动态挂载 *************************************************************************
 import Vue from 'vue';
-import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
+import blogSearch from '@/views/blog/dynamical-modules/blog-ins-search/blog-ins-search.vue';
 import blogBuy from '@/views/blog/dynamical-modules/blog-buy-auto-followers/blog-buy-auto-followers.vue';
 import imgGalleryCom from '@/views/blog/dynamical-modules/blog-img-gallery/blog-img-gallery';
 import blogBuyAutoLikes from '@/views/blog/dynamical-modules/blog-buy-auto-likes/blog-buy-auto-likes.vue';
@@ -469,7 +469,7 @@ export default {
       const checkNode = [...document.querySelectorAll('.blogBanner')];
       if (checkNode.length) {
         for (let j = 0; j < checkNode.length; j++) {
-          let component = new BlogSearch({ propsData: { ax: '10', sendThis: this } }).$mount();
+          let component = new BlogSearch({ propsData: { ax: this.blogID, sendThis: this } }).$mount();
           checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
           _this.renderTimerCounter++;
         }
