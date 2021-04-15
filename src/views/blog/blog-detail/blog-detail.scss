@@ -539,6 +539,12 @@
         display: table;
         width: 100%;
         table-layout: fixed;
+
+        &:first-child {
+          th, td {
+            font-weight: 400;
+          }
+        }
       }
     }
   }
