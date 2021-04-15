@@ -1760,9 +1760,6 @@ export default {
       // adStore.k = this.$route.query.k || '';
       // this.$storage.set('adStore', adStore);
 
-      // console.log(this.$route.path);
-
-      // console.log(1, param);
       // this.initGeoIPWhiteList(param);
       this.transportCartUnitData(param);
     },

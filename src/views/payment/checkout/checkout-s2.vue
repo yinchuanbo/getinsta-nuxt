@@ -29,12 +29,20 @@
                         <img
                           v-if="unit['is_coin'] !== 1"
                           :src="
-                            unit.task_type === 1
+                            unit.task_type === 1 && !unit.require_post_count
                               ? unit.like_pic_url
                               : unit.follow_pic_url
                           "
                           alt="Task avatar"
                         />
+
+                        <img
+                          v-if="unit['is_coin'] !== 1 && unit.task_type === 1 && unit.require_post_count && unit.require_post_count != 0"
+                          :src="unit.follow_pic_url"
+                          alt="Task avatar"
+                        />
+
+
                         <img
                           v-if="unit['is_coin'] === 1"
                           src="../../../assets/images/global/icon_coins.svg"
@@ -78,11 +86,7 @@
                               class="main"
                             >
                               <span>
-                                {{ unit.purchase_quantity }} Likes/Day |
-                                {{
-                                  $i18n.locale === 'en'
-                                    ? $t('global.currencySymbol')
-                                    : ''
+                                {{ unit.purchase_quantity }} Likes/Day | {{ $i18n.locale === 'en' ? $t('global.currencySymbol') : ''
                                 }}
                                 {{
                                   (unit.price_decimal / unit.cycle_type)
@@ -95,42 +99,33 @@
                                 }}
                               </span>
                             </p>
-                            <p
-                              v-if="
-                                !unit['cycle_type'] || unit['cycle_type'] === 1
-                              "
-                              class="main"
-                            >
-                              <span v-if="unit['is_coin'] !== 1">
-                                {{ unit.purchase_quantity }}
-                                {{
-                                  unit.task_type === 2
-                                    ? displayletFollowers
-                                    : displayletLikes
-                                }}
+                            <p v-if="!unit['cycle_type'] || unit['cycle_type'] === 1" class="main">
+                              <span v-if="unit['is_coin'] !== 1 && !unit.require_post_count">
+                                {{ unit.purchase_quantity }} {{ unit.task_type === 2 ? displayletFollowers : displayletLikes }}
                                 <!-- | {{ $i18n.locale === 'en' ? $t('global.currencySymbol') : '' }}
                               {{ unit.price_decimal | numToFixed }}
                               {{ $i18n.locale !== 'en' ? $t('global.currencySymbol') : '' }} -->
                               </span>
+
+                              <span v-if="unit['is_coin'] !== 1 && unit.require_post_count">
+                                {{ unit.purchase_quantity }} Likes/Post
+                              </span>
+
+
                               <span v-if="unit['is_coin'] === 1">
-                                {{ unit.purchase_quantity }} Coins |
-                                {{
-                                  $i18n.locale === 'en'
-                                    ? $t('global.currencySymbol')
-                                    : ''
-                                }}
+                                {{ unit.purchase_quantity }} Coins | {{ $i18n.locale === 'en' ? $t('global.currencySymbol'): ''}}
                                 {{ unit.price_decimal | numToFixed }}
-                                {{
-                                  $i18n.locale !== 'en'
-                                    ? $t('global.currencySymbol')
-                                    : ''
-                                }}
+                                {{ $i18n.locale !== 'en' ? $t('global.currencySymbol'): ''}}
                               </span>
                             </p>
                             <!--gifts texts-->
                             <p v-if="unit['cycle_type'] > 1" class="subscribe">
                               <span>{{ unit['cycle_type'] }}-Day Subscription</span>
                             </p>
+                            <p v-if="unit['cycle_type'] == 1 && unit.require_post_count" class="subscribe">
+                              <span>For {{ unit['require_post_count'] }} New Posts</span>
+                            </p>
+
                             <p
                               v-if="
                                 (!unit['cycle_type'] ||
@@ -180,7 +175,7 @@
                             </p>
                           </div>
 
-                          <div v-if="!unit.cycle_type || unit.cycle_type === 1" class="addNum">
+                          <div v-if="unit.cycle_type === 1 && !unit.require_post_count" class="addNum">
                             <div>
                               <span
                                 @click="
@@ -1469,16 +1464,17 @@ export default {
         let item = this.cartList[i];
         let givesnum = 0;
         let product_num = item.product_num ? item.product_num : 1;
+        let require_post_count = item.require_post_count ? item.require_post_count : 0;
+
         if(item.gives && item.gives[0].quantity) {
           givesnum = item.gives[0].quantity;
         }
+
         if (item.product_type === 1) {
           if (item.cycle_type === 1) {
-            len +=
-              (item.purchase_quantity + givesnum) * product_num;
+           len += require_post_count ? require_post_count * item.purchase_quantity * product_num : (item.purchase_quantity + givesnum) * product_num;
           } else {
-            len +=
-              item.cycle_type * item.purchase_quantity;
+            len += item.cycle_type * item.purchase_quantity;
           }
         }
       }
@@ -1593,6 +1589,7 @@ export default {
 
         }
         this.cartListMultiple = arr;
+        console.log(this.cartListMultiple);
       }
     },
     metaDataInit() {

@@ -52,7 +52,7 @@
           cursor: pointer;
         }
       }
-
+    
     }
     .buy-tabs_content {
       width: 100%;
@@ -182,14 +182,13 @@
             &.selected::before {
               content: '';
               position: absolute;
-              width: calc(100% - 4px);
+              width: 220px;
               height: 420px;
               // background-color: ;
               top: -4px;
               left: -4px;
               border: 4px solid #6257FF;
               border-radius: 16px;
-              z-index: 5;
             }
           }
         }
@@ -221,7 +220,7 @@
             p {
               font: normal normal 500 16px/30px BalooChettan;
               color: #000000;
-
+              
             }
             &:last-child {
               margin-right: 0;
@@ -252,14 +251,13 @@
           &::before {
             content: '';
             position: absolute;
-            width: calc(100% - 4px);
+            width: 220px;
             height: 420px;
             // background-color: ;
             top: -4px;
             left: -4px;
             border: 4px solid #6257FF;
             border-radius: 16px;
-            z-index: 5;
           }
           .buy-tabs_content-item_bottom {
             .bottom_price {
@@ -352,8 +350,8 @@
         img {
           width: 100%;
           height: 100%;
-          border-radius: 100%;
-          display: block;
+          border-radius: 100%;     
+          display: block;   
         }
       }
       .box-request_info {
@@ -401,7 +399,7 @@
               animation: 0.5s title-error-show 0.5s ease forwards;
             }
           }
-
+        
           @keyframes title-error-show {
             0% {
               opacity: 0;
@@ -470,7 +468,7 @@
                 }
               }
             }
-
+            
           }
         }
       }
@@ -606,7 +604,7 @@
           display: block;
           width: 45px;
           height: 64px;
-          background: url("~@/assets/images/payment/icon_hot.svg") center no-repeat;
+          background: url("@/assets/images/payment/icon_hot.svg") center no-repeat;
           background-size: contain;
         }
       }
@@ -712,7 +710,7 @@
     transform: translateX(453px) scaleX(1);
     width: 198px;
     height: 235px;
-    background: url("~@/views/store/store-instant-and-daily/views/store-shelf-0-banner-followers/img/new-year__santa-claus.svg") center no-repeat;
+    background: url("@/views/store/store-instant-and-daily/views/store-shelf-0-banner-followers/img/new-year__santa-claus.svg") center no-repeat;
     transition: all 0.3s;
     transform-origin: left center;
 
@@ -739,7 +737,7 @@
       .unit{
         &:last-child{
           &:after{
-            background-image: url("~@/assets/images/payment/icon_hot-spring.svg");
+            background-image: url("@/assets/images/payment/icon_hot-spring.svg");
           }
         }
       }
@@ -749,7 +747,7 @@
       display: none;
     }
   }
-
+  
 }
 .store-shelf-1-buy.spring.mobile {
   margin-top: -610px;
@@ -929,7 +927,7 @@
               position: relative;
               margin-right: 14px;
             }
-            .num {
+            .num { 
               .num-i {
                 width: 24px;
                 height: 21px;
@@ -1046,7 +1044,7 @@
             }
 
             p {
-
+            
               span {
                 display: flex;
                 flex-direction: column;
@@ -1115,7 +1113,7 @@
                   margin-right: 0;
                 }
               }
-
+              
             }
           }
           .load-more {
@@ -1134,7 +1132,7 @@
               font: normal normal 600 16px/37px BalooChettan;
               color: #FFFFFF;
             }
-
+            
           }
         }
       }

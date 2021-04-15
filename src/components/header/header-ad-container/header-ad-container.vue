@@ -7,9 +7,12 @@
 </template>
 
 <script>
-// 广告图片
-import backgroundImagePc from './img/ad-202103-pc.svg';
-import backgroundImageMobile from './img/new_mobile_az@2x.png';
+// 广告图片 old
+// import backgroundImagePc from './img/ad-202103-pc.svg';
+// import backgroundImageMobile from './img/new_mobile_az@2x.png';
+// new
+import backgroundImagePc from './img/pop_banner_PC.svg';
+import backgroundImageMobile from './img/pop_banner_mobile.svg';
 
 export default {
   name: 'HeaderAdContainer',
@@ -30,28 +33,39 @@ export default {
   },
   methods: {
     closeAdBanner() {
-      this.$store.commit('v2Ad', false);
+      // this.$store.commit('v2Ad', false);
+      this.$store.commit('v2AdHeightPc', 0);
+      this.$store.commit('v2AdHeightMobile', 0);
     },
     handle() {
       // this.$ga.event('bannerclick', 'click', 'springnew-pc');
       // this.$ga.event("bannerclick", "click", "hpspring-pcnew");
       if (this.$route.path === '/') {
-        if (this.COMMON.isAndroid()) {
+        if(!this.COMMON.isMobile()) { // pc
+          this.$ga.event('bannerclick', 'click', 'hpspring-pcnew');
+          this.$nuxt.$router.push('/buy-instagram-followers');
+          return;
+        }
+        if (this.COMMON.isAndroid()) { // android
           this.$ga.event('insdl', 'download', 'hpspring-app');
-          this.$router.push({ path: '/eastersale' });
-        } else {
-          // this.$router.push("/buy-instagram-followers");
-          // console.log('ios');
+          location.href = "https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-easter";
+        } else { // ios
           this.$ga.event('insdl', 'download', 'hpspring-ios');
-          location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-easter&mt=8';
+          location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-easter&mt=8';
         }
       } else {
+        if(!this.COMMON.isMobile()) { // pc
+          this.$ga.event('bannerclick', 'click', 'easter-pcnew');
+          this.$nuxt.$router.push('/buy-instagram-followers');
+          return;
+        }
         if (this.COMMON.isAndroid()) {
           this.$ga.event('bannerclick', 'click', 'easter-app');
-          this.$router.push({ path: '/eastersale' });
+          // this.$router.push({ path: '/eastersale' });
+          location.href = "https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-easter";
         } else {
           this.$ga.event('bannerclick', 'click', 'easter-ios');
-          location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-easter&mt=8';
+          location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-easter&mt=8';
         }
       }
       // this.$router.push({ path: "/eastersale" });
@@ -78,13 +92,13 @@ export default {
 
   .close {
     position: absolute;
-    top: 50%;
-    right: 22px;
+    top: 15px;
+    left: 14px;
     margin-top: -5px;
     display: block;
-    width: 11px;
-    height: 11px;
-    background: url("./img/ui__icon_close.svg") center no-repeat;
+    width: 17px;
+    height: 17px;
+    background: url("./img/btn_close.svg") center no-repeat;
     background-size: contain;
     cursor: pointer;
   }
