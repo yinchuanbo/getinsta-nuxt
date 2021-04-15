@@ -85,57 +85,33 @@
           <div id="index-v2" class="index-v2">
             <p class="index-v2__title"><span>Contents</span></p>
             <div class="index-v2__unit-container">
-              <div class="index-v2__unit">
+              <div class="index-v2__unit index-v2__all-unit">
                 <a data-id="aa">Index list</a>
               </div>
               <div class="index-v2__unit sub active">
                 <span class="index-v2__sub-title">Index sub title</span>
                 <div class="index-v2__subunit-container">
-                  <div class="index-v2__subunit">
-                    <a data-id="aa">Index sub list</a>
+                  <div class="index-v2__subunit index-v2__all-unit">
+                    <a data-id="bb">Index sub list</a>
                   </div>
-                  <div class="index-v2__subunit">
-                    <a data-id="aa">Index sub list</a>
-                  </div>
-                  <div class="index-v2__subunit">
-                    <a data-id="aa">Index sub list</a>
+                  <div class="index-v2__subunit index-v2__all-unit">
+                    <a data-id="cc">Index sub list</a>
                   </div>
                 </div>
               </div>
-              <div class="index-v2__unit">
+
+              <div class="index-v2__unit index-v2__all-unit">
                 <a data-id="aa">Index list</a>
               </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
-                <a data-id="aa">Index list</a>
-              </div>
-              <div class="index-v2__unit">
+              <div class="index-v2__unit index-v2__all-unit">
                 <a data-id="aa">Index list</a>
               </div>
             </div>
           </div>
 
           <h2><a id="aa"></a>Types of Advertising on Instagram</h2>
+          <h2><a id="bb"></a>Anchor bb</h2>
+          <h2><a id="cc"></a>Anchor cc</h2>
 
           <p>
             The first option you have when it comes to how to advertise on Instagram, is to use promotions. Promotions are simply a tool that allows you to extend the reach of an
@@ -440,7 +416,7 @@ import BlogTitleV2 from '@/views/blog/static-modules/blog-title-v2/blog-title-v2
 import Vue from 'vue';
 import imgGalleryCom from '@/views/blog/dynamical-modules/blog-img-gallery/blog-img-gallery';
 import blogBuyAutoLikes from '@/views/blog/dynamical-modules/blog-buy-auto-likes/blog-buy-auto-likes.vue';
-import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
+import blogSearch from '@/views/blog/dynamical-modules/blog-ins-search/blog-ins-search.vue';
 import IndexFloatingBall from '@/views/blog/static-modules/index-floating-ball/index-floating-ball';
 
 const ImgGallery = Vue.extend(imgGalleryCom);
@@ -495,6 +471,11 @@ export default {
       indexFloatingBallShow: false
     };
   },
+  computed: {
+    blogID() {
+      return 'testBlogID';
+    }
+  },
   mounted() {
     this.imgGalleryDisplay();
     this.blogBuyAutoLikesDisplay();
@@ -536,14 +517,15 @@ export default {
       const checkNode = [...document.querySelectorAll('.blogBanner')];
       if (checkNode.length) {
         for (let j = 0; j < checkNode.length; j++) {
-          let component = new BlogSearch({ propsData: { ax: '10', sendThis: this } }).$mount();
+          let component = new BlogSearch({ propsData: { ax: this.blogID, sendThis: this } }).$mount();
           checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
         }
       }
     },
     blogIndexClickEvent() {
       let _this = this;
-      let units = document.querySelectorAll('.index-v2__unit');
+      const units = document.querySelectorAll('.index-v2__unit');
+      const allUnits = document.querySelectorAll('.index-v2__all-unit');
 
       // 悬浮球显示
       this.indexFloatingBallShow = units.length > 0;
@@ -566,8 +548,8 @@ export default {
       }
 
       // Index锚点事件绑定
-      for (let j = 0; j < units.length; j++) {
-        let aTag = units[j].querySelector('a');
+      for (let j = 0; j < allUnits.length; j++) {
+        let aTag = allUnits[j].querySelector('a');
         aTag.addEventListener('click', function (e) {
           _this.$scrollTo(
             `#${e.target.attributes['data-id'].value}`,

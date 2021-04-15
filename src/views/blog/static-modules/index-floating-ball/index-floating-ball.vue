@@ -2,12 +2,12 @@
   <div v-if="show && scrollShow"
        ref="moveDiv"
        class="index-floating-ball"
-       title="Click to return article index."
+       title="Drag to any position. Click to return article index."
        :style="{ left }"
-       @click="scrollToIndex"
-       @touchstart="touchStart"
-       @touchmove.prevent="touchMove"
-       @touchend="touchEnd"
+       @mousedown="dragStart"
+       @touchstart="dragStart"
+       @touchmove.prevent="dragMove"
+       @touchend="dragEnd"
   ></div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
       dragY: 0,
       // Touch
       flags: false,
+      flagTime: null,
       position: { x: 0, y: 0 },
       nx: '', ny: '', dx: '', dy: '', xPum: '', yPum: ''
     };
@@ -75,8 +76,10 @@ export default {
         this.scrollShow = indexTop + indexHeight < this.COMMON.headerHeight();
       }
     },
-    touchStart() {
+    dragStart() {
       this.flags = true;
+      this.flagTime = new Date().getTime();
+
       let touch;
       if (event.touches) {
         touch = event.touches[0];
@@ -87,8 +90,15 @@ export default {
       this.position.y = touch.clientY;
       this.dx = this.$refs.moveDiv.offsetLeft;
       this.dy = this.$refs.moveDiv.offsetTop;
+
+      document.onmousemove = () => {
+        this.dragMove();
+      };
+      document.onmouseup = () => {
+        this.dragEnd();
+      };
     },
-    touchMove() {
+    dragMove() {
       if (this.flags) {
         let touch;
         if (event.touches) {
@@ -107,8 +117,19 @@ export default {
         }, false);
       }
     },
-    touchEnd() {
+    dragEnd() {
       this.flags = false;
+      event.preventDefault();
+      document.onmouseup = () => {
+        document.onmousemove = null;
+        document.onmouseup = null;
+        this.flags = false;
+        event.preventDefault();
+      };
+
+      if (new Date().getTime() - this.flagTime < 200) {
+        this.scrollToIndex();
+      }
     }
   }
 };

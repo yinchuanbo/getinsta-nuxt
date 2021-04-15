@@ -28,14 +28,13 @@
                 {{ blogDetailObj.author || '' }}
               </p>
             </div>
-            <div
-              id="blogDetailContent" class="blog-detail__content"
-              :class="{
-                'ios': $store.state.isiOS,
-                'android': $store.state.isAndroid,
-                'windows': $store.state.isWindows
-              }"
-              v-html="blogDetailObj.content || ''"
+            <div id="blogDetailContent" class="blog-detail__content"
+                 :class="{
+                   'ios': $store.state.isiOS,
+                   'android': $store.state.isAndroid,
+                   'windows': $store.state.isWindows
+                 }"
+                 v-html="blogDetailObj.content || ''"
             ></div>
             <div v-if="relatedArticleList.length !== 0" class="related-list">
               <h2>{{ $t('blogDetail.RelatedReadings') }}</h2>
@@ -171,7 +170,7 @@
 <script>
 // 模块动态挂载 *************************************************************************
 import Vue from 'vue';
-import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
+import blogSearch from '@/views/blog/dynamical-modules/blog-ins-search/blog-ins-search.vue';
 import blogBuy from '@/views/blog/dynamical-modules/blog-buy-auto-followers/blog-buy-auto-followers.vue';
 import imgGalleryCom from '@/views/blog/dynamical-modules/blog-img-gallery/blog-img-gallery';
 import blogBuyAutoLikes from '@/views/blog/dynamical-modules/blog-buy-auto-likes/blog-buy-auto-likes.vue';
@@ -313,7 +312,9 @@ export default {
 
       if (process.client) {
         this.$nextTick(() => {
-          this.renderOfDynamicalModules();
+          setTimeout(() => {
+            this.renderOfDynamicalModules();
+          }, 500);
         });
         this.getHotArticleList();
         this.blogSortObj = data['sort'] || {};
@@ -348,7 +349,9 @@ export default {
             this.langArabic = this.COMMON.langCheckIsArabic(response.data['article']['seo_title']);
 
             this.$nextTick(() => {
-              this.renderOfDynamicalModules();
+              setTimeout(() => {
+                this.renderOfDynamicalModules();
+              }, 500);
             });
 
             this.getHotArticleList();
@@ -412,7 +415,7 @@ export default {
       this.blogIndexClickEvent();
 
       setTimeout(() => {
-        this.renderDetector();
+        // this.renderDetector();
       }, 500);
     },
     renderDetector() {
@@ -469,7 +472,7 @@ export default {
       const checkNode = [...document.querySelectorAll('.blogBanner')];
       if (checkNode.length) {
         for (let j = 0; j < checkNode.length; j++) {
-          let component = new BlogSearch({ propsData: { ax: '10', sendThis: this } }).$mount();
+          let component = new BlogSearch({ propsData: { ax: this.blogID, sendThis: this } }).$mount();
           checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
           _this.renderTimerCounter++;
         }
@@ -521,7 +524,8 @@ export default {
     },
     blogIndexClickEvent() {
       let _this = this;
-      let units = document.querySelectorAll('.index-v2__unit');
+      const units = document.querySelectorAll('.index-v2__unit');
+      const allUnits = document.querySelectorAll('.index-v2__all-unit');
 
       // 悬浮球显示
       this.indexFloatingBallShow = units.length > 0;
@@ -544,8 +548,8 @@ export default {
       }
 
       // Index锚点事件绑定
-      for (let j = 0; j < units.length; j++) {
-        let aTag = units[j].querySelector('a');
+      for (let j = 0; j < allUnits.length; j++) {
+        let aTag = allUnits[j].querySelector('a');
         aTag.addEventListener('click', function (e) {
           _this.$scrollTo(
             `#${e.target.attributes['data-id'].value}`,
