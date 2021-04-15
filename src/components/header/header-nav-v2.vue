@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!routerClient" id="header" class="header-nav__navigator" :style="{ height: `64 + ${adHeight}px` }">
+  <div v-if="!routerClient" class="header-nav__navigator" :style="{ height: `64 + ${adHeight}px` }">
     <div v-if="!routeUserCenter && !routerPayment" class="header-nav__wrapper">
       <div class="wrapper">
         <div class="header-nav__logo">
@@ -39,6 +39,7 @@
                 <nuxt-link to="/instagram-video-downloader">Instagram Video Downloader</nuxt-link>
                 <nuxt-link to="/the-most-followed-instagram">Instagram Ranking Tool</nuxt-link>
                 <nuxt-link to="/instagram-name-generator">Instagram Name Generator</nuxt-link>
+                <nuxt-link to="/instagram-follower-counter">Instagram Follower Counter</nuxt-link>
               </div>
             </div>
             <a id="nav-menu-04" class="header-nav__menu_links"
@@ -333,6 +334,7 @@
               <nuxt-link to="/the-most-followed-instagram" @click.native="menuOff">Instagram Ranking Tool</nuxt-link>
               <!--Instagram Name Generator-->
               <nuxt-link to="/instagram-name-generator" @click.native="menuOff">Instagram Name Generator</nuxt-link>
+              <nuxt-link to="/instagram-follower-counter" @click.native="menuOff">Instagram Follower Counter</nuxt-link>
             </div>
           </div>
 
