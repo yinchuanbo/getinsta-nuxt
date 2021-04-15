@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import headerNav from '@/components/header/header-nav';
+import headerNav from "@/components/header/header-nav";
 
 export default {
-  name: 'HeaderContainer',
+  name: "HeaderContainer",
   components: {
-    headerNav
+    headerNav,
   },
   props: {},
   data() {
@@ -21,34 +21,40 @@ export default {
       headerActive: false,
       headerShape: {
         homePath: true,
-        homeScroll: true
+        homeScroll: true,
       },
-      scrollTopOld: 0
+      scrollTopOld: 0,
     };
   },
   watch: {
     $route(to) {
-      this.headerShape.homePath = to.path === '/';
-    }
+      this.headerShape.homePath = to.path === "/";
+    },
   },
   mounted() {
-    this.headerShape.homePath = this.$nuxt.$route.path === '/';
+    this.headerShape.homePath = this.$nuxt.$route.path === "/";
     this.headerFooterMotion();
-    window.addEventListener('scroll', this.COMMON.throttle(this.handleScroll, 60, 100));
+    window.addEventListener(
+      "scroll",
+      this.COMMON.throttle(this.handleScroll, 60, 100)
+    );
   },
   destroyed() {
     clearTimeout(this.timer);
-    window.removeEventListener('scroll', this.COMMON.throttle());
+    window.removeEventListener("scroll", this.COMMON.throttle());
   },
   methods: {
     headerFooterMotion() {
       this.headerActive = true;
     },
     handleScroll: function () {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
       this.headerShape.homeScroll = scrollTop <= 80;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -59,7 +65,7 @@ header {
   width: 100%;
   opacity: 0;
   transform: translateY(-6px);
-  transition: all .5s;
+  transition: all 0.5s;
 
   &.fixed {
     position: fixed;
