@@ -102,7 +102,7 @@
         <div class="btn-group">
           <div @click="gaBtnFreeGetItNow">
             <button-icon-ins
-              text="Get Followers Now"
+              text="Get Free Followers Now"
               bubble-float
               square
               shadow
@@ -258,7 +258,7 @@
       <div class="counter-container-item6">
         <h3>No more Instagram follower count stuck by using GetInsta</h3>
         <p>
-          nstagram Follower Counter enables you to check real-time and accutate
+          Instagram Follower Counter enables you to check real-time and accutate
           number of any IG account's followers. Any changes of follower count
           could be detected and help you make adjustments. No more Instagram
           follower count stuck or frozen would happen after using this tool.
@@ -304,7 +304,7 @@
             <li>100% Free Instagram Followers</li>
             <li>Real Instagram Followers</li>
             <li>High-Quality Instagram Likes</li>
-            <li>Safe and Private</li>
+            <li>Safe and Private </li>
           </ul>
         </div>
         <div class="btns pc" @click="signup">
@@ -312,7 +312,7 @@
         </div>
         <div @click="gaBtnFreeGetItNow1" class="mobile gaBtnFreeGetItNow">
           <button-icon-ins
-            text="Get Followers Now"
+            text="Get Free Followers Now"
             bubble-float
             square
             shadow
@@ -380,7 +380,7 @@
       <div class="button-group">
         <div @click="gaBtnFreeGetItNow2">
           <button-icon-ins
-            text="Get Followers Now"
+            text="Get Free Followers Now"
             bubble-float
             square
             shadow
@@ -419,7 +419,7 @@
         <a href="/blog/best-app-to-get-instagram-likes-18">
           <div class="counter-tips-item">
             <span></span>
-            <p>6 Best Apps to Get Instagram Likes and Followers</p>
+            <p>8 Best Apps to Get Instagram Likes and Followers</p>
           </div>
         </a>
         <a href="/blog/best-instagram-auto-liker-app-200">

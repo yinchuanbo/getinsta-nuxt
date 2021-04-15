@@ -334,6 +334,7 @@
               <nuxt-link to="/the-most-followed-instagram" @click.native="menuOff">Instagram Ranking Tool</nuxt-link>
               <!--Instagram Name Generator-->
               <nuxt-link to="/instagram-name-generator" @click.native="menuOff">Instagram Name Generator</nuxt-link>
+              <nuxt-link to="/instagram-follower-counter" @click.native="menuOff">Instagram Follower Counter</nuxt-link>
             </div>
           </div>
 
