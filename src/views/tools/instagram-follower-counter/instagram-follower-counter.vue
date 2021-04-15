@@ -398,29 +398,29 @@
     <div class="counter-tips">
       <h2>More Instagram Tips</h2>
       <div class="counter-tips-item_group">
-        <div class="counter-tips-item">
+        <div class="counter-tips-item" @click="skip1">
           <span></span>
           <p>How to Get Free Instagram Followers & Likes</p>
         </div>
-        <div class="counter-tips-item">
+        <div class="counter-tips-item"  @click="skip2">
           <span></span>
           <p>How to Hack Instagram Followers</p>
         </div>
-        <div class="counter-tips-item">
+        <div class="counter-tips-item"  @click="skip3">
           <span></span>
           <p>Get Free Instagram Followers Instantly</p>
         </div>
-        <div class="counter-tips-item">
+        <div class="counter-tips-item"  @click="skip4">
           <span></span>
           <p>6 Best Apps to Get Instagram Likes and Followers</p>
         </div>
-        <div class="counter-tips-item">
+        <div class="counter-tips-item"  @click="skip5">
           <span></span>
           <p>Best Instagram Auto Liker App</p>
         </div>
-        <div class="counter-tips-item">
+        <div class="counter-tips-item"  @click="skip6">
           <span></span>
-          <p>How to Hack Instagram Followers Without Following</p>
+          <p>How to Get 1K Followers on Instagram in 5 Minutes 2021</p>
         </div>
       </div>
     </div>
@@ -667,6 +667,24 @@ export default {
       this.roll1.roll(148);
       this.roll2.roll(458);
       this.roll3.roll(486);
+    },
+    skip1() {
+      this.$nuxt.$router.push("/blog/free-followers-on-instagram-no-human-verification-27");
+    },
+    skip2() {
+      this.$nuxt.$router.push("/blog/hack-instagram-followers-131");
+    },
+    skip3() {
+      this.$nuxt.$router.push("/blog/instagram-followers-instantly-free-10");
+    },
+    skip4() {
+      this.$nuxt.$router.push("/blog/best-app-to-get-instagram-likes-18");
+    },
+    skip5() {
+      this.$nuxt.$router.push("/blog/best-instagram-auto-liker-app-200");
+    },
+    skip6() {
+      this.$nuxt.$router.push("/blog/get-1k-instagram-followers-in-5-minutes-232");
     },
     buynow() {
       this.$nuxt.$router.push("/buy-instagram-followers");
