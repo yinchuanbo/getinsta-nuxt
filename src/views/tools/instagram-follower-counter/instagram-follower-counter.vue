@@ -2,7 +2,7 @@
   <div class="instagram-follower-counter">
     <div class="header-blank pc"></div>
     <div class="counter-banner">
-      <div class="counter-wrapper">
+      <div class="counter-wrapper" id="counter-wrapper">
         <h2>Live Instagram Follower Counter</h2>
         <p>
           Real-time, accurate, exact Instagram follower count. No Instagram
@@ -75,14 +75,14 @@
       </div>
     </div>
     <transition name="fade">
-      <div v-if="insUser.ins_id" class="search_result">
+      <div v-if="insUser.ins_id" class="search_result" id="result">
         <h2>Instagram Follower Count</h2>
         <div class="avator">
           <img :src="insUser.profile_pic_url || ''" alt="" />
         </div>
         <p class="name">{{ insUser.ins_account }}</p>
         <p class="title">Real-time Followers</p>
-        <p class="num">{{ insUser.followed_by }}</p>
+        <p class="num">{{ insUser.followed_by.toString().replace(/\B(?=(\d{3})+$)/g,',') }}</p>
         <span>Updated {{ currentTime }}</span>
         <div class="info">
           <p>
@@ -140,7 +140,8 @@
           ref="item1"
           :class="{ on: item1Val }"
         >
-          <img src="./img/pic01.png" alt="" />
+          <img class="pc" src="./img/pic01.svg" alt="" />
+          <img class="mobile" src="./img/pic01-m.svg" alt="" />
         </div>
       </div>
       <div class="counter-container-item2">
@@ -166,7 +167,7 @@
             <img src="./img/arrow-around.svg" alt="" />
           </div>
         </div>
-        <!-- <span>Updated 3:13:05 PM 12.31.2020</span> -->.
+        <!-- <span>Updated 3:13:05 PM 12.31.2020</span> -->
       </div>
       <div class="counter-container-item3" ref="item3">
         <h3>Accurate and exact Instagram follower count</h3>
@@ -177,9 +178,17 @@
           148,458,486* on this page. It is correct because the number was
           directled obtained from Instagram.
         </p>
-        <span
+        <!-- <span
           >+ <i ref="aroundNum">{{ value }}</i></span
-        >
+        > -->
+        <div class="myroll">
+          + 
+          <div id="num-roll1"></div>
+          ,
+          <div id="num-roll2"></div>
+          ,
+          <div id="num-roll3"></div>
+        </div>
       </div>
       <div class="counter-container-item4">
         <h3>Why you need this Instagram follower counter?</h3>
@@ -277,7 +286,13 @@
         <i></i>
         <i></i>
       </div>
-      <div class="counter-signup_leftimg mobile"></div>
+      <div class="counter-signup_leftimg mobile">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
       <div class="counter-signup_content">
         <h2>How to Solve Instagram Follower Count Stuck?</h2>
         <div class="counter-signup_content-box">
@@ -314,7 +329,8 @@
       <div class="counter-why-item_group">
         <div class="counter-why-item">
           <div class="counter-why-item_top">
-            <img src="./img/why01.svg" alt="" />
+            <img class="pc" src="./img/why01.svg" alt="" width="107" height="114" />
+            <img class="mobile" src="./img/why01-m.svg" alt="" />
           </div>
           <h2>100% Free</h2>
           <p>
@@ -422,7 +438,7 @@ import apiTask from "@/api/api.task";
 import ButtonYellowIcon from "@/components/button/button-yellow-icon";
 import ButtonIconIns from "@/components/button/button-icon-ins";
 // import ListEmpty from '@/components/list/list-empty';
-
+import DigitRoll from '@/assets/scripts/digitRoll.js';
 export default {
   name: "StoreShelf1BuyFollowers",
   components: {
@@ -541,6 +557,9 @@ export default {
       productPkgListDailyVM: [],
       productPkgListDays: [],
       productPkgListDaysVM: [],
+      roll1: null,
+      roll2: null,
+      roll3: null
     };
   },
   computed: {
@@ -588,10 +607,13 @@ export default {
       this.productPkgListDailyVM = this.productPkgListDaily[0];
     },
     item3Val(newVal, oldVal) {
+      console.log(newVal, oldVal)
       if (newVal !== oldVal && newVal == true && oldVal == false) {
-        this.numberGrow(this.$refs.aroundNum, true);
+        console.log('333');
+        // setTimeout(this.rollrun(), 400);
+        this.rollrun()
       } else {
-        this.numberGrow(this.$refs.aroundNum, false);
+        this.rollrun1()
       }
     },
   },
@@ -602,9 +624,22 @@ export default {
   mounted() {
     this.getPkgList();
     window.addEventListener("scroll", this.handle);
+    this.roll1 = new DigitRoll({
+      container: '#num-roll1',
+      width: 1
+    });
+    this.roll2 = new DigitRoll({
+      container: '#num-roll2',
+      width: 1
+    });
+    this.roll3 = new DigitRoll({
+      container: '#num-roll3',
+      width: 1
+    });
   },
   destroyed() {
     window.removeEventListener("scroll", this.handle);
+    // this.destroyedRoll();
   },
   methods: {
     emitToParent() {
@@ -617,6 +652,21 @@ export default {
     inputBlur() {
       this.isBoxRed = false;
       this.isFocus = false;
+    },
+    rollrun() {
+      this.roll1.roll(148);
+      this.roll2.roll(458);
+      this.roll3.roll(486);
+    },
+    rollrun1() {
+      this.roll1.roll(0);
+      this.roll2.roll(0);
+      this.roll3.roll(0);
+    },
+    destroyedRoll() {
+      this.roll1.roll(148);
+      this.roll2.roll(458);
+      this.roll3.roll(486);
     },
     buynow() {
       this.$nuxt.$router.push("/buy-instagram-followers");
@@ -686,11 +736,12 @@ export default {
         }
       } else {
         // pc
+        this.$ga.event("insrg", "register", "register-counter1");
         this.$nuxt.$router.push("/register");
       }
     },
     signup() {
-      this.$ga.event("insrg", "register", "register-counter");
+      this.$ga.event("insrg", "register", "register-counter2");
       this.$nuxt.$router.push("/register");
     },
     downloadIOS(param) {
@@ -979,13 +1030,13 @@ export default {
 
     searchUsername: function () {
       this.searchInsByServerV2();
-      this.gaSearchBtn();
     },
     searchInsByServerV2() {
       if (this.searchInsInput === "") {
         this.isBoxRed = true;
         return;
       }
+      this.gaSearchBtn();
       this.isBoxRed = false;
       if (this.searchInsLoading) return;
 
@@ -1028,13 +1079,12 @@ export default {
           this.postListInfo.end_cursor = this.insUser.post.end_cursor;
           this.postListInfo.has_next_page =
             this.insUser.post.post_count > this.postListInfo.page_size;
-
           // 设置当前时间
           this.getCurrentTime();
 
-          // this.$nextTick(() => {
-          //   this.anchorBottomBtn();
-          // });
+          this.$nextTick(() => {
+            this.anchorBottomBtn();
+          });
         })
         .catch((error) => {
           this.closeDialog();
@@ -1491,29 +1541,36 @@ export default {
       }
     },
     anchorBottomBtn() {
-      if (!this.COMMON.isMobile()) return;
+      
+      // if (!this.COMMON.isMobile()) return;
 
-      if (!this.tabsIndex) {
-        if (this.productPkgListFollowIndex !== -1 && this.insUser.ins_id) {
-        }
-        if (this.productPkgListFollowIndex !== -1 && !this.insUser.ins_id) {
-          setTimeout(() => {
-            if (!this.independent)
-              this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
-          }, 500);
-        }
-      } else if (this.tabsIndex) {
-        if (this.productPkgListLikeIndex !== -1 && !this.insUser.ins_id) {
-          if (!this.independent)
-            this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
-        }
-        if (this.productPkgListLikeIndex !== -1 && this.insUser.ins_id) {
-          if (!this.independent)
-            this.$scrollTo(`#title-post-like`, { offset: -60 });
-        }
+      if (!this.COMMON.isMobile()) {
+        this.$scrollTo('#result', { offset: -180 });
+      } else {
+        this.$scrollTo('#result', { offset: -100 });
       }
 
-      this.bottomBtnDetective();
+      // if (!this.tabsIndex) {
+      //   if (this.productPkgListFollowIndex !== -1 && this.insUser.ins_id) {
+      //   }
+      //   if (this.productPkgListFollowIndex !== -1 && !this.insUser.ins_id) {
+      //     setTimeout(() => {
+      //       if (!this.independent)
+      //         this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
+      //     }, 500);
+      //   }
+      // } else if (this.tabsIndex) {
+      //   if (this.productPkgListLikeIndex !== -1 && !this.insUser.ins_id) {
+      //     if (!this.independent)
+      //       this.$scrollTo(`#control-search_ins-container`, { offset: -44 });
+      //   }
+      //   if (this.productPkgListLikeIndex !== -1 && this.insUser.ins_id) {
+      //     if (!this.independent)
+      //       this.$scrollTo(`#title-post-like`, { offset: -60 });
+      //   }
+      // }
+
+      // this.bottomBtnDetective();
     },
 
     addToCart() {
