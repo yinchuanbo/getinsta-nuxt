@@ -169,7 +169,7 @@
           <img src="./img/selecte-icon4.svg" alt="" width="16" height="16" />
           <div class="box-text_num">
             <h3>{{ productPkgListDailyVM.purchase_quantity }} Likes/Day</h3>
-            <p>{{ productPkgListDailyVM.cycle_type }} Day Plan</p>
+            <p>{{ productPkgListDailyVM.cycle_type }} - Day Plan</p>
           </div>
           <div class="box-text-price">
             ${{
@@ -240,11 +240,16 @@
                   <img :src="unit.like_pic_url" alt="post image" />
                   <div class="mark">
                     <i></i>
-                    <p>
+                    <p v-if="!tabsIndex">
                       +{{
                         productPkgCurrentLike["purchase_quantity"]
                           ? productPkgCurrentLike["purchase_quantity"]
                           : 0
+                      }}
+                    </p>
+                    <p v-if="tabsIndex">
+                      + {{
+                        productPkgListDailyVM.purchase_quantity * productPkgListDailyVM.cycle_type ? productPkgListDailyVM.purchase_quantity * productPkgListDailyVM.cycle_type : 0
                       }}
                     </p>
                   </div>
@@ -587,12 +592,17 @@
                           <img :src="unit.like_pic_url" alt="post image" />
                           <div class="mark">
                             <i></i>
-                            <p>
+                            <p v-if="!tabsIndex">
                               +{{
                                 productPkgCurrentLike["purchase_quantity"]
                                   ? productPkgCurrentLike["purchase_quantity"]
                                   : 0
                               }}
+                            </p>
+                            <p v-if="tabsIndex">
+                            + {{
+                              productPkgListDailyVM.purchase_quantity * productPkgListDailyVM.cycle_type ? productPkgListDailyVM.purchase_quantity * productPkgListDailyVM.cycle_type : 0
+                            }}
                             </p>
                           </div>
                         </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="store-shelf-1-buy" class="pc">
+    <div class="pc">
       <div class="pc-content">
         <div class="pc-content_tabs">
           <div class="pc-content_tabs-item" :class="{ on: !tabsIndex }" @click="tabSwitch(false)">
@@ -211,7 +211,7 @@
         </div>
       </div>
     </div>
-    <div id="store-shelf-1-buy" class="store-shelf-1-buy spring mobile">
+    <div class="store-shelf-1-buy spring mobile">
       <!--main--><!--圣诞活动-->
       <div ref="pronbit" class="wrapper">
         <div class="section-store">
@@ -397,7 +397,7 @@
               </transition>
 
               <!--search-container-->
-              <div v-if="showbottombutton" id="control-search_ins-container" class="control-search_ins-container">
+              <div v-show="showbottombutton" id="control-search_ins-container" class="control-search_ins-container">
                 <span class="search_click" @click="openOrHide">
                   <span></span>
                 </span>
@@ -447,15 +447,17 @@
                   </div>
                 </div>
                 <div class="control-search_ins">
-                  <label>
+                  <!-- mobile -->
+                  <label @click="getFocus">
                     <input
                       v-model="searchInsInput" type="text"
                       placeholder="Enter Instagram username"
                       :disabled="searchInsLoading"
                       :style="{borderColor:(isBoxRed ? 'red!important' : '#E0E1E6!important')}"
                       @input="bottomBtnDetective"
-                      @blur="inputBlur"
+                      @blur.prevent="inputBlur"
                       @focus="inputFocus"
+                      ref="content"
                     >
                   </label>
                   <div v-if="!isBuyBtn" class="search_btn" @click="searchUsername">
@@ -808,7 +810,6 @@ export default {
     if(!this.tabsIndex) {
       this.getRegionList();
     }
-    window.addEventListener('scroll', this.handle);
     const that = this;
     window.onresize = () => {
       return (() => {
@@ -816,6 +817,7 @@ export default {
         that.screenWidth = window.screenWidth;
       })();
     };
+    window.addEventListener('scroll', this.handle);
   },
   destroyed() {
     window.removeEventListener('scroll', this.handle);
@@ -949,6 +951,9 @@ export default {
     inputFocus() {
       this.noUser = true;
       this.isFocus = true;
+    },
+    getFocus (){
+      this.$refs.content.focus();
     },
     initTabIndex() {
       const path = this.$route.path;
@@ -2135,22 +2140,19 @@ export default {
         < window.innerHeight * 1.1;
     },
     handle() {
-      this.showbottombutton = true;
       const fun = this.handleScroll();
       this.COMMON.throttle(fun, 60, 100);
-
+      this.showbottombutton = true;
       if (this.screenWidth >= 769) return;
-      // 滚动的高度
       let scrollH = window.pageYOffset;
-      // 元素的高度的
       let eleH = this.$refs.pronbit.offsetHeight - 98;
-
-      // 距离顶部的告诉
       let TopH = this.$refs.pronbit.getBoundingClientRect().top;
-
-      if (TopH + scrollH + eleH < scrollH) { // 消失
+      if (TopH + eleH < 0) {
         this.showbottombutton = false;
-      } else { // 显示
+        if( this.COMMON.isiOS && this.isFocus) {
+          this.showbottombutton = true;
+        }
+      } else {
         this.showbottombutton = true;
       }
     }
