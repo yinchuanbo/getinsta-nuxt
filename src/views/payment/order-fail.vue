@@ -125,11 +125,12 @@ export default {
           ).then(() => {
               this.$ga.event('insdl', 'download', `order-fail-iosdl${minorLangParam}`);
               // console.log(downloadURL);
-              location.href
-                = `${this.$store.state.enIosLink}`
-                + `?pt=${this.$store.state.enIosLinkPt}`
-                + `&ct=en-seo-thankyoufail`
-                + `&mt=8`;
+              // location.href
+              //   = `${this.$store.state.enIosLink}`
+              //   + `?pt=${this.$store.state.enIosLinkPt}`
+              //   + `&ct=en-seo-thankyoufail`
+              //   + `&mt=8`;
+              location.href = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-thankyoufail&mt=8'
             }
           ).catch();
         } else { // Android

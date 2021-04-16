@@ -33,7 +33,8 @@ export default {
       } else {
         let url = '';
         if (this.COMMON.isiOS()) {
-          url = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-iug&mt=8';
+          // url = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-iug&mt=8';
+          url = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-iug&mt=8'
         }
 
         if (this.COMMON.isAndroid()) {
