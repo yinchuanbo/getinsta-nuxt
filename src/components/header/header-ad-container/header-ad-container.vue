@@ -51,7 +51,8 @@ export default {
           location.href = "https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-easter";
         } else { // ios
           this.$ga.event('insdl', 'download', 'hpspring-ios');
-          location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-easter&mt=8';
+          // location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-easter&mt=8';
+          location.href = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-a-easter&mt=8';
         }
       } else {
         if(!this.COMMON.isMobile()) { // pc
@@ -65,7 +66,8 @@ export default {
           location.href = "https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-easter";
         } else {
           this.$ga.event('bannerclick', 'click', 'easter-ios');
-          location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-easter&mt=8';
+          // location.href = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-easter&mt=8';
+          location.href = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-a-easter&mt=8';
         }
       }
       // this.$router.push({ path: "/eastersale" });
