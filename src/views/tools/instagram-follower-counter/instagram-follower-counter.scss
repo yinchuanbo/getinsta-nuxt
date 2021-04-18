@@ -694,6 +694,8 @@
     }
     .counter-signup {
       width: 100%;
+      min-width: 1500px;
+      margin: 0 auto;
       height: 545px;
       background: transparent
         linear-gradient(
@@ -705,6 +707,7 @@
         )
         0% 0% no-repeat;
       display: flex;
+      justify-content: center;
       &.on {
         .counter-signup_leftimg {
           i {
@@ -718,7 +721,7 @@
         height: 100%;
         background: url("./img/signup.svg") no-repeat;
         background-size: cover;
-        margin-left: 162px;
+        // margin-left: 162px;
         position: relative;
         i {
           position: absolute;
