@@ -1257,6 +1257,7 @@ export default {
             if(item.promote_sale_type === 3) {
               _this.productPkgCurrentFollow = item;
               _this.productPkgListFollowIndex = index;
+              _this.productPkgCurrentFollow = item;
               return;
             }
           })

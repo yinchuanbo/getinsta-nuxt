@@ -28,14 +28,13 @@
                 {{ blogDetailObj.author || '' }}
               </p>
             </div>
-            <div
-              id="blogDetailContent" class="blog-detail__content"
-              :class="{
-                'ios': $store.state.isiOS,
-                'android': $store.state.isAndroid,
-                'windows': $store.state.isWindows
-              }"
-              v-html="blogDetailObj.content || ''"
+            <div id="blogDetailContent" class="blog-detail__content"
+                 :class="{
+                   'ios': $store.state.isiOS,
+                   'android': $store.state.isAndroid,
+                   'windows': $store.state.isWindows
+                 }"
+                 v-html="blogDetailObj.content || ''"
             ></div>
             <div v-if="relatedArticleList.length !== 0" class="related-list">
               <h2>{{ $t('blogDetail.RelatedReadings') }}</h2>
@@ -163,21 +162,15 @@
         </div>
       </div>
     </transition>
+
+    <index-floating-ball :show="indexFloatingBallShow" />
   </div>
 </template>
 
 <script>
-import $ from 'jquery';
-import api from '@/api/api.blog';
-import ButtonDownloadAndroid from '@/components/button/button-download-android';
-import ButtonPurple from '@/components/button/button-purple';
-import ButtonDownloadIos from '@/components/button/button-download-ios';
-import ButtonDownloadWindows from '@/components/button/button-download-windows';
-import BlogTitleV2 from '@/views/blog/static-modules/blog-title-v2/blog-title-v2';
-
 // 模块动态挂载 *************************************************************************
 import Vue from 'vue';
-import blogSearch from '@/views/blog/dynamical-modules/blog-search/blog-search.vue';
+import blogSearch from '@/views/blog/dynamical-modules/blog-ins-search/blog-ins-search.vue';
 import blogBuy from '@/views/blog/dynamical-modules/blog-buy-auto-followers/blog-buy-auto-followers.vue';
 import imgGalleryCom from '@/views/blog/dynamical-modules/blog-img-gallery/blog-img-gallery';
 import blogBuyAutoLikes from '@/views/blog/dynamical-modules/blog-buy-auto-likes/blog-buy-auto-likes.vue';
@@ -188,9 +181,20 @@ const BlogBuyAutoLikes = Vue.extend(blogBuyAutoLikes);
 const BlogSearch = Vue.extend(blogSearch);
 // **************************************************************************************
 
+import $ from 'jquery';
+import api from '@/api/api.blog';
+import ButtonDownloadAndroid from '@/components/button/button-download-android';
+import ButtonPurple from '@/components/button/button-purple';
+import ButtonDownloadIos from '@/components/button/button-download-ios';
+import ButtonDownloadWindows from '@/components/button/button-download-windows';
+import BlogTitleV2 from '@/views/blog/static-modules/blog-title-v2/blog-title-v2';
+
+import IndexFloatingBall from '@/views/blog/static-modules/index-floating-ball/index-floating-ball';
+
 export default {
   name: 'BlogDetail',
   components: {
+    IndexFloatingBall,
     BlogTitleV2,
     ButtonDownloadWindows,
     ButtonDownloadIos,
@@ -257,7 +261,8 @@ export default {
         ct: `${this.$i18n.locale}campaign`,
         mt: 8
       },
-      langArabic: false
+      langArabic: false,
+      indexFloatingBallShow: false
     };
   },
   computed: {
@@ -307,7 +312,9 @@ export default {
 
       if (process.client) {
         this.$nextTick(() => {
-          this.renderOfDynamicalModules();
+          setTimeout(() => {
+            this.renderOfDynamicalModules();
+          }, 500);
         });
         this.getHotArticleList();
         this.blogSortObj = data['sort'] || {};
@@ -342,7 +349,9 @@ export default {
             this.langArabic = this.COMMON.langCheckIsArabic(response.data['article']['seo_title']);
 
             this.$nextTick(() => {
-              this.renderOfDynamicalModules();
+              setTimeout(() => {
+                this.renderOfDynamicalModules();
+              }, 500);
             });
 
             this.getHotArticleList();
@@ -406,7 +415,7 @@ export default {
       this.blogIndexClickEvent();
 
       setTimeout(() => {
-        this.renderDetector();
+        // this.renderDetector();
       }, 500);
     },
     renderDetector() {
@@ -463,7 +472,7 @@ export default {
       const checkNode = [...document.querySelectorAll('.blogBanner')];
       if (checkNode.length) {
         for (let j = 0; j < checkNode.length; j++) {
-          let component = new BlogSearch({ propsData: { ax: '10', sendThis: this } }).$mount();
+          let component = new BlogSearch({ propsData: { ax: this.blogID, sendThis: this } }).$mount();
           checkNode[j].parentNode.replaceChild(component.$el, checkNode[j]);
           _this.renderTimerCounter++;
         }
@@ -514,15 +523,39 @@ export default {
       }
     },
     blogIndexClickEvent() {
-      let units = document.querySelectorAll('.index-v2__unit');
+      let _this = this;
+      const units = document.querySelectorAll('.index-v2__unit');
+      const allUnits = document.querySelectorAll('.index-v2__all-unit');
+
+      // 悬浮球显示
+      this.indexFloatingBallShow = units.length > 0;
+
+      // Index二级菜单事件绑定
       for (let i = 0; i < units.length; i++) {
-        units[i].addEventListener('click', function () {
-          let thisClassList = this.classList;
-          if (thisClassList.contains('active')) {
-            thisClassList.remove('active');
-          } else {
-            thisClassList.add('active');
-          }
+        let ta = units[i];
+        if (ta.classList.contains('sub')) {
+          ta.addEventListener('click', function (e) {
+            let thisClassList = this.classList;
+            if (e.target.className === 'index-v2__sub-title') {
+              if (thisClassList.contains('active')) {
+                thisClassList.remove('active');
+              } else {
+                thisClassList.add('active');
+              }
+            }
+          });
+        }
+      }
+
+      // Index锚点事件绑定
+      for (let j = 0; j < allUnits.length; j++) {
+        let aTag = allUnits[j].querySelector('a');
+        aTag.addEventListener('click', function (e) {
+          _this.$scrollTo(
+            `#${e.target.attributes['data-id'].value}`,
+            { offset: -1 * _this.COMMON.headerHeight() }
+          );
+          e.preventDefault();
         });
       }
     },

@@ -150,15 +150,18 @@ button {
   }
 
   &.theme-gradiant {
-    // background-image: linear-gradient(90deg, #fe5c88 0%, #4761ff 100%);
     animation-name: loading;
     animation-duration: 5s;
     animation-timing-function: ease-in;
     animation-iteration-count: infinite;
+    background: linear-gradient(90deg, #4761ff 0%, #fe5c88 50%, #4761ff 100%);
     background-size: 200% 100%;
-    background: linear-gradient(90deg, #4761ff 0%, #fe5c88 50%, #4761ff 100%) 200% 0;
-
-    @keyframes loading {
+    background-position: 200% 0;
+    &.shadow {
+      box-shadow: 0 12px 24px rgba(171, 32, 119, 0.24);
+    }
+  }
+  @keyframes loading {
       0% {
         background-position: 200% 0;
       }
@@ -166,17 +169,6 @@ button {
         background-position: 0 0;
       }
     }
-
-    &.shadow {
-      box-shadow: 0 12px 24px rgba(171, 32, 119, 0.24);
-    }
-
-    &:hover {
-    }
-
-    &:active {
-    }
-  }
 
   span {
     display: inline-block;

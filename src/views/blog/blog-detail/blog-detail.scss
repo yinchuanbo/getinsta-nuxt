@@ -341,7 +341,7 @@
     }
 
     .index-v2__unit-container {
-      max-height: 360px;
+      max-height: 310px;
       overflow-y: auto;
 
       &::-webkit-scrollbar {
@@ -460,10 +460,6 @@
     font: 400 14px Montserrat;
 
     tr {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-
       th, td {
         padding: 0 10px;
         border: 1px solid #E5E5E5;
@@ -511,30 +507,38 @@
       }
     }
 
-    thead {
+    &.table-v2 {
+      thead {
+        tr {
+          width: calc(100% - 6px);
+        }
+      }
+
+      tbody {
+        display: block;
+        width: 100%;
+        max-height: 380px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        &::-webkit-scrollbar-track-piece {
+          width: 6px;
+          background-color: #EEEEEE;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 10px;
+          background-color: #B9D1F5;
+        }
+      }
+
       tr {
-        width: calc(100% - 6px);
-      }
-    }
-
-    tbody {
-      display: block;
-      width: 100%;
-      max-height: 380px;
-      overflow-y: auto;
-
-      &::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      &::-webkit-scrollbar-track-piece {
-        width: 6px;
-        background-color: #EEEEEE;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        width: 10px;
-        background-color: #B9D1F5;
+        display: table;
+        width: 100%;
+        table-layout: fixed;
       }
     }
   }

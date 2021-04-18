@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!routerClient" id="header" class="header-nav__navigator"
+  <div v-if="!routerClient" class="header-nav__navigator"
        :class="{ 'home': homePath && homeScroll && !loginStatus }"
   >
     <div v-if="!routeUserCenter&&!routerPayment" class="header-nav__wrapper">

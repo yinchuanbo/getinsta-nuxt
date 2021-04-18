@@ -5,7 +5,8 @@
     <header-container-v2 v-if="$store.state.v2" />
 
     <!--general-blank-->
-    <general-blank v-if="$store.state.v2 && $store.state.isMobile && isGeneralBlank" :ad-height="$store.state.v2AdHeightMobile" />
+    <general-blank v-if="$store.state.isMobile && isGeneralBlank" :ad-height="$store.state.v2AdHeightMobile" />
+    <general-blank v-if="!$store.state.isMobile" :ad-height="$store.state.v2AdHeightPc" />
 
     <!--router-view-->
     <transition name="fade" mode="out-in">
@@ -30,7 +31,7 @@
     <!--giveaway gate-->
     <floating-layer-right v-if="isRightWindows && $store.state.isMobile" :type="windowType" />
     <floating-layer-bottom v-if="false" :type="windowType" />
-    <floating-layer-alert v-if="isAlertWindow" :type="windowType" />
+    <floating-layer-alert v-if="isAlertWindow && false" :type="windowType" />
 
     <!--addThis-->
     <add-this v-if="addThisLoad" public-id="ra-5def5b1abb78a6a2" />
@@ -118,7 +119,7 @@ export default {
       downloadCtaSeasonShow: false,
       showMinorLang: false,
       isEasterSale: true,
-      isGeneralBlank: true
+      isGeneralBlank: true,
     };
   },
   watch: {
@@ -334,6 +335,8 @@ export default {
       let loginUserPath = to.path === '/login' || to.path === '/user' || to.path === '/user-get-followers' || to.path === '/user-get-likes';
       let usePath = to.path === '/user' || to.path === '/user-get-followers' || to.path === '/user-get-likes';
 
+      this.showPcAd = !(storePath || checkout || usePath);
+
       // DownloadCTA 显示规则
       // giveaway
       if (Path169 && this.COMMON.getURLQuery('source') === 'google') {
@@ -363,13 +366,12 @@ export default {
 
       if (!this.COMMON.isMobile()) {
         this.downloadCtaSeasonShow = downloadCtaSeasonShowPathArrayPC.indexOf(to.path) > -1 || to.name === 'blog-detail';
+        let bool = storePath || checkout || usePath ? 0 : 74;
+        this.$store.commit('v2AdHeightPc', bool)
       } else {
         this.downloadCtaSeasonShow = downloadCtaSeasonShowPathArray.indexOf(to.path) > -1 || to.name === 'blog-detail';
-        if (homePath || getFlPath || blogPath) {
-          this.$store.commit('v2AdHeightMobile', 50);
-        } else {
-          this.$store.commit('v2AdHeightMobile', 0);
-        }
+        let bool = homePath || getFlPath ? 44 : 0;
+        this.$store.commit('v2AdHeightMobile', bool)
       }
 
       if (easterSalePath) {
@@ -1068,9 +1070,10 @@ export default {
     },
     v2Switch(path) {
       // Store页面判断
-      const storePages = [
-        '/buy-instagram-likes'
-      ];
+      // const storePages = [
+      //   '/buy-instagram-likes'
+      // ];
+      const storePages = [];
       const isStorePages = storePages.indexOf(path) > -1;
 
       let openOrNot = true;
@@ -1078,7 +1081,6 @@ export default {
         openOrNot = true;
       else
         openOrNot = this.COMMON.randomAbTest();
-
 
       // checkout页面判断
       // const checkoutPages = [
