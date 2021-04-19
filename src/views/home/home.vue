@@ -55,7 +55,6 @@ import Home4OutstandingV2 from '@/views/home/home-v2/home-4-outstanding/home-4-o
 import Home5AdvantagesV2 from '@/views/home/home-v2/home-5-advantages/home-5-advantages';
 import Home6ReviewsV2 from '@/views/home/home-v2/home-6-reviews/home-6-reviews';
 import Home7DownloadV2 from '@/views/home/home-v2/home-7-download/home-7-download';
-import home8ReasonsV2 from '@/views/home/home-v2/home-8-reasons/home-8-reasons';
 
 export default {
   name: 'Home',
@@ -68,7 +67,6 @@ export default {
     Home2DailyFollowerV2,
     Home1StepsV2,
     Home0BannerV2,
-    home8ReasonsV2,
     // Home9VideoDeIos,
     // Home4OutstandingDeIos,
     // Home3StepsDeIos,
