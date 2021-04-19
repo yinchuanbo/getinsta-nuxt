@@ -21,6 +21,11 @@
       <home6-reviews-v2 />
       <home7-download-v2 />
       <home8-reasons-v2 />
+      <home9-download-btn />
+      <home10-qualities-have/>
+      <home11-traps-v2 />
+      <home12-download-btn />
+      <home-13-matter-v2 />
     </div>
   </div>
 </template>
@@ -56,6 +61,15 @@ import Home5AdvantagesV2 from '@/views/home/home-v2/home-5-advantages/home-5-adv
 import Home6ReviewsV2 from '@/views/home/home-v2/home-6-reviews/home-6-reviews';
 import Home7DownloadV2 from '@/views/home/home-v2/home-7-download/home-7-download';
 import home8ReasonsV2 from '@/views/home/home-v2/home-8-reasons/home-8-reasons';
+import home9DownloadBtn from '@/views/home/home-v2/home-9-download-btn/home-9-download-btn';
+import home10QualitiesHave from '@/views/home/home-v2/home-10-qualities-have/home-10-qualities-have';
+import home11TrapsV2 from '@/views/home/home-v2/home-11-traps/home-11-traps';
+import home12DownloadBtn from '@/views/home/home-v2/home-12-download-btn/home-12-download-btn';
+import home13MatterV2 from '@/views/home/home-v2/home-13-matter/home-13-matter';
+
+
+
+
 
 export default {
   name: 'Home',
@@ -69,6 +83,11 @@ export default {
     Home1StepsV2,
     Home0BannerV2,
     home8ReasonsV2,
+    home9DownloadBtn,
+    home10QualitiesHave,
+    home11TrapsV2,
+    home12DownloadBtn,
+    home13MatterV2,
     // Home9VideoDeIos,
     // Home4OutstandingDeIos,
     // Home3StepsDeIos,

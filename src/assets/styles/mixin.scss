@@ -91,7 +91,6 @@
 }
 
 @mixin animateSteps($num) {
-
   @for $i from 0 through $num {
     .step-#{$i} {
       opacity: 0;
