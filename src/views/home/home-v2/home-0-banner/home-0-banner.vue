@@ -56,7 +56,7 @@
           :class="{ 'minor-lang': $i18n.locale !== 'en' }"
           @click="gaBtnFreeGetItNow"
         >
-          <button-icon-ins text="Get Free Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
+          <button-icon-ins text="Get Free Followers" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
         </div>
 
 
@@ -70,13 +70,13 @@
         <!--DownloadAPPNow Mobile-->
         <div class="mobile" @click="downloadApp">
           <div class="home-0-banner__text_btn long">
-            <button-icon-ins text="Get Free Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-15" theme="cyan" />
+            <button-icon-ins text="Get Free Followers" bubble-float square shadow :icon="'ins'" font-size="size-15" theme="cyan" />
           </div>
         </div>
         <!--DownloadAPPNow Mobile (pageSeoBuy)-->
         <div v-if="pageSeoBuy" class="home-0-banner__text_btn mobile" @click="downloadAppPageSeoBuy">
           <!--          <button-wave :text="$t('home.home-0.btn.DownloadAPPNow')" />-->
-          <button-buy-now :text="$t('home.home-0.btn.BuyNow')" :white="true" :font-size="'size-20'" />
+          <button-buy-now :text="$t('home.home-0.btn.BuyNow1')" :white="true" :font-size="'size-20'" />
         </div>
 
 
@@ -87,7 +87,7 @@
              :class="{ 'second': !freeGetItNowHide, 'minor-lang': $i18n.locale !== 'en' }"
              @click="ga01"
         >
-          <button-buy-now :text="$t('home.home-0.btn.BuyNow')" square :white="true" :font-size="'size-16'" :border-width="2" />
+          <button-buy-now :text="$t('home.home-0.btn.BuyNow1')" square :white="true" :font-size="'size-16'" :border-width="2" />
         </div>
 
 
@@ -99,7 +99,7 @@
              }"
              @click="ga01"
         >
-          <button-buy-now square :text="$t('home.home-0.btn.BuyNow')" :white="true" :font-size="'size-20'" />
+          <button-buy-now square :text="$t('home.home-0.btn.BuyNow1')" :white="true" :font-size="'size-20'" />
         </div>
       </div>
     </div>

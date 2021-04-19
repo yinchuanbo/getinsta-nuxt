@@ -60,11 +60,11 @@
         <p class="step-10">Download the safe app GetInsta now to get high-quality Instagram followers free. No drop is guaranteed.</p>
         <div class="btns step-11">
          <div class="" @click="downloadAppGate">
-          <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" />
+          <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" />
         </div>
         <!--btn BuyNow-->
         <div class="" @click="ga01">
-          <button-buy-now square :text="$t('home.home-1.btn.BuyNow')" font-size="size-16" />
+          <button-buy-now square :text="$t('home.home-1.btn.BuyNow1')" font-size="size-16" />
         </div>
       </div>
       </div>
@@ -79,11 +79,11 @@
       </div>
       <div class="btns">
          <div class="step-9" @click="downloadAppGate">
-          <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" />
+          <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" />
         </div>
         <!--btn BuyNow-->
         <div class="step-10" @click="ga01">
-          <button-buy-now square :text="$t('home.home-1.btn.BuyNow')" font-size="size-16" />
+          <button-buy-now square :text="$t('home.home-1.btn.BuyNow1')" font-size="size-16" />
         </div>
       </div>
     </div>
@@ -94,6 +94,26 @@
 <script>
 export default {
   name: "Home8Reasons",
+  props: {
+    pcdownloadurl: {
+      type: String,
+      default: ''
+    },
+    iosdownloadurl: {
+      type: String,
+      default: ''
+    },
+    androiddownloadurl: {
+      type: String,
+      default: ''
+    },
+    gainfo: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    }
+  },
   data() {
     return {
       animateBegin: false,
@@ -101,15 +121,6 @@ export default {
       height: ''
     };
   },
-  // asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
-  //     let height = '';
-  //     if(!store.state.isMobile) { // pc
-  //       height = '470px';
-  //     } else {
-  //       height = '790px';
-  //     }
-  //     return height;
-  // },
   mounted() {
     window.addEventListener("scroll", this.handle);
     this.getHeight();
@@ -135,7 +146,7 @@ export default {
       if(!this.COMMON.isMobile()) { // pc
         height = '470px';
       } else {
-        height = '1050px';
+        height = '1090px';
       }
       this.height = height;
     },
@@ -143,31 +154,17 @@ export default {
       if (this.COMMON.isMobile())
         this.downloadApp();
       else {
-        this.$ga.event('inslogin', 'login', `hploginnew2`);
-        this.$nuxt.$router.push('/login');
+        this.$ga.event(this.gainfo['pc'][0], this.gainfo['pc'][1], this.gainfo['pc'][2]);
+        this.$nuxt.$router.push(this.pcdownloadurl);
       }
     },
     downloadApp() {
-      if (this.COMMON.isiOS()) {
-        if (this.$nuxt.$route.path === '/event-ios') {
-          this.$ga.event('insdl', 'download', 'hpiosdlm2-ad');
-          window.location.href = this.$constant.app.download.ios1;
-        } else {
-          this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew2`);
-
-          this.$store.commit('enIosLinkCt', this.$store.state.adQueryCampaignHome);
-          window.location.href
-            = `${this.$store.state.enIosLink}`
-            + `?pt=${this.$store.state.enIosLinkPt}`
-            + `&ct=${this.$store.state.enIosLinkCt}`
-            + `&mt=8`;
-        }
-      } else {
-        this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew2`);
-        window.location.href
-          = this.$constant.app.download.androidGooglePlay1
-          + this.$constant.app.campaign.androidReferrerQuery
-          + this.$store.state.enAdrLinkGpReferrer;
+      if (this.COMMON.isiOS()) { // ios
+        this.$ga.event(this.gainfo['ios'][0], this.gainfo['ios'][1], this.gainfo['ios'][2]);
+        location.href = this.iosdownloadurl;
+      } else { // android
+        this.$ga.event(this.gainfo['android'][0], this.gainfo['android'][1], this.gainfo['android'][2]);
+        location.href = this.androiddownloadurl;
       }
     },
     ga01() {

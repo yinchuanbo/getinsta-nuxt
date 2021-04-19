@@ -50,12 +50,12 @@
 
       <!--btn DownloadFor -->
       <div class="home-1-steps__btn-container step-5" @click="downloadAppGate">
-        <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" />
+        <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" />
       </div>
 
       <!--btn BuyNow-->
       <div v-if="!buyNowBtnHide" class="home-1-steps__btn-container second step-5" @click="ga01">
-        <button-buy-now square :text="$t('home.home-1.btn.BuyNow')" font-size="size-16" />
+        <button-buy-now square :text="$t('home.home-1.btn.BuyNow1')" font-size="size-16" />
       </div>
     </div>
   </div>

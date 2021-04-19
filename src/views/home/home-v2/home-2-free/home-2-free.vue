@@ -9,7 +9,7 @@
 
         <div class="home-2-free__btn-container pc step-2">
           <div class="btn" @click="btnActionGate">
-            <button-icon-ins class="button-hover-1" text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" theme="gradiant" />
+            <button-icon-ins class="button-hover-1" text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" theme="gradiant" />
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
 
         <!--download Mobile-->
         <div class="btn mobile" @click="gaDownload">
-          <button-icon-ins text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" theme="gradiant" />
+          <button-icon-ins text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" theme="gradiant" />
         </div>
       </div>
 

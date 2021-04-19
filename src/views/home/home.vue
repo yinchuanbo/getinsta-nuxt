@@ -21,11 +21,11 @@
       <home6-reviews-v2 />
       <home7-download-v2 />
       <home8-reasons-v2 />
-      <home9-download-btn />
-      <home10-qualities-have/>
+      <home9-download-btn :pcdownloadurl="pcDownloadUrl" :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home9"/>
+      <home10-qualities-have :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home10" />
       <home11-traps-v2 />
-      <home12-download-btn />
-      <home-13-matter-v2 />
+      <home12-download-btn :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home12" />
+      <home-13-matter-v2 :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home13"/>
     </div>
   </div>
 </template>
@@ -66,9 +66,6 @@ import home10QualitiesHave from '@/views/home/home-v2/home-10-qualities-have/hom
 import home11TrapsV2 from '@/views/home/home-v2/home-11-traps/home-11-traps';
 import home12DownloadBtn from '@/views/home/home-v2/home-12-download-btn/home-12-download-btn';
 import home13MatterV2 from '@/views/home/home-v2/home-13-matter/home-13-matter';
-
-
-
 
 
 export default {
@@ -114,6 +111,31 @@ export default {
     return {
       meta: {
         title: this.$t('home.meta.title')
+      },
+      pcDownloadUrl: '/downloadcenter',
+      iosDownloadUrl: 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-newc&mt=8',
+      androidDownloadUrl: 'https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-newc',
+      gaInfo: {
+        home9: {
+          pc: ['insdl', 'download', 'pcdl-hpreason'],
+          ios: [ 'insdl', 'download', 'iosdl-hpreason'],
+          android: ['insdl', 'download', 'appdl-hpreason']
+        },
+        home10: {
+          pc: ['insdl', 'download', 'pcdl-hpquality'],
+          ios: ['insdl', 'download', 'iosdl-hpquality'],
+          android: ['insdl', 'download', 'appdl-hpquality']
+        },
+        home12: {
+          pc: ['insdl', 'download', 'pcdl-hptrap'],
+          ios: ['insdl', 'download', 'iosdl-hptrap'],
+          android: ['insdl', 'download', 'appdl-hptrap']
+        },
+        home13: {
+          pc: ['insdl', 'download', 'pcdl-hplike'],
+          ios: ['insdl', 'download', 'iosdl-hplike'],
+          android: ['insdl', 'download', 'appdl-hplike']
+        }
       }
     };
   },

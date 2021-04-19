@@ -13,33 +13,66 @@
       <div class="container">
         <div>
           <h2 class="step-2">Is It Necessary to Get Free Instagram Likes?</h2>
-          <p>Yes Indeed. Instagram algorithm regularly recommends hot posts to get more viewed under Instagram hashtag pages. The most decisive factor to satisfy the algorithm is how many likes your post has. Free Instagram likes help you boost the chance of having more viewers without paying money. There is no better solution to attract organic audiences than that.</p>
+          <p class="step-3">Yes Indeed. Instagram algorithm regularly recommends hot posts to get more viewed under Instagram hashtag pages. The most decisive factor to satisfy the algorithm is how many likes your post has. Free Instagram likes help you boost the chance of having more viewers without paying money. There is no better solution to attract organic audiences than that.</p>
         </div>
         <div>
-          <h2>How to Get More Free Instagram Likes?</h2>
-          <p>Typically, optimizing your posts - for instance, by creating attractive Instagram captions or using unique Instagram fonts - is never outdated. A good Instagram caption helps to fulfill your post, making it emotional and touching. Also, don't forget to use an Instagram fonts tool to give your audience a sense of freshness. Both methods achieve your Instagram likes' organic growth without paying money yet may take lots of time and effort.</p>
+          <h2 class="step-4">How to Get More Free Instagram Likes?</h2>
+          <p class="step-5">Typically, optimizing your posts - for instance, by creating attractive Instagram captions or using unique Instagram fonts - is never outdated. A good Instagram caption helps to fulfill your post, making it emotional and touching. Also, don't forget to use an Instagram fonts tool to give your audience a sense of freshness. Both methods achieve your Instagram likes' organic growth without paying money yet may take lots of time and effort.</p>
         </div>
         <div>
-          <h2>Most Efficient Way to Get Free Instagram Likes</h2>
-          <p>GetInsta is a 100% free Instagram likes increaser, will help you get 1000+ likes and followers within 5 minutes without one penny. Use GetInsta now to get free Instagram likes effortless.</p>
+          <h2 class="step-6">Most Efficient Way to Get Free Instagram Likes</h2>
+          <p class="step-7">GetInsta is a 100% free Instagram likes increaser, will help you get 1000+ likes and followers within 5 minutes without one penny. Use GetInsta now to get free Instagram likes effortless.</p>
         </div>
-        <div class="btns">
+        <div class="btns step-8">
          <div class="" @click="downloadAppGate">
-          <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" />
+          <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" />
         </div>
         <!--btn BuyNow-->
         <div class="" @click="ga01">
-          <button-buy-now square :text="$t('home.home-1.btn.BuyNow')" font-size="size-16" />
+          <button-buy-now square :text="$t('home.home-1.btn.BuyNow1')" font-size="size-16" />
         </div>
       </div>
       </div>
     </div>
+    <span class="ammo-move-d1s pc"></span>
+    <span class="ammo-move-d1s pc"></span>
+    <span class="ammo-move pc"></span>
+    <span class="ammo-move-d1s pc"></span>
+    <span class="ammo-move-d1s pc"></span>
+    <span class="ammo-move pc"></span>
+    <span class="ammo-move-d1s pc"></span>
+    <span class="ammo-move-d1s pc"></span>
+
+    <span class="ammo-move mobile"></span>
+    <span class="ammo-move mobile"></span>
+
+
   </div>
 </template>
 
 <script>
 export default {
   name: "Home8Reasons",
+  props: {
+    pcdownloadurl: {
+      type: String,
+      default: ''
+    },
+    iosdownloadurl: {
+      type: String,
+      default: ''
+    },
+    androiddownloadurl: {
+      type: String,
+      default: ''
+    },
+    gainfo: {
+      type: Object,
+      default: function() {
+        return {}
+      }
+    }
+  },
   data() {
     return {
       animateBegin: false,
@@ -67,31 +100,17 @@ export default {
       if (this.COMMON.isMobile())
         this.downloadApp();
       else {
-        this.$ga.event('inslogin', 'login', `hploginnew2`);
-        this.$nuxt.$router.push('/login');
+        this.$ga.event(this.gainfo['pc'][0], this.gainfo['pc'][1], this.gainfo['pc'][2]);
+        this.$nuxt.$router.push(this.pcdownloadurl);
       }
     },
     downloadApp() {
-      if (this.COMMON.isiOS()) {
-        if (this.$nuxt.$route.path === '/event-ios') {
-          this.$ga.event('insdl', 'download', 'hpiosdlm2-ad');
-          window.location.href = this.$constant.app.download.ios1;
-        } else {
-          this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew2`);
-
-          this.$store.commit('enIosLinkCt', this.$store.state.adQueryCampaignHome);
-          window.location.href
-            = `${this.$store.state.enIosLink}`
-            + `?pt=${this.$store.state.enIosLinkPt}`
-            + `&ct=${this.$store.state.enIosLinkCt}`
-            + `&mt=8`;
-        }
-      } else {
-        this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew2`);
-        window.location.href
-          = this.$constant.app.download.androidGooglePlay1
-          + this.$constant.app.campaign.androidReferrerQuery
-          + this.$store.state.enAdrLinkGpReferrer;
+      if (this.COMMON.isiOS()) { // ios
+        this.$ga.event(this.gainfo['ios'][0], this.gainfo['ios'][1], this.gainfo['ios'][2]);
+        location.href = this.iosdownloadurl;
+      } else { // android
+        this.$ga.event(this.gainfo['android'][0], this.gainfo['android'][1], this.gainfo['android'][2]);
+        location.href = this.androiddownloadurl;
       }
     },
     ga01() {
@@ -118,12 +137,84 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@include animateSteps(12);
+@include animateSteps(9);
 a[href] {
   color: #005FFF;
 }
 .home-13-matter {
   padding-bottom: 0;
+  position: relative;
+  overflow: hidden;
+  >span {
+    display: inline-block;
+    position: absolute;
+  }
+  >span:nth-of-type(1) {
+    width: 68px;
+    height: 68px;
+    background: url('./img/500.svg') no-repeat;
+    background-size: cover;
+    left: 270px;
+    bottom: 212px;
+  }
+  >span:nth-of-type(2) {
+    width: 14px;
+    height: 14px;
+    background: url('./img/circle-small.svg') no-repeat;
+    background-size: cover;
+    left: 152px;
+    bottom: 221px;
+  }
+  >span:nth-of-type(3) {
+    width: 79px;
+    height: 79px;
+    background-color: #FF5DAE;
+    left: 180px;
+    bottom: 81px;
+    border-radius: 100%;
+    filter: blur(12px);
+  }
+  >span:nth-of-type(4) {
+    width: 54px;
+    height: 54px;
+    background: url('./img/circle-user.svg') no-repeat;
+    background-size: cover;
+    left: 105px;
+    bottom: 40px;
+  }
+  >span:nth-of-type(5) {
+    width: 22px;
+    height: 22px;
+    background: url('./img/circle-red.svg') no-repeat;
+    background-size: cover;
+    right: 280px;
+    bottom: 271px;
+  }
+  >span:nth-of-type(6) {
+    width: 123px;
+    height: 123px;
+    background-color: #4AF1BE;
+    right: 150px;
+    bottom: 120px;
+    border-radius: 100%;
+    filter: blur(12px);
+  }
+  >span:nth-of-type(7) {
+    width: 55px;
+    height: 55px;
+    background: url('./img/circle-people.svg') no-repeat;
+    background-size: cover;
+    right: 65px;
+    bottom: 180px;
+  }
+  >span:nth-of-type(8) {
+    width: 55px;
+    height: 55px;
+    background: url('./img/circle-xin.svg') no-repeat;
+    background-size: cover;
+    right: 280px;
+    bottom: 44px;
+  }
   .wrapper {
     position: relative;
     overflow: hidden;
@@ -174,6 +265,8 @@ a[href] {
       border-radius: 11px;
       padding: 34px 40px 0 40px;
       box-sizing: border-box;
+      position: relative;
+      z-index: 3;
       >div:not(:nth-child(4)) {
         h2 {
           font: normal normal 600 20px/30px BalooChettan;
@@ -216,6 +309,33 @@ a[href] {
     padding: 0 24px;
     padding-top: 80px;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 50px;
+    > span {
+      display: inline-block;
+      position: absolute;
+    }
+    >span:nth-of-type(9) {
+      width: 79px;
+      height: 79px;
+      background-color: #FF5DAE;
+      left: -30px;
+      bottom: 50px;
+      border-radius: 100%;
+      filter: blur(12px);
+    }
+
+    >span:nth-of-type(10) {
+      width: 123px;
+      height: 123px;
+      background-color: #4AF1BE;
+      right: -60px;
+      bottom: 80px;
+      border-radius: 100%;
+      filter: blur(12px);
+    }
+
     .wrapper {
       >h2 {
         text-align: left;
