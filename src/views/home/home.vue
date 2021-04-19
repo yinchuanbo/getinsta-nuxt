@@ -20,6 +20,7 @@
       <home5-advantages-v2 />
       <home6-reviews-v2 />
       <home7-download-v2 />
+      <home8-reasons-v2 />
     </div>
   </div>
 </template>
