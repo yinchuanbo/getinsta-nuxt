@@ -1699,29 +1699,25 @@ export default {
               result = oldList.some(function(item) {
                 let res;
                 if (cartUnit.task_type == 2) { // followers
-                  res = cartUnit.product_id == item.product_id;
+                  res = cartUnit.product_id == item.product_id && cartUnit.ins_id == item.ins_id;
                 } else if (cartUnit.task_type == 1) { // likes
-                  res = cartUnit.product_id == item.product_id && cartUnit.like_id == item.like_id;
+                  res = cartUnit.product_id == item.product_id && cartUnit.like_id == item.like_id && cartUnit.ins_id == item.ins_id;
                 }
                 return res;
               })
-
-              console.log('result', result)
-
-
               if(!result) {
                 oldList.push(cartUnit);
               } else {
                 for (let i = 0; i < oldList.length; i++) {
                   if (cartUnit.task_type == 2) {
                     // followers
-                    if (cartUnit.product_id == oldList[i].product_id && oldList[i].product_num < 5) {
+                    if (cartUnit.product_id == oldList[i].product_id && cartUnit.ins_id == oldList[i].ins_id && oldList[i].product_num < 5) {
                       oldList[i].product_num++;
                       break;
                     }
                   } else if (cartUnit.task_type == 1) {
                     // likes
-                    if (cartUnit.product_id == oldList[i].product_id && cartUnit.like_id == oldList[i].like_id && oldList[i].product_num < 5) {
+                    if (cartUnit.product_id == oldList[i].product_id && cartUnit.ins_id == oldList[i].ins_id && cartUnit.like_id == oldList[i].like_id && oldList[i].product_num < 5) {
                       oldList[i].product_num++;
                       break;
                     }
