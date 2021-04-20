@@ -30,7 +30,7 @@ export default {
       const articleID = idArray.pop();
       if (typeof articleID !== 'string') return;
       // if (isDev) console.log('articleID', articleID);
-
+      
       let apiParams = {
         article_id: articleID,
         client_lan: 'en',
