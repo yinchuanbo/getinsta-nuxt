@@ -440,15 +440,22 @@ export default {
         this.$i18n.locale = userAgentLocale;
       }
 
-      console.log(to.name)
+      let isBlogList = true;
 
+      if(to.path === '/blog' || to.path === '/blog/') {
+        isBlogList = true;
+      } else if(to.path !== '/blog' && to.path !== '/blog/' && to.name === 'blog-id___en') {
+         isBlogList = false;
+      }
 
+      // console.log(to.name)
       if (this.$i18n.locale !== 'en') {
         if (
           // 语种跳转主判断
           subDomain !== userAgentLocale
           && to.name !== 'download'
-          && to.name !== 'blog-id___en'
+          // && to.name !== 'blog-id___en'
+          && isBlogList
           && to.path !== '/checkout'
           && to.path !== '/checkout-2'
           && to.path !== '/order-detail'
@@ -457,6 +464,9 @@ export default {
           && to.path !== '/lucky-draw'
           && to.path !== '/event-lucky-draw-1'
         ) {
+
+          console.log('list')
+
           // 此处 this.$route 因为异步加载路由原因无法第一时间更新(已解决)
           if (!this.COMMON.envTest()) {
             // Multi-lang Jump

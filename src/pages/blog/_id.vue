@@ -12,7 +12,6 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instanceDetail, instanceList },
-  
   async asyncData({store, route, req, app, redirect, error, isDev }) {
     // return data
     let DATA = {
@@ -41,10 +40,9 @@ export default {
           locale = 'en';
         }
       }
-
       let apiParams = {
         article_id: articleID,
-        client_lan: locale,
+        client_lan: 'en',
         page_url: paramID,
         accept_lan: locale
       };
