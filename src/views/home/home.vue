@@ -21,11 +21,11 @@
       <home6-reviews-v2 />
       <home7-download-v2 />
       <home8-reasons-v2 />
-      <home9-download-btn :pcdownloadurl="pcDownloadUrl" :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home9"/>
-      <home10-qualities-have :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home10" />
+      <home9-download-btn :downloadurl="downloadurl" :gainfo="gaInfo.home9"/>
+      <home10-qualities-have :downloadurl="downloadurl" :gainfo="gaInfo.home10" />
       <home11-traps-v2 />
-      <home12-download-btn :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home12" />
-      <home-13-matter-v2 :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home13"/>
+      <home12-download-btn :downloadurl="downloadurl" :gainfo="gaInfo.home12" />
+      <home-13-matter-v2 :downloadurl="downloadurl" :gainfo="gaInfo.home13"/>
     </div>
   </div>
 </template>
@@ -113,33 +113,51 @@ export default {
         title: this.$t('home.meta.title')
       },
       // pcDownloadUrl: '/downloadcenter',
-      pcDownloadUrl: '/login',
-      iosDownloadUrl: 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-newc&mt=8',
-      androidDownloadUrl: 'https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-newc',
+      downloadurl: {
+        pcdownloadurl: '/login',
+        iosdownloadurl: 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-newc&mt=8',
+        androiddownloadurl: 'https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-newc',
+      },
       gaInfo: {
         home9: {
           pc: ['inslogin', 'login', 'hplogin-reason'],
-          ios: [ 'insdl', 'download', 'iosdl-hpreason'],
-          android: ['insdl', 'download', 'appdl-hpreason'],
-          buyga: ["insbuy", "buy", "buy-hpreason"]
+          ios: [ 'insdl', 'download', 'hpiosdl-reason'],
+          android: ['insdl', 'download', 'hpappdl-reason'],
+          buyga: {
+            pc: ["insbuy", "buy", "hppcbuy-reason"],
+            ios: ["insbuy", "buy", "hpiosbuy-reason"],
+            android: [ "insbuy", "buy", "hpappbuy-reason"]
+          }
         },
         home10: {
           pc: ['inslogin', 'login', 'hplogin-quality'],
-          ios: ['insdl', 'download', 'iosdl-hpquality'],
-          android: ['insdl', 'download', 'appdl-hpquality'],
-          buyga: ["insbuy", "buy", "buy-hpquality"]
+          ios: ['insdl', 'download', 'hpiosdl-quality'],
+          android: ['insdl', 'download', 'hpappdl-quality'],
+          buyga: {
+            pc: ["insbuy", "buy", "hppcbuy-quality"],
+            ios: ["insbuy", "buy", "hpiosbuy-quality"],
+            android: [ "insbuy", "buy", "hpappbuy-quality"]
+          }
         },
         home12: {
           pc: ['inslogin', 'login', 'hplogin-trap'],
-          ios: ['insdl', 'download', 'iosdl-hptrap'],
-          android: ['insdl', 'download', 'appdl-hptrap'],
-          buyga: ["insbuy", "buy", "buy-hptrap"]
+          ios: ['insdl', 'download', 'hpiosdl-trap'],
+          android: ['insdl', 'download', 'hpappdl-trap'],
+          buyga: {
+            pc: ["insbuy", "buy", "hppcbuy-trap"],
+            ios: ["insbuy", "buy", "hpiosbuy-trap"],
+            android: ["insbuy", "buy", "hpappbuy-trap"]
+          }
         },
         home13: {
           pc: ['inslogin', 'login', 'hplogin-like'],
-          ios: ['insdl', 'download', 'iosdl-hplike'],
-          android: ['insdl', 'download', 'appdl-hplike'],
-          buyga: ["insbuy", "buy", "buy-hplike"]
+          ios: ['insdl', 'download', 'hpappdl-like'],
+          android: ['insdl', 'download', 'hpiosdl-like'],
+          buyga: {
+            pc: ["insbuy", "buy", "hppcbuy-like"],
+            ios: ["insbuy", "buy", "hpiosbuy-like"],
+            android: ["insbuy", "buy", "hpappbuy-like"]
+          }
         }
       }
     };

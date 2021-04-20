@@ -4,6 +4,7 @@ import redirectSSL from 'redirect-ssl';
 export default {
   srcDir: 'src/',
   ssr: true,
+  // 测试环境开启 debug 模式
   debug: process.env.NODE_ENV !== 'production',
 
   /*

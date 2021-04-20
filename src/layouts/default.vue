@@ -1121,7 +1121,7 @@ export default {
       this.$storage.set('s2', openOrNot);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
-        this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
+        // this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
       this.$store.commit('v2Ad', true);
     },
     v2SwitchForDev(path) {
@@ -1132,7 +1132,7 @@ export default {
       this.$store.commit('s2', true);
       const currentOrNew = openOrNot ? 'new' : 'current';
       if (path === '/')
-        this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
+        // this.$ga.event('insimp', 'impression', `hp${this.$store.state.platform}${currentOrNew}`);
       this.$store.commit('v2Ad', true);
     },
 

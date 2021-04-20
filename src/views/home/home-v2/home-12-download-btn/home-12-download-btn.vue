@@ -32,17 +32,11 @@ import ButtonBuyNow from '@/components/button/button-buy-now';
 export default {
   name: "Home7DownloadV2",
   props: {
-    pcdownloadurl: {
-      type: String,
-      default: ''
-    },
-    iosdownloadurl: {
-      type: String,
-      default: ''
-    },
-    androiddownloadurl: {
-      type: String,
-      default: ''
+    downloadurl: {
+      type: Object,
+      default: function() {
+        return {}
+      }
     },
     gainfo: {
       type: Object,
@@ -83,20 +77,28 @@ export default {
         this.downloadApp();
       else {
         this.$ga.event(this.gainfo['pc'][0], this.gainfo['pc'][1], this.gainfo['pc'][2]);
-        this.$nuxt.$router.push(this.pcdownloadurl);
+        this.$nuxt.$router.push(this.downloadurl.pcdownloadurl);
       }
     },
     downloadApp() {
       if (this.COMMON.isiOS()) { // ios
         this.$ga.event(this.gainfo['ios'][0], this.gainfo['ios'][1], this.gainfo['ios'][2]);
-        location.href = this.iosdownloadurl;
+        location.href = this.downloadurl.iosdownloadurl;
       } else { // android
         this.$ga.event(this.gainfo['android'][0], this.gainfo['android'][1], this.gainfo['android'][2]);
-        location.href = this.androiddownloadurl;
+        location.href = this.downloadurl.androiddownloadurl;
       }
     },
     ga01() {
-      this.$ga.event(this.gainfo['buyga'][0], this.gainfo['buyga'][1], this.gainfo['buyga'][2]);
+      if (this.COMMON.isMobile()) { // mobile
+        if (this.COMMON.isiOS()) { // ios
+          this.$ga.event(this.gainfo['buyga']['ios'][0], this.gainfo['buyga']['ios'][1], this.gainfo['buyga']['ios'][2])
+        } else { // android
+          this.$ga.event(this.gainfo['buyga']['android'][0], this.gainfo['buyga']['android'][1], this.gainfo['buyga']['android'][2])
+        }
+      } else { // pc
+         this.$ga.event(this.gainfo['buyga']['pc'][0], this.gainfo['buyga']['pc'][1], this.gainfo['buyga']['pc'][2])
+      }
       this.$nuxt.$router.push({
         path: '/buy-instagram-followers'
       });
