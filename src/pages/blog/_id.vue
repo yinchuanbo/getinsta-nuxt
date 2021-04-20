@@ -12,7 +12,8 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instanceDetail, instanceList },
-  async asyncData({ route, req, app, redirect, error, isDev }) {
+  
+  async asyncData({store, route, req, app, redirect, error, isDev }) {
     // return data
     let DATA = {
       isInstanceDetail: true,
@@ -21,7 +22,6 @@ export default {
     };
 
     // ***********************************************************************
-
     const paramID = route.params.id;
     if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
@@ -32,7 +32,7 @@ export default {
       // if (isDev) console.log('articleID', articleID);
       const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
       let locale = '';
-      const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+      const supportedLocale =  ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
       for (let i = 0; i < supportedLocale.length; i++) {
         if (supportedLocale[i] === browserLang) {
           locale = supportedLocale[i];
@@ -44,7 +44,7 @@ export default {
 
       let apiParams = {
         article_id: articleID,
-        client_lan: 'en',
+        client_lan: locale,
         page_url: paramID,
         accept_lan: locale
       };
