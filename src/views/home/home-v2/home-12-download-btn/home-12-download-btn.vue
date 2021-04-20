@@ -96,7 +96,7 @@ export default {
       }
     },
     ga01() {
-      this.$ga.event('insbuy', 'buy', `hp${this.$store.state.platform}buynew2`);
+      this.$ga.event(this.gainfo['buyga'][0], this.gainfo['buyga'][1], this.gainfo['buyga'][2]);
       this.$nuxt.$router.push({
         path: '/buy-instagram-followers'
       });

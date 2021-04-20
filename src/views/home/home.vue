@@ -112,29 +112,34 @@ export default {
       meta: {
         title: this.$t('home.meta.title')
       },
-      pcDownloadUrl: '/downloadcenter',
+      // pcDownloadUrl: '/downloadcenter',
+      pcDownloadUrl: '/login',
       iosDownloadUrl: 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-newc&mt=8',
       androidDownloadUrl: 'https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-newc',
       gaInfo: {
         home9: {
-          pc: ['insdl', 'download', 'pcdl-hpreason'],
+          pc: ['inslogin', 'login', 'hplogin-reason'],
           ios: [ 'insdl', 'download', 'iosdl-hpreason'],
-          android: ['insdl', 'download', 'appdl-hpreason']
+          android: ['insdl', 'download', 'appdl-hpreason'],
+          buyga: ["insbuy", "buy", "buy-hpreason"]
         },
         home10: {
-          pc: ['insdl', 'download', 'pcdl-hpquality'],
+          pc: ['inslogin', 'login', 'hplogin-quality'],
           ios: ['insdl', 'download', 'iosdl-hpquality'],
-          android: ['insdl', 'download', 'appdl-hpquality']
+          android: ['insdl', 'download', 'appdl-hpquality'],
+          buyga: ["insbuy", "buy", "buy-hpquality"]
         },
         home12: {
-          pc: ['insdl', 'download', 'pcdl-hptrap'],
+          pc: ['inslogin', 'login', 'hplogin-trap'],
           ios: ['insdl', 'download', 'iosdl-hptrap'],
-          android: ['insdl', 'download', 'appdl-hptrap']
+          android: ['insdl', 'download', 'appdl-hptrap'],
+          buyga: ["insbuy", "buy", "buy-hptrap"]
         },
         home13: {
-          pc: ['insdl', 'download', 'pcdl-hplike'],
+          pc: ['inslogin', 'login', 'hplogin-like'],
           ios: ['insdl', 'download', 'iosdl-hplike'],
-          android: ['insdl', 'download', 'appdl-hplike']
+          android: ['insdl', 'download', 'appdl-hplike'],
+          buyga: ["insbuy", "buy", "buy-hplike"]
         }
       }
     };
