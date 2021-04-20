@@ -44,9 +44,9 @@ export default {
 
       let apiParams = {
         article_id: articleID,
-        client_lan: locale,
+        client_lan: 'en',
         page_url: paramID,
-        accept_lan: 'en'
+        accept_lan: locale
       };
 
       // request
@@ -56,6 +56,7 @@ export default {
           { params: apiParams }
         );
         // if (isDev) console.log('res:', res);
+        console.log(res);
 
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
