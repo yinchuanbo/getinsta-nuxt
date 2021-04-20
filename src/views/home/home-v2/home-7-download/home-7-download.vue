@@ -27,7 +27,7 @@
             <button-icon-ins
               class="button-hover-1"
               theme="gradiant"
-              text="Get Free Followers Now"
+              text="Get Free Followers"
               square
               shadow
               :icon="'ins'"

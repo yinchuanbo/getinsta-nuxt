@@ -21,6 +21,11 @@
       <home6-reviews-v2 />
       <home7-download-v2 />
       <home8-reasons-v2 />
+      <home9-download-btn :pcdownloadurl="pcDownloadUrl" :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home9"/>
+      <home10-qualities-have :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home10" />
+      <home11-traps-v2 />
+      <home12-download-btn :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home12" />
+      <home-13-matter-v2 :pcdownloadurl="pcDownloadUrl"  :iosdownloadurl="iosDownloadUrl" :androiddownloadurl="androidDownloadUrl" :gainfo="gaInfo.home13"/>
     </div>
   </div>
 </template>
@@ -55,6 +60,13 @@ import Home4OutstandingV2 from '@/views/home/home-v2/home-4-outstanding/home-4-o
 import Home5AdvantagesV2 from '@/views/home/home-v2/home-5-advantages/home-5-advantages';
 import Home6ReviewsV2 from '@/views/home/home-v2/home-6-reviews/home-6-reviews';
 import Home7DownloadV2 from '@/views/home/home-v2/home-7-download/home-7-download';
+import home8ReasonsV2 from '@/views/home/home-v2/home-8-reasons/home-8-reasons';
+import home9DownloadBtn from '@/views/home/home-v2/home-9-download-btn/home-9-download-btn';
+import home10QualitiesHave from '@/views/home/home-v2/home-10-qualities-have/home-10-qualities-have';
+import home11TrapsV2 from '@/views/home/home-v2/home-11-traps/home-11-traps';
+import home12DownloadBtn from '@/views/home/home-v2/home-12-download-btn/home-12-download-btn';
+import home13MatterV2 from '@/views/home/home-v2/home-13-matter/home-13-matter';
+
 
 export default {
   name: 'Home',
@@ -67,6 +79,12 @@ export default {
     Home2DailyFollowerV2,
     Home1StepsV2,
     Home0BannerV2,
+    home8ReasonsV2,
+    home9DownloadBtn,
+    home10QualitiesHave,
+    home11TrapsV2,
+    home12DownloadBtn,
+    home13MatterV2,
     // Home9VideoDeIos,
     // Home4OutstandingDeIos,
     // Home3StepsDeIos,
@@ -93,6 +111,36 @@ export default {
     return {
       meta: {
         title: this.$t('home.meta.title')
+      },
+      // pcDownloadUrl: '/downloadcenter',
+      pcDownloadUrl: '/login',
+      iosDownloadUrl: 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-newc&mt=8',
+      androidDownloadUrl: 'https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-newc',
+      gaInfo: {
+        home9: {
+          pc: ['inslogin', 'login', 'hplogin-reason'],
+          ios: [ 'insdl', 'download', 'iosdl-hpreason'],
+          android: ['insdl', 'download', 'appdl-hpreason'],
+          buyga: ["insbuy", "buy", "buy-hpreason"]
+        },
+        home10: {
+          pc: ['inslogin', 'login', 'hplogin-quality'],
+          ios: ['insdl', 'download', 'iosdl-hpquality'],
+          android: ['insdl', 'download', 'appdl-hpquality'],
+          buyga: ["insbuy", "buy", "buy-hpquality"]
+        },
+        home12: {
+          pc: ['inslogin', 'login', 'hplogin-trap'],
+          ios: ['insdl', 'download', 'iosdl-hptrap'],
+          android: ['insdl', 'download', 'appdl-hptrap'],
+          buyga: ["insbuy", "buy", "buy-hptrap"]
+        },
+        home13: {
+          pc: ['inslogin', 'login', 'hplogin-like'],
+          ios: ['insdl', 'download', 'iosdl-hplike'],
+          android: ['insdl', 'download', 'appdl-hplike'],
+          buyga: ["insbuy", "buy", "buy-hplike"]
+        }
       }
     };
   },
