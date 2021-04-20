@@ -365,11 +365,11 @@ export default {
       ];
 
       if (!this.COMMON.isMobile()) {
-        this.downloadCtaSeasonShow = downloadCtaSeasonShowPathArrayPC.indexOf(to.path) > -1 || to.name === 'blog-detail';
+        this.downloadCtaSeasonShow = downloadCtaSeasonShowPathArrayPC.indexOf(to.path) > -1 || to.name === 'blog-id___en';
         let bool = storePath || checkout || usePath ? 0 : 74;
         this.$store.commit('v2AdHeightPc', bool)
       } else {
-        this.downloadCtaSeasonShow = downloadCtaSeasonShowPathArray.indexOf(to.path) > -1 || to.name === 'blog-detail';
+        this.downloadCtaSeasonShow = downloadCtaSeasonShowPathArray.indexOf(to.path) > -1 || to.name === 'blog-id___en';
         let bool = homePath || getFlPath ? 44 : 0;
         this.$store.commit('v2AdHeightMobile', bool)
       }
@@ -440,13 +440,15 @@ export default {
         this.$i18n.locale = userAgentLocale;
       }
 
+      console.log(to.name)
+
 
       if (this.$i18n.locale !== 'en') {
         if (
           // 语种跳转主判断
           subDomain !== userAgentLocale
           && to.name !== 'download'
-          && to.name !== 'blog-detail'
+          && to.name !== 'blog-id___en'
           && to.path !== '/checkout'
           && to.path !== '/checkout-2'
           && to.path !== '/order-detail'
@@ -965,7 +967,7 @@ export default {
       // console.log('routeFrom.name', routeFrom.name);
       // console.log('routeTo.name', routeTo.name);
       if (
-        (routeFrom.name === 'blog' || routeFrom.name === 'blog-detail')
+        (routeFrom.name === 'blog' || routeFrom.name === 'blog-id___en')
         && (routeTo.name === 'login' || routeFrom.name === 'register' || routeFrom.name === 'seo-1-lottery')
       ) {
         // this.$storage.set('fromBlog', true);
@@ -973,7 +975,7 @@ export default {
       }
 
       if (
-        (routeFrom.name !== 'blog' && routeFrom.name !== 'blog-detail' && routeFrom.name !== 'seo-1-lottery')
+        (routeFrom.name !== 'blog' && routeFrom.name !== 'blog-id___en' && routeFrom.name !== 'seo-1-lottery')
         && (routeTo.name === 'login' || routeFrom.name === 'register' || routeFrom.name === 'seo-1-lottery')
       ) {
         this.$storage.set('fromBlog', false);

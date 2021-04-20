@@ -128,7 +128,7 @@
         <div class="counter-container-item1_text">
           <h3>What is Instagram follower counter?</h3>
           <p>
-            Instagram Follower Counter is tool to help you check the accurate
+            Instagram Follower Counter is a tool to help you check the accurate
             and real-time follower count of any Instagram account wihtout login
             or using Instagram. It is online and free to use. GetInsta Instagram
             Followers Counter could be your first choice when considering

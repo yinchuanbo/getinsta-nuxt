@@ -30,10 +30,21 @@ export default {
       const articleID = idArray.pop();
       if (typeof articleID !== 'string') return;
       // if (isDev) console.log('articleID', articleID);
+      const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
+      let locale = '';
+      const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+      for (let i = 0; i < supportedLocale.length; i++) {
+        if (supportedLocale[i] === browserLang) {
+          locale = supportedLocale[i];
+          break;
+        } else {
+          locale = 'en';
+        }
+      }
 
       let apiParams = {
         article_id: articleID,
-        client_lan: 'en',
+        client_lan: locale,
         page_url: paramID,
         accept_lan: 'en'
       };
