@@ -47,7 +47,6 @@ export default {
         page_url: paramID,
         accept_lan: locale
       };
-
       // request
       try {
         let res = await app.$axios.$get(
