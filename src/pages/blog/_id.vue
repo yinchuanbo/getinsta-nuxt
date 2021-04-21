@@ -12,7 +12,8 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instanceDetail, instanceList },
-  async asyncData({store, route, req, app, redirect, error, isDev }) {
+  middleware: 'jump',
+  async asyncData({ route, req, app, redirect, error, isDev }) {
     // return data
     let DATA = {
       isInstanceDetail: true,
@@ -46,7 +47,6 @@ export default {
         page_url: paramID,
         accept_lan: locale
       };
-
       // request
       try {
         let res = await app.$axios.$get(
@@ -54,8 +54,6 @@ export default {
           { params: apiParams }
         );
         // if (isDev) console.log('res:', res);
-        console.log(res);
-
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
           app.title = DATA.reqObj['seo_title'];

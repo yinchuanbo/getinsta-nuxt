@@ -1275,17 +1275,29 @@
               position: relative;
               &.mostPopular {
                 box-sizing: border-box;
+                border: 0;
                 &::after {
                   content: '';
                   position: absolute;
-                  width: 116px;
-                  height: 56px;
-                  top: -16px;
-                  right: -21px;
-                  background-color: red;
+                  width: 80px;
+                  height: 20px;
+                  top: 0;
+                  right: -6px;
                   z-index: 5;
-                  background: url('./img/mob-most.svg') no-repeat;
-                  background-size: 100% 100%;
+                  background: url('./img/mob.png') no-repeat;
+                  background-size: cover;
+                }
+                @media screen and (-webkit-min-device-pixel-ratio: 2),screen and (min--moz-device-pixel-ratio: 2) {
+                  &::after {
+                    background: url('./img/mob@2x.png') no-repeat;
+                    background-size: cover;
+                  }
+                }
+                @media screen and (-webkit-min-device-pixel-ratio: 3),screen and (min--moz-device-pixel-ratio: 3) {
+                  &::after {
+                    background: url('./img/mob@3x.png') no-repeat;
+                    background-size: cover;
+                  }
                 }
               }
               &.dayActive {

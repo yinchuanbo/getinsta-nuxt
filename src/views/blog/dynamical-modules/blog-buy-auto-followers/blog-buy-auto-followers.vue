@@ -55,6 +55,7 @@
       :my-ins-user="insUser"
       :this-vue="sendThis"
       @closebox="closeBuyPop"
+      :isFollowers="true"
     />
   </div>
 </template>
