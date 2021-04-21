@@ -195,6 +195,10 @@ export default {
       param.following_count = this.myInsUser.follow;
       param.cycle_type = this.followers.cycle_type;
 
+      if(this.isFollowers) {
+        param.product_type = 2;
+      }
+
       this.transportCartUnitData(param);
 
       // GA
