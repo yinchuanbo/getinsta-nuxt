@@ -1275,7 +1275,6 @@
               position: relative;
               &.mostPopular {
                 box-sizing: border-box;
-                border: 0;
                 &::after {
                   content: '';
                   position: absolute;
