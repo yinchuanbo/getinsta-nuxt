@@ -17,7 +17,7 @@ export default async function ({
         const idArray = paramID.split('-');
         const articleID = idArray.pop();
         if (typeof articleID !== 'string') return;
-        const browserLang = req.headers['accept-language'].split(',')[0];
+        let browserLang = req.headers['accept-language'].toLowerCase().substr(0, 2);
         let locale = '';
         const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
         for (let i = 0; i < supportedLocale.length; i++) {
