@@ -12,6 +12,7 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instanceDetail, instanceList },
+  middleware: 'jump',
   async asyncData({ route, req, app, redirect, error, isDev }) {
     // return data
     let DATA = {
@@ -56,8 +57,6 @@ export default {
           { params: apiParams }
         );
         // if (isDev) console.log('res:', res);
-        console.log(res);
-
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
           app.title = DATA.reqObj['seo_title'];
