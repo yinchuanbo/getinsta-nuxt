@@ -282,11 +282,11 @@ export default {
   },
   created() {
     // nuxt
-    this.getBlogDetailByProps(this.reqObj);
+    // this.getBlogDetailByProps(this.reqObj);
   },
   mounted() {
     // this.getBlogDetail(this.blogID, true);
-    // this.getBlogDetailByProps(this.reqObj);
+    this.getBlogDetailByProps(this.reqObj);
     this.$store.commit('blogID', this.blogID);
   },
   methods: {
@@ -464,9 +464,8 @@ export default {
         });
         _this.renderTimerCounter++;
       });
-      
       this.relatedArticleList = rList;
-      // container.remove();
+      container.remove();
     },
     blogSearchDisplay() {
       let _this = this;
@@ -500,6 +499,7 @@ export default {
           _this.renderTimerCounter++;
         }
       }
+
     },
     imgGalleryDisplay() {
       let _this = this;

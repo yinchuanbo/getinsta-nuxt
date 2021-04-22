@@ -14,8 +14,8 @@
     </transition>
 
     <!--footer-->
-    <footer-container v-if="!footerHide && !$store.state.v2" />
-    <footer-container-v2 v-if="!footerHide && $store.state.v2" />
+    <!-- <footer-container v-if="!footerHide && !$store.state.v2" /> -->
+    <footer-container-v2 v-if="!footerHide" />
 
     <!--bottom download cta-->
     <download-cta v-if="!bottomCTAHide && $store.state.isMobile && ifShowCta && !$store.state.v2" />
@@ -58,7 +58,7 @@ import HeaderContainerV2 from '@/components/header/header-container-v2';
 import GeneralBlank from '@/components/general-blank';
 
 import FooterContainerV2 from '@/components/footer/footer-container-v2';
-import FooterContainer from '@/components/footer/footer-container';
+// import FooterContainer from '@/components/footer/footer-container';
 
 import DownloadCta from '@/components/download-cta/download-cta';
 import DownloadCtaV2 from '@/components/download-cta/download-cta-v2/download-cta-v2';
@@ -82,7 +82,7 @@ export default {
 
     GeneralBlank,
 
-    FooterContainer,
+    // FooterContainer,
     FooterContainerV2,
 
     DownloadCta,
