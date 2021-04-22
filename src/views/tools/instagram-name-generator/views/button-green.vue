@@ -105,16 +105,18 @@ export default {
     dowEvent(res) {
       let ct = this.$store.state.enIosLinkCt;
       if (res === 'ios') {
-        location.href
-          = `${this.$store.state.enIosLink}`
-          + `?pt=${this.$store.state.enIosLinkPt}`
-          + `&ct=${ct}`
-          + `&mt=8`;
+        // location.href
+        //   = `${this.$store.state.enIosLink}`
+        //   + `?pt=${this.$store.state.enIosLinkPt}`
+        //   + `&ct=${ct}`
+        //   + `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
       } else {
-        location.href
-          = this.$store.state.enAdrLinkWithoutGpReferrer
-          + this.$constant.app.campaign.androidReferrerQuery
-          + 'en-seo-iug';
+        location.href = this.$storage.get('adrDownloadLink');
+        // location.href
+        //   = this.$store.state.enAdrLinkWithoutGpReferrer
+        //   + this.$constant.app.campaign.androidReferrerQuery
+        //   + 'en-seo-iug';
       }
     }
   }

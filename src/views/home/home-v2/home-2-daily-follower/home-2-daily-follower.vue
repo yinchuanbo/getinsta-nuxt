@@ -372,18 +372,20 @@ export default {
       }
       if (this.COMMON.isiOS()) {
         this.$ga.event('insdl', 'download', `hpiosdlnew3`);
-        location.href
-          = `${this.$store.state.enIosLink}`
-          + `?pt=${this.$store.state.enIosLinkPt}`
-          + `&ct=${this.$store.state.enIosLinkCt}`
-          + `&mt=8`;
+        // location.href
+        //   = `${this.$store.state.enIosLink}`
+        //   + `?pt=${this.$store.state.enIosLinkPt}`
+        //   + `&ct=${this.$store.state.enIosLinkCt}`
+        //   + `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
       }
       if (this.COMMON.isAndroid()) {
         this.$ga.event('insdl', 'download', `hpappdlnew3`);
-        window.location.href
-          = this.$constant.app.download.androidGooglePlay1
-          + this.$constant.app.campaign.androidReferrerQuery
-          + this.$store.state.enAdrLinkGpReferrer;
+        location.href = this.$storage.get('adrDownloadLink');
+        // window.location.href
+        //   = this.$constant.app.download.androidGooglePlay1
+        //   + this.$constant.app.campaign.androidReferrerQuery
+        //   + this.$store.state.enAdrLinkGpReferrer;
       }
     },
 

@@ -130,7 +130,12 @@ export default {
               //   + `?pt=${this.$store.state.enIosLinkPt}`
               //   + `&ct=en-seo-thankyoufail`
               //   + `&mt=8`;
-              location.href = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-thankyoufail&mt=8'
+
+              location.href = 
+              `${this.$store.state.enIosLink}` 
+              + `?pt=${this.$store.state.enIosLinkPt}` 
+              + `&ct=en-seo-thankyoufail`
+              + `&mt=8`;
             }
           ).catch();
         } else { // Android
@@ -149,8 +154,7 @@ export default {
               //   + 'en-seo-thankyoufail';
               // location.href
               //   = this.$constant.app.download.android;
-              location.href
-                = location.href = this.$store.state.enAdrLink;
+              location.href = this.$store.state.enAdrLinkWithoutGpReferrer + this.$constant.app.campaign.androidReferrerQuery + 'en-seo-thankyoufail';
             }
           ).catch();
         }

@@ -115,25 +115,29 @@ export default {
         `hp${this.$store.state.platform}dlnew5`
       );
       if (this.COMMON.isiOS()) {
-        window.location.href =
-          `${this.$store.state.enIosLink}` +
-          `?pt=${this.$store.state.enIosLinkPt}` +
-          `&ct=${this.$store.state.enIosLinkCt}` +
-          `&mt=8`;
+        // window.location.href =
+        //   `${this.$store.state.enIosLink}` +
+        //   `?pt=${this.$store.state.enIosLinkPt}` +
+        //   `&ct=${this.$store.state.enIosLinkCt}` +
+        //   `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
       } else {
-        window.location.href =
-          this.$constant.app.download.androidGooglePlay1 +
-          this.$constant.app.campaign.androidReferrerQuery +
-          this.$store.state.enAdrLinkGpReferrer;
+        // window.location.href =
+        //   this.$constant.app.download.androidGooglePlay1 +
+        //   this.$constant.app.campaign.androidReferrerQuery +
+        //   this.$store.state.enAdrLinkGpReferrer;
+        location.href = this.$storage.get('adrDownloadLink');
       }
     },
     downloadIOS() {
       this.$ga.event("insdl", "download", "hppcdl1-ios");
-      window.location.href = `https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-hpnew&mt=8`;
+      // window.location.href = `https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-hpnew&mt=8`;
+      location.href = this.$storage.get('iosDownloadLink')
     },
     downloadAndroid() {
       this.$ga.event("insdl", "download", "hppcdl1-app");
-      window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-hpnew`;
+      // window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-hpnew`;
+      location.href = this.$storage.get('adrDownloadLink');
     },
     gaLogin() {
       this.$ga.event("inslogin", "login", "hploginnew5");

@@ -758,11 +758,13 @@ export default {
     downloadIOS(param) {
       this.$ga.event("insdl", "download", param);
       // location.href = `https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-counter&mt=8`;
-      location.href = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-a-counter&mt=8 ';
+      // location.href = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-a-counter&mt=8 ';
+      location.href = this.$storage.get('iosDownloadLink');
     },
     downloadAndroid(param) {
       this.$ga.event("insdl", "download", param);
-      window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-counter`;
+      // window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-counter`;
+      location.href = this.$storage.get('adrDownloadLink');
     },
     initTabIndex() {
       const path = this.$nuxt.$route.path;

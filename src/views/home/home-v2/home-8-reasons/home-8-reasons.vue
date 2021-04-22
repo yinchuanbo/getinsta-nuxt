@@ -43,7 +43,7 @@
         <p>Things keep changing. Offline sales are not the primary channel people choose to buy products. People find commercial opportunities: promoting and selling products on social platforms. Instagram has been one of the popular platforms for individual businesses and companies with continuously updated features like Instagram ads and shoutouts. The more followers you have, the more trustable and reliable you are in the eyes of others. And they’re more likely to follow you and become your followers, and even loyal followers who prefer to pay for the products you promote than other sellers. Then you’ll become more competitive on the market than ever and expand your market share on Instagram.</p>
       </div>
       <div  class="step-10">
-        <h3>9. Rank Top on Your Follower’ Feed</h3>
+        <h3>9. Rank Top on Your Followers' Feed</h3>
         <p>On Instagram, all posts from accounts you follow will appear on your Feed in reverse chronological order. But now the order of posts on Instagram Feed changes. The order is mainly determined by 3 factors according to the Instagram Help Center that is closely connected to the followers count your account has. If you have more than <a href="/blog/instagram-followers-10k-9">10k Instagram followers</a>, your posts will be liked and shared by about 1 thousand people on a conservative estimate. If so, your posts will rank top on your followers’ Feed with Instagram technology and reach more people.</p>
       </div>
       <div  class="step-11">
