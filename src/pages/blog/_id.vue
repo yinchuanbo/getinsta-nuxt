@@ -22,7 +22,6 @@ export default {
     };
 
     // ***********************************************************************
-
     const paramID = route.params.id;
     if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
@@ -33,7 +32,7 @@ export default {
       // if (isDev) console.log('articleID', articleID);
       const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
       let locale = '';
-      const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+      const supportedLocale =  ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
       for (let i = 0; i < supportedLocale.length; i++) {
         if (supportedLocale[i] === browserLang) {
           locale = supportedLocale[i];
@@ -42,14 +41,12 @@ export default {
           locale = 'en';
         }
       }
-
       let apiParams = {
         article_id: articleID,
         client_lan: 'en',
         page_url: paramID,
         accept_lan: locale
       };
-
       // request
       try {
         let res = await app.$axios.$get(

@@ -20,6 +20,12 @@
       <home5-advantages-v2 />
       <home6-reviews-v2 />
       <home7-download-v2 />
+      <home8-reasons-v2 />
+      <home9-download-btn :gainfo="gaInfo.home9"/>
+      <home10-qualities-have :gainfo="gaInfo.home10" />
+      <home11-traps-v2 />
+      <home12-download-btn :gainfo="gaInfo.home12" />
+      <home-13-matter-v2 :gainfo="gaInfo.home13"/>
     </div>
   </div>
 </template>
@@ -54,6 +60,13 @@ import Home4OutstandingV2 from '@/views/home/home-v2/home-4-outstanding/home-4-o
 import Home5AdvantagesV2 from '@/views/home/home-v2/home-5-advantages/home-5-advantages';
 import Home6ReviewsV2 from '@/views/home/home-v2/home-6-reviews/home-6-reviews';
 import Home7DownloadV2 from '@/views/home/home-v2/home-7-download/home-7-download';
+import home8ReasonsV2 from '@/views/home/home-v2/home-8-reasons/home-8-reasons';
+import home9DownloadBtn from '@/views/home/home-v2/home-9-download-btn/home-9-download-btn';
+import home10QualitiesHave from '@/views/home/home-v2/home-10-qualities-have/home-10-qualities-have';
+import home11TrapsV2 from '@/views/home/home-v2/home-11-traps/home-11-traps';
+import home12DownloadBtn from '@/views/home/home-v2/home-12-download-btn/home-12-download-btn';
+import home13MatterV2 from '@/views/home/home-v2/home-13-matter/home-13-matter';
+
 
 export default {
   name: 'Home',
@@ -66,6 +79,12 @@ export default {
     Home2DailyFollowerV2,
     Home1StepsV2,
     Home0BannerV2,
+    home8ReasonsV2,
+    home9DownloadBtn,
+    home10QualitiesHave,
+    home11TrapsV2,
+    home12DownloadBtn,
+    home13MatterV2,
     // Home9VideoDeIos,
     // Home4OutstandingDeIos,
     // Home3StepsDeIos,
@@ -91,7 +110,52 @@ export default {
   data() {
     return {
       meta: {
-        title: this.$t('home.meta.title')
+        title: this.$t('home.meta.title'),
+      },
+      downloadurl: {
+        pcdownloadurl: '/login'
+      },
+      gaInfo: {
+        home9: {
+          pc: ['inslogin', 'login', 'hplogin-reason'],
+          ios: [ 'insdl', 'download', 'hpiosdl-reason'],
+          android: ['insdl', 'download', 'hpappdl-reason'],
+          buyga: {
+            pc: ["insbuy", "buy", "hppcbuy-reason"],
+            ios: ["insbuy", "buy", "hpiosbuy-reason"],
+            android: [ "insbuy", "buy", "hpappbuy-reason"]
+          }
+        },
+        home10: {
+          pc: ['inslogin', 'login', 'hplogin-quality'],
+          ios: ['insdl', 'download', 'hpiosdl-quality'],
+          android: ['insdl', 'download', 'hpappdl-quality'],
+          buyga: {
+            pc: ["insbuy", "buy", "hppcbuy-quality"],
+            ios: ["insbuy", "buy", "hpiosbuy-quality"],
+            android: [ "insbuy", "buy", "hpappbuy-quality"]
+          }
+        },
+        home12: {
+          pc: ['inslogin', 'login', 'hplogin-trap'],
+          ios: ['insdl', 'download', 'hpiosdl-trap'],
+          android: ['insdl', 'download', 'hpappdl-trap'],
+          buyga: {
+            pc: ["insbuy", "buy", "hppcbuy-trap"],
+            ios: ["insbuy", "buy", "hpiosbuy-trap"],
+            android: ["insbuy", "buy", "hpappbuy-trap"]
+          }
+        },
+        home13: {
+          pc: ['inslogin', 'login', 'hplogin-like'],
+          ios: ['insdl', 'download', 'hpappdl-like'],
+          android: ['insdl', 'download', 'hpiosdl-like'],
+          buyga: {
+            pc: ["insbuy", "buy", "hppcbuy-like"],
+            ios: ["insbuy", "buy", "hpiosbuy-like"],
+            android: ["insbuy", "buy", "hpappbuy-like"]
+          }
+        }
       }
     };
   },

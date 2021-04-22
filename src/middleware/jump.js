@@ -11,7 +11,6 @@ export default async function ({
 }) {
     // if (isHMR) return;
     if(!req) return;
-
     const paramID = route.params.id;
     if (paramID) { // 详情页
         const idArray = paramID.split('-');

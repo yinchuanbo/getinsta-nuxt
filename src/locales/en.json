@@ -116,6 +116,7 @@
       "btn": {
         "FreeGetItNow": "Free Get It Now",
         "BuyNow": "Buy Now",
+        "BuyNow1": "Buy Followers Now",
         "DownloadAPPNow": "Download APP Now"
       }
     },
@@ -135,6 +136,7 @@
       "btn": {
         "GetFreeFollowers&LikesNow": "Get Free Followers & Likes Now",
         "BuyNow": "Buy Now",
+        "BuyNow1": "Buy Followers Now",
         "DownloadForIphone": "Download For iPhone",
         "DownloadForAndroid": "Download For Android"
       }
@@ -251,6 +253,12 @@
       "text": ""
     }
   },
+  "home-v2": {
+    "meta": {
+      "title": "GetInsta: Get Free Instagram Followers & Likes [100% Real]",
+      "description": "GetInsta helps get totally FREE Instagram followers free Instagram likes from real active users. Download GetInsta app to grow followers likes without payment."
+    }
+  },
   "store": {
     "meta": {
       "title-0": "GetInsta: Buy Instagram Followers [Real, Safe, Instant]",
@@ -364,6 +372,7 @@
       "delete": "Delete"
     },
     "BuyNow": "Buy Now",
+    "BuyNow1": "Buy Followers Now",
     "note": {
       "text0": "By placing this order, you agree to the",
       "link0": "Terms & Conditions",

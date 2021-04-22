@@ -52,16 +52,16 @@ export default {
       tabsIndex: 1
     };
   },
-  watch: {
-    $route(to, from) {
-      let path = to.path;
-      this.getGa(path);
-    }
-  },
-  mounted() {
-    let path = this.$route.path;
-    this.getGa(path);
-  },
+  // watch: {
+  //   $route(to, from) {
+  //     let path = to.path;
+  //     this.getGa(path);
+  //   }
+  // },
+  // mounted() {
+  //   let path = this.$route.path;
+  //   this.getGa(path);
+  // },
   methods: {
     parentHandle(data) {
       let query = this.$route.query;

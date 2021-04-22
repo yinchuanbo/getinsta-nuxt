@@ -50,12 +50,12 @@
 
       <!--btn DownloadFor -->
       <div class="home-1-steps__btn-container step-5" @click="downloadAppGate">
-        <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" />
+        <button-icon-ins class="button-hover-1" theme="gradiant" text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" />
       </div>
 
       <!--btn BuyNow-->
       <div v-if="!buyNowBtnHide" class="home-1-steps__btn-container second step-5" @click="ga01">
-        <button-buy-now square :text="$t('home.home-1.btn.BuyNow')" font-size="size-16" />
+        <button-buy-now square :text="$t('home.home-1.btn.BuyNow1')" font-size="size-16" />
       </div>
     </div>
   </div>
@@ -158,18 +158,20 @@ export default {
           this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew2`);
 
           this.$store.commit('enIosLinkCt', this.$store.state.adQueryCampaignHome);
-          window.location.href
-            = `${this.$store.state.enIosLink}`
-            + `?pt=${this.$store.state.enIosLinkPt}`
-            + `&ct=${this.$store.state.enIosLinkCt}`
-            + `&mt=8`;
+          location.href = this.$storage.get('iosDownloadLink');
+          // window.location.href
+          //   = `${this.$store.state.enIosLink}`
+          //   + `?pt=${this.$store.state.enIosLinkPt}`
+          //   + `&ct=${this.$store.state.enIosLinkCt}`
+          //   + `&mt=8`;
         }
       } else {
         this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew2`);
-        window.location.href
-          = this.$constant.app.download.androidGooglePlay1
-          + this.$constant.app.campaign.androidReferrerQuery
-          + this.$store.state.enAdrLinkGpReferrer;
+        location.href = this.$storage.get('adrDownloadLink');
+        // window.location.href
+        //   = this.$constant.app.download.androidGooglePlay1
+        //   + this.$constant.app.campaign.androidReferrerQuery
+        //   + this.$store.state.enAdrLinkGpReferrer;
       }
     },
     downloadAppMinorLang() {

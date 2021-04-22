@@ -9,7 +9,7 @@
 
         <div class="home-2-free__btn-container pc step-2">
           <div class="btn" @click="btnActionGate">
-            <button-icon-ins class="button-hover-1" text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" theme="gradiant" />
+            <button-icon-ins class="button-hover-1" text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" theme="gradiant" />
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
 
         <!--download Mobile-->
         <div class="btn mobile" @click="gaDownload">
-          <button-icon-ins text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" theme="gradiant" />
+          <button-icon-ins text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" theme="gradiant" />
         </div>
       </div>
 
@@ -125,19 +125,21 @@ export default {
         this.$ga.event('insdl', 'download', 'hpiosdlnew4');
 
         this.$store.commit('enIosLinkCt', this.$store.state.adQueryCampaignHome);
-        window.location.href
-          = `${this.$store.state.enIosLink}`
-          + `?pt=${this.$store.state.enIosLinkPt}`
-          + `&ct=${this.$store.state.enIosLinkCt}`
-          + `&mt=8`;
+        // window.location.href
+        //   = `${this.$store.state.enIosLink}`
+        //   + `?pt=${this.$store.state.enIosLinkPt}`
+        //   + `&ct=${this.$store.state.enIosLinkCt}`
+        //   + `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
       }
     },
     downloadAndroid() {
       this.$ga.event('insdl', 'download', 'hpappdlnew4');
-      window.location.href
-        = this.$constant.app.download.androidGooglePlay1
-        + this.$constant.app.campaign.androidReferrerQuery
-        + this.$store.state.enAdrLinkGpReferrer;
+      // window.location.href
+      //   = this.$constant.app.download.androidGooglePlay1
+      //   + this.$constant.app.campaign.androidReferrerQuery
+      //   + this.$store.state.enAdrLinkGpReferrer;
+      location.href = this.$storage.get('adrDownloadLink');
     },
     downloadWindows() {
       this.$ga.event('insdl', 'download', 'hpwindl1');

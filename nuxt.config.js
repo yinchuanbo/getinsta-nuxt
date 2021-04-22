@@ -4,6 +4,7 @@ import redirectSSL from 'redirect-ssl';
 export default {
   srcDir: 'src/',
   ssr: true,
+  // 测试环境开启 debug 模式
   debug: process.env.NODE_ENV !== 'production',
 
   /*
@@ -14,7 +15,7 @@ export default {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [

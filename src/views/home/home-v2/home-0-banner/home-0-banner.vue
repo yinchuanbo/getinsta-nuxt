@@ -56,7 +56,7 @@
           :class="{ 'minor-lang': $i18n.locale !== 'en' }"
           @click="gaBtnFreeGetItNow"
         >
-          <button-icon-ins text="Get Free Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
+          <button-icon-ins text="Get Free Followers" bubble-float square shadow :icon="'ins'" font-size="size-16" theme="cyan" class="button-hover-1" />
         </div>
 
 
@@ -70,13 +70,13 @@
         <!--DownloadAPPNow Mobile-->
         <div class="mobile" @click="downloadApp">
           <div class="home-0-banner__text_btn long">
-            <button-icon-ins text="Get Free Followers Now" bubble-float square shadow :icon="'ins'" font-size="size-15" theme="cyan" />
+            <button-icon-ins text="Get Free Followers" bubble-float square shadow :icon="'ins'" font-size="size-15" theme="cyan" />
           </div>
         </div>
         <!--DownloadAPPNow Mobile (pageSeoBuy)-->
         <div v-if="pageSeoBuy" class="home-0-banner__text_btn mobile" @click="downloadAppPageSeoBuy">
           <!--          <button-wave :text="$t('home.home-0.btn.DownloadAPPNow')" />-->
-          <button-buy-now :text="$t('home.home-0.btn.BuyNow')" :white="true" :font-size="'size-20'" />
+          <button-buy-now :text="$t('home.home-0.btn.BuyNow1')" :white="true" :font-size="'size-20'" />
         </div>
 
 
@@ -87,7 +87,7 @@
              :class="{ 'second': !freeGetItNowHide, 'minor-lang': $i18n.locale !== 'en' }"
              @click="ga01"
         >
-          <button-buy-now :text="$t('home.home-0.btn.BuyNow')" square :white="true" :font-size="'size-16'" :border-width="2" />
+          <button-buy-now :text="$t('home.home-0.btn.BuyNow1')" square :white="true" :font-size="'size-16'" :border-width="2" />
         </div>
 
 
@@ -99,7 +99,7 @@
              }"
              @click="ga01"
         >
-          <button-buy-now square :text="$t('home.home-0.btn.BuyNow')" :white="true" :font-size="'size-20'" />
+          <button-buy-now square :text="$t('home.home-0.btn.BuyNow1')" :white="true" :font-size="'size-20'" />
         </div>
       </div>
     </div>
@@ -277,20 +277,22 @@ export default {
         } else {
           this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew1`);
           // this.$store.commit('enIosLinkCt', this.$store.state.adQueryCampaignHome);
-          window.location.href
-            = `${this.$store.state.enIosLink}`
-            + `?pt=${this.$store.state.enIosLinkPt}`
-            + `&ct=${this.$store.state.enIosLinkCt}`
-            + `&mt=8`;
+          // window.location.href
+          //   = `${this.$store.state.enIosLink}`
+          //   + `?pt=${this.$store.state.enIosLinkPt}`
+          //   + `&ct=${this.$store.state.enIosLinkCt}`
+          //   + `&mt=8`;
+          location.href = this.$storage.get('iosDownloadLink');
         }
       } else {
         this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew1`);
 
         // Beacon:MinorAppDownload
-        window.location.href
-          = this.$constant.app.download.androidGooglePlay1
-          + this.$constant.app.campaign.androidReferrerQuery
-          + this.$store.state.enAdrLinkGpReferrer;
+        // window.location.href
+        //   = this.$constant.app.download.androidGooglePlay1
+        //   + this.$constant.app.campaign.androidReferrerQuery
+        //   + this.$store.state.enAdrLinkGpReferrer;
+        location.href = this.$storage.get('adrDownloadLink');
       }
     },
     downloadAppMinorLang() {
@@ -320,13 +322,15 @@ export default {
       // const paramK = this.COMMON.getURLQuery('k');
 
       if (this.COMMON.isiOS()) {
-        let ct = 'inspaid';
-        if (paramC !== null) {
-          ct = paramC;
-        }
-        location.href = `${this.$constant.app.download.ios}${this.$constant.app.campaign.iosAds}&ct=${ct}`;
+        // let ct = 'inspaid';
+        // if (paramC !== null) {
+        //   ct = paramC;
+        // }
+        // location.href = `${this.$constant.app.download.ios}${this.$constant.app.campaign.iosAds}&ct=${ct}`;
+        location.href = this.$storage.get('iosDownloadLink');
       } else if (this.COMMON.isAndroid()) {
-        location.href = this.$constant.app.download.android;
+        // location.href = this.$constant.app.download.android;
+        location.href = this.$storage.get('adrDownloadLink')
       } else {
 
       }

@@ -197,7 +197,6 @@ export default {
         const app_version = appVariablesJSON.app_version || undefined;
         if (appVariablesJSON && channel) params.channel = channel;
         if (appVariablesJSON && app_version) params.app_version = app_version;
-
         // params.app_name = this.formAppName;
       } else {
         params.chosen_app_name = this.formAppName;

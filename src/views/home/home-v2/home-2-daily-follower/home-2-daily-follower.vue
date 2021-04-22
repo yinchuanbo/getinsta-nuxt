@@ -19,7 +19,7 @@
 
               <!--btn-->
               <div class="home-2-follower__text_btn pc" @click="gaLeftBtn">
-                <button-icon-ins class="button-hover-2" theme="transparent-black" text="Get Free Followers Now" square :icon="'ins'" font-size="size-15" />
+                <button-icon-ins class="button-hover-2" theme="transparent-black" text="Get Free Followers" square :icon="'ins'" font-size="size-15" />
               </div>
             </div>
 
@@ -34,7 +34,7 @@
 
             <!--btn-->
             <div id="home-2-0" class="home-2-follower__text_btn mobile" @click="gaLeftBtn">
-              <button-icon-ins theme="gradiant" text="Get Free Followers Now" square shadow :icon="'ins'" font-size="size-15" />
+              <button-icon-ins theme="gradiant" text="Get Free Followers" square shadow :icon="'ins'" font-size="size-15" />
             </div>
           </div>
 
@@ -87,7 +87,7 @@
 
               <!--btn-->
               <div class="home-2-follower-btn" @click="modelBoxOpen">
-                <button-yellow-gradient square :text="`Buy Now`" font-size="size-20" class="button-hover-1" />
+                <button-yellow-gradient square :text="`Buy Followers Now`" font-size="size-20" class="button-hover-1" />
               </div>
             </div>
 
@@ -372,18 +372,20 @@ export default {
       }
       if (this.COMMON.isiOS()) {
         this.$ga.event('insdl', 'download', `hpiosdlnew3`);
-        location.href
-          = `${this.$store.state.enIosLink}`
-          + `?pt=${this.$store.state.enIosLinkPt}`
-          + `&ct=${this.$store.state.enIosLinkCt}`
-          + `&mt=8`;
+        // location.href
+        //   = `${this.$store.state.enIosLink}`
+        //   + `?pt=${this.$store.state.enIosLinkPt}`
+        //   + `&ct=${this.$store.state.enIosLinkCt}`
+        //   + `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
       }
       if (this.COMMON.isAndroid()) {
         this.$ga.event('insdl', 'download', `hpappdlnew3`);
-        window.location.href
-          = this.$constant.app.download.androidGooglePlay1
-          + this.$constant.app.campaign.androidReferrerQuery
-          + this.$store.state.enAdrLinkGpReferrer;
+        location.href = this.$storage.get('adrDownloadLink');
+        // window.location.href
+        //   = this.$constant.app.download.androidGooglePlay1
+        //   + this.$constant.app.campaign.androidReferrerQuery
+        //   + this.$store.state.enAdrLinkGpReferrer;
       }
     },
 

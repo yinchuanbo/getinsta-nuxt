@@ -27,7 +27,7 @@
             <button-icon-ins
               class="button-hover-1"
               theme="gradiant"
-              text="Get Free Followers Now"
+              text="Get Free Followers"
               square
               shadow
               :icon="'ins'"
@@ -118,27 +118,31 @@ export default {
           "enIosLinkCt",
           this.$store.state.adQueryCampaignHome
         );
-        window.location.href =
-          `${this.$store.state.enIosLink}` +
-          `?pt=${this.$store.state.enIosLinkPt}` +
-          `&ct=${this.$store.state.enIosLinkCt}` +
-          `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
+        // window.location.href =
+        //   `${this.$store.state.enIosLink}` +
+        //   `?pt=${this.$store.state.enIosLinkPt}` +
+        //   `&ct=${this.$store.state.enIosLinkCt}` +
+        //   `&mt=8`;
       }
     },
     downloadIOS1() {
       this.$ga.event("insdl", "download", "hppcdl2-ios");
-      window.location.href = `https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-hpnew&mt=8`;
+      // window.location.href = `https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-hpnew&mt=8`;
+      location.href = this.$storage.get('iosDownloadLink');
     },
     downloadAndroid1() {
       this.$ga.event("insdl", "download", "hppcdl2-app");
-      window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-hpnew`;
+      // window.location.href = `https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-hpnew`;
+      location.href = this.$storage.get('adrDownloadLink');
     },
     downloadAndroid() {
       this.$ga.event("insdl", "download", "hpappdlnew6");
-      window.location.href =
-        this.$constant.app.download.androidGooglePlay1 +
-        this.$constant.app.campaign.androidReferrerQuery +
-        this.$store.state.enAdrLinkGpReferrer;
+      location.href = this.$storage.get('adrDownloadLink');
+      // window.location.href =
+      //   this.$constant.app.download.androidGooglePlay1 +
+      //   this.$constant.app.campaign.androidReferrerQuery +
+      //   this.$store.state.enAdrLinkGpReferrer;
     },
     downloadWindows() {
       this.$ga.event("insdl", "download", "hpwindl2");

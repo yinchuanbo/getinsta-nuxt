@@ -2754,7 +2754,7 @@ export default {
     // GA
     pageGAInit(gaLabel) {
       // this.$ga.event("checkoutview", "ckview", `ckview-${gaLabel}`);
-      this.$ga.event('insimp', 'impression', 'checkout-new');
+      // this.$ga.event('insimp', 'impression', 'checkout-new');
     },
     gaBuyNow() {
       if (this.$i18n.locale === 'en') {
