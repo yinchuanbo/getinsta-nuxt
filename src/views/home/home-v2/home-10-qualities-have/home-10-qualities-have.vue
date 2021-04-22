@@ -13,33 +13,33 @@
       <ul>
         <li class="step-2">
           <img src="./img/icon01.svg" alt="">
-          <h2>Real & Engaged</h2>
+          <h3>Real & Engaged</h3>
           <p>The essential quality of free Instagram followers is reality. That means the free followers should have authentic accounts. If you get bot-created followers to add to your account, it will lower your account's quality and expose your account negatively which risks your account being suspended or banned by Instagram. So, it’s good to avoid fake followers at all cost. Thankfully, GetInsta can help you grow actual human followers. No bot users are allowed in the community. When you request free Instagram followers from it, your profile will immediately be shown to authentic users with similar interests. So, the followers you get are real people with real accounts. They are interested and engaged by liking and commenting on your posts which increases the engagement bar and helps you <a href="/blog/go-viral-on-instagram-560">go viral on Instagram</a>.</p>
         </li>
         <li class="step-3">
           <img src="./img/icon02.svg" alt="">
-          <h2>Unlimited</h2>
+          <h3>Unlimited</h3>
           <p>It’s hard to keep growing followers on Instagram when you already have enough count. So, you can take advantage of the Instagram followers tools to help you out of this difficulty. Although some tools offer free Instagram followers, they are limited per day. Or some services bring free trial and you can get some free Instagram followers with them. But if you want to claim more free followers, you will be asked to update to premium members. That’s bad news when you try to maximize the growing number of your followers. While there is good news, GetInsta offers unlimited Instagram followers. There is no drama on it. Users in the community use coins to get free Instagram followers. You can get countless <a href="/blog/instagram-followers-app-with-coins-532">Instagram followers with unlimited coins</a> easily.</p>
         </li>
         <li class="step-4">
           <img src="./img/icon03.svg" alt="">
-          <h2>Targeted</h2>
+          <h3>Targeted</h3>
           <p>If you want to build your personal or business brand on Instagram, growing untargeted and fake followers to your account will add no value to your brand building. That’s because the random or bot followers can’t really like your feed or spend their money on your product. Worse yet, your back-followers will be disappointed in you when they find you are increasing these followers. They will unfollow you and run away. So, <a href="/blog/targeted-instagram-followers-136">growing targeted followers</a> is essential in your brand-building strategy. When you own plenty of targeted followers who are potentially interested in your niche, you can have more chances to get their favors to your profile. Even better, they can help you boost sales when you post new product-related feeds on your page.</p>
         </li>
         <li class="step-5">
           <img src="./img/icon04.svg" alt="">
-          <h2>Nutritious</h2>
+          <h3>Nutritious</h3>
           <p>Before growing free Instagram followers, you should figure out whether the followers you get are nutritious for your account. Some Instagram followers apps can make your follower count keep rising consistently. It might seem your account is getting boosted, but that’s totally unhealthy. That’s because they add low-quality followers to your account, bring backlash to your account's growth. Then you will be left behind by other competitors with high-quality followers. So, you should add values to your account by <a href="/blog/build-instagram-followers-190">building real and active followers naturally</a> in the long run. When you have a considerable number of these high-quality followers, your account can be popular. You will have higher chances to be featured on Instagram Explore Page to reach organic traffic. Then your Instagram will grow like a snowball.</p>
         </li>
         <li class="step-6">
           <img src="./img/icon05.svg" alt="">
-          <h2>No-Drop</h2>
+          <h3>No-Drop</h3>
           <p>Whether you are using Instagram followers tools or other smart strategies to get new followers, your followers will disappear inevitably. If you use some tools to grow followers, they may add bots or ghost followers to your account. Instagram is regularly scanning and cleaning up these bot or fake accounts. If you develop real followers, you can’t avoid them unfollowing you either. That’s because they are not unfeeling machines. They may withdraw their followings for some unknown reasons. <br>
           Fortunately, you can choose a service that reduces and limits such situations happening. GetInsta will never disappoint you. It offers real and free Instagram followers who will never be identified as bots and be deleted by Instagram. If they change their ideas and unfollow you, it will refill within a few days. So, you don’t have to worry about your followers getting decreased when choosing it to improve your account.</p>
         </li>
         <li class="step-7">
           <img src="./img/icon06.svg" alt="">
-          <h2>Legit</h2>
+          <h3>Legit</h3>
           <p>If you increase free Instagram followers with unproven external IG apps, the chances are high that they may send bots followers to your account quickly. These followers are definitely illegal and unsafe. Instagram may detect your follower count surging only in a short time which will raise an alarm and suspicion. Then you will have the risk of being banned or punished for a spam maker. So, if you grow your followers legally, then it will be an entirely different story. When you increase authentic and active followers reasonably and organically, you will get real human interaction and engagement in your activities on Instagram. In this way, your account can be grown legally and safely without violating the Instagram Terms of Service.</p>
         </li>
       </ul>
@@ -140,7 +140,7 @@ export default {
       if(!this.COMMON.isMobile()) { // pc
         height = '470px';
       } else {
-        height = '1090px';
+        height = '1070px';
       }
       this.height = height;
     },
@@ -155,10 +155,10 @@ export default {
     downloadApp() {
       if (this.COMMON.isiOS()) { // ios
         this.$ga.event(this.gainfo['ios'][0], this.gainfo['ios'][1], this.gainfo['ios'][2]);
-        location.href = this.downloadurl.iosdownloadurl;
+        location.href = this.$storage.get('iosDownloadLink');
       } else { // android
         this.$ga.event(this.gainfo['android'][0], this.gainfo['android'][1], this.gainfo['android'][2]);
-        location.href = this.downloadurl.androiddownloadurl;
+        location.href = this.$storage.get('adrDownloadLink');
       }
     },
     ga01() {
@@ -249,7 +249,7 @@ a[href] {
           width: 61px;
           height: 61px;
         }
-        h2 {
+        h3 {
           text-align: left;
           font: normal normal 600 20px/30px BalooChettan;
           color: #000000;

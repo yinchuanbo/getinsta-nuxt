@@ -125,19 +125,21 @@ export default {
         this.$ga.event('insdl', 'download', 'hpiosdlnew4');
 
         this.$store.commit('enIosLinkCt', this.$store.state.adQueryCampaignHome);
-        window.location.href
-          = `${this.$store.state.enIosLink}`
-          + `?pt=${this.$store.state.enIosLinkPt}`
-          + `&ct=${this.$store.state.enIosLinkCt}`
-          + `&mt=8`;
+        // window.location.href
+        //   = `${this.$store.state.enIosLink}`
+        //   + `?pt=${this.$store.state.enIosLinkPt}`
+        //   + `&ct=${this.$store.state.enIosLinkCt}`
+        //   + `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
       }
     },
     downloadAndroid() {
       this.$ga.event('insdl', 'download', 'hpappdlnew4');
-      window.location.href
-        = this.$constant.app.download.androidGooglePlay1
-        + this.$constant.app.campaign.androidReferrerQuery
-        + this.$store.state.enAdrLinkGpReferrer;
+      // window.location.href
+      //   = this.$constant.app.download.androidGooglePlay1
+      //   + this.$constant.app.campaign.androidReferrerQuery
+      //   + this.$store.state.enAdrLinkGpReferrer;
+      location.href = this.$storage.get('adrDownloadLink');
     },
     downloadWindows() {
       this.$ga.event('insdl', 'download', 'hpwindl1');

@@ -34,14 +34,16 @@ export default {
         let url = '';
         if (this.COMMON.isiOS()) {
           // url = 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-iug&mt=8';
-          url = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-iug&mt=8'
+          // url = 'https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=en-seo-iug&mt=8'
+          url = this.$storage.get('iosDownloadLink');
         }
 
         if (this.COMMON.isAndroid()) {
           // url = 'https://play.google.com/store/apps/details?id=com.insfollower.getinsta&referrer=utm_source%3Den-seo-iug';
-          url = this.$store.state.enAdrLinkWithoutGpReferrer
-            + this.$constant.app.campaign.androidReferrerQuery
-            + 'en-seo-iug';
+          // url = this.$store.state.enAdrLinkWithoutGpReferrer
+          //   + this.$constant.app.campaign.androidReferrerQuery
+          //   + 'en-seo-iug';
+          url = this.$storage.get('adrDownloadLink');
         }
 
         this.$ga.event(

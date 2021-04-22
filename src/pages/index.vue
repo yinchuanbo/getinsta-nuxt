@@ -14,12 +14,12 @@ export default {
   },
   head() {
     return {
-      title: this.$t('home.meta.title'),
+      title: this.$t('home-v2.meta.title'),
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.$t('home.meta.description')
+          content: this.$t('home-v2.meta.description')
         }
       ],
       link: [

@@ -277,20 +277,22 @@ export default {
         } else {
           this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew1`);
           // this.$store.commit('enIosLinkCt', this.$store.state.adQueryCampaignHome);
-          window.location.href
-            = `${this.$store.state.enIosLink}`
-            + `?pt=${this.$store.state.enIosLinkPt}`
-            + `&ct=${this.$store.state.enIosLinkCt}`
-            + `&mt=8`;
+          // window.location.href
+          //   = `${this.$store.state.enIosLink}`
+          //   + `?pt=${this.$store.state.enIosLinkPt}`
+          //   + `&ct=${this.$store.state.enIosLinkCt}`
+          //   + `&mt=8`;
+          location.href = this.$storage.get('iosDownloadLink');
         }
       } else {
         this.$ga.event('insdl', 'download', `hp${this.$store.state.platform}dlnew1`);
 
         // Beacon:MinorAppDownload
-        window.location.href
-          = this.$constant.app.download.androidGooglePlay1
-          + this.$constant.app.campaign.androidReferrerQuery
-          + this.$store.state.enAdrLinkGpReferrer;
+        // window.location.href
+        //   = this.$constant.app.download.androidGooglePlay1
+        //   + this.$constant.app.campaign.androidReferrerQuery
+        //   + this.$store.state.enAdrLinkGpReferrer;
+        location.href = this.$storage.get('adrDownloadLink');
       }
     },
     downloadAppMinorLang() {
@@ -320,13 +322,15 @@ export default {
       // const paramK = this.COMMON.getURLQuery('k');
 
       if (this.COMMON.isiOS()) {
-        let ct = 'inspaid';
-        if (paramC !== null) {
-          ct = paramC;
-        }
-        location.href = `${this.$constant.app.download.ios}${this.$constant.app.campaign.iosAds}&ct=${ct}`;
+        // let ct = 'inspaid';
+        // if (paramC !== null) {
+        //   ct = paramC;
+        // }
+        // location.href = `${this.$constant.app.download.ios}${this.$constant.app.campaign.iosAds}&ct=${ct}`;
+        location.href = this.$storage.get('iosDownloadLink');
       } else if (this.COMMON.isAndroid()) {
-        location.href = this.$constant.app.download.android;
+        // location.href = this.$constant.app.download.android;
+        location.href = this.$storage.get('adrDownloadLink')
       } else {
 
       }

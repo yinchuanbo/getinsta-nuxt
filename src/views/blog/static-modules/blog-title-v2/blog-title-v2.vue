@@ -77,15 +77,17 @@ export default {
 
       if (this.COMMON.isiOS()) {
         this.$ga.event('insdl', 'download', `blogiosdl-topbanner-${param}`);
-        location.href
-          = `${this.$store.state.enIosLink}`
-          + `?pt=${this.$store.state.enIosLinkPt}`
-          + `&ct=${this.$store.state.enIosLinkCt}`
-          + `&mt=8`;
+        // location.href
+        //   = `${this.$store.state.enIosLink}`
+        //   + `?pt=${this.$store.state.enIosLinkPt}`
+        //   + `&ct=${this.$store.state.enIosLinkCt}`
+        //   + `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
       }
       if (this.COMMON.isAndroid()) {
         this.$ga.event('insdl', 'download', `blogappdl-topbanner-${param}`);
-        location.href = this.$store.state.enAdrLink;
+        // location.href = this.$store.state.enAdrLink;
+        location.href = this.$storage.get('adrDownloadLink');
       }
       if (!this.COMMON.isMobile()) {
         this.$ga.event('insrg', 'register', `blogrg-topbanner-${param}`);

@@ -12,15 +12,15 @@
       <p class="step-1">As one of the two main statistics that Instagram values, the significance of Instagram likes is barely overemphasized. It directly demonstrates the popularity of your posts and promotes your content to be more viewed. The more Instagram likes you have, the more chance you take to be favored by the group. Considering they are also free, are there any safer bet in the world?</p>
       <div class="container">
         <div>
-          <h2 class="step-2">Is It Necessary to Get Free Instagram Likes?</h2>
+          <h3 class="step-2">Is It Necessary to Get Free Instagram Likes?</h3>
           <p class="step-3">Yes Indeed. Instagram algorithm regularly recommends hot posts to get more views under Instagram hashtag pages. The most decisive factor to satisfy the algorithm is how many likes your post has. Free Instagram likes help you boost the chance of having more viewers without paying money. There is no better solution to attract organic audiences than that.</p>
         </div>
         <div>
-          <h2 class="step-4">How to Get More Free Instagram Likes?</h2>
+          <h3 class="step-4">How to Get More Free Instagram Likes?</h3>
           <p class="step-5">Typically, optimizing your posts - for instance, by creating attractive Instagram captions or using unique Instagram fonts - is never outdated. A good Instagram caption helps to fulfill your post, making it emotional and touching. Also, don't forget to use an Instagram fonts tool to give your audience a sense of freshness. Both methods achieve your Instagram likes' organic growth without paying money yet may take lots of time and effort.</p>
         </div>
         <div>
-          <h2 class="step-6">Most Efficient Way to Get Free Instagram Likes</h2>
+          <h3 class="step-6">Most Efficient Way to Get Free Instagram Likes</h3>
           <p class="step-7">GetInsta is a 100% free Instagram likes increaser, will help you get 1000+ likes and followers within 5 minutes without one penny. Use GetInsta now to get free Instagram likes effortless.</p>
         </div>
         <div class="btns step-8">
@@ -98,10 +98,10 @@ export default {
     downloadApp() {
       if (this.COMMON.isiOS()) { // ios
         this.$ga.event(this.gainfo['ios'][0], this.gainfo['ios'][1], this.gainfo['ios'][2]);
-        location.href = this.downloadurl.iosdownloadurl;
+        location.href = this.$storage.get('iosDownloadLink');
       } else { // android
         this.$ga.event(this.gainfo['android'][0], this.gainfo['android'][1], this.gainfo['android'][2]);
-        location.href = this.downloadurl.androiddownloadurl;
+        location.href = this.$storage.get('adrDownloadLink');
       }
     },
     ga01() {
@@ -267,7 +267,7 @@ a[href] {
       position: relative;
       z-index: 3;
       >div:not(:nth-child(4)) {
-        h2 {
+        h3 {
           font: normal normal 600 20px/30px BalooChettan;
           color: #000000;
           margin-bottom: 9px;
@@ -352,7 +352,7 @@ a[href] {
         padding-bottom: 60px;
         box-sizing: border-box;
         >div {
-          h2 {
+          h3 {
             text-align: left;
             font: normal normal 600 20px/30px BalooChettan;
           }

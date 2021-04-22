@@ -91,22 +91,24 @@ export default {
       if (this.$nuxt.$route.path === '/event-user-generated-contest') gp3d += '-ugc';
 
       if (this.$store.state.isiOS)
-        location.href
-          = `${this.$store.state.enIosLink}`
-          + `?pt=${this.$store.state.enIosLinkPt}`
-          + `&ct=${this.$store.state.enIosLinkCt}`
-          + `&mt=8`;
+        // location.href
+        //   = `${this.$store.state.enIosLink}`
+        //   + `?pt=${this.$store.state.enIosLinkPt}`
+        //   + `&ct=${this.$store.state.enIosLinkCt}`
+        //   + `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink')
       else {
         // location.href
         //   = this.$store.state.enAdrLinkWithoutGpReferrer
         //   + this.$constant.app.campaign.androidReferrerQuery
         //   + gp3d;
-        location.href
-          = this.$constant.app.download.androidGooglePlay1
-          + this.$constant.app.campaign.androidReferrerQuery
-          + this.$store.state.enAdrLinkGpReferrer;
+        // location.href
+        //   = this.$constant.app.download.androidGooglePlay1
+        //   + this.$constant.app.campaign.androidReferrerQuery
+        //   + this.$store.state.enAdrLinkGpReferrer;
         // location.href
         //   = this.$constant.app.download.android;
+        location.href = this.$storage.get('adrDownloadLink');
       }
     },
     gaBottomBtnDownloadLabelInit(to) {

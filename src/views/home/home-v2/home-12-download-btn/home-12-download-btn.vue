@@ -83,10 +83,10 @@ export default {
     downloadApp() {
       if (this.COMMON.isiOS()) { // ios
         this.$ga.event(this.gainfo['ios'][0], this.gainfo['ios'][1], this.gainfo['ios'][2]);
-        location.href = this.downloadurl.iosdownloadurl;
+        location.href = this.$storage.get('iosDownloadLink');
       } else { // android
         this.$ga.event(this.gainfo['android'][0], this.gainfo['android'][1], this.gainfo['android'][2]);
-        location.href = this.downloadurl.androiddownloadurl;
+        location.href = this.$storage.get('adrDownloadLink');
       }
     },
     ga01() {

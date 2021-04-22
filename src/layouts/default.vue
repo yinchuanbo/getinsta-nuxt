@@ -125,6 +125,7 @@ export default {
   watch: {
     $route(to, from) {
       this.watchedMethods(to, from);
+      this.downloadBtnConfigInit(to.path);
     },
     '$i18n.locale'(val) {
       document.documentElement.setAttribute('lang', val);
@@ -758,7 +759,7 @@ export default {
     },
 
     //【重要】【危险】EN APP Link
-    enIosDownloadLinkInit(config) {
+    enIosDownloadLinkInit(config, path) {
       // config = download_button.ios
       // let probabilityBoolean;
 
@@ -777,7 +778,8 @@ export default {
 
       // v2/v1 广告切换
       let param;
-      if (this.$store.state.v2)
+
+      if (path === '/')
         param = 'en-seo-hpnew';
       else
         param = config['ap_ct'];
@@ -814,8 +816,7 @@ export default {
       // this.$store.commit('enIosLinkCt', this.$constant.app.campaign.iosEnGetInsHotCt);
       // }
     },
-    enAndroidDownloadLinkInit(config) {
-
+    enAndroidDownloadLinkInit(config, path) {
       // config = download_button.ios
 
       // 前置分流
@@ -871,7 +872,7 @@ export default {
       // 广告参数设置 *******************************************************
       // v2/v1 广告切换
       let param;
-      if (this.$store.state.v2)
+      if (path === '/')
         param = 'en-seo-hpnew';
       else
         param = config['gp_referrer'];
@@ -914,6 +915,7 @@ export default {
         + this.$constant.app.campaign.androidReferrerQuery
         + this.$store.state.enAdrLinkGpReferrer
       );
+
       // this.$store.commit(
       //   'enAdrLink',
       //   this.$constant.app.download.android
@@ -930,14 +932,13 @@ export default {
       this.accessCountryInit();
 
       // 下载配置
-      this.downloadBtnConfigInit();
+      this.downloadBtnConfigInit(this.$nuxt.$route.path)
     },
 
     // 下载按钮
-    async downloadBtnConfigInit() {
+    async downloadBtnConfigInit(path) {
       try {
         const res = await this.getWebConfig();
-        // console.log(res);
         if (res.data.status !== 'ok' && typeof res.data === 'object') {
           console.error('downloadBtnConfigInit Getting Failed.');
           return;
@@ -946,9 +947,9 @@ export default {
         const downloadButton = res.data['download_button'];
 
         // iOS
-        this.enIosDownloadLinkInit(downloadButton.ios);
+        this.enIosDownloadLinkInit(downloadButton.ios, path);
         // Android
-        this.enAndroidDownloadLinkInit(downloadButton.android);
+        this.enAndroidDownloadLinkInit(downloadButton.android, path);
       } catch (err) {
         console.log(err);
       }

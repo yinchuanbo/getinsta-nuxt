@@ -21,11 +21,11 @@
       <home6-reviews-v2 />
       <home7-download-v2 />
       <home8-reasons-v2 />
-      <home9-download-btn :downloadurl="downloadurl" :gainfo="gaInfo.home9"/>
-      <home10-qualities-have :downloadurl="downloadurl" :gainfo="gaInfo.home10" />
+      <home9-download-btn :gainfo="gaInfo.home9"/>
+      <home10-qualities-have :gainfo="gaInfo.home10" />
       <home11-traps-v2 />
-      <home12-download-btn :downloadurl="downloadurl" :gainfo="gaInfo.home12" />
-      <home-13-matter-v2 :downloadurl="downloadurl" :gainfo="gaInfo.home13"/>
+      <home12-download-btn :gainfo="gaInfo.home12" />
+      <home-13-matter-v2 :gainfo="gaInfo.home13"/>
     </div>
   </div>
 </template>
@@ -110,13 +110,10 @@ export default {
   data() {
     return {
       meta: {
-        title: this.$t('home.meta.title')
+        title: this.$t('home.meta.title'),
       },
-      // pcDownloadUrl: '/downloadcenter',
       downloadurl: {
-        pcdownloadurl: '/login',
-        iosdownloadurl: 'https://apps.apple.com/app/apple-store/id1498558125?pt=121014724&ct=en-seo-a-newc&mt=8',
-        androiddownloadurl: 'https://play.google.com/store/apps/details?id=com.formeup.getinsita&referrer=utm_source%3Den-seo-a-newc',
+        pcdownloadurl: '/login'
       },
       gaInfo: {
         home9: {

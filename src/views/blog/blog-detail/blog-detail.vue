@@ -464,8 +464,9 @@ export default {
         });
         _this.renderTimerCounter++;
       });
-      container.remove();
+      
       this.relatedArticleList = rList;
+      // container.remove();
     },
     blogSearchDisplay() {
       let _this = this;
@@ -577,7 +578,8 @@ export default {
         'download',
         `blogappdl1${this.multiLang()}-${this.$store.state.blogID}`
       );
-      window.location.href = this.$store.state.enAdrLink;
+      // window.location.href = this.$store.state.enAdrLink;
+      location.href = this.$storage.get('adrDownloadLink');
     },
     downloadIOS() {
       this.$ga.event(
@@ -586,11 +588,12 @@ export default {
         `blogiosdl1${this.multiLang()}-${this.$store.state.blogID}`
       );
 
-      window.location.href
-        = `${this.$store.state.enIosLink}`
-        + `?pt=${this.$store.state.enIosLinkPt}`
-        + `&ct=${this.$store.state.enIosLinkCt}`
-        + `&mt=8`;
+      // window.location.href
+      //   = `${this.$store.state.enIosLink}`
+      //   + `?pt=${this.$store.state.enIosLinkPt}`
+      //   + `&ct=${this.$store.state.enIosLinkCt}`
+      //   + `&mt=8`;
+      location.href = this.$storage.get('iosDownloadLink');
     },
     downloadMobile() {
       let gaPlatform = '';
@@ -604,13 +607,15 @@ export default {
       );
 
       if (this.COMMON.isiOS())
-        window.location.href
-          = `${this.$store.state.enIosLink}`
-          + `?pt=${this.$store.state.enIosLinkPt}`
-          + `&ct=${this.$store.state.enIosLinkCt}`
-          + `&mt=8`;
+        // window.location.href
+        //   = `${this.$store.state.enIosLink}`
+        //   + `?pt=${this.$store.state.enIosLinkPt}`
+        //   + `&ct=${this.$store.state.enIosLinkCt}`
+        //   + `&mt=8`;
+        location.href = this.$storage.get('iosDownloadLink');
       else
-        window.location.href = this.$store.state.enAdrLink;
+        // window.location.href = this.$store.state.enAdrLink;
+        location.href = this.$storage.get('adrDownloadLink');
 
     },
     multiLang() {
