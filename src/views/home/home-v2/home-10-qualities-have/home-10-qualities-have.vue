@@ -138,7 +138,7 @@ export default {
     getHeight() {
       let height = '';
       if(!this.COMMON.isMobile()) { // pc
-        height = '470px';
+        height = '460px';
       } else {
         height = '1070px';
       }

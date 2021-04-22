@@ -1307,7 +1307,6 @@ export default {
     },
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
-      console.log('pkgList', pkgList)
       // daily like 数据
       pkgList.map((item) => {
         if ((item['cycle_type'] > 1 && item.product_type === 1) || item.require_post_count !== 0) {
