@@ -92,7 +92,7 @@ export default {
         this.downloadApp();
       else {
         this.$ga.event(this.gainfo['pc'][0], this.gainfo['pc'][1], this.gainfo['pc'][2]);
-        this.$nuxt.$router.push(this.downloadurl.pcdownloadurl);
+        this.$nuxt.$router.push('/login');
       }
     },
     downloadApp() {
