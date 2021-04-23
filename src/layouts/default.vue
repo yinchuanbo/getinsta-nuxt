@@ -128,9 +128,9 @@ export default {
     $route(to, from) {
       this.watchedMethods(to, from);
       this.downloadBtnConfigInit(to.path);
-      if(to.name === 'blog-id___en') {
-        this.redirect();
-      }
+      // if(to.name === 'blog-id___en') {
+      //   this.redirect();
+      // }
     },
     '$i18n.locale'(val) {
       document.documentElement.setAttribute('lang', val);
@@ -419,7 +419,7 @@ export default {
             { params: apiParams }
         );
         if (res && res['status'] !== 'ok' && res['redirect_url']) {
-            return this.redirect(301, res['redirect_url']);
+            this.redirect(301, res['redirect_url']); 
         }
     }
     },
