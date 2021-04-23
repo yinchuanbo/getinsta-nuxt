@@ -12,7 +12,7 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instanceDetail, instanceList },
-  middleware: 'jump',
+  // middleware: 'jump',
   async asyncData({ route, req, app, redirect, error, isDev }) {
     // return data
     let DATA = {
@@ -23,23 +23,23 @@ export default {
 
     // ***********************************************************************
     const paramID = route.params.id;
+    if(!req) return;
+
+    console.log('4444');
     if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
     } else { // 详情页
       const idArray = paramID.split('-');
       const articleID = idArray.pop();
       if (typeof articleID !== 'string') return;
-      // if (isDev) console.log('articleID', articleID);
-      const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
-      let locale = '';
-      const supportedLocale =  ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+      let locale = 'en';
+      let browserLang = req.headers['accept-language'].toLowerCase().substr(0, 2);
+      const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
       for (let i = 0; i < supportedLocale.length; i++) {
-        if (supportedLocale[i] === browserLang) {
-          locale = supportedLocale[i];
-          break;
-        } else {
-          locale = 'en';
-        }
+          if (supportedLocale[i] === browserLang) {
+              locale = supportedLocale[i];
+              break;
+          }
       }
       let apiParams = {
         article_id: articleID,
@@ -53,7 +53,6 @@ export default {
           blogApi.getBlogDetailV2,
           { params: apiParams }
         );
-        // if (isDev) console.log('res:', res);
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
           app.title = DATA.reqObj['seo_title'];
