@@ -12,7 +12,7 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instanceDetail, instanceList },
-  // middleware: 'jump',
+  middleware: 'jump',
   async asyncData({ route, req, app, redirect, error, isDev }) {
     // return data
     let DATA = {
