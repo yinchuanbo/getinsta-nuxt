@@ -419,7 +419,7 @@ export default {
             { params: apiParams }
         );
         if (res && res['status'] !== 'ok' && res['redirect_url']) {
-            return redirect(301, res['redirect_url']);
+            return this.redirect(301, res['redirect_url']);
         }
     }
     },
