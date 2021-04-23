@@ -464,6 +464,7 @@
       th, td {
         padding: 0 10px;
         border: 1px solid #E5E5E5;
+        border-bottom: 0;
         height: 48px;
         vertical-align: middle;
 
@@ -509,10 +510,29 @@
     }
 
     &.table-v2 {
+      thead, tbody {
+        tr{
+          td:first-child, th:first-child {
+            border-left: 0!important;
+          }
+        }
+      }
+      
       thead {
         tr {
           width: calc(100% - 6px);
+          th:last-child {
+            border-width: 1px;
+            border-color: transparent;
+          }
+          th {
+            border-top: 0;
+            border-bottom: 0;
+          }
         }
+        background-color: #f9f9f9;
+        border: 0;
+        border-bottom: 1px solid #E5E5E5!important;
       }
 
       tbody {
