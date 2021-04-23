@@ -147,9 +147,6 @@ export default {
     this.multiLangEnvInit(this.$nuxt.$route);
   },
   mounted() {
-    if(this.$nuxt.$route.name === 'blog-id___en') {
-       this.redirect();
-    }
     console.log(
       '%cGetInsta%cWeb APP',
       'padding: 4px 18px;' +
@@ -392,37 +389,6 @@ export default {
       }
 
       this.isGeneralBlank = !(storePath || freeToolsPath || loginUserPath || easterSalePath || checkout);
-    },
-    redirect: async function(){
-      let paramID = this.$route.params.id;
-      let locale = 'en';
-      let userAgentLocale = this.COMMON.userAgentLocale();
-      let supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
-      for (let i = 0; i < supportedLocale.length; i++) {
-          if (supportedLocale[i] === userAgentLocale) {
-              locale = supportedLocale[i];
-              break;
-          }
-      }
-      if (paramID && locale !== 'en') {
-        const idArray = paramID.split('-');
-        const articleID = idArray.pop();
-        if (typeof articleID !== 'string') return;
-
-        let apiParams = {
-            article_id: articleID,
-            client_lan: 'en',
-            page_url: paramID,
-            accept_lan: locale
-        };
-        let res = await this.$axios.$get(
-            blogApi.getBlogDetailV2,
-            { params: apiParams }
-        );
-        if (res && res['status'] !== 'ok' && res['redirect_url']) {
-            this.redirect(301, res['redirect_url']); 
-        }
-    }
     },
 
     addThisHideEvent(addThisHide) {

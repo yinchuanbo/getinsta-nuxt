@@ -31,14 +31,12 @@ export default {
       if (typeof articleID !== 'string') return;
       // if (isDev) console.log('articleID', articleID);
       const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
-      let locale = '';
+      let locale = 'en';
       const supportedLocale =  ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
       for (let i = 0; i < supportedLocale.length; i++) {
         if (supportedLocale[i] === browserLang) {
           locale = supportedLocale[i];
           break;
-        } else {
-          locale = 'en';
         }
       }
       let apiParams = {
@@ -53,7 +51,9 @@ export default {
           blogApi.getBlogDetailV2,
           { params: apiParams }
         );
-        // if (isDev) console.log('res:', res);
+
+        console.log(res)
+
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
           app.title = DATA.reqObj['seo_title'];
