@@ -24,8 +24,6 @@ export default {
     // ***********************************************************************
     const paramID = route.params.id;
     if(!req) return;
-
-    console.log('4444');
     if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
     } else { // 详情页
