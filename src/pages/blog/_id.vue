@@ -12,7 +12,6 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instanceDetail, instanceList },
-  // middleware: 'jump',
   async asyncData({ route, req, app, redirect, error, isDev }) {
     // return data
     let DATA = {
@@ -23,7 +22,6 @@ export default {
 
     // ***********************************************************************
     const paramID = route.params.id;
-    if(!req) return;
     if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
     } else { // 详情页
@@ -31,21 +29,29 @@ export default {
       const articleID = idArray.pop();
       if (typeof articleID !== 'string') return;
       let locale = 'en';
-      let browserLang = req.headers['accept-language'].toLowerCase().substr(0, 2);
-      const supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
-      for (let i = 0; i < supportedLocale.length; i++) {
-          if (supportedLocale[i] === browserLang) {
-              locale = supportedLocale[i];
+      let lang = '';
+      let locales = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+
+      if(!req) {
+        lang = process.client ? navigator.language.toLowerCase().substr(0, 2) : 'en';
+      } else {
+        lang = req.headers['accept-language'].toLowerCase().substr(0, 2);
+      }
+
+      for (let i = 0; i < locales.length; i++) {
+          if (locales[i] === lang) {
+              locale = lang;
               break;
           }
       }
+
       let apiParams = {
         article_id: articleID,
         client_lan: 'en',
         page_url: paramID,
         accept_lan: locale
       };
-      // request
+
       try {
         let res = await app.$axios.$get(
           blogApi.getBlogDetailV2,
