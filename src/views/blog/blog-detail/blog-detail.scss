@@ -1,3 +1,4 @@
+// 表格
 // 文章内容区样式
 .blog-detail__content {
   padding-top: 40px;
@@ -543,6 +544,9 @@
         &:first-child {
           th, td {
             font-weight: 400;
+          }
+          th {
+            font-weight: 600
           }
         }
       }
@@ -1465,6 +1469,22 @@
 }
 
 @media (max-width: 768px) {
+  .table-v2 {
+    thead {
+      tr {
+        th {
+          width: auto;
+        } 
+      }
+    }
+    tbody {
+      tr {
+        td {
+          width: auto;
+        }
+      }
+    }
+  }
   // 文章内容区样式
   .blog-detail__content {
     padding-top: 25px;
