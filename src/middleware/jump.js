@@ -9,7 +9,6 @@ export default async function ({
     redirect,
     req
 }) {
-    // if (isHMR) return;
     if(!req) return;
     let paramID = route.params.id;
     let locale = 'en';
@@ -21,8 +20,8 @@ export default async function ({
             break;
         }
     }
-    // 开始请求
     if (paramID && locale !== 'en') {
+
         const idArray = paramID.split('-');
         const articleID = idArray.pop();
         if (typeof articleID !== 'string') return;
@@ -33,21 +32,14 @@ export default async function ({
             page_url: paramID,
             accept_lan: locale
         };
-        try {
-            let res = await app.$axios.$get(
-                blogApi.getBlogDetailV2,
-                { params: apiParams }
-            );
-            if (res['status'] !== 'ok') {
-                if (res['redirect_url']) {
-                    return redirect(301, res['redirect_url']);
-                } else {
-                    error({ statusCode: 404 });
-                }
-            }
-        } catch (err) {
-            console.log('blog detail error:', err);
-            error({ statusCode: 500 });
+        
+        let res = await app.$axios.$get(
+            blogApi.getBlogDetailV2,
+            { params: apiParams }
+        );
+
+        if (res && res['status'] !== 'ok' && res['redirect_url']) {
+            return redirect(301, res['redirect_url']);
         }
 
     }
