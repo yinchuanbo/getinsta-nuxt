@@ -513,15 +513,20 @@ export default {
       if (checkNode.length) {
         for (let i = 0; i < checkNode.length; i++) {
           let imgListArray = [];
+          let alt = '';
           const container = checkNode[i];
           const imgNodes = container.querySelectorAll('img');
           for (let j = 0; j < imgNodes.length; j++) {
             imgListArray.push(imgNodes[j].src);
+            if(imgNodes[j].alt && imgNodes[j].alt !== '') {
+               alt = imgNodes[j].alt;
+            }
           }
           let component = new ImgGallery({
             propsData: {
               imgDirectionHorizontal: container.classList.contains('horizontal'),
-              imgList: imgListArray
+              imgList: imgListArray,
+              alt: alt
             }
           }).$mount();
           container.parentNode.replaceChild(component.$el, container);
