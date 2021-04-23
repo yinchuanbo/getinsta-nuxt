@@ -47,6 +47,8 @@ import logoGetInsta from '@/assets/images/global/logo.svg';
 import logoGetinshot from '@/assets/images/global/logo_getinshot.svg';
 import logoFollowersGallery from '@/assets/images/global/logo_follower-gallery.svg';
 
+import blogApi from '@/api/api.blog';
+
 // API
 import apiAdr from '@/api/api.app.android.js';
 import apiV2 from '@/api/api.v2.js';
@@ -126,6 +128,9 @@ export default {
     $route(to, from) {
       this.watchedMethods(to, from);
       this.downloadBtnConfigInit(to.path);
+      if(to.name === 'blog-id___en') {
+        this.redirect();
+      }
     },
     '$i18n.locale'(val) {
       document.documentElement.setAttribute('lang', val);
@@ -135,7 +140,6 @@ export default {
       // } else {
       //   this.$store.commit('productName', 'Getinshot');
       // }
-
       this.productNameLogoInit();
     }
   },
@@ -143,6 +147,9 @@ export default {
     this.multiLangEnvInit(this.$nuxt.$route);
   },
   mounted() {
+    if(this.$nuxt.$route.name === 'blog-id___en') {
+       this.redirect();
+    }
     console.log(
       '%cGetInsta%cWeb APP',
       'padding: 4px 18px;' +
@@ -384,6 +391,37 @@ export default {
       }
 
       this.isGeneralBlank = !(storePath || freeToolsPath || loginUserPath || easterSalePath || checkout);
+    },
+    redirect: async function(){
+      let paramID = this.$route.params.id;
+      let locale = 'en';
+      let userAgentLocale = this.COMMON.userAgentLocale();
+      let supportedLocale = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+      for (let i = 0; i < supportedLocale.length; i++) {
+          if (supportedLocale[i] === userAgentLocale) {
+              locale = supportedLocale[i];
+              break;
+          }
+      }
+      if (paramID && locale !== 'en') {
+        const idArray = paramID.split('-');
+        const articleID = idArray.pop();
+        if (typeof articleID !== 'string') return;
+
+        let apiParams = {
+            article_id: articleID,
+            client_lan: 'en',
+            page_url: paramID,
+            accept_lan: locale
+        };
+        let res = await this.$axios.$get(
+            blogApi.getBlogDetailV2,
+            { params: apiParams }
+        );
+        if (res && res['status'] !== 'ok' && res['redirect_url']) {
+            return redirect(301, res['redirect_url']);
+        }
+    }
     },
 
     addThisHideEvent(addThisHide) {
