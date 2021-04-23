@@ -308,6 +308,12 @@ export default {
     // New nuxt asyncData方式请求
     getBlogDetailByProps(data) {
       this.blogDetailObj = data['article'];
+      var reg = /<([a-z]+?)(?:\s+?[^>]*?)?>\s*?<\/\1>/ig;
+      this.blogDetailObj.content = this.blogDetailObj.content.replace(reg,"");
+      this.blogDetailObj.content = this.blogDetailObj.content.replace(/&nbsp;/ig,"");
+      console.log(this.blogDetailObj.content);
+
+
       this.langArabic = this.COMMON.langCheckIsArabic(data['article']['seo_title']);
 
       if (process.client) {
