@@ -213,6 +213,7 @@ export default {
     this.setDefaultLocalStorageVueX();
   },
   methods: {
+    // test
     watchedMethods(to = { path: '/', name: 'home' }, from = { path: '/', name: 'home' }) {
       // V2开关
       this.v2SwitchGate(to.path);
