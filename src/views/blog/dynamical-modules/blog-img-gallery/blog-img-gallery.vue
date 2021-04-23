@@ -11,6 +11,7 @@
              'right': i === rightIndex,
            }"
            :alt="alt"
+           :title="alt"
       >
     </div>
     <div class="pagination">
