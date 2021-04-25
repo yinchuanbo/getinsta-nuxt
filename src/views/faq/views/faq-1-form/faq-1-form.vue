@@ -4,9 +4,10 @@
       <div class="faq-1-form__container">
         <i class="icon"></i>
         <h2>
-          {{ $t('faq.faqForm.title-0') }}
+          <!-- {{ $t('faq.faqForm.title-0') }}
           <a @click="routerPush('/faqs')">FAQs</a>
-          {{ $t('faq.faqForm.title-1') }}
+          {{ $t('faq.faqForm.title-1') }} -->
+          {{ $t('faq.faqForm.title-2') }}
         </h2>
         <ValidationObserver v-slot="{ invalid, errors, validate}">
           <div class="row double">

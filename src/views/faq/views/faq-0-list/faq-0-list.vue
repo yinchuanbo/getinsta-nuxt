@@ -212,7 +212,7 @@ export default {
 
         div.p {
           margin-top: 32px;
-          max-height: 310px;
+          max-height: 350px;
         }
       }
 

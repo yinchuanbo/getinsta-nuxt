@@ -481,78 +481,87 @@
     "faqList": {
       "textList": [
         {
-          "title": "1. Why I received the message \"This Instagram account has been verified on another GetInsta account (xxx). Please remove it there and then verify on this account after 24 hours.\"?",
-          "text": "Please kindly note that an Instagram account can only be verified on one GetInsta account at one time to do tasks to earn free coins. <br><br> You need to log into the GetInsta account of the prompt message (xxx) > tap the profile photo on the top left corner > find the Instagram username that you want to remove (xxx) > tap “Remove” > on the popup window, tap \"OK\" <br><br> To ensure the security of your Instagram account, your account will be removed in 24 hours. Please wait patiently. After it is completely removed, you can verify it on the GetInsta account you want and do tasks to earn coins."
+          "title": "1.Solutions to the message “This Instagram account has been verified on another GetInsta account (email). Please remove it there and then verify on this account after 24 hours.”",
+          "text": "An Instagram account can only be verified on one GetInsta account at one time to do tasks to earn free coins. <br><br><strong style=\"font-weight: bold\">Steps:</strong> <br><br><strong style=\"font-weight: bold\">1)</strong> Log into the GetInsta account with the email on the prompt message. If you forgot the password, you can reset a new one for login via “Forgot Password?”<br><br><strong style=\"font-weight: bold\">2)</strong> Tap the profile photo on the top left corner<br><br><strong style=\"font-weight: bold\">3)</strong> Find the Instagram username that you want to remove<br><br><strong style=\"font-weight: bold\">4)</strong> Tap “Remove”. On the popup window, tap “OK”<br><br>To ensure the account security, your Instagram account will be removed in 24 hours. Please wait patiently. After it is completely removed, you can verify it on this GetInsta account you want and do tasks to earn coins.<br><br><strong style=\"font-weight: bold\">Or</strong> provide us with the email on the prompt message and ask us to delete that GetInsta account.<br><br>Note: All its related info including the coins will be deleted too."
         },
         {
-          "title": "2. How to add Instagram accounts to GetInsta?",
-          "text": "Each GetInsta account can add 5 Instagram accounts at most. Log in GetInsta > tap the profile photo on the top left corner > tap “Add Account” on the bottom of the unfolded interface > enter the Instagram username."
+          "title": "2. How to add an Instagram account to GetInsta?",
+          "text": "Each GetInsta account can add 5 Instagram accounts at most. <br><br><strong style=\"font-weight: bold\">Step 1:</strong> Log into your GetInsta account<br><br><strong style=\"font-weight: bold\">Step 2:</strong> Tap the profile photo on the top left corner<br><br><strong style=\"font-weight: bold\">Step 3:</strong> Tap “Add Account” on the bottom of the unfolded interface<br><br><strong style=\"font-weight: bold\">Step 4:</strong> Enter the Instagram username"
         },
         {
-          "title": "3. How to remove an Instagram account from the GetInsta account?",
-          "text": "Log in your GetInsta account > tap the profile photo on the top left corner > find the Instagram account that you want to remove > tap “Remove” > on the popup window, tap “OK”  <br><br>  If this Instagram account has not been verified on the GetInsta account, it will be removed directly; if it has been verified, to ensure the security of the Instagram account, it will be removed in 24 hours. Please wait patiently."
+          "title": "3.How to remove an Instagram account from GetInsta?",
+          "text": "<strong style=\"font-weight: bold\">Step 1:</strong> Log into your GetInsta account<br><br><strong style=\"font-weight: bold\">Step 2:</strong> Tap the profile photo on the top left corner<br><br><strong style=\"font-weight: bold\">Step 3:</strong> Find the Instagram account that you want to remove<br><br><strong style=\"font-weight: bold\">Step 4:</strong> Tap “Remove”. On the popup window, tap “OK”<br><br>To ensure the account security, your Instagram account will be removed in 24 hours. Please wait patiently. "
         },
         {
-          "title": "4. Why I received the message \"Too many like/follow attempts. Please try again later.\"?",
-          "text": "It means you were doing too many tasks to earn coins during a short period of time, or the tasks you published were liked or followed by others during a short period of time. Please wait for a while and try again later. Otherwise, your Instagram account will probably be disabled by Instagram. <br><br> And the time when it goes back to normal so that you can continue to do tasks to get coins depends on Instagram. So please wait patiently. Besides, you may try it like this: <br><br> <b>Android</b>: First please log in the Instagram app on your mobile phone with the account you mentioned. If there's any popup message, just follow the instructions. Then come back to use the GetInsta app again. Remember to log out GetInsta first and then log in again. You’d better operate the two steps with the same IP (e.g. Don’t use wifi for a while and then switch to the cellular data of your mobile phone or VPN). <br><br> <b>Windows</b>: First log in the official Instagram website on your PC with the Instagram account which you used to do tasks. Then come back to use the GetInsta app again. Remember to log out GetInsta first and then log in again. You’d better operate the two steps with the same IP (e.g. Don’t use wifi for a while and then switch to VPN)."
+          "title": "4. Solution to the message “Too many like/follow attempts. Please try again later.”",
+          "text": "It means during a short period of time, you were doing too many tasks to earn coins, or the tasks you published were liked or followed by too many people. Please wait for a while and try again later. Otherwise, your Instagram account will probably be disabled by Instagram.<br><br>The time when it can go back to normal depends on Instagram. So please wait patiently. Or, you may try this way to solve the issue:<br><br><strong style=\"font-weight: bold\">1)</strong> Log into the Instagram account with the account you mentioned<br><br>For Android/iOS users: Please log in the Instagram app on your mobile phone. <br><br>For PC users: Please log in through http://www.instagram.com on your PC.<br><br><strong style=\"font-weight: bold\">2)</strong> If there's any popup message, just follow the instructions. If there isn’t any popup message, just come back to log out our app first and log in again to continue. <br><br><strong style=\"font-weight: bold\">Note:</strong> Please make sure to operate the steps above with the same Internet connection."
         },
         {
-          "title": "5. I published the task, but I haven’t got all likes or followers. Why?",
-          "text": "Generally, you’ll see the changes within 24 hours. The specific time of completing one task depends on the task size. Bigger plan, more time. And to make it increase organically, the delivery may take several days or more. You can check the progress in Task List. <br><br> If no changes occurred beyond 24 hours, you can send us the Instagram username of the task and we’ll help follow it up."
+          "title": "5. Solution to the message “Failed to add/verify the Instagram account. Please try again.”",
+          "text": "It may be caused by Instagram server exception or some other unknown errors. You can switch to another network (e.g. you are using the wifi now and change it to use the cellular data of your mobile phone or VPN) and try again to see if it works. Remember to log out the app first and then log in again.<br><br>If it still doesn’t work, please contact us via Feedback inside the app. We need you to provide the relevant log for further check."
         },
         {
-          "title": "6. What should I do when I received the message “Your Instagram account has been blocked or disabled.”?",
-          "text": "Please log in the official Instagram app and operate according to the relevant instructions. Then please wait patiently until your Instagram account back to normal."
+          "title": "6. I published the task, but I haven’t got all likes or followers. Why?",
+          "text": "Generally, you’ll see the changes within 24 hours. The specific time of completing one task depends on the task size. Bigger plan, more time. And to make it increase organically, the delivery may take several days or more. You can check the progress in Task List.<br><br>If no changes occurred after 24 hours, you can send us the Instagram username of the task and the screenshot of the progress in Task List. We’ll help follow it up."
         },
         {
-          "title": "7. Why I received the email of Verification Code ?",
-          "text": "You received the verification code email because you were trying to verify or change the email bound with your GetInsta account. The code will expire in 15 minutes after you receive it. Just enter the verification code on GetInsta app where you click to send the verification code and complete the verification. <br><br> If you didn't send such a request, please ignore this message."
+          "title": "7.What should I do when I received the message “Your Instagram account has been blocked or disabled.”?",
+          "text": "Please log into the official Instagram app and operate according to the relevant instructions. Then please wait patiently until your Instagram account back to normal."
         },
         {
-          "title": "8. What is the Energy of each Instagram account?",
-          "text": "Energy will be consumed for doing like/follow tasks and it’ll be restored automatically. The time besides the profile photo of the Instagram account will show how long you should wait until it restores the next energy and all energy. During this period, you can switch to another Instagram account to do tasks to get coins."
+          "title": "8. Why it prompted the error message “You've added this Instagram account to too many GetInsta accounts.”?",
+          "text": "One Instagram account can be added to 20 GetInsta accounts at most at the same time. If it prompts this message, it means the Instagram account you tried to add has already exceeded the limitation. So please try another Instagram account."
         },
         {
-          "title": "9. What if I forgot the password of my GetInsta account?",
-          "text": "Open GetInsta > tap \"Forgot password?\" on the login interface > enter the email address you used to register the account. You will receive an email and please follow the onscreen prompts to reset your password."
+          "title": "9. Why I shared the app but didn’t get the rewarded coins?",
+          "text": "After you share the app to another person, he/she needs to sign up a GetInsta account via the link you sent. Thus you can get the rewarded coins."
         },
         {
-          "title": "10. Why I share the app but didn’t get the rewarded coins?",
-          "text": "Please note that after you share the app to another person, he/she need to download GetInsta via the link you sent and sign up a GetInsta account. Thus you can get the rewarded coins."
+          "title": "10. Why I received the email of Verification Code?",
+          "text": "You received the verification code email because you were trying to verify or change the email linked to your GetInsta account. The code will expire in 15 minutes after you receive it. Just enter the verification code on the app and complete the verification.<br></br>If you didn't send such a request, please ignore this message."
         },
         {
-          "title": "11. How it works?",
-          "text": "It is a free and safe platform gathering massive real-person to follow and like each other. Everyone gets coins by following others or liking others’ posts in this system. Then, use the coins to get unlimited free Instagram followers or likes."
+          "title": "11.What is the Energy of each Instagram account?",
+          "text": "Energy will be consumed for doing follow/like tasks and it’ll be restored automatically. The time besides the profile photo of the Instagram account will show how long you should wait until it restores the next energy or all energy. During this period, you can switch to another Instagram account to do tasks to get coins."
         },
         {
-          "title": "12. Is it legal to buy Instagram followers or likes?",
+          "title": "12.What if I forgot the password of my GetInsta account?",
+          "text": "<strong style=\"font-weight: bold\">Step 1:</strong> Open the app<br><br><strong style=\"font-weight: bold\">Step 2:</strong> Tap \"Forgot Password?\" on the login interface<br><br><strong style=\"font-weight: bold\">Step 3:</strong> Enter the email address you used to register the account. You will receive an email and please follow the onscreen prompts to reset your password."
+        },
+        {
+          "title": "13. How it works?",
+          "text": "It is a free and safe platform gathering massive real persons to follow and like each other. Everyone gets coins by following others or liking other posts in this system. Then, use the coins to get unlimited free Instagram followers or likes.<br><br><strong style=\"font-weight: bold\">Step 1:</strong> Create your account<br><br><strong style=\"font-weight: bold\">Step 2:</strong> Earn free coins on the app<br><br><strong style=\"font-weight: bold\">Step 3:</strong> Use the coins to get your followers and likes"
+        },
+        {
+          "title": "14. Is it legal to buy Instagram followers or likes?",
           "text": "It’s legal, for sure. Buying followers or likes for any kind of social media is legal. It is just a digital marketing strategy. When others follow you or like your post, it is totally legal and safe."
         },
         {
-          "title": "13. Are followers and likes real?",
-          "text": "We promise 100% real. We do not use fake accounts like some websites. Only real followers can access to this system to earn coins and publish follower or like task. All of our Instagram followers and likes are completely real."
+          "title": "15. Are followers and likes real?",
+          "text": "We promise 100% real. We do not use fake accounts like some other websites. Only real followers can access to this system to earn coins and publish follower or like task. All of our Instagram followers and likes are completely real."
         },
         {
-          "title": "14. Do I need to provide my password?",
-          "text": "Not needed. We do not ask your password because processing your order does not need it, your username is enough.  <br><br> <b>Note:</b> When you want to earn more free coins, you need to log into one of your Instagram accounts with your password. Your information will be completely encrypted and only you know it."
+          "title": "16. Do I need to provide my password?",
+          "text": "Not needed. We do not ask your password because processing your order does not need it; your username is enough.<br></br><strong style=\"font-weight: bold\">Note:</strong> When you want to earn more free coins, you need to log into one of your Instagram accounts with your password. Your information will be completely encrypted and secured, and only you know it."
         },
         {
-          "title": "15. Is GetInsta safe?",
-          "text": "Absolutely YES. GetInsta is designed by an experienced and professional team that has years of developing software experience. We guarantee 100% safe and clean. <br><br> <b>Note:</b> Please be rest-assured to proceed with the downloading and installing of GetInsta if you see any prompts. GetInsta is 100% Safe and Clean. Your phone may show you a warning message when you try to download it from our site. There is no risk for your device and no damage to any of your data. Please just tap on \"SETTINGS\" to enable the installations from other sources on your Android device."
+          "title": "17. Is GetInsta safe?",
+          "text": "Absolutely YES.  GetInsta is designed by an experienced and professional team that has years of developing software experience. We guarantee 100% safe and clean.<br></br><strong style=\"font-weight: bold\">Note:</strong> Please rest assured to proceed with the downloading and installing of GetInsta if you see any prompts. GetInsta is 100% safe and clean. Your phone may show you a warning message when you try to download it from our site. There is no risk for your device and no damage to any of your data. Please just tap on \"SETTINGS\" to enable the installations from other sources on your device."
         }
       ],
       "download": {
-        "title": "16. Where can I download GetInsta?",
+        "title": "18. Where can I download GetInsta?",
         "text": "You can download GetInsta by clicking the buttons below."
       },
       "buy": {
-        "title": "17. Can I get followers & likes without doing coin tasks?",
-        "text": "You can download GetInsta by clicking the buttons below."
+        "title": "19. Can I get followers & likes without doing coin tasks?",
+        "text": "Yes. You can get unlimited free followers and likes after doing coin tasks. Alternatively, you can buy Instagram followers and likes directly, without downloading app and doing tasks."
       }
     },
     "faqForm": {
       "title-0": "Most issues can be resolved quickly via",
       "title-1": ". If you still need further help, send us your request anytime.",
+      "title-2": "It's recommended to contact us via Feedback inside the app to get fast reply. Request sent here may take longer time to get a response from us.",
       "yourEmail": "Your email",
       "yourEmailTip": "Please provide a valid email address to get reply from us.",
       "yourName": "Your name",
@@ -644,19 +653,19 @@
     },
     "termsOfService": {
       "title": "End User License Agreement",
-      "lastUpdatedDate": "February 14, 2020",
+      "lastUpdatedDate": "April 23, 2021",
       "content": {
-        "p0": "This End User License Agreement (the \"Agreement\") sets forth the legally binding terms and conditions which are applicable to your use of any of the Applications (\"App\", \"Software\" or \"Services\") from OrangeView Ltd. d/b/a GetInsta (\"GetInsta\").",
+        "p0": "This End User License Agreement (the \"Agreement\") sets forth the legally binding terms and conditions which are applicable to your use of any of the Applications (\"App\", \"Software\" or \"Services\") from Orange View Limited. It applies to the following products: GetInsta and Fonts App.",
         "p1": "Accepting the Agreement",
         "p2": "Please read the terms of this End User License Agreement carefully before continuing with the download and installation of the Software.",
-        "p3": "By downloading, installing, starting or in any way using this Software (including all content, materials and information therein) for Android, Windows PC, or any other platform, as applicable (the \"Software\"), you agree to be bound by the terms of this Agreement. If you do not agree to the Agreement, then do not use the Software.",
+        "p3": "By downloading, installing, starting or in any way using this Software (including all content, materials and information therein) for Android, iOS, Windows PC, or any other platform, as applicable (the \"Software\"), you agree to be bound by the terms of this Agreement. If you do not agree to the Agreement, then do not use the Software.",
         "p4": "You agree that installation or any use of the Software signifies that you have read, understood, and agree to be bound by the Agreement and the Terms and Conditions for Use of the Services.",
         "p5": "Basic Rules",
         "p6": "1. You can use the Software only for personal purposes (you may not use them for commercial purposes). You must not use the Software for any illegal or unauthorized purpose. You agree to comply with all laws, rules and regulations (for example, federal, state, local and provincial) applicable to your use of the Software and your Content (defined below), including but not limited to, copyright laws. You are solely responsible for your conduct and any data, text, files, information, usernames, images, graphics, photos, profiles, audio and video clips, sounds, musical works, works of authorship, applications, links and other content or materials (collectively, \"Content\") that you submit, post, or display on or via the Software.",
-        "p7": "2. You must not interfere or disrupt the service or servers or networks connected to the Software, including by transmitting any worms, viruses, spyware, malware or any other code of a destructive or disruptive nature, or access GetInsta's private API by any means other than in compliance with rules we set on API access.",
-        "p8": "3. You must not spam or submit any unwanted email or comments to any users of the Software, or use web URLs in your username without prior written consent from GetInsta.",
-        "p9": "4. You are not allowed to resell or charge others for use of or access to the Software, or duplicate, reproduce, transfer, give access to, copy or distribute any part of the Software in any medium without GetInsta's prior written authorization.",
-        "p10": "5. Violation of the Agreement may, in GetInsta's sole discretion, result in a ban of GetInsta usage. You understand and agree that GetInsta cannot and will not be responsible for the Content stylize on the Software and you use the Software at your own risk. If you violate the letter or spirit of these Terms of Use, or otherwise create risk or possible legal exposure for GetInsta, we can stop providing all or part of the Services to you.",
+        "p7": "2. You must not interfere or disrupt the service or servers or networks connected to the Software, including by transmitting any worms, viruses, spyware, malware or any other code of a destructive or disruptive nature, or access the App's private API by any means other than in compliance with rules we set on API access.",
+        "p8": "3. You must not spam or submit any unwanted email or comments to any users of the Software, or use web URLs in your username without prior written consent from us.",
+        "p9": "4. You are not allowed to resell or charge others for use of or access to the Software, or duplicate, reproduce, transfer, give access to, copy or distribute any part of the Software in any medium without our prior written authorization.",
+        "p10": "5. Violation of the Agreement may, in our sole discretion, result in a ban of the App usage. You understand and agree that the App cannot and will not be responsible for the Content stylize on the Software and you use the Software at your own risk. If you violate the letter or spirit of these Terms of Use, or otherwise create risk or possible legal exposure for the App, we can stop providing all or part of the Services to you.",
         "p11": "General Terms",
         "p12": "1. We only provide the services as stated. In other words, we do not guarantee that your new followers will interact with your account unless stated explicitly.",
         "p13": "2. We do not work with accounts that endorse illegal activities or pornography. We reserve the right to deny our services to customers if their account falls into either category.",
@@ -664,27 +673,27 @@
         "p15": "4. To fulfill all services we require information such as usernames for your social media accounts, emails, names and links.",
         "p16": "5. You understand and agree that you shall only use the Software as described herein. And you also understand that there is a possibility that your social media account may be disabled or blocked due to their laws.",
         "p17": "Advertising",
-        "p18": "Some of the GetInsta Services are supported by advertising revenue and may display advertisements and promotions. You agree that GetInsta may place advertising and promotions on, about, or in conjunction with your Content. The manner, mode, and extent of such advertising and promotions are subject to change without notice to you. You acknowledge that we may not always identify paid services, sponsored content, or commercial communications as such.",
+        "p18": "Some of the App Services are supported by advertising revenue and may display advertisements and promotions. You agree that the App may place advertising and promotions on, about, or in conjunction with your Content. The manner, mode, and extent of such advertising and promotions are subject to change without notice to you. You acknowledge that we may not always identify paid services, sponsored content, or commercial communications as such.",
         "p19": "Privacy",
-        "p20": "GetInsta may collect and use information concerning your use of GetInsta Apps as set forth in its",
+        "p20": "The App may collect and use information concerning your use of the App as set forth in its",
         "p21": "Privacy Policy",
         "p22": ".",
-        "p23": "We will not rent, reveal or sell all your information to third parties outside GetInsta (or the group of companies of which GetInsta is a part) and its controlled subsidiaries and affiliates without your consent.",
+        "p23": "We will not rent, reveal or sell all your information to third parties outside the App (or the group of companies of which the App is a part) and its controlled subsidiaries and affiliates without your consent.",
         "p24": "Disclaimer of Warranties",
-        "p25": "THE SERVICE, INCLUDING, WITHOUT LIMITATION, GETINSTA CONTENT, IS PROVIDED ON AN \"AS IS\", \"AS AVAILABLE\" AND \"WITH ALL FAULTS\" BASIS. TO THE FULLEST EXTENT PERMISSIBLE BY LAW, NEITHER GETINSTA NOR ITS PARENT COMPANY NOR ANY OF THEIR EMPLOYEES, MANAGERS, OFFICERS OR AGENTS (COLLECTIVELY, THE GETINSTA PARTIES\") MAKE ANY REPRESENTATIONS OR WARRANTIES OR ENDORSEMENTS OF ANY KIND WHATSOEVER, EXPRESS OR IMPLIED, AS TO: (A) THE SERVICE; (B) THE GETINSTA CONTENT; (C) USER CONTENT; OR (D) SECURITY ASSOCIATED WITH THE TRANSMISSION OF INFORMATION TO GETINSTA OR VIA THE SERVICE. IN ADDITION, THE GETINSTA PARTIES HEREBY DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, TITLE, CUSTOM, TRADE, QUIET ENJOYMENT, SYSTEM INTEGRATION AND FREEDOM FROM COMPUTER VIRUS.",
-        "p26": "THE GETINSTA PARTIES DO NOT REPRESENT OR WARRANT THAT THE SERVICE WILL BE ERROR-FREE OR UNINTERRUPTED; THAT DEFECTS WILL BE CORRECTED; OR THAT THE SERVICE OR THE SERVER THAT MAKES THE SERVICE AVAILABLE IS FREE FROM ANY HARMFUL COMPONENTS, INCLUDING, WITHOUT LIMITATION, VIRUSES. THE GETINSTA PARTIES DO NOT MAKE ANY REPRESENTATIONS OR WARRANTIES THAT THE INFORMATION (INCLUDING ANY INSTRUCTIONS) ON THE SERVICE IS ACCURATE, COMPLETE, OR USEFUL. YOU ACKNOWLEDGE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE GETINSTA PARTIES DO NOT WARRANT THAT YOUR USE OF THE SERVICE IS LAWFUL IN ANY PARTICULAR JURISDICTION, AND THE GETINSTA PARTIES SPECIFICALLY DISCLAIM SUCH WARRANTIES. SOME JURISDICTIONS LIMIT OR DO NOT ALLOW THE DISCLAIMER OF IMPLIED OR OTHER WARRANTIES SO THE ABOVE DISCLAIMER MAY NOT APPLY TO YOU TO THE EXTENT SUCH JURISDICTION'S LAW IS APPLICABLE TO YOU AND THESE TERMS OF USE.",
+        "p25": "THE SERVICE, INCLUDING, WITHOUT LIMITATION, THE APP CONTENT, IS PROVIDED ON AN \"AS IS\", \"AS AVAILABLE\" AND \"WITH ALL FAULTS\" BASIS. TO THE FULLEST EXTENT PERMISSIBLE BY LAW, NEITHER THE APP NOR ITS PARENT COMPANY NOR ANY OF THEIR EMPLOYEES, MANAGERS, OFFICERS OR AGENTS (COLLECTIVELY, THE APP PARTIES\") MAKE ANY REPRESENTATIONS OR WARRANTIES OR ENDORSEMENTS OF ANY KIND WHATSOEVER, EXPRESS OR IMPLIED, AS TO: (A) THE SERVICE; (B) THE APP CONTENT; (C) USER CONTENT; OR (D) SECURITY ASSOCIATED WITH THE TRANSMISSION OF INFORMATION TO APP OR VIA THE SERVICE. IN ADDITION, THE APP PARTIES HEREBY DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, TITLE, CUSTOM, TRADE, QUIET ENJOYMENT, SYSTEM INTEGRATION AND FREEDOM FROM COMPUTER VIRUS.",
+        "p26": "THE APP PARTIES DO NOT REPRESENT OR WARRANT THAT THE SERVICE WILL BE ERROR-FREE OR UNINTERRUPTED; THAT DEFECTS WILL BE CORRECTED; OR THAT THE SERVICE OR THE SERVER THAT MAKES THE SERVICE AVAILABLE IS FREE FROM ANY HARMFUL COMPONENTS, INCLUDING, WITHOUT LIMITATION, VIRUSES. THE APP PARTIES DO NOT MAKE ANY REPRESENTATIONS OR WARRANTIES THAT THE INFORMATION (INCLUDING ANY INSTRUCTIONS) ON THE SERVICE IS ACCURATE, COMPLETE, OR USEFUL. YOU ACKNOWLEDGE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE APP PARTIES DO NOT WARRANT THAT YOUR USE OF THE SERVICE IS LAWFUL IN ANY PARTICULAR JURISDICTION, AND THE APP PARTIES SPECIFICALLY DISCLAIM SUCH WARRANTIES. SOME JURISDICTIONS LIMIT OR DO NOT ALLOW THE DISCLAIMER OF IMPLIED OR OTHER WARRANTIES SO THE ABOVE DISCLAIMER MAY NOT APPLY TO YOU TO THE EXTENT SUCH JURISDICTION'S LAW IS APPLICABLE TO YOU AND THESE TERMS OF USE.",
         "p27": "BY ACCESSING OR USING THE SERVICE YOU REPRESENT AND WARRANT THAT YOUR ACTIVITIES ARE LAWFUL IN EVERY JURISDICTION WHERE YOU ACCESS OR USE THE SERVICE.",
-        "p28": "THE GETINSTA PARTIES DO NOT ENDORSE CONTENT AND SPECIFICALLY DISCLAIM ANY RESPONSIBILITY OR LIABILITY TO ANY PERSON OR ENTITY FOR ANY LOSS, DAMAGE (WHETHER ACTUAL, CONSEQUENTIAL, PUNITIVE OR OTHERWISE), INJURY, CLAIM, LIABILITY OR OTHER CAUSE OF ANY KIND OR CHARACTER BASED UPON OR RESULTING FROM ANY CONTENT.",
+        "p28": "THE APP PARTIES DO NOT ENDORSE CONTENT AND SPECIFICALLY DISCLAIM ANY RESPONSIBILITY OR LIABILITY TO ANY PERSON OR ENTITY FOR ANY LOSS, DAMAGE (WHETHER ACTUAL, CONSEQUENTIAL, PUNITIVE OR OTHERWISE), INJURY, CLAIM, LIABILITY OR OTHER CAUSE OF ANY KIND OR CHARACTER BASED UPON OR RESULTING FROM ANY CONTENT.",
         "p29": "Links to Third Party websites",
-        "p30": "Certain links contained in the Software and the official website that refer to other websites of third parties are not in control of GetInsta. We do not make any representations or warranties of any kind, express or implied, as to the operation included in other websites. The names of actual companies and products in this website may be the trademarks of their respective owners.",
+        "p30": "Certain links contained in the Software and the official website that refer to other websites of third parties are not in control of the App. We do not make any representations or warranties of any kind, express or implied, as to the operation included in other websites. The names of actual companies and products in this website may be the trademarks of their respective owners.",
         "p31": "Limitation of Liability",
-        "p32": "YOU EXPRESSLY UNDERSTAND AND AGREE THAT GETINSTA SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, OR DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES (EVEN IF GETINSTA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES). IN NO EVENT WILL GETINSTA'S TOTAL LIABILITY TO YOU EXCEED THE AMOUNT OF ACTUAL PRICE PAID BY YOU TO GETINSTA FOR THE SOFTWARE. THESE LIMITATIONS AND EXCLUSIONS WILL APPLY NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.",
+        "p32": "YOU EXPRESSLY UNDERSTAND AND AGREE THAT THE APP SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, OR DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES (EVEN IF THE APP HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES). IN NO EVENT WILL THE APP'S TOTAL LIABILITY TO YOU EXCEED THE AMOUNT OF ACTUAL PRICE PAID BY YOU FOR THE SOFTWARE. THESE LIMITATIONS AND EXCLUSIONS WILL APPLY NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.",
         "p33": "Governing Law",
         "p34": "If the Software is downloaded by or on behalf of the United States of America, its agencies and/or instrumentalities (\"U.S. Government\"), it is provided with Restricted Rights. Use, duplication, or disclosure of the Product by the U.S. Government is subject to restrictions as set forth in the Rights in Technical Data and Computer Software clause of DFARS and any other related applicable U.S. statutes or regulations.",
         "p35": "Modification or Termination",
-        "p36": "The terms of this Agreement may be updated at any time by GETINSTA, with or without prior notice, including but not limited to changing the functionality or appearance of the Software, or changing the license scope, other terms of the Agreement, or GetInsta Services. If there are changes to the Agreement, GetInsta will publish the modified content on its website (https://www.easygetinsta.com/terms). Once the revised version of the Agreement is published on the web, it is immediately effective and replaces the original. If you do not agree with the Agreement or any subsequent amendments, you may choose terminating your use of the Software or Services; if you choose to continue using the Software or Services, it is assumed that you fully accepted the terms and its amendments.",
+        "p36": "The terms of this Agreement may be updated at any time by the App, with or without prior notice, including but not limited to changing the functionality or appearance of the Software, or changing the license scope, other terms of the Agreement, or the App services. If there are changes to the Agreement, the App will publish the modified content on its website (https://www.easygetinsta.com/terms). Once the revised version of the Agreement is published on the web, it is immediately effective and replaces the original. If you do not agree with the Agreement or any subsequent amendments, you may choose terminating your use of the Software or Services; if you choose to continue using the Software or Services, it is assumed that you fully accepted the terms and its amendments.",
         "p37": "Reporting Violations",
-        "p38": "If you become aware of any misuse of the GetInsta services or any violation of the Terms, Privacy Policy, or Additional Terms, please",
+        "p38": "If you become aware of any misuse of the App services or any violation of the Terms, Privacy Policy, or Additional Terms, please",
         "p39": "contact us",
         "p40": "to report such misuse and/or violation.",
         "p41": "Contact Us",
