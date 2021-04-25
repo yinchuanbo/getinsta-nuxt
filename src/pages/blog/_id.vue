@@ -75,7 +75,6 @@ export default {
         error({ statusCode: 500 });
       }
     }
-
     return DATA;
   },
   head() {
