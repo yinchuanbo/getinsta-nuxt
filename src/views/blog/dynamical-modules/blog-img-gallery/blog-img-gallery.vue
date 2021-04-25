@@ -10,8 +10,7 @@
              'left': i === leftIndex,
              'right': i === rightIndex,
            }"
-           :alt="alt"
-           :title="alt"
+           alt="image"
       >
     </div>
     <div class="pagination">
@@ -42,10 +41,6 @@ export default {
         return [''];
       },
       required: true
-    },
-    alt: {
-      type: String,
-      default: ''
     }
   },
   data() {

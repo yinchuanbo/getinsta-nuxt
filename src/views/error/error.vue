@@ -160,9 +160,9 @@ export default {
     return {};
   },
   mounted() {
-    // setTimeout(() => {
-    //   this.$nuxt.$router.push({ path: '/' });
-    // }, 10000);
+    setTimeout(() => {
+      this.$nuxt.$router.push({ path: '/' });
+    }, 3000);
   },
   methods: {}
 };

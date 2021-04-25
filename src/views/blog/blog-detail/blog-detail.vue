@@ -308,10 +308,6 @@ export default {
     // New nuxt asyncData方式请求
     getBlogDetailByProps(data) {
       this.blogDetailObj = data['article'];
-      // var reg = /<([a-z]+?)(?:\s+?[^>]*?)?>\s*?<\/\1>/ig;
-      // this.blogDetailObj.content = this.blogDetailObj.content.replace(reg,"");
-      // this.blogDetailObj.content = this.blogDetailObj.content.replace(/&nbsp;/ig,"");
-      // this.blogDetailObj.content = this.blogDetailObj.content.replace(/<p><br><\/p>/ig,"");
       this.langArabic = this.COMMON.langCheckIsArabic(data['article']['seo_title']);
 
       if (process.client) {
@@ -511,20 +507,15 @@ export default {
       if (checkNode.length) {
         for (let i = 0; i < checkNode.length; i++) {
           let imgListArray = [];
-          let alt = '';
           const container = checkNode[i];
           const imgNodes = container.querySelectorAll('img');
           for (let j = 0; j < imgNodes.length; j++) {
             imgListArray.push(imgNodes[j].src);
-            if(imgNodes[j].alt && imgNodes[j].alt !== '') {
-               alt = imgNodes[j].alt;
-            }
           }
           let component = new ImgGallery({
             propsData: {
               imgDirectionHorizontal: container.classList.contains('horizontal'),
-              imgList: imgListArray,
-              alt: alt
+              imgList: imgListArray
             }
           }).$mount();
           container.parentNode.replaceChild(component.$el, container);
