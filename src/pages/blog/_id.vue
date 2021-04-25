@@ -50,7 +50,6 @@ export default {
       };
 
       try {
-
         let res = await app.$axios.$get(
           blogApi.getBlogDetailV2,
           { params: apiParams }
@@ -67,7 +66,7 @@ export default {
           }
         }
       } catch (err) {
-        // console.log('blog detail error:', err);
+        console.log('blog detail error:', err);
         let errs = {
           'err': err
         }
