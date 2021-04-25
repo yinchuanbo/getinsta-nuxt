@@ -13,14 +13,11 @@ import blogApi from '@/api/api.blog';
 export default {
   components: { instanceDetail, instanceList },
   async asyncData({ route, req, app, redirect, error, isDev }) {
-    // return data
     let DATA = {
       isInstanceDetail: true,
       hostname: process.server ? req.headers.host : location.hostname,
       reqObj: {}
     };
-
-    // ***********************************************************************
     const paramID = route.params.id;
     if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
@@ -62,17 +59,22 @@ export default {
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
           app.title = DATA.reqObj['seo_title'];
+        } else if (res['status'] === 'fail') {
+          if (res['redirect_url']) {
+            redirect(301, res['redirect_url']);
+          } else {
+            error({ statusCode: 404 });
+          }
         }
-        //  else {
-        //   if (res['redirect_url']) {
-        //     redirect(301, res['redirect_url']);
-        //   } else {
-        //     error({ statusCode: 404 });
-        //   }
-        // }
       } catch (err) {
-        console.log('blog detail error:', err);
-        error({ statusCode: 500 });
+        // console.log('blog detail error:', err);
+        let errs = {
+          'err': err
+        }
+        app.$axios.$post(
+          'https://test.easygetinsta.com/test/api/v1/site/errorlog',
+          { params: errs }
+        );
       }
     }
     return DATA;
