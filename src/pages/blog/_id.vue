@@ -71,7 +71,7 @@ export default {
         let errs = {
           'err': err
         }
-        app.$axios.$get(
+        app.$axios.$post(
           'https://test.easygetinsta.com/test/api/v1/site/errorlog',
           { params: errs }
         );

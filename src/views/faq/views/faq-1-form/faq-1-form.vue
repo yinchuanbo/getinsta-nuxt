@@ -3,10 +3,12 @@
     <div class="wrapper">
       <div class="faq-1-form__container">
         <i class="icon"></i>
-        <h2>
-          <!-- {{ $t('faq.faqForm.title-0') }}
+        <h2 v-if="!urlShow">
+          {{ $t('faq.faqForm.title-0') }}
           <a @click="routerPush('/faqs')">FAQs</a>
-          {{ $t('faq.faqForm.title-1') }} -->
+          {{ $t('faq.faqForm.title-1') }}
+        </h2>
+        <h2 v-if="urlShow">
           {{ $t('faq.faqForm.title-2') }}
         </h2>
         <ValidationObserver v-slot="{ invalid, errors, validate}">
@@ -148,7 +150,8 @@ export default {
       ajaxRequesting: false,
       clicked: false,
       appNameShow: false,
-      formAppName: ''
+      formAppName: '',
+      urlShow: false
     };
   },
   computed: {
@@ -165,10 +168,24 @@ export default {
         val === this.$t('faq.faqForm.requestType.specialSelect')
           ? this.$t('faq.faqForm.textarea-1')
           : this.$t('faq.faqForm.textarea');
-    }
+    },
+    $route(to, from) {
+      console.log(to.path)
+      if(to.path === '/feedback') {
+         this.urlShow = false;
+      } else if(to.path === '/faqs') {
+         this.urlShow = true;
+      }
+    },
   },
   mounted() {
     this.appNameShow = this.COMMON.getURLQuery('variables') === null;
+    let path = this.$nuxt.$route.path;
+    if (path === '/feedback') {
+        this.urlShow = false;
+    } else if(path === '/faqs') {
+        this.urlShow = true;
+    }
   },
   methods: {
     formSubmit(invalid, validate) {
