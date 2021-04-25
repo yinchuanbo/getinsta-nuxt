@@ -47,6 +47,8 @@ import logoGetInsta from '@/assets/images/global/logo.svg';
 import logoGetinshot from '@/assets/images/global/logo_getinshot.svg';
 import logoFollowersGallery from '@/assets/images/global/logo_follower-gallery.svg';
 
+import blogApi from '@/api/api.blog';
+
 // API
 import apiAdr from '@/api/api.app.android.js';
 import apiV2 from '@/api/api.v2.js';
@@ -126,6 +128,9 @@ export default {
     $route(to, from) {
       this.watchedMethods(to, from);
       this.downloadBtnConfigInit(to.path);
+      // if(to.name === 'blog-id___en') {
+      //   this.redirect();
+      // }
     },
     '$i18n.locale'(val) {
       document.documentElement.setAttribute('lang', val);
@@ -135,7 +140,6 @@ export default {
       // } else {
       //   this.$store.commit('productName', 'Getinshot');
       // }
-
       this.productNameLogoInit();
     }
   },
@@ -206,6 +210,7 @@ export default {
     this.setDefaultLocalStorageVueX();
   },
   methods: {
+    // test
     watchedMethods(to = { path: '/', name: 'home' }, from = { path: '/', name: 'home' }) {
       // V2开关
       this.v2SwitchGate(to.path);

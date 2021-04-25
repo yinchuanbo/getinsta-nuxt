@@ -12,7 +12,6 @@ import blogApi from '@/api/api.blog';
 
 export default {
   components: { instanceDetail, instanceList },
-  middleware: 'jump',
   async asyncData({ route, req, app, redirect, error, isDev }) {
     // return data
     let DATA = {
@@ -29,31 +28,35 @@ export default {
       const idArray = paramID.split('-');
       const articleID = idArray.pop();
       if (typeof articleID !== 'string') return;
-      // if (isDev) console.log('articleID', articleID);
-      const browserLang = process.client ? navigator.language.toLowerCase().substr(0, 2) : '';
-      let locale = '';
-      const supportedLocale =  ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
-      for (let i = 0; i < supportedLocale.length; i++) {
-        if (supportedLocale[i] === browserLang) {
-          locale = supportedLocale[i];
-          break;
-        } else {
-          locale = 'en';
-        }
+      let locale = 'en';
+      let lang = '';
+      let locales = ['en', 'fr', 'de', 'es', 'ar', 'it', 'pt'];
+
+      if(!req) {
+        lang = process.client ? navigator.language.toLowerCase().substr(0, 2) : 'en';
+      } else {
+        lang = req.headers['accept-language'].toLowerCase().substr(0, 2);
       }
+
+      for (let i = 0; i < locales.length; i++) {
+          if (locales[i] === lang) {
+              locale = lang;
+              break;
+          }
+      }
+
       let apiParams = {
         article_id: articleID,
         client_lan: 'en',
         page_url: paramID,
         accept_lan: locale
       };
-      // request
+
       try {
         let res = await app.$axios.$get(
           blogApi.getBlogDetailV2,
           { params: apiParams }
         );
-        // if (isDev) console.log('res:', res);
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
           app.title = DATA.reqObj['seo_title'];
