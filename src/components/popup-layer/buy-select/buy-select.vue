@@ -197,6 +197,8 @@ export default {
 
       if(this.isFollowers) {
         param.product_type = 2;
+      } else {
+        param.product_type = 1;
       }
 
       this.transportCartUnitData(param);

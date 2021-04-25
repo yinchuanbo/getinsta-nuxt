@@ -13,14 +13,11 @@ import blogApi from '@/api/api.blog';
 export default {
   components: { instanceDetail, instanceList },
   async asyncData({ route, req, app, redirect, error, isDev }) {
-    // return data
     let DATA = {
       isInstanceDetail: true,
       hostname: process.server ? req.headers.host : location.hostname,
       reqObj: {}
     };
-
-    // ***********************************************************************
     const paramID = route.params.id;
     if (!paramID) { // 列表页
       DATA.isInstanceDetail = false;
@@ -35,7 +32,7 @@ export default {
       if(!req) {
         lang = process.client ? navigator.language.toLowerCase().substr(0, 2) : 'en';
       } else {
-        lang = req.headers['accept-language'].toLowerCase().substr(0, 2);
+        lang = req.headers['accept-language'] ? req.headers['accept-language'].toLowerCase().substr(0, 2) : 'en';
       }
 
       for (let i = 0; i < locales.length; i++) {
@@ -60,7 +57,7 @@ export default {
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
           app.title = DATA.reqObj['seo_title'];
-        } else {
+        } else if (res['status'] === 'fail') {
           if (res['redirect_url']) {
             redirect(301, res['redirect_url']);
           } else {
@@ -68,11 +65,14 @@ export default {
           }
         }
       } catch (err) {
-        console.log('blog detail error:', err);
-        error({ statusCode: 500 });
+        let errs = {
+          'err': err.message
+        }
+        app.$axios.$post(
+          'https://test.easygetinsta.com/test/api/v1/site/errorlog', errs
+        );
       }
     }
-
     return DATA;
   },
   head() {
