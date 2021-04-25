@@ -162,7 +162,7 @@ export default {
     // 生成周期循环offer独立数组
     renderPkgListWithUnit(pkgList) {
       pkgList.map(item => {
-        if (item['cycle_type'] > 1 && item.product_type === 1) {
+        if (item['cycle_type'] > 1 && item.product_type === 2) {
           item.dailyQuantity = item['purchase_quantity'];
           this.pkgListWithUnit.push(item);
         }
