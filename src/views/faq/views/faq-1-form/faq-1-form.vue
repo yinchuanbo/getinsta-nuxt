@@ -170,7 +170,6 @@ export default {
           : this.$t('faq.faqForm.textarea');
     },
     $route(to, from) {
-      console.log(to.path)
       if(to.path === '/feedback') {
          this.urlShow = false;
       } else if(to.path === '/faqs') {
