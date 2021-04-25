@@ -35,7 +35,7 @@ export default {
       if(!req) {
         lang = process.client ? navigator.language.toLowerCase().substr(0, 2) : 'en';
       } else {
-        lang = req.headers['accept-language'].toLowerCase().substr(0, 2);
+        lang = req.headers['accept-language'] ? req.headers['accept-language'].toLowerCase().substr(0, 2) : 'en';
       }
 
       for (let i = 0; i < locales.length; i++) {
@@ -53,20 +53,23 @@ export default {
       };
 
       try {
+
         let res = await app.$axios.$get(
           blogApi.getBlogDetailV2,
           { params: apiParams }
         );
+
         if (res['status'] === 'ok') {
           DATA.reqObj = res;
           app.title = DATA.reqObj['seo_title'];
-        } else {
-          if (res['redirect_url']) {
-            redirect(301, res['redirect_url']);
-          } else {
-            error({ statusCode: 404 });
-          }
         }
+        //  else {
+        //   if (res['redirect_url']) {
+        //     redirect(301, res['redirect_url']);
+        //   } else {
+        //     error({ statusCode: 404 });
+        //   }
+        // }
       } catch (err) {
         console.log('blog detail error:', err);
         error({ statusCode: 500 });
