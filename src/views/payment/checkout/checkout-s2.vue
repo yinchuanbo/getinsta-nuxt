@@ -930,7 +930,7 @@ import defaultAvatar from '@/assets/images/global/icon_avatar_default.svg';
 // import payssionIconPaytmIn from '@/assets/images/payment/passion/paytm_in.png';
 import payssionIconUpiIn from '@/assets/images/payment/passion/upi_in.png';
 import payssionIconEbankingIn from '@/assets/images/payment/passion/ebanking_in.png';
-import payssionIconSbiIn from '@/assets/images/payment/passion/sbi_in.png';
+// import payssionIconSbiIn from '@/assets/images/payment/passion/sbi_in.png';
 import payssionIconDanaId from '@/assets/images/payment/passion/dana_id.png';
 import payssionIconLinkajaId from '@/assets/images/payment/passion/linkaja_id.png';
 import payssionIconOvoId from '@/assets/images/payment/passion/ovo_id.png';
@@ -1105,11 +1105,11 @@ export default {
               pmID: 'upi_in',
               icon: payssionIconUpiIn
             },
-            {
-              pmName: 'SBI',
-              pmID: 'sbi_in',
-              icon: payssionIconSbiIn
-            },
+            // {
+            //   pmName: 'SBI',
+            //   pmID: 'sbi_in',
+            //   icon: payssionIconSbiIn
+            // },
             {
               pmName: 'Netbanking',
               pmID: 'ebanking_in',
