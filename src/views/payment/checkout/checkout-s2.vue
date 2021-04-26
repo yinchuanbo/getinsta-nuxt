@@ -1107,7 +1107,7 @@ export default {
             },
             {
               pmName: 'SBI',
-              pmID: 'sbi_in',
+              pmID: 'ebanking_in',
               icon: payssionIconSbiIn
             },
             {
