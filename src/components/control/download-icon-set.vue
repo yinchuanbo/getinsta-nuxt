@@ -98,10 +98,4 @@ export default {
     }
   }
 }
-
-@media (max-width: 768px) {
-  .download-icon-set {
-
-  }
-}
 </style>
