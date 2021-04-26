@@ -54,8 +54,8 @@
       :enter-box="enterbox"
       :my-ins-user="insUser"
       :this-vue="sendThis"
+      :is-followers="true"
       @closebox="closeBuyPop"
-      :isFollowers="true"
     />
   </div>
 </template>
