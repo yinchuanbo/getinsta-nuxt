@@ -37,12 +37,12 @@ export default {
 
       if (this.$store.state.isiOS) {
         gaParam = "as";
-        url =
+        // url =
           // = `${this.$store.state.enIosLink}`
           // + `?pt=${this.$store.state.enIosLinkPt}`
           // + `&ct=en-seo-head`
           // + `&mt=8`;
-          `https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=${ct}&mt=8`;
+         url = `https://apps.apple.com/app/apple-store/id1525688965?pt=118374901&ct=${ct}&mt=8`;
       }
       if (!this.$store.state.isiOS) {
         gaParam = "gp";
@@ -78,7 +78,6 @@ export default {
       z-index: 9;
       width: 100%;
       height: 100%;
-      //background-color: #FF9C39;
       background: url("~@/assets/images/global/button/btn__cta-download_bg.svg")
         center no-repeat;
       background-size: cover;
