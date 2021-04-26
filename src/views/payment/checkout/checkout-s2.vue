@@ -1107,7 +1107,7 @@ export default {
             },
             {
               pmName: 'SBI',
-              pmID: 'ebanking_in',
+              pmID: 'sbi_in',
               icon: payssionIconSbiIn
             },
             {
@@ -2325,7 +2325,11 @@ export default {
         param.payment_type = 1;
       } else if (this.form.field.paymentMethod === 'Payssion') {
         param.payment_type = 5;
-        param.pm_id = this.payssionSupportedPaymentVModel.pmID;
+        if(this.payssionSupportedPaymentVModel.pmID === 'sbi_in') {
+          param.pm_id = 'ebanking_in';
+        } else {
+          param.pm_id = this.payssionSupportedPaymentVModel.pmID
+        }
         param.country = this.payssionCountryVModel.countryCode;
       } else if (this.form.field.paymentMethod === 'Paddle') {
         param.payment_type = 6;

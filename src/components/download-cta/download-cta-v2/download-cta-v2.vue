@@ -64,7 +64,6 @@ export default {
   },
   methods: {
     gaDownload() {
-      // console.log(this.$nuxt.$route.path);
       this.gaBottomBtnDownloadLabelInit(this.$nuxt.$route.path);
       this.gaBottomBtnDownloadLabelV2Init();
 
