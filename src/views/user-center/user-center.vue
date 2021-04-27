@@ -894,6 +894,10 @@ import ButtonYellowIcon from '@/components/button/button-yellow-icon';
 
 import defaultAvatar from '@/assets/images/global/icon_avatar_default.svg';
 
+import { Base64 } from 'js-base64';
+
+const apiUrl = process.env.NODE_ENV === 'production' ? 'http://api.easygetinsta.com' : 'http://test.easygetinsta.com';
+
 export default {
   name: 'User',
   components: {
@@ -1369,7 +1373,13 @@ export default {
 
           this.searchInsCache.ins_id = _sharedDataUser.id;
           this.searchInsCache.ins_account = _sharedDataUser.username;
-          this.searchInsCache.profile_pic_url = _sharedDataUser.profile_pic_url;
+
+
+          this.searchInsCache.profile_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}`;
+
+
+
+
           this.searchInsCache.followed_by = _sharedDataUser['edge_followed_by']['count'];
           this.searchInsCache.follow = _sharedDataUser['edge_follow']['count'];
           this.searchInsCache.post = this.insPostTransform(_sharedDataUserPosts);
@@ -1417,7 +1427,8 @@ export default {
 
           this.searchInsCache.ins_id = _sharedDataUser.id;
           this.searchInsCache.ins_account = _sharedDataUser.username;
-          this.searchInsCache.profile_pic_url = _sharedDataUser.profile_pic_url;
+          this.searchInsCache.profile_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}`;
+
           this.searchInsCache.followed_by = _sharedDataUser['edge_followed_by']['count'];
           this.searchInsCache.follow = _sharedDataUser['edge_follow']['count'];
           this.searchInsCache.post = this.insPostTransform(_sharedDataUserPosts);
@@ -1939,8 +1950,18 @@ export default {
       });
     },
     renderPost(postObj) {
-      this.postList = postObj['post_list'];
-      console.log(this.postList);
+      
+
+      let postList = postObj['post_list'];
+      for(let i = 0; i < postList.length; i ++) {
+          postList[i].like_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(postList[i].like_pic_url)}`;
+
+
+      }
+
+      this.postList = postList;
+
+
       this.renderPostListInfo(
         postObj.post_count,
         postObj.end_cursor,
@@ -1996,7 +2017,9 @@ export default {
         // console.log(this.dataStored.user.ins_account.accounts);
 
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].profile_pic_url
-          = _sharedDataUser.profile_pic_url || '';
+          = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}` || '';
+
+
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].followed_by
           = _sharedDataUser['edge_followed_by']['count'];
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].follow
@@ -2047,7 +2070,10 @@ export default {
         // console.log(this.dataStored.user.ins_account.accounts);
 
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].profile_pic_url
-          = _sharedDataUser.profile_pic_url || '';
+          = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}` || '';
+
+
+
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].followed_by
           = _sharedDataUser['edge_followed_by']['count'];
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].follow
@@ -2420,7 +2446,14 @@ export default {
         ).then((response) => {
           this.postListLoading = false;
           if (response.data.status === 'ok') {
-            this.postList = [...this.postList, ...response.data.data.post['post_list']];
+
+            let postList = response.data.data.post['post_list'];
+            for(let i = 0; i < postList.length; i ++) {
+                postList[i].like_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(postList[i].like_pic_url)}`;
+            }
+
+            this.postList = [...this.postList, ...postList];
+
             this.renderPostListInfo(
               response.data.data.post['post_count'],
               response.data.data.post['page_info']['end_cursor'],
