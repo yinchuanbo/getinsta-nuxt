@@ -22,7 +22,7 @@
                   <div v-if="cartList && cartList.length !== 0" class="checkout__main_cart">
                     <div class="checkout__main_cart-list">
                       <div v-for="(unit, i) in cartList" :key="i" class="unit">
-                        <div class="national-flag" v-if="unit.icon_url" :style="{background: 'url('+ unit.icon_url +')', backgroundSize: '100% 100%'}">
+                        <div v-if="unit.icon_url" class="national-flag" :style="{background: 'url('+ unit.icon_url +')', backgroundSize: '100% 100%'}">
                           <!-- <img :src="unit.icon_url" alt=""> -->
                         </div>
                         <!--icon-->

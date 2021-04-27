@@ -1,3 +1,4 @@
+// 表格
 // 文章内容区样式
 .blog-detail__content {
   padding-top: 40px;
@@ -463,6 +464,7 @@
       th, td {
         padding: 0 10px;
         border: 1px solid #E5E5E5;
+        border-bottom: 0;
         height: 48px;
         vertical-align: middle;
 
@@ -508,10 +510,29 @@
     }
 
     &.table-v2 {
+      thead, tbody {
+        tr{
+          td:first-child, th:first-child {
+            border-left: 0!important;
+          }
+        }
+      }
+      
       thead {
         tr {
           width: calc(100% - 6px);
+          th:last-child {
+            border-width: 1px;
+            border-color: transparent;
+          }
+          th {
+            border-top: 0;
+            border-bottom: 0;
+          }
         }
+        background-color: #f9f9f9;
+        border: 0;
+        border-bottom: 1px solid #E5E5E5!important;
       }
 
       tbody {
@@ -543,6 +564,9 @@
         &:first-child {
           th, td {
             font-weight: 400;
+          }
+          th {
+            font-weight: 600
           }
         }
       }
@@ -1465,6 +1489,22 @@
 }
 
 @media (max-width: 768px) {
+  .table-v2 {
+    thead {
+      tr {
+        th {
+          width: auto;
+        } 
+      }
+    }
+    tbody {
+      tr {
+        td {
+          width: auto;
+        }
+      }
+    }
+  }
   // 文章内容区样式
   .blog-detail__content {
     padding-top: 25px;
