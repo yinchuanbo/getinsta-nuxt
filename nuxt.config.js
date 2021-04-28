@@ -114,7 +114,9 @@ export default {
         implementation: require('sass')
       }
     },
-    // extractCSS: { allChunks: true }
+    extractCSS: {
+      ignoreOrder: true
+    }
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
