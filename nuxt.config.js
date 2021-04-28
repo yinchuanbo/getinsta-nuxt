@@ -4,6 +4,7 @@ import redirectSSL from 'redirect-ssl';
 export default {
   srcDir: 'src/',
   ssr: true,
+  mode: "universal",
   // 测试环境开启 debug 模式
   debug: process.env.NODE_ENV !== 'production',
   /*
@@ -20,6 +21,13 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+
+  hooks: {
+    'vue-renderer:ssr:context'(context) {
+      const routePath = JSON.stringify(context.nuxt.routePath);
+      context.nuxt = {serverRendered: true, routePath}
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -105,6 +113,9 @@ export default {
       sass: {
         implementation: require('sass')
       }
+    },
+    extractCSS: {
+      ignoreOrder: true
     }
   },
 
