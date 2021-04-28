@@ -897,10 +897,6 @@ import ListEmpty from '@/components/list/list-empty';
 import ButtonPurple from '@/components/button/button-purple';
 import ButtonYellowIcon from '@/components/button/button-yellow-icon';
 
-import { Base64 } from 'js-base64';
-
-const apiUrl = process.env.NODE_ENV === 'production' ? 'http://api.easygetinsta.com' : 'http://test.easygetinsta.com';
-
 export default {
   name: 'StoreDailyLikesTab',
   components: {
@@ -1413,7 +1409,7 @@ export default {
 
           this.insUser.ins_id = _sharedDataUser.id;
           this.insUser.ins_account = _sharedDataUser.username;
-          this.insUser.profile_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}`
+          this.insUser.profile_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}`
 
           this.insUser.followed_by =
             _sharedDataUser['edge_followed_by']['count'];
@@ -1426,7 +1422,7 @@ export default {
           this.postList = this.insUser.post.post_list;
 
           for(let i = 0; i < this.postList.length; i ++) {
-              this.postList[i].like_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(this.postList[i].like_pic_url)}`;
+              this.postList[i].like_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(this.postList[i].like_pic_url)}`;
           }
           this.postListInfo.post_count = this.insUser.post.post_count;
           this.postListInfo.end_cursor = this.insUser.post.end_cursor;
@@ -1566,7 +1562,7 @@ export default {
             if (response.data.status === 'ok') {
               let postList = response.data.data.post['post_list'];
               for(let i = 0; i < postList.length; i ++) {
-                  postList[i].like_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(postList[i].like_pic_url)}`;
+                  postList[i].like_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(postList[i].like_pic_url)}`;
               }
 
               this.postList = [

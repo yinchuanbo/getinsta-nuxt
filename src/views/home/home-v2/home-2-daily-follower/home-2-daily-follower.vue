@@ -185,10 +185,6 @@ import apiInsServer from '@/api/api.ins.server';
 import ButtonYellowIcon from '@/components/button/button-yellow-icon';
 import ButtonIconIns from '@/components/button/button-icon-ins';
 import ButtonYellowGradient from '@/components/button/button-yellow-gradient';
-
-const apiUrl = process.env.NODE_ENV === 'production' ? 'http://api.easygetinsta.com' : 'http://test.easygetinsta.com';
-import { Base64 } from 'js-base64';
-
 export default {
   name: 'Home2DailyFollowerV2',
   components: {
@@ -281,7 +277,6 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handle);
-
     this.getPkgList();
   },
   destroyed() {
@@ -499,7 +494,7 @@ export default {
 
         this.insUser.ins_id = _sharedDataUser.id;
         this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}`;
+        this.insUser.profile_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}`;
 
         this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
         this.insUser.follow = _sharedDataUser['edge_follow']['count'];
@@ -565,7 +560,7 @@ export default {
 
         this.insUser.ins_id = _sharedDataUser.id;
         this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}`;
+        this.insUser.profile_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}`;
         this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
         this.insUser.follow = _sharedDataUser['edge_follow']['count'];
         this.insUser.post = this.insPostTransform(_sharedDataUserPosts);

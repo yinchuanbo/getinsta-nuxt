@@ -41,6 +41,7 @@ export const state = () => ({
 
   footerSelect: false,
   showAlert: false,
+  apiUrl: process.env.NODE_ENV === 'production' ? 'http://api.easygetinsta.com' : 'http://test.easygetinsta.com',
 });
 
 export const mutations = {
