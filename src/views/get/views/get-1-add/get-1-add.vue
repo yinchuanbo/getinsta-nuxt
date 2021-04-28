@@ -2,7 +2,7 @@
   <div class="get-1-add home__sec">
     <div class="wrapper">
       <h1 class="home__sec_h2">{{ $t('get.add.title') }}</h1>
-      <p class="home__sec_p">{{ $t('get.add.subTitle') }}</p>
+      <p class="home__sec_p">{{ $t('get.add.subTitle') }}22</p>
       <div class="get-1-add__container">
         <div class="control-search_ins">
           <label>
@@ -234,7 +234,11 @@ export default {
 
         this.insUser.ins_id = _sharedDataUser.id;
         this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
+        this.insUser.profile_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}`;
+
+
+
+
         this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
         this.insUser.follow = _sharedDataUser['edge_follow']['count'];
         this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
@@ -298,7 +302,7 @@ export default {
 
         this.insUser.ins_id = _sharedDataUser.id;
         this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
+        this.insUser.profile_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}`;
         this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
         this.insUser.follow = _sharedDataUser['edge_follow']['count'];
         this.insUser.post = this.insPostTransform(_sharedDataUserPosts);
@@ -399,7 +403,8 @@ export default {
 
         postObj.like_id = insPostObj.id;
         postObj.short_code = insPostObj['shortcode'];
-        postObj.like_pic_url = insPostObj['thumbnail_src'];
+        postObj.like_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(insPostObj['thumbnail_src'])}`;
+
         postObj.like_count = insPostObj['edge_liked_by']['count'];
 
         postList.push(postObj);
@@ -438,7 +443,11 @@ export default {
         ).then((response) => {
           this.postListLoading = false;
           if (response.data.status === 'ok') {
-            this.postList = [...this.postList, ...response.data.data.post['post_list']];
+            let postList = response.data.data.post['post_list'];
+            for(let i = 0; i < postList.length; i ++) {
+                postList[i].like_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(postList[i].like_pic_url)}`;
+            }
+            this.postList = [...this.postList, ...postList];
             this.renderPostListInfo(
               response.data.data.post['post_count'],
               response.data.data.post['page_info']['end_cursor'],
@@ -480,7 +489,7 @@ export default {
           for (let i = 0; i < insPostObj['edges'].length; i++) {
             let insPostObjTransUnit = {};
             insPostObjTransUnit.like_id = insPostObj['edges'][i]['node']['id'];
-            insPostObjTransUnit.like_pic_url = insPostObj['edges'][i]['node']['thumbnail_src'];
+            insPostObjTransUnit.like_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(insPostObj['edges'][i]['node']['thumbnail_src'])}`;
             insPostObjTransUnit.like_count = insPostObj['edges'][i]['node']['edge_media_preview_like']['count'];
             insPostObjTransUnit.short_code = insPostObj['edges'][i]['node']['shortcode'];
 
