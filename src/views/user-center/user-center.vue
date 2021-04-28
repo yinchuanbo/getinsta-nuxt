@@ -894,10 +894,6 @@ import ButtonYellowIcon from '@/components/button/button-yellow-icon';
 
 import defaultAvatar from '@/assets/images/global/icon_avatar_default.svg';
 
-import { Base64 } from 'js-base64';
-
-const apiUrl = process.env.NODE_ENV === 'production' ? 'http://api.easygetinsta.com' : 'http://test.easygetinsta.com';
-
 export default {
   name: 'User',
   components: {
@@ -1375,7 +1371,7 @@ export default {
           this.searchInsCache.ins_account = _sharedDataUser.username;
 
 
-          this.searchInsCache.profile_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}`;
+          this.searchInsCache.profile_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}`;
 
 
 
@@ -1427,7 +1423,7 @@ export default {
 
           this.searchInsCache.ins_id = _sharedDataUser.id;
           this.searchInsCache.ins_account = _sharedDataUser.username;
-          this.searchInsCache.profile_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}`;
+          this.searchInsCache.profile_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}`;
 
           this.searchInsCache.followed_by = _sharedDataUser['edge_followed_by']['count'];
           this.searchInsCache.follow = _sharedDataUser['edge_follow']['count'];
@@ -1954,7 +1950,7 @@ export default {
 
       let postList = postObj['post_list'];
       for(let i = 0; i < postList.length; i ++) {
-          postList[i].like_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(postList[i].like_pic_url)}`;
+          postList[i].like_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(postList[i].like_pic_url)}`;
 
 
       }
@@ -2017,7 +2013,7 @@ export default {
         // console.log(this.dataStored.user.ins_account.accounts);
 
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].profile_pic_url
-          = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}` || '';
+          = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}` || '';
 
 
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].followed_by
@@ -2070,7 +2066,7 @@ export default {
         // console.log(this.dataStored.user.ins_account.accounts);
 
         this.dataStored.user.ins_account.accounts[this.dataStoredInsListIndex - 1].profile_pic_url
-          = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(_sharedDataUser.profile_pic_url)}` || '';
+          = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}` || '';
 
 
 
@@ -2449,7 +2445,7 @@ export default {
 
             let postList = response.data.data.post['post_list'];
             for(let i = 0; i < postList.length; i ++) {
-                postList[i].like_pic_url = `${apiUrl}/test/api/v1/webuser/loadimg?img_url=${Base64.encode(postList[i].like_pic_url)}`;
+                postList[i].like_pic_url = `${this.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(postList[i].like_pic_url)}`;
             }
 
             this.postList = [...this.postList, ...postList];
