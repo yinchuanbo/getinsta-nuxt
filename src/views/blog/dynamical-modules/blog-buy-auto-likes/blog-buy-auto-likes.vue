@@ -225,7 +225,9 @@ export default {
 
         this.insUser.ins_id = _sharedDataUser.id;
         this.insUser.ins_account = _sharedDataUser.username;
-        this.insUser.profile_pic_url = _sharedDataUser.profile_pic_url;
+        this.insUser.profile_pic_url = `${this.sendThis.$store.state.apiUrl}/test/api/v1/webuser/loadimg?img_url=${this.Base64.encode(_sharedDataUser.profile_pic_url)}`;
+
+
         this.insUser.followed_by = _sharedDataUser['edge_followed_by']['count'];
         this.insUser.follow = _sharedDataUser['edge_follow']['count'];
         this.insUser.post = this.insPostTransform(_sharedDataUserPosts);

@@ -6,7 +6,6 @@ export default {
   ssr: true,
   // 测试环境开启 debug 模式
   debug: process.env.NODE_ENV !== 'production',
-
   /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
@@ -51,7 +50,8 @@ export default {
     { src: '@/plugins/model-box.js', mode: 'client' },
     { src: '@/plugins/vee-validate.js', mode: 'client' },
     { src: '@/plugins/click-outside.js', mode: 'client' },
-    { src: '@/plugins/constant.js' }
+    { src: '@/plugins/constant.js' },
+    { src: '@/plugins/base64.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
