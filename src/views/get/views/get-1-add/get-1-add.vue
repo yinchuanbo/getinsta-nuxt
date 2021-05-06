@@ -2,7 +2,7 @@
   <div class="get-1-add home__sec">
     <div class="wrapper">
       <h1 class="home__sec_h2">{{ $t('get.add.title') }}</h1>
-      <p class="home__sec_p">{{ $t('get.add.subTitle') }}22</p>
+      <p class="home__sec_p">{{ $t('get.add.subTitle') }}</p>
       <div class="get-1-add__container">
         <div class="control-search_ins">
           <label>
