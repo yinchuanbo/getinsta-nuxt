@@ -593,7 +593,7 @@ export default {
     }
 
     .left {
-      margin-top: -40px;
+      margin-top: -30px;
       width: 100%;
 
       .search-category {

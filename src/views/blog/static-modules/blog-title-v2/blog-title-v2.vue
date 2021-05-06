@@ -6,7 +6,7 @@
       <div class="banner-img"></div>
       <div class="text-btn">
         <h1>{{ $t('blog.blogTitle.title') }}</h1>
-        <ul>
+        <ul class="pc">
           <li><span>{{ $t('blog.blogTitle.list[0]') }}</span></li>
           <li><span>{{ $t('blog.blogTitle.list[1]') }}</span></li>
           <li><span>{{ $t('blog.blogTitle.list[2]') }}</span></li>
@@ -202,7 +202,7 @@ export default {
 
 @media (max-width: 768px) {
   .blog-title-v2 {
-    padding-bottom: (140px/2);
+    padding-bottom: 30px;
     height: auto;
     font-size: 0;
 
@@ -238,9 +238,8 @@ export default {
       }
 
       .btns {
-        margin-top: 38px;
+        margin-top: 10px;
         text-align: center;
-
         .btn {
           width: 277px;
           height: 60px;

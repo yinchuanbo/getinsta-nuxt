@@ -288,9 +288,13 @@ export default {
             //   this.$router.push({ path: '/lucky-draw-test' });
             // else
             //   this.$router.push({ path: '/lucky-draw' });
-            this.$router.push({ path: '/user' })
 
-
+            if(this.COMMON.isMobile()) {
+              this.$router.push({ path: '/lucky-draw' });
+            } else {
+              this.$router.push({ path: '/user' })
+            }
+            
             // this.$router.push({ path: '/followers-giveaway' });
             // AB Test 分流
             // this.COMMON.randomAbTest()
