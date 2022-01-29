@@ -160,9 +160,7 @@ export default {
     // Server Config
     server: {
         host: '0.0.0.0',
-        // port:
-        //   process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
-        //     ? '8080' : '3000'
-        port: 80
+        port: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest' ?
+            '8080' : '3000'
     }
 };
