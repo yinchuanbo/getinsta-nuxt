@@ -124,11 +124,9 @@ export default {
         proxy: true,
         // baseURL: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'productionTest'
         baseURL: process.env.NODE_ENV === 'production' ?
-            'https://api.easygetinsta.com/api' :
-            'https://test.easygetinsta.com/test/api', // 对asyncData中的接口刷新页面有效
+            'https://api.easygetinsta.com/api' : 'https://test.easygetinsta.com/test/api', // 对asyncData中的接口刷新页面有效
         prefix: process.env.NODE_ENV === 'production' ?
-            'https://api.easygetinsta.com/api' :
-            '/dev/test/api',
+            'https://api.easygetinsta.com/api' : '/dev/test/api',
         credentials: false // 跨域请求时是否需要使用凭证
     },
 
@@ -140,14 +138,14 @@ export default {
                 '^/dev': '',
                 changeOrigin: true
             }
+        },
+        '/prod': {
+            target: 'https://api.easygetinsta.com',
+            pathRewrite: {
+                '^/prod': '',
+                changeOrigin: true
+            }
         }
-        // '/prod': {
-        //   target: 'https://api.easygetinsta.com',
-        //   pathRewrite: {
-        //     '^/prod': '',
-        //     changeOrigin: true
-        //   }
-        // }
     },
 
     serverMiddleware: [
